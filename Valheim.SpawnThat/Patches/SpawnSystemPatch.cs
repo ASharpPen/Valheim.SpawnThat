@@ -2,105 +2,238 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Valheim.SpawnThat.ConfigurationTypes;
-using Valheim.SpawnThat.ConfigurationCore;
 using UnityEngine;
+using Valheim.SpawnThat.ConfigurationCore;
+using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.Debugging;
 
-namespace Valheim.SpawnThat
+namespace Valheim.SpawnThat.Patches
 {
     [HarmonyPatch(typeof(SpawnSystem), "Awake")]
     public static class SpawnSystemPatch
     {
-        public static List<SpawnerConfiguration> Config => ConfigurationManager.DropConfigs;
+        private const string FileNamePre = "world_spawners_pre_changes.txt";
+        private const string FileNamePost = "world_spawners_post_changes.txt";
 
-        private static HashSet<Vector3> AppliedConfigs = new HashSet<Vector3>();
+        /// <summary>
+        /// HashSet of SpawnSystem.GetStableHashCode's, to detect if configuration changes have already been applied.
+        /// </summary>
+        internal static HashSet<Vector3> AppliedConfigs = new HashSet<Vector3>();
 
-        private static void Postfix(ref SpawnSystem __instance)
+        internal static SpawnSystemConfigurationAdvanced Configs = null;
+
+        internal static bool FirstApplication = true;
+
+        internal static Dictionary<string, SimpleConfig> SimpleConfigTable = null;
+
+        private static void Postfix(SpawnSystem __instance, Heightmap ___m_heightmap)
         {
-            if(Config == null)
+            var spawnerPos = __instance.transform.position;
+            Log.LogTrace($"Postfixing SpawnSystem Awake at pos {spawnerPos}");
+
+            if (AppliedConfigs.Contains(spawnerPos))
             {
-                ConfigurationManager.LoadAllConfigurations();
+                return;
+            }
+            else
+            {
+                AppliedConfigs.Add(spawnerPos);
             }
 
-            if(AppliedConfigs.Contains(__instance.transform.position))
+            if (ConfigurationManager.GeneralConfig.WriteSpawnTablesToFileBeforeChanges.Value && FirstApplication)
             {
-                Log.LogDebug("Already applied config. Skipping.");
+                SpawnDataFileDumper.WriteToFile(__instance.m_spawners, FileNamePre);
+            }
+
+            if (Configs == null)
+            {
+                Configs = ConfigurationManager.SpawnSystemConfig;
+                SimpleConfigTable = ConfigurationManager.SimpleConfig.ToDictionary(x => x.PrefabName.Value);
+            }
+
+            if (Configs.ClearAllExisting?.Value == true)
+            {
+                Log.LogTrace($"Clearing spawners from spawn system: {spawnerPos}");
+                __instance.m_spawners.Clear();
+            }
+
+            if ((Configs.Sections?.Values?.Count ?? 0) == 0)
+            {
                 return;
             }
 
-
-            var field = typeof(SpawnSystem).GetField("m_instances", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-
-            Log.LogDebug($"Searching spawners. {(field.GetValue(__instance) as List<SpawnSystem>)?.Count ?? 0}");
-
-            var configs = Config.SelectMany(x => x.Sections.Values);
+            //TODO: Clean up some of these extractions, too many copies
+            foreach (var spawnConfig in Configs.Sections.Values.OrderBy(x => x.Index))
+            {
+                if (spawnConfig.Index < __instance.m_spawners.Count && !Configs.AlwaysAppend.Value)
+                {
+                    Log.LogTrace($"Overriding world spawner entry {spawnConfig.Index}");
+                    Override(__instance.m_spawners[spawnConfig.Index], spawnConfig);
+                }
+                else
+                {
+                    __instance.m_spawners.Add(CreateNewEntry(spawnConfig));
+                }
+            }
+            DisableOutsideBiome(___m_heightmap, __instance.m_spawners);
 
             foreach (var spawner in __instance.m_spawners)
             {
-                var match = configs.FirstOrDefault(x => x.PrefabName.Value.Trim().ToUpperInvariant() == spawner.m_prefab.name.Trim().ToUpperInvariant());
+                var name = spawner.m_prefab.name;
+                var cleanedName = name.Trim().ToUpper();
 
-                if(match != null)
+                if (SimpleConfigTable.TryGetValue(cleanedName, out SimpleConfig simpleConfig))
                 {
-                    Log.LogDebug($"Applying config to {match.PrefabName}");
+                    Log.LogTrace($"Found and applying simple config {simpleConfig.GroupName} for spawner of {name}");
 
-                    spawner.m_groupSizeMax = (int)Math.Round(spawner.m_groupSizeMax * match.GroupSizeMaxMultiplier.Value);
-                    spawner.m_groupSizeMin = (int)Math.Round(spawner.m_groupSizeMin * match.GroupSizeMinMultiplier.Value);
-                    spawner.m_spawnInterval = spawner.m_spawnInterval / match.SpawnFrequencyMultiplier.Value;
-                    spawner.m_maxSpawned = (int)Math.Round(spawner.m_maxSpawned * match.SpawnMaxMultiplier.Value);
-
-                    Log.LogDebug($"m_groupSizeMax: {spawner.m_groupSizeMax}");
-                    Log.LogDebug($"m_groupSizeMin: {spawner.m_groupSizeMin}");
-                    Log.LogDebug($"m_spawnInterval: {spawner.m_spawnInterval}");
-                    Log.LogDebug($"m_maxSpawned: {spawner.m_maxSpawned}");
+                    spawner.m_enabled = simpleConfig.Enable.Value;
+                    spawner.m_maxSpawned = (int)Math.Round(spawner.m_maxSpawned * simpleConfig.SpawnMaxMultiplier.Value);
+                    spawner.m_groupSizeMin = (int)Math.Round(spawner.m_groupSizeMin * simpleConfig.GroupSizeMinMultiplier.Value);
+                    spawner.m_groupSizeMax = (int)Math.Round(spawner.m_groupSizeMax * simpleConfig.GroupSizeMaxMultiplier.Value);
+                    spawner.m_spawnInterval = (simpleConfig.SpawnFrequencyMultiplier.Value != 0)
+                        ? spawner.m_spawnInterval / simpleConfig.SpawnFrequencyMultiplier.Value
+                        : 0;
                 }
             }
 
-            AppliedConfigs.Add(__instance.transform.position);
-
-            /*
-            foreach (var spawnConfig in )
+            if (ConfigurationManager.GeneralConfig.WriteSpawnTablesToFileAfterChanges.Value && FirstApplication)
             {
-
+                SpawnDataFileDumper.WriteToFile(__instance.m_spawners, FileNamePost);
             }
 
-            var deer = __instance.m_spawners.Where(x => x.m_name == "deer").FirstOrDefault();
+            FirstApplication = false;
+        }
 
-            if(deer != null)
+        /// <summary>
+        /// Minor improvements to disable spawners when unchanging conditions are not met.
+        /// No more checking the same thing every update.
+        /// </summary>
+        public static void DisableOutsideBiome(Heightmap heightmap, List<SpawnSystem.SpawnData> spawners)
+        {
+            foreach(var spawner in spawners)
             {
-                foreach(var x in __instance.m_biomeFolded)
+                if(!spawner.m_enabled)
                 {
-                    Log.LogTrace($"Biome: {x}");
+                    continue;
                 }
 
-                deer.m_prefab = 
-
-                var heightMapField = typeof(SpawnSystem).GetField("m_spawnDistanceMin", System.Reflection.BindingFlags.NonPublic);
-                if (heightMapField != null) Log.LogDebug($"Heighmap: {heightMapField.GetValue(__instance)}");
-
-                var minSpawnField = typeof(SpawnSystem).GetField("m_spawnDistanceMin", System.Reflection.BindingFlags.NonPublic);
-                var maxSpawnField = typeof(SpawnSystem).GetField("m_spawnDistanceMin", System.Reflection.BindingFlags.NonPublic);
-
-                if (minSpawnField != null) Log.LogDebug($"MinDist: {minSpawnField.GetValue(__instance)}");
-                if (minSpawnField != null) Log.LogDebug($"MaxDist: {minSpawnField.GetValue(__instance)}");
-
-                Log.LogDebug("Found the deer!");
-
-                deer.m_spawnRadiusMin = 0;
-                deer.m_spawnRadiusMax = 0;
-
-                deer.m_maxSpawned = 20;
-
-                deer.m_spawnDistance = 0;
-                deer.m_spawnChance = 100;
-                deer.m_groupRadius = 0;
-                deer.m_groupSizeMin = 10;
-                deer.m_groupSizeMax = 10;
-
-                deer.m_spawnInterval = 1;
+                if (!heightmap.HaveBiome(spawner.m_biome))
+                {
+                    spawner.m_enabled = false;
+                }
             }
-            */
+        }
+
+        /// <summary>
+        /// Overriding should be fine, as SpawnData is for some reason unique per spawner. Works out for us I guess.
+        /// </summary>
+        /// <param name="original"></param>
+        /// <param name="config"></param>
+        public static void Override(SpawnSystem.SpawnData original, SpawnConfiguration config)
+        {
+            var prefab = ZNetScene.instance.GetPrefab(config.PrefabName.Value);
+
+            Heightmap.Biome biome = ConvertToBiomeFlag(config);
+
+            var envs = config.RequiredEnvironments?.Value?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)?.ToList();
+
+            original.m_prefab = prefab;
+            original.m_name = config.Name.Value;
+            original.m_huntPlayer = config.HuntPlayer.Value;
+            original.m_inForest = config.SpawnInForest.Value;
+            original.m_outsideForest = config.SpawnOutsideForest.Value;
+            original.m_levelUpMinCenterDistance = config.LevelUpMinCenterDistance.Value;
+            original.m_maxAltitude = config.ConditionAltitudeMax.Value;
+            original.m_minAltitude = config.ConditionAltitudeMin.Value;
+            original.m_maxLevel = config.LevelMax.Value;
+            original.m_minLevel = config.LevelMin.Value;
+            original.m_maxOceanDepth = config.OceanDepthMax.Value;
+            original.m_minOceanDepth = config.OceanDepthMin.Value;
+            original.m_maxTilt = config.ConditionTiltMax.Value;
+            original.m_minTilt = config.ConditionTiltMin.Value;
+            original.m_maxSpawned = config.MaxSpawned.Value;
+            original.m_requiredEnvironments = envs;
+            original.m_requiredGlobalKey = config.RequiredGlobalKey.Value;
+            original.m_spawnAtDay = config.SpawnDuringDay.Value;
+            original.m_spawnAtNight = config.SpawnDuringNight.Value;
+            original.m_spawnChance = config.SpawnChance.Value;
+            original.m_spawnDistance = config.SpawnDistance.Value;
+            original.m_spawnInterval = config.SpawnInternval.Value;
+            original.m_spawnRadiusMax = config.SpawnRadiusMax.Value;
+            original.m_spawnRadiusMin = config.SpawnRadiusMin.Value;
+            original.m_biome = biome;
+        }
+
+        public static SpawnSystem.SpawnData CreateNewEntry(SpawnConfiguration config)
+        {
+            var prefab = ZNetScene.instance.GetPrefab(config.PrefabName.Value);
+
+            Heightmap.Biome biome = ConvertToBiomeFlag(config);
+
+            var envs = config.RequiredEnvironments?.Value?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)?.ToList();
+
+            var spawnData = new SpawnSystem.SpawnData
+            {
+                m_prefab = prefab,
+                m_enabled = config.Enabled.Value,
+                m_biome = biome,                
+                m_groupRadius = config.GroupRadius.Value,
+                m_groupSizeMax = config.GroupSizeMax.Value,
+                m_groupSizeMin = config.GroupSizeMin.Value,
+                m_huntPlayer = config.HuntPlayer.Value,
+                m_inForest = config.SpawnInForest.Value,
+                m_outsideForest = config.SpawnOutsideForest.Value,
+                m_levelUpMinCenterDistance = config.LevelUpMinCenterDistance.Value,
+                m_maxAltitude = config.ConditionAltitudeMax.Value,
+                m_minAltitude = config.ConditionAltitudeMin.Value,
+                m_maxLevel = config.LevelMax.Value,
+                m_minLevel = config.LevelMin.Value,
+                m_maxOceanDepth = config.OceanDepthMax.Value,
+                m_minOceanDepth = config.OceanDepthMin.Value,
+                m_maxTilt = config.ConditionTiltMax.Value,
+                m_minTilt = config.ConditionTiltMin.Value,
+                m_maxSpawned = config.MaxSpawned.Value,
+                m_requiredEnvironments = envs,
+                m_requiredGlobalKey = config.RequiredGlobalKey.Value,
+                m_spawnAtDay = config.SpawnDuringDay.Value,
+                m_spawnAtNight = config.SpawnDuringNight.Value,
+                m_spawnChance = config.SpawnChance.Value,
+                m_spawnDistance = config.SpawnDistance.Value,
+                m_spawnInterval = config.SpawnInternval.Value,
+                m_spawnRadiusMax = config.SpawnRadiusMax.Value,
+                m_spawnRadiusMin = config.SpawnRadiusMin.Value,
+                m_groundOffset = config.GroundOffset.Value,
+            };
+
+            return spawnData;
+        }
+
+        private static Heightmap.Biome ConvertToBiomeFlag(SpawnConfiguration config)
+        {
+            //Well, since you bastards were packing enums before, lets return the gesture (not really, <3 you devs!)
+            Heightmap.Biome biome = Heightmap.Biome.None;
+
+            var biomeArray = config.Biomes.Value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (biomeArray.Length == 0)
+            {
+                //Set all biomes allowed.
+                biome = (Heightmap.Biome)1023;
+            }
+
+            foreach (var requiredBiome in biomeArray)
+            {
+                if (Enum.TryParse(requiredBiome, out Heightmap.Biome reqBiome))
+                {
+                    biome |= reqBiome;
+                }
+                else
+                {
+                    Log.LogWarning($"Unable to parse biome '{requiredBiome}' of spawner config {config.Index}");
+                }
+            }
+
+            return biome;
         }
     }
 }

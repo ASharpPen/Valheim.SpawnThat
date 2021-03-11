@@ -1,4 +1,5 @@
 ﻿using BepInEx.Configuration;
+using System;
 
 namespace Valheim.SpawnThat.ConfigurationCore
 {
@@ -9,7 +10,7 @@ namespace Valheim.SpawnThat.ConfigurationCore
 
     public class ConfigurationEntry<TIn> : IConfigurationEntry
     {
-        public TIn DefaultValue { get; set; }
+        public TIn DefaultValue { get; }
         public string Description { get; set; }
 
         public ConfigEntry<TIn> Config { get; set; }
@@ -18,6 +19,7 @@ namespace Valheim.SpawnThat.ConfigurationCore
         {
             if (Description is null)
             {
+
                 Config = config.Bind<TIn>(section, key, DefaultValue);
             }
             else
@@ -46,7 +48,7 @@ namespace Valheim.SpawnThat.ConfigurationCore
 
         public ConfigurationEntry()
         {
-
+            DefaultValue = default;
         }
 
         public ConfigurationEntry(TIn defaultValue, string description = null)
