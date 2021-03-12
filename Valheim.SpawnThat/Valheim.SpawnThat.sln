@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valheim.SpawnThat", "Valheim.SpawnThat.csproj", "{39872480-C9DD-4B79-A847-6660B2DA72E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39872480-C9DD-4B79-A847-6660B2DA72E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39872480-C9DD-4B79-A847-6660B2DA72E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39872480-C9DD-4B79-A847-6660B2DA72E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39872480-C9DD-4B79-A847-6660B2DA72E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64918EF6-76F5-4A58-A4C5-69434628599F}
+	EndGlobalSection
+EndGlobal
