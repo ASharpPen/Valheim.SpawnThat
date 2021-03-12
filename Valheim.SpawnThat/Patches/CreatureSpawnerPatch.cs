@@ -43,6 +43,8 @@ namespace Valheim.SpawnThat.Patches
                 InitializeConfigs();
             }
 
+            Log.LogTrace("Searching for configs for local spawner {spawnerPos}");
+
             var prefabName = __instance.m_creaturePrefab?.name;
 
             if (string.IsNullOrEmpty(prefabName))
@@ -50,17 +52,22 @@ namespace Valheim.SpawnThat.Patches
                 return;
             }
 
-            var cleanedName = prefabName.Trim().ToUpperInvariant();
-
-            var config = FindConfig(cleanedName, spawnerPos);
+            var config = FindConfig(__instance, spawnerPos);
 
             if (config != null)
             {
-                //TODO: Lets make this even more specific.
-                Log.LogTrace($"Found and applying config for spawner within constraints {config.PrefabName}:{config.Locations}");
+                Log.LogDebug($"Found and applying config for local spawner {spawnerPos}");
+
+                var prefab = __instance.m_creaturePrefab;
+
+                //Find creature prefab, if it needs to be overriden
+                if (prefabName != config.PrefabName.Value)
+                {
+                    prefab = ZNetScene.instance.GetPrefab(config.PrefabName.Value);
+                }
 
                 //Override existing config values:
-
+                __instance.m_creaturePrefab = prefab;
                 __instance.m_levelupChance = config.LevelUpChance.Value;
                 __instance.m_maxLevel = config.LevelMax.Value;
                 __instance.m_minLevel = config.LevelMin.Value;
@@ -76,64 +83,54 @@ namespace Valheim.SpawnThat.Patches
 
         private static void InitializeConfigs()
         {
-            var configs = ConfigurationManager.CreatureSpawnerConfig?.Sections?.Values.ToList() ?? new List<CreatureSpawnerConfig>();
+            var configs = ConfigurationManager.CreatureSpawnerConfig;
 
             ConfigLookupTable = new Dictionary<string, Dictionary<string, CreatureSpawnerConfig>>();
 
             foreach (var config in configs)
             {
-                string cleanedName = config.PrefabName.Value.Trim().ToUpperInvariant();
+                var cleanedLocationName = config.Key.Trim().ToUpperInvariant();
 
                 Dictionary<string, CreatureSpawnerConfig> locationTable;
-                if(ConfigLookupTable.TryGetValue(cleanedName, out Dictionary<string, CreatureSpawnerConfig> prefabConfigs))
+                if(ConfigLookupTable.TryGetValue(cleanedLocationName, out Dictionary<string, CreatureSpawnerConfig> existingTable))
                 {
-                    locationTable = prefabConfigs;
+                    locationTable = existingTable;
                 }
                 else
                 {
                     locationTable = new Dictionary<string, CreatureSpawnerConfig>();
-                    ConfigLookupTable.Add(cleanedName, locationTable); 
+                    ConfigLookupTable.Add(cleanedLocationName, locationTable);
                 }
 
-                var locations = config.Locations.Value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-
-                if(locations.Length > 0)
+                foreach(var creature in config.Value.Sections)
                 {
-                    foreach(var location in locations)
+                    var cleanedCreatureName = creature.Key.Trim().ToUpperInvariant();
+
+                    if(locationTable.ContainsKey(cleanedCreatureName))
                     {
-                        string locationName = location.Trim().ToUpperInvariant();
-
-                        if(locationTable.ContainsKey(locationName))
-                        {
-                            Log.LogWarning($"Multiple creature spawner configurations detected for {config.PrefabName.Value}:{location}, overriding last seen.");
-                        }
-
-                        locationTable[locationName] = config;
+                        Log.LogWarning($"Multiple creature spawner configurations detected for {config.Key}.{creature.Key}, overriding last seen.");
                     }
-                }
-                else
-                {
-                    locationTable[""] = config;
+
+                    locationTable[cleanedCreatureName] = creature.Value;
                 }
             }
         }
 
-        private static CreatureSpawnerConfig FindConfig(string cleanedName, Vector3 spawnerPos)
+        private static CreatureSpawnerConfig FindConfig(CreatureSpawner spawner, Vector3 spawnerPos)
         {
-            if (ConfigLookupTable.TryGetValue(cleanedName, out Dictionary<string, CreatureSpawnerConfig> locationTable))
-            {
-                //Jesus, is this really the only way? Thats so inefficient. Can't even store it, since it might be modified over time :S
-                var locations = ZoneSystem.instance.GetLocationList();
-                var spawnerZone = ZoneSystem.instance.GetZone(spawnerPos);
-                var location = locations.FirstOrDefault(x => ZoneSystem.instance.GetZone(x.m_position) == spawnerZone);
+            //Jesus, is this really the only way? Thats so inefficient. Can't even store it, since it might be modified over time :S
+            var locations = ZoneSystem.instance.GetLocationList();
+            var spawnerZone = ZoneSystem.instance.GetZone(spawnerPos);
+            var location = locations.FirstOrDefault(x => ZoneSystem.instance.GetZone(x.m_position) == spawnerZone);
+            var locationName = location.m_location.m_prefabName.Trim().ToUpperInvariant();
 
-                if(locationTable.TryGetValue(location.m_location.m_prefabName.Trim().ToUpperInvariant(), out CreatureSpawnerConfig locationConfig))
+            if (ConfigLookupTable.TryGetValue(locationName, out Dictionary<string, CreatureSpawnerConfig> locationTable))
+            {
+                string creatureName = spawner.m_creaturePrefab.name.Trim().ToUpperInvariant();
+
+                if(locationTable.TryGetValue(creatureName, out CreatureSpawnerConfig config))
                 {
-                    return locationConfig;
-                }
-                else if(locationTable.TryGetValue("", out CreatureSpawnerConfig defaultConfig))
-                {
-                    return defaultConfig;
+                    return config;
                 }
             }
 

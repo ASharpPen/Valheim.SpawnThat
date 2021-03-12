@@ -23,6 +23,8 @@ namespace Valheim.SpawnThat.Patches
 
             SpawnSystemPatch.AppliedConfigs = new HashSet<Vector3>();
             SpawnSystemPatch.FirstApplication = true;
+            SpawnSystemPatch.Configs = null;
+            SpawnSystemPatch.SimpleConfigTable = null;
 
             ConfigurationManager.LoadAllConfigurations();
 

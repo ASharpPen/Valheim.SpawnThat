@@ -9,9 +9,6 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 {
     public class SpawnSystemConfigurationAdvanced : ConfigurationGroup<SpawnConfiguration>
     {
-        public ConfigurationEntry<bool> ClearAllExisting = new ConfigurationEntry<bool>(false, "If true, removes all existing spawners (does not incl. creature spawners).");
-
-        public ConfigurationEntry<bool> AlwaysAppend = new ConfigurationEntry<bool>(false, "If true, will never override existing spawners, but add all custom configurations to the list.");
     }
 
     public class SpawnConfiguration : ConfigurationSection
@@ -44,9 +41,9 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 
         public ConfigurationEntry<bool> Enabled = new ConfigurationEntry<bool>(true, "Enable/disable this entry.");
 
-        public ConfigurationEntry<bool> DriveInward = new ConfigurationEntry<bool>(false, "Mobs always spawn on towards the world edge from player.");
-
         public ConfigurationEntry<string> Biomes = new ConfigurationEntry<string>("", "Biomes in which entity can spawn. Leave empty for all.");
+
+        //public ConfigurationEntry<bool> DriveInward = new ConfigurationEntry<bool>(false, "Mobs always spawn on towards the world edge from player.");
 
         //Bound to the spawner itself. Need to transpile in a change for this to work.
         //public ConfigurationEntry<float> LevelUpChance = new ConfigurationEntry<float>(10, "Chance to increase level above min. This is run multiple times. 100 is 100%.\nEg. if Chance is 10, LevelMin is 1 and LevelMax is 3, the game will have a 10% to become level 2. The game will then run an additional 10% check for increasing to level 3.");
@@ -59,7 +56,7 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 
         public ConfigurationEntry<int> MaxSpawned = new ConfigurationEntry<int>(1, "Maximum entities spawned from this spawner type (it's complicated. See documentation.).");
 
-        public ConfigurationEntry<float> SpawnInternval = new ConfigurationEntry<float>(90, "Seconds between spawn checks.");
+        public ConfigurationEntry<float> SpawnInterval = new ConfigurationEntry<float>(90, "Seconds between spawn checks.");
 
         public ConfigurationEntry<float> SpawnChance = new ConfigurationEntry<float>(100, "Chance to spawn per check. Range 0 to 100.");
 

@@ -35,7 +35,9 @@
     <Reference Include="0Harmony">
       <HintPath>..\..\..\Games\Steam\steamapps\common\Valheim\BepInEx\core\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="assembly_utils, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="assembly_utils">
+      <HintPath>..\..\..\Games\Steam\steamapps\common\Valheim\valheim_Data\Managed\assembly_utils.dll</HintPath>
+    </Reference>
     <Reference Include="assembly_valheim">
       <HintPath>..\..\..\Games\Steam\steamapps\common\Valheim\valheim_Data\Managed\assembly_valheim.dll</HintPath>
     </Reference>
@@ -79,7 +81,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpawnThatPlugin.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
+    <None Include="Thunderstore\manifest.json" />
     <None Include="Thunderstore\README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

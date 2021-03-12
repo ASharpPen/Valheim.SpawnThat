@@ -25,7 +25,7 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 
         public static SpawnSystemConfigurationAdvanced SpawnSystemConfig;
 
-        public static CreatureSpawnerConfigurationAdvanced CreatureSpawnerConfig;
+        public static Dictionary<string, CreatureSpawnerConfigurationAdvanced> CreatureSpawnerConfig;
 
         public static void LoadAllConfigurations()
         {
@@ -62,6 +62,7 @@ namespace Valheim.SpawnThat.ConfigurationTypes
             Log.LogInfo($"Loading simple spawn configurations from {configPath}.");
 
             var configFile = new ConfigFile(configPath, true);
+            if (GeneralConfig.StopTouchingMyConfigs.Value) configFile.SaveOnConfigSet = false;
 
             Dictionary<string, SimpleConfig> configurations = ConfigurationLoader.LoadConfigurationGroup<SimpleConfig, SimpleConfigSection>(configFile);
 
@@ -77,6 +78,7 @@ namespace Valheim.SpawnThat.ConfigurationTypes
             Log.LogInfo($"Loading advanced spawn system configurations from {configPath}.");
 
             var configFile = new ConfigFile(configPath, true);
+            if (GeneralConfig.StopTouchingMyConfigs.Value) configFile.SaveOnConfigSet = false;
 
             Dictionary<string, SpawnSystemConfigurationAdvanced> configurations = ConfigurationLoader.LoadConfigurationGroup<SpawnSystemConfigurationAdvanced, SpawnConfiguration>(configFile);
 
@@ -85,19 +87,20 @@ namespace Valheim.SpawnThat.ConfigurationTypes
             return configurations?.Values?.FirstOrDefault() ?? new SpawnSystemConfigurationAdvanced();
         }
 
-        public static CreatureSpawnerConfigurationAdvanced LoadCreatureSpawnerConfigurationAdvanced()
+        public static Dictionary<string, CreatureSpawnerConfigurationAdvanced> LoadCreatureSpawnerConfigurationAdvanced()
         {
             string configPath = Path.Combine(Paths.ConfigPath, CreatureSpawnerConfigFile);
 
             Log.LogInfo($"Loading advanced creature spawner configurations from {configPath}.");
 
             var configFile = new ConfigFile(configPath, true);
+            if (GeneralConfig.StopTouchingMyConfigs.Value) configFile.SaveOnConfigSet = false;
 
             Dictionary<string, CreatureSpawnerConfigurationAdvanced> configurations = ConfigurationLoader.LoadConfigurationGroup<CreatureSpawnerConfigurationAdvanced, CreatureSpawnerConfig>(configFile);
 
             Log.LogInfo($"Finished loading advanced creature spawner configurations.");
 
-            return configurations?.Values?.FirstOrDefault() ?? new CreatureSpawnerConfigurationAdvanced();
+            return configurations;
         }
     }
 }

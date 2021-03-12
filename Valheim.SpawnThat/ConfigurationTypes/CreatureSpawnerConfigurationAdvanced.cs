@@ -8,11 +8,9 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 
     public class  CreatureSpawnerConfig : ConfigurationSection
     {
-        public ConfigurationEntry<string> PrefabName = new ConfigurationEntry<string>("", "PrefabName of entity spawners to target.");
+        public ConfigurationEntry<string> PrefabName = new ConfigurationEntry<string>("", "PrefabName of entity to spawn.");
 
         public ConfigurationEntry<bool> Enabled = new ConfigurationEntry<bool>(true, "Enable/disable this configuration.");
-
-        public ConfigurationEntry<string> Locations = new ConfigurationEntry<string>("", "Locations to target creature spawners in. See documentation for list of location names.");
 
         #region New options
 
@@ -26,9 +24,9 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 
         #region Default options
 
-        public ConfigurationEntry<bool> SpawnAtDay = new ConfigurationEntry<bool>();
+        public ConfigurationEntry<bool> SpawnAtDay = new ConfigurationEntry<bool>(true, "Enable spawning during day.");
 
-        public ConfigurationEntry<bool> SpawnAtNight = new ConfigurationEntry<bool>();
+        public ConfigurationEntry<bool> SpawnAtNight = new ConfigurationEntry<bool>(true, "Enable spawning during night.");
 
         public ConfigurationEntry<int> LevelMin = new ConfigurationEntry<int>(1, "Minimum level of spawn.");
 

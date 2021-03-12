@@ -15,7 +15,6 @@ namespace Valheim.SpawnThat.ConfigurationCore
             if (ConfigurationManager.GeneralConfig?.DebugLoggingOn?.Value == true)
             {
                 //Logger.LogDebug($"[{PluginName}]: {message}");
-                Logger.LogDebug($"{message}");
             }
         }
 
@@ -23,18 +22,14 @@ namespace Valheim.SpawnThat.ConfigurationCore
         {
             if (ConfigurationManager.GeneralConfig?.TraceLoggingOn?.Value == true)
             {
-                //Logger.LogDebug($"[{PluginName}]: {message}");
                 Logger.LogDebug($"{PluginName}: {message}");
             }
         }
 
         public static void LogInfo(string message) => Logger.LogInfo($"{message}");
-        //Logger.LogInfo($"[{PluginName}]: {message}");
 
         public static void LogWarning(string message) => Logger.LogWarning($"{message}");
-        //Logger.LogWarning($"[{PluginName}]: {message}");
 
         public static void LogError(string message, Exception e = null) => Logger.LogError($"{message}; {e?.Message ?? ""}");
-        //Logger.LogError($"[{PluginName}]: {message}; {e?.Message ?? ""}");
     }
 }

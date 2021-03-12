@@ -54,6 +54,7 @@ namespace Valheim.SpawnThat.ConfigurationCore
         public ConfigurationEntry(TIn defaultValue, string description = null)
         {
             DefaultValue = defaultValue;
+            Description = description;
         }
     }
 }

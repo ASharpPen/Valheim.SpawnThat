@@ -33,6 +33,7 @@ namespace Valheim.SpawnThat.Patches
 
             if (AppliedConfigs.Contains(spawnerPos))
             {
+                Log.LogTrace($"Config already applied for SpawnSystem {spawnerPos}. Skipping.");
                 return;
             }
             else
@@ -48,58 +49,60 @@ namespace Valheim.SpawnThat.Patches
             if (Configs == null)
             {
                 Configs = ConfigurationManager.SpawnSystemConfig;
-                SimpleConfigTable = ConfigurationManager.SimpleConfig.ToDictionary(x => x.PrefabName.Value);
+                SimpleConfigTable = ConfigurationManager.SimpleConfig.Where(x => x.Enable.Value).ToDictionary(x => x.PrefabName.Value.Trim().ToUpper());
             }
 
-            if (Configs.ClearAllExisting?.Value == true)
+            if (ConfigurationManager.GeneralConfig.ClearAllExisting?.Value == true)
             {
                 Log.LogTrace($"Clearing spawners from spawn system: {spawnerPos}");
                 __instance.m_spawners.Clear();
             }
 
-            if ((Configs.Sections?.Values?.Count ?? 0) == 0)
+            if ((Configs.Sections?.Values?.Count ?? 0) > 0)
             {
-                return;
-            }
-
-            //TODO: Clean up some of these extractions, too many copies
-            foreach (var spawnConfig in Configs.Sections.Values.OrderBy(x => x.Index))
-            {
-                if (spawnConfig.Index < __instance.m_spawners.Count && !Configs.AlwaysAppend.Value)
+                //TODO: Clean up some of these extractions, too many copies
+                foreach (var spawnConfig in Configs.Sections.Values.OrderBy(x => x.Index))
                 {
-                    Log.LogTrace($"Overriding world spawner entry {spawnConfig.Index}");
-                    Override(__instance.m_spawners[spawnConfig.Index], spawnConfig);
-                }
-                else
-                {
-                    __instance.m_spawners.Add(CreateNewEntry(spawnConfig));
-                }
-            }
-            DisableOutsideBiome(___m_heightmap, __instance.m_spawners);
-
-            foreach (var spawner in __instance.m_spawners)
-            {
-                var name = spawner.m_prefab.name;
-                var cleanedName = name.Trim().ToUpper();
-
-                if (SimpleConfigTable.TryGetValue(cleanedName, out SimpleConfig simpleConfig))
-                {
-                    Log.LogTrace($"Found and applying simple config {simpleConfig.GroupName} for spawner of {name}");
-
-                    spawner.m_enabled = simpleConfig.Enable.Value;
-                    spawner.m_maxSpawned = (int)Math.Round(spawner.m_maxSpawned * simpleConfig.SpawnMaxMultiplier.Value);
-                    spawner.m_groupSizeMin = (int)Math.Round(spawner.m_groupSizeMin * simpleConfig.GroupSizeMinMultiplier.Value);
-                    spawner.m_groupSizeMax = (int)Math.Round(spawner.m_groupSizeMax * simpleConfig.GroupSizeMaxMultiplier.Value);
-                    spawner.m_spawnInterval = (simpleConfig.SpawnFrequencyMultiplier.Value != 0)
-                        ? spawner.m_spawnInterval / simpleConfig.SpawnFrequencyMultiplier.Value
-                        : 0;
+                    if (spawnConfig.Index < __instance.m_spawners.Count && !ConfigurationManager.GeneralConfig.AlwaysAppend.Value)
+                    {
+                        Log.LogTrace($"Overriding world spawner entry {spawnConfig.Index}");
+                        Override(__instance.m_spawners[spawnConfig.Index], spawnConfig);
+                    }
+                    else
+                    {
+                        Log.LogTrace($"Adding new spawner entry {spawnConfig.Name}");
+                        __instance.m_spawners.Add(CreateNewEntry(spawnConfig));
+                    }
                 }
             }
 
+            if (SimpleConfigTable != null && SimpleConfigTable.Count > 0)
+            {
+                foreach (var spawner in __instance.m_spawners)
+                {
+                    var name = spawner.m_prefab.name;
+                    var cleanedName = name.Trim().ToUpper();
+
+                    if (SimpleConfigTable.TryGetValue(cleanedName, out SimpleConfig simpleConfig))
+                    {
+                        Log.LogDebug($"Found and applying simple config {simpleConfig.GroupName} for spawner of {name}");
+
+                        spawner.m_maxSpawned = (int)Math.Round(spawner.m_maxSpawned * simpleConfig.SpawnMaxMultiplier.Value);
+                        spawner.m_groupSizeMin = (int)Math.Round(spawner.m_groupSizeMin * simpleConfig.GroupSizeMinMultiplier.Value);
+                        spawner.m_groupSizeMax = (int)Math.Round(spawner.m_groupSizeMax * simpleConfig.GroupSizeMaxMultiplier.Value);
+                        spawner.m_spawnInterval = (simpleConfig.SpawnFrequencyMultiplier.Value != 0)
+                            ? spawner.m_spawnInterval / simpleConfig.SpawnFrequencyMultiplier.Value
+                            : 0;
+                    }
+                }
+            }
+            
             if (ConfigurationManager.GeneralConfig.WriteSpawnTablesToFileAfterChanges.Value && FirstApplication)
             {
                 SpawnDataFileDumper.WriteToFile(__instance.m_spawners, FileNamePost);
             }
+
+            DisableOutsideBiome(___m_heightmap, __instance.m_spawners);
 
             FirstApplication = false;
         }
@@ -137,31 +140,36 @@ namespace Valheim.SpawnThat.Patches
 
             var envs = config.RequiredEnvironments?.Value?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)?.ToList();
 
-            original.m_prefab = prefab;
             original.m_name = config.Name.Value;
+            original.m_enabled = config.Enabled.Value;
+            original.m_biome = biome;
+            original.m_prefab = prefab;
             original.m_huntPlayer = config.HuntPlayer.Value;
-            original.m_inForest = config.SpawnInForest.Value;
-            original.m_outsideForest = config.SpawnOutsideForest.Value;
-            original.m_levelUpMinCenterDistance = config.LevelUpMinCenterDistance.Value;
-            original.m_maxAltitude = config.ConditionAltitudeMax.Value;
-            original.m_minAltitude = config.ConditionAltitudeMin.Value;
-            original.m_maxLevel = config.LevelMax.Value;
-            original.m_minLevel = config.LevelMin.Value;
-            original.m_maxOceanDepth = config.OceanDepthMax.Value;
-            original.m_minOceanDepth = config.OceanDepthMin.Value;
-            original.m_maxTilt = config.ConditionTiltMax.Value;
-            original.m_minTilt = config.ConditionTiltMin.Value;
             original.m_maxSpawned = config.MaxSpawned.Value;
-            original.m_requiredEnvironments = envs;
+            original.m_spawnInterval = config.SpawnInterval.Value;
+            original.m_spawnChance = config.SpawnChance.Value;
+            original.m_minLevel = config.LevelMin.Value;
+            original.m_maxLevel = config.LevelMax.Value;
+            original.m_levelUpMinCenterDistance = config.LevelUpMinCenterDistance.Value;
+            original.m_spawnDistance = config.SpawnDistance.Value;
+            original.m_spawnRadiusMin = config.SpawnRadiusMin.Value;
+            original.m_spawnRadiusMax = config.SpawnRadiusMax.Value;
             original.m_requiredGlobalKey = config.RequiredGlobalKey.Value;
+            original.m_requiredEnvironments = envs;
+            original.m_groupSizeMin = config.GroupSizeMin.Value;
+            original.m_groupSizeMax = config.GroupSizeMax.Value;
+            original.m_groupRadius = config.GroupRadius.Value;
+            original.m_groundOffset = config.GroundOffset.Value;
             original.m_spawnAtDay = config.SpawnDuringDay.Value;
             original.m_spawnAtNight = config.SpawnDuringNight.Value;
-            original.m_spawnChance = config.SpawnChance.Value;
-            original.m_spawnDistance = config.SpawnDistance.Value;
-            original.m_spawnInterval = config.SpawnInternval.Value;
-            original.m_spawnRadiusMax = config.SpawnRadiusMax.Value;
-            original.m_spawnRadiusMin = config.SpawnRadiusMin.Value;
-            original.m_biome = biome;
+            original.m_minAltitude = config.ConditionAltitudeMin.Value;
+            original.m_maxAltitude = config.ConditionAltitudeMax.Value;
+            original.m_minTilt = config.ConditionTiltMin.Value;
+            original.m_maxTilt = config.ConditionTiltMax.Value;
+            original.m_inForest = config.SpawnInForest.Value;
+            original.m_outsideForest = config.SpawnOutsideForest.Value;
+            original.m_maxOceanDepth = config.OceanDepthMax.Value;
+            original.m_minOceanDepth = config.OceanDepthMin.Value;
         }
 
         public static SpawnSystem.SpawnData CreateNewEntry(SpawnConfiguration config)
@@ -173,7 +181,8 @@ namespace Valheim.SpawnThat.Patches
             var envs = config.RequiredEnvironments?.Value?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)?.ToList();
 
             var spawnData = new SpawnSystem.SpawnData
-            {
+            {                
+                m_name = config.Name.Value,
                 m_prefab = prefab,
                 m_enabled = config.Enabled.Value,
                 m_biome = biome,                
@@ -199,7 +208,7 @@ namespace Valheim.SpawnThat.Patches
                 m_spawnAtNight = config.SpawnDuringNight.Value,
                 m_spawnChance = config.SpawnChance.Value,
                 m_spawnDistance = config.SpawnDistance.Value,
-                m_spawnInterval = config.SpawnInternval.Value,
+                m_spawnInterval = config.SpawnInterval.Value,
                 m_spawnRadiusMax = config.SpawnRadiusMax.Value,
                 m_spawnRadiusMin = config.SpawnRadiusMin.Value,
                 m_groundOffset = config.GroundOffset.Value,

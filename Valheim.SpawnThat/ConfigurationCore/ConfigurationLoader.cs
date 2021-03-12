@@ -83,7 +83,7 @@ namespace Valheim.SpawnThat.ConfigurationCore
                 configuration.Entries[field.Name] = entry;
                 field.SetValue(configuration, entry);
 
-                Log.LogTrace($"[{sectionHeader}]: Loaded [{field.Name}:{entry}]");
+                Log.LogTrace($"[{sectionHeader}]: Loaded {field.Name}:{entry}");
             }
         }
 
