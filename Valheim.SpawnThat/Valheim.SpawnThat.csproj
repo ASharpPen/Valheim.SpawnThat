@@ -82,9 +82,5 @@
     <Compile Include="SpawnThatPlugin.cs" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <None Include="Thunderstore\manifest.json" />
-    <None Include="Thunderstore\README.md" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -23,6 +23,8 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 This mod will not change any non-spawner based entities, such as dungeon mobs that only spawn once.
 Nor does it support changes to breeding.
 
+If multiplayer, will have to have mod and same config set up for all clients.
+
 ## How does it all work?
 
 Valheim's main way of managing spawns work by having two types of spawners spread throughout the world.\
