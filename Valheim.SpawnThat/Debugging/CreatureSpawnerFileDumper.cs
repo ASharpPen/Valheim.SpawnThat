@@ -45,7 +45,7 @@ namespace Valheim.SpawnThat.Debugging
 
             string filePath = Path.Combine(Paths.PluginPath, FileName);
 
-            Log.LogDebug($"Writing defalt local spawn configurations to {filePath}");
+            Log.LogInfo($"Writing defalt local spawn configurations to {filePath}");
 
             File.WriteAllLines(filePath, spawnersSerialized);
         }

@@ -196,7 +196,7 @@ PrefabName = Deer
 # Setting type: Boolean
 HuntPlayer = false
 
-## Maximum entities spawned from this spawner type (it's complicated. See documentation.).
+## Maximum entities of type spawned in area.).
 # Setting type: Int32
 MaxSpawned = 4
 
