@@ -2,10 +2,10 @@
 
 This is an advanced tool for configuring all world spawners.
 
-With this, it is possible to change almost all of the default settings for the way spawners work in Valheim.\
-Want to have a world without trolls? Possible! (probably)\
-Want to have a world with ONLY trolls? Possible! (almost)\
-Want to have a world where greydwarves only spawn at night? Possible!\
+With this, it is possible to change almost all of the default settings for the way spawners work in Valheim.
+Want to have a world without trolls? Possible! (probably)
+Want to have a world with ONLY trolls? Possible! (almost)
+Want to have a world where greydwarves only spawn at night? Possible!
 Just want to have more/less of a mob type? Simple modifiers exist!
 
 ## Features
@@ -18,17 +18,26 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 - Dump existing game templates as files using the same format as the mod configs. 
 	- Easy to copy-paste and change the parts you want.
 	- Investigate what the world throws at you.
+- Server-side configs
 
 ## Limitations
 This mod will not change any non-spawner based entities, such as dungeon mobs that only spawn once.
 Nor does it support changes to breeding.
 
-If multiplayer, will have to have mod and same config set up for all clients.
+## FAQ
+
+Why are the config files empty?
+- All configs but spawn_that.cfg are intended empty initially. This is so that the game will behave as normal, until you start adding configurations to it.
+- Enable any of the "WriteX" in spawn_that.cfg, and files containing the default values will be created in the plugins folder.
+	- You can also go to the github page, where the main (massive) readme have them list.
+
+Where do I find the prefab names?
+- Multiple pages have long lists, you can check out this one [here](https://gist.github.com/Sonata26/e2b85d53e125fb40081b18e2aee6d584), or the [valheim wiki](https://valheim.fandom.com/wiki/Creatures)
 
 ## How does it all work?
 
-Valheim's main way of managing spawns work by having two types of spawners spread throughout the world.\
-The world spawners, for which the world has them spread out in a grid fashion, each using the same list of templates to check if something should spawn. These are the general spawners and all currently use the same 43 templates.\
+Valheim's main way of managing spawns work by having two types of spawners spread throughout the world.
+The world spawners, for which the world has them spread out in a grid fashion, each using the same list of templates to check if something should spawn. These are the general spawners and all currently use the same 43 templates.
 The local spawners, which are intended for fine-tuned spawning. Local spawners only spawn one specific mob type, and only has one alive at a time. These are bound to specific world locations, such as the surtling firehole.
 
 For world spawners, you can either replace existing templates based on their index, or add to the list of possible templates to spawn from.
@@ -37,6 +46,14 @@ For local spawners, since these are more custom, you describe a location and the
 
 The mod modification happens at run-time, once for each spawner. Reloading the world resets all changes.
 As the player moves through the world, the game loads in the various spawners, and the mod applies its own settings.
+
+## Client / Server
+
+Drop That needs to be installed on all clients (and server) to work.
+
+From v0.3.0 clients will request the configurations currently loaded by the server, and use those without affecting the clients config files.
+This means you should be able to have server-specific configurations, and the client can have its own setup for singleplayer.
+For this to work, the mod needs to be installed on the server, and have configs set up properly there. When players join with Spawn That v0.3.0, their mod will use the servers configs.
 
 # Simple spawning
 
@@ -79,8 +96,8 @@ SpawnFrequencyMultiplier = 1
 
 # World Spawners
 
-World spawner templates are managed through the "spawn_that.world_spawners_advanced.cfg" file.\
-There are currently 43 default templates, which can be overriden by setting a matching index (starting from 0).
+World spawner templates are managed through the "spawn_that.world_spawners_advanced.cfg" file.
+There are currently 44 default templates, which can be overriden by setting a matching index (starting from 0).
 
 The general config contains debugging options, which can be toggled to create a file containing all templates before the mod applies its changes, and after.
 
@@ -336,3 +353,11 @@ SpawnInPlayerBase = true
 SetPatrolPoint = true
 
 ```
+
+For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
+
+Changelog:
+- v0.3.0
+	- Server-to-client config sync added
+- v0.2.0
+	- Initial release

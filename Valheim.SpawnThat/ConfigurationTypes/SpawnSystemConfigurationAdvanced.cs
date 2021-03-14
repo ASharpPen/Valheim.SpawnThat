@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Valheim.SpawnThat.ConfigurationCore;
 
 namespace Valheim.SpawnThat.ConfigurationTypes
 {
+    [Serializable]
     public class SpawnSystemConfigurationAdvanced : ConfigurationGroup<SpawnConfiguration>
     {
     }
 
+    [Serializable]
     public class SpawnConfiguration : ConfigurationSection
     {
         private int? index = null;
