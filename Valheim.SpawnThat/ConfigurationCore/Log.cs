@@ -8,13 +8,11 @@ namespace Valheim.SpawnThat.ConfigurationCore
     {
         internal static ManualLogSource Logger;
 
-        private static string PluginName => "Spawn That!";
-
         public static void LogDebug(string message)
         {
             if (ConfigurationManager.GeneralConfig?.DebugLoggingOn?.Value == true)
             {
-                //Logger.LogDebug($"[{PluginName}]: {message}");
+                Logger.LogDebug($"{message}");
             }
         }
 
@@ -22,7 +20,7 @@ namespace Valheim.SpawnThat.ConfigurationCore
         {
             if (ConfigurationManager.GeneralConfig?.TraceLoggingOn?.Value == true)
             {
-                Logger.LogDebug($"{PluginName}: {message}");
+                Logger.LogDebug($"{message}");
             }
         }
 

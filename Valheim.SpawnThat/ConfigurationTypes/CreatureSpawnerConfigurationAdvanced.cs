@@ -1,11 +1,14 @@
-﻿using Valheim.SpawnThat.ConfigurationCore;
+﻿using System;
+using Valheim.SpawnThat.ConfigurationCore;
 
 namespace Valheim.SpawnThat.ConfigurationTypes
 {
+    [Serializable]
     public class CreatureSpawnerConfigurationAdvanced : ConfigurationGroup<CreatureSpawnerConfig>
     {
     }
 
+    [Serializable]
     public class  CreatureSpawnerConfig : ConfigurationSection
     {
         public ConfigurationEntry<string> PrefabName = new ConfigurationEntry<string>("", "PrefabName of entity to spawn.");

@@ -1,7 +1,9 @@
-﻿using Valheim.SpawnThat.ConfigurationCore;
+﻿using System;
+using Valheim.SpawnThat.ConfigurationCore;
 
 namespace Valheim.SpawnThat.ConfigurationTypes
 {
+    [Serializable]
     public class SimpleConfig : ConfigurationGroup<SimpleConfigSection>
     {
         public ConfigurationEntry<string> PrefabName = new ConfigurationEntry<string>("Greydwarf", "Prefab name of entity to modify.");
@@ -17,6 +19,7 @@ namespace Valheim.SpawnThat.ConfigurationTypes
         public ConfigurationEntry<float> SpawnFrequencyMultiplier = new ConfigurationEntry<float>(1, "Change how often the game will try to spawn in new creatures.\nHigher means more often. 2 is twice as often, 0.5 is double the time between spawn checks.");
     }
 
+    [Serializable]
     public class SimpleConfigSection : ConfigurationSection
     {
         

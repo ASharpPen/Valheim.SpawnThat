@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Valheim.SpawnThat.ConfigurationCore;
 
 namespace Valheim.SpawnThat.ConfigurationTypes
 {
+    [Serializable]
     public class SpawnSystemConfigurationAdvanced : ConfigurationGroup<SpawnConfiguration>
     {
     }
 
+    [Serializable]
     public class SpawnConfiguration : ConfigurationSection
     {
         private int? index = null;
@@ -54,7 +52,7 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 
         public ConfigurationEntry<bool> HuntPlayer = new ConfigurationEntry<bool>(false, "Sets AI to hunt a player target.");
 
-        public ConfigurationEntry<int> MaxSpawned = new ConfigurationEntry<int>(1, "Maximum entities spawned from this spawner type (it's complicated. See documentation.).");
+        public ConfigurationEntry<int> MaxSpawned = new ConfigurationEntry<int>(1, "Maximum entities of type spawned in area.");
 
         public ConfigurationEntry<float> SpawnInterval = new ConfigurationEntry<float>(90, "Seconds between spawn checks.");
 

@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using Valheim.SpawnThat.ConfigurationCore;
 using Valheim.SpawnThat.ConfigurationTypes;
 
 namespace Valheim.SpawnThat.Debugging
@@ -24,62 +25,9 @@ namespace Valheim.SpawnThat.Debugging
                 lines.AddRange(WriteSpawner(spawner, i));
             }
 
+            Log.LogInfo($"Writing world spawner configurations to {filePath}");
+
             File.WriteAllLines(filePath, lines);
-        }
-
-        private static void Scan(SpawnSystem.SpawnData spawner, List<string> results, int depth = 1)
-        {
-            var fields = spawner.GetType().GetFields();
-
-            string indent = "";
-            for (int i = 0; i < depth; ++i)
-            {
-                indent += "\t";
-            }
-
-            foreach (var field in fields)
-            {
-                //Special cases
-                if(typeof(GameObject).IsAssignableFrom(field.FieldType))
-                {
-                    results.Add($"{indent}{field.Name}: {((GameObject)field.GetValue(spawner))?.name}");
-                }
-                else if(typeof(Heightmap.Biome) == field.FieldType)
-                {
-                    results.Add($"{indent}{field.Name}: {(int)field.GetValue(spawner)}");
-
-                    var spawnerBiome = spawner.m_biome;
-
-                    var indent2 = indent + "\t";
-
-                    foreach (var b in Enum.GetValues(typeof(Heightmap.Biome)))
-                    {
-                        if(b is Heightmap.Biome biome && biome != Heightmap.Biome.BiomesMax)
-                        {
-                            biome = (biome & spawnerBiome);
-
-                            if (biome > Heightmap.Biome.None)
-                            {
-                                results.Add($"{indent2}{biome}");
-                            }
-                        }
-                    }
-                }
-                else if (typeof(List<string>).IsAssignableFrom(field.FieldType))
-                {
-                    results.Add($"{indent}{field.Name}:");
-
-                    var indent2 = indent + "\t";
-                    foreach (var str in field.GetValue(spawner) as List<string>)
-                    {
-                        results.Add($"{indent2}{str}");
-                    }
-                }
-                else
-                {
-                    results.Add($"{indent}{field.Name}: {field.GetValue(spawner)}");
-                }
-            }
         }
 
         internal static List<string> WriteSpawner(SpawnSystem.SpawnData spawner, int index)
