@@ -28,7 +28,7 @@ Nor does it support changes to breeding.
 
 Why are the config files empty?
 - All configs but spawn_that.cfg are intended empty initially. This is so that the game will behave as normal, until you start adding configurations to it.
-- Enable any of the "WriteX" in spawn_that.cfg, and files containing the default values will be created in the plugins folder.
+- Enable any of the "WriteX" in spawn_that.cfg, and files containing the default values will be created in the <GameDirectory>/BepInEx/plugins folder.
 	- You can also go to the github page, where the main (massive) readme have them list.
 
 Where do I find the prefab names?
@@ -196,7 +196,7 @@ PrefabName = Deer
 # Setting type: Boolean
 HuntPlayer = false
 
-## Maximum entities spawned from this spawner type (it's complicated. See documentation.).
+## Maximum entities of type spawned in area.
 # Setting type: Int32
 MaxSpawned = 4
 
