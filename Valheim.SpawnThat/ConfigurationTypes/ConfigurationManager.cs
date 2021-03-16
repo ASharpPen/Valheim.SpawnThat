@@ -67,6 +67,8 @@ namespace Valheim.SpawnThat.ConfigurationTypes
                 SimpleConfigAllCreatures.Initialize();
             }
 
+            ConfigurationLoader.SanitizeSectionHeaders(configPath);
+
             var configFile = new ConfigFile(configPath, true);
             if (GeneralConfig.StopTouchingMyConfigs.Value) configFile.SaveOnConfigSet = false;
 
@@ -83,6 +85,8 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 
             Log.LogInfo($"Loading advanced spawn system configurations from {configPath}.");
 
+            ConfigurationLoader.SanitizeSectionHeaders(configPath);
+
             var configFile = new ConfigFile(configPath, true);
             if (GeneralConfig.StopTouchingMyConfigs.Value) configFile.SaveOnConfigSet = false;
 
@@ -98,6 +102,8 @@ namespace Valheim.SpawnThat.ConfigurationTypes
             string configPath = Path.Combine(Paths.ConfigPath, CreatureSpawnerConfigFile);
 
             Log.LogInfo($"Loading advanced creature spawner configurations from {configPath}.");
+
+            ConfigurationLoader.SanitizeSectionHeaders(configPath);
 
             var configFile = new ConfigFile(configPath, true);
             if (GeneralConfig.StopTouchingMyConfigs.Value) configFile.SaveOnConfigSet = false;

@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using System.IO;
+using Valheim.SpawnThat.ConfigurationCore;
 using Valheim.SpawnThat.ConfigurationTypes;
 
 namespace Valheim.SpawnThat.PreConfigured
@@ -14,6 +15,8 @@ namespace Valheim.SpawnThat.PreConfigured
                 string configPath = Path.Combine(Paths.ConfigPath, ConfigurationManager.SimpleConfigFile);
                 if (!File.Exists(configPath))
                 {
+                    Log.LogDebug($"Initializing {ConfigurationManager.SimpleConfigFile}.");
+
                     ConfigFile file = new ConfigFile(configPath, true);
 
                     CreateEntry(file, "Crow");
@@ -54,6 +57,8 @@ namespace Valheim.SpawnThat.PreConfigured
                     CreateEntry(file, "GoblinBrute");
                     CreateEntry(file, "GoblinShaman");
                     CreateEntry(file, "Serpent");
+
+                    Log.LogDebug($"Finished initializing {ConfigurationManager.SimpleConfigFile}.");
                 }
             }
         }
