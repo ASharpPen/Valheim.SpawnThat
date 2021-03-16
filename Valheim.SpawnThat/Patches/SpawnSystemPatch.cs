@@ -63,6 +63,21 @@ namespace Valheim.SpawnThat.Patches
                 //TODO: Clean up some of these extractions, too many copies
                 foreach (var spawnConfig in Configs.Sections.Values.OrderBy(x => x.Index))
                 {
+                    var distance = spawnerPos.magnitude;
+
+                    Log.LogInfo($"Spawner {spawnerPos} distance: {distance}");
+
+                    if(distance < spawnConfig.ConditionDistanceToCenterMin.Value)
+                    {
+                        Log.LogTrace($"Ignoring world config {spawnConfig.Name} due to distance less than min.");
+                        continue;
+                    }
+                    if(spawnConfig.ConditionDistanceToCenterMax.Value > 0 && distance > spawnConfig.ConditionDistanceToCenterMax.Value)
+                    {
+                        Log.LogTrace($"Ignoring world config {spawnConfig.Name} due to distance greater than max.");
+                        continue;
+                    }
+
                     if (spawnConfig.Index < __instance.m_spawners.Count && !ConfigurationManager.GeneralConfig.AlwaysAppend.Value)
                     {
                         Log.LogTrace($"Overriding world spawner entry {spawnConfig.Index}");

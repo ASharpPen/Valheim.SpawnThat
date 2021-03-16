@@ -24,6 +24,12 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 
         #endregion
 
+        #region Simple
+
+        public ConfigurationEntry<bool> InitializeWithCreatures = new ConfigurationEntry<bool>(true, "If true, fills in simple cfg with a list of creatures when file is created.");
+
+        #endregion 
+
         #region WorldSpawner
 
         public ConfigurationEntry<bool> ClearAllExisting = new ConfigurationEntry<bool>(false, "If true, removes all existing world spawner templates.");
@@ -55,6 +61,8 @@ namespace Valheim.SpawnThat.ConfigurationTypes
             AlwaysAppend.Bind(Config, "WorldSpawner", "AlwaysAppend");
             WriteSpawnTablesToFileBeforeChanges.Bind(Config, "WorldSpawner", "WriteSpawnTablesToFileBeforeChanges");
             WriteSpawnTablesToFileAfterChanges.Bind(Config, "WorldSpawner", "WriteSpawnTablesToFileAfterChanges");
+
+            InitializeWithCreatures.Bind(Config, "Simple", "InitializeWithCreatures");
 
             StopTouchingMyConfigs.Bind(Config, "General", nameof(StopTouchingMyConfigs));
         }

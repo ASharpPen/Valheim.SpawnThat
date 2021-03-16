@@ -1,5 +1,6 @@
 ﻿using BepInEx.Logging;
 using System;
+using UnityEngine;
 using Valheim.SpawnThat.ConfigurationTypes;
 
 namespace Valheim.SpawnThat.ConfigurationCore
@@ -8,11 +9,13 @@ namespace Valheim.SpawnThat.ConfigurationCore
     {
         internal static ManualLogSource Logger;
 
+        private const string Prefix = "[Spawn That!]: ";
+
         public static void LogDebug(string message)
         {
             if (ConfigurationManager.GeneralConfig?.DebugLoggingOn?.Value == true)
             {
-                Logger.LogDebug($"{message}");
+                Logger.LogInfo($"{message}");
             }
         }
 
@@ -24,10 +27,10 @@ namespace Valheim.SpawnThat.ConfigurationCore
             }
         }
 
-        public static void LogInfo(string message) => Logger.LogInfo($"{message}");
+        public static void LogInfo(string message) => Logger.LogMessage($"{message}");
 
         public static void LogWarning(string message) => Logger.LogWarning($"{message}");
 
-        public static void LogError(string message, Exception e = null) => Logger.LogError($"{message}; {e?.Message ?? ""}");
+        public static void LogError(string message, Exception e = null) => Logger.LogError($"{Prefix}{message}; {e?.Message ?? ""}");
     }
 }

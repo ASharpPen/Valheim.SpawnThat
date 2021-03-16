@@ -27,9 +27,9 @@ Nor does it support changes to breeding.
 ## FAQ
 
 Why are the config files empty?
-- All configs but spawn_that.cfg are intended empty initially. This is so that the game will behave as normal, until you start adding configurations to it.
+- All configs but spawn_that.cfg and spawn_that.simple.cfg are intended empty initially. This is so that the game will behave as normal, until you start adding configurations to it.
 - Enable any of the "WriteX" in spawn_that.cfg, and files containing the default values will be created in the <GameDirectory>/BepInEx/plugins folder.
-	- You can also go to the github page, where the main (massive) readme have them list.
+	- I also have a pre-generated version [here](https://gist.github.com/ASharpPen/fa142b8aed0205b4e4c059644c58c2cf), if you just cannot find the files.
 
 Where do I find the prefab names?
 - Multiple pages have long lists, you can check out this one [here](https://gist.github.com/Sonata26/e2b85d53e125fb40081b18e2aee6d584), or the [valheim wiki](https://valheim.fandom.com/wiki/Creatures)
@@ -136,6 +136,8 @@ SpawnInForest=True
 SpawnOutsideForest=False
 OceanDepthMin=0
 OceanDepthMax=0
+ConditionDistanceToCenterMin=0
+ConditionDistanceToCenterMax=0
 
 ```
 
@@ -296,6 +298,14 @@ OceanDepthMin = 0
 # Setting type: Single
 OceanDepthMax = 0
 
+## Minimum distance to center for configuration to apply.
+# Setting type: Single
+ConditionDistanceToCenterMin = 0
+
+## Maximum distance to center for configuration to apply. 0 means limitless.
+# Setting type: Single
+ConditionDistanceToCenterMax = 0
+
 ```
 
 # Local Spawners - Details
@@ -357,6 +367,10 @@ SetPatrolPoint = true
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog:
+- v0.4.0
+	- New condition for world spawners. Distance to center min/max.
+	- Simple config initialized with creatures on file creation by default.
+	- Various attempts at stabilizing and guarding code.
 - v0.3.0
 	- Server-to-client config sync added
 - v0.2.0

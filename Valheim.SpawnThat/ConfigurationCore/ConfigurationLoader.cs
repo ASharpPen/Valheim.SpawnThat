@@ -10,6 +10,30 @@ namespace Valheim.SpawnThat.ConfigurationCore
     public static class ConfigurationLoader
     {
         private static readonly Regex SectionHeader = new Regex(@"(?<=[[]).+(?=[]])", RegexOptions.Compiled);
+        private static readonly Regex SectionSanitizer = new Regex(@"[^\p{L}\d.\[\]_\s]");
+        private static readonly Regex SectionWhiteSpaceTrim = new Regex(@"\s+(?=\])");
+
+        public static void SanitizeSectionHeaders(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                var lines = File.ReadAllLines(filePath);
+
+                for(int i = 0; i < lines.Length; ++i)
+                {
+                    string line = lines[i];
+
+                    if(SectionHeader.IsMatch(line))
+                    {
+                        var sanitized = SectionSanitizer.Replace(line, "");
+                        sanitized = SectionWhiteSpaceTrim.Replace(sanitized, "");
+                        lines[i] = sanitized;
+                    }
+                }
+
+                File.WriteAllLines(filePath, lines);
+            }
+        }
 
         public static Dictionary<string, TGroup> LoadConfigurationGroup<TGroup, TSection>(ConfigFile configFile)
             where TGroup : ConfigurationGroup<TSection>
