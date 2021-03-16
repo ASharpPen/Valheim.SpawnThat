@@ -118,16 +118,29 @@ namespace Valheim.SpawnThat.Patches
 
         private static CreatureSpawnerConfig FindConfig(CreatureSpawner spawner, Vector3 spawnerPos)
         {
+            string creatureName = spawner?.m_creaturePrefab?.name?.Trim()?.ToUpperInvariant();
+
+            if(string.IsNullOrWhiteSpace(creatureName))
+            {
+                Log.LogWarning("Empty create in spawner.");
+                return null;
+            }
+
             //Jesus, is this really the only way? Thats so inefficient. Can't even store it, since it might be modified over time :S
             var locations = ZoneSystem.instance.GetLocationList();
             var spawnerZone = ZoneSystem.instance.GetZone(spawnerPos);
             var location = locations.FirstOrDefault(x => ZoneSystem.instance.GetZone(x.m_position) == spawnerZone);
+
+            if(string.IsNullOrWhiteSpace(location.m_location?.m_prefabName))
+            {
+                Log.LogWarning("Empty location prefab.");
+                return null;
+            }
+
             var locationName = location.m_location.m_prefabName.Trim().ToUpperInvariant();
 
             if (ConfigLookupTable.TryGetValue(locationName, out Dictionary<string, CreatureSpawnerConfig> locationTable))
             {
-                string creatureName = spawner.m_creaturePrefab.name.Trim().ToUpperInvariant();
-
                 if(locationTable.TryGetValue(creatureName, out CreatureSpawnerConfig config))
                 {
                     return config;
