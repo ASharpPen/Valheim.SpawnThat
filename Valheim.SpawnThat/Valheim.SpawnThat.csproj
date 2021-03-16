@@ -80,6 +80,7 @@
     <Compile Include="Patches\ResetStatePatch.cs" />
     <Compile Include="Patches\SpawnSystemPatch.cs" />
     <Compile Include="Patches\ZoneSystemPatch.cs" />
+    <Compile Include="PreConfigured\SimpleConfigAllCreatures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpawnThatPlugin.cs" />
   </ItemGroup>
