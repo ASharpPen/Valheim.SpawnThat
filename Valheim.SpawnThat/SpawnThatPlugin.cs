@@ -15,7 +15,7 @@ namespace Valheim.SpawnThat
 
             ConfigurationManager.LoadAllConfigurations();
 
-            new Harmony("mod.custom_raids").PatchAll();
+            new Harmony("mod.spawn_that").PatchAll();
         }
     }
 }
