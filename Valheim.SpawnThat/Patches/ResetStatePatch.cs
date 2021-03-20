@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valheim.SpawnThat.ConfigurationCore;
 using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.SpawnerSpawnSystem;
 
 namespace Valheim.SpawnThat.Patches
 {

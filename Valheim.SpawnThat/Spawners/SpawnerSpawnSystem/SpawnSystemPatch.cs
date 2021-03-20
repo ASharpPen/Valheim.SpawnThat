@@ -6,8 +6,9 @@ using UnityEngine;
 using Valheim.SpawnThat.ConfigurationCore;
 using Valheim.SpawnThat.ConfigurationTypes;
 using Valheim.SpawnThat.Debugging;
+using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem;
 
-namespace Valheim.SpawnThat.Patches
+namespace Valheim.SpawnThat.SpawnerSpawnSystem
 {
     [HarmonyPatch(typeof(SpawnSystem), "Awake")]
     public static class SpawnSystemPatch
@@ -78,15 +79,25 @@ namespace Valheim.SpawnThat.Patches
                         continue;
                     }
 
+                    var day = EnvMan.instance.GetDay(ZNet.instance.GetTimeSeconds());
+
                     if (spawnConfig.Index < __instance.m_spawners.Count && !ConfigurationManager.GeneralConfig.AlwaysAppend.Value)
                     {
                         Log.LogTrace($"Overriding world spawner entry {spawnConfig.Index}");
-                        Override(__instance.m_spawners[spawnConfig.Index], spawnConfig);
+                        var spawner = __instance.m_spawners[spawnConfig.Index];
+
+                        Override(spawner, spawnConfig);
+
+                        SpawnDataCache.Set(spawner, spawnConfig);
                     }
                     else
                     {
                         Log.LogTrace($"Adding new spawner entry {spawnConfig.Name}");
-                        __instance.m_spawners.Add(CreateNewEntry(spawnConfig));
+                        var spawner = CreateNewEntry(spawnConfig);
+
+                        SpawnDataCache.Set(spawner, spawnConfig);
+
+                        __instance.m_spawners.Add(spawner);
                     }
                 }
             }

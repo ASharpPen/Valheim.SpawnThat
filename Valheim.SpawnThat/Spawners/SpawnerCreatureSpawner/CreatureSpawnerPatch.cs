@@ -38,6 +38,13 @@ namespace Valheim.SpawnThat.Patches
                 return;
             }
 
+#if DEBUG
+            var locations = ZoneSystem.instance.GetLocationList();
+            var spawnerZone = ZoneSystem.instance.GetZone(spawnerPos);
+            var location = locations.FirstOrDefault(x => ZoneSystem.instance.GetZone(x.m_position) == spawnerZone);
+            Log.LogInfo($"Creature spawner found with location {spawnerPos}:{location.m_location.m_prefabName} - {__instance.m_creaturePrefab?.name}");
+#endif
+
             if (ConfigLookupTable == null)
             {
                 InitializeConfigs();
