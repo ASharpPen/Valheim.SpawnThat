@@ -7,7 +7,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types
     {
         public static bool TryGetRoom(CreatureSpawner spawner, out RoomData room)
         {
-            room = RoomCache.GetContainingRoom(spawner);
+            room = RoomCache.GetContainingRoom(spawner.transform.position);
 
             if(room is null)
             {

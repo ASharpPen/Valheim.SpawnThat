@@ -54,10 +54,9 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
             }
         }
 
-        public static RoomData GetContainingRoom(CreatureSpawner spawner)
+        public static RoomData GetContainingRoom(Vector3 pos)
         {
-            var spawnerPos = spawner.transform.position;
-            var closestRoom = RoomList.FindClosest(spawnerPos);
+            var closestRoom = RoomList.FindClosest(pos);
 
             if (closestRoom is null)
             {
@@ -67,10 +66,10 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
             var roomBounds = new Bounds(closestRoom.Pos, closestRoom.Size);
 
 #if DEBUG
-            Log.LogDebug($"Testing bounds: {roomBounds} for spawner {closestRoom.Name} at {spawnerPos}");
+            Log.LogDebug($"Testing bounds: {roomBounds} for spawner {closestRoom.Name} at {pos}");
 #endif 
 
-            if(roomBounds.Contains(spawnerPos))
+            if(roomBounds.Contains(pos))
             {
                 return closestRoom;
             }
