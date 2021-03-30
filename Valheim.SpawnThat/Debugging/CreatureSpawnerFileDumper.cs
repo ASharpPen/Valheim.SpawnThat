@@ -30,14 +30,49 @@ namespace Valheim.SpawnThat.Debugging
                     continue;
                 }
 
-                var spawners = locPrefab.GetComponentsInChildren<CreatureSpawner>();
+                //Get location spawners
+                var spawners = locPrefab.GetComponentsInChildren<CreatureSpawner>().ToList();
 
-                if (spawners is null)
+                //Get location dungeon generators, so we can scan for their spawners too
+                var dungeons = locPrefab.GetComponentsInChildren<DungeonGenerator>();
+
+                if(dungeons is not null && dungeons.Length > 0)
                 {
-                    continue;
+                    foreach(var dungeon in dungeons)
+                    {
+                        //Find rooms and extract spawners
+                        var rooms = DungeonDB.GetRooms().Where(x => (x.m_room.m_theme & dungeon.m_themes) == x.m_room.m_theme).ToList();
+
+                        if(rooms.Count == 0)
+                        {
+                            Log.LogDebug($"No rooms for {locPrefab.name}:{dungeon.name}");
+                        }
+
+
+                        var roomSpawners = rooms
+                            .SelectMany(x => x.m_room.GetComponentsInChildren<CreatureSpawner>())
+                            .Where(x => x is not null)
+                            .ToList();
+
+                        if (roomSpawners.Count > 0)
+                        {
+                            if (spawners is null)
+                            {
+                                spawners = roomSpawners;
+                            }
+                            else
+                            {
+                                spawners.AddRange(roomSpawners);
+                            }
+                        }
+                        else
+                        {
+                            Log.LogDebug($"No room spawners for {locPrefab.name}:{dungeon.name}");
+                        }
+                    }
                 }
 
-                if (spawners != null && spawners.Length > 0)
+                if (spawners is not null && spawners.Count > 0)
                 {
                     spawnersSerialized.Add(Serialize(location, spawners));
                 }
@@ -50,14 +85,19 @@ namespace Valheim.SpawnThat.Debugging
             File.WriteAllLines(filePath, spawnersSerialized);
         }
 
-        private static string Serialize(ZoneSystem.ZoneLocation location, CreatureSpawner[] spawners)
+        private static string Serialize(ZoneSystem.ZoneLocation location, IList<CreatureSpawner> spawners)
         {
+            if(!ConfigurationManager.GeneralConfig.DontCollapseFile.Value)
+            {
+                spawners = spawners.GroupBy(x => x.m_creaturePrefab.name).Select(x => x.First()).ToList();
+            }
+
             var biome = location.m_biome;
             var locationName = location.m_prefabName;
 
             StringBuilder stringBuilder = new StringBuilder();
 
-            for (int i = 0; i < spawners.Length; ++i)
+            for (int i = 0; i < spawners.Count; ++i)
             {
                 var spawner = spawners[i];
 

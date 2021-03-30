@@ -19,6 +19,7 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 	- Easy to copy-paste and change the parts you want.
 	- Investigate what the world throws at you.
 - Server-side configs
+- Modify the spawners in camps, villages and dungeons
 
 ## Limitations
 This mod will not change any non-spawner based entities, such as dungeon mobs that only spawn once.
@@ -37,7 +38,7 @@ Where do I find the prefab names?
 ## How does it all work?
 
 Valheim's main way of managing spawns work by having two types of spawners spread throughout the world.
-The world spawners, for which the world has them spread out in a grid fashion, each using the same list of templates to check if something should spawn. These are the general spawners and all currently use the same 43 templates.
+The world spawners, for which the world has them spread out in a grid fashion, each using the same list of templates to check if something should spawn. These are the general spawners and all currently use the same 44 templates.
 The local spawners, which are intended for fine-tuned spawning. Local spawners only spawn one specific mob type, and only has one alive at a time. These are bound to specific world locations, such as the surtling firehole.
 
 For world spawners, you can either replace existing templates based on their index, or add to the list of possible templates to spawn from.
@@ -138,6 +139,8 @@ OceanDepthMin=0
 OceanDepthMax=0
 ConditionDistanceToCenterMin=0
 ConditionDistanceToCenterMax=0
+ConditionWorldAgeDaysMin=0
+ConditionWorldAgeDaysMax=0
 
 ```
 
@@ -145,6 +148,7 @@ ConditionDistanceToCenterMax=0
 
 Local spawners are customly set up in the world, based on pre-defined location setups. This means they are each customized to the location at which they are placed, and are not as easily "targetted" as the world spawners templates are.\
 To modify a local spawner, you must specify a location and mob prefab name you want to apply a configuration to.
+You can also use a room name, if more fine control is necessary for villages, dungeons and camps.
 
 Every combination of Location and PrefabName must be unique.
 
@@ -170,6 +174,16 @@ TriggerNoise=0
 SpawnInPlayerBase=False
 SetPatrolPoint=True
 
+```
+
+## Example 2
+
+Replaces spawning of blobs in a specific dungeon room with a treasure chest that can respawn every 60 minutes (need to be destroyed for a new one to spawn).
+
+``` INI
+[sunkencrypt_Corridor3.Blob]
+PrefabName = TreasureChest_sunkencrypt
+RespawnTime = 60
 ```
 
 # World Spawners - Details
@@ -306,6 +320,14 @@ ConditionDistanceToCenterMin = 0
 # Setting type: Single
 ConditionDistanceToCenterMax = 0
 
+## Minimum world age in in-game days for this configuration to apply.
+# Setting type: Single
+ConditionWorldAgeDaysMin = 0
+
+## Maximum world age in in-game days for this configuration to apply. 0 means no max.
+# Setting type: Single
+ConditionWorldAgeDaysMax = 0
+
 ```
 
 # Local Spawners - Details
@@ -367,11 +389,17 @@ SetPatrolPoint = true
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog:
-- v0.4.0
+- v0.5.0
+	- Added new local spawner defaults to file dumps.
+	- Added condition for world spawners. World age in days.
+	- Added console command for getting current room in which player is standing.
+	- Added configuration for Dungeons, Camps and Villages. All are considered local spawners.
+	- Lots of bug fixes. Spawners should have an easier time having configuration "stick" now.
+- v0.4.0 
 	- New condition for world spawners. Distance to center min/max.
 	- Simple config initialized with creatures on file creation by default.
 	- Various attempts at stabilizing and guarding code.
-- v0.3.0
+- v0.3.0 
 	- Server-to-client config sync added
-- v0.2.0
+- v0.2.0 
 	- Initial release

@@ -2,10 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Valheim.SpawnThat.ConfigurationCore;
 using Valheim.SpawnThat.ConfigurationTypes;
 using Valheim.SpawnThat.Debugging;
+using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem;
 
 namespace Valheim.SpawnThat.SpawnerSpawnSystem
@@ -16,31 +16,25 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem
         private const string FileNamePre = "world_spawners_pre_changes.txt";
         private const string FileNamePost = "world_spawners_post_changes.txt";
 
-        /// <summary>
-        /// HashSet of SpawnSystem.GetStableHashCode's, to detect if configuration changes have already been applied.
-        /// </summary>
-        internal static HashSet<Vector3> AppliedConfigs = new HashSet<Vector3>();
-
         internal static SpawnSystemConfigurationAdvanced Configs = null;
 
         internal static bool FirstApplication = true;
 
         internal static Dictionary<string, SimpleConfig> SimpleConfigTable = null;
 
-        private static void Postfix(SpawnSystem __instance, Heightmap ___m_heightmap)
+        static SpawnSystemPatch()
+        {
+            StateResetter.Subscribe(() =>
+            {
+                Configs = null;
+                SimpleConfigTable = null;
+            });
+        }
+
+        private static void Postfix(SpawnSystem __instance, Heightmap ___m_heightmap, ZNetView ___m_nview)
         {
             var spawnerPos = __instance.transform.position;
             Log.LogTrace($"Postfixing SpawnSystem Awake at pos {spawnerPos}");
-
-            if (AppliedConfigs.Contains(spawnerPos))
-            {
-                Log.LogTrace($"Config already applied for SpawnSystem {spawnerPos}. Skipping.");
-                return;
-            }
-            else
-            {
-                AppliedConfigs.Add(spawnerPos);
-            }
 
             if (ConfigurationManager.GeneralConfig.WriteSpawnTablesToFileBeforeChanges.Value && FirstApplication)
             {
@@ -65,8 +59,6 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem
                 foreach (var spawnConfig in Configs.Sections.Values.OrderBy(x => x.Index))
                 {
                     var distance = spawnerPos.magnitude;
-
-                    Log.LogInfo($"Spawner {spawnerPos} distance: {distance}");
 
                     if(distance < spawnConfig.ConditionDistanceToCenterMin.Value)
                     {

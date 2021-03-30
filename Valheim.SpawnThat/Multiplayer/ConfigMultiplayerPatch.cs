@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Valheim.SpawnThat.ConfigurationCore;
 using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.Reset;
 
 namespace Valheim.SpawnThat.Multiplayer
 {
@@ -18,7 +19,7 @@ namespace Valheim.SpawnThat.Multiplayer
 			if (ZNet.instance.IsServer())
 			{
 				Log.LogDebug("Registering server RPC for sending configs on request from client.");
-				peer.m_rpc.Register(nameof(RPC_RquestConfigsSpawnThat), new ZRpc.RpcMethod.Method(RPC_RquestConfigsSpawnThat));
+				peer.m_rpc.Register(nameof(RPC_RequestConfigsSpawnThat), new ZRpc.RpcMethod.Method(RPC_RequestConfigsSpawnThat));
 			}
 			else
 			{
@@ -26,11 +27,11 @@ namespace Valheim.SpawnThat.Multiplayer
 				peer.m_rpc.Register<ZPackage>(nameof(RPC_ReceiveConfigsSpawnThat), new Action<ZRpc, ZPackage>(RPC_ReceiveConfigsSpawnThat));
 
 				Log.LogDebug("Requesting configs from server.");
-				peer.m_rpc.Invoke(nameof(RPC_RquestConfigsSpawnThat));
+				peer.m_rpc.Invoke(nameof(RPC_RequestConfigsSpawnThat));
 			}
 		}
 
-		private static void RPC_RquestConfigsSpawnThat(ZRpc rpc)
+		private static void RPC_RequestConfigsSpawnThat(ZRpc rpc)
 		{
 			try
 			{
@@ -79,6 +80,8 @@ namespace Valheim.SpawnThat.Multiplayer
 			try
 			{
 				var serialized = pkg.ReadByteArray();
+
+				StateResetter.Reset();
 
 				Log.LogTrace("Deserializing package.");
 
