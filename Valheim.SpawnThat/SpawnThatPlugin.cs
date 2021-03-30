@@ -5,7 +5,7 @@ using Valheim.SpawnThat.ConfigurationTypes;
 
 namespace Valheim.SpawnThat
 {
-    [BepInPlugin("asharppen.valheim.spawn_that", "Spawn That!", "0.4.0")]
+    [BepInPlugin("asharppen.valheim.spawn_that", "Spawn That!", "0.5.0")]
     public class SpawnThatPlugin : BaseUnityPlugin
     {        
         // Awake is called once when both the game and the plug-in are loaded
@@ -15,7 +15,7 @@ namespace Valheim.SpawnThat
 
             ConfigurationManager.LoadAllConfigurations();
 
-            new Harmony("mod.custom_raids").PatchAll();
+            new Harmony("mod.spawn_that").PatchAll();
         }
     }
 }

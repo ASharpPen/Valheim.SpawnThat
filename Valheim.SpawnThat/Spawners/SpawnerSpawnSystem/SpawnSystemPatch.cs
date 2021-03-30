@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Valheim.SpawnThat.ConfigurationCore;
 using Valheim.SpawnThat.ConfigurationTypes;
 using Valheim.SpawnThat.Debugging;
+using Valheim.SpawnThat.Reset;
+using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem;
 
-namespace Valheim.SpawnThat.Patches
+namespace Valheim.SpawnThat.SpawnerSpawnSystem
 {
     [HarmonyPatch(typeof(SpawnSystem), "Awake")]
     public static class SpawnSystemPatch
@@ -15,31 +16,25 @@ namespace Valheim.SpawnThat.Patches
         private const string FileNamePre = "world_spawners_pre_changes.txt";
         private const string FileNamePost = "world_spawners_post_changes.txt";
 
-        /// <summary>
-        /// HashSet of SpawnSystem.GetStableHashCode's, to detect if configuration changes have already been applied.
-        /// </summary>
-        internal static HashSet<Vector3> AppliedConfigs = new HashSet<Vector3>();
-
         internal static SpawnSystemConfigurationAdvanced Configs = null;
 
         internal static bool FirstApplication = true;
 
         internal static Dictionary<string, SimpleConfig> SimpleConfigTable = null;
 
-        private static void Postfix(SpawnSystem __instance, Heightmap ___m_heightmap)
+        static SpawnSystemPatch()
+        {
+            StateResetter.Subscribe(() =>
+            {
+                Configs = null;
+                SimpleConfigTable = null;
+            });
+        }
+
+        private static void Postfix(SpawnSystem __instance, Heightmap ___m_heightmap, ZNetView ___m_nview)
         {
             var spawnerPos = __instance.transform.position;
             Log.LogTrace($"Postfixing SpawnSystem Awake at pos {spawnerPos}");
-
-            if (AppliedConfigs.Contains(spawnerPos))
-            {
-                Log.LogTrace($"Config already applied for SpawnSystem {spawnerPos}. Skipping.");
-                return;
-            }
-            else
-            {
-                AppliedConfigs.Add(spawnerPos);
-            }
 
             if (ConfigurationManager.GeneralConfig.WriteSpawnTablesToFileBeforeChanges.Value && FirstApplication)
             {
@@ -65,8 +60,6 @@ namespace Valheim.SpawnThat.Patches
                 {
                     var distance = spawnerPos.magnitude;
 
-                    Log.LogInfo($"Spawner {spawnerPos} distance: {distance}");
-
                     if(distance < spawnConfig.ConditionDistanceToCenterMin.Value)
                     {
                         Log.LogTrace($"Ignoring world config {spawnConfig.Name} due to distance less than min.");
@@ -78,15 +71,25 @@ namespace Valheim.SpawnThat.Patches
                         continue;
                     }
 
+                    var day = EnvMan.instance.GetDay(ZNet.instance.GetTimeSeconds());
+
                     if (spawnConfig.Index < __instance.m_spawners.Count && !ConfigurationManager.GeneralConfig.AlwaysAppend.Value)
                     {
                         Log.LogTrace($"Overriding world spawner entry {spawnConfig.Index}");
-                        Override(__instance.m_spawners[spawnConfig.Index], spawnConfig);
+                        var spawner = __instance.m_spawners[spawnConfig.Index];
+
+                        Override(spawner, spawnConfig);
+
+                        SpawnDataCache.Set(spawner, spawnConfig);
                     }
                     else
                     {
                         Log.LogTrace($"Adding new spawner entry {spawnConfig.Name}");
-                        __instance.m_spawners.Add(CreateNewEntry(spawnConfig));
+                        var spawner = CreateNewEntry(spawnConfig);
+
+                        SpawnDataCache.Set(spawner, spawnConfig);
+
+                        __instance.m_spawners.Add(spawner);
                     }
                 }
             }

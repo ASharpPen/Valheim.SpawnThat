@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using Valheim.SpawnThat.ConfigurationCore;
 using Valheim.SpawnThat.PreConfigured;
+using Valheim.SpawnThat.Reset;
 
 namespace Valheim.SpawnThat.ConfigurationTypes
 {
@@ -18,8 +19,6 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 
         internal const string CreatureSpawnerConfigFile = "spawn_that.local_spawners_advanced.cfg";
 
-        public static bool DebugOn => true;
-
         public static GeneralConfig GeneralConfig;
 
         public static List<SimpleConfig> SimpleConfig;
@@ -27,6 +26,17 @@ namespace Valheim.SpawnThat.ConfigurationTypes
         public static SpawnSystemConfigurationAdvanced SpawnSystemConfig;
 
         public static Dictionary<string, CreatureSpawnerConfigurationAdvanced> CreatureSpawnerConfig;
+
+        static ConfigurationManager()
+        {
+            StateResetter.Subscribe(() =>
+            {
+                GeneralConfig = null;
+                SimpleConfig = null;
+                SpawnSystemConfig = null;
+                CreatureSpawnerConfig = null;
+            });
+        }
 
         public static void LoadAllConfigurations()
         {

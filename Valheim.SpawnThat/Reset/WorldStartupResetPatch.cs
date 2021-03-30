@@ -1,13 +1,15 @@
 ﻿using HarmonyLib;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Valheim.SpawnThat.ConfigurationCore;
 using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.SpawnerSpawnSystem;
 
-namespace Valheim.SpawnThat.Patches
+namespace Valheim.SpawnThat.Reset
 {
     [HarmonyPatch(typeof(FejdStartup), "OnWorldStart")]
-    public static class ResetSpawnSystemPatch
+    public static class WorldStartupResetPatch
     {
         private static void Postfix()
         {
@@ -16,13 +18,7 @@ namespace Valheim.SpawnThat.Patches
             {
                 Log.LogDebug("Resetting configurations");
 
-                CreatureSpawnerPatch.AppliedConfigs = new HashSet<Vector3>();
-                CreatureSpawnerPatch.ConfigLookupTable = null;
-
-                SpawnSystemPatch.AppliedConfigs = new HashSet<Vector3>();
-                SpawnSystemPatch.FirstApplication = true;
-                SpawnSystemPatch.Configs = null;
-                SpawnSystemPatch.SimpleConfigTable = null;
+                StateResetter.Reset();
 
                 ConfigurationManager.LoadAllConfigurations();
             }
