@@ -89,14 +89,19 @@ namespace Valheim.SpawnThat.Debugging
             File.WriteAllLines(filePath, spawnersSerialized);
         }
 
-        private static string Serialize(Room room, CreatureSpawner[] spawners)
+        private static string Serialize(Room room, IList<CreatureSpawner> spawners)
         {
+            if (!ConfigurationManager.GeneralConfig.DontCollapseFile.Value)
+            {
+                spawners = spawners.GroupBy(x => x.m_creaturePrefab.name).Select(x => x.First()).ToList();
+            }
+
             var theme = room.m_theme;
             var roomName = room.name;
 
             StringBuilder stringBuilder = new StringBuilder();
 
-            for (int i = 0; i < spawners.Length; ++i)
+            for (int i = 0; i < spawners.Count; ++i)
             {
                 var spawner = spawners[i];
 

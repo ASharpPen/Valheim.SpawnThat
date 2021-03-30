@@ -87,6 +87,11 @@ namespace Valheim.SpawnThat.Debugging
 
         private static string Serialize(ZoneSystem.ZoneLocation location, IList<CreatureSpawner> spawners)
         {
+            if(!ConfigurationManager.GeneralConfig.DontCollapseFile.Value)
+            {
+                spawners = spawners.GroupBy(x => x.m_creaturePrefab.name).Select(x => x.First()).ToList();
+            }
+
             var biome = location.m_biome;
             var locationName = location.m_prefabName;
 
