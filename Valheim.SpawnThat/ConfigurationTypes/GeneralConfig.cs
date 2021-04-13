@@ -48,6 +48,8 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 
         public ConfigurationEntry<bool> DontCollapseFile = new ConfigurationEntry<bool>(false, "If true, locations with multiple spawners with duplicate creatures will be listed individually, instead of being only one of each creature.");
 
+        public ConfigurationEntry<bool> EnableLocalSpawner = new ConfigurationEntry<bool>(true, "Toggles if Spawn That changes to creature spawners will be run or not.");
+
         #endregion
 
         public void Load(ConfigFile configFile)
@@ -59,6 +61,7 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 
             WriteCreatureSpawnersToFile.Bind(Config, "LocalSpawner", "WriteSpawnTablesToFileBeforeChanges");
             DontCollapseFile.Bind(Config, "LocalSpawner", nameof(DontCollapseFile));
+            EnableLocalSpawner.Bind(Config, "LocalSpawner", "Enable");
 
             ClearAllExisting.Bind(Config, "WorldSpawner", "ClearAllExisting");
             AlwaysAppend.Bind(Config, "WorldSpawner", "AlwaysAppend");
