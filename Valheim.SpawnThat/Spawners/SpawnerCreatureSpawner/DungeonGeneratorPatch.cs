@@ -26,8 +26,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
                 .InstructionEnumeration();
         }
 
-        private static FieldInfo RoomConnections = AccessTools.Field(typeof(Room), "m_connections");
-
         private static void CacheRoom(Room component)
         {
 #if !DEBUG

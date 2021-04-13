@@ -25,6 +25,12 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types
             }
 
             var locationName = FindLocationName(spawnerPos);
+
+            if(string.IsNullOrEmpty(locationName))
+            {
+                return;
+            }
+
             string creatureName = spawner?.m_creaturePrefab?.name?.Trim()?.ToUpperInvariant();
 
             var config = CreatureSpawnerConfigCache.SearchConfig(locationName, creatureName);
@@ -42,7 +48,9 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types
 
             if (string.IsNullOrWhiteSpace(locationName))
             {
+#if DEBUG
                 Log.LogWarning("Empty location prefab.");
+#endif
                 return null;
             }
 

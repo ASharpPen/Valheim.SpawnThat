@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Valheim.SpawnThat.ConfigurationCore;
+using Valheim.SpawnThat.ConfigurationTypes;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
@@ -9,6 +10,11 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
     {
         private static void Postfix(CreatureSpawner __instance)
         {
+            if(!ConfigurationManager.GeneralConfig.EnableLocalSpawner.Value)
+            {
+                return;
+            }
+
             //Identify if spawner is a location based or room based spawner.
             if (RoomSpawner.TryGetRoom(__instance, out RoomData room))
             {
