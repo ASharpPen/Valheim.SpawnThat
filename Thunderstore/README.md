@@ -389,6 +389,10 @@ SetPatrolPoint = true
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog:
+- v0.5.1
+	- Added a (probably temporary) config to not run local spawner configs, due to issues with multiplayer.
+	- Fixed error message from local spawners.
+	- Removed a couple of pointless warnings.
 - v0.5.0
 	- Added new local spawner defaults to file dumps.
 	- Added condition for world spawners. World age in days.
