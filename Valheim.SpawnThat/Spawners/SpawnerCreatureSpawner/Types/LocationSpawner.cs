@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using HarmonyLib;
+using System.Linq;
 using UnityEngine;
 using Valheim.SpawnThat.ConfigurationCore;
+using Valheim.SpawnThat.Locations;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types
 {
@@ -9,13 +11,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types
         public static void ApplyConfig(CreatureSpawner spawner)
         {
             var spawnerPos = spawner.transform.position;
-
-#if DEBUG
-            var locations = ZoneSystem.instance.GetLocationList();
-            var spawnerZone = ZoneSystem.instance.GetZone(spawnerPos);
-            var location = locations.FirstOrDefault(x => ZoneSystem.instance.GetZone(x.m_position) == spawnerZone);
-            Log.LogInfo($"Creature spawner found with location {spawnerPos}:{location.m_location.m_prefabName} - {spawner.m_creaturePrefab?.name}");
-#endif
 
             var prefabName = spawner.m_creaturePrefab?.name;
 
@@ -40,13 +35,9 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types
 
         private static string FindLocationName(Vector3 pos)
         {
-            var locations = ZoneSystem.instance.GetLocationList();
-            var spawnerZone = ZoneSystem.instance.GetZone(pos);
-            var location = locations.FirstOrDefault(x => ZoneSystem.instance.GetZone(x.m_position) == spawnerZone);
+            var location = LocationHelper.FindLocation(pos);
 
-            var locationName = location.m_location?.m_prefabName;
-
-            if (string.IsNullOrWhiteSpace(locationName))
+            if (string.IsNullOrWhiteSpace(location?.LocationName))
             {
 #if DEBUG
                 Log.LogWarning("Empty location prefab.");
@@ -54,7 +45,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types
                 return null;
             }
 
-            return locationName;
+            return location.LocationName;
         }
     }
 }
