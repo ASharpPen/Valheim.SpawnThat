@@ -1,27 +1,43 @@
 ﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
 using Valheim.SpawnThat.ConfigurationCore;
 using Valheim.SpawnThat.ConfigurationTypes;
-using Valheim.SpawnThat.SpawnerSpawnSystem;
 
 namespace Valheim.SpawnThat.Reset
 {
-    [HarmonyPatch(typeof(FejdStartup), "OnWorldStart")]
+    [HarmonyPatch(typeof(FejdStartup))]
     public static class WorldStartupResetPatch
     {
-        private static void Postfix()
+        /*
+        [HarmonyPatch("LoadMainScene")]
+        [HarmonyPrefix]
+        private static void ResetState()
         {
+            Log.LogDebug("Resetting configurations");
+            StateResetter.Reset();
+
             //Check for singleplayer.
-            if (ZNet.instance == null)
+            if (ZNet.instance == null )
             {
-                Log.LogDebug("Resetting configurations");
-
-                StateResetter.Reset();
-
                 ConfigurationManager.LoadAllConfigurations();
             }
+        }
+        */
+
+        [HarmonyPatch("OnWorldStart")]
+        [HarmonyPrefix]
+        private static void ResetState()
+        {
+            Log.LogDebug("Resetting configurations");
+            StateResetter.Reset();
+            ConfigurationManager.LoadAllConfigurations();
+        }
+
+        [HarmonyPatch("JoinServer")]
+        [HarmonyPrefix]
+        private static void ResetStateMultplayer()
+        {
+            Log.LogDebug("Resetting configurations");
+            StateResetter.Reset();
         }
     }
 }

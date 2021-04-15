@@ -10,7 +10,7 @@ using Valheim.SpawnThat.Reset;
 namespace Valheim.SpawnThat.Multiplayer
 {
 	[HarmonyPatch(typeof(ZNet))]
-	public class ConfigMultiplayerPatch
+	internal static class ConfigMultiplayerPatch
 	{
 		[HarmonyPatch("OnNewConnection")]
 		[HarmonyPostfix]
@@ -80,8 +80,6 @@ namespace Valheim.SpawnThat.Multiplayer
 			try
 			{
 				var serialized = pkg.ReadByteArray();
-
-				StateResetter.Reset();
 
 				Log.LogTrace("Deserializing package.");
 

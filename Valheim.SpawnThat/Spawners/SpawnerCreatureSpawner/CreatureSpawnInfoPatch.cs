@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using System.Collections.Generic;
+using System.Linq;
 using Valheim.SpawnThat.ConfigurationCore;
 using Valheim.SpawnThat.ConfigurationTypes;
 using Valheim.SpawnThat.Debugging;
@@ -16,9 +17,9 @@ namespace Valheim.SpawnThat.Reset
         [HarmonyPostfix]
         private static void ScanLocations(ZoneSystem __instance)
         {
-            if (ConfigurationManager.GeneralConfig.WriteCreatureSpawnersToFile.Value)
+            if (ConfigurationManager.GeneralConfig?.WriteCreatureSpawnersToFile?.Value == true)
             {
-                //CreatureSpawnerFileDumper.WriteToFile(__instance.m_locations);
+                CreatureSpawnerFileDumper.WriteToFile(__instance.m_locations);
             }
         }
     }
@@ -34,14 +35,11 @@ namespace Valheim.SpawnThat.Reset
             Log.LogDebug("Starting CreatureSpawner scan.");
 #endif
 
-            if(ConfigurationManager.GeneralConfig.WriteCreatureSpawnersToFile.Value)
+            if(ConfigurationManager.GeneralConfig?.WriteCreatureSpawnersToFile?.Value == true)
             {
 #if DEBUG
                 Log.LogDebug($"Starting CreatureSpawner file writing for {ZoneSystem.instance.m_locations.Count} location and {___m_rooms.Count} rooms.");
 #endif
-
-                CreatureSpawnerFileDumper.WriteToFile(ZoneSystem.instance.m_locations);
-
                 RoomCreatureSpawnerFileDumper.WriteToFile(___m_rooms);
             }
         }

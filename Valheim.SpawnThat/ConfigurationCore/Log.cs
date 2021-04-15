@@ -9,8 +9,6 @@ namespace Valheim.SpawnThat.ConfigurationCore
     {
         internal static ManualLogSource Logger;
 
-        private const string Prefix = "[Spawn That!]: ";
-
         public static void LogDebug(string message)
         {
             if (ConfigurationManager.GeneralConfig?.DebugLoggingOn?.Value == true)
@@ -31,6 +29,6 @@ namespace Valheim.SpawnThat.ConfigurationCore
 
         public static void LogWarning(string message) => Logger.LogWarning($"{message}");
 
-        public static void LogError(string message, Exception e = null) => Logger.LogError($"{Prefix}{message}; {e?.Message ?? ""}");
+        public static void LogError(string message, Exception e = null) => Logger.LogError($"{message}; {e?.Message ?? ""}");
     }
 }

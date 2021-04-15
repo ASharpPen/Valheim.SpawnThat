@@ -13,7 +13,7 @@ namespace Valheim.SpawnThat
         {
             Log.Logger = Logger;
 
-            ConfigurationManager.LoadAllConfigurations();
+            ConfigurationManager.GeneralConfig = ConfigurationManager.LoadGeneral();
 
             new Harmony("mod.spawn_that").PatchAll();
         }
