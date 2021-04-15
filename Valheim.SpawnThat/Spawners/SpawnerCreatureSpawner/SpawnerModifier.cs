@@ -1,7 +1,4 @@
-﻿using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
-
-namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
+﻿namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
 {
     internal static class SpawnerModifier
     {

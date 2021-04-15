@@ -4,8 +4,9 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Configuration.ConfigTypes;
+using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Debugging
 {

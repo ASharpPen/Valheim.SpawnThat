@@ -1,8 +1,9 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using System.IO;
-using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Configuration.ConfigTypes;
+using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.PreConfigured
 {
@@ -65,9 +66,9 @@ namespace Valheim.SpawnThat.PreConfigured
 
         private static void CreateEntry(ConfigFile file, string creaturePrefab)
         {
-            var greydwarf = new SimpleConfig();
+            var greydwarf = new SimpleConfiguration();
             greydwarf.PrefabName.DefaultValue = creaturePrefab;
-            greydwarf.PrefabName.Bind(file, creaturePrefab, nameof(SimpleConfig.PrefabName));
+            greydwarf.PrefabName.Bind(file, creaturePrefab, nameof(SimpleConfiguration.PrefabName));
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Valheim.SpawnThat.ConfigurationCore;
+using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types
 {

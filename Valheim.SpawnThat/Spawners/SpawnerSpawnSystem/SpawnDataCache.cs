@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
+﻿using System.Runtime.CompilerServices;
+using Valheim.SpawnThat.Configuration.ConfigTypes;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 {

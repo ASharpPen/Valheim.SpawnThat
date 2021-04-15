@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
 using Valheim.SpawnThat.Reset;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner

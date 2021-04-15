@@ -1,8 +1,7 @@
 ﻿using HarmonyLib;
 using System.Collections.Generic;
-using System.Linq;
-using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Debugging;
 
 namespace Valheim.SpawnThat.Reset

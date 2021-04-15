@@ -65,24 +65,26 @@
     <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationCore\ConfigurationEntry.cs" />
-    <Compile Include="ConfigurationCore\ConfigurationGroup.cs" />
-    <Compile Include="ConfigurationCore\ConfigurationLoader.cs" />
-    <Compile Include="ConfigurationCore\ConfigurationSection.cs" />
-    <Compile Include="ConfigurationCore\IHaveEntries.cs" />
-    <Compile Include="ConfigurationCore\Log.cs" />
-    <Compile Include="ConfigurationTypes\ConfigurationManager.cs" />
-    <Compile Include="ConfigurationTypes\CreatureSpawnerConfigurationAdvanced.cs" />
-    <Compile Include="ConfigurationTypes\GeneralConfig.cs" />
-    <Compile Include="ConfigurationTypes\SimpleConfig.cs" />
-    <Compile Include="ConfigurationTypes\SpawnSystemConfigurationAdvanced.cs" />
+    <Compile Include="Configuration\ConfigTypes\CreatureSpawnerFileConfiguration.cs" />
+    <Compile Include="Configuration\ConfigTypes\GeneralConfiguration.cs" />
+    <Compile Include="Configuration\ConfigTypes\SimpleConfiguration.cs" />
+    <Compile Include="Configuration\ConfigTypes\SpawnSystemConfiguration.cs" />
+    <Compile Include="Configuration\ConfigurationManager.cs" />
+    <Compile Include="Configuration\ConfigurationMerger.cs" />
     <Compile Include="ConsoleCommands\ConsolePatch.cs" />
+    <Compile Include="Core\Configuration\Config.cs" />
+    <Compile Include="Core\Configuration\ConfigurationEntry.cs" />
+    <Compile Include="Core\Configuration\ConfigurationLoader.cs" />
+    <Compile Include="Core\Configuration\ConfigWithSubsections.cs" />
+    <Compile Include="Core\Configuration\IConfigFile.cs" />
+    <Compile Include="Core\Configuration\IHaveSubsections.cs" />
+    <Compile Include="Core\Log.cs" />
     <Compile Include="Debugging\CreatureSpawnerFileDumper.cs" />
     <Compile Include="Debugging\RoomCreatureSpawnerFileDumper.cs" />
     <Compile Include="Debugging\SpawnDataFileDumper.cs" />
     <Compile Include="Locations\SimpleLocation.cs" />
-    <Compile Include="Multiplayer\ConfigMultiplayerPatch.cs" />
-    <Compile Include="Multiplayer\ConfigurationPackage.cs" />
+    <Compile Include="Configuration\Multiplayer\ConfigMultiplayerPatch.cs" />
+    <Compile Include="Configuration\Multiplayer\ConfigurationPackage.cs" />
     <Compile Include="Locations\ZoneSystemMultiplayerPatch.cs" />
     <Compile Include="Reset\IReset.cs" />
     <Compile Include="Reset\StateResetter.cs" />
@@ -107,5 +109,6 @@
     <Compile Include="Utilities\SearchSpatial.cs" />
     <Compile Include="Utilities\SpatialListExtensions.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
