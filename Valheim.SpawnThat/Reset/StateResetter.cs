@@ -33,7 +33,7 @@ namespace Valheim.SpawnThat.Reset
             OnResetActions.Remove(onReset);
         }
 
-        public static void Reset()
+        internal static void Reset()
         {
             Log.LogDebug("Resetting mod state.");
 
