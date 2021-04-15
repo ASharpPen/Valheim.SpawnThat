@@ -16,59 +16,62 @@ namespace Valheim.SpawnThat.PreConfigured
                 string configPath = Path.Combine(Paths.ConfigPath, ConfigurationManager.SimpleConfigFile);
                 if (!File.Exists(configPath))
                 {
+                    var config = new SimpleConfigurationFile();
+
                     Log.LogDebug($"Initializing {ConfigurationManager.SimpleConfigFile}.");
 
                     ConfigFile file = new ConfigFile(configPath, true);
 
-                    CreateEntry(file, "Crow");
-                    CreateEntry(file, "FireFlies");
-                    CreateEntry(file, "Deer");
-                    CreateEntry(file, "Fish1");
-                    CreateEntry(file, "Fish2");
-                    CreateEntry(file, "Fish3");
-                    CreateEntry(file, "Seagal");
-                    CreateEntry(file, "Leviathan");
-                    CreateEntry(file, "Boar");
-                    CreateEntry(file, "Neck");
-                    CreateEntry(file, "Greyling");
-                    CreateEntry(file, "Greydwarf");
-                    CreateEntry(file, "Greydwarf_Elite");
-                    CreateEntry(file, "Greydwarf_shaman");
-                    CreateEntry(file, "Troll");
-                    CreateEntry(file, "Ghost");
-                    CreateEntry(file, "Skeleton");
-                    CreateEntry(file, "Skeleton_NoArcher");
-                    CreateEntry(file, "Skeleton_poison");
-                    CreateEntry(file, "Blob");
-                    CreateEntry(file, "BlobElite");
-                    CreateEntry(file, "Draugr");
-                    CreateEntry(file, "Draugr_Ranged");
-                    CreateEntry(file, "Draugr_Elite");
-                    CreateEntry(file, "Leech");
-                    CreateEntry(file, "Surtling");
-                    CreateEntry(file, "Wraith");
-                    CreateEntry(file, "Wolf");
-                    CreateEntry(file, "Hatchling");
-                    CreateEntry(file, "StoneGolem");
-                    CreateEntry(file, "Fenring");
-                    CreateEntry(file, "Deathsquito");
-                    CreateEntry(file, "Lox");
-                    CreateEntry(file, "Goblin");
-                    CreateEntry(file, "GoblinArcher");
-                    CreateEntry(file, "GoblinBrute");
-                    CreateEntry(file, "GoblinShaman");
-                    CreateEntry(file, "Serpent");
+                    CreateEntry(file, config, "Crow");
+                    CreateEntry(file, config, "FireFlies");
+                    CreateEntry(file, config, "Deer");
+                    CreateEntry(file, config, "Fish1");
+                    CreateEntry(file, config, "Fish2");
+                    CreateEntry(file, config, "Fish3");
+                    CreateEntry(file, config, "Seagal");
+                    CreateEntry(file, config, "Leviathan");
+                    CreateEntry(file, config, "Boar");
+                    CreateEntry(file, config, "Neck");
+                    CreateEntry(file, config, "Greyling");
+                    CreateEntry(file, config, "Greydwarf");
+                    CreateEntry(file, config, "Greydwarf_Elite");
+                    CreateEntry(file, config, "Greydwarf_shaman");
+                    CreateEntry(file, config, "Troll");
+                    CreateEntry(file, config, "Ghost");
+                    CreateEntry(file, config, "Skeleton");
+                    CreateEntry(file, config, "Skeleton_NoArcher");
+                    CreateEntry(file, config, "Skeleton_poison");
+                    CreateEntry(file, config, "Blob");
+                    CreateEntry(file, config, "BlobElite");
+                    CreateEntry(file, config, "Draugr");
+                    CreateEntry(file, config, "Draugr_Ranged");
+                    CreateEntry(file, config, "Draugr_Elite");
+                    CreateEntry(file, config, "Leech");
+                    CreateEntry(file, config, "Surtling");
+                    CreateEntry(file, config, "Wraith");
+                    CreateEntry(file, config, "Wolf");
+                    CreateEntry(file, config, "Hatchling");
+                    CreateEntry(file, config, "StoneGolem");
+                    CreateEntry(file, config, "Fenring");
+                    CreateEntry(file, config, "Deathsquito");
+                    CreateEntry(file, config, "Lox");
+                    CreateEntry(file, config, "Goblin");
+                    CreateEntry(file, config, "GoblinArcher");
+                    CreateEntry(file, config, "GoblinBrute");
+                    CreateEntry(file, config, "GoblinShaman");
+                    CreateEntry(file, config, "Serpent");
 
                     Log.LogDebug($"Finished initializing {ConfigurationManager.SimpleConfigFile}.");
                 }
             }
         }
 
-        private static void CreateEntry(ConfigFile file, string creaturePrefab)
+        private static void CreateEntry(ConfigFile file, SimpleConfigurationFile configFile, string creaturePrefab)
         {
-            var greydwarf = new SimpleConfiguration();
-            greydwarf.PrefabName.DefaultValue = creaturePrefab;
-            greydwarf.PrefabName.Bind(file, creaturePrefab, nameof(SimpleConfiguration.PrefabName));
+            configFile.GetSubsection(creaturePrefab);
+            var config = configFile.Subsections[creaturePrefab.Trim().ToUpper()];
+            config.PrefabName.DefaultValue = creaturePrefab;
+            config.PrefabName.Bind(file, creaturePrefab, nameof(SimpleConfig.PrefabName));
         }
     }
 }

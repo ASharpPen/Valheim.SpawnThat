@@ -11,9 +11,9 @@ namespace Valheim.SpawnThat.Configuration
     public static class ConfigurationManager
     {
         public static GeneralConfiguration GeneralConfig;
-        public static SpawnSystemConfiguration SpawnSystemConfig;
-        public static CreatureSpawnerFileConfiguration CreatureSpawnerConfig;
-        public static SimpleConfiguration SimpleConfig;
+        public static SpawnSystemConfigurationFile SpawnSystemConfig;
+        public static CreatureSpawnerConfigurationFile CreatureSpawnerConfig;
+        public static SimpleConfigurationFile SimpleConfig;
 
         internal const string GeneralConfigFile = "spawn_that.cfg";
         internal const string SimpleConfigFile = "spawn_that.simple.cfg";
@@ -51,7 +51,7 @@ namespace Valheim.SpawnThat.Configuration
             return generalConfig;
         }
 
-        public static SimpleConfiguration LoadSimpleConfig()
+        public static SimpleConfigurationFile LoadSimpleConfig()
         {
             Log.LogInfo("Loading simple configurations");
 
@@ -60,14 +60,14 @@ namespace Valheim.SpawnThat.Configuration
 
             if (GeneralConfig?.StopTouchingMyConfigs?.Value != null) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs.Value;
 
-            var config = ConfigurationLoader.LoadConfiguration<SimpleConfiguration>(configFile);
+            var config = ConfigurationLoader.LoadConfiguration<SimpleConfigurationFile>(configFile);
 
             Log.LogDebug("Finished loading simple configurations");
 
             return config;
         }
 
-        public static SpawnSystemConfiguration LoadSpawnSystemConfiguration()
+        public static SpawnSystemConfigurationFile LoadSpawnSystemConfiguration()
         {
             Log.LogInfo($"Loading world spawner configurations.");
 
@@ -97,7 +97,7 @@ namespace Valheim.SpawnThat.Configuration
             return configs;
         }
 
-        private static SpawnSystemConfiguration LoadSpawnSystemConfig(string configPath)
+        private static SpawnSystemConfigurationFile LoadSpawnSystemConfig(string configPath)
         {
             Log.LogDebug($"Loading world spawner configurations from {configPath}.");
 
@@ -105,10 +105,10 @@ namespace Valheim.SpawnThat.Configuration
 
             if (GeneralConfig?.StopTouchingMyConfigs?.Value != null) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs.Value;
 
-            return ConfigurationLoader.LoadConfiguration<SpawnSystemConfiguration>(configFile);
+            return ConfigurationLoader.LoadConfiguration<SpawnSystemConfigurationFile>(configFile);
         }
 
-        public static CreatureSpawnerFileConfiguration LoadCreatureSpawnerConfiguration()
+        public static CreatureSpawnerConfigurationFile LoadCreatureSpawnerConfiguration()
         {
             Log.LogInfo($"Loading local spawner configurations.");
 
@@ -138,7 +138,7 @@ namespace Valheim.SpawnThat.Configuration
             return configs;
         }
 
-        private static CreatureSpawnerFileConfiguration LoadCreatureSpawnConfig(string configPath)
+        private static CreatureSpawnerConfigurationFile LoadCreatureSpawnConfig(string configPath)
         {
             Log.LogDebug($"Loading local spawner configurations from {configPath}.");
 
@@ -146,7 +146,7 @@ namespace Valheim.SpawnThat.Configuration
 
             if (GeneralConfig?.StopTouchingMyConfigs?.Value != null) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs.Value;
 
-            return ConfigurationLoader.LoadConfiguration<CreatureSpawnerFileConfiguration>(configFile);
+            return ConfigurationLoader.LoadConfiguration<CreatureSpawnerConfigurationFile>(configFile);
         }
     }
 }

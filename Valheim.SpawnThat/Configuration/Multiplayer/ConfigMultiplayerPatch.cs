@@ -1,12 +1,9 @@
 ﻿using HarmonyLib;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using Valheim.SpawnThat.Configuration;
+using System.Linq;
 using Valheim.SpawnThat.Core;
 
-namespace Valheim.SpawnThat.Multiplayer
+namespace Valheim.SpawnThat.Configuration.Multiplayer
 {
 	[HarmonyPatch(typeof(ZNet))]
 	internal static class ConfigMultiplayerPatch
@@ -39,31 +36,14 @@ namespace Valheim.SpawnThat.Multiplayer
 					Log.LogWarning("Non-server instance received request for configs. Ignoring request.");
 				}
 
-				Log.LogInfo("Received request for configs.");
+				Log.LogInfo("Sending  request for configs.");
 
-				ZPackage configPackage = new ZPackage();
-
-				var package = new ConfigurationPackage(
-					ConfigurationManager.GeneralConfig, 
-					ConfigurationManager.SimpleConfig,
-					ConfigurationManager.SpawnSystemConfig,
-					ConfigurationManager.CreatureSpawnerConfig);
-
-				Log.LogTrace("Serializing configs.");
-
-				using (MemoryStream memStream = new MemoryStream())
-				{
-					BinaryFormatter binaryFormatter = new BinaryFormatter();
-					binaryFormatter.Serialize(memStream, package);
-
-					byte[] serialized = memStream.ToArray();
-
-					configPackage.Write(serialized);
-				}
+				var configPackage = new ConfigPackage();
+				var zpack = configPackage.Pack();
 
 				Log.LogTrace("Sending config package.");
 
-				rpc.Invoke(nameof(RPC_ReceiveConfigsSpawnThat), new object[] { configPackage });
+				rpc.Invoke(nameof(RPC_ReceiveConfigsSpawnThat), new object[] { zpack });
 
 				Log.LogTrace("Finished sending config package.");
 			}
@@ -78,50 +58,17 @@ namespace Valheim.SpawnThat.Multiplayer
 			Log.LogTrace("Received package.");
 			try
 			{
-				var serialized = pkg.ReadByteArray();
+				ConfigPackage.Unpack(pkg);
 
-				Log.LogTrace("Deserializing package.");
-
-				using (MemoryStream memStream = new MemoryStream(serialized))
-				{
-					BinaryFormatter binaryFormatter = new BinaryFormatter();
-					var responseObject = binaryFormatter.Deserialize(memStream);
-
-					if (responseObject is ConfigurationPackage configPackage)
-					{
-						Log.LogDebug("Received and deserialized config package");
-
-						Log.LogTrace("Unpackaging general config.");
-
-						ConfigurationManager.GeneralConfig = (GeneralConfig)configPackage.GeneralConfig;
-
-						Log.LogTrace("Successfully set general config.");
-						Log.LogTrace("Unpackaging simple configs.");
-
-						ConfigurationManager.SimpleConfig = (List<SimpleConfig>)configPackage.SimpleConfig;
-
-						Log.LogTrace("Successfully set simple configs.");
-						Log.LogTrace("Unpackaging world spawner configs.");
-
-						ConfigurationManager.SpawnSystemConfig = (SpawnSystemConfigurationAdvanced)configPackage.SpawnSystemConfig;
-
-						Log.LogTrace("Successfully set world spawner configs.");
-						Log.LogTrace("Unpackaging local spawner configs.");
-
-						ConfigurationManager.CreatureSpawnerConfig = (Dictionary<string, CreatureSpawnerConfigurationAdvanced>)configPackage.CreatureSpawnerConfig;
-
-						Log.LogTrace("Successfully set local spawner configs.");
-					}
-					else
-					{
-						Log.LogWarning("Received bad config package. Unable to load.");
-					}
-				}
+				Log.LogInfo($"Unpacked {ConfigurationManager.CreatureSpawnerConfig?.Subsections?.Count ?? 0} creature spawner entries");
+				Log.LogInfo($"Unpacked {ConfigurationManager.SpawnSystemConfig?.Subsections?.Values?.FirstOrDefault()?.Subsections?.Count ?? 0} spawn system entries");
+				Log.LogInfo($"Unpacked general config: {ConfigurationManager.GeneralConfig is not null}");
+				Log.LogInfo($"Unpacked {ConfigurationManager.SimpleConfig?.Subsections?.Count ?? 0} simple entries");
 			}
-			catch(Exception e)
-            {
+			catch (Exception e)
+			{
 				Log.LogError("Error while attempting to read received config package.", e);
-            }
+			}
 		}
 	}
 }

@@ -65,10 +65,10 @@
     <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\ConfigTypes\CreatureSpawnerFileConfiguration.cs" />
+    <Compile Include="Configuration\ConfigTypes\CreatureSpawnerConfigurationFile.cs" />
     <Compile Include="Configuration\ConfigTypes\GeneralConfiguration.cs" />
-    <Compile Include="Configuration\ConfigTypes\SimpleConfiguration.cs" />
-    <Compile Include="Configuration\ConfigTypes\SpawnSystemConfiguration.cs" />
+    <Compile Include="Configuration\ConfigTypes\SimpleConfigurationFile.cs" />
+    <Compile Include="Configuration\ConfigTypes\SpawnSystemConfigurationFile.cs" />
     <Compile Include="Configuration\ConfigurationManager.cs" />
     <Compile Include="Configuration\ConfigurationMerger.cs" />
     <Compile Include="ConsoleCommands\ConsolePatch.cs" />
@@ -84,7 +84,7 @@
     <Compile Include="Debugging\SpawnDataFileDumper.cs" />
     <Compile Include="Locations\SimpleLocation.cs" />
     <Compile Include="Configuration\Multiplayer\ConfigMultiplayerPatch.cs" />
-    <Compile Include="Configuration\Multiplayer\ConfigurationPackage.cs" />
+    <Compile Include="Configuration\Multiplayer\ConfigPackage.cs" />
     <Compile Include="Locations\ZoneSystemMultiplayerPatch.cs" />
     <Compile Include="Reset\IReset.cs" />
     <Compile Include="Reset\StateResetter.cs" />

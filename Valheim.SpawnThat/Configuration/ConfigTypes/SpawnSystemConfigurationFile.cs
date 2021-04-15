@@ -4,7 +4,16 @@ using Valheim.SpawnThat.Core.Configuration;
 namespace Valheim.SpawnThat.Configuration.ConfigTypes
 {
     [Serializable]
-    public class SpawnSystemConfiguration : ConfigWithSubsections<SpawnConfiguration>, IConfigFile
+    public class SpawnSystemConfigurationFile : ConfigWithSubsections<SpawnSystemConfiguration>, IConfigFile
+    {
+        protected override SpawnSystemConfiguration InstantiateSubsection(string subsectionName)
+        {
+            return new SpawnSystemConfiguration();
+        }
+    }
+
+    [Serializable]
+    public class SpawnSystemConfiguration : ConfigWithSubsections<SpawnConfiguration>
     {
         protected override SpawnConfiguration InstantiateSubsection(string subsectionName)
         {

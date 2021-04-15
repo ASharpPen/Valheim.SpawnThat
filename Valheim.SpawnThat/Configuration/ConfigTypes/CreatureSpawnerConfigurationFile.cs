@@ -4,7 +4,16 @@ using Valheim.SpawnThat.Core.Configuration;
 namespace Valheim.SpawnThat.Configuration.ConfigTypes
 {
     [Serializable]
-    public class CreatureSpawnerFileConfiguration : ConfigWithSubsections<CreatureSpawnerConfig>, IConfigFile
+    public class CreatureSpawnerConfigurationFile : ConfigWithSubsections<CreatureLocationConfig>, IConfigFile
+    {
+        protected override CreatureLocationConfig InstantiateSubsection(string subsectionName)
+        {
+            return new CreatureLocationConfig();
+        }
+    }
+
+    [Serializable]
+    public class CreatureLocationConfig : ConfigWithSubsections<CreatureSpawnerConfig>
     {
         protected override CreatureSpawnerConfig InstantiateSubsection(string subsectionName)
         {

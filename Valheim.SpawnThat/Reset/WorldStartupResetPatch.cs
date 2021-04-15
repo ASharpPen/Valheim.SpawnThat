@@ -7,6 +7,9 @@ namespace Valheim.SpawnThat.Reset
     [HarmonyPatch(typeof(FejdStartup))]
     public static class WorldStartupResetPatch
     {
+        /// <summary>
+        /// Singleplayer
+        /// </summary>
         [HarmonyPatch("OnWorldStart")]
         [HarmonyPrefix]
         private static void ResetState()
@@ -16,12 +19,27 @@ namespace Valheim.SpawnThat.Reset
             ConfigurationManager.LoadAllConfigurations();
         }
 
+        /// <summary>
+        /// Multiplayer
+        /// </summary>
         [HarmonyPatch("JoinServer")]
         [HarmonyPrefix]
-        private static void ResetStateMultplayer()
+        private static void ResetStateMultiplayer()
         {
             Log.LogDebug("Resetting configurations");
             StateResetter.Reset();
+        }
+
+        /// <summary>
+        /// Server
+        /// </summary>
+        [HarmonyPatch("ParseServerArguments")]
+        [HarmonyPrefix]
+        private static void ResetStateServer()
+        {
+            Log.LogDebug("Resetting configurations");
+            StateResetter.Reset();
+            ConfigurationManager.LoadAllConfigurations();
         }
     }
 }

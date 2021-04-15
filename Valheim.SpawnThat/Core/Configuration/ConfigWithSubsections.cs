@@ -10,14 +10,16 @@ namespace Valheim.SpawnThat.Core.Configuration
 
         public Config GetSubsection(string subsectionName)
         {
-            if (Subsections.TryGetValue(subsectionName, out T existingItem))
+            var cleanedName = subsectionName.Trim().ToUpperInvariant();
+
+            if (Subsections.TryGetValue(cleanedName, out T existingItem))
             {
                 return existingItem;
             }
             else
             {
-                var newItem = InstantiateSubsection(subsectionName);
-                Subsections[subsectionName] = newItem;
+                var newItem = InstantiateSubsection(cleanedName);
+                Subsections[cleanedName] = newItem;
 
                 return newItem;
             }

@@ -1,33 +1,60 @@
-﻿using Valheim.SpawnThat.Configuration.ConfigTypes;
+﻿using System.Linq;
+using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Configuration
 {
+    //TODO: Update with another layer for each config. They are too shallow right now.
     public static class ConfigurationMerger
     {
-        public static void MergeInto(this SpawnSystemConfiguration source, SpawnSystemConfiguration target)
+        public static void MergeInto(this SpawnSystemConfigurationFile source, SpawnSystemConfigurationFile target)
         {
-            foreach(var sourceTemplate in source.Subsections)
+            var sourceTemplates = source?.Subsections?.Values?.FirstOrDefault();
+            var targetTemplates = source?.Subsections?.Values?.FirstOrDefault();
+
+            if(sourceTemplates is null)
             {
-                if (target.Subsections.ContainsKey(sourceTemplate.Key))
+                return;
+            }
+
+            foreach(var sourceTemplate in sourceTemplates.Subsections)
+            {
+                if (targetTemplates.Subsections.ContainsKey(sourceTemplate.Key))
                 {
                     Log.LogWarning($"Overlapping world spawner configs for {sourceTemplate.Value.SectionKey}, overriding existing.");
                 }
 
-                target.Subsections[sourceTemplate.Key] = sourceTemplate.Value;
+                targetTemplates.Subsections[sourceTemplate.Key] = sourceTemplate.Value;
             }
         }
 
-        public static void MergeInto(this CreatureSpawnerFileConfiguration source, CreatureSpawnerFileConfiguration target)
+        public static void MergeInto(this CreatureSpawnerConfigurationFile source, CreatureSpawnerConfigurationFile target)
         {
-            foreach(var sourceSpawner in source.Subsections)
+            if(source.Subsections is null)
             {
-                if(target.Subsections.ContainsKey(sourceSpawner.Key))
-                {
-                    Log.LogWarning($"Overlapping local spawner configs for {sourceSpawner.Value.SectionKey}, overriding existing.");
-                }
+                return;
+            }
 
-                target.Subsections[sourceSpawner.Key] = sourceSpawner.Value;
+            foreach(var sourceLocation in source.Subsections)
+            {
+                if(target.Subsections.ContainsKey(sourceLocation.Key))
+                {
+                    var targetSpawner = target.Subsections[sourceLocation.Key];
+
+                    foreach (var sourceSpawner in sourceLocation.Value.Subsections)
+                    {
+                        if (targetSpawner.Subsections.ContainsKey(sourceSpawner.Key))
+                        {
+                            Log.LogWarning($"Overlapping local spawner configs for {sourceSpawner.Value.SectionKey}, overriding existing.");
+                        }
+
+                        targetSpawner.Subsections[sourceSpawner.Key] = sourceSpawner.Value;
+                    }
+                }
+                else
+                {
+                    target.Subsections[sourceLocation.Key] = sourceLocation.Value;
+                }
             }
         }
     }
