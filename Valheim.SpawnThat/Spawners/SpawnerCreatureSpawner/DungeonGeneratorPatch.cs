@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
-using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
 {

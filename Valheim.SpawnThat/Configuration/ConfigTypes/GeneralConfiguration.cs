@@ -1,11 +1,11 @@
-﻿using BepInEx.Configuration;
-using System;
-using Valheim.SpawnThat.ConfigurationCore;
+﻿using System;
+using BepInEx.Configuration;
+using Valheim.SpawnThat.Core.Configuration;
 
-namespace Valheim.SpawnThat.ConfigurationTypes
+namespace Valheim.SpawnThat.Configuration.ConfigTypes
 {
     [Serializable]
-    public class GeneralConfig
+    public class GeneralConfiguration
     {
         [NonSerialized]
         private ConfigFile Config;

@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using System.Collections.Generic;
 using UnityEngine;
-using Valheim.SpawnThat.ConfigurationCore;
+using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Reset;
 
 namespace Valheim.SpawnThat.Locations

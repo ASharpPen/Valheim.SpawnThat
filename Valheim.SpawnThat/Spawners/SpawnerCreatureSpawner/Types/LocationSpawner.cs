@@ -1,7 +1,5 @@
-﻿using HarmonyLib;
-using System.Linq;
-using UnityEngine;
-using Valheim.SpawnThat.ConfigurationCore;
+﻿using UnityEngine;
+using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Locations;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types

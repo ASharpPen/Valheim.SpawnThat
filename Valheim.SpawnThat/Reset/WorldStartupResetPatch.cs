@@ -1,28 +1,15 @@
 ﻿using HarmonyLib;
-using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Reset
 {
     [HarmonyPatch(typeof(FejdStartup))]
     public static class WorldStartupResetPatch
     {
-        /*
-        [HarmonyPatch("LoadMainScene")]
-        [HarmonyPrefix]
-        private static void ResetState()
-        {
-            Log.LogDebug("Resetting configurations");
-            StateResetter.Reset();
-
-            //Check for singleplayer.
-            if (ZNet.instance == null )
-            {
-                ConfigurationManager.LoadAllConfigurations();
-            }
-        }
-        */
-
+        /// <summary>
+        /// Singleplayer
+        /// </summary>
         [HarmonyPatch("OnWorldStart")]
         [HarmonyPrefix]
         private static void ResetState()
@@ -32,12 +19,27 @@ namespace Valheim.SpawnThat.Reset
             ConfigurationManager.LoadAllConfigurations();
         }
 
+        /// <summary>
+        /// Multiplayer
+        /// </summary>
         [HarmonyPatch("JoinServer")]
         [HarmonyPrefix]
-        private static void ResetStateMultplayer()
+        private static void ResetStateMultiplayer()
         {
             Log.LogDebug("Resetting configurations");
             StateResetter.Reset();
+        }
+
+        /// <summary>
+        /// Server
+        /// </summary>
+        [HarmonyPatch("ParseServerArguments")]
+        [HarmonyPrefix]
+        private static void ResetStateServer()
+        {
+            Log.LogDebug("Resetting configurations");
+            StateResetter.Reset();
+            ConfigurationManager.LoadAllConfigurations();
         }
     }
 }

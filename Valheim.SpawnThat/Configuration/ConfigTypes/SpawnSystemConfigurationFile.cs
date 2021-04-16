@@ -1,15 +1,28 @@
 ﻿using System;
-using Valheim.SpawnThat.ConfigurationCore;
+using Valheim.SpawnThat.Core.Configuration;
 
-namespace Valheim.SpawnThat.ConfigurationTypes
+namespace Valheim.SpawnThat.Configuration.ConfigTypes
 {
     [Serializable]
-    public class SpawnSystemConfigurationAdvanced : ConfigurationGroup<SpawnConfiguration>
+    public class SpawnSystemConfigurationFile : ConfigWithSubsections<SpawnSystemConfiguration>, IConfigFile
     {
+        protected override SpawnSystemConfiguration InstantiateSubsection(string subsectionName)
+        {
+            return new SpawnSystemConfiguration();
+        }
     }
 
     [Serializable]
-    public class SpawnConfiguration : ConfigurationSection
+    public class SpawnSystemConfiguration : ConfigWithSubsections<SpawnConfiguration>
+    {
+        protected override SpawnConfiguration InstantiateSubsection(string subsectionName)
+        {
+            return new SpawnConfiguration();
+        }
+    }
+
+    [Serializable]
+    public class SpawnConfiguration : Config
     {
         private int? index = null;
 
@@ -17,7 +30,7 @@ namespace Valheim.SpawnThat.ConfigurationTypes
         {
             get
             {
-                if(index.HasValue)
+                if (index.HasValue)
                 {
                     return index.Value;
                 }

@@ -1,5 +1,5 @@
-﻿using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
+﻿using Valheim.SpawnThat.Configuration.ConfigTypes;
+using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
 {

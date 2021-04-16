@@ -1,7 +1,7 @@
 ﻿using BepInEx;
 using HarmonyLib;
-using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat
 {

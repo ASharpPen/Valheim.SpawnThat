@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Valheim.SpawnThat.ConfigurationCore
+namespace Valheim.SpawnThat.Core.Configuration
 {
     public interface IConfigurationEntry
     {
@@ -12,7 +12,7 @@ namespace Valheim.SpawnThat.ConfigurationCore
     [Serializable]
     public class ConfigurationEntry<TIn> : IConfigurationEntry
     {
-        public TIn DefaultValue;
+        public TIn DefaultValue { get; set; }
 
         [NonSerialized]
         public string Description;
@@ -23,9 +23,9 @@ namespace Valheim.SpawnThat.ConfigurationCore
         [OnSerializing]
         internal void OnSerialize()
         {
-            // We cheat, and don't actually use the bepinex bindings for synchronized configurations.
+            // We cheat, and don't actually use the bepinex bindings for syncronized configurations.
             // Due to Config not being set, this should result in DefaultValue always being used instead.
-            if (Config != null)
+            if(Config != null)
             {
                 DefaultValue = Config.Value;
             }
@@ -35,7 +35,6 @@ namespace Valheim.SpawnThat.ConfigurationCore
         {
             if (Description is null)
             {
-
                 Config = config.Bind<TIn>(section, key, DefaultValue);
             }
             else
@@ -46,7 +45,7 @@ namespace Valheim.SpawnThat.ConfigurationCore
 
         public override string ToString()
         {
-            if (Config == null)
+            if(Config == null)
             {
                 return $"[Entry: {DefaultValue}]";
             }
@@ -66,15 +65,20 @@ namespace Valheim.SpawnThat.ConfigurationCore
             }
         }
 
+        public static implicit operator TIn(ConfigurationEntry<TIn> entry)
+        {
+            return entry.Value;
+        }
+
         public ConfigurationEntry()
         {
-            DefaultValue = default;
+
         }
 
         public ConfigurationEntry(TIn defaultValue, string description = null)
         {
-            DefaultValue = defaultValue;
             Description = description;
+            DefaultValue = defaultValue;
         }
     }
 }
