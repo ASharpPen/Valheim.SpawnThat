@@ -5,6 +5,7 @@ using System.IO;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Configuration;
+using Valheim.SpawnThat.PreConfigured;
 
 namespace Valheim.SpawnThat.Configuration
 {
@@ -56,12 +57,16 @@ namespace Valheim.SpawnThat.Configuration
             Log.LogInfo("Loading simple configurations");
 
             string configPath = Path.Combine(Paths.ConfigPath, SimpleConfigFile);
+            if (!File.Exists(configPath) && GeneralConfig?.InitializeWithCreatures?.Value == true)
+            {
+                SimpleConfigAllCreatures.Initialize();
+            }
+
             ConfigFile configFile = new ConfigFile(configPath, true);
 
-            if (GeneralConfig?.StopTouchingMyConfigs?.Value != null) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs.Value;
+            if (GeneralConfig?.StopTouchingMyConfigs?.Value == true) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs;
 
             var config = ConfigurationLoader.LoadConfiguration<SimpleConfigurationFile>(configFile);
-
             Log.LogDebug("Finished loading simple configurations");
 
             return config;
@@ -103,7 +108,7 @@ namespace Valheim.SpawnThat.Configuration
 
             var configFile = new ConfigFile(configPath, true);
 
-            if (GeneralConfig?.StopTouchingMyConfigs?.Value != null) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs.Value;
+            if (GeneralConfig?.StopTouchingMyConfigs?.Value == true) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs.Value;
 
             return ConfigurationLoader.LoadConfiguration<SpawnSystemConfigurationFile>(configFile);
         }
@@ -144,7 +149,7 @@ namespace Valheim.SpawnThat.Configuration
 
             var configFile = new ConfigFile(configPath, true);
 
-            if (GeneralConfig?.StopTouchingMyConfigs?.Value != null) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs.Value;
+            if (GeneralConfig?.StopTouchingMyConfigs?.Value == true) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs.Value;
 
             return ConfigurationLoader.LoadConfiguration<CreatureSpawnerConfigurationFile>(configFile);
         }

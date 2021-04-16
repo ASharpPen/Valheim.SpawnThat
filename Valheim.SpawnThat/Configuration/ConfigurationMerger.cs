@@ -4,16 +4,22 @@ using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Configuration
 {
-    //TODO: Update with another layer for each config. They are too shallow right now.
     public static class ConfigurationMerger
     {
         public static void MergeInto(this SpawnSystemConfigurationFile source, SpawnSystemConfigurationFile target)
         {
             var sourceTemplates = source?.Subsections?.Values?.FirstOrDefault();
-            var targetTemplates = source?.Subsections?.Values?.FirstOrDefault();
+            var targetTemplates = target?.Subsections?.Values?.FirstOrDefault();
 
             if(sourceTemplates is null)
             {
+                return;
+            }
+
+            if(targetTemplates is null)
+            {
+                var sourceEntry = source.Subsections.First();
+                target.Subsections[sourceEntry.Key] = sourceEntry.Value;
                 return;
             }
 

@@ -25,6 +25,11 @@ namespace Valheim.SpawnThat.Core.Configuration
             }
         }
 
+        public bool TryGet(string key, out T value)
+        {
+            return Subsections.TryGetValue(key.Trim().ToUpperInvariant(), out value);
+        }
+
         protected abstract T InstantiateSubsection(string subsectionName);
     }
 }

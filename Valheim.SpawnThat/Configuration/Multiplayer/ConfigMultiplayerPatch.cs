@@ -59,11 +59,6 @@ namespace Valheim.SpawnThat.Configuration.Multiplayer
 			try
 			{
 				ConfigPackage.Unpack(pkg);
-
-				Log.LogInfo($"Unpacked {ConfigurationManager.CreatureSpawnerConfig?.Subsections?.Count ?? 0} creature spawner entries");
-				Log.LogInfo($"Unpacked {ConfigurationManager.SpawnSystemConfig?.Subsections?.Values?.FirstOrDefault()?.Subsections?.Count ?? 0} spawn system entries");
-				Log.LogInfo($"Unpacked general config: {ConfigurationManager.GeneralConfig is not null}");
-				Log.LogInfo($"Unpacked {ConfigurationManager.SimpleConfig?.Subsections?.Count ?? 0} simple entries");
 			}
 			catch (Exception e)
 			{

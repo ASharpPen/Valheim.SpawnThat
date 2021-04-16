@@ -65,6 +65,11 @@ namespace Valheim.SpawnThat.Core.Configuration
             }
         }
 
+        public static implicit operator TIn(ConfigurationEntry<TIn> entry)
+        {
+            return entry.Value;
+        }
+
         public ConfigurationEntry()
         {
 
