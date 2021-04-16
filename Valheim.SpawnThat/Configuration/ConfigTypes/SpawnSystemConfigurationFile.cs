@@ -67,6 +67,8 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<float> ConditionWorldAgeDaysMax = new ConfigurationEntry<float>(0, "Maximum world age in in-game days for this configuration to apply. 0 means no max.");
 
+        public ConfigurationEntry<string> RequiredNotGlobalKey = new ConfigurationEntry<string>("", "Array of global keys which disable the spawning of this entity if any are detected.");
+
         #region Default Configuration Options
 
         public ConfigurationEntry<string> PrefabName = new ConfigurationEntry<string>("Deer", "Prefab name of the entity to spawn.");
