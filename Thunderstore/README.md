@@ -20,6 +20,7 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 	- Investigate what the world throws at you.
 - Server-side configs
 - Modify the spawners in camps, villages and dungeons
+- Support for [Creature Level and Loot Control](https://valheim.thunderstore.io/package/Smoothbrain/CreatureLevelAndLootControl/)
 
 ## FAQ
 
@@ -395,6 +396,115 @@ SetPatrolPoint = true
 
 ```
 
+# Mod specific configuration
+
+These are implemented soft-dependant, meaning if the mod is not present, the configuration will simply do nothing.
+
+## Creature Level and Loot Control
+
+Additional options for [Creature Level and Loot Control](https://valheim.thunderstore.io/package/Smoothbrain/CreatureLevelAndLootControl/).
+See the mod page for more in-depth documentation for the options.
+
+### World Spawners
+
+Mod-specific configs can be added to each local spawner as `[WorldSpawner.Index.CreatureLevelAndLootControl]`
+
+``` INI
+
+## Minimum CLLC world level for spawn to activate. Negative value disables this condition.
+ConditionWorldLevelMin = -1
+
+## Maximum CLLC world level for spawn to active. Negative value disables this condition.
+ConditionWorldLevelMax = -1
+
+## Assigns the specified infusion to creature spawned. Ignored if empty.
+SetInfusion = Fire
+
+## Assigns the specified effect to creature spawned. Ignored if empty.
+SetExtraEffect = 
+
+## Assigns the specified boss affix to creature spawned. Only works for the default 5 bosses. Ignored if empty.
+SetBossAffix = 
+
+```
+
+Example of a world spawner template, for a boar that will spawn with a fire infusion, when the CLLC world level is high enough.
+
+``` INI
+
+[WorldSpawner.1]
+Name = FireBoar
+PrefabName = Boar
+
+[WorldSpawner.1.CreatureLevelAndLootControl]
+ConditionWorldLevelMin = 3
+SetInfusion = Fire
+
+```
+
+### Local Spawners
+
+Mod-specific configs can be added to each local spawner as `[Location.PrefabName.CreatureLevelAndLootControl]`
+
+``` INI
+
+## Minimum CLLC world level for spawn to activate. Negative value disables this condition.
+ConditionWorldLevelMin = -1
+
+## Maximum CLLC world level for spawn to active. Negative value disables this condition.
+ConditionWorldLevelMax = -1
+
+## Assigns the specified infusion to creature spawned. Ignored if empty.
+SetInfusion = Fire
+
+## Assigns the specified effect to creature spawned. Ignored if empty.
+SetExtraEffect = 
+
+## Assigns the specified boss affix to creature spawned. Only works for the default 5 bosses. Ignored if empty.
+SetBossAffix = 
+
+```
+
+Example of local spawners around the boar runestone, which will always spawn with a fire infusion.
+
+``` INI
+[Runestone_Boars.Boar]
+PrefabName = Boar
+Enabled = true
+
+[Runestone_Boars.Boar.CreatureLevelAndLootControl]
+ConditionNotInfusion = Fire
+
+```
+
+### Boss Affixes
+- None
+- Reflective
+- Shielded
+- Mending
+- Summoner
+- Elementalist
+- Enraged
+- Twin
+
+### Extra Effects
+- None
+- Aggressive
+- Quick
+- Regenerating
+- Curious
+- Splitting
+- Armored
+
+### Infusions
+- None
+- Lightning
+- Fire
+- Frost
+- Poison
+- Chaos
+- Spirit
+
 # Field options
 
 ## Biomes
@@ -448,6 +558,10 @@ Additional keys can be created manually through console commands, or by a mod li
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog:
+- v0.7.0
+	- Added support for Creature Level and Loot Control (CLLC)
+	- Added CLLC creature effect options for world- and local spawners.
+	- Added CLLC world level condition to world spawners.
 - v0.6.0
 	- Added world spawner condition - RequiredNotGlobalKey
 	- Added support for supplemental world- and local spawner config files.
