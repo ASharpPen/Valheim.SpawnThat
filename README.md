@@ -21,10 +21,6 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 - Server-side configs
 - Modify the spawners in camps, villages and dungeons
 
-## Limitations
-This mod will not change any non-spawner based entities, such as dungeon mobs that only spawn once.
-Nor does it support changes to breeding.
-
 ## FAQ
 
 Why are the config files empty?
@@ -146,7 +142,7 @@ ConditionWorldAgeDaysMax=0
 
 # Local spawners
 
-Local spawners are customly set up in the world, based on pre-defined location setups. This means they are each customized to the location at which they are placed, and are not as easily "targetted" as the world spawners templates are.\
+Local spawners are customly set up in the world, based on pre-defined location setups. This means they are each customized to the location at which they are placed, and are not as easily "targetted" as the world spawners templates are. 
 To modify a local spawner, you must specify a location and mob prefab name you want to apply a configuration to.
 You can also use a room name, if more fine control is necessary for villages, dungeons and camps.
 
@@ -185,6 +181,15 @@ Replaces spawning of blobs in a specific dungeon room with a treasure chest that
 PrefabName = TreasureChest_sunkencrypt
 RespawnTime = 60
 ```
+
+# Supplemental
+
+Spawn That will load additional configurations from configs with names prefixed with "spawn_that.world_spawners." and "spawn_that.local_spawners.".
+
+This allows for adding your own custom templates to Spawn That, or simply separate your configs into more manageable pieces.
+Eg. "spawn_that.world_spawners.my_custom_configuration.cfg" and "spawn_that.local_spawners.my_custom_configuration.cfg"
+
+The configurations loaded will be merged with the one loaded from the main files.
 
 # World Spawners - Details
 
@@ -251,6 +256,10 @@ SpawnRadiusMax = 0
 ## Required global key to spawn.	Eg. defeated_bonemass
 # Setting type: String
 RequiredGlobalKey = 
+
+## Array of global keys which disable the spawning of this entity if any are detected.
+# Setting type: String
+RequiredNotGlobalKey = 
 
 ## Array (separate by comma) of environments required to spawn in.	Eg. Misty, Thunderstorm. Leave empty to allow all.
 # Setting type: String
@@ -386,9 +395,63 @@ SetPatrolPoint = true
 
 ```
 
+# Field options
+
+## Biomes
+- Meadows
+- Swamp
+- Mountain
+- Blackforest
+- Plains
+- AshLands
+- DeepNorth
+- Ocean
+- Mistlands
+
+## Global Keys
+
+- defeated_eikthyr
+- defeated_gdking
+- defeated_bonemass
+- defeated_dragon
+- defeated_goblinking
+- KilledTroll
+- killed_surtling
+
+Additional keys can be created manually through console commands, or by a mod like [Enhanced Progress Tracker](https://valheim.thunderstore.io/package/ASharpPen/Enhanced_Progress_Tracker/).
+
+## Environments
+- Clear
+- Twilight_Clear
+- Misty
+- Darklands_dark
+- Heath clear
+- DeepForest Mist
+- GDKing
+- Rain
+- LightRain
+- ThunderStorm
+- Eikthyr
+- GoblinKing
+- nofogts
+- SwampRain
+- Bonemass
+- Snow
+- Twilight_Snow
+- Twilight_SnowStorm
+- SnowStorm
+- Moder
+- Ashrain
+- Crypt
+- SunkenCrypt
+
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog:
+- v0.6.0
+	- Added world spawner condition - RequiredNotGlobalKey
+	- Added support for supplemental world- and local spawner config files.
+	- Local spawner configs now work in multiplayer.
 - v0.5.1
 	- Added a (probably temporary) config to not run local spawner configs, due to issues with multiplayer.
 	- Fixed error message from local spawners.

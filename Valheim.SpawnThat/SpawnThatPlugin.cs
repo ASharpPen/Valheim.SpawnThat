@@ -5,7 +5,7 @@ using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat
 {
-    [BepInPlugin("asharppen.valheim.spawn_that", "Spawn That!", "0.5.1")]
+    [BepInPlugin("asharppen.valheim.spawn_that", "Spawn That!", "0.6.0")]
     public class SpawnThatPlugin : BaseUnityPlugin
     {        
         // Awake is called once when both the game and the plug-in are loaded
