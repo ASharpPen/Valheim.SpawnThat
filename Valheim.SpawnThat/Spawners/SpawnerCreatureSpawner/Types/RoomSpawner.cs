@@ -29,7 +29,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types
 
             var cleanedRoomName = roomName.Split(new[] {'(' }).FirstOrDefault();
 
-            var config = CreatureSpawnerConfigCache.SearchConfig(cleanedRoomName, creatureName);
+            var config = ConfigFinder.SearchConfig(cleanedRoomName, creatureName);
 
             if(config is null)
             {

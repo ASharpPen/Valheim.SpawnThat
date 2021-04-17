@@ -3,7 +3,7 @@ using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
+namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Patches
 {
     [HarmonyPatch(typeof(CreatureSpawner), "Awake")]
     public static class CreatureSpawnerPatch

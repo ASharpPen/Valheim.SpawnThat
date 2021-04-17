@@ -1,5 +1,6 @@
 ﻿using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
 {
@@ -14,9 +15,11 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
                 return;
             }
 
-            if (config != null)
+            if (config is not null)
             {
                 Log.LogDebug($"Found and applying config for local spawner {spawner.name}");
+
+                CreatureSpawnerCache.Set(spawner, config);
 
                 var prefab = spawner.m_creaturePrefab;
 

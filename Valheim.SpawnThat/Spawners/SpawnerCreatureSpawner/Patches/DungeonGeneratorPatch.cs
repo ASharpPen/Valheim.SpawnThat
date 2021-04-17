@@ -4,8 +4,9 @@ using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
 using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Core;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
+namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Patches
 {
     [HarmonyPatch(typeof(DungeonGenerator))]
     public static class DungeonGeneratorPatch
