@@ -1,10 +1,8 @@
-﻿using HarmonyLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using Valheim.SpawnThat.ConfigurationCore;
+using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Utilities;
 
@@ -92,14 +90,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
             
             //Get range + a bit to the right.
             int rangeToX = RoomList.IndexRight(pos.x + 20);
-
-#if DEBUG
-
-            //Log.LogDebug($"Indexes: {rangeFromX}, {rangeToX}");
-
-            //Log.LogDebug("Checking rooms: " + RoomList.GetRange(rangeFromX, Math.Max(0, rangeToX - rangeFromX)).Select(x => x.Pos).Join());
-#endif
-
 
             for (int i = rangeFromX; i < rangeToX; ++i)
             {

@@ -1,15 +1,28 @@
 ﻿using System;
-using Valheim.SpawnThat.ConfigurationCore;
+using Valheim.SpawnThat.Core.Configuration;
 
-namespace Valheim.SpawnThat.ConfigurationTypes
+namespace Valheim.SpawnThat.Configuration.ConfigTypes
 {
     [Serializable]
-    public class SpawnSystemConfigurationAdvanced : ConfigurationGroup<SpawnConfiguration>
+    public class SpawnSystemConfigurationFile : ConfigWithSubsections<SpawnSystemConfiguration>, IConfigFile
     {
+        protected override SpawnSystemConfiguration InstantiateSubsection(string subsectionName)
+        {
+            return new SpawnSystemConfiguration();
+        }
     }
 
     [Serializable]
-    public class SpawnConfiguration : ConfigurationSection
+    public class SpawnSystemConfiguration : ConfigWithSubsections<SpawnConfiguration>
+    {
+        protected override SpawnConfiguration InstantiateSubsection(string subsectionName)
+        {
+            return new SpawnConfiguration();
+        }
+    }
+
+    [Serializable]
+    public class SpawnConfiguration : Config
     {
         private int? index = null;
 
@@ -17,7 +30,7 @@ namespace Valheim.SpawnThat.ConfigurationTypes
         {
             get
             {
-                if(index.HasValue)
+                if (index.HasValue)
                 {
                     return index.Value;
                 }
@@ -41,7 +54,7 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 
         public ConfigurationEntry<string> Biomes = new ConfigurationEntry<string>("", "Biomes in which entity can spawn. Leave empty for all.");
 
-        //public ConfigurationEntry<bool> DriveInward = new ConfigurationEntry<bool>(false, "Mobs always spawn on towards the world edge from player.");
+        //public ConfigurationEntry<bool> DriveInward = new ConfigurationEntry<bool>(false, "Mobs always spawn towards the world edge from player.");
 
         //Bound to the spawner itself. Need to transpile in a change for this to work.
         //public ConfigurationEntry<float> LevelUpChance = new ConfigurationEntry<float>(10, "Chance to increase level above min. This is run multiple times. 100 is 100%.\nEg. if Chance is 10, LevelMin is 1 and LevelMax is 3, the game will have a 10% to become level 2. The game will then run an additional 10% check for increasing to level 3.");
@@ -53,6 +66,8 @@ namespace Valheim.SpawnThat.ConfigurationTypes
         public ConfigurationEntry<float> ConditionWorldAgeDaysMin = new ConfigurationEntry<float>(0, "Minimum world age in in-game days for this configuration to apply.");
 
         public ConfigurationEntry<float> ConditionWorldAgeDaysMax = new ConfigurationEntry<float>(0, "Maximum world age in in-game days for this configuration to apply. 0 means no max.");
+
+        public ConfigurationEntry<string> RequiredNotGlobalKey = new ConfigurationEntry<string>("", "Array of global keys which disable the spawning of this entity if any are detected.\nEg. defeated_bonemass,KilledTroll");
 
         #region Default Configuration Options
 
@@ -78,7 +93,7 @@ namespace Valheim.SpawnThat.ConfigurationTypes
 
         public ConfigurationEntry<float> SpawnRadiusMax = new ConfigurationEntry<float>(0, "Maximum spawn radius.");
 
-        public ConfigurationEntry<string> RequiredGlobalKey = new ConfigurationEntry<string>("", "Required global key to spawn.\tEg. defeated_bonemass");
+        public ConfigurationEntry<string> RequiredGlobalKey = new ConfigurationEntry<string>("", "Required global key to spawn.\nEg. defeated_bonemass");
 
         public ConfigurationEntry<string> RequiredEnvironments = new ConfigurationEntry<string>("", "Array (separate by comma) of environments required to spawn in.\tEg. Misty, Thunderstorm. Leave empty to allow all.");
 

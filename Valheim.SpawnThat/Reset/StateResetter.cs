@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Valheim.SpawnThat.ConfigurationCore;
+using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Reset
 {
@@ -33,7 +29,7 @@ namespace Valheim.SpawnThat.Reset
             OnResetActions.Remove(onReset);
         }
 
-        public static void Reset()
+        internal static void Reset()
         {
             Log.LogDebug("Resetting mod state.");
 

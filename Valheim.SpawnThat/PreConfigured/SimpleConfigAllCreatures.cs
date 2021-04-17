@@ -1,8 +1,12 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
+using System.Collections.Generic;
 using System.IO;
-using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
+using System.Linq;
+using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Configuration.ConfigTypes;
+using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Core.Configuration;
 
 namespace Valheim.SpawnThat.PreConfigured
 {
@@ -10,14 +14,15 @@ namespace Valheim.SpawnThat.PreConfigured
     {
         public static void Initialize()
         {
-            if (ConfigurationManager.GeneralConfig?.InitializeWithCreatures?.Value == true)
+            if (ConfigurationManager.GeneralConfig?.InitializeWithCreatures ?? false)
             {
                 string configPath = Path.Combine(Paths.ConfigPath, ConfigurationManager.SimpleConfigFile);
                 if (!File.Exists(configPath))
                 {
-                    Log.LogDebug($"Initializing {ConfigurationManager.SimpleConfigFile}.");
-
                     ConfigFile file = new ConfigFile(configPath, true);
+                    var config = new SimpleConfigurationFile();
+
+                    Log.LogDebug($"Initializing {ConfigurationManager.SimpleConfigFile}.");
 
                     CreateEntry(file, "Crow");
                     CreateEntry(file, "FireFlies");
@@ -63,11 +68,17 @@ namespace Valheim.SpawnThat.PreConfigured
             }
         }
 
-        private static void CreateEntry(ConfigFile file, string creaturePrefab)
+        private static void CreateEntry(ConfigFile file, string prefabName)
         {
-            var greydwarf = new SimpleConfig();
-            greydwarf.PrefabName.DefaultValue = creaturePrefab;
-            greydwarf.PrefabName.Bind(file, creaturePrefab, nameof(SimpleConfig.PrefabName));
+            var config = new SimpleConfig();
+
+            var entryType = typeof(IConfigurationEntry);
+
+            foreach(var field in typeof(SimpleConfig).GetFields().Where(x => entryType.IsAssignableFrom(x.FieldType)))
+            {
+                var entry = (field.GetValue(config) as IConfigurationEntry);
+                entry.Bind(file, prefabName, field.Name);
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
-using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner

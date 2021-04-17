@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Configuration.ConfigTypes;
+using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Debugging;
 using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem;
@@ -16,20 +17,9 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem
         private const string FileNamePre = "world_spawners_pre_changes.txt";
         private const string FileNamePost = "world_spawners_post_changes.txt";
 
-        internal static SpawnSystemConfigurationAdvanced Configs = null;
-
         internal static bool FirstApplication = true;
 
-        internal static Dictionary<string, SimpleConfig> SimpleConfigTable = null;
-
-        static SpawnSystemPatch()
-        {
-            StateResetter.Subscribe(() =>
-            {
-                Configs = null;
-                SimpleConfigTable = null;
-            });
-        }
+        private static SpawnSystemConfigurationFile Config => ConfigurationManager.SpawnSystemConfig;
 
         private static void Postfix(SpawnSystem __instance, Heightmap ___m_heightmap, ZNetView ___m_nview)
         {
@@ -41,22 +31,26 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem
                 SpawnDataFileDumper.WriteToFile(__instance.m_spawners, FileNamePre);
             }
 
-            if (Configs == null)
-            {
-                Configs = ConfigurationManager.SpawnSystemConfig;
-                SimpleConfigTable = ConfigurationManager.SimpleConfig.Where(x => x.Enable.Value).ToDictionary(x => x.PrefabName.Value.Trim().ToUpper());
-            }
-
             if (ConfigurationManager.GeneralConfig.ClearAllExisting?.Value == true)
             {
                 Log.LogTrace($"Clearing spawners from spawn system: {spawnerPos}");
                 __instance.m_spawners.Clear();
             }
 
-            if ((Configs.Sections?.Values?.Count ?? 0) > 0)
+            //SpawnSystem config is only expected to have a single first layer, namely "WorldSpawner", so we just grab the first entry.
+            var spawnSystemConfigs = ConfigurationManager
+                .SpawnSystemConfig?
+                .Subsections? //[*]
+                .Values?
+                .FirstOrDefault()?
+                .Subsections?//[WorldSpawner.*]
+                .Values;
+
+
+            if ((spawnSystemConfigs?.Count ?? 0) > 0)
             {
                 //TODO: Clean up some of these extractions, too many copies
-                foreach (var spawnConfig in Configs.Sections.Values.OrderBy(x => x.Index))
+                foreach (var spawnConfig in spawnSystemConfigs.OrderBy(x => x.Index))
                 {
                     var distance = spawnerPos.magnitude;
 
@@ -65,10 +59,35 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem
                         Log.LogTrace($"Ignoring world config {spawnConfig.Name} due to distance less than min.");
                         continue;
                     }
+                    
                     if(spawnConfig.ConditionDistanceToCenterMax.Value > 0 && distance > spawnConfig.ConditionDistanceToCenterMax.Value)
                     {
                         Log.LogTrace($"Ignoring world config {spawnConfig.Name} due to distance greater than max.");
                         continue;
+                    }
+
+                    if(!string.IsNullOrEmpty(spawnConfig.RequiredNotGlobalKey))
+                    {
+                        var requiredNotKeys = spawnConfig.RequiredNotGlobalKey.Value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                        if (requiredNotKeys.Length > 0)
+                        {
+                            bool foundNotRequiredKey = false;
+
+                            foreach (var key in requiredNotKeys)
+                            {
+                                if (ZoneSystem.instance.GetGlobalKey(key.Trim()))
+                                {
+                                    foundNotRequiredKey = true;
+                                    break;
+                                }
+                            }
+                            if(foundNotRequiredKey)
+                            {
+                                Log.LogTrace($"Ignoring world config {spawnConfig.Name} due to finding a global key from {nameof(spawnConfig.RequiredNotGlobalKey)}.");
+                                continue;
+                            }
+                        }
                     }
 
                     var day = EnvMan.instance.GetDay(ZNet.instance.GetTimeSeconds());
@@ -94,16 +113,18 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem
                 }
             }
 
-            if (SimpleConfigTable != null && SimpleConfigTable.Count > 0)
+            var simpleConfigs = ConfigurationManager.SimpleConfig?.Subsections;
+
+            if (simpleConfigs is not null && simpleConfigs.Count > 0)
             {
                 foreach (var spawner in __instance.m_spawners)
                 {
                     var name = spawner.m_prefab.name;
                     var cleanedName = name.Trim().ToUpper();
 
-                    if (SimpleConfigTable.TryGetValue(cleanedName, out SimpleConfig simpleConfig))
+                    if (simpleConfigs.TryGetValue(cleanedName, out SimpleConfig simpleConfig))
                     {
-                        Log.LogDebug($"Found and applying simple config {simpleConfig.GroupName} for spawner of {name}");
+                        Log.LogDebug($"Found and applying simple config {simpleConfig.SectionKey} for spawner of {name}");
 
                         spawner.m_maxSpawned = (int)Math.Round(spawner.m_maxSpawned * simpleConfig.SpawnMaxMultiplier.Value);
                         spawner.m_groupSizeMin = (int)Math.Round(spawner.m_groupSizeMin * simpleConfig.GroupSizeMinMultiplier.Value);

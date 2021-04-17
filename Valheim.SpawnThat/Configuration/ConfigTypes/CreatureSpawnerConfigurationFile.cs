@@ -1,15 +1,28 @@
 ﻿using System;
-using Valheim.SpawnThat.ConfigurationCore;
+using Valheim.SpawnThat.Core.Configuration;
 
-namespace Valheim.SpawnThat.ConfigurationTypes
+namespace Valheim.SpawnThat.Configuration.ConfigTypes
 {
     [Serializable]
-    public class CreatureSpawnerConfigurationAdvanced : ConfigurationGroup<CreatureSpawnerConfig>
+    public class CreatureSpawnerConfigurationFile : ConfigWithSubsections<CreatureLocationConfig>, IConfigFile
     {
+        protected override CreatureLocationConfig InstantiateSubsection(string subsectionName)
+        {
+            return new CreatureLocationConfig();
+        }
     }
 
     [Serializable]
-    public class  CreatureSpawnerConfig : ConfigurationSection
+    public class CreatureLocationConfig : ConfigWithSubsections<CreatureSpawnerConfig>
+    {
+        protected override CreatureSpawnerConfig InstantiateSubsection(string subsectionName)
+        {
+            return new CreatureSpawnerConfig();
+        }
+    }
+
+    [Serializable]
+    public class CreatureSpawnerConfig : Config
     {
         public ConfigurationEntry<string> PrefabName = new ConfigurationEntry<string>("", "PrefabName of entity to spawn.");
 

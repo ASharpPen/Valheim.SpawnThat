@@ -1,11 +1,11 @@
 ﻿using BepInEx;
 using HarmonyLib;
-using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat
 {
-    [BepInPlugin("asharppen.valheim.spawn_that", "Spawn That!", "0.5.1")]
+    [BepInPlugin("asharppen.valheim.spawn_that", "Spawn That!", "0.6.0")]
     public class SpawnThatPlugin : BaseUnityPlugin
     {        
         // Awake is called once when both the game and the plug-in are loaded
@@ -13,7 +13,7 @@ namespace Valheim.SpawnThat
         {
             Log.Logger = Logger;
 
-            ConfigurationManager.LoadAllConfigurations();
+            ConfigurationManager.GeneralConfig = ConfigurationManager.LoadGeneral();
 
             new Harmony("mod.spawn_that").PatchAll();
         }

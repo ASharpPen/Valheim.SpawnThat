@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
-using Valheim.SpawnThat.ConfigurationCore;
-using Valheim.SpawnThat.ConfigurationTypes;
+using Valheim.SpawnThat.Configuration;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
 {
@@ -29,7 +28,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
         private static void CacheRoom(Room component)
         {
 #if !DEBUG
-            if(ConfigurationManager.CreatureSpawnerConfig.Count == 0)
+            if((ConfigurationManager.CreatureSpawnerConfig?.Subsections?.Count ?? 0) == 0)
             {
                 //Skip if we have no spawner configs to actually use the rooms for.
                 return;
