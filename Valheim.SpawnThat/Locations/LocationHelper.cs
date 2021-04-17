@@ -58,9 +58,12 @@ namespace Valheim.SpawnThat.Locations
                 }
             }
 
-            if(_simpleLocationsByZone.TryGetValue(zoneId, out SimpleLocation location))
+            if (_simpleLocationsByZone is not null)
             {
-                return location;
+                if (_simpleLocationsByZone.TryGetValue(zoneId, out SimpleLocation location))
+                {
+                    return location;
+                }
             }
 
             return null;

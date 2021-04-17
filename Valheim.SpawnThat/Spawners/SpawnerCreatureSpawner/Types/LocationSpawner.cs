@@ -26,7 +26,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types
 
             string creatureName = spawner?.m_creaturePrefab?.name?.Trim()?.ToUpperInvariant();
 
-            var config = CreatureSpawnerConfigCache.SearchConfig(locationName, creatureName);
+            var config = ConfigFinder.SearchConfig(locationName, creatureName);
 
             SpawnerModifier.ApplyConfiguration(spawner, config);
         }

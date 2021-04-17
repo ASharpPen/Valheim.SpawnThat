@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Valheim.SpawnThat</RootNamespace>
     <AssemblyName>Valheim.SpawnThat</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -37,15 +37,23 @@
   <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>..\..\..\Games\Steam\steamapps\common\Valheim\BepInEx\core\0Harmony.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="assembly_utils">
       <HintPath>..\..\..\Games\Steam\steamapps\common\Valheim\valheim_Data\Managed\assembly_utils.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="assembly_valheim">
       <HintPath>..\..\..\Games\Steam\steamapps\common\Valheim\valheim_Data\Managed\assembly_valheim.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="BepInEx">
       <HintPath>..\..\..\Games\Steam\steamapps\common\Valheim\BepInEx\core\BepInEx.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CreatureLevelControl">
+      <HintPath>LibsStripped\CreatureLevelControl.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,11 +66,15 @@
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\Games\Steam\steamapps\common\Valheim\valheim_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\Games\Steam\steamapps\common\Valheim\valheim_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConfigTypes\CreatureSpawnerConfigurationFile.cs" />
@@ -88,27 +100,55 @@
     <Compile Include="Locations\ZoneSystemMultiplayerPatch.cs" />
     <Compile Include="Reset\IReset.cs" />
     <Compile Include="Reset\StateResetter.cs" />
-    <Compile Include="Spawners\SpawnerCreatureSpawner\CreatureSpawnerConfigCache.cs" />
-    <Compile Include="Spawners\SpawnerCreatureSpawner\CreatureSpawnerPatch.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\ConfigFinder.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\CreatureSpawnerCache.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\Patches\CreatureSpawnerPatch.cs" />
     <Compile Include="Reset\WorldStartupResetPatch.cs" />
-    <Compile Include="Spawners\SpawnerCreatureSpawner\DungeonGeneratorPatch.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\Patches\DungeonGeneratorPatch.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\Patches\OnSpawnPatch.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\RoomCache.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ISpawnModifier.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\CLLC\SpawnModifierBossAffix.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\CLLC\SpawnModifierExtraEffect.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\CLLC\SpawnModifierInfusion.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\SpawnModifierLoaderCLLC.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\SpawnModificationManager.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\Types\RoomSpawner.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnerModifier.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\Types\LocationSpawner.cs" />
     <Compile Include="Locations\LocationHelper.cs" />
-    <Compile Include="Spawners\SpawnerSpawnSystem\PreSpawnConditionChecker.cs" />
-    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnDataCache.cs" />
-    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnSystemPatch.cs" />
-    <Compile Include="Spawners\SpawnerCreatureSpawner\CreatureSpawnInfoPatch.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\ConditionManager.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionDistanceToCenter.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionGlobalKeys.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionWorldAge.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\IConditionOnSpawn.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\IConditionOnAwake.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\CLLC\ConditionWorldLevel.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\ConditionLoaderCLLC.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Patches\OnSpawnPatch.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Patches\PreSpawnFilterPatch.cs" />
+    <Compile Include="Spawners\Caches\SpawnCache.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnSystemCache.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModificationManager.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Patches\SpawnSystemPatch.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\Patches\CreatureSpawnInfoPatch.cs" />
     <Compile Include="PreConfigured\SimpleConfigAllCreatures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ISpawnModifier.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierBossAffix.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierExtraEffect.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierInfusion.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\SpawnModifierLoaderCLLC.cs" />
     <Compile Include="SpawnThatPlugin.cs" />
-    <Compile Include="Utilities\IHaveVector3.cs" />
-    <Compile Include="Utilities\IPoint.cs" />
-    <Compile Include="Utilities\SearchSpatial.cs" />
-    <Compile Include="Utilities\SpatialListExtensions.cs" />
+    <Compile Include="Utilities\Spatial\IHaveVector3.cs" />
+    <Compile Include="Utilities\Spatial\IPoint.cs" />
+    <Compile Include="Utilities\Spatial\SearchSpatial.cs" />
+    <Compile Include="Utilities\Spatial\SpatialListExtensions.cs" />
+    <Compile Include="Utilities\Extensions\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <None Include="LibsStripped\CreatureLevelControl.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

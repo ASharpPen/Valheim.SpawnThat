@@ -4,7 +4,7 @@ using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Debugging;
 
-namespace Valheim.SpawnThat.Reset
+namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Patches
 {
     [HarmonyPatch(typeof(ZoneSystem))]
     public static class ZoneSystemScanPatch

@@ -22,8 +22,20 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
     }
 
     [Serializable]
-    public class SpawnConfiguration : Config
+    public class SpawnConfiguration : ConfigWithSubsections<Config>
     {
+        protected override Config InstantiateSubsection(string subsectionName)
+        {
+            Config newModConfig = null;
+
+            if (subsectionName == SpawnSystemConfigCLLC.ModName.Trim().ToUpperInvariant())
+            {
+                newModConfig = new SpawnSystemConfigCLLC();
+            }
+
+            return newModConfig;
+        }
+
         private int? index = null;
 
         public int Index
@@ -126,5 +138,21 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
         public ConfigurationEntry<float> OceanDepthMax = new ConfigurationEntry<float>(0, "Maximum ocean depth to spawn in. Ignored if min == max.");
 
         #endregion
+    }
+
+    [Serializable]
+    public class SpawnSystemConfigCLLC : Config
+    {
+        public const string ModName = "CreatureLevelAndLootControl";
+
+        public ConfigurationEntry<int> ConditionWorldLevelMin = new ConfigurationEntry<int>(-1, "Minimum CLLC world level for spawn to activate. Negative value disables this condition.");
+
+        public ConfigurationEntry<int> ConditionWorldLevelMax = new ConfigurationEntry<int>(-1, "Maximum CLLC world level for spawn to active. Negative value disables this condition.");
+
+        public ConfigurationEntry<string> SetInfusion = new ConfigurationEntry<string>("", "Assigns the specified infusion to creature spawned. Ignored if empty.");
+
+        public ConfigurationEntry<string> SetExtraEffect = new ConfigurationEntry<string>("", "Assigns the specified effect to creature spawned. Ignored if empty.");
+
+        public ConfigurationEntry<string> SetBossAffix = new ConfigurationEntry<string>("", "Assigns the specified boss affix to creature spawned. Only works for the default 5 bosses. Ignored if empty.");
     }
 }

@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
-using Valheim.SpawnThat.Core;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
+namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
 {
     [HarmonyPatch(typeof(SpawnSystem))]
-    public static class PreSpawnConditionChecker
+    public static class PreSpawnFilterPatch
     {
         private static FieldInfo FieldAnchor = AccessTools.Field(typeof(SpawnSystem.SpawnData), "m_enabled");
-        private static MethodInfo FilterMethod = AccessTools.Method(typeof(PreSpawnConditionChecker), nameof(FilterSpawners), new[] { typeof(SpawnSystem.SpawnData), typeof(bool) });
+        private static MethodInfo FilterMethod = AccessTools.Method(typeof(PreSpawnFilterPatch), nameof(FilterSpawners), new[] { typeof(SpawnSystem.SpawnData), typeof(bool) });
 
         [HarmonyPatch("UpdateSpawnList")]
         [HarmonyTranspiler]
@@ -39,34 +38,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                 return false;
             }
 
-            int day = EnvMan.instance.GetDay(ZNet.instance.GetTimeSeconds());
-
-            List<int> indexesToRemove = new List<int>();
-
-            var cache = SpawnDataCache.Get(spawner);
-
-            if(cache?.Config == null)
-            {
-                return false;
-            }
-
-            if (cache.Config.ConditionWorldAgeDaysMin.Value > 0 && cache.Config.ConditionWorldAgeDaysMin.Value > day)
-            {
-#if DEBUG
-                Log.LogInfo($"Filtering spawner {spawner.m_name} due to world not being old enough.");
-#endif
-                return true;
-            }
-
-            if(cache.Config.ConditionWorldAgeDaysMax.Value > 0 && cache.Config.ConditionWorldAgeDaysMax.Value < day)
-            {
-#if DEBUG
-                Log.LogInfo($"Filtering spawner {spawner.m_name} due to world being too old.");
-#endif
-                return true;
-            }
-
-            return false;
+            return ConditionManager.Instance.FilterOnSpawn(spawner);
         }
     }
 }
