@@ -19,8 +19,6 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem
 
         internal static bool FirstApplication = true;
 
-        private static SpawnSystemConfigurationFile Config => ConfigurationManager.SpawnSystemConfig;
-
         private static void Postfix(SpawnSystem __instance, Heightmap ___m_heightmap, ZNetView ___m_nview)
         {
             var spawnerPos = __instance.transform.position;
@@ -49,48 +47,12 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem
 
             if ((spawnSystemConfigs?.Count ?? 0) > 0)
             {
-                //TODO: Clean up some of these extractions, too many copies
                 foreach (var spawnConfig in spawnSystemConfigs.OrderBy(x => x.Index))
                 {
-                    var distance = spawnerPos.magnitude;
-
-                    if(distance < spawnConfig.ConditionDistanceToCenterMin.Value)
+                    if(ConditionManager.Instance.FilterOnAwake(__instance, spawnConfig))
                     {
-                        Log.LogTrace($"Ignoring world config {spawnConfig.Name} due to distance less than min.");
                         continue;
                     }
-                    
-                    if(spawnConfig.ConditionDistanceToCenterMax.Value > 0 && distance > spawnConfig.ConditionDistanceToCenterMax.Value)
-                    {
-                        Log.LogTrace($"Ignoring world config {spawnConfig.Name} due to distance greater than max.");
-                        continue;
-                    }
-
-                    if(!string.IsNullOrEmpty(spawnConfig.RequiredNotGlobalKey))
-                    {
-                        var requiredNotKeys = spawnConfig.RequiredNotGlobalKey.Value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-
-                        if (requiredNotKeys.Length > 0)
-                        {
-                            bool foundNotRequiredKey = false;
-
-                            foreach (var key in requiredNotKeys)
-                            {
-                                if (ZoneSystem.instance.GetGlobalKey(key.Trim()))
-                                {
-                                    foundNotRequiredKey = true;
-                                    break;
-                                }
-                            }
-                            if(foundNotRequiredKey)
-                            {
-                                Log.LogTrace($"Ignoring world config {spawnConfig.Name} due to finding a global key from {nameof(spawnConfig.RequiredNotGlobalKey)}.");
-                                continue;
-                            }
-                        }
-                    }
-
-                    var day = EnvMan.instance.GetDay(ZNet.instance.GetTimeSeconds());
 
                     if (spawnConfig.Index < __instance.m_spawners.Count && !ConfigurationManager.GeneralConfig.AlwaysAppend.Value)
                     {

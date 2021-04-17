@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Valheim.SpawnThat</RootNamespace>
     <AssemblyName>Valheim.SpawnThat</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -46,6 +46,11 @@
     </Reference>
     <Reference Include="BepInEx">
       <HintPath>..\..\..\Games\Steam\steamapps\common\Valheim\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="CreatureLevelControlAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>LibsStripped\CreatureLevelControlAPI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -97,7 +102,13 @@
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnerModifier.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\Types\LocationSpawner.cs" />
     <Compile Include="Locations\LocationHelper.cs" />
-    <Compile Include="Spawners\SpawnerSpawnSystem\PreSpawnConditionChecker.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\ConditionManager.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionDistanceToCenter.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionGlobalKeys.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionWorldAge.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\IConditionOnSpawn.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\IConditionOnAwake.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\PreSpawnFilterPatch.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnDataCache.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnSystemPatch.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\CreatureSpawnInfoPatch.cs" />
@@ -108,7 +119,10 @@
     <Compile Include="Utilities\IPoint.cs" />
     <Compile Include="Utilities\SearchSpatial.cs" />
     <Compile Include="Utilities\SpatialListExtensions.cs" />
+    <Compile Include="Utilities\StringExtensions.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="LibsStripped\CreatureLevelControlAPI.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
