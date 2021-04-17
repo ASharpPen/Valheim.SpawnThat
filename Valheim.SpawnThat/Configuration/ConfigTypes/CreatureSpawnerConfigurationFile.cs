@@ -22,8 +22,20 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
     }
 
     [Serializable]
-    public class CreatureSpawnerConfig : Config
+    public class CreatureSpawnerConfig : ConfigWithSubsections<Config>
     {
+        protected override Config InstantiateSubsection(string subsectionName)
+        {
+            Config newModConfig = null;
+
+            if (subsectionName == CreatureSpawnerConfigCLLC.ModName.Trim().ToUpperInvariant())
+            {
+                newModConfig = new CreatureSpawnerConfigCLLC();
+            }
+
+            return newModConfig;
+        }
+
         public ConfigurationEntry<string> PrefabName = new ConfigurationEntry<string>("", "PrefabName of entity to spawn.");
 
         public ConfigurationEntry<bool> Enabled = new ConfigurationEntry<bool>(true, "Enable/disable this configuration.");
@@ -67,5 +79,17 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
         //public ConfigurationEntry<string> EffectList = new ConfigurationEntry<string>("", "");
 
         #endregion
+    }
+
+    [Serializable]
+    public class CreatureSpawnerConfigCLLC : Config
+    {
+        public const string ModName = "CreatureLevelAndLootControl";
+
+        public ConfigurationEntry<string> SetInfusion = new ConfigurationEntry<string>("", "Assigns the specified infusion to creature spawned. Ignored if empty.");
+
+        public ConfigurationEntry<string> SetExtraEffect = new ConfigurationEntry<string>("", "Assigns the specified effect to creature spawned. Ignored if empty.");
+
+        public ConfigurationEntry<string> SetBossAffix = new ConfigurationEntry<string>("", "Assigns the specified boss affix to creature spawned. Only works for the default 5 bosses. Ignored if empty.");
     }
 }

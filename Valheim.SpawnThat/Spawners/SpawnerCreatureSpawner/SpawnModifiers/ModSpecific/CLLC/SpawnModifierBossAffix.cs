@@ -6,7 +6,7 @@ using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Configuration;
 using Valheim.SpawnThat.Spawners.Caches;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific.CLLC
+namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.ModSpecific.CLLC
 {
     internal class SpawnModifierBossAffix : ISpawnModifier
     {
@@ -20,16 +20,16 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecif
             }
         }
 
-        public void Modify(GameObject spawn, SpawnSystem.SpawnData spawner, SpawnConfiguration spawnerConfig)
+        public void Modify(GameObject spawn, CreatureSpawnerConfig spawnerConfig)
         {
             if (spawn is null)
             {
                 return;
             }
 
-            if (spawnerConfig.TryGet(SpawnSystemConfigCLLC.ModName, out Config modConfig))
+            if (spawnerConfig.TryGet(CreatureSpawnerConfigCLLC.ModName, out Config modConfig))
             {
-                if (modConfig is SpawnSystemConfigCLLC config && config.SetBossAffix.Value.Length > 0)
+                if (modConfig is CreatureSpawnerConfigCLLC config && config.SetBossAffix.Value.Length > 0)
                 {
                     var character = SpawnCache.GetCharacter(spawn);
 

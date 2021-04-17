@@ -61,14 +61,14 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem.Patches
 
                         Override(spawner, spawnConfig);
 
-                        SpawnDataCache.Set(spawner, spawnConfig);
+                        SpawnSystemCache.Set(spawner, spawnConfig);
                     }
                     else
                     {
                         Log.LogTrace($"Adding new spawner entry {spawnConfig.Name}");
                         var spawner = CreateNewEntry(spawnConfig);
 
-                        SpawnDataCache.Set(spawner, spawnConfig);
+                        SpawnSystemCache.Set(spawner, spawnConfig);
 
                         __instance.m_spawners.Add(spawner);
                     }

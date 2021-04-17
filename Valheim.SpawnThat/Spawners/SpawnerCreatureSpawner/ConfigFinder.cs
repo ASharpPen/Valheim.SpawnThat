@@ -4,7 +4,7 @@ using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
 {
-    internal static class CreatureSpawnerConfigCache
+    internal static class ConfigFinder
     {
         public static CreatureSpawnerConfig SearchConfig(string locationName, string creatureName)
         {

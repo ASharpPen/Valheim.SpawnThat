@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
+namespace Valheim.SpawnThat.Spawners.Caches
 {
     public static class SpawnCache
     {

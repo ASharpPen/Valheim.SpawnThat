@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
-using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific;
@@ -53,22 +52,14 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 
         public bool FilterOnSpawn(SpawnSystem.SpawnData spawner)
         {
-            var cache = SpawnDataCache.Get(spawner);
+            var cache = SpawnSystemCache.Get(spawner);
 
             if (cache?.Config == null)
             {
                 return false;
             }
 
-            var result = OnSpawnConditions.Any(x => x?.ShouldFilter(spawner, cache.Config) ?? false);
-
-#if DEBUG
-            if (!result)
-            {
-                Log.LogDebug($"Allowing spawner config for id: {spawner.GetHashCode()}");
-            }
-#endif
-            return result;
+            return OnSpawnConditions.Any(x => x?.ShouldFilter(spawner, cache.Config) ?? false);
         }
     }
 }

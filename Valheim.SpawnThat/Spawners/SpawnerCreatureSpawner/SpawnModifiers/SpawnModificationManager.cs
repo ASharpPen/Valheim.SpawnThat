@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
+using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Reset;
-using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers;
-using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific;
+using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.ModSpecific;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
+namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers
 {
     public class SpawnModificationManager
     {
@@ -33,11 +37,9 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.Infusion);
         }
 
-        public void ApplyModifiers(GameObject spawn, SpawnSystem.SpawnData spawner)
+        public void ApplyModifiers(GameObject spawn, CreatureSpawnerConfig config)
         {
-            var spawnData = SpawnSystemCache.Get(spawner);
-
-            if (spawnData?.Config is null)
+            if (config is null)
             {
                 Log.LogTrace($"Found no config for {spawn}.");
                 return;
@@ -45,11 +47,11 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 
             Log.LogTrace($"Applying modifiers to spawn {spawn.name}");
 
-            foreach(var modifier in SpawnModifiers)
+            foreach (var modifier in SpawnModifiers)
             {
-                if(modifier is not null)
+                if (modifier is not null)
                 {
-                    modifier.Modify(spawn, spawner, spawnData.Config);
+                    modifier.Modify(spawn, config);
                 }
             }
         }

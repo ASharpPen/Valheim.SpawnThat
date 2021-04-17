@@ -7,13 +7,13 @@ using Valheim.SpawnThat.Reset;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 {
-    internal class SpawnDataCache
+    internal class SpawnSystemCache
     {
-        public static ConditionalWeakTable<SpawnSystem.SpawnData, SpawnDataCache> SpawnSystemTable = new ConditionalWeakTable<SpawnSystem.SpawnData, SpawnDataCache>();
+        public static ConditionalWeakTable<SpawnSystem.SpawnData, SpawnSystemCache> SpawnSystemTable = new ConditionalWeakTable<SpawnSystem.SpawnData, SpawnSystemCache>();
 
-        public static SpawnDataCache Get(SpawnSystem.SpawnData spawner)
+        public static SpawnSystemCache Get(SpawnSystem.SpawnData spawner)
         {
-            if (SpawnSystemTable.TryGetValue(spawner, out SpawnDataCache cache))
+            if (SpawnSystemTable.TryGetValue(spawner, out SpawnSystemCache cache))
             {
                 return cache;
             }
@@ -21,7 +21,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
             return null;
         }
 
-        public static SpawnDataCache Set(SpawnSystem.SpawnData spawner, SpawnConfiguration spawnConfig)
+        public static SpawnSystemCache Set(SpawnSystem.SpawnData spawner, SpawnConfiguration spawnConfig)
         {
             var cache = SpawnSystemTable.GetOrCreateValue(spawner);
             cache.Config = spawnConfig;
