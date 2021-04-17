@@ -117,18 +117,26 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\IConditionOnAwake.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\CLLC\ConditionWorldLevel.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\ConditionLoaderCLLC.cs" />
-    <Compile Include="Spawners\SpawnerSpawnSystem\PreSpawnFilterPatch.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Patches\OnSpawnPatch.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Patches\PreSpawnFilterPatch.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnCache.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnDataCache.cs" />
-    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnSystemPatch.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModificationManager.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Patches\SpawnSystemPatch.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\CreatureSpawnInfoPatch.cs" />
     <Compile Include="PreConfigured\SimpleConfigAllCreatures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ISpawnModifier.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierBossAffix.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierExtraEffect.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierInfusion.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\SpawnModifierLoaderCLLC.cs" />
     <Compile Include="SpawnThatPlugin.cs" />
-    <Compile Include="Utilities\IHaveVector3.cs" />
-    <Compile Include="Utilities\IPoint.cs" />
-    <Compile Include="Utilities\SearchSpatial.cs" />
-    <Compile Include="Utilities\SpatialListExtensions.cs" />
-    <Compile Include="Utilities\StringExtensions.cs" />
+    <Compile Include="Utilities\Spatial\IHaveVector3.cs" />
+    <Compile Include="Utilities\Spatial\IPoint.cs" />
+    <Compile Include="Utilities\Spatial\SearchSpatial.cs" />
+    <Compile Include="Utilities\Spatial\SpatialListExtensions.cs" />
+    <Compile Include="Utilities\Extensions\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

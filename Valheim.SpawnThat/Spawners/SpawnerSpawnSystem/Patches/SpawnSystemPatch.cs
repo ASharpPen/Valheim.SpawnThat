@@ -9,7 +9,7 @@ using Valheim.SpawnThat.Debugging;
 using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem;
 
-namespace Valheim.SpawnThat.SpawnerSpawnSystem
+namespace Valheim.SpawnThat.SpawnerSpawnSystem.Patches
 {
     [HarmonyPatch(typeof(SpawnSystem), "Awake")]
     public static class SpawnSystemPatch

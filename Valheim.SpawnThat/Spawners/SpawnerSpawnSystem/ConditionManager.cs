@@ -60,7 +60,15 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                 return false;
             }
 
-            return OnSpawnConditions.Any(x => x?.ShouldFilter(spawner, cache.Config) ?? false);
+            var result = OnSpawnConditions.Any(x => x?.ShouldFilter(spawner, cache.Config) ?? false);
+
+#if DEBUG
+            if (!result)
+            {
+                Log.LogDebug($"Allowing spawner config for id: {spawner.GetHashCode()}");
+            }
+#endif
+            return result;
         }
     }
 }

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
-using Valheim.SpawnThat.Core;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
+namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
 {
     [HarmonyPatch(typeof(SpawnSystem))]
     public static class PreSpawnFilterPatch
