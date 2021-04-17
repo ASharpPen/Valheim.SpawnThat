@@ -5,6 +5,7 @@ using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat
 {
+    [BepInDependency("org.bepinex.plugins.creaturelevelcontrol", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInPlugin("asharppen.valheim.spawn_that", "Spawn That!", "0.6.0")]
     public class SpawnThatPlugin : BaseUnityPlugin
     {        

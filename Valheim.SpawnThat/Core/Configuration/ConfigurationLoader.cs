@@ -53,7 +53,7 @@ namespace Valheim.SpawnThat.Core.Configuration
 
             foreach (var sectionHead in sectionHeaders)
             {
-                Log.LogTrace($"Loading config entries for {sectionHead}.");
+                Log.LogTrace($"Loading config entries for '{sectionHead}'.");
 
                 //Identify header components
                 var components = sectionHead.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);

@@ -19,7 +19,7 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem
 
         internal static bool FirstApplication = true;
 
-        private static void Postfix(SpawnSystem __instance, Heightmap ___m_heightmap, ZNetView ___m_nview)
+        private static void Postfix(SpawnSystem __instance, Heightmap ___m_heightmap)
         {
             var spawnerPos = __instance.transform.position;
             Log.LogTrace($"Postfixing SpawnSystem Awake at pos {spawnerPos}");

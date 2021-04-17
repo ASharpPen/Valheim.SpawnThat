@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
+using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions;
+using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 {
@@ -39,12 +41,14 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
             OnSpawnConditions.Add(ConditionWorldAge.Instance);
             OnSpawnConditions.Add(ConditionGlobalKeys.Instance);
 
+            OnSpawnConditions.Add(ConditionLoaderCLLC.ConditionWorldLevel);
+
             #endregion
         }
 
         public bool FilterOnAwake(SpawnSystem spawner, SpawnConfiguration config)
         {
-            return OnAwakeConditions.Any(x => x.ShouldFilter(spawner, config));
+            return OnAwakeConditions.Any(x => x?.ShouldFilter(spawner, config) ?? false);
         }
 
         public bool FilterOnSpawn(SpawnSystem.SpawnData spawner)
@@ -56,7 +60,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                 return false;
             }
 
-            return OnSpawnConditions.Any(x => x.ShouldFilter(spawner, cache.Config));
+            return OnSpawnConditions.Any(x => x?.ShouldFilter(spawner, cache.Config) ?? false);
         }
     }
 }
