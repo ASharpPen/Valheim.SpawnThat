@@ -98,6 +98,7 @@
     <Compile Include="Configuration\Multiplayer\ConfigMultiplayerPatch.cs" />
     <Compile Include="Configuration\Multiplayer\ConfigPackage.cs" />
     <Compile Include="Locations\ZoneSystemMultiplayerPatch.cs" />
+    <Compile Include="Locations\ZoneSystemStartPatch.cs" />
     <Compile Include="Reset\IReset.cs" />
     <Compile Include="Reset\StateResetter.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\ConfigFinder.cs" />
