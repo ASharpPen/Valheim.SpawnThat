@@ -72,6 +72,8 @@ namespace Valheim.SpawnThat.PreConfigured
         {
             var config = new SimpleConfig();
 
+            config.PrefabName.DefaultValue = prefabName;
+
             var entryType = typeof(IConfigurationEntry);
 
             foreach(var field in typeof(SimpleConfig).GetFields().Where(x => entryType.IsAssignableFrom(x.FieldType)))
