@@ -398,7 +398,7 @@ SetPatrolPoint = true
 
 # Mod specific configuration
 
-These are implemented soft-dependent, meaning if the mod is not present, the configuration will simply do nothing.
+These are implemented soft-dependant, meaning if the mod is not present, the configuration will simply do nothing.
 
 ## Creature Level and Loot Control
 
@@ -559,6 +559,7 @@ For those who got this far: An additional "feature" hint. The game does not care
 
 Changelog:
 - v0.7.1 
+	- Fixed simple config being generated with wrong prefab-names.
 	- Additional error handling.
 	- Changed location info from server to client slightly, to hopefully stop issues with local spawners.
 - v0.7.0 
