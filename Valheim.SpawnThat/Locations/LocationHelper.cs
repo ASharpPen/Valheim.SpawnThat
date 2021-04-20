@@ -1,16 +1,14 @@
-﻿using HarmonyLib;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Reset;
 
 namespace Valheim.SpawnThat.Locations
 {
-    [HarmonyPatch(typeof(ZoneSystem))]
     public static class LocationHelper
     {
-        private static Dictionary<Vector2i, ZoneSystem.LocationInstance> _locationInstances { get; set; } = null;
-        private static Dictionary<Vector2i, SimpleLocation> _simpleLocationsByZone { get; set; } = null;
+        private static Dictionary<Vector2i, ZoneSystem.LocationInstance> _locationInstances { get; set; }
+        private static Dictionary<Vector2i, SimpleLocation> _simpleLocationsByZone { get; set; }
 
         static LocationHelper()
         {
@@ -19,6 +17,11 @@ namespace Valheim.SpawnThat.Locations
                 _locationInstances = null;
                 _simpleLocationsByZone = null;
             });
+        }
+
+        internal static void SetLocationInstances(Dictionary<Vector2i, ZoneSystem.LocationInstance> locations)
+        {
+            _locationInstances = locations;
         }
 
         internal static void SetLocations(IEnumerable<SimpleLocation> locations)
@@ -43,6 +46,12 @@ namespace Valheim.SpawnThat.Locations
 
         public static SimpleLocation FindLocation(Vector3 position)
         {
+            if(ZoneSystem.instance is null)
+            {
+                Log.LogWarning("Attempting to retrieve location before ZoneSystem is initialized.");
+                return null;
+            }
+
             var zoneId = ZoneSystem.instance.GetZone(position);
 
             if ((_locationInstances?.Count ?? 0) > 0)
@@ -67,13 +76,6 @@ namespace Valheim.SpawnThat.Locations
             }
 
             return null;
-        }
-
-        [HarmonyPatch("Start")]
-        [HarmonyPostfix]
-        private static void LoadLocations(Dictionary<Vector2i, ZoneSystem.LocationInstance> ___m_locationInstances)
-        {
-            _locationInstances = ___m_locationInstances;
         }
     }
 }

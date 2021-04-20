@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Locations;
 
@@ -8,27 +10,43 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types
     {
         public static void ApplyConfig(CreatureSpawner spawner)
         {
-            var spawnerPos = spawner.transform.position;
-
-            var prefabName = spawner.m_creaturePrefab?.name;
-
-            if (string.IsNullOrWhiteSpace(prefabName))
+            CreatureSpawnerConfig config;
+            try
             {
+                var spawnerPos = spawner.transform.position;
+
+                var prefabName = spawner.m_creaturePrefab?.name;
+
+                if (string.IsNullOrWhiteSpace(prefabName))
+                {
+                    return;
+                }
+
+                var locationName = FindLocationName(spawnerPos);
+
+                if (string.IsNullOrEmpty(locationName))
+                {
+                    return;
+                }
+
+                string creatureName = spawner?.m_creaturePrefab?.name?.Trim()?.ToUpperInvariant();
+
+                config = ConfigFinder.SearchConfig(locationName, creatureName);
+            }
+            catch (Exception e)
+            {
+                Log.LogWarning($"Error while attempting to find config for local {spawner}: " + e.Message);
                 return;
             }
 
-            var locationName = FindLocationName(spawnerPos);
-
-            if(string.IsNullOrEmpty(locationName))
+            try
             {
-                return;
+                SpawnerModifier.ApplyConfiguration(spawner, config);
             }
-
-            string creatureName = spawner?.m_creaturePrefab?.name?.Trim()?.ToUpperInvariant();
-
-            var config = ConfigFinder.SearchConfig(locationName, creatureName);
-
-            SpawnerModifier.ApplyConfiguration(spawner, config);
+            catch(Exception e)
+            {
+                Log.LogWarning($"Error while attempting to apply config to local spawner {spawner}: " + e.Message);
+            }
         }
 
         private static string FindLocationName(Vector3 pos)

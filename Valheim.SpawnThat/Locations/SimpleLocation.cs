@@ -13,7 +13,7 @@ namespace Valheim.SpawnThat.Locations
     }
 
     [Serializable]
-    internal struct SimpleLocationDTO
+    public struct SimpleLocationDTO
     {
         public int ZonePositionX;
         public int ZonePositionY;

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Reset;
 
 namespace Valheim.SpawnThat.Locations
 {
@@ -14,26 +15,47 @@ namespace Valheim.SpawnThat.Locations
     {
 		private static FieldInfo _zoneSystemLocations = AccessTools.Field(typeof(ZoneSystem), "m_locationInstances");
 
+		private static bool HaveReceivedLocations = false;
+
+		static ZoneSystemMultiplayerPatch()
+		{
+			StateResetter.Subscribe(() =>
+			{
+				HaveReceivedLocations = false;
+			});
+		}
+
 		[HarmonyPatch("OnNewConnection")]
         [HarmonyPostfix]
         private static void TransferLocationData(ZNet __instance, ZNetPeer peer)
         {
 			if (ZNet.instance.IsServer())
 			{
-				Log.LogDebug("Sending locations to " + peer.m_playerName);
-				SendPackage(peer.m_rpc);
+				Log.LogDebug("Registering server RPC for sending location data on request from client.");
+				peer.m_rpc.Register(nameof(RPC_RequestLocationsSpawnThat), new ZRpc.RpcMethod.Method(RPC_RequestLocationsSpawnThat));
 			}
 			else
 			{
 				Log.LogDebug("Registering client RPC for receiving location data from server.");
 				peer.m_rpc.Register<ZPackage>(nameof(RPC_ReceiveLocationsSpawnThat), new Action<ZRpc, ZPackage>(RPC_ReceiveLocationsSpawnThat));
+
+				Log.LogDebug("Requesting location data from server.");
+				peer.m_rpc.Invoke(nameof(RPC_RequestLocationsSpawnThat));
 			}
 		}
 
-		private static void SendPackage(ZRpc rpc)
+		private static void RPC_RequestLocationsSpawnThat(ZRpc rpc)
 		{
 			try
 			{
+				if(!ZNet.instance.IsServer())
+                {
+					Log.LogWarning("Non-server instance received request for location data. Ignoring request.");
+					return;
+				}
+
+				Log.LogInfo($"Sending location data.");
+
 				ZPackage package = new ZPackage();
 
 				var locations = _zoneSystemLocations.GetValue(ZoneSystem.instance) as Dictionary<Vector2i, ZoneSystem.LocationInstance>;
@@ -41,6 +63,7 @@ namespace Valheim.SpawnThat.Locations
 				if(locations is null)
                 {
 					Log.LogWarning("Unable to get locations from zonesystem to send to client.");
+					return;
                 }
 
 				package.Write(SerializeLocationInfo(locations));
@@ -62,11 +85,18 @@ namespace Valheim.SpawnThat.Locations
 			Log.LogDebug("Received locations package.");
 			try
 			{
+				if(HaveReceivedLocations)
+                {
+					Log.LogDebug("Already received locations previously. Skipping.");
+					return;
+                }
+
 				var serialized = pkg.ReadByteArray();
 
                 LoadLocationInfo(serialized);
+				HaveReceivedLocations = true;
 
-                Log.LogDebug("Successfully received locations package.");
+				Log.LogDebug("Successfully received locations package.");
             }
 			catch (Exception e)
 			{
