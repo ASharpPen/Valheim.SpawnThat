@@ -43,7 +43,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.ModSp
                         return;
                     }
 
-                    if (Enum.TryParse(config.SetBossAffix, true, out BossAffix bossAffix))
+                    if (Enum.TryParse(config.SetBossAffix.Value, true, out BossAffix bossAffix))
                     {
                         Log.LogTrace($"Setting boss affix {bossAffix} for {spawn.name}.");
                         CreatureLevelControl.API.SetAffixBoss(character, bossAffix);

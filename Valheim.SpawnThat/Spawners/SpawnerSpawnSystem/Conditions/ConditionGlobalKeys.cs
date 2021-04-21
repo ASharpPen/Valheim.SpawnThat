@@ -18,7 +18,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 
         public bool ShouldFilter(SpawnSystem.SpawnData spawner, SpawnConfiguration config)
         {
-            if (!string.IsNullOrEmpty(config.RequiredNotGlobalKey))
+            if (!string.IsNullOrEmpty(config.RequiredNotGlobalKey?.Value))
             {
                 var requiredNotKeys = config.RequiredNotGlobalKey.Value.SplitByComma();
 

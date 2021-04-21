@@ -64,7 +64,7 @@ namespace Valheim.SpawnThat.Configuration
 
             ConfigFile configFile = new ConfigFile(configPath, true);
 
-            if (GeneralConfig?.StopTouchingMyConfigs?.Value == true) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs;
+            if (GeneralConfig?.StopTouchingMyConfigs?.Value == true) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs.Value;
 
             var config = ConfigurationLoader.LoadConfiguration<SimpleConfigurationFile>(configFile);
             Log.LogDebug("Finished loading simple configurations");

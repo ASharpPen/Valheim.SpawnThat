@@ -24,13 +24,13 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific.C
                 { 
                     int worldLevel = CreatureLevelControl.API.GetWorldLevel();
 
-                    if (config.ConditionWorldLevelMin >= 0 && worldLevel < config.ConditionWorldLevelMin)
+                    if (config.ConditionWorldLevelMin.Value >= 0 && worldLevel < config.ConditionWorldLevelMin.Value)
                     {
                         Log.LogTrace($"Filtering spawner {spawner.m_name} due to CLLC world level being too low. {worldLevel} < {config.ConditionWorldLevelMin}.");
                         return true;
                     }
 
-                    if (config.ConditionWorldLevelMax >= 0 && worldLevel > config.ConditionWorldLevelMax)
+                    if (config.ConditionWorldLevelMax.Value >= 0 && worldLevel > config.ConditionWorldLevelMax.Value)
                     {
                         Log.LogTrace($"Filtering spawner {spawner.m_name} due to CLLC world level being too high. {worldLevel} > {config.ConditionWorldLevelMax}.");
                         return true;

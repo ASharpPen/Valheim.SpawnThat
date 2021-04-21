@@ -8,6 +8,7 @@ using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Debugging;
 using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem;
+using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.SpawnerSpawnSystem.Patches
 {
@@ -21,15 +22,25 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem.Patches
 
         private static void Postfix(SpawnSystem __instance, Heightmap ___m_heightmap)
         {
+            if (__instance.transform?.position is null)
+            {
+                return;
+            }
+
             var spawnerPos = __instance.transform.position;
             Log.LogTrace($"Postfixing SpawnSystem Awake at pos {spawnerPos}");
 
-            if (ConfigurationManager.GeneralConfig.WriteSpawnTablesToFileBeforeChanges.Value && FirstApplication)
+            if(__instance.m_spawners is null)
+            {
+                __instance.m_spawners = new List<SpawnSystem.SpawnData>();
+            }
+
+            if (ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileBeforeChanges?.Value == true && FirstApplication)
             {
                 SpawnDataFileDumper.WriteToFile(__instance.m_spawners, FileNamePre);
             }
 
-            if (ConfigurationManager.GeneralConfig.ClearAllExisting?.Value == true)
+            if (ConfigurationManager.GeneralConfig?.ClearAllExisting?.Value == true)
             {
                 Log.LogTrace($"Clearing spawners from spawn system: {spawnerPos}");
                 __instance.m_spawners.Clear();
@@ -49,12 +60,18 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem.Patches
             {
                 foreach (var spawnConfig in spawnSystemConfigs.OrderBy(x => x.Index))
                 {
+                    if(string.IsNullOrWhiteSpace(spawnConfig.PrefabName?.Value))
+                    {
+                        Log.LogWarning($"PrefabName of config {spawnConfig.SectionKey} is empty. Skipping config.");
+                        continue;
+                    }
+
                     if(ConditionManager.Instance.FilterOnAwake(__instance, spawnConfig))
                     {
                         continue;
                     }
 
-                    if (spawnConfig.Index < __instance.m_spawners.Count && !ConfigurationManager.GeneralConfig.AlwaysAppend.Value)
+                    if (spawnConfig.Index < __instance.m_spawners.Count && ConfigurationManager.GeneralConfig?.AlwaysAppend?.Value == false)
                     {
                         Log.LogTrace($"Overriding world spawner entry {spawnConfig.Index}");
                         var spawner = __instance.m_spawners[spawnConfig.Index];
@@ -81,13 +98,16 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem.Patches
             {
                 foreach (var spawner in __instance.m_spawners)
                 {
+                    if(string.IsNullOrWhiteSpace(spawner.m_prefab?.name))
+                    {
+                        continue;
+                    }
+
                     var name = spawner.m_prefab.name;
                     var cleanedName = name.Trim().ToUpper();
 
                     if (simpleConfigs.TryGetValue(cleanedName, out SimpleConfig simpleConfig))
                     {
-                        Log.LogDebug($"Found and applying simple config {simpleConfig.SectionKey} for spawner of {name}");
-
                         spawner.m_maxSpawned = (int)Math.Round(spawner.m_maxSpawned * simpleConfig.SpawnMaxMultiplier.Value);
                         spawner.m_groupSizeMin = (int)Math.Round(spawner.m_groupSizeMin * simpleConfig.GroupSizeMinMultiplier.Value);
                         spawner.m_groupSizeMax = (int)Math.Round(spawner.m_groupSizeMax * simpleConfig.GroupSizeMaxMultiplier.Value);
@@ -98,7 +118,7 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem.Patches
                 }
             }
             
-            if (ConfigurationManager.GeneralConfig.WriteSpawnTablesToFileAfterChanges.Value && FirstApplication)
+            if (ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileAfterChanges?.Value == true && FirstApplication)
             {
                 SpawnDataFileDumper.WriteToFile(__instance.m_spawners, FileNamePost);
             }
@@ -114,6 +134,11 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem.Patches
         /// </summary>
         public static void DisableOutsideBiome(Heightmap heightmap, List<SpawnSystem.SpawnData> spawners)
         {
+            if(spawners is null)
+            {
+                return;
+            }
+
             foreach(var spawner in spawners)
             {
                 if(!spawner.m_enabled)
@@ -139,7 +164,7 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem.Patches
 
             Heightmap.Biome biome = ConvertToBiomeFlag(config);
 
-            var envs = config.RequiredEnvironments?.Value?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)?.ToList();
+            var envs = config.RequiredEnvironments?.Value?.SplitByComma() ?? new List<string>(0);
 
             original.m_name = config.Name.Value;
             original.m_enabled = config.Enabled.Value;
@@ -179,7 +204,7 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem.Patches
 
             Heightmap.Biome biome = ConvertToBiomeFlag(config);
 
-            var envs = config.RequiredEnvironments?.Value?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)?.ToList();
+            var envs = config.RequiredEnvironments?.Value?.SplitByComma() ?? new List<string>(0);
 
             var spawnData = new SpawnSystem.SpawnData
             {                
@@ -223,9 +248,9 @@ namespace Valheim.SpawnThat.SpawnerSpawnSystem.Patches
             //Well, since you bastards were packing enums before, lets return the gesture (not really, <3 you devs!)
             Heightmap.Biome biome = Heightmap.Biome.None;
 
-            var biomeArray = config.Biomes.Value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var biomeArray = config.Biomes?.Value?.SplitByComma() ?? new List<string>(0);
 
-            if (biomeArray.Length == 0)
+            if (biomeArray.Count == 0)
             {
                 //Set all biomes allowed.
                 biome = (Heightmap.Biome)1023;

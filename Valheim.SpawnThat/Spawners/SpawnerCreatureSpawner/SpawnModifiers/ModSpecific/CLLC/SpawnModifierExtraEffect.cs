@@ -38,7 +38,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.ModSp
                         return;
                     }
 
-                    if (Enum.TryParse(config.SetExtraEffect, true, out CreatureExtraEffect extraEffect))
+                    if (Enum.TryParse(config.SetExtraEffect.Value, true, out CreatureExtraEffect extraEffect))
                     {
                         Log.LogTrace($"Setting extra effect {extraEffect} for {spawn.name}.");
                         CreatureLevelControl.API.SetExtraEffectCreature(character, extraEffect);

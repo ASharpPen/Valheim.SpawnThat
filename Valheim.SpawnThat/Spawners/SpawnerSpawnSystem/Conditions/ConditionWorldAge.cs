@@ -19,13 +19,13 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
         {
             int day = EnvMan.instance.GetDay(ZNet.instance.GetTimeSeconds());
 
-            if (config.ConditionWorldAgeDaysMin > 0 && config.ConditionWorldAgeDaysMin > day)
+            if (config.ConditionWorldAgeDaysMin.Value > 0 && config.ConditionWorldAgeDaysMin.Value > day)
             {
                 Log.LogInfo($"Filtering spawner {spawner.m_name} due to world not being old enough.");
                 return true;
             }
 
-            if (config.ConditionWorldAgeDaysMax > 0 && config.ConditionWorldAgeDaysMax < day)
+            if (config.ConditionWorldAgeDaysMax.Value > 0 && config.ConditionWorldAgeDaysMax.Value < day)
             {
                 Log.LogInfo($"Filtering spawner {spawner.m_name} due to world being too old.");
                 return true;
