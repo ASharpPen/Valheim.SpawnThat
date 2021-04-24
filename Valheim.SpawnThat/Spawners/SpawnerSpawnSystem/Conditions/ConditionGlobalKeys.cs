@@ -16,7 +16,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
             }
         }
 
-        public bool ShouldFilter(SpawnSystem.SpawnData spawner, SpawnConfiguration config)
+        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
         {
             if (!string.IsNullOrEmpty(config.RequiredNotGlobalKey?.Value))
             {

@@ -9,6 +9,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 {
     public interface IConditionOnSpawn
     {
-        bool ShouldFilter(SpawnSystem.SpawnData spawner, SpawnConfiguration config);
+        bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config);
     }
 }
