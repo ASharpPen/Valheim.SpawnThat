@@ -415,20 +415,6 @@ SetPatrolPoint = true
 # Setting type: String
 SetFaction = 
 
-## Distance of player to spawner, for player to be included in player based checks such as ConditionNearbyPlayersCarryValue.
-# Setting type: Single
-DistanceToTriggerPlayerConditions = 100
-
-## Checks if nearby players have a combined value in inventory above this condition.
-## Eg. If set to 100, entry will only activate if nearby players have more than 100 worth of values combined.
-# Setting type: Int32
-ConditionNearbyPlayersCarryValue = 0
-
-## Checks if nearby players have any of the listed item prefab names in inventory.
-## Eg. IronScrap, DragonEgg
-# Setting type: String
-ConditionNearbyPlayerCarriesItem =
-
 ```
 
 # Mod specific configuration
