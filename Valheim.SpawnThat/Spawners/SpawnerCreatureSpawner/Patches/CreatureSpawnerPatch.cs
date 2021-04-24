@@ -1,42 +1,29 @@
 ﻿using HarmonyLib;
-using Valheim.SpawnThat.Configuration;
-using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Patches
 {
-    [HarmonyPatch(typeof(CreatureSpawner), "Awake")]
+    [HarmonyPatch(typeof(CreatureSpawner))]
     public static class CreatureSpawnerPatch
     {
-        private static void Postfix(CreatureSpawner __instance)
+        [HarmonyPatch("Awake")]
+        [HarmonyPostfix]
+        private static void SetupConfigsOnAwake(CreatureSpawner __instance)
         {
-            if(!ConfigurationManager.GeneralConfig.EnableLocalSpawner.Value)
+            if (ZNet.instance is null)
             {
-                return;
+                CreatureSpawnerConfigManager.ApplyConfigs(__instance);
             }
-
-            //Identify if spawner is a location based or room based spawner.
-            if (RoomSpawner.TryGetRoom(__instance, out RoomData room))
+            else if (ZNet.instance.IsServer())
             {
-#if DEBUG
-                Log.LogDebug($"Starting modification of room creature spawner {__instance.name} in room {room.Name} at {__instance.transform.position}");
-#endif
-                //Spawner is an a room
-                bool appliedConfig = RoomSpawner.ApplyConfig(__instance, room.Name);
-
-                if(appliedConfig)
-                {
-                    return;
-                }
+                CreatureSpawnerConfigManager.ApplyConfigs(__instance);
             }
+        }
 
-#if DEBUG
-            Log.LogDebug($"Starting modification of location creature spawner {__instance.name} at {__instance.transform.position}");
-#endif
-
-            //Use location lookup to target.
-            LocationSpawner.ApplyConfig(__instance);
-            return;
+        [HarmonyPatch("UpdateSpawner")]
+        [HarmonyPrefix]
+        private static void SetupConfigsOnUpdate(CreatureSpawner __instance)
+        {
+            CreatureSpawnerConfigManager.ApplyConfigsIfMissing(__instance);
         }
     }
 }

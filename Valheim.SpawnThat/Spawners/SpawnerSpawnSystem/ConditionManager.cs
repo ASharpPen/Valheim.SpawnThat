@@ -52,7 +52,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 
         public bool FilterOnSpawn(SpawnSystem.SpawnData spawner)
         {
-            var cache = SpawnSystemCache.Get(spawner);
+            var cache = SpawnSystemConfigCache.Get(spawner);
 
             if (cache?.Config == null)
             {
