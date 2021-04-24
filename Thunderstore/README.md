@@ -1,4 +1,4 @@
-﻿# Spawn That!
+﻿# Spawn That! 
 
 This is an advanced tool for configuring all world spawners.
 
@@ -218,6 +218,9 @@ PrefabName = Deer
 # Setting type: Boolean
 HuntPlayer = false
 
+## Assign a specific faction to spawn. If empty uses default.
+SetFaction = 
+
 ## Maximum entities of type spawned in area.
 # Setting type: Int32
 MaxSpawned = 4
@@ -394,6 +397,9 @@ SpawnInPlayerBase = true
 # Setting type: Boolean
 SetPatrolPoint = true
 
+## Assign a specific faction to spawn. If empty uses default.
+SetFaction = 
+
 ```
 
 # Mod specific configuration
@@ -555,36 +561,51 @@ Additional keys can be created manually through console commands, or by a mod li
 - Crypt
 - SunkenCrypt
 
+## Factions
+- Players
+- AnimalsVeg
+- ForestMonsters
+- Undead
+- Demon
+- MountainMonsters
+- SeaMonsters
+- PlainsMonsters
+- Boss
+
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog:
-- v0.7.1 
+- v0.8.0: 
+	- Added option for assigning faction for world- and local spawner entries.
+	- Changed when configs are applied to spawners, for increased compatibility with mods adding prefabs.
+	- Additional error checks.
+- v0.7.1: 
 	- Fixed simple config being generated with wrong prefab-names.
 	- Additional error handling.
 	- Changed location info from server to client slightly, to hopefully stop issues with local spawners.
-- v0.7.0 
+- v0.7.0: 
 	- Added support for Creature Level and Loot Control (CLLC)
 	- Added CLLC creature effect options for world- and local spawners.
 	- Added CLLC world level condition to world spawners.
-- v0.6.0 
+- v0.6.0: 
 	- Added world spawner condition - RequiredNotGlobalKey
 	- Added support for supplemental world- and local spawner config files.
 	- Local spawner configs now work in multiplayer.
-- v0.5.1 
+- v0.5.1: 
 	- Added a (probably temporary) config to not run local spawner configs, due to issues with multiplayer.
 	- Fixed error message from local spawners.
 	- Removed a couple of pointless warnings.
-- v0.5.0 
+- v0.5.0: 
 	- Added new local spawner defaults to file dumps.
 	- Added condition for world spawners. World age in days.
 	- Added console command for getting current room in which player is standing.
 	- Added configuration for Dungeons, Camps and Villages. All are considered local spawners.
 	- Lots of bug fixes. Spawners should have an easier time having configuration "stick" now.
-- v0.4.0 
+- v0.4.0: 
 	- New condition for world spawners. Distance to center min/max.
 	- Simple config initialized with creatures on file creation by default.
 	- Various attempts at stabilizing and guarding code.
-- v0.3.0 
+- v0.3.0: 
 	- Server-to-client config sync added
-- v0.2.0 
+- v0.2.0: 
 	- Initial release
