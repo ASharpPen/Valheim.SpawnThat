@@ -16,6 +16,11 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Patches
         [HarmonyPostfix]
         private static void ScanLocations(ZoneSystem __instance)
         {
+            if (__instance.m_locations is null)
+            {
+                return;
+            }
+
             if (ConfigurationManager.GeneralConfig?.WriteCreatureSpawnersToFile?.Value == true)
             {
                 CreatureSpawnerFileDumper.WriteToFile(__instance.m_locations);
@@ -33,6 +38,11 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Patches
 #if DEBUG
             Log.LogDebug("Starting CreatureSpawner scan.");
 #endif
+
+            if(___m_rooms is null)
+            {
+                return;
+            }
 
             if(ConfigurationManager.GeneralConfig?.WriteCreatureSpawnersToFile?.Value == true)
             {

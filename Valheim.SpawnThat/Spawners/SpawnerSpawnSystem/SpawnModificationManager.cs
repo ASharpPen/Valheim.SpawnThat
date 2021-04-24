@@ -35,7 +35,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 
         public void ApplyModifiers(GameObject spawn, SpawnSystem.SpawnData spawner)
         {
-            var spawnData = SpawnSystemCache.Get(spawner);
+            var spawnData = SpawnSystemConfigCache.Get(spawner);
 
             if (spawnData?.Config is null)
             {

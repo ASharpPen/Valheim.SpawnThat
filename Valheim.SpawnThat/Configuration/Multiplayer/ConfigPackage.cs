@@ -66,9 +66,9 @@ namespace Valheim.SpawnThat.Configuration.Multiplayer
 
                     Log.LogTrace("Successfully unpacked configs.");
 
+                    Log.LogTrace($"Unpacked general config");
                     Log.LogTrace($"Unpacked {ConfigurationManager.CreatureSpawnerConfig?.Subsections?.Count ?? 0} creature spawner entries");
                     Log.LogTrace($"Unpacked {ConfigurationManager.SpawnSystemConfig?.Subsections?.Values?.FirstOrDefault()?.Subsections?.Count ?? 0} spawn system entries");
-                    Log.LogTrace($"Unpacked general config: {ConfigurationManager.GeneralConfig is not null}");
                     Log.LogTrace($"Unpacked {ConfigurationManager.SimpleConfig?.Subsections?.Count ?? 0} simple entries");
                 }
                 else

@@ -42,6 +42,8 @@ namespace Valheim.SpawnThat.Configuration
             Log.LogInfo("Loading general configurations");
 
             string configPath = Path.Combine(Paths.ConfigPath, GeneralConfigFile);
+
+            ConfigurationLoader.SanitizeSectionHeaders(configPath);
             ConfigFile configFile = new ConfigFile(configPath, true);
 
             var generalConfig = new GeneralConfiguration();
@@ -57,11 +59,13 @@ namespace Valheim.SpawnThat.Configuration
             Log.LogInfo("Loading simple configurations");
 
             string configPath = Path.Combine(Paths.ConfigPath, SimpleConfigFile);
+
             if (!File.Exists(configPath) && GeneralConfig?.InitializeWithCreatures?.Value == true)
             {
                 SimpleConfigAllCreatures.Initialize();
             }
 
+            ConfigurationLoader.SanitizeSectionHeaders(configPath);
             ConfigFile configFile = new ConfigFile(configPath, true);
 
             if (GeneralConfig?.StopTouchingMyConfigs?.Value == true) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs.Value;
@@ -106,6 +110,7 @@ namespace Valheim.SpawnThat.Configuration
         {
             Log.LogDebug($"Loading world spawner configurations from {configPath}.");
 
+            ConfigurationLoader.SanitizeSectionHeaders(configPath);
             var configFile = new ConfigFile(configPath, true);
 
             if (GeneralConfig?.StopTouchingMyConfigs?.Value == true) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs.Value;
@@ -147,6 +152,7 @@ namespace Valheim.SpawnThat.Configuration
         {
             Log.LogDebug($"Loading local spawner configurations from {configPath}.");
 
+            ConfigurationLoader.SanitizeSectionHeaders(configPath);
             var configFile = new ConfigFile(configPath, true);
 
             if (GeneralConfig?.StopTouchingMyConfigs?.Value == true) configFile.SaveOnConfigSet = !GeneralConfig.StopTouchingMyConfigs.Value;
