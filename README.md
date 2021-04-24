@@ -576,6 +576,7 @@ For those who got this far: An additional "feature" hint. The game does not care
 
 Changelog:
 - v0.8.0: 
+	- Added world spawner condition for nearby players carried valuables.
 	- Added option for assigning faction for world- and local spawner entries.
 	- Changed when configs are applied to spawners, for increased compatibility with mods adding prefabs.
 	- Additional error checks.
