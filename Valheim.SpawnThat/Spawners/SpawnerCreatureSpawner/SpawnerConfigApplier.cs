@@ -1,10 +1,10 @@
 ﻿using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers;
+using Valheim.SpawnThat.Spawners.Caches;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
 {
-    internal static class SpawnerModifier
+    internal static class SpawnerConfigApplier
     {
         internal static void ApplyConfiguration(this CreatureSpawner spawner, CreatureSpawnerConfig config)
         {
@@ -19,7 +19,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
             {
                 Log.LogDebug($"Found and applying config for local spawner {spawner.name}");
 
-                CreatureSpawnerCache.Set(spawner, config);
+                CreatureSpawnerConfigCache.Set(spawner, config);
 
                 var prefab = spawner.m_creaturePrefab;
 
@@ -42,6 +42,8 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
                 spawner.m_triggerDistance = config.TriggerDistance.Value;
                 spawner.m_triggerNoise = config.TriggerNoise.Value;
             }
+
+            spawner.SetSuccessfulInit();
         }
     }
 }

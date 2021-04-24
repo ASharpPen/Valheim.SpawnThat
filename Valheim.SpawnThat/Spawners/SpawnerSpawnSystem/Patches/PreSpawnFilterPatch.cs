@@ -9,7 +9,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
     public static class PreSpawnFilterPatch
     {
         private static FieldInfo FieldAnchor = AccessTools.Field(typeof(SpawnSystem.SpawnData), "m_enabled");
-        private static MethodInfo FilterMethod = AccessTools.Method(typeof(PreSpawnFilterPatch), nameof(FilterSpawners), new[] { typeof(SpawnSystem.SpawnData), typeof(bool) });
+        private static MethodInfo FilterMethod = AccessTools.Method(typeof(PreSpawnFilterPatch), nameof(FilterSpawners), new[] { typeof(SpawnSystem), typeof(SpawnSystem.SpawnData), typeof(bool) });
 
         [HarmonyPatch("UpdateSpawnList")]
         [HarmonyTranspiler]
@@ -24,6 +24,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
             var escapeLoopLabel = matcher.Operand;
 
             return matcher
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_3))
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_3))
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Callvirt, FilterMethod))
@@ -31,14 +32,14 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
                 .InstructionEnumeration();
         }
 
-        private static bool FilterSpawners(SpawnSystem.SpawnData spawner, bool eventSpawners)
+        private static bool FilterSpawners(SpawnSystem spawner, SpawnSystem.SpawnData spawn, bool eventSpawners)
         {
             if (eventSpawners)
             {
                 return false;
             }
 
-            return ConditionManager.Instance.FilterOnSpawn(spawner);
+            return ConditionManager.Instance.FilterOnSpawn(spawner, spawn);
         }
     }
 }

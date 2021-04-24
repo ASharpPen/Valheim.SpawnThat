@@ -14,7 +14,7 @@ namespace Valheim.SpawnThat.PreConfigured
     {
         public static void Initialize()
         {
-            if (ConfigurationManager.GeneralConfig?.InitializeWithCreatures ?? false)
+            if (ConfigurationManager.GeneralConfig?.InitializeWithCreatures?.Value ?? false)
             {
                 string configPath = Path.Combine(Paths.ConfigPath, ConfigurationManager.SimpleConfigFile);
                 if (!File.Exists(configPath))

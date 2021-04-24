@@ -28,7 +28,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Patches
 
         private static void ModifySpawn(CreatureSpawner spawner, GameObject spawn)
         {
-            var config = CreatureSpawnerCache.Get(spawner);
+            var config = CreatureSpawnerConfigCache.Get(spawner);
 
             if(config?.Config is null)
             {

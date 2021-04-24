@@ -39,6 +39,8 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 
             OnSpawnConditions.Add(ConditionWorldAge.Instance);
             OnSpawnConditions.Add(ConditionGlobalKeys.Instance);
+            OnSpawnConditions.Add(ConditionNearbyPlayersCarryValue.Instance);
+            OnSpawnConditions.Add(ConditionNearbyPlayersCarryItem.Instance);
 
             OnSpawnConditions.Add(ConditionLoaderCLLC.ConditionWorldLevel);
 
@@ -50,16 +52,16 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
             return OnAwakeConditions.Any(x => x?.ShouldFilter(spawner, config) ?? false);
         }
 
-        public bool FilterOnSpawn(SpawnSystem.SpawnData spawner)
+        public bool FilterOnSpawn(SpawnSystem spawner, SpawnSystem.SpawnData spawn)
         {
-            var cache = SpawnSystemCache.Get(spawner);
+            var cache = SpawnSystemConfigCache.Get(spawn);
 
             if (cache?.Config == null)
             {
                 return false;
             }
 
-            return OnSpawnConditions.Any(x => x?.ShouldFilter(spawner, cache.Config) ?? false);
+            return OnSpawnConditions.Any(x => x?.ShouldFilter(spawner, spawn, cache.Config) ?? false);
         }
     }
 }

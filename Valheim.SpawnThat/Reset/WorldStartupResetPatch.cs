@@ -1,6 +1,8 @@
 ﻿using HarmonyLib;
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner;
+using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem;
 
 namespace Valheim.SpawnThat.Reset
 {
@@ -17,6 +19,8 @@ namespace Valheim.SpawnThat.Reset
             Log.LogDebug("Resetting configurations");
             StateResetter.Reset();
             ConfigurationManager.LoadAllConfigurations();
+            SpawnSystemConfigManager.Wait = false;
+            CreatureSpawnerConfigManager.Wait = false;
         }
 
         /// <summary>
@@ -40,6 +44,8 @@ namespace Valheim.SpawnThat.Reset
             Log.LogDebug("Resetting configurations");
             StateResetter.Reset();
             ConfigurationManager.LoadAllConfigurations();
+            SpawnSystemConfigManager.Wait = false;
+            CreatureSpawnerConfigManager.Wait = false;
         }
     }
 }

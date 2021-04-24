@@ -3,6 +3,7 @@ using UnityEngine;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers;
+using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
@@ -28,6 +29,8 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                 _instance = null;
             });
 
+            SpawnModifiers.Add(SpawnModiferSetFaction.Instance);
+
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.BossAffix);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.ExtraEffect);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.Infusion);
@@ -35,7 +38,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 
         public void ApplyModifiers(GameObject spawn, SpawnSystem.SpawnData spawner)
         {
-            var spawnData = SpawnSystemCache.Get(spawner);
+            var spawnData = SpawnSystemConfigCache.Get(spawner);
 
             if (spawnData?.Config is null)
             {

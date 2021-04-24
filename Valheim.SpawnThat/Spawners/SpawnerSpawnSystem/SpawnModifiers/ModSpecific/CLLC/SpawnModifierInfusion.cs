@@ -42,7 +42,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecif
                         return;
                     }
 
-                    if (Enum.TryParse(config.SetInfusion, true, out CreatureInfusion infusion))
+                    if (Enum.TryParse(config.SetInfusion.Value, true, out CreatureInfusion infusion))
                     {
                         Log.LogTrace($"Setting infusion {infusion} for {spawn.name}.");
                         CreatureLevelControl.API.SetInfusionCreature(character, infusion);

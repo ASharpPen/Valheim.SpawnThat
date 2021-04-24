@@ -117,6 +117,16 @@ namespace Valheim.SpawnThat.Debugging
                 stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.TriggerNoise)}={spawner.m_triggerNoise.ToString(CultureInfo.InvariantCulture)}");
                 stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.SpawnInPlayerBase)}={spawner.m_spawnInPlayerBase}");
                 stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.SetPatrolPoint)}={spawner.m_setPatrolSpawnPoint}");
+
+                var character = spawner.m_creaturePrefab.GetComponent<Character>();
+                string factionName = "";
+
+                if(character is not null)
+                {
+                    factionName = character.m_faction.ToString();
+                }
+
+                stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.SetFaction)}={factionName}");
                 //stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.RequireSpawnArea)}={spawner.m_requireSpawnArea}"); //Disabled for now, due to not seemingly being used.
                 stringBuilder.AppendLine();
             }
