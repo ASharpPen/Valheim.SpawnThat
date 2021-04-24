@@ -9,9 +9,9 @@ using Valheim.SpawnThat.Core;
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
 {
     [HarmonyPatch(typeof(SpawnSystem))]
-    public static class OnSpawnPatch
+    public static class SpawnSystemSpawnPatch
     {
-        private static MethodInfo ModifySpawnMethod = AccessTools.Method(typeof(OnSpawnPatch), nameof(ModifySpawn));
+        private static MethodInfo ModifySpawnMethod = AccessTools.Method(typeof(SpawnSystemSpawnPatch), nameof(ModifySpawn));
 
         [HarmonyPatch("Spawn")]
         [HarmonyTranspiler]

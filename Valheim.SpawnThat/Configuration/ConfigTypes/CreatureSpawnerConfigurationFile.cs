@@ -72,6 +72,8 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<bool> SetPatrolPoint = new ConfigurationEntry<bool>(false, "Sets position of spawn as patrol point.");
 
+        public ConfigurationEntry<string> SetFaction = new ConfigurationEntry<string>("", "Assign a specific faction to spawn. If empty uses default.");
+
         //Doesn't seem to have a purpose for now, lets leave it out.
         //public ConfigurationEntry<bool> RequireSpawnArea = new ConfigurationEntry<bool>(false, "Needs a clear area maybe? Can't find a use case for this one, may be pointless for now.");
 

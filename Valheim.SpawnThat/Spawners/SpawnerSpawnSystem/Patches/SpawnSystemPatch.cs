@@ -7,8 +7,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
     [HarmonyPatch(typeof(SpawnSystem))]
     public static class SpawnSystemPatch
     {
-        internal static bool FirstApplication = true;
-
         [HarmonyPatch("Awake")]
         [HarmonyPostfix]
         private static void SetupConfigs(SpawnSystem __instance, Heightmap ___m_heightmap)

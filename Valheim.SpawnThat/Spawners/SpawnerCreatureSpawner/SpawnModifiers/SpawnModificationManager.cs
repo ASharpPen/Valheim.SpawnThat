@@ -7,6 +7,7 @@ using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Reset;
+using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.General;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.ModSpecific;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers
@@ -31,6 +32,8 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers
             {
                 _instance = null;
             });
+
+            SpawnModifiers.Add(SpawnModiferSetFaction.Instance);
 
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.BossAffix);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.ExtraEffect);
