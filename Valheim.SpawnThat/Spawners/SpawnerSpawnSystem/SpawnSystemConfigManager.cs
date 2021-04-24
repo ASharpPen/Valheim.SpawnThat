@@ -96,7 +96,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 
             if ((spawnSystemConfigs?.Count ?? 0) > 0)
             {
-                foreach (var spawnConfig in spawnSystemConfigs.OrderBy(x => x.Index))
+                foreach (var spawnConfig in spawnSystemConfigs.OrderBy(x => x.Index).Where(x => x.Enabled.Value))
                 {
                     if (string.IsNullOrWhiteSpace(spawnConfig.PrefabName?.Value))
                     {
