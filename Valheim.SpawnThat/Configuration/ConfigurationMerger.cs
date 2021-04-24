@@ -25,6 +25,11 @@ namespace Valheim.SpawnThat.Configuration
 
             foreach(var sourceTemplate in sourceTemplates.Subsections)
             {
+                if(!sourceTemplate.Value.Enabled.Value)
+                {
+                    continue;
+                }
+
                 if (targetTemplates.Subsections.ContainsKey(sourceTemplate.Key))
                 {
                     Log.LogWarning($"Overlapping world spawner configs for {sourceTemplate.Value.SectionKey}, overriding existing.");
@@ -43,12 +48,17 @@ namespace Valheim.SpawnThat.Configuration
 
             foreach(var sourceLocation in source.Subsections)
             {
-                if(target.Subsections.ContainsKey(sourceLocation.Key))
+                if (target.Subsections.ContainsKey(sourceLocation.Key))
                 {
                     var targetSpawner = target.Subsections[sourceLocation.Key];
 
                     foreach (var sourceSpawner in sourceLocation.Value.Subsections)
                     {
+                        if(!sourceSpawner.Value.Enabled.Value)
+                        {
+                            continue;
+                        }
+
                         if (targetSpawner.Subsections.ContainsKey(sourceSpawner.Key))
                         {
                             Log.LogWarning($"Overlapping local spawner configs for {sourceSpawner.Value.SectionKey}, overriding existing.");

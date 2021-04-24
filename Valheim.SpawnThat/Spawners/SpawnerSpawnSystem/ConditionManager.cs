@@ -40,6 +40,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
             OnSpawnConditions.Add(ConditionWorldAge.Instance);
             OnSpawnConditions.Add(ConditionGlobalKeys.Instance);
             OnSpawnConditions.Add(ConditionNearbyPlayersCarryValue.Instance);
+            OnSpawnConditions.Add(ConditionNearbyPlayersCarryItem.Instance);
 
             OnSpawnConditions.Add(ConditionLoaderCLLC.ConditionWorldLevel);
 

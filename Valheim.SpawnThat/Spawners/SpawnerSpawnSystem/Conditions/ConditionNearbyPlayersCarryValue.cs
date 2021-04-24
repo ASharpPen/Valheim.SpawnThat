@@ -46,7 +46,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 
             if(valueSum < requiredSum)
             {
-                Log.LogTrace($"Ignoring world config {config.Name} due to player value of '{valueSum}' being less than the required '{requiredSum}'.");
+                Log.LogTrace($"Ignoring world config {config.Name} due to the combined player's in range value of '{valueSum}' being less than the required '{requiredSum}'.");
                 return true;
             }
             return false;

@@ -341,6 +341,20 @@ ConditionWorldAgeDaysMin = 0
 # Setting type: Single
 ConditionWorldAgeDaysMax = 0
 
+## Distance of player to spawner, for player to be included in player based checks such as ConditionNearbyPlayersCarryValue.
+# Setting type: Single
+DistanceToTriggerPlayerConditions = 100
+
+## Checks if nearby players have a combined value in inventory above this condition.
+## Eg. If set to 100, entry will only activate if nearby players have more than 100 worth of values combined.
+# Setting type: Int32
+ConditionNearbyPlayersCarryValue = 0
+
+## Checks if nearby players have any of the listed item prefab names in inventory.
+## Eg. IronScrap, DragonEgg
+# Setting type: String
+ConditionNearbyPlayerCarriesItem = 
+
 ```
 
 # Local Spawners - Details
@@ -398,7 +412,22 @@ SpawnInPlayerBase = true
 SetPatrolPoint = true
 
 ## Assign a specific faction to spawn. If empty uses default.
+# Setting type: String
 SetFaction = 
+
+## Distance of player to spawner, for player to be included in player based checks such as ConditionNearbyPlayersCarryValue.
+# Setting type: Single
+DistanceToTriggerPlayerConditions = 100
+
+## Checks if nearby players have a combined value in inventory above this condition.
+## Eg. If set to 100, entry will only activate if nearby players have more than 100 worth of values combined.
+# Setting type: Int32
+ConditionNearbyPlayersCarryValue = 0
+
+## Checks if nearby players have any of the listed item prefab names in inventory.
+## Eg. IronScrap, DragonEgg
+# Setting type: String
+ConditionNearbyPlayerCarriesItem =
 
 ```
 
@@ -576,8 +605,10 @@ For those who got this far: An additional "feature" hint. The game does not care
 
 Changelog:
 - v0.8.0: 
+	- Added world spawner condition for nearby players carried items.
 	- Added world spawner condition for nearby players carried valuables.
 	- Added option for assigning faction for world- and local spawner entries.
+	- Added faction to pre-change debug files.
 	- Changed when configs are applied to spawners, for increased compatibility with mods adding prefabs.
 	- Additional error checks.
 - v0.7.1: 
