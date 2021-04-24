@@ -12,7 +12,7 @@ namespace Valheim.SpawnThat.Debugging
 {
     public static class SpawnDataFileDumper
     {
-        public static void WriteToFile(List<SpawnSystem.SpawnData> spawners, string fileName)
+        public static void WriteToFile(List<SpawnSystem.SpawnData> spawners, string fileName, bool postChange = false)
         {
             if(spawners is null)
             {
@@ -29,7 +29,7 @@ namespace Valheim.SpawnThat.Debugging
 
                 if (spawner is not null)
                 {
-                    lines.AddRange(WriteSpawner(spawner, i));
+                    lines.AddRange(WriteSpawner(spawner, i, postChange));
                 }
                 else
                 {
@@ -45,7 +45,7 @@ namespace Valheim.SpawnThat.Debugging
             File.WriteAllLines(filePath, lines);
         }
 
-        internal static List<string> WriteSpawner(SpawnSystem.SpawnData spawner, int index)
+        internal static List<string> WriteSpawner(SpawnSystem.SpawnData spawner, int index, bool postChange)
         {
             List<string> lines = new List<string>();
 
@@ -89,6 +89,21 @@ namespace Valheim.SpawnThat.Debugging
             lines.Add($"{nameof(SpawnConfiguration.SpawnOutsideForest)}={spawner.m_outsideForest}");
             lines.Add($"{nameof(SpawnConfiguration.OceanDepthMin)}={spawner.m_minOceanDepth.ToString(CultureInfo.InvariantCulture)}");
             lines.Add($"{nameof(SpawnConfiguration.OceanDepthMax)}={spawner.m_maxOceanDepth.ToString(CultureInfo.InvariantCulture)}");
+
+            if (!postChange)
+            {
+
+                var character = spawner.m_prefab?.GetComponent<Character>();
+                string factionName = "";
+
+                if (character is not null)
+                {
+                    factionName = character.m_faction.ToString();
+                }
+
+                lines.Add($"{nameof(SpawnConfiguration.SetFaction)}={factionName}");
+            }
+
             lines.Add("");
 
             return lines;

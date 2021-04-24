@@ -160,7 +160,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 
             if (ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileAfterChanges?.Value == true && FirstApplication)
             {
-                SpawnDataFileDumper.WriteToFile(__instance.m_spawners, FileNamePost);
+                SpawnDataFileDumper.WriteToFile(__instance.m_spawners, FileNamePost, true);
             }
 
             DisableOutsideBiome(___m_heightmap, __instance.m_spawners);
