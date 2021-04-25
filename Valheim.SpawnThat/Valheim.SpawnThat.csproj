@@ -126,6 +126,7 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\ConditionManager.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionDistanceToCenter.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionGlobalKeys.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionNearbyPlayersCarryItem.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionNearbyPlayersCarryValue.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionWorldAge.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\IConditionOnSpawn.cs" />
