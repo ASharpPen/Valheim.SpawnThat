@@ -6,7 +6,7 @@ using Valheim.SpawnThat.Core;
 namespace Valheim.SpawnThat
 {
     [BepInDependency("org.bepinex.plugins.creaturelevelcontrol", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInPlugin("asharppen.valheim.spawn_that", "Spawn That!", "0.8.0")]
+    [BepInPlugin("asharppen.valheim.spawn_that", "Spawn That!", "0.8.1")]
     public class SpawnThatPlugin : BaseUnityPlugin
     {        
         // Awake is called once when both the game and the plug-in are loaded
