@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
+using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific;
@@ -49,7 +51,18 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 
         public bool FilterOnAwake(SpawnSystem spawner, SpawnConfiguration config)
         {
-            return OnAwakeConditions.Any(x => x?.ShouldFilter(spawner, config) ?? false);
+            return OnAwakeConditions.Any(x =>
+            {
+                try
+                {
+                    return x?.ShouldFilter(spawner, config) ?? false;
+                }
+                catch(Exception e)
+                {
+                    Log.LogError($"Error while attempting to check OnAwake condition {x.GetType().Name}.", e);
+                    return false;
+                }
+            });
         }
 
         public bool FilterOnSpawn(SpawnSystem spawner, SpawnSystem.SpawnData spawn)
@@ -61,7 +74,18 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                 return false;
             }
 
-            return OnSpawnConditions.Any(x => x?.ShouldFilter(spawner, spawn, cache.Config) ?? false);
+            return OnSpawnConditions.Any(x =>
+            {
+                try
+                {
+                    return x?.ShouldFilter(spawner, spawn, cache.Config) ?? false;
+                }
+                catch(Exception e)
+                {
+                    Log.LogError($"Error while attempting to check OnSpawn condition {x.GetType().Name}.", e);
+                    return false;
+                }
+            });
         }
     }
 }

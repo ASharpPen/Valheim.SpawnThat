@@ -590,6 +590,8 @@ Additional keys can be created manually through console commands, or by a mod li
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog:
+- v0.8.1: 
+	- Additional error handling for conditions. Should help fix potential errors coming out of the newly added player conditions.
 - v0.8.0: 
 	- Added world spawner condition for nearby players carried items.
 	- Added world spawner condition for nearby players carried valuables.
