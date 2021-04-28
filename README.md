@@ -590,6 +590,8 @@ Additional keys can be created manually through console commands, or by a mod li
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog:
+- v0.8.2:
+	- Added more helpful warning- and error messages for when configurations are incorrectly set up.
 - v0.8.1: 
 	- Additional error handling for conditions. Should help fix potential errors coming out of the newly added player conditions.
 - v0.8.0: 
