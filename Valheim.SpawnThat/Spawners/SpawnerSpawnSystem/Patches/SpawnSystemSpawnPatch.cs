@@ -34,7 +34,14 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
                 return;
             }
 
-            SpawnModificationManager.Instance.ApplyModifiers(spawn, spawner);
+            try
+            {
+                SpawnModificationManager.Instance.ApplyModifiers(spawn, spawner);
+            }
+            catch(Exception e)
+            {
+                Log.LogError($"Error while attempting to modify spawn {spawn.name}", e);
+            }
         }
     }
 }

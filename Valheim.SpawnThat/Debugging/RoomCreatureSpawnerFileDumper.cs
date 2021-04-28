@@ -107,9 +107,24 @@ namespace Valheim.SpawnThat.Debugging
                 var spawner = spawners[i];
 
                 stringBuilder.AppendLine($"## Room Theme: {theme}, Room: {roomName}, Spawner: {i} ");
-                stringBuilder.AppendLine($"[{roomName}.{spawner.m_creaturePrefab.name}]");
+                try
+                {
+                    stringBuilder.AppendLine($"[{roomName}.{spawner.m_creaturePrefab.name}]");
+                }
+                catch(Exception e)
+                {
+                    Log.LogWarning($"Failed to read prefa name for spawner {spawner}");
+                }
 
-                stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.PrefabName)}={spawner.m_creaturePrefab.name}");
+                try
+                {
+                    stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.PrefabName)}={spawner.m_creaturePrefab.name}");
+                }
+                catch(Exception e)
+                {
+                    Log.LogWarning($"Error while attempting to read name of prefab for spawner {spawner}");
+                }
+
                 stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.Enabled)}={spawner.enabled}");
                 stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.SpawnAtDay)}={spawner.m_spawnAtDay}");
                 stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.SpawnAtNight)}={spawner.m_spawnAtNight}");
