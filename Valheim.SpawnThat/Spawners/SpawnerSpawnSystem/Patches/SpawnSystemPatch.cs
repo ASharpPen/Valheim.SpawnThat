@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using System;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.Caches;
 
@@ -31,7 +32,14 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
                 return;
             }
 
-            SpawnSystemConfigManager.ApplyConfigsIfMissing(__instance, ___m_heightmap);
+            try
+            {
+                SpawnSystemConfigManager.ApplyConfigsIfMissing(__instance, ___m_heightmap);
+            }
+            catch (Exception e)
+            {
+                Log.LogError(e.ToString());
+            }
         }
 
         [HarmonyPatch("UpdateSpawnList")]
@@ -39,22 +47,29 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
         [HarmonyPriority(Priority.LowerThanNormal)]
         private static bool WaitForGreenLight(SpawnSystem __instance, Heightmap ___m_heightmap,  bool eventSpawners)
         {
-            // Ignore event spawners. Let them do what they do.
-            if (eventSpawners)
+            try
             {
-                return true;
-            }
+                // Ignore event spawners. Let them do what they do.
+                if (eventSpawners)
+                {
+                    return true;
+                }
 
-            if (SpawnSystemConfigManager.Wait && !eventSpawners)
-            {
-                Log.LogTrace("SpawnSystem waiting for configs. Skipping update.");
-                return false;
-            }
+                if (SpawnSystemConfigManager.Wait && !eventSpawners)
+                {
+                    Log.LogTrace("SpawnSystem waiting for configs. Skipping update.");
+                    return false;
+                }
 
-            if (__instance.ShouldWait())
+                if (__instance.ShouldWait())
+                {
+                    Log.LogTrace($"SpawnSystem at {__instance?.gameObject?.transform?.position} is disabled. Skipping update.");
+                    return false;
+                }
+            }
+            catch(Exception e)
             {
-                Log.LogTrace($"SpawnSystem at {__instance?.gameObject?.transform?.position} is disabled. Skipping update.");
-                return false;
+                Log.LogError($"Error while waiting for green light to spawn.", e);
             }
 
             return true;

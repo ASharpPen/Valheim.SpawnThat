@@ -53,16 +53,39 @@ namespace Valheim.SpawnThat.Debugging
             lines.Add($"[WorldSpawner.{index}]");
 
             string environmentArray = "";
-            if((spawner.m_requiredEnvironments?.Count ?? 0) > 0)
+            try
             {
-                environmentArray = spawner.m_requiredEnvironments.Join();
+                if ((spawner.m_requiredEnvironments?.Count ?? 0) > 0)
+                {
+                    environmentArray = spawner.m_requiredEnvironments.Join();
+                }
+            }
+            catch(Exception e)
+            {
+                Log.LogWarning($"Error while attempting to read required environments of spawner {spawner}");
             }
 
             //Write lines
             lines.Add($"{nameof(SpawnConfiguration.Name)}={spawner.m_name}");
             lines.Add($"{nameof(SpawnConfiguration.Enabled)}={spawner.m_enabled}");
-            lines.Add($"{nameof(SpawnConfiguration.Biomes)}={BiomeArray(spawner.m_biome)}");
-            lines.Add($"{nameof(SpawnConfiguration.PrefabName)}={spawner.m_prefab.name}");
+            try
+            {
+                lines.Add($"{nameof(SpawnConfiguration.Biomes)}={BiomeArray(spawner.m_biome)}");
+            }
+            catch(Exception e)
+            {
+                Log.LogWarning($"Failed to read biome of {spawner}");
+            }
+
+            try
+            {
+                lines.Add($"{nameof(SpawnConfiguration.PrefabName)}={spawner.m_prefab.name}");
+            }
+            catch(Exception e)
+            {
+                Log.LogWarning($"Error while attempting to read name of prefab for spawner {spawner}");
+            }
+
             lines.Add($"{nameof(SpawnConfiguration.HuntPlayer)}={spawner.m_huntPlayer}");
             lines.Add($"{nameof(SpawnConfiguration.MaxSpawned)}={spawner.m_maxSpawned}");
             lines.Add($"{nameof(SpawnConfiguration.SpawnInterval)}={spawner.m_spawnInterval.ToString(CultureInfo.InvariantCulture)}");
@@ -90,18 +113,25 @@ namespace Valheim.SpawnThat.Debugging
             lines.Add($"{nameof(SpawnConfiguration.OceanDepthMin)}={spawner.m_minOceanDepth.ToString(CultureInfo.InvariantCulture)}");
             lines.Add($"{nameof(SpawnConfiguration.OceanDepthMax)}={spawner.m_maxOceanDepth.ToString(CultureInfo.InvariantCulture)}");
 
-            if (!postChange)
+            try
             {
-
-                var character = spawner.m_prefab?.GetComponent<Character>();
-                string factionName = "";
-
-                if (character is not null)
+                if (!postChange)
                 {
-                    factionName = character.m_faction.ToString();
-                }
 
-                lines.Add($"{nameof(SpawnConfiguration.SetFaction)}={factionName}");
+                    var character = spawner.m_prefab?.GetComponent<Character>();
+                    string factionName = "";
+
+                    if (character && character is not null)
+                    {
+                        factionName = character.m_faction.ToString();
+                    }
+
+                    lines.Add($"{nameof(SpawnConfiguration.SetFaction)}={factionName}");
+                }
+            }
+            catch(Exception e)
+            {
+                Log.LogWarning($"Error while attempting to write faction of spawner {spawner}");
             }
 
             lines.Add("");

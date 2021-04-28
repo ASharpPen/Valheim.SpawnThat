@@ -29,6 +29,13 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
                     prefab = ZNetScene.instance.GetPrefab(config.PrefabName.Value);
                 }
 
+                if (!prefab || prefab is null)
+                {
+                    Log.LogWarning($"Unable to find prefab for {config.PrefabName.Value}");
+                    spawner.SetSuccessfulInit();
+                    return;
+                }
+
                 //Override existing config values:
                 spawner.m_creaturePrefab = prefab;
                 spawner.m_levelupChance = config.LevelUpChance.Value;

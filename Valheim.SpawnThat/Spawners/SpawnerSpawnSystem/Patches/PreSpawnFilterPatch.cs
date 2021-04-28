@@ -1,7 +1,9 @@
 ﻿using HarmonyLib;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
+using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
 {
@@ -39,7 +41,15 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
                 return false;
             }
 
-            return ConditionManager.Instance.FilterOnSpawn(spawner, spawn);
+            try
+            {
+                return ConditionManager.Instance.FilterOnSpawn(spawner, spawn);
+            }
+            catch(Exception e)
+            {
+                Log.LogError($"Error while checking if spawn template {spawn?.m_prefab?.name} should be filtered.", e);
+                return false;
+            }
         }
     }
 }

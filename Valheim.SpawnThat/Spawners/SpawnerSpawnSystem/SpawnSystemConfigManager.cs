@@ -24,6 +24,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
         {
             StateResetter.Subscribe(() =>
             {
+                FirstApplication = true;
                 Wait = true;
             });
         }
@@ -109,23 +110,35 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                         continue;
                     }
 
-                    if (spawnConfig.Index < __instance.m_spawners.Count && ConfigurationManager.GeneralConfig?.AlwaysAppend?.Value == false)
+                    try
                     {
-                        Log.LogTrace($"Overriding world spawner entry {spawnConfig.Index}");
-                        var spawner = __instance.m_spawners[spawnConfig.Index];
+                        if (spawnConfig.Index < __instance.m_spawners.Count && ConfigurationManager.GeneralConfig?.AlwaysAppend?.Value == false)
+                        {
+                            Log.LogTrace($"Overriding world spawner entry {spawnConfig.Index}");
+                            var spawner = __instance.m_spawners[spawnConfig.Index];
 
-                        Override(spawner, spawnConfig);
+                            Override(spawner, spawnConfig);
 
-                        SpawnSystemConfigCache.Set(spawner, spawnConfig);
+                            SpawnSystemConfigCache.Set(spawner, spawnConfig);
+                        }
+                        else
+                        {
+                            Log.LogTrace($"Adding new spawner entry {spawnConfig.Name}");
+                            var spawner = CreateNewEntry(spawnConfig);
+
+                            if(spawner is null)
+                            {
+                                continue;
+                            }
+
+                            SpawnSystemConfigCache.Set(spawner, spawnConfig);
+
+                            __instance.m_spawners.Add(spawner);
+                        }
                     }
-                    else
+                    catch(Exception e)
                     {
-                        Log.LogTrace($"Adding new spawner entry {spawnConfig.Name}");
-                        var spawner = CreateNewEntry(spawnConfig);
-
-                        SpawnSystemConfigCache.Set(spawner, spawnConfig);
-
-                        __instance.m_spawners.Add(spawner);
+                        Log.LogError($"Failed to apply config {spawnConfig.Name} to world spawner.", e);
                     }
                 }
             }
@@ -202,6 +215,12 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
         {
             var prefab = ZNetScene.instance.GetPrefab(config.PrefabName.Value);
 
+            if(!prefab || prefab is null)
+            {
+                Log.LogWarning($"Unable to find prefab for {config.PrefabName.Value}");
+                return;
+            }
+
             Heightmap.Biome biome = ConvertToBiomeFlag(config);
 
             var envs = config.RequiredEnvironments?.Value?.SplitByComma() ?? new List<string>(0);
@@ -241,6 +260,12 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
         public static SpawnSystem.SpawnData CreateNewEntry(SpawnConfiguration config)
         {
             var prefab = ZNetScene.instance.GetPrefab(config.PrefabName.Value);
+
+            if (!prefab || prefab is null)
+            {
+                Log.LogWarning($"Unable to find prefab for {config.PrefabName.Value}");
+                return null;
+            }
 
             Heightmap.Biome biome = ConvertToBiomeFlag(config);
 
