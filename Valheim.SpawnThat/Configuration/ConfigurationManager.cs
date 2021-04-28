@@ -28,6 +28,8 @@ namespace Valheim.SpawnThat.Configuration
         {
             Log.LogInfo("Loading all configs.");
 
+            DateTimeOffset start = DateTimeOffset.UtcNow;
+
             GeneralConfig = LoadGeneral();
 
             SimpleConfig = LoadSimpleConfig();
@@ -35,6 +37,15 @@ namespace Valheim.SpawnThat.Configuration
             SpawnSystemConfig = LoadSpawnSystemConfiguration();
 
             CreatureSpawnerConfig = LoadCreatureSpawnerConfiguration();
+
+            DateTimeOffset end = DateTimeOffset.UtcNow;
+            TimeSpan loadTime = (end - start);
+
+            Log.LogInfo("Config loading took: " + loadTime);
+            if(loadTime > TimeSpan.FromSeconds(5) && !GeneralConfig.StopTouchingMyConfigs.Value)
+            {
+                Log.LogInfo("Long loading time detected. Consider setting \"StopTouchingMyConfigs=true\" in spawn_that.cfg to improve loading speed.");
+            }
         }
 
         public static GeneralConfiguration LoadGeneral()

@@ -592,6 +592,7 @@ For those who got this far: An additional "feature" hint. The game does not care
 Changelog:
 - v0.8.2:
 	- Added more helpful warning- and error messages for when configurations are incorrectly set up.
+	- Changed StopTouchingMyConfigs to be set to true by default when spawn_that.cfg is created. Due to the massive loading time impact of large config files.
 - v0.8.1: 
 	- Additional error handling for conditions. Should help fix potential errors coming out of the newly added player conditions.
 - v0.8.0: 
