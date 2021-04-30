@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -103,7 +104,15 @@ namespace Valheim.SpawnThat.Debugging
                 var spawner = spawners[i];
 
                 stringBuilder.AppendLine($"## Biome: {biome}, Location: {locationName}, Spawner: {i} ");
-                stringBuilder.AppendLine($"[{locationName}.{spawner.m_creaturePrefab.name}]");
+
+                try
+                {
+                    stringBuilder.AppendLine($"[{locationName}.{spawner.m_creaturePrefab.name}]");
+                }
+                catch(Exception e)
+                {
+                    Log.LogWarning($"Error while attempting to read name of prefab for spawner {spawner}");
+                }
 
                 stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.PrefabName)}={spawner.m_creaturePrefab.name}");
                 stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.Enabled)}={spawner.enabled}");
