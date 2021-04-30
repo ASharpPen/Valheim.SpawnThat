@@ -589,6 +589,9 @@ Additional keys can be created manually through console commands, or by a mod li
 
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
+Changelog: 
+- v0.9.0
+	- Added additional setting to CLLC integraiton, to let Spawn That set levels.
 Changelog:
 - v0.8.2:
 	- Added more helpful warning- and error messages for when configurations are incorrectly set up.

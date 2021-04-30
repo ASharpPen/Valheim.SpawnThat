@@ -51,5 +51,15 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecif
 
             }
         }
+
+        public static SpawnModifierSetLevel SetLevel
+        {
+            get
+            {
+                if (InstalledCLLC) return SpawnModifierSetLevel.Instance;
+
+                return null;
+            }
+        }
     }
 }
