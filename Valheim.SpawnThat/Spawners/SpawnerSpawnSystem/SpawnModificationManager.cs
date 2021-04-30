@@ -31,6 +31,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 
             SpawnModifiers.Add(SpawnModiferSetFaction.Instance);
             SpawnModifiers.Add(SpawnModifierRelentless.Instance);
+            SpawnModifiers.Add(SpawnModifierDespawnOnConditionsInvalid.Instance);
 
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.BossAffix);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.ExtraEffect);
@@ -38,7 +39,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.SetLevel);
         }
 
-        public void ApplyModifiers(GameObject spawn, SpawnSystem.SpawnData spawner)
+        public void ApplyModifiers(SpawnSystem spawnSystem, GameObject spawn, SpawnSystem.SpawnData spawner)
         {
             var spawnData = SpawnSystemConfigCache.Get(spawner);
 
@@ -50,12 +51,24 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 
             Log.LogTrace($"Applying modifiers to spawn {spawn.name}");
 
-            foreach(var modifier in SpawnModifiers)
+            foreach (var modifier in SpawnModifiers)
             {
-                if(modifier is not null)
+                if (!spawn || spawn is null || spawner is null || spawnData?.Config is null)
                 {
-                    modifier.Modify(spawn, spawner, spawnData.Config);
+                    if (modifier is not null)
+                    {
+                        Log.LogWarning($"Skipping modifier {modifier.GetType().Name}");
+                    }
+                    continue;
                 }
+
+                modifier?.Modify(new SpawnContext
+                {
+                    SpawnSystem = spawnSystem,
+                    Spawner = spawner,
+                    Spawn = spawn,
+                    Config = spawnData.Config
+                });
             }
         }
     }

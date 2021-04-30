@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General;
+using Valheim.SpawnThat.Spawns.Caches;
 
 namespace Valheim.SpawnThat.Spawns
 {
@@ -29,20 +30,18 @@ namespace Valheim.SpawnThat.Spawns
         [HarmonyPrefix]
         private static void ForceAlert(BaseAI __instance, ref bool alert)
         {
-            var znview = __instance.gameObject.GetComponent<ZNetView>();
+            var zdo = SpawnCache.GetZDO(__instance.gameObject);
 
-            if (!znview || znview is null)
+            if (zdo is null)
             {
                 return;
             }
 
-            var forceAlert = znview.GetZDO().GetBool(SpawnModifierRelentless.ZdoFeature, false);
+            var forceAlert = zdo.GetBool(SpawnModifierRelentless.ZdoFeature, false);
 
             if (!alert && forceAlert)
             {
-#if DEBUG
-                Log.LogTrace($"Forcing awakenes for {__instance.gameObject.name}");
-#endif
+                __instance.Alert();
                 alert = true;
             }
         }

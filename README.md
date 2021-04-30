@@ -603,8 +603,7 @@ Changelog:
 - v0.9.0: 
 	- Added additional setting to CLLC integraiton, to let Spawn That set levels.
 	- Added setting "SetRelentless".
-Changelog:
-- v0.8.2:
+- v0.8.2: 
 	- Added more helpful warning- and error messages for when configurations are incorrectly set up.
 	- Changed StopTouchingMyConfigs to be set to true by default when spawn_that.cfg is created. Due to the massive loading time impact of large config files.
 - v0.8.1: 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core.Configuration;
-using Valheim.SpawnThat.Spawners.Caches;
+using Valheim.SpawnThat.Spawns.Caches;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific.CLLC
 {
@@ -22,27 +22,27 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecif
             }
         }
 
-        public void Modify(GameObject spawn, SpawnSystem.SpawnData spawner, SpawnConfiguration spawnerConfig)
+        public void Modify(SpawnContext context)
         {
-            if (spawn is null)
+            if (context.Spawn is null)
             {
                 return;
             }
 
-            if (spawnerConfig.TryGet(SpawnSystemConfigCLLC.ModName, out Config modConfig))
+            if (context.Config.TryGet(SpawnSystemConfigCLLC.ModName, out Config modConfig))
             {
                 if (modConfig is SpawnSystemConfigCLLC config && config.UseDefaultLevels.Value)
                 {
-                    var character = SpawnCache.GetCharacter(spawn);
+                    var character = SpawnCache.GetCharacter(context.Spawn);
 
                     if (character is null)
                     {
                         return;
                     }
 
-                    var level = spawnerConfig.LevelMin.Value;
+                    var level = context.Config.LevelMin.Value;
 
-                    for (int i = 0;  i < spawnerConfig.LevelMax.Value - spawnerConfig.LevelMin.Value; ++i)
+                    for (int i = 0;  i < context.Config.LevelMax.Value - context.Config.LevelMin.Value; ++i)
                     {
                         if (UnityEngine.Random.Range(0, 100) > 10)
                         {

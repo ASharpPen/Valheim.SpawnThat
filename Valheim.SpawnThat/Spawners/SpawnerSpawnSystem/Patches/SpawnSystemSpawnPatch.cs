@@ -20,6 +20,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
             return new CodeMatcher(instructions)
                 .MatchForward(false, new CodeMatch(OpCodes.Stloc_0))
                 .Advance(1)
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_1))
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_0))
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_3))
@@ -27,21 +28,14 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
                 .InstructionEnumeration();
         }
 
-        private static void ModifySpawn(SpawnSystem.SpawnData spawner, GameObject spawn, bool isEventCreature)
+        private static void ModifySpawn(SpawnSystem spawnSystem, SpawnSystem.SpawnData spawner, GameObject spawn, bool isEventCreature)
         {
             if (isEventCreature)
             {
                 return;
             }
 
-            try
-            {
-                SpawnModificationManager.Instance.ApplyModifiers(spawn, spawner);
-            }
-            catch(Exception e)
-            {
-                Log.LogError($"Error while attempting to modify spawn {spawn.name}", e);
-            }
+            SpawnModificationManager.Instance.ApplyModifiers(spawnSystem, spawn, spawner);
         }
     }
 }

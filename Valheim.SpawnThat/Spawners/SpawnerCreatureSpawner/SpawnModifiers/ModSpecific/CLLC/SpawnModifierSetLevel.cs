@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core.Configuration;
-using Valheim.SpawnThat.Spawners.Caches;
+using Valheim.SpawnThat.Spawns.Caches;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.ModSpecific.CLLC
 {

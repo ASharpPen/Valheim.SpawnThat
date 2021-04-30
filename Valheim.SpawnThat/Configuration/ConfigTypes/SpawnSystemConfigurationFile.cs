@@ -90,7 +90,9 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
         public ConfigurationEntry<string> SetFaction = new ConfigurationEntry<string>("", "Assign a specific faction to spawn. If empty uses default.");
 
         public ConfigurationEntry<bool> SetRelentless = new ConfigurationEntry<bool>(false, "When true, forces mob AI to always be alerted.");
- 
+
+        public ConfigurationEntry<bool> SetTryDespawnOnConditionsInvalid = new ConfigurationEntry<bool>(false, "When true, mob will try to run away and despawn when spawn conditions become invalid. Eg. if spawning only during night, it will run away and despawn at night.");
+
         #region Default Configuration Options
 
         public ConfigurationEntry<string> PrefabName = new ConfigurationEntry<string>("Deer", "Prefab name of the entity to spawn.");
