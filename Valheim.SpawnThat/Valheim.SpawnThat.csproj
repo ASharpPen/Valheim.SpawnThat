@@ -117,6 +117,7 @@
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\CLLC\SpawnModifierBossAffix.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\CLLC\SpawnModifierExtraEffect.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\CLLC\SpawnModifierInfusion.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\CLLC\SpawnModifierSetLevel.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\SpawnModifierLoaderCLLC.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\SpawnModificationManager.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\Types\RoomSpawner.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\CLLC\ConditionWorldLevel.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\ConditionLoaderCLLC.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModiferSetFaction.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierSetLevel.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnSystemConfigManager.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Patches\SpawnSystemSpawnPatch.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Patches\PreSpawnFilterPatch.cs" />
