@@ -136,6 +136,7 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\ConditionLoaderCLLC.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModiferSetFaction.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierSetLevel.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierRelentless.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnSystemConfigManager.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Patches\SpawnSystemSpawnPatch.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Patches\PreSpawnFilterPatch.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierInfusion.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\SpawnModifierLoaderCLLC.cs" />
     <Compile Include="Spawns\CharacterSetFactionPatch.cs" />
+    <Compile Include="Spawns\MonsterAISetRelentlessPatch.cs" />
     <Compile Include="SpawnThatPlugin.cs" />
     <Compile Include="Utilities\Spatial\IHaveVector3.cs" />
     <Compile Include="Utilities\Spatial\IPoint.cs" />

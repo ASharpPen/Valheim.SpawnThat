@@ -47,7 +47,7 @@ As the player moves through the world, the game loads in the various spawners, a
 
 ## Client / Server
 
-Drop That needs to be installed on all clients (and server) to work.
+Spawn That needs to be installed on all clients (and server) to work.
 
 From v0.3.0 clients will request the configurations currently loaded by the server, and use those without affecting the clients config files.
 This means you should be able to have server-specific configurations, and the client can have its own setup for singleplayer.
@@ -355,6 +355,10 @@ ConditionNearbyPlayersCarryValue = 0
 # Setting type: String
 ConditionNearbyPlayerCarriesItem = 
 
+## When true, forces mob AI to always be alerted.
+# Setting type: Boolean
+SetRelentless = false
+
 ```
 
 # Local Spawners - Details
@@ -447,6 +451,9 @@ SetExtraEffect =
 ## Assigns the specified boss affix to creature spawned. Only works for the default 5 bosses. Ignored if empty.
 SetBossAffix = 
 
+## Use the default LevelMin and LevelMax for level assignment, ignoring the usual CLLC level control.
+UseDefaultLevels = true
+
 ```
 
 Example of a world spawner template, for a boar that will spawn with a fire infusion, when the CLLC world level is high enough.
@@ -483,6 +490,9 @@ SetExtraEffect =
 
 ## Assigns the specified boss affix to creature spawned. Only works for the default 5 bosses. Ignored if empty.
 SetBossAffix = 
+
+## Use the default LevelMin and LevelMax for level assignment, ignoring the usual CLLC level control.
+UseDefaultLevels = true
 
 ```
 
@@ -590,8 +600,9 @@ Additional keys can be created manually through console commands, or by a mod li
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog: 
-- v0.9.0
+- v0.9.0: 
 	- Added additional setting to CLLC integraiton, to let Spawn That set levels.
+	- Added setting "SetRelentless".
 Changelog:
 - v0.8.2:
 	- Added more helpful warning- and error messages for when configurations are incorrectly set up.
