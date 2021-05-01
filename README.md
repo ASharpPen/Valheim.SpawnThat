@@ -198,6 +198,10 @@ The configurations loaded will be merged with the one loaded from the main files
 
 [WorldSpawner.0]
 
+## Technical setting intended for cross-mod identification of mobs spawned by this template. Sets a custom identifier which will be assigned to the spawned mobs ZDO as 'ZDO.Set("spawn_template_id", TemplateIdentifier)'.
+# Setting type: String
+TemplateId = 
+
 ## Just a field for naming the configuration entry.
 # Setting type: String
 Name = deer
@@ -605,9 +609,11 @@ For those who got this far: An additional "feature" hint. The game does not care
 
 Changelog: 
 - v0.9.0: 
-	- Added additional setting to CLLC integraiton, to let Spawn That set levels.
+	- Added setting "UseDefaultLevels" to CLLC integraiton, to let Spawn That set levels.
 	- Added setting "SetRelentless".
 	- Added setting "SetTryDespawnOnConditionsInvalid".
+	- Added setting "SetTryDespawnOnAlert".
+	- Added setting "TemplateId", for assigning a specific identifier to mobs spawned by a template, for other mods to use (intended for future Drop That setting).
 - v0.8.2: 
 	- Added more helpful warning- and error messages for when configurations are incorrectly set up.
 	- Changed StopTouchingMyConfigs to be set to true by default when spawn_that.cfg is created. Due to the massive loading time impact of large config files.

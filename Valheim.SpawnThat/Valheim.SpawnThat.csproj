@@ -140,6 +140,8 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\ConditionLoaderCLLC.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModiferSetFaction.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierDespawnOnConditionsInvalid.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierDespawnOnAlert.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierSetTemplateId.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierSetLevel.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierRelentless.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\SpawnContext.cs" />
