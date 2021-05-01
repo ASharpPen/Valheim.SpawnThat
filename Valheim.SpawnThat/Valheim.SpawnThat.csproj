@@ -132,6 +132,7 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionMaxSpawned.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionNearbyPlayersCarryItem.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionNearbyPlayersCarryValue.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionNearbyPlayersNoise.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionNotGlobalKeys.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionWorldAge.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\IConditionOnSpawn.cs" />
