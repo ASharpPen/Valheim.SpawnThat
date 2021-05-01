@@ -44,6 +44,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
             OnSpawnConditions.Add(ConditionNotGlobalKeys.Instance);
             OnSpawnConditions.Add(ConditionNearbyPlayersCarryValue.Instance);
             OnSpawnConditions.Add(ConditionNearbyPlayersCarryItem.Instance);
+            OnSpawnConditions.Add(ConditionNearbyPlayersNoise.Instance);
 
             OnSpawnConditions.Add(ConditionLoaderCLLC.ConditionWorldLevel);
 

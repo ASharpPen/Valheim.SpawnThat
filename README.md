@@ -367,6 +367,14 @@ SetRelentless = false
 # Setting type: Boolean
 SetTryDespawnOnConditionsInvalid = false
 
+## When true, mob will try to run away and despawn when alerted.
+# Setting type: Boolean
+SetTryDespawnOnAlert = false
+
+## Checks if any nearby players have accumulated noise at or above the threshold.
+# Setting type: Single
+ConditionNearbyPlayersNoiseThreshold = 0
+
 ```
 
 # Local Spawners - Details
@@ -605,6 +613,25 @@ Additional keys can be created manually through console commands, or by a mod li
 - PlainsMonsters
 - Boss
 
+## Noise
+Noise is set on each player based on certain activities they perform. It is set directly, and does not accumulate, meaning a player chopping trees will have the same noise of 100 for each chop and not increasingly higher.
+
+Certain creatures will treat the noise as a "sound range". This means if the noise is greater than their "hearing" setting, and "noise" is within range of the creature (100 noise is 100 meters), they will react.
+
+Noise constantly decays if no action is performed.
+Known causes of noise:
+- Dodge: 5
+- Punching: 5
+- Walking: 15
+- Running: 30
+- Jumping: 30
+- Chopping / Pickaxing: 40
+- Remove building piece: 50
+- Chopping trees: 100
+- Breaking rocks: 100
+
+Apart from that, every attack will have a hit-noise and swing noise. By default this is 30 and 10, but this could be different for each attack type.
+
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog: 
@@ -614,6 +641,7 @@ Changelog:
 	- Added setting "SetTryDespawnOnConditionsInvalid".
 	- Added setting "SetTryDespawnOnAlert".
 	- Added setting "TemplateId", for assigning a specific identifier to mobs spawned by a template, for other mods to use (intended for future Drop That setting).
+	- Added condition "ConditionNearbyPlayersNoiseThreshold".
 - v0.8.2: 
 	- Added more helpful warning- and error messages for when configurations are incorrectly set up.
 	- Changed StopTouchingMyConfigs to be set to true by default when spawn_that.cfg is created. Due to the massive loading time impact of large config files.
