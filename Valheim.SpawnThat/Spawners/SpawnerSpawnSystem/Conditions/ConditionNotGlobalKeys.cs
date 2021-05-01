@@ -4,19 +4,30 @@ using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 {
-    internal class ConditionGlobalKeys : IConditionOnSpawn
+    internal class ConditionNotGlobalKeys : IConditionOnSpawn
     {
-        private static ConditionGlobalKeys _instance;
+        private static ConditionNotGlobalKeys _instance;
 
-        public static ConditionGlobalKeys Instance
+        public static ConditionNotGlobalKeys Instance
         {
             get
             {
-                return _instance ??= new ConditionGlobalKeys();
+                return _instance ??= new ConditionNotGlobalKeys();
             }
         }
 
         public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
+        {
+            if(IsValid(config))
+            {
+                return false;
+            }
+
+            Log.LogTrace($"Ignoring world config {config.Name} due to finding a global key from {nameof(config.RequiredNotGlobalKey)}.");
+            return true;
+        }
+
+        public bool IsValid(SpawnConfiguration config)
         {
             if (!string.IsNullOrEmpty(config.RequiredNotGlobalKey?.Value))
             {
@@ -24,25 +35,17 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 
                 if (requiredNotKeys.Count > 0)
                 {
-                    bool foundNotRequiredKey = false;
-
                     foreach (var key in requiredNotKeys)
                     {
                         if (ZoneSystem.instance.GetGlobalKey(key))
                         {
-                            foundNotRequiredKey = true;
-                            break;
+                            return false;
                         }
-                    }
-                    if (foundNotRequiredKey)
-                    {
-                        Log.LogTrace($"Ignoring world config {config.Name} due to finding a global key from {nameof(config.RequiredNotGlobalKey)}.");
-                        return true;
                     }
                 }
             }
 
-            return false;
+            return true;
         }
     }
 }

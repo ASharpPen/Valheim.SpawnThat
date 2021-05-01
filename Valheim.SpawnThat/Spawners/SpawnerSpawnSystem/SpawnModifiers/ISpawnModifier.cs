@@ -10,6 +10,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers
 {
     public interface ISpawnModifier
     {
-        void Modify(GameObject spawn, SpawnSystem.SpawnData spawner, SpawnConfiguration config);
+        void Modify(SpawnContext context);
     }
 }

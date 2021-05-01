@@ -8,7 +8,7 @@ using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Configuration;
-using Valheim.SpawnThat.Spawners.Caches;
+using Valheim.SpawnThat.Spawns.Caches;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific.CLLC
 {
@@ -24,18 +24,18 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecif
             }
         }
 
-        public void Modify(GameObject spawn, SpawnSystem.SpawnData spawner, SpawnConfiguration spawnerConfig)
+        public void Modify(SpawnContext context)
         {
-            if (spawn is null)
+            if (!context.Spawn || context.Spawn is null)
             {
                 return;
             }
 
-            if (spawnerConfig.TryGet(SpawnSystemConfigCLLC.ModName, out Config modConfig))
+            if (context.Config.TryGet(SpawnSystemConfigCLLC.ModName, out Config modConfig))
             {
                 if (modConfig is SpawnSystemConfigCLLC config && config.SetInfusion.Value.Length > 0)
                 {
-                    var character = SpawnCache.GetCharacter(spawn);
+                    var character = SpawnCache.GetCharacter(context.Spawn);
 
                     if (character is null)
                     {
@@ -44,7 +44,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecif
 
                     if (Enum.TryParse(config.SetInfusion.Value, true, out CreatureInfusion infusion))
                     {
-                        Log.LogTrace($"Setting infusion {infusion} for {spawn.name}.");
+                        Log.LogTrace($"Setting infusion {infusion} for {context.Spawn.name}.");
                         CreatureLevelControl.API.SetInfusionCreature(character, infusion);
                     }
                 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 using System.Linq;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
@@ -38,7 +39,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
             if((players?.Count ?? 0) == 0)
             {
                 Log.LogTrace($"Ignoring world config {config.Name} due to condition {nameof(ConditionNearbyPlayersCarryValue)}.");
-                return false;
+                return true;
             }
 
             foreach(var player in players.Where(x => x is not null && x))
@@ -66,11 +67,12 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
                 }
             }
 
-            if(valueSum < requiredSum)
+            if (valueSum < requiredSum)
             {
-                Log.LogTrace($"Ignoring world config {config.Name} due to the combined player's in range value of '{valueSum}' being less than the required '{requiredSum}'.");
+                Log.LogTrace($"Filtering {config.Name} due to summed value of nearby players inventory.");
                 return true;
             }
+
             return false;
         }
     }

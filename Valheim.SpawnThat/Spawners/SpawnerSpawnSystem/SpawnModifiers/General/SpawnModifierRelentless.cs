@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
+﻿
 using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General
@@ -23,13 +17,18 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General
             }
         }
 
-        public void Modify(GameObject spawn, SpawnSystem.SpawnData spawner, SpawnConfiguration config)
+        public void Modify(SpawnContext context)
         {
-            if (config.SetRelentless.Value)
-            {
+            if(context.Config is null)
+            {   
+            	return;
+            }
+
+			if (context.Config.SetRelentless.Value)
+			{
                 Log.LogDebug("Setting relentless");
 
-                var znetview = spawn.GetComponent<ZNetView>();
+                var znetview = context.Spawn.GetComponent<ZNetView>();
                 if (!znetview || znetview is null)
                 {
 #if DEBUG
@@ -38,7 +37,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General
                     return;
                 }
 
-                spawn.GetComponent<ZNetView>().GetZDO().Set(ZdoFeature, true);
+                znetview.GetZDO().Set(ZdoFeature, true);
             }
         }
     }
