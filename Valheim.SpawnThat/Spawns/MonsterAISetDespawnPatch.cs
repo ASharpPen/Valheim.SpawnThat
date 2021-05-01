@@ -52,11 +52,6 @@ namespace Valheim.SpawnThat.Spawns
         {
             var zdo = SpawnCache.GetZDO(monsterAI.gameObject);
 
-            if(!zdo.GetBool(SpawnModifierDespawnOnConditionsInvalid.ZdoFeature, false))
-            {
-                return false;
-            }
-
             var despawnState = DespawnStateTable.GetOrCreateValue(monsterAI);
 
             if(despawnState.ShouldDespawn)
@@ -72,12 +67,53 @@ namespace Valheim.SpawnThat.Spawns
                 }
             }
 
-#if DEBUG
-            Log.LogTrace("Checking for despawn.");
-#endif
+            bool shouldDespawn = false;
+            try
+            {
+                if (CheckDespawnOnAlert(monsterAI, zdo))
+                {
+                    Log.LogTrace($"Setting {monsterAI.name} to despawn due to alert status.");
+                    return shouldDespawn = true;
+                }
+
+                if (CheckDespawnOnInvalidConditions(monsterAI, zdo))
+                {
+                    return shouldDespawn = true;
+                }
+            }
+            finally
+            {
+                despawnState.ShouldDespawn = shouldDespawn;
+                despawnState.LastCheck = DateTimeOffset.UtcNow;
+            }
+
+            return shouldDespawn;
+        }
+
+        private class DespawnState
+        {
+            public DateTimeOffset? LastCheck = null;
+            public bool ShouldDespawn = false;
+        }
+
+        private static bool CheckDespawnOnAlert(MonsterAI monsterAI, ZDO zdo)
+        {
+            if (!zdo.GetBool(SpawnModifierDespawnOnAlert.ZdoFeature, false))
+            {
+                return false;
+            }
+
+            return monsterAI.IsAlerted();
+        }
+
+        private static bool CheckDespawnOnInvalidConditions(MonsterAI monsterAI, ZDO zdo)
+        {
+            if (!zdo.GetBool(SpawnModifierDespawnOnConditionsInvalid.ZdoFeature, false))
+            {
+                return false;
+            }
 
             bool result = false;
-
             try
             {
                 if (zdo is null)
@@ -91,52 +127,27 @@ namespace Valheim.SpawnThat.Spawns
 
                 if (!ConditionDaytime.Instance.IsValid(checkDay, checkNight))
                 {
-#if DEBUG
                     Log.LogTrace($"Setting {monsterAI.name} to despawn, due to daytime conditions.");
-#endif
                     return result = true;
-                }
-                else
-                {
-#if DEBUG
-                    Log.LogTrace($"Daytime conditions for {monsterAI.name} where stil valid");
-#endif
                 }
 
                 var checkEnvironments = zdo.GetString(ConditionEnvironments.ZdoCondition, "");
 
                 if (!ConditionEnvironments.Instance.IsValid(checkEnvironments))
                 {
-#if DEBUG
                     Log.LogTrace($"Setting {monsterAI.name} to despawn, due to environment conditions.");
-#endif
                     return result = true;
-                }
-                else
-                {
-#if DEBUG
-                    Log.LogTrace($"Environment conditions '{checkEnvironments}' for {monsterAI.name} where stil valid");
-#endif
                 }
 
                 return result = false;
             }
             finally
             {
-                if(result)
+                if (result)
                 {
                     zdo.Set(SpawnModifierRelentless.ZdoFeature, false);
                 }
-
-                despawnState.LastCheck = DateTimeOffset.UtcNow;
-                despawnState.ShouldDespawn = result;
             }
-        }
-
-        private class DespawnState
-        {
-            public DateTimeOffset? LastCheck = null;
-            public bool ShouldDespawn = false;
         }
     }
 }

@@ -60,6 +60,8 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
             }
         }
 
+        public ConfigurationEntry<string> TemplateId = new ConfigurationEntry<string>("", "Technical setting intended for cross-mod identification of mobs spawned by this template. Sets a custom identifier which will be assigned to the spawned mobs ZDO as 'ZDO.Set(\"spawn_template_id\", TemplateIdentifier)'.");
+
         public ConfigurationEntry<string> Name = new ConfigurationEntry<string>("My spawner", "Just a field for naming the configuration entry.");
 
         public ConfigurationEntry<bool> Enabled = new ConfigurationEntry<bool>(true, "Enable/disable this entry.");
@@ -92,6 +94,8 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
         public ConfigurationEntry<bool> SetRelentless = new ConfigurationEntry<bool>(false, "When true, forces mob AI to always be alerted.");
 
         public ConfigurationEntry<bool> SetTryDespawnOnConditionsInvalid = new ConfigurationEntry<bool>(false, "When true, mob will try to run away and despawn when spawn conditions become invalid. Eg. if spawning only during night, it will run away and despawn at night.");
+
+        public ConfigurationEntry<bool> SetTryDespawnOnAlert = new ConfigurationEntry<bool>(false, "When true, mob will try to run away and despawn when alerted.");
 
         #region Default Configuration Options
 

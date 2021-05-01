@@ -32,6 +32,8 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
             SpawnModifiers.Add(SpawnModiferSetFaction.Instance);
             SpawnModifiers.Add(SpawnModifierRelentless.Instance);
             SpawnModifiers.Add(SpawnModifierDespawnOnConditionsInvalid.Instance);
+            SpawnModifiers.Add(SpawnModifierDespawnOnAlert.Instance);
+            SpawnModifiers.Add(SpawnModifierSetTemplateId.Instance);
 
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.BossAffix);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.ExtraEffect);
