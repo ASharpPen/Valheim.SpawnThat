@@ -4,30 +4,31 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace Valheim.SpawnThat.Spawners.Caches
+namespace Valheim.SpawnThat.Spawns.Caches
 {
     public static class SpawnCache
     {
-        private static ConditionalWeakTable<GameObject, Character> SpawnCharacterTable = new ();
-        private static ConditionalWeakTable<Character, ZNetView> CharacterZnetTable = new ();
+        private static ConditionalWeakTable<GameObject, Character> SpawnCharacterTable = new();
+        private static ConditionalWeakTable<Character, ZNetView> CharacterZnetTable = new();
+        private static ConditionalWeakTable<GameObject, ZDO> SpawnZdoTable = new ();
 
         private static FieldInfo CharacterZNetView = AccessTools.Field(typeof(Character), "m_nview");
 
         public static Character GetCharacter(GameObject spawn)
         {
-            if(!spawn || spawn is null)
+            if (!spawn || spawn is null)
             {
                 return null;
             }
 
-            if(SpawnCharacterTable.TryGetValue(spawn, out Character existingCharacter))
+            if (SpawnCharacterTable.TryGetValue(spawn, out Character existingCharacter))
             {
                 return existingCharacter;
             }
 
             var character = spawn.GetComponent<Character>();
 
-            if(character is not null)
+            if (character is not null)
             {
                 SpawnCharacterTable.Add(spawn, character);
             }
@@ -37,12 +38,12 @@ namespace Valheim.SpawnThat.Spawners.Caches
 
         public static ZDO GetZDO(Character character)
         {
-            if(character is null)
+            if (character is null)
             {
                 return null;
             }
 
-            if(CharacterZnetTable.TryGetValue(character, out ZNetView existing))
+            if (CharacterZnetTable.TryGetValue(character, out ZNetView existing))
             {
                 return existing.GetZDO();
             }
@@ -56,6 +57,24 @@ namespace Valheim.SpawnThat.Spawners.Caches
             }
 
             return null;
+        }
+
+        public static ZDO GetZDO(GameObject gameObject)
+        {
+            if(SpawnZdoTable.TryGetValue(gameObject, out ZDO existing))
+            {
+                return existing;
+            }
+
+            var znetView = gameObject.GetComponent<ZNetView>();
+            if (!znetView || znetView is null)
+            {
+                return null;
+            }
+
+            var zdo = znetView.GetZDO();
+            SpawnZdoTable.Add(gameObject, zdo);
+            return zdo;
         }
     }
 }

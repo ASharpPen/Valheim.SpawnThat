@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
@@ -38,6 +34,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.BossAffix);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.ExtraEffect);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.Infusion);
+            SpawnModifiers.Add(SpawnModifierLoaderCLLC.SetLevel);
         }
 
         public void ApplyModifiers(GameObject spawn, CreatureSpawnerConfig config)

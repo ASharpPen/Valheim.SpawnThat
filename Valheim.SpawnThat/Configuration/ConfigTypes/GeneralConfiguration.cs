@@ -20,7 +20,7 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         #region General
 
-        public ConfigurationEntry<bool> StopTouchingMyConfigs = new ConfigurationEntry<bool>(false, "Disables automatic updating and saving of configurations.\nThis means no helpers will be added, but.. allows you to keep things compact.\nNote: Can have massive impact on load times.");
+        public ConfigurationEntry<bool> StopTouchingMyConfigs = new ConfigurationEntry<bool>(true, "Disables automatic updating and saving of configurations.\nThis means no helpers will be added, but.. allows you to keep things compact.\nNote: Can have massive impact on load times.");
 
         #endregion
 

@@ -1,22 +1,24 @@
-﻿using CreatureLevelControl;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
-using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Configuration;
 using Valheim.SpawnThat.Spawns.Caches;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.ModSpecific.CLLC
 {
-    internal class SpawnModifierExtraEffect : ISpawnModifier
+    internal class SpawnModifierSetLevel : ISpawnModifier
     {
-        private static SpawnModifierExtraEffect _instance;
+        private static SpawnModifierSetLevel _instance;
 
-        public static SpawnModifierExtraEffect Instance
+        public static SpawnModifierSetLevel Instance
         {
             get
             {
-                return _instance ??= new SpawnModifierExtraEffect();
+                return _instance ??= new SpawnModifierSetLevel();
             }
         }
 
@@ -29,7 +31,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.ModSp
 
             if (spawnerConfig.TryGet(CreatureSpawnerConfigCLLC.ModName, out Config modConfig))
             {
-                if (modConfig is CreatureSpawnerConfigCLLC config && config.SetExtraEffect.Value.Length > 0)
+                if (modConfig is CreatureSpawnerConfigCLLC config && config.UseDefaultLevels.Value)
                 {
                     var character = SpawnCache.GetCharacter(spawn);
 
@@ -38,11 +40,19 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.ModSp
                         return;
                     }
 
-                    if (Enum.TryParse(config.SetExtraEffect.Value, true, out CreatureExtraEffect extraEffect))
+                    var level = spawnerConfig.LevelMin.Value;
+
+                    for (int i = 0; i < spawnerConfig.LevelMax.Value - spawnerConfig.LevelMin.Value; ++i)
                     {
-                        Log.LogTrace($"Setting extra effect {extraEffect} for {spawn.name}.");
-                        CreatureLevelControl.API.SetExtraEffectCreature(character, extraEffect);
+                        if (UnityEngine.Random.Range(0, 100) > spawnerConfig.LevelUpChance.Value)
+                        {
+                            break;
+                        }
+
+                        ++level;
                     }
+
+                    character.SetLevel(level);
                 }
             }
         }

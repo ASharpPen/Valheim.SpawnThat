@@ -1,4 +1,5 @@
 ﻿
+using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 
@@ -18,21 +19,37 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 
         public bool ShouldFilter(SpawnSystem spawner, SpawnConfiguration spawnConfig)
         {
-            var distance = spawner.transform.position.magnitude;
-
-            if (distance < spawnConfig.ConditionDistanceToCenterMin.Value)
+            if(!spawner || spawner is null || spawnConfig is null)
             {
-                Log.LogTrace($"Ignoring world config {spawnConfig.Name} due to distance less than min.");
-                return true;
+                return false;
             }
 
-            if (spawnConfig.ConditionDistanceToCenterMax.Value > 0 && distance > spawnConfig.ConditionDistanceToCenterMax.Value)
+            if(IsValid(spawner.transform.position, spawnConfig))
             {
-                Log.LogTrace($"Ignoring world config {spawnConfig.Name} due to distance greater than max.");
-                return true;
+                return false;
             }
 
-            return false;
+            Log.LogTrace($"Filtering {spawnConfig.Name} due to distance to center.");
+            return true;
+        }
+
+        public bool IsValid(Vector3 position, SpawnConfiguration config)
+        {
+            var distance = position.magnitude;
+
+            if (distance < config.ConditionDistanceToCenterMin.Value)
+            {
+                Log.LogTrace($"Ignoring world config {config.Name} due to distance less than min.");
+                return false;
+            }
+
+            if (config.ConditionDistanceToCenterMax.Value > 0 && distance > config.ConditionDistanceToCenterMax.Value)
+            {
+                Log.LogTrace($"Ignoring world config {config.Name} due to distance greater than max.");
+                return false;
+            }
+
+            return true;
         }
     }
 }

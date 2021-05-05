@@ -13,6 +13,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
     {
         private HashSet<IConditionOnAwake> OnAwakeConditions = new HashSet<IConditionOnAwake>();
         private HashSet<IConditionOnSpawn> OnSpawnConditions = new HashSet<IConditionOnSpawn>();
+        private HashSet<IConditionOnSpawn> DefaultSpawnConditions = new HashSet<IConditionOnSpawn>();
 
         private static ConditionManager _instance;
 
@@ -40,11 +41,21 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
             #region Add OnSpawn
 
             OnSpawnConditions.Add(ConditionWorldAge.Instance);
-            OnSpawnConditions.Add(ConditionGlobalKeys.Instance);
+            OnSpawnConditions.Add(ConditionNotGlobalKeys.Instance);
             OnSpawnConditions.Add(ConditionNearbyPlayersCarryValue.Instance);
             OnSpawnConditions.Add(ConditionNearbyPlayersCarryItem.Instance);
+            OnSpawnConditions.Add(ConditionNearbyPlayersNoise.Instance);
 
             OnSpawnConditions.Add(ConditionLoaderCLLC.ConditionWorldLevel);
+
+            #endregion
+
+            #region Add Default Conditions
+
+            DefaultSpawnConditions.Add(ConditionDaytime.Instance);
+            DefaultSpawnConditions.Add(ConditionGlobalKeysRequired.Instance);
+            DefaultSpawnConditions.Add(ConditionMaxSpawned.Instance);
+            DefaultSpawnConditions.Add(ConditionEnvironments.Instance);
 
             #endregion
         }
@@ -86,6 +97,23 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                     return false;
                 }
             });
+        }
+
+        public bool FilterDefault(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration? config = null)
+        {
+            if (config is null)
+            {
+                var cache = SpawnSystemConfigCache.Get(spawn);
+
+                if (cache?.Config == null)
+                {
+                    return false;
+                }
+
+                config = cache.Config;
+            }
+
+            return DefaultSpawnConditions.Any(x => x?.ShouldFilter(spawner, spawn, config) ?? false);
         }
     }
 }

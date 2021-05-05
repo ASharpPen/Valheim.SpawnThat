@@ -2,7 +2,7 @@
 using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Spawners.Caches;
+using Valheim.SpawnThat.Spawns.Caches;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General
 {
@@ -18,26 +18,26 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General
             }
         }
 
-        public void Modify(GameObject spawn, SpawnSystem.SpawnData spawner, SpawnConfiguration config)
+        public void Modify(SpawnContext context)
         {
-            if (spawn is null)
+            if (context.Spawn is null)
             {
                 return;
             }
 
-            var character = SpawnCache.GetCharacter(spawn);
+            var character = SpawnCache.GetCharacter(context.Spawn);
 
             if(character is null)
             {
                 return;
             }
 
-            if(string.IsNullOrWhiteSpace(config.SetFaction.Value))
+            if(string.IsNullOrWhiteSpace(context.Config.SetFaction.Value))
             {
                 return;
             }
 
-            var factionName = config.SetFaction.Value;
+            var factionName = context.Config.SetFaction.Value;
 
             if (Enum.TryParse(factionName.Trim(), out Character.Faction faction))
             {

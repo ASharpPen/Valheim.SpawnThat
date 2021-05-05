@@ -4,7 +4,7 @@ using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Configuration;
-using Valheim.SpawnThat.Spawners.Caches;
+using Valheim.SpawnThat.Spawns.Caches;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific.CLLC
 {
@@ -20,18 +20,18 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecif
             }
         }
 
-        public void Modify(GameObject spawn, SpawnSystem.SpawnData spawner, SpawnConfiguration spawnerConfig)
+        public void Modify(SpawnContext context)
         {
-            if (spawn is null)
+            if (!context.Spawn || context.Spawn is null || context.Config is null)
             {
                 return;
             }
 
-            if (spawnerConfig.TryGet(SpawnSystemConfigCLLC.ModName, out Config modConfig))
+            if (context.Config.TryGet(SpawnSystemConfigCLLC.ModName, out Config modConfig))
             {
                 if (modConfig is SpawnSystemConfigCLLC config && config.SetExtraEffect.Value.Length > 0)
                 {
-                    var character = SpawnCache.GetCharacter(spawn);
+                    var character = SpawnCache.GetCharacter(context.Spawn);
 
                     if (character is null)
                     {
@@ -40,7 +40,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecif
 
                     if (Enum.TryParse(config.SetExtraEffect.Value, true, out CreatureExtraEffect extraEffect))
                     {
-                        Log.LogTrace($"Setting extra effect {extraEffect} for {spawn.name}.");
+                        Log.LogTrace($"Setting extra effect {extraEffect} for {context.Spawn.name}.");
                         CreatureLevelControl.API.SetExtraEffectCreature(character, extraEffect);
                     }
                 }

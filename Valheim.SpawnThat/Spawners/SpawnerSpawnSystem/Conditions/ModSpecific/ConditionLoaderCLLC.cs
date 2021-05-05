@@ -21,6 +21,5 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific
                 return null;
             }
         }
-
     }
 }
