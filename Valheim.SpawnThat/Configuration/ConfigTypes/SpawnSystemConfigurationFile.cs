@@ -95,7 +95,7 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<bool> SetRelentless = new ConfigurationEntry<bool>(false, "When true, forces mob AI to always be alerted.");
 
-        public ConfigurationEntry<bool> SetTryDespawnOnConditionsInvalid = new ConfigurationEntry<bool>(false, "When true, mob will try to run away and despawn when spawn conditions become invalid. Eg. if spawning only during night, it will run away and despawn at night.");
+        public ConfigurationEntry<bool> SetTryDespawnOnConditionsInvalid = new ConfigurationEntry<bool>(false, "When true, mob will try to run away and despawn when spawn conditions become invalid.\nEg. if spawning only during night, it will run away and despawn at night. Currently this only take into account conditions for daytime and environment.");
 
         public ConfigurationEntry<bool> SetTryDespawnOnAlert = new ConfigurationEntry<bool>(false, "When true, mob will try to run away and despawn when alerted.");
 
