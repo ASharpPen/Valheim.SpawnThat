@@ -558,7 +558,7 @@ ConditionNotInfusion = Fire
 - Meadows
 - Swamp
 - Mountain
-- Blackforest
+- BlackForest
 - Plains
 - AshLands
 - DeepNorth
