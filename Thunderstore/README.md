@@ -363,7 +363,7 @@ ConditionNearbyPlayerCarriesItem =
 # Setting type: Boolean
 SetRelentless = false
 
-## When true, mob will try to run away and despawn when spawn conditions become invalid. Eg. if spawning only during night, it will run away and despawn at night.
+## When true, mob will try to run away and despawn when spawn conditions become invalid. Eg. if spawning only during night, it will run away and despawn at night. Currently this only take into account conditions for daytime and environment.
 # Setting type: Boolean
 SetTryDespawnOnConditionsInvalid = false
 
