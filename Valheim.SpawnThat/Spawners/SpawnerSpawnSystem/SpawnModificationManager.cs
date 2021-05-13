@@ -39,6 +39,8 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.ExtraEffect);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.Infusion);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.SetLevel);
+
+            SpawnModifiers.Add(SpawnModifierLoaderMobAI.SetAI);
         }
 
         public void ApplyModifiers(SpawnSystem spawnSystem, GameObject spawn, SpawnSystem.SpawnData spawner)

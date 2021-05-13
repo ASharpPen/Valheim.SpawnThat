@@ -41,7 +41,11 @@ namespace Valheim.SpawnThat.Core.Configuration
             {
                 Config = config.Bind<TIn>(section, key, DefaultValue, Description);
             }
+
+            PostBind();
         }
+
+        protected virtual void PostBind() { }
 
         public override string ToString()
         {

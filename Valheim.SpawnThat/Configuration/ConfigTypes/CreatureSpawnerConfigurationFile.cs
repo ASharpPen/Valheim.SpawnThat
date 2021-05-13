@@ -32,6 +32,10 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
             {
                 newModConfig = new CreatureSpawnerConfigCLLC();
             }
+            else if (subsectionName == CreatureSpawnerConfigMobAI.ModName.Trim().ToUpperInvariant())
+            {
+                newModConfig = new CreatureSpawnerConfigMobAI();
+            }
 
             return newModConfig;
         }
@@ -74,6 +78,8 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<string> SetFaction = new ConfigurationEntry<string>("", "Assign a specific faction to spawn. If empty uses default.");
 
+        public ConfigurationEntry<bool> SetTamed = new ConfigurationEntry<bool>(false, "When true, mob will be set to tamed status on spawn.");
+
         //Doesn't seem to have a purpose for now, lets leave it out.
         //public ConfigurationEntry<bool> RequireSpawnArea = new ConfigurationEntry<bool>(false, "Needs a clear area maybe? Can't find a use case for this one, may be pointless for now.");
 
@@ -95,5 +101,15 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
         public ConfigurationEntry<string> SetBossAffix = new ConfigurationEntry<string>("", "Assigns the specified boss affix to creature spawned. Only works for the default 5 bosses. Ignored if empty.");
 
         public ConfigurationEntry<bool> UseDefaultLevels = new ConfigurationEntry<bool>(false, "Use the default LevelMin and LevelMax for level assignment, ignoring the usual CLLC level control.");
+    }
+
+    [Serializable]
+    public class CreatureSpawnerConfigMobAI : Config
+    {
+        public const string ModName = "MobAI";
+
+        public ConfigurationEntry<string> SetAI = new ConfigurationEntry<string>("", "Name of MobAI to register for spawn.");
+
+        public ConfigurationFileEntry AIConfigFile = new ConfigurationFileEntry("", "Configuration file to use for the SetAI. Can include path. Eg. 'MyFixerConfig.json'. See MobAI documentation for file setup.");
     }
 }

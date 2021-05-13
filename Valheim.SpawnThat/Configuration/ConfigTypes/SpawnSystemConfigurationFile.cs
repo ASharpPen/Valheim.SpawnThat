@@ -32,6 +32,10 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
             {
                 newModConfig = new SpawnSystemConfigCLLC();
             }
+            else if(subsectionName == SpawnSystemConfigMobAI.ModName.Trim().ToUpperInvariant())
+            {
+                newModConfig = new SpawnSystemConfigMobAI();
+            }
 
             return newModConfig;
         }
@@ -98,6 +102,8 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
         public ConfigurationEntry<bool> SetTryDespawnOnConditionsInvalid = new ConfigurationEntry<bool>(false, "When true, mob will try to run away and despawn when spawn conditions become invalid.\nEg. if spawning only during night, it will run away and despawn at night. Currently this only take into account conditions for daytime and environment.");
 
         public ConfigurationEntry<bool> SetTryDespawnOnAlert = new ConfigurationEntry<bool>(false, "When true, mob will try to run away and despawn when alerted.");
+
+        public ConfigurationEntry<bool> SetTamed = new ConfigurationEntry<bool>(false, "When true, mob will be set to tamed status on spawn.");
 
         #region Default Configuration Options
 
@@ -174,5 +180,15 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
         public ConfigurationEntry<string> SetBossAffix = new ConfigurationEntry<string>("", "Assigns the specified boss affix to creature spawned. Only works for the default 5 bosses. Ignored if empty.");
 
         public ConfigurationEntry<bool> UseDefaultLevels = new ConfigurationEntry<bool>(false, "Use the default LevelMin and LevelMax for level assignment, ignoring the usual CLLC level control.");
+    }
+
+    [Serializable]
+    public class SpawnSystemConfigMobAI : Config
+    {
+        public const string ModName = "MobAI";
+
+        public ConfigurationEntry<string> SetAI = new ConfigurationEntry<string>("", "Name of MobAI to register for spawn.");
+
+        public ConfigurationFileEntry AIConfigFile = new ConfigurationFileEntry("", "Configuration file to use for the SetAI. Can include path. Eg. 'MyFixerConfig.json'. See MobAI documentation for file setup.");
     }
 }
