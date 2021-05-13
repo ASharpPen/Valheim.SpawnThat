@@ -363,7 +363,7 @@ ConditionNearbyPlayerCarriesItem =
 # Setting type: Boolean
 SetRelentless = false
 
-## When true, mob will try to run away and despawn when spawn conditions become invalid. Eg. if spawning only during night, it will run away and despawn at night.
+## When true, mob will try to run away and despawn when spawn conditions become invalid. Eg. if spawning only during night, it will run away and despawn at night. Currently this only take into account conditions for daytime and environment.
 # Setting type: Boolean
 SetTryDespawnOnConditionsInvalid = false
 
@@ -635,6 +635,8 @@ Apart from that, every attack will have a hit-noise and swing noise. By default 
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog: 
+- v0.9.1: 
+	- Fixed issue with too early access of location info. Should resolve issue with local spawners not spawning creatures.
 - v0.9.0: 
 	- Added setting "UseDefaultLevels" to CLLC integraiton, to let Spawn That set levels.
 	- Added setting "SetRelentless".
