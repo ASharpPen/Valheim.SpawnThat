@@ -105,6 +105,8 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<bool> SetTamed = new ConfigurationEntry<bool>(false, "When true, mob will be set to tamed status on spawn.");
 
+        public ConfigurationEntry<bool> SetTamedCommandable = new ConfigurationEntry<bool>(false, "When true, will set mob as commandable when tamed. When false, whatever was default for the creature is used.");
+
         #region Default Configuration Options
 
         public ConfigurationEntry<string> PrefabName = new ConfigurationEntry<string>("Deer", "Prefab name of the entity to spawn.");

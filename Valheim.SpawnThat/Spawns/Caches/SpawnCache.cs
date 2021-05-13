@@ -11,6 +11,8 @@ namespace Valheim.SpawnThat.Spawns.Caches
         private static ConditionalWeakTable<GameObject, Character> SpawnCharacterTable = new();
         private static ConditionalWeakTable<Character, ZNetView> CharacterZnetTable = new();
         private static ConditionalWeakTable<GameObject, ZDO> SpawnZdoTable = new ();
+        private static ConditionalWeakTable<GameObject, MonsterAI> SpawnMonsterAITable = new();
+        private static ConditionalWeakTable<GameObject, Tameable> SpawnTameableTable = new();
 
         private static FieldInfo CharacterZNetView = AccessTools.Field(typeof(Character), "m_nview");
 
@@ -75,6 +77,40 @@ namespace Valheim.SpawnThat.Spawns.Caches
             var zdo = znetView.GetZDO();
             SpawnZdoTable.Add(gameObject, zdo);
             return zdo;
+        }
+
+        public static MonsterAI GetMonsterAI(GameObject gameObject)
+        {
+            if (SpawnMonsterAITable.TryGetValue(gameObject, out MonsterAI existing))
+            {
+                return existing;
+            }
+
+            var component = gameObject.GetComponent<MonsterAI>();
+            if (!component || component is null)
+            {
+                return null;
+            }
+
+            SpawnMonsterAITable.Add(gameObject, component);
+            return component;
+        }
+
+        public static Tameable GetTameable(GameObject gameObject)
+        {
+            if (SpawnTameableTable.TryGetValue(gameObject, out Tameable existing))
+            {
+                return existing;
+            }
+
+            var component = gameObject.GetComponent<Tameable>();
+            if (!component || component is null)
+            {
+                return null;
+            }
+
+            SpawnTameableTable.Add(gameObject, component);
+            return component;
         }
     }
 }

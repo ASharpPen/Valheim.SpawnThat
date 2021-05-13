@@ -80,6 +80,8 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<bool> SetTamed = new ConfigurationEntry<bool>(false, "When true, mob will be set to tamed status on spawn.");
 
+        public ConfigurationEntry<bool> SetTamedCommandable = new ConfigurationEntry<bool>(false, "When true, will set mob as commandable when tamed. When false, whatever was default for the creature is used.");
+
         //Doesn't seem to have a purpose for now, lets leave it out.
         //public ConfigurationEntry<bool> RequireSpawnArea = new ConfigurationEntry<bool>(false, "Needs a clear area maybe? Can't find a use case for this one, may be pointless for now.");
 

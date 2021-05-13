@@ -120,6 +120,8 @@
     <Compile Include="Spawners\SpawnerCreatureSpawner\Patches\OnSpawnPatch.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\RoomCache.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\General\SpawnModifierSetFaction.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\General\SpawnModifierSetTamed.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\General\SpawnModifierSetTamedCommandable.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ISpawnModifier.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\CLLC\SpawnModifierBossAffix.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\CLLC\SpawnModifierExtraEffect.cs" />
@@ -151,6 +153,8 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModiferSetFaction.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierDespawnOnConditionsInvalid.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierDespawnOnAlert.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierSetTamed.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierSetTamedCommandable.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierSetTemplateId.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierSetLevel.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierRelentless.cs" />
@@ -173,8 +177,10 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierInfusion.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\SpawnModifierLoaderCLLC.cs" />
     <Compile Include="Spawns\CharacterSetFactionPatch.cs" />
+    <Compile Include="Spawns\MonsterAITamingPatch.cs" />
     <Compile Include="Spawns\MonsterAISetDespawnPatch.cs" />
     <Compile Include="Spawns\MonsterAISetRelentlessPatch.cs" />
+    <Compile Include="Spawns\TameableSetCommandablePatch.cs" />
     <Compile Include="SpawnThatPlugin.cs" />
     <Compile Include="Utilities\Extensions\CodeMatcherExtensions.cs" />
     <Compile Include="Utilities\Spatial\IHaveVector3.cs" />
