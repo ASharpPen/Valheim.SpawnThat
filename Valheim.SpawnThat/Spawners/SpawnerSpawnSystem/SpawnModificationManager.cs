@@ -29,7 +29,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                 _instance = null;
             });
 
-            SpawnModifiers.Add(SpawnModiferSetFaction.Instance);
+            SpawnModifiers.Add(SpawnModifierSetFaction.Instance);
             SpawnModifiers.Add(SpawnModifierRelentless.Instance);
             SpawnModifiers.Add(SpawnModifierDespawnOnConditionsInvalid.Instance);
             SpawnModifiers.Add(SpawnModifierDespawnOnAlert.Instance);

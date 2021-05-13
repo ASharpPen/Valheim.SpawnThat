@@ -150,7 +150,7 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\IConditionOnAwake.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\CLLC\ConditionWorldLevel.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\ConditionLoaderCLLC.cs" />
-    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModiferSetFaction.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierSetFaction.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierDespawnOnConditionsInvalid.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierDespawnOnAlert.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierSetTamed.cs" />

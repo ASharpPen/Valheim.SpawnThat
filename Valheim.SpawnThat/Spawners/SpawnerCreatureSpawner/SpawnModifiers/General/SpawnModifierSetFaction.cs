@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
@@ -10,15 +6,15 @@ using Valheim.SpawnThat.Spawns.Caches;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.General
 {
-    internal class SpawnModiferSetFaction : ISpawnModifier
+    internal class SpawnModifierSetFaction : ISpawnModifier
     {
-        private static SpawnModiferSetFaction _instance;
+        private static SpawnModifierSetFaction _instance;
 
-        public static SpawnModiferSetFaction Instance
+        public static SpawnModifierSetFaction Instance
         {
             get
             {
-                return _instance ??= new SpawnModiferSetFaction();
+                return _instance ??= new SpawnModifierSetFaction();
             }
         }
 
