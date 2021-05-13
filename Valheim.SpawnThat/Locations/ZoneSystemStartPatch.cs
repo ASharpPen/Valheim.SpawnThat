@@ -10,7 +10,7 @@ namespace Valheim.SpawnThat.Locations
     [HarmonyPatch(typeof(ZoneSystem))]
     public static class ZoneSystemStartPatch
     {
-        [HarmonyPatch("Start")]
+        [HarmonyPatch(nameof(ZoneSystem.Load))]
         [HarmonyPostfix]
         private static void LoadLocations(Dictionary<Vector2i, ZoneSystem.LocationInstance> ___m_locationInstances)
         {

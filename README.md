@@ -558,7 +558,7 @@ ConditionNotInfusion = Fire
 - Meadows
 - Swamp
 - Mountain
-- Blackforest
+- BlackForest
 - Plains
 - AshLands
 - DeepNorth
@@ -635,6 +635,8 @@ Apart from that, every attack will have a hit-noise and swing noise. By default 
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog: 
+- v0.9.1: 
+	- Fixed issue with too early access of location info. Should resolve issue with local spawners not spawning creatures.
 - v0.9.0: 
 	- Added setting "UseDefaultLevels" to CLLC integraiton, to let Spawn That set levels.
 	- Added setting "SetRelentless".
