@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
@@ -31,10 +32,15 @@ namespace Valheim.SpawnThat.Configuration.Multiplayer
 
             using (MemoryStream memStream = new MemoryStream())
             {
-                BinaryFormatter binaryFormatter = new BinaryFormatter();
-                binaryFormatter.Serialize(memStream, this);
+                using (var zipStream = new GZipStream(memStream, CompressionLevel.Optimal))
+                {
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+                    binaryFormatter.Serialize(zipStream, this);
+                }
 
-                byte[] serialized = memStream.ToArray();
+                byte[] serialized = memStream.GetBuffer();
+
+                Log.LogTrace($"Serialized size: {serialized.Length} bytes");
 
                 package.Write(serialized);
             }
@@ -46,34 +52,37 @@ namespace Valheim.SpawnThat.Configuration.Multiplayer
         {
             var serialized = package.ReadByteArray();
 
-            Log.LogTrace("Deserializing package.");
+            Log.LogTrace($"Deserializing {serialized.Length} bytes of configs");
 
             using (MemoryStream memStream = new MemoryStream(serialized))
             {
-                BinaryFormatter binaryFormatter = new BinaryFormatter();
-                var responseObject = binaryFormatter.Deserialize(memStream);
-
-                if (responseObject is ConfigPackage configPackage)
+                using (var zipStream = new GZipStream(memStream, CompressionMode.Decompress, true))
                 {
-                    Log.LogDebug("Received and deserialized config package");
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+                    var responseObject = binaryFormatter.Deserialize(zipStream);
 
-                    Log.LogTrace("Unpackaging configs.");
+                    if (responseObject is ConfigPackage configPackage)
+                    {
+                        Log.LogDebug("Received and deserialized config package");
 
-                    ConfigurationManager.GeneralConfig = configPackage.GeneralConfig;
-                    ConfigurationManager.SimpleConfig = configPackage.SimpleConfig;
-                    ConfigurationManager.SpawnSystemConfig = configPackage.SpawnSystemConfig;
-                    ConfigurationManager.CreatureSpawnerConfig = configPackage.CreatureSpawnerConfig;
+                        Log.LogTrace("Unpackaging configs.");
 
-                    Log.LogTrace("Successfully unpacked configs.");
+                        ConfigurationManager.GeneralConfig = configPackage.GeneralConfig;
+                        ConfigurationManager.SimpleConfig = configPackage.SimpleConfig;
+                        ConfigurationManager.SpawnSystemConfig = configPackage.SpawnSystemConfig;
+                        ConfigurationManager.CreatureSpawnerConfig = configPackage.CreatureSpawnerConfig;
 
-                    Log.LogTrace($"Unpacked general config");
-                    Log.LogTrace($"Unpacked {ConfigurationManager.CreatureSpawnerConfig?.Subsections?.Count ?? 0} creature spawner entries");
-                    Log.LogTrace($"Unpacked {ConfigurationManager.SpawnSystemConfig?.Subsections?.Values?.FirstOrDefault()?.Subsections?.Count ?? 0} spawn system entries");
-                    Log.LogTrace($"Unpacked {ConfigurationManager.SimpleConfig?.Subsections?.Count ?? 0} simple entries");
-                }
-                else
-                {
-                    Log.LogWarning("Received bad config package. Unable to load.");
+                        Log.LogTrace("Successfully unpacked configs.");
+
+                        Log.LogDebug($"Unpacked general config");
+                        Log.LogDebug($"Unpacked {ConfigurationManager.CreatureSpawnerConfig?.Subsections?.Count ?? 0} local spawner entries");
+                        Log.LogDebug($"Unpacked {ConfigurationManager.SpawnSystemConfig?.Subsections?.Values?.FirstOrDefault()?.Subsections?.Count ?? 0} world spawner entries");
+                        Log.LogDebug($"Unpacked {ConfigurationManager.SimpleConfig?.Subsections?.Count ?? 0} simple entries");
+                    }
+                    else
+                    {
+                        Log.LogWarning("Received bad config package. Unable to load.");
+                    }
                 }
             }
         }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -106,24 +107,28 @@ namespace Valheim.SpawnThat.Locations
 
 		private static void LoadLocationInfo(byte[] serialized)
         {
-            using (MemoryStream memStream = new MemoryStream(serialized))
-            {
-                BinaryFormatter binaryFormatter = new BinaryFormatter();
-                var responseObject = binaryFormatter.Deserialize(memStream);
+			Log.LogTrace($"Deserializing {serialized.Length} bytes of location data.");
 
-                if (responseObject is List<SimpleLocationDTO> locations)
-                {
-#if DEBUG
-                    Log.LogDebug($"Deserialized {locations.Count} locations.");
-#endif
-					IEnumerable<SimpleLocation> simpleLocations = locations.Select(x => x.ToSimpleLocation());
+			using (MemoryStream memStream = new MemoryStream(serialized))
+			{
+				using (var zipStream = new GZipStream(memStream, CompressionMode.Decompress, true))
+				{
+					BinaryFormatter binaryFormatter = new BinaryFormatter();
+					var responseObject = binaryFormatter.Deserialize(zipStream);
 
-                    LocationHelper.SetLocations(simpleLocations);
+					if (responseObject is SimpleLocationPackage package)
+					{
+						var locations = package.Unpack();
+
+						Log.LogDebug($"Deserialized {locations.Count} locations.");
+
+						LocationHelper.SetLocations(locations);
 #if DEBUG
-                    Log.LogDebug($"Assigning locations.");
+						Log.LogDebug($"Assigning locations: " + locations.Select(x => x.LocationName).Distinct().Join());
 #endif
-                }
-            }
+					}
+				}
+			}
         }
 
         private static byte[] SerializeLocationInfo(Dictionary<Vector2i, ZoneSystem.LocationInstance> locationInstances)
@@ -132,26 +137,21 @@ namespace Valheim.SpawnThat.Locations
             Log.LogDebug($"Serializing {locationInstances.Count} location instances.");
 #endif
 
-            List<SimpleLocationDTO> simpleLocations = new List<SimpleLocationDTO>();
-
-            foreach (var location in locationInstances)
-            {
-				simpleLocations.Add(new SimpleLocationDTO(location.Key, location.Value.m_position, location.Value.m_location.m_prefabName));
-            }
+			SimpleLocationPackage package = new SimpleLocationPackage(locationInstances);
 
             using (MemoryStream memStream = new MemoryStream())
             {
-                BinaryFormatter binaryFormatter = new BinaryFormatter();
-                binaryFormatter.Serialize(memStream, simpleLocations);
+				using (var zipStream = new GZipStream(memStream, CompressionLevel.Optimal))
+				{
+					BinaryFormatter binaryFormatter = new BinaryFormatter();
+					binaryFormatter.Serialize(zipStream, package);
+				}
 
-                byte[] serializedLocations = memStream.ToArray();
+				byte[] serializedLocations = memStream.ToArray();
 
-#if DEBUG
-                Log.LogDebug($"Serialized {serializedLocations.Length} bytes of locations.");
-#endif
-
-                return serializedLocations;
-            }
-        }
+				Log.LogDebug($"Serialized {serializedLocations.Length} bytes of locations.");
+				return serializedLocations;
+			}
+		}
     }
 }
