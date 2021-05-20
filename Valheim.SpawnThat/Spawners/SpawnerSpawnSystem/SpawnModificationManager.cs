@@ -29,16 +29,20 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                 _instance = null;
             });
 
-            SpawnModifiers.Add(SpawnModiferSetFaction.Instance);
+            SpawnModifiers.Add(SpawnModifierSetFaction.Instance);
             SpawnModifiers.Add(SpawnModifierRelentless.Instance);
             SpawnModifiers.Add(SpawnModifierDespawnOnConditionsInvalid.Instance);
             SpawnModifiers.Add(SpawnModifierDespawnOnAlert.Instance);
             SpawnModifiers.Add(SpawnModifierSetTemplateId.Instance);
+            SpawnModifiers.Add(SpawnModifierSetTamed.Instance);
+            SpawnModifiers.Add(SpawnModifierSetTamedCommandable.Instance);
 
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.BossAffix);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.ExtraEffect);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.Infusion);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.SetLevel);
+
+            SpawnModifiers.Add(SpawnModifierLoaderMobAI.SetAI);
         }
 
         public void ApplyModifiers(SpawnSystem spawnSystem, GameObject spawn, SpawnSystem.SpawnData spawner)

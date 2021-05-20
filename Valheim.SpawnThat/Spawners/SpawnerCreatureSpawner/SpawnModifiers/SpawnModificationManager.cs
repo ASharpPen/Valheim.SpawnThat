@@ -29,12 +29,16 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers
                 _instance = null;
             });
 
-            SpawnModifiers.Add(SpawnModiferSetFaction.Instance);
+            SpawnModifiers.Add(SpawnModifierSetFaction.Instance);
+            SpawnModifiers.Add(SpawnModifierSetTamed.Instance);
+            SpawnModifiers.Add(SpawnModifierSetTamedCommandable.Instance);
 
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.BossAffix);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.ExtraEffect);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.Infusion);
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.SetLevel);
+
+            SpawnModifiers.Add(SpawnModifierLoaderMobAI.SetAI);
         }
 
         public void ApplyModifiers(GameObject spawn, CreatureSpawnerConfig config)
@@ -52,6 +56,12 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers
                 if (modifier is not null)
                 {
                     modifier.Modify(spawn, config);
+                }
+                else
+                {
+#if DEBUG
+                    Log.LogDebug($"CreatureSpawn modifier: {modifier.GetType().Name} is null" );
+#endif
                 }
             }
         }
