@@ -21,6 +21,7 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 - Server-side configs
 - Modify the spawners in camps, villages and dungeons
 - Support for [Creature Level and Loot Control](https://valheim.thunderstore.io/package/Smoothbrain/CreatureLevelAndLootControl/)
+- Support for [MobAILib](https://www.nexusmods.com/valheim/mods/1188)
 
 ## FAQ
 
@@ -375,6 +376,14 @@ SetTryDespawnOnAlert = false
 # Setting type: Single
 ConditionNearbyPlayersNoiseThreshold = 0
 
+## When true, mob will be set to tamed status on spawn.
+# Setting type: Boolean
+SetTamed =  false
+
+## Experimental. When true, will set mob as commandable when tamed. When false, whatever was default for the creature is used. Does not always seem to work for creatures not tameable in vanilla.
+# Setting type: Boolean
+SetTamedCommandable = false
+
 ```
 
 # Local Spawners - Details
@@ -435,11 +444,74 @@ SetPatrolPoint = true
 # Setting type: String
 SetFaction = 
 
+## When true, mob will be set to tamed status on spawn.
+# Setting type: Boolean
+SetTamed =  false
+
+## Experimental. When true, will set mob as commandable when tamed. When false, whatever was default for the creature is used. Does not always seem to work for creatures not tameable in vanilla.
+# Setting type: Boolean
+SetTamedCommandable = false
+
 ```
 
 # Mod specific configuration
 
 These are implemented soft-dependant, meaning if the mod is not present, the configuration will simply do nothing.
+
+## MobAILib
+
+Options for setting [MobAILib](https://www.nexusmods.com/valheim/mods/1188) ai's and configuration. See the mod page for more in-depth documentation of the options. By default, only the built-in AI's will be available, but should support any customly registered by other mods.
+
+Note, MobAI will most likely completely take over any AI related features, so don't expect things like SetTryDespawnOnAlert to work when assigning a custom ai.
+
+### World Spawners
+
+Mod-specific configs can be added to each world spawner as `[WorldSpawner.Index.MobAI]`
+
+``` INI
+## Name of MobAI to register for spawn. Eg. the defaults 'Fixer' and 'Worker'.
+SetAI = 
+
+## Configuration file to use for the SetAI. Eg. 'MyFixerConfig.json', can include path, but will always start searching from config folder. See MobAI documentation for file setup.
+AIConfigFile = 
+``` 
+
+Example of a repair boar.
+
+```
+[WorldSpawner.321]
+Name = My fixing boar
+PrefabName = Boar
+
+[WorldSpawner.321.MobAI]
+SetAI = Fixer
+AIConfigFile=MyFixerConfig.json
+```
+
+### Local Spawners
+
+Mod-specific configs can be added to each local spawner as `[Location.PrefabName.MobAI]`
+
+``` INI
+## Name of MobAI to register for spawn. Eg. the defaults 'Fixer' and 'Worker'.
+SetAI = 
+
+## Configuration file to use for the SetAI. Eg. 'MyFixerConfig.json', can include path, but will always start searching from config folder. See MobAI documentation for file setup.
+AIConfigFile = 
+``` 
+
+Example of a boar repairman spawning at boar runestones.
+
+```
+[Runestone_Boars.Boar]
+Name = Repair Boar
+PrefabName = Boar
+
+[Runestone_Boars.Boar.MobAI]
+SetAI = Fixer
+AIConfigFile=MyFixerConfig.json
+```
+
 
 ## Creature Level and Loot Control
 
@@ -448,7 +520,7 @@ See the mod page for more in-depth documentation for the options.
 
 ### World Spawners
 
-Mod-specific configs can be added to each local spawner as `[WorldSpawner.Index.CreatureLevelAndLootControl]`
+Mod-specific configs can be added to each world spawner as `[WorldSpawner.Index.CreatureLevelAndLootControl]`
 
 ``` INI
 
@@ -636,8 +708,9 @@ For those who got this far: An additional "feature" hint. The game does not care
 
 Changelog: 
 - v0.10.0: 
-	- Added initial support for [MobAILib]().
-	- Added setting "SetTamed".
+	- Added initial support for [MobAILib](https://www.nexusmods.com/valheim/mods/1188).
+	- Added setting "SetTamed" for local- and world spawners.
+	- Added setting "SetTamedCommandable" for local- and world spawners.
 - v0.9.1: 
 	- Fixed issue with too early access of location info. Should resolve issue with local spawners not spawning creatures.
 - v0.9.0: 

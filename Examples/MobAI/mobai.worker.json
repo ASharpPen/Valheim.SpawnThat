@@ -1,0 +1,10 @@
+{
+  "FeedDuration" : 1000,
+  "AssignmentSearchRadius" : 30,
+  "ItemSearchRadius" : 10,
+  "ContainerSearchRadius" : 10,
+  "IncludedContainers" : [ "piece_chest_wood" ],
+  "MaxContainersInMemory" : 3,
+  "TimeBeforeAssignmentCanBeRepeated" : 10,
+  "TimeLimitOnAssignment": 60
+} 
