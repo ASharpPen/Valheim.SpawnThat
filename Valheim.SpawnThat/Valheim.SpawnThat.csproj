@@ -104,6 +104,7 @@
     <Compile Include="Locations\SimpleLocation.cs" />
     <Compile Include="Configuration\Multiplayer\ConfigMultiplayerPatch.cs" />
     <Compile Include="Configuration\Multiplayer\ConfigPackage.cs" />
+    <Compile Include="Locations\SimpleLocationPackage.cs" />
     <Compile Include="Locations\ZoneSystemMultiplayerPatch.cs" />
     <Compile Include="Locations\ZoneSystemStartPatch.cs" />
     <Compile Include="Reset\GameStartupPatch.cs" />
