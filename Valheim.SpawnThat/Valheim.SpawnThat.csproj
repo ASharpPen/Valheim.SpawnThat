@@ -55,6 +55,12 @@
       <HintPath>LibsStripped\CreatureLevelControl.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="MobAILib">
+      <HintPath>LibsStripped\MobAILib.dll</HintPath>
+    </Reference>
+    <Reference Include="stateless">
+      <HintPath>LibsStripped\stateless.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -86,6 +92,7 @@
     <Compile Include="ConsoleCommands\ConsolePatch.cs" />
     <Compile Include="Core\Configuration\Config.cs" />
     <Compile Include="Core\Configuration\ConfigurationEntry.cs" />
+    <Compile Include="Core\Configuration\ConfigurationFileEntry.cs" />
     <Compile Include="Core\Configuration\ConfigurationLoader.cs" />
     <Compile Include="Core\Configuration\ConfigWithSubsections.cs" />
     <Compile Include="Core\Configuration\IConfigFile.cs" />
@@ -97,6 +104,7 @@
     <Compile Include="Locations\SimpleLocation.cs" />
     <Compile Include="Configuration\Multiplayer\ConfigMultiplayerPatch.cs" />
     <Compile Include="Configuration\Multiplayer\ConfigPackage.cs" />
+    <Compile Include="Locations\SimpleLocationPackage.cs" />
     <Compile Include="Locations\ZoneSystemMultiplayerPatch.cs" />
     <Compile Include="Locations\ZoneSystemStartPatch.cs" />
     <Compile Include="Reset\GameStartupPatch.cs" />
@@ -113,12 +121,16 @@
     <Compile Include="Spawners\SpawnerCreatureSpawner\Patches\OnSpawnPatch.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\RoomCache.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\General\SpawnModifierSetFaction.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\General\SpawnModifierSetTamed.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\General\SpawnModifierSetTamedCommandable.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ISpawnModifier.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\CLLC\SpawnModifierBossAffix.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\CLLC\SpawnModifierExtraEffect.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\CLLC\SpawnModifierInfusion.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\CLLC\SpawnModifierSetLevel.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\MobAI\SpawnModifierSetAI.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\SpawnModifierLoaderCLLC.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\ModSpecific\SpawnModifierLoaderMobAI.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnModifiers\SpawnModificationManager.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\Types\RoomSpawner.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnerConfigApplier.cs" />
@@ -139,12 +151,16 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\IConditionOnAwake.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\CLLC\ConditionWorldLevel.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\ConditionLoaderCLLC.cs" />
-    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModiferSetFaction.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierSetFaction.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierDespawnOnConditionsInvalid.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierDespawnOnAlert.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierSetTamed.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierSetTamedCommandable.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierSetTemplateId.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierSetLevel.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierRelentless.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\MobAI\SpawnModifierSetAI.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\SpawnModifierLoaderMobAI.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\SpawnContext.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnSystemConfigManager.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Patches\SpawnSystemSpawnPatch.cs" />
@@ -162,8 +178,10 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\CLLC\SpawnModifierInfusion.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\ModSpecific\SpawnModifierLoaderCLLC.cs" />
     <Compile Include="Spawns\CharacterSetFactionPatch.cs" />
+    <Compile Include="Spawns\MonsterAITamingPatch.cs" />
     <Compile Include="Spawns\MonsterAISetDespawnPatch.cs" />
     <Compile Include="Spawns\MonsterAISetRelentlessPatch.cs" />
+    <Compile Include="Spawns\TameableSetCommandablePatch.cs" />
     <Compile Include="SpawnThatPlugin.cs" />
     <Compile Include="Utilities\Extensions\CodeMatcherExtensions.cs" />
     <Compile Include="Utilities\Spatial\IHaveVector3.cs" />
