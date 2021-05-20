@@ -93,6 +93,8 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<float> ConditionNearbyPlayersNoiseThreshold = new ConfigurationEntry<float>(0, "Checks if any nearby players have accumulated noise at or above the threshold.");
 
+        public ConfigurationEntry<string> ConditionNearbyPlayersStatus = new ConfigurationEntry<string>("", "Checks if any nearbly players have any of the listed status effects.\nEg. Wet, Burning");
+
         public ConfigurationEntry<string> RequiredNotGlobalKey = new ConfigurationEntry<string>("", "Array of global keys which disable the spawning of this entity if any are detected.\nEg. defeated_bonemass,KilledTroll");
 
         public ConfigurationEntry<string> SetFaction = new ConfigurationEntry<string>("", "Assign a specific faction to spawn. If empty uses default.");
