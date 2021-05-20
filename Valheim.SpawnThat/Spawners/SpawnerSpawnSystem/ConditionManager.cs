@@ -32,32 +32,27 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                 _instance = null;
             });
 
-            #region Add OnAwake
+            // OnAwake conditions
             
             OnAwakeConditions.Add(ConditionDistanceToCenter.Instance);
 
-            #endregion
-
-            #region Add OnSpawn
+            // OnSpawn conditions
 
             OnSpawnConditions.Add(ConditionWorldAge.Instance);
             OnSpawnConditions.Add(ConditionNotGlobalKeys.Instance);
             OnSpawnConditions.Add(ConditionNearbyPlayersCarryValue.Instance);
             OnSpawnConditions.Add(ConditionNearbyPlayersCarryItem.Instance);
             OnSpawnConditions.Add(ConditionNearbyPlayersNoise.Instance);
+            OnSpawnConditions.Add(ConditionNearbyPlayersStatus.Instance);
 
             OnSpawnConditions.Add(ConditionLoaderCLLC.ConditionWorldLevel);
 
-            #endregion
-
-            #region Add Default Conditions
+            // Default conditions
 
             DefaultSpawnConditions.Add(ConditionDaytime.Instance);
             DefaultSpawnConditions.Add(ConditionGlobalKeysRequired.Instance);
             DefaultSpawnConditions.Add(ConditionMaxSpawned.Instance);
             DefaultSpawnConditions.Add(ConditionEnvironments.Instance);
-
-            #endregion
         }
 
         public bool FilterOnAwake(SpawnSystem spawner, SpawnConfiguration config)
