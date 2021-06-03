@@ -597,7 +597,7 @@ PrefabName = Boar
 Enabled = true
 
 [Runestone_Boars.Boar.CreatureLevelAndLootControl]
-ConditionNotInfusion = Fire
+SetInfusion = Fire
 
 ```
 
@@ -730,6 +730,8 @@ Apart from that, every attack will have a hit-noise and swing noise. By default 
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog: 
+- v0.10.1: 
+	- Fixed issue with world-spawner mobs not spawning in mountains.
 - v0.10.0: 
 	- Optimized network package sizes.
 	- Added initial support for [MobAILib](https://www.nexusmods.com/valheim/mods/1188).
