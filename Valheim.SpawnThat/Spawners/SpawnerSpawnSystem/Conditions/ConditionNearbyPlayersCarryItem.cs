@@ -36,8 +36,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
                 return false;
             }
 
-            List<Player> players = new List<Player>();
-            Player.GetPlayersInRange(spawner.transform.position, config.DistanceToTriggerPlayerConditions.Value, players);
+            List<Player> players = PlayerUtils.GetPlayersInRadius(spawner.transform.position, config.DistanceToTriggerPlayerConditions.Value);
 
             var itemsLookedFor = config.ConditionNearbyPlayerCarriesItem?.Value?.SplitByComma(true)?.ToHashSet();
 

@@ -56,10 +56,10 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="MobAILib">
-      <HintPath>LibsStripped\MobAILib.dll</HintPath>
+      <HintPath>C:\Users\MHS\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Valheim - Spawn That\BepInEx\plugins\MobAILib.dll</HintPath>
     </Reference>
     <Reference Include="stateless">
-      <HintPath>LibsStripped\stateless.dll</HintPath>
+      <HintPath>C:\Users\MHS\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Valheim - Spawn That\BepInEx\plugins\stateless.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -152,6 +152,7 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\IConditionOnAwake.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\CLLC\ConditionWorldLevel.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\ConditionLoaderCLLC.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Debug\Patch_SpawnSystem_InjectLogs.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierSetFaction.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierDespawnOnConditionsInvalid.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\SpawnModifiers\General\SpawnModifierDespawnOnAlert.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Spawns\TameableSetCommandablePatch.cs" />
     <Compile Include="SpawnThatPlugin.cs" />
     <Compile Include="Utilities\Extensions\CodeMatcherExtensions.cs" />
+    <Compile Include="Utilities\PlayerUtils.cs" />
     <Compile Include="Utilities\Spatial\IHaveVector3.cs" />
     <Compile Include="Utilities\Spatial\IPoint.cs" />
     <Compile Include="Utilities\Spatial\SearchSpatial.cs" />
