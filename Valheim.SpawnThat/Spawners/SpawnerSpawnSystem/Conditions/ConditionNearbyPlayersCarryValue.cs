@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Linq;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 {
@@ -30,8 +31,12 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
                 return false;
             }
 
-            List<Player> players = new List<Player>();
-            Player.GetPlayersInRange(spawner.transform.position, config.DistanceToTriggerPlayerConditions.Value, players);
+            if(config.ConditionNearbyPlayersCarryValue.Value <= 0)
+            {
+                return false;
+            }
+
+            List<Player> players = PlayerUtils.GetPlayersInRadius(spawner.transform.position, config.DistanceToTriggerPlayerConditions.Value);
 
             var requiredSum = config.ConditionNearbyPlayersCarryValue?.Value ?? 0;
             var valueSum = 0;

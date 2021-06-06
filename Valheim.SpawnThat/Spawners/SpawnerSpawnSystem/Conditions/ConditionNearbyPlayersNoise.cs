@@ -35,13 +35,12 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
                 return false;
             }
 
-            if (config.ConditionNearbyPlayersNoiseThreshold.Value == 0)
+            if (config.ConditionNearbyPlayersNoiseThreshold.Value <= 0)
             {
                 return false;
             }
 
-            List<Player> players = new List<Player>();
-            Player.GetPlayersInRange(spawner.transform.position, config.DistanceToTriggerPlayerConditions.Value, players);
+            List<Player> players = PlayerUtils.GetPlayersInRadius(spawner.transform.position, config.DistanceToTriggerPlayerConditions.Value);
 
             foreach (var player in players.Where(x => x && x is not null))
             {

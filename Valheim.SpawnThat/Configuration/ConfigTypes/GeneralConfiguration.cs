@@ -48,7 +48,7 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<bool> DontCollapseFile = new ConfigurationEntry<bool>(false, "If true, locations with multiple spawners with duplicate creatures will be listed individually, instead of being only one of each creature.");
 
-        public ConfigurationEntry<bool> EnableLocalSpawner = new ConfigurationEntry<bool>(true, "Toggles if Spawn That changes to creature spawners will be run or not.");
+        public ConfigurationEntry<bool> EnableLocalSpawner = new ConfigurationEntry<bool>(true, "Toggles if Spawn That changes to local spawners will be run or not.");
 
         #endregion
 

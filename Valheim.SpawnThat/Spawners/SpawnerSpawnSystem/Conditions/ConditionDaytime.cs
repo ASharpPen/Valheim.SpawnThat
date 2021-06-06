@@ -32,10 +32,10 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 
             if(IsValid(config.SpawnDuringDay.Value, config.SpawnDuringNight.Value))
             {
-                Log.LogTrace($"Filtering {config.Name} due to daytime.");
                 return false;
             }
 
+            Log.LogTrace($"Filtering {config.Name} due to daytime.");
             return true;
         }
 
