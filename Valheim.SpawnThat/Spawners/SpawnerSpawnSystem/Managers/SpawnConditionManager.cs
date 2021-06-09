@@ -7,25 +7,25 @@ using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
+namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 {
-    public class ConditionManager
+    public class SpawnConditionManager
     {
         private HashSet<IConditionOnAwake> OnAwakeConditions = new HashSet<IConditionOnAwake>();
         private HashSet<IConditionOnSpawn> OnSpawnConditions = new HashSet<IConditionOnSpawn>();
         private HashSet<IConditionOnSpawn> DefaultSpawnConditions = new HashSet<IConditionOnSpawn>();
 
-        private static ConditionManager _instance;
+        private static SpawnConditionManager _instance;
 
-        public static ConditionManager Instance
+        public static SpawnConditionManager Instance
         {
             get
             {
-                return _instance ??= new ConditionManager();
+                return _instance ??= new SpawnConditionManager();
             }
         }
 
-        ConditionManager()
+        SpawnConditionManager()
         {
             StateResetter.Subscribe(() =>
             {
@@ -33,8 +33,9 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
             });
 
             // OnAwake conditions
-            
+
             OnAwakeConditions.Add(ConditionDistanceToCenter.Instance);
+            OnAwakeConditions.Add(ConditionLocation.Instance);
 
             // OnSpawn conditions
 
@@ -63,7 +64,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                 {
                     return x?.ShouldFilter(spawner, config) ?? false;
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Log.LogError($"Error while attempting to check OnAwake condition {x.GetType().Name}.", e);
                     return false;
@@ -86,7 +87,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                 {
                     return x?.ShouldFilter(spawner, spawn, cache.Config) ?? false;
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Log.LogError($"Error while attempting to check OnSpawn condition {x.GetType().Name}.", e);
                     return false;
@@ -94,7 +95,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
             });
         }
 
-        public bool FilterDefault(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration? config = null)
+        public bool FilterDefault(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config = null)
         {
             if (config is null)
             {

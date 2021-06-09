@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers
+namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 {
     public class SpawnContext
     {

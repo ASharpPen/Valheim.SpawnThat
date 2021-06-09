@@ -9,7 +9,7 @@ using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.Caches;
 using Valheim.SpawnThat.Utilities;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
+namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 {
     public static class SpawnSystemConfigManager
     {
@@ -105,7 +105,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                         continue;
                     }
 
-                    if (ConditionManager.Instance.FilterOnAwake(__instance, spawnConfig))
+                    if (SpawnConditionManager.Instance.FilterOnAwake(__instance, spawnConfig))
                     {
                         continue;
                     }
@@ -126,7 +126,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                             Log.LogTrace($"Adding new spawner entry {spawnConfig.Name}");
                             var spawner = CreateNewEntry(spawnConfig);
 
-                            if(spawner is null)
+                            if (spawner is null)
                             {
                                 continue;
                             }
@@ -136,7 +136,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                             __instance.m_spawners.Add(spawner);
                         }
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         Log.LogError($"Failed to apply config {spawnConfig.Name} to world spawner.", e);
                     }
@@ -162,7 +162,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                         spawner.m_maxSpawned = (int)Math.Round(spawner.m_maxSpawned * simpleConfig.SpawnMaxMultiplier.Value);
                         spawner.m_groupSizeMin = (int)Math.Round(spawner.m_groupSizeMin * simpleConfig.GroupSizeMinMultiplier.Value);
                         spawner.m_groupSizeMax = (int)Math.Round(spawner.m_groupSizeMax * simpleConfig.GroupSizeMaxMultiplier.Value);
-                        spawner.m_spawnInterval = (simpleConfig.SpawnFrequencyMultiplier.Value != 0)
+                        spawner.m_spawnInterval = simpleConfig.SpawnFrequencyMultiplier.Value != 0
                             ? spawner.m_spawnInterval / simpleConfig.SpawnFrequencyMultiplier.Value
                             : 0;
                     }
@@ -215,7 +215,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
         {
             var prefab = ZNetScene.instance.GetPrefab(config.PrefabName.Value);
 
-            if(!prefab || prefab is null)
+            if (!prefab || prefab is null)
             {
                 Log.LogWarning($"Unable to find prefab for {config.PrefabName.Value}");
                 return;

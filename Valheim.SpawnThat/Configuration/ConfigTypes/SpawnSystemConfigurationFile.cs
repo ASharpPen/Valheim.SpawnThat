@@ -109,6 +109,8 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<bool> SetTamedCommandable = new ConfigurationEntry<bool>(false, "Experimental. When true, will set mob as commandable when tamed. When false, whatever was default for the creature is used. Does not always seem to work for creatures not tameable in vanilla.");
 
+        public ConfigurationEntry<string> ConditionLocation = new ConfigurationEntry<string>("", "Array of locations in which this spawn is enabled. If empty, allows all.\nEg. Runestone_Boars, FireHole");
+
         #region Default Configuration Options
 
         public ConfigurationEntry<string> PrefabName = new ConfigurationEntry<string>("Deer", "Prefab name of the entity to spawn.");
