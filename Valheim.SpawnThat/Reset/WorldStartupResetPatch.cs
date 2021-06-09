@@ -2,7 +2,7 @@
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner;
-using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem;
+using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers;
 
 namespace Valheim.SpawnThat.Reset
 {

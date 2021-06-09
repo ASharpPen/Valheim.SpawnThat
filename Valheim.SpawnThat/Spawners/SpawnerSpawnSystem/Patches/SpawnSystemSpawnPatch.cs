@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
 {

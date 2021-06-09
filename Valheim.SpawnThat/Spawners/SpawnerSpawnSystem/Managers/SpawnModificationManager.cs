@@ -6,7 +6,7 @@ using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
+namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 {
     public class SpawnModificationManager
     {

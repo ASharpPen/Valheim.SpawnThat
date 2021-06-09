@@ -1,5 +1,4 @@
-﻿
-using Valheim.SpawnThat.Spawns.Caches;
+﻿using Valheim.SpawnThat.Spawns.Caches;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General
 {
