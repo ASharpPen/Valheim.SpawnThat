@@ -16,6 +16,8 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<bool> TraceLoggingOn = new ConfigurationEntry<bool>(false, "Enables in-depth logging. Note, this might generate a LOT of log entries.");
 
+        public ConfigurationEntry<bool> PrintAreaMap = new ConfigurationEntry<bool>(false, "Prints a set of pngs showing the map biomes as well as the area id's assigned by Spawn That to each biome 'area'.");
+
         #endregion
 
         #region General
@@ -58,6 +60,7 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
             DebugLoggingOn.Bind(Config, "Debug", "DebugLoggingOn");
             TraceLoggingOn.Bind(Config, "Debug", "TraceLoggingOn");
+            PrintAreaMap.Bind(Config, "Debug", "PrintAreaMap");
 
             WriteCreatureSpawnersToFile.Bind(Config, "LocalSpawner", "WriteSpawnTablesToFileBeforeChanges");
             DontCollapseFile.Bind(Config, "LocalSpawner", nameof(DontCollapseFile));

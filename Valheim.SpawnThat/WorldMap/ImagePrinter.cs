@@ -12,7 +12,7 @@ namespace Valheim.SpawnThat.WorldMap
         {
             double scale = 1.0 / (valueRangeMax - valueRangeMin);
 
-            Texture2D image = new Texture2D(map.Length, map.Length);
+            Texture2D image = new Texture2D(map.Length, map.Length, TextureFormat.RGBA32, true);
 
             for (int x = 0; x < map.Length; ++x)
             {
@@ -20,17 +20,17 @@ namespace Valheim.SpawnThat.WorldMap
                 {
                     var value = map[x][y];
 
-                    Color color;
+                    Color32 color;
 
                     if (rainbowOn)
                     {
-                        var (r, g, b) = ColourMapper.Rainbow(value);
-                        color = new Color(r, g, b);
+                        var (r, g, b) = ColourMapper.Rainbow255(value);
+                        color = new Color32((byte)r, (byte)g, (byte)b, (byte)255);
                     }
                     else
                     {
-                        var (r, g, b) = ColourMapper.IntegerToColor(value);
-                        color = new Color(r, g, b);
+                        var (r, g, b) = ColourMapper.IntegerToColour3Byte(value);
+                        color = new Color32((byte)r, (byte)g, (byte)b, (byte)255);
                     }
 
                     image.SetPixel(x, y, color);

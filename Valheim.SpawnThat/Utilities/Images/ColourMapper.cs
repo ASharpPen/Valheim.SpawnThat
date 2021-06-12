@@ -56,6 +56,34 @@ namespace Valheim.SpawnThat.Utilities.Images
             return (r / 255, g / 255, b / 255);
         }
 
+        public static (float r, float g, float b) Rainbow255(int id)
+        {
+            // Feels inefficient. Gotta look into a fix.
+            System.Random rnd = new System.Random(id);
+
+            var scale = (float)rnd.NextDouble();
+            var type = (int)(scale * 6);
+
+            int ascending = (int)(scale * 255);
+            int descending = 1 - ascending;
+
+            switch (type)
+            {
+                case 0:
+                    return (255, ascending, 0);
+                case 1:
+                    return (descending, 255, 0);
+                case 2:
+                    return (0, 255, ascending);
+                case 3:
+                    return (0, descending, 255);
+                case 4:
+                    return (ascending, 0, 255);
+                default: // case 5:
+                    return (255, 0, descending);
+            }
+        }
+
         public static (float r, float g, float b) Rainbow(int id)
         {
             // Feels inefficient. Gotta look into a fix.

@@ -29,8 +29,6 @@ namespace Valheim.SpawnThat.WorldMap
         {
             _areaProvider = areaProvider;
             _mapRadius = mapRadius;
-            //Init(mapRadius);
-            //FirstScan();
         }
 
         public void Complete()
@@ -97,11 +95,6 @@ namespace Valheim.SpawnThat.WorldMap
                     var area = GetArea(x, y);
                     Grid[x][y] = area;
 
-                    if(x == 0 && y == 174)
-                    {
-                        System.Console.Write(area);
-                    }
-
                     // Check up
                     if (lastArea == area)
                     {
@@ -123,6 +116,7 @@ namespace Valheim.SpawnThat.WorldMap
             }
         }
 
+        //TODO: Check 4-ways, instead of just up and left. Sometimes inlets gets missed due to scan direction.
         public void MergeLabels()
         {
             // Merge labels
@@ -139,11 +133,6 @@ namespace Valheim.SpawnThat.WorldMap
                 for (int y = 0; y < LabelGrid.Length; ++y)
                 {
                     var label = LabelGrid[x][y];
-
-                    if(x == 137 && y == 142)
-                    {
-                        System.Console.WriteLine();
-                    }
 
                     // Look up
                     if(x == 0 && y == 0)

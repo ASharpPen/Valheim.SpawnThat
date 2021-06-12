@@ -111,6 +111,8 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<string> ConditionLocation = new ConfigurationEntry<string>("", "Array of locations in which this spawn is enabled. If empty, allows all.\nEg. Runestone_Boars, FireHole");
 
+        public ConfigurationEntry<float> ConditionSpawnChanceInArea = new ConfigurationEntry<float>(100, "Chance for spawn to spawn at all in the area. The chance will be rolled once for the area. Range is 0 to 100. Eg. if a whole area of BlackForest rolls higher than the indicated chance, this spawn template will never be active in that forest. Another BlackForest will have another roll however, that may activate this template there. Chance is rolled based on world seed, area id and template index.");
+
         #region Default Configuration Options
 
         public ConfigurationEntry<string> PrefabName = new ConfigurationEntry<string>("Deer", "Prefab name of the entity to spawn.");

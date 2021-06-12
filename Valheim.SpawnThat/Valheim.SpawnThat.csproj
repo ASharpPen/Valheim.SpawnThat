@@ -143,6 +143,7 @@
     <Compile Include="Spawners\SpawnerCreatureSpawner\Types\LocationSpawner.cs" />
     <Compile Include="Locations\LocationHelper.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionLocation.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionSpawnChanceInArea.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Managers\SpawnConditionManager.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionDaytime.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionDistanceToCenter.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="WorldMap\ImagePrinter.cs" />
     <Compile Include="WorldMap\MapPrinter.cs" />
     <Compile Include="WorldMap\Patch_ZNet_Awake_ScanWorld.cs" />
+    <Compile Include="WorldMap\MapManager.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
