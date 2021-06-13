@@ -11,7 +11,7 @@ namespace Valheim.SpawnThat.WorldMap
         public const int ZoneSize = 64;
         public const int ZoneSizeOffset = 32;
 
-        public int[][] Grid { get; private set; }
+        public int[][] Biomes { get; private set; }
 
         public int[][] GridIds { get; private set; }
 
@@ -47,13 +47,13 @@ namespace Valheim.SpawnThat.WorldMap
 
             MapWidth = ZoneOffset * 2;
 
-            Grid = new int[MapWidth][];
+            Biomes = new int[MapWidth][];
             GridIds = new int[MapWidth][];
             LabelGrid = new Label[MapWidth][];
 
             for (int x = 0; x < MapWidth; ++x)
             {
-                Grid[x] = new int[MapWidth];
+                Biomes[x] = new int[MapWidth];
                 GridIds[x] = new int[MapWidth];
             }
         }
@@ -70,7 +70,7 @@ namespace Valheim.SpawnThat.WorldMap
         {
             int rollingCount = 0;
 
-            for (int x = 0; x < Grid.Length; ++x)
+            for (int x = 0; x < Biomes.Length; ++x)
             {
                 LabelGrid[x] = new Label[MapWidth];
 
@@ -84,16 +84,16 @@ namespace Valheim.SpawnThat.WorldMap
 
                 int[] lastAreaColumn = x == 0
                     ? null
-                    : Grid[x - 1];
+                    : Biomes[x - 1];
 
                 int lastArea = x == 0
                     ? -1
                     : lastAreaColumn[0];
 
-                for (int y = 0; y < Grid.Length; ++y)
+                for (int y = 0; y < Biomes.Length; ++y)
                 {
                     var area = GetArea(x, y);
-                    Grid[x][y] = area;
+                    Biomes[x][y] = area;
 
                     // Check up
                     if (lastArea == area)

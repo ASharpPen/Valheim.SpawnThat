@@ -1,10 +1,13 @@
 ﻿using HarmonyLib;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
+using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner;
+using Valheim.SpawnThat.Utilities.Extensions;
 using Valheim.SpawnThat.WorldMap;
 
 namespace Valheim.SpawnThat.ConsoleCommands
@@ -84,6 +87,22 @@ namespace Valheim.SpawnThat.ConsoleCommands
                 Console.instance.Print(text);
                 CommandAreaTemplateSpawnChance(templateIndex);
             }
+            else if(commandPieces.Length >= 3 && commandPieces[1].ToUpperInvariant() == "WHEREDOESITSPAWN")
+            {
+                if (int.TryParse(commandPieces[2], out int templateIndex))
+                {
+                    Console.instance.Print(text);
+                    CommandPrintTemplateSpawnAreas(templateIndex);
+                }
+            }
+            else if (commandPieces.Length >= 3 && commandPieces[1].ToUpperInvariant() == "TEMPLATEAREAHEATMAP")
+            {
+                if (int.TryParse(commandPieces[2], out int templateIndex))
+                {
+                    Console.instance.Print(text);
+                    CommandPrintTemplateAreaHeatMap(templateIndex);
+                }
+            }
 
             return true;
         }
@@ -123,9 +142,35 @@ namespace Valheim.SpawnThat.ConsoleCommands
             Console.instance.Print($"Template '{templateIndex}', in area '{areaId}' rolled chance '{chance}'.");
         }
 
-        public static void CommandPrintAreaTemplateHeatMap(int templateIndex)
+        public static void CommandPrintTemplateAreaHeatMap(int templateIndex)
         {
+            float[][] chanceMap = MapManager.GetTemplateAreaChanceMap(templateIndex);
+            int[][] heatmap = new int[chanceMap.Length][];
 
+            for(int x = 0; x < heatmap.Length; ++x)
+            {
+                heatmap[x] = new int[heatmap.Length];
+
+                for (int y = 0; y < heatmap.Length; ++y)
+                {
+                    heatmap[x][y] = (int)(chanceMap[x][y] * 255);
+                }
+            }
+
+            ImageBuilder
+                .Init(MapManager.AreaMap)
+                .AddHeatZones(heatmap, false)
+                .Print("Debug", $"area_roll_{templateIndex}");
+        }
+
+        public static void CommandPrintTemplateSpawnAreas(int templateIndex)
+        {
+            var spawnMap = MapManager.GetSpawnMap(templateIndex);
+
+            new ImageBuilder(MapManager.AreaMap)
+                .SetGrayscaleBiomes()
+                .AddHeatZones(spawnMap)
+                .Print("Debug", $"spawn_map_{templateIndex}");
         }
     }
 }

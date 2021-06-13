@@ -37,7 +37,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
                 return false;
             }
 
-            var areaChance = MapManager.GetAreaChance(position, config.Index);
+            var areaChance = MapManager.GetAreaChance(position, config.Index) * 100;
 
             if(areaChance > config.ConditionSpawnChanceInArea.Value)
             {

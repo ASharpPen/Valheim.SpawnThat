@@ -149,5 +149,24 @@ namespace Valheim.SpawnThat.Utilities.Images
                 Heightmap.Biome.BiomesMax => (0, 0, 0),
             };
         }
+
+        public static (float r, float g, float b) ToBiomeColourGrayscale(int biome)
+        {
+            return (Heightmap.Biome)biome switch
+            {
+                Heightmap.Biome.None => (255, 255, 255),
+                Heightmap.Biome.Meadows => (120, 120, 120),
+                Heightmap.Biome.Swamp => (140, 140, 140),
+                Heightmap.Biome.Mountain => (160, 160, 160),
+                Heightmap.Biome.BlackForest => (180, 180, 180),
+                Heightmap.Biome.Plains => (200, 200, 200),
+                Heightmap.Biome.AshLands => (220, 220, 220),
+                Heightmap.Biome.DeepNorth => (240, 240, 240),
+                Heightmap.Biome.Mistlands => (130, 130, 130),
+                Heightmap.Biome.Ocean => (255, 255, 255),
+                Heightmap.Biome.BiomesMax => (255, 255, 255),
+                _ => (255, 255, 255)
+            };
+        }
     }
 }
