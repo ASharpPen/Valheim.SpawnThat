@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Utilities.Images;
+using Valheim.SpawnThat.Maps;
 
 namespace Valheim.SpawnThat.WorldMap
 {
@@ -71,7 +71,7 @@ namespace Valheim.SpawnThat.WorldMap
             {
                 for (int y = 0; y < areaMap.MapWidth; ++y)
                 {
-                    var value = areaMap.GridIds[x][y];
+                    var value = areaMap.AreaIds[x][y];
 
                     var (r, g, b) = ColourMapper.IntegerToColour3Byte(value);
                     Color32 color = new Color32((byte)r, (byte)g, (byte)b, (byte)255);
@@ -91,7 +91,7 @@ namespace Valheim.SpawnThat.WorldMap
             {
                 for (int y = 0; y < areaMap.MapWidth; ++y)
                 {
-                    var value = areaMap.GridIds[x][y];
+                    var value = areaMap.AreaIds[x][y];
 
                     var (r, g, b) = ColourMapper.Rainbow255(value);
                     Color32 color = new Color32((byte)r, (byte)g, (byte)b, (byte)255);

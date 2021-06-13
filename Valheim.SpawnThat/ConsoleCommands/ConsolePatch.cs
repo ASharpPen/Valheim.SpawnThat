@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
 using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Maps.Managers;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner;
 using Valheim.SpawnThat.Utilities.Extensions;
 using Valheim.SpawnThat.WorldMap;
@@ -167,8 +168,8 @@ namespace Valheim.SpawnThat.ConsoleCommands
         {
             var spawnMap = MapManager.GetSpawnMap(templateIndex);
 
-            new ImageBuilder(MapManager.AreaMap)
-                .SetGrayscaleBiomes()
+            ImageBuilder
+                .SetGrayscaleBiomes(MapManager.AreaMap)
                 .AddHeatZones(spawnMap)
                 .Print("Debug", $"spawn_map_{templateIndex}");
         }

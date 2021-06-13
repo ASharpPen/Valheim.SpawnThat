@@ -4,12 +4,12 @@ using System.Drawing.Imaging;
 //using System.Drawing.Imaging;
 using System.IO;
 using System.Threading.Tasks;
-using Valheim.SpawnThat.Utilities.Images;
+using Valheim.SpawnThat.Maps;
 using Valheim.SpawnThat.WorldMap;
 
 namespace Valheim.SpawnThat.TestUtils
 {
-    public class BmpImagePrinter : IImagePrinter
+    public class BmpImagePrinter
     {
         public void PrintSquareMap(int[][] map, string imageFileName, bool rainbowOn, int valueRangeMin = 0, int valueRangeMax = 1)
         {

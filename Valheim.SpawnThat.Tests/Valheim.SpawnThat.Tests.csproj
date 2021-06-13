@@ -71,7 +71,7 @@
     <Compile Include="Utilities\SearchSpatialTests.cs" />
     <Compile Include="Utilities\SpatialListExtensionsTests.cs" />
     <Compile Include="WorldMap\AreaMapTests.cs" />
-    <Compile Include="WorldMap\MapPrinterTests.cs" />
+    <Compile Include="WorldMap\PrintAreaMapTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

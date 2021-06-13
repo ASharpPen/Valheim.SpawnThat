@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
-using Valheim.SpawnThat.WorldMap;
+using Valheim.SpawnThat.Maps.Managers;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 {

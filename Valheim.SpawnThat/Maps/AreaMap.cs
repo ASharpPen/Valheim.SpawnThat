@@ -13,7 +13,7 @@ namespace Valheim.SpawnThat.WorldMap
 
         public int[][] Biomes { get; private set; }
 
-        public int[][] GridIds { get; private set; }
+        public int[][] AreaIds { get; private set; }
 
         public int ZoneOffset { get; private set; }
 
@@ -48,13 +48,13 @@ namespace Valheim.SpawnThat.WorldMap
             MapWidth = ZoneOffset * 2;
 
             Biomes = new int[MapWidth][];
-            GridIds = new int[MapWidth][];
+            AreaIds = new int[MapWidth][];
             LabelGrid = new Label[MapWidth][];
 
             for (int x = 0; x < MapWidth; ++x)
             {
                 Biomes[x] = new int[MapWidth];
-                GridIds[x] = new int[MapWidth];
+                AreaIds[x] = new int[MapWidth];
             }
         }
 
@@ -65,6 +65,8 @@ namespace Valheim.SpawnThat.WorldMap
         }
 
         public Label[][] LabelGrid;
+
+        private Dictionary<int, int> MergeTable = new Dictionary<int, int>();
 
         public void FirstScan()
         {
@@ -108,6 +110,7 @@ namespace Valheim.SpawnThat.WorldMap
                     else
                     {
                         lastLabel = new Label { Id = rollingCount++, Area = area };
+                        MergeTable[lastLabel.Id] = lastLabel.Id;
                     }
                     LabelGrid[x][y] = lastLabel;
 
@@ -116,68 +119,109 @@ namespace Valheim.SpawnThat.WorldMap
             }
         }
 
-        //TODO: Check 4-ways, instead of just up and left. Sometimes inlets gets missed due to scan direction.
         public void MergeLabels()
         {
             // Merge labels
-            for(int x = 0; x < LabelGrid.Length; ++x)
+            /*
+            for(int x = LabelGrid.Length - 1; x >= 0; --x)
             {
-                Label[] lastColumn = x == 0
-                    ? null
-                    : LabelGrid[x - 1];
-
-                Label lastLabel = x == 0
-                    ? LabelGrid[0][0]
-                    : lastColumn[0];
-
+                for (int y = LabelGrid.Length - 1; y >= 0; --y)
+            */
+            for (int x = 0; x < LabelGrid.Length; ++x)
+            {
                 for (int y = 0; y < LabelGrid.Length; ++y)
                 {
                     var label = LabelGrid[x][y];
 
-                    // Look up
-                    if(x == 0 && y == 0)
+                    if (x == 218 && y == 156)
                     {
-                        continue;
+                        System.Console.Write("");
                     }
 
-                    if (label.Area == lastLabel.Area)
+                    // Look up
+                    if (y > 0)
                     {
-                        if(label.Id != lastLabel.Id)
+                        Label labelUp = LabelGrid[x][y - 1];
+
+                        if (label.Area == labelUp.Area)
                         {
-                            // Merge labels.
-                            if (label.Id > lastLabel.Id)
-                            {
-                                label.Id = lastLabel.Id;
-                            }
-                            else
-                            {
-                                lastLabel.Id = label.Id;
-                            }
+                        }
+
+                        if (MergeLabels(labelUp, label, out var result))
+                        {
+                            LabelGrid[x][y] = result;
+                            continue;
                         }
                     }
 
                     // Look left
-                    if (x == 0)
+                    if (x > 0)
                     {
-                        continue;
+                        Label labelLeft = LabelGrid[x - 1][y];
+
+                        if (MergeLabels(labelLeft, label, out var result))
+                        {
+                            LabelGrid[x][y] = result;
+                            continue;
+                        }
                     }
 
-                    Label leftLabel = lastColumn[y];
-
-                    if (label.Area == leftLabel.Area)
+                    // Look down
+                    if (y + 1 < LabelGrid.Length)
                     {
-                        if (label.Id != leftLabel.Id)
+                        Label labelDown = LabelGrid[x][y + 1];
+
+                        if (MergeLabels(labelDown, label, out var result))
+                        {
+                            LabelGrid[x][y] = result;
+                            continue;
+                        }
+                    }
+
+                    // Look right
+                    if (x + 1 < LabelGrid.Length)
+                    {
+                        var labelRight = LabelGrid[x + 1][y];
+
+                        if (MergeLabels(labelRight, label, out var result))
+                        {
+                            LabelGrid[x][y] = result;
+                            continue;
+                        }
+                    }
+
+                    bool MergeLabels(Label label1, Label label2, out Label result)
+                    {
+                        result = null;
+
+                        if (label1.Area == label2.Area &&
+                            label1.Id != label2.Id)
                         {
                             // Merge labels.
-                            if (label.Id > leftLabel.Id)
+                            if (label1.Id > label2.Id)
                             {
-                                label.Id = leftLabel.Id;
+                                if (MergeTable[label1.Id] > label2.Id)
+                                {
+                                    MergeTable[label1.Id] = label2.Id;
+                                }
+                                result = label2;
+                                label1.Id = label2.Id;
                             }
                             else
                             {
-                                leftLabel.Id = label.Id;
+                                if (MergeTable[label2.Id] > label1.Id)
+                                {
+                                    MergeTable[label2.Id] = label1.Id;
+                                }
+
+                                result = label1;
+                                label2.Id = label1.Id;
                             }
+
+                            return true;
                         }
+
+                        return false;
                     }
                 }
             }
@@ -189,9 +233,13 @@ namespace Valheim.SpawnThat.WorldMap
             {
                 for (int y = 0; y < LabelGrid.Length; ++y)
                 {
-                    GridIds[x][y] = LabelGrid[x][y].Id;
+                    var id = MergeTable[LabelGrid[x][y].Id];
+
+                    AreaIds[x][y] = id; // LabelGrid[x][y].Id;
                 }
             }
+
+            MergeTable = null;
         }
 
         public int IndexToCoordinate(int index) => IndexStartCoordinate + index * ZoneSize;

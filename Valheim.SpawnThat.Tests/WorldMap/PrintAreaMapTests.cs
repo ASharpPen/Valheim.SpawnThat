@@ -6,12 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Valheim.SpawnThat.TestUtils;
-using Valheim.SpawnThat.Utilities.Images;
 
 namespace Valheim.SpawnThat.WorldMap
 {
     [TestClass]
-    public class MapPrinterTests
+    public class PrintAreaMapTests
     {
         [TestMethod]
         public void CanPrintMap()
@@ -22,14 +21,10 @@ namespace Valheim.SpawnThat.WorldMap
             var map = new AreaMap(areaProvider, mapRadius);
             areaProvider.Map = map;
 
-            MapPrinter.Printer = new BmpImagePrinter();
-
             // Act
             map.Init(mapRadius);
             map.FirstScan();
             map.Build();
-
-            MapPrinter.PrintAreaMap(map);
         }
 
         [TestMethod]
@@ -41,12 +36,12 @@ namespace Valheim.SpawnThat.WorldMap
             var map = new AreaMap(areaProvider, mapRadius);
             areaProvider.Map = map;
 
-            MapPrinter.Printer = new BmpImagePrinter();
+            var printer = new BmpImagePrinter();
 
             // Act
             map.Complete();
 
-            MapPrinter.PrintAreaMap(map);
+            printer.PrintSquareMap(map.AreaIds, "ids_merged", false);
         }
 
         [TestMethod]
@@ -67,16 +62,6 @@ namespace Valheim.SpawnThat.WorldMap
             Assert.AreEqual((byte)10, resultPixel);
         }
 
-        public class RandomAreaProvider : IAreaProvider
-        {
-            private Random Random { get; } = new Random();
-
-            public int GetArea(int x, int y)
-            {
-                return Random.Next(0, 9);
-            }
-        }
-
         public class AreaFromPngProvider : IAreaProvider
         {
             public LockedBmp Bmp = new LockedBmp(new Bitmap(@"../../Resources/biome_map.png"), System.Drawing.Imaging.ImageLockMode.ReadOnly);
@@ -88,7 +73,7 @@ namespace Valheim.SpawnThat.WorldMap
 
             public AreaFromPngProvider(int radius)
             {
-                _mapSize = radius*2;
+                _mapSize = radius * 2;
                 _radius = radius;
             }
 
@@ -129,19 +114,19 @@ namespace Valheim.SpawnThat.WorldMap
                 {
                     return (int)Heightmap.Biome.Mountain;
                 }
-                if(b == 128 && g == 128 && r == 128)
+                if (b == 128 && g == 128 && r == 128)
                 {
                     return (int)Heightmap.Biome.Mistlands;
                 }
-                if(b == 4 && g == 235 && r == 255)
+                if (b == 4 && g == 235 && r == 255)
                 {
                     return (int)Heightmap.Biome.Plains;
                 }
-                if(b == 41 && g == 41 && r == 166)
+                if (b == 41 && g == 41 && r == 166)
                 {
                     return (int)Heightmap.Biome.Swamp;
                 }
-                if(b == 0 && g == 255 && r == 0)
+                if (b == 0 && g == 255 && r == 0)
                 {
                     return (int)Heightmap.Biome.Meadows;
                 }
@@ -150,26 +135,6 @@ namespace Valheim.SpawnThat.WorldMap
                     return (int)Heightmap.Biome.AshLands;
                 }
                 return (int)Heightmap.Biome.None;
-            }
-        }
-
-        public class AreaProviderMock : IAreaProvider
-        {
-            public int radius = 128;
-
-            public int[][] Grid = new[]
-            {
-            new int[] { 0, 0, 2, 0 },
-            new int[] { 1, 1, 2, 0 },
-            new int[] { 0, 1, 2, 2 },
-            new int[] { 1, 1, 4, 4 },
-        };
-
-            public int GetArea(int x, int y)
-            {
-                x = (x + radius) / 64;
-                y = (y + radius) / 64;
-                return Grid[x][y];
             }
         }
     }

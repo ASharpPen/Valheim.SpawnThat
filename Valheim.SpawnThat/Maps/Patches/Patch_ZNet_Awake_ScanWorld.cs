@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Maps.Managers;
 
 namespace Valheim.SpawnThat.WorldMap
 {
@@ -32,6 +33,10 @@ namespace Valheim.SpawnThat.WorldMap
                 ImageBuilder
                     .SetBiomes(MapManager.AreaMap)
                     .Print("Debug", "biome_map");
+
+                ImageBuilder
+                    .SetIds(MapManager.AreaMap)
+                    .Print("Debug", "area_ids_map");
             }
 
             if (ConfigurationManager.GeneralConfig?.PrintFantasticBeastsAndWhereToKillThem?.Value == true)

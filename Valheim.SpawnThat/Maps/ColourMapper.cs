@@ -1,7 +1,6 @@
-﻿
-using System;
+﻿using System;
 
-namespace Valheim.SpawnThat.Utilities.Images
+namespace Valheim.SpawnThat.Maps
 {
     public static class ColourMapper
     {
@@ -11,7 +10,7 @@ namespace Valheim.SpawnThat.Utilities.Images
             int g;
             int b;
 
-            if(value > 255)
+            if (value > 255)
             {
                 b = 255;
                 value -= 255;
@@ -22,7 +21,7 @@ namespace Valheim.SpawnThat.Utilities.Images
                 return (0, 0, b);
             }
 
-            if(value > 255)
+            if (value > 255)
             {
                 g = 255;
                 value -= 255;
@@ -33,7 +32,7 @@ namespace Valheim.SpawnThat.Utilities.Images
                 return (0, g, b);
             }
 
-            if(value > 255)
+            if (value > 255)
             {
                 r = 255;
             }
@@ -59,7 +58,7 @@ namespace Valheim.SpawnThat.Utilities.Images
         public static (float r, float g, float b) Rainbow255(int id)
         {
             // Feels inefficient. Gotta look into a fix.
-            System.Random rnd = new System.Random(id);
+            Random rnd = new Random(id);
 
             var scale = (float)rnd.NextDouble();
             var type = (int)(scale * 6);
@@ -87,7 +86,7 @@ namespace Valheim.SpawnThat.Utilities.Images
         public static (float r, float g, float b) Rainbow(int id)
         {
             // Feels inefficient. Gotta look into a fix.
-            System.Random rnd = new System.Random(id);
+            Random rnd = new Random(id);
 
             var scale = (float)rnd.NextDouble();
 
@@ -128,7 +127,7 @@ namespace Valheim.SpawnThat.Utilities.Images
                 Heightmap.Biome.Ocean => (0, 0, 255),
                 Heightmap.Biome.Mistlands => (128, 128, 128),
                 Heightmap.Biome.BiomesMax => (0, 0, 0),
-                _ => (0,0,0)
+                _ => (0, 0, 0)
             };
         }
 

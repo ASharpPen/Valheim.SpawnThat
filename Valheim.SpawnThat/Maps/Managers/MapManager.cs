@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Utilities.Extensions;
+using Valheim.SpawnThat.WorldMap;
 
-namespace Valheim.SpawnThat.WorldMap
+namespace Valheim.SpawnThat.Maps.Managers
 {
     public static class MapManager
     {
@@ -26,7 +25,7 @@ namespace Valheim.SpawnThat.WorldMap
             int x = Math.Min(AreaMap.MapWidth, Math.Max(0, AreaMap.CoordinateToIndex((int)position.x)));
             int y = Math.Min(AreaMap.MapWidth, Math.Max(0, AreaMap.CoordinateToIndex((int)position.z)));
 
-            return AreaMap.GridIds[x][y];
+            return AreaMap.AreaIds[x][y];
         }
 
         public static float GetAreaChance(Vector3 position, int modifier = 0)
@@ -34,7 +33,7 @@ namespace Valheim.SpawnThat.WorldMap
             int x = Math.Min(AreaMap.MapWidth, Math.Max(0, AreaMap.CoordinateToIndex((int)position.x)));
             int y = Math.Min(AreaMap.MapWidth, Math.Max(0, AreaMap.CoordinateToIndex((int)position.z)));
 
-            int id = AreaMap.GridIds[x][y];
+            int id = AreaMap.AreaIds[x][y];
 
             System.Random random = new(id + WorldGenerator.instance.GetSeed() + modifier);
 
@@ -47,15 +46,15 @@ namespace Valheim.SpawnThat.WorldMap
 
             Dictionary<int, float> chanceById = new();
 
-            for(int x = 0; x < AreaMap.MapWidth; ++x)
+            for (int x = 0; x < AreaMap.MapWidth; ++x)
             {
                 heatmap[x] = new float[AreaMap.MapWidth];
 
                 for (int y = 0; y < AreaMap.MapWidth; ++y)
                 {
-                    int id = AreaMap.GridIds[x][y];
+                    int id = AreaMap.AreaIds[x][y];
 
-                    if(chanceById.ContainsKey(id))
+                    if (chanceById.ContainsKey(id))
                     {
                         heatmap[x][y] = chanceById[id] * scaling;
                     }
@@ -82,7 +81,7 @@ namespace Valheim.SpawnThat.WorldMap
                 .Values?
                 .FirstOrDefault();
 
-            if(!spawnSystemConfigs.Subsections.TryGetValue(templateIndex.ToString(), out SpawnConfiguration config))
+            if (!spawnSystemConfigs.Subsections.TryGetValue(templateIndex.ToString(), out SpawnConfiguration config))
             {
                 Log.LogWarning($"Unable to find config with index '{templateIndex}'");
                 return null;
@@ -96,7 +95,7 @@ namespace Valheim.SpawnThat.WorldMap
                 {
                     var allowedBiomes = config.ExtractBiomeMask();
 
-                    if ((MapManager.AreaMap.Biomes[x][y] & (int)allowedBiomes) == 0)
+                    if ((AreaMap.Biomes[x][y] & (int)allowedBiomes) == 0)
                     {
                         continue;
                     }

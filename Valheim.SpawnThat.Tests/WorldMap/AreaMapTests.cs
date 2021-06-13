@@ -16,11 +16,11 @@ namespace Valheim.SpawnThat.WorldMap
             var map = new AreaMap(new AreaProviderMock(), 128);
             map.Complete();
 
-            for(int y = 0; y < map.GridIds.Length; ++y)
+            for(int y = 0; y < map.AreaIds.Length; ++y)
             {
-                for(int x = 0; x < map.GridIds.Length; ++x)
+                for(int x = 0; x < map.AreaIds.Length; ++x)
                 {
-                    System.Console.Write(map.GridIds[y][x] + ",");
+                    System.Console.Write(map.AreaIds[y][x] + ",");
                 }
                 System.Console.WriteLine();
             }

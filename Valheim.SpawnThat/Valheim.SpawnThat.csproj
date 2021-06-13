@@ -199,7 +199,7 @@
     <Compile Include="SpawnThatPlugin.cs" />
     <Compile Include="Utilities\Extensions\CodeMatcherExtensions.cs" />
     <Compile Include="Utilities\Extensions\SpawnConfigurationExtensions.cs" />
-    <Compile Include="Utilities\Images\ColourMapper.cs" />
+    <Compile Include="Maps\ColourMapper.cs" />
     <Compile Include="Utilities\PlayerUtils.cs" />
     <Compile Include="Utilities\Spatial\IHaveVector3.cs" />
     <Compile Include="Utilities\Spatial\IPoint.cs" />
@@ -211,7 +211,7 @@
     <Compile Include="Maps\WorldGeneratorAreaProvider.cs" />
     <Compile Include="Maps\AreaMap.cs" />
     <Compile Include="Maps\Patches\Patch_ZNet_Awake_ScanWorld.cs" />
-    <Compile Include="Maps\MapManager.cs" />
+    <Compile Include="Maps\Managers\MapManager.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
