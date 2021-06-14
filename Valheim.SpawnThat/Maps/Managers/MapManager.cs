@@ -117,7 +117,7 @@ namespace Valheim.SpawnThat.Maps.Managers
 
                 for (int y = 0; y < spawnMap.Length; ++y)
                 {
-                    if ((AreaMap.Biomes[x][y] & (int)allowedBiomes) == 0)
+                    if ((WeightedCornerBiome(x, y) & (int)allowedBiomes) == 0)
                     {
                         continue;
                     }
@@ -132,8 +132,12 @@ namespace Valheim.SpawnThat.Maps.Managers
                         continue;
                     }
 
-
                     if(!ConditionDistanceToCenter.Instance.IsValid(position, config))
+                    {
+                        continue;
+                    }
+
+                    if(!ConditionAreaIds.Instance.IsValid(AreaMap.AreaIds[x][y], config))
                     {
                         continue;
                     }
@@ -146,6 +150,26 @@ namespace Valheim.SpawnThat.Maps.Managers
             }
 
             return spawnMap;
+        }
+
+        private static int WeightedCornerBiome(int x, int y)
+        {
+            Dictionary<int, int> biomes = new();
+
+            if (y + 1 < AreaMap.Biomes.Length)
+                biomes[AreaMap.Biomes[x][y + 1]] += 1;
+            if (x + 1 < AreaMap.Biomes.Length)
+                biomes[AreaMap.Biomes[x + 1][y]] += 1;
+            if (y - 1 >= 0)
+                biomes[AreaMap.Biomes[x][y-1]] += 1;
+            if (x - 1 >= 0)
+                biomes[AreaMap.Biomes[x-1][y]] += 1;
+
+            return biomes
+                .OrderByDescending(x => x.Value)
+                .ThenBy(x => x.Key)
+                .FirstOrDefault()
+                .Key;
         }
     }
 }
