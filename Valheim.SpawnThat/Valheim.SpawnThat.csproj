@@ -144,6 +144,7 @@
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnerConfigApplier.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\Types\LocationSpawner.cs" />
     <Compile Include="Locations\LocationHelper.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionAreaIds.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionLocation.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionSpawnChanceInArea.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Managers\SpawnConditionManager.cs" />

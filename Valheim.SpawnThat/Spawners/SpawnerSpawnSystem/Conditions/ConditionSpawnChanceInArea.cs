@@ -5,15 +5,15 @@ using Valheim.SpawnThat.Maps.Managers;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 {
-    public class ConditionSpawnChanceInArea : IConditionOnAwake
+    public class ConditionSpawnChanceInArea : IConditionOnSpawn
     {
         private static ConditionSpawnChanceInArea _instance;
 
         public static ConditionSpawnChanceInArea Instance => _instance ??= new();
 
-        public bool ShouldFilter(SpawnSystem spawner, SpawnConfiguration config)
+        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
         {
-            if (spawner || spawner is null || config is null)
+            if (!spawner || spawner is null || config is null)
             {
                 return false;
             }
