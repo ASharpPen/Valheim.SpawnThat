@@ -6,10 +6,11 @@ using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
 using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Configuration.ConfigTypes;
+using Valheim.SpawnThat.Maps;
 using Valheim.SpawnThat.Maps.Managers;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner;
 using Valheim.SpawnThat.Utilities.Extensions;
-using Valheim.SpawnThat.WorldMap;
 
 namespace Valheim.SpawnThat.ConsoleCommands
 {
@@ -29,10 +30,19 @@ namespace Valheim.SpawnThat.ConsoleCommands
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat room - prints if in a dungeon room and which one"))
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Call, Print))
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat TemplateAreaRoll <index> - prints the rolled chance for a template, in area player is currently in"))
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat area - prints the area id of the players current location"))
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Call, Print))
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat TemplateAreaRoll <index> <x> <y> - prints the rolled chance for a template, in the area with indicated coordinates"))
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat arearoll <index> - prints the rolled chance for a template, in area player is currently in"))
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Call, Print))
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat arearoll <index> <x> <y> - prints the rolled chance for a template, in the area with indicated coordinates"))
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Call, Print))
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat arearollheatmap <index> - prints a png map of area rolls for a template to disk."))
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Call, Print))
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat wheredoesitspawn <index> - prints a png map of areas in which the world spawner template with <index> spawns to disk."))
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Call, Print))
                 .InstructionEnumeration();
         }
@@ -61,10 +71,9 @@ namespace Valheim.SpawnThat.ConsoleCommands
 
             if (commandPieces[1].ToUpperInvariant() == "ROOM")
             {
-                Console.instance.Print(text);
                 CommandInRoom();
             }
-            else if (commandPieces.Length >= 3 && commandPieces[1].ToUpperInvariant() == "TEMPLATEAREAROLL")
+            else if (commandPieces.Length >= 3 && commandPieces[1].ToUpperInvariant() == "AREAROLL")
             {
                 if(!int.TryParse(commandPieces[2], out int templateIndex))
                 {
@@ -77,7 +86,6 @@ namespace Valheim.SpawnThat.ConsoleCommands
                     {
                         if(int.TryParse(commandPieces[4], out int y))
                         {
-                            Console.instance.Print(text);
                             CommandAreaTemplateSpawnChance(templateIndex, new Vector3(x, y));
 
                             return true;
@@ -85,26 +93,34 @@ namespace Valheim.SpawnThat.ConsoleCommands
                     }
                 }
 
-                Console.instance.Print(text);
                 CommandAreaTemplateSpawnChance(templateIndex);
             }
             else if(commandPieces.Length >= 3 && commandPieces[1].ToUpperInvariant() == "WHEREDOESITSPAWN")
             {
                 if (int.TryParse(commandPieces[2], out int templateIndex))
                 {
-                    Console.instance.Print(text);
                     CommandPrintTemplateSpawnAreas(templateIndex);
                 }
             }
-            else if (commandPieces.Length >= 3 && commandPieces[1].ToUpperInvariant() == "TEMPLATEAREAHEATMAP")
+            else if (commandPieces.Length >= 3 && commandPieces[1].ToUpperInvariant() == "AREAROLLHEATMAP")
             {
                 if (int.TryParse(commandPieces[2], out int templateIndex))
                 {
-                    Console.instance.Print(text);
                     CommandPrintTemplateAreaHeatMap(templateIndex);
                 }
             }
+            else if(commandPieces.Length >= 2 && commandPieces[1].ToUpperInvariant() == "ZONE")
+            {
+                var zone = ZoneSystem.instance.GetZone(Player.m_localPlayer.transform.position);
 
+                Console.instance.Print($"Zone: {zone}");
+            }
+            else if (commandPieces.Length >= 2 && commandPieces[1].ToUpperInvariant() == "AREA")
+            {
+                var areaId = MapManager.GetAreaId(Player.m_localPlayer.transform.position);
+
+                Console.instance.Print($"Area Id: {areaId}");
+            }
             return true;
         }
 
@@ -168,10 +184,23 @@ namespace Valheim.SpawnThat.ConsoleCommands
         {
             var spawnMap = MapManager.GetSpawnMap(templateIndex);
 
+            //SpawnSystem config is only expected to have a single first layer, namely "WorldSpawner", so we just grab the first entry.
+            var spawnSystemConfigs = ConfigurationManager
+                .SpawnSystemConfig?
+                .Subsections? //[*]
+                .Values?
+                .FirstOrDefault();
+
+            string prefabName = "";
+            if (spawnSystemConfigs.Subsections.TryGetValue(templateIndex.ToString(), out SpawnConfiguration config))
+            {
+                prefabName = config.PrefabName.Value;
+            }
+
             ImageBuilder
                 .SetGrayscaleBiomes(MapManager.AreaMap)
                 .AddHeatZones(spawnMap)
-                .Print("Debug", $"spawn_map_{templateIndex}");
+                .Print("Debug", $"spawn_map_{templateIndex}_{prefabName}");
         }
     }
 }

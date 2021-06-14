@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Valheim.SpawnThat.WorldMap
+namespace Valheim.SpawnThat.Maps
 {
 
     public class WorldGeneratorAreaProvider : IAreaProvider

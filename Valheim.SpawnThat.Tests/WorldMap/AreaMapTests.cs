@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Valheim.SpawnThat.Maps;
 
 namespace Valheim.SpawnThat.WorldMap
 {
@@ -13,8 +14,10 @@ namespace Valheim.SpawnThat.WorldMap
         [TestMethod]
         public void PrintGridIds()
         {
-            var map = new AreaMap(new AreaProviderMock(), 128);
-            map.Complete();
+            var map = AreaMapBuilder
+                .BiomeMap(128)
+                .UseAreaProvider(new AreaProviderMock())
+                .CompileMap();
 
             for(int y = 0; y < map.AreaIds.Length; ++y)
             {
@@ -27,14 +30,16 @@ namespace Valheim.SpawnThat.WorldMap
         }
 
         [DataTestMethod]
-        [DataRow(0, 128, -128+AreaMap.ZoneSizeOffset)]
-        [DataRow(2, 128, AreaMap.ZoneSizeOffset)]
-        [DataRow(4, 128, 128+AreaMap.ZoneSizeOffset)]
+        [DataRow(0, 128, -128)]
+        [DataRow(2, 128, 0)]
+        [DataRow(4, 128, 128)]
         public void IndexToCoordinateShouldMapXCorrectly(int index, int mapRadius, int expectedCoordinate)
         {
             // Arrange
-            var map = new AreaMap(new AreaProviderStub(), mapRadius);
-            map.Complete();
+            var map = AreaMapBuilder
+                .BiomeMap(mapRadius)
+                .UseAreaProvider(new AreaProviderStub())
+                .CompileMap();
 
             // Act
             int result = map.IndexToCoordinate(index);
@@ -47,9 +52,10 @@ namespace Valheim.SpawnThat.WorldMap
         public void IndexToCoordinateShouldMapXCorrectlyWhenMapRadiusNotFittingZoneSize()
         {
             // Arrange
-            var mapRadius = 100;
-            var map = new AreaMap(new AreaProviderMock(), mapRadius);
-            map.Complete();
+            var map = AreaMapBuilder
+                .BiomeMap(100)
+                .UseAreaProvider(new AreaProviderMock())
+                .CompileMap();
 
             // Act
             int result = map.IndexToCoordinate(0);
@@ -63,8 +69,10 @@ namespace Valheim.SpawnThat.WorldMap
         {
             // Arrange
             var mapRadius = 10000;
-            var map = new AreaMap(new AreaProviderStub(), mapRadius);
-            map.Complete();
+            var map = AreaMapBuilder
+                .BiomeMap(mapRadius)
+                .UseAreaProvider(new AreaProviderStub())
+                .CompileMap();
 
             var index = map.ZoneOffset;
 
@@ -72,7 +80,7 @@ namespace Valheim.SpawnThat.WorldMap
             int result = map.IndexToCoordinate(index);
 
             // Assert
-            Assert.AreEqual(AreaMap.ZoneSizeOffset, result);
+            Assert.AreEqual(0, result);
         }
 
         [TestMethod]
@@ -80,8 +88,10 @@ namespace Valheim.SpawnThat.WorldMap
         {
             // Arrange
             var mapRadius = 10000;
-            var map = new AreaMap(new AreaProviderStub(), mapRadius);
-            map.Complete();
+            var map = AreaMapBuilder
+                .BiomeMap(mapRadius)
+                .UseAreaProvider(new AreaProviderStub())
+                .CompileMap();
 
             var index = map.ZoneOffset;
 
@@ -93,13 +103,38 @@ namespace Valheim.SpawnThat.WorldMap
             Assert.AreEqual(index, result);
         }
 
+        [DataTestMethod]
+        [DataRow(384, 6)]
+        [DataRow(-76, -1)]
+        public void IndexToCoordinate(int coordinate, int realZoneId)
+        {
+            // Arrange
+            var mapRadius = 10000;
+            var map = AreaMapBuilder
+                .BiomeMap(mapRadius)
+                .UseAreaProvider(new AreaProviderStub())
+                .CompileMap();
+
+            int index = map.CoordinateToIndex(coordinate);
+
+            // Act
+            int resolved = map.IndexToCoordinate(index);
+            int zoneId = (resolved + 32) / 64;
+
+            // Assert
+            var expectedZoneId = (coordinate + 32) / 64;
+            Assert.AreEqual(realZoneId, zoneId);
+        }
+
         [TestMethod]
         public void CoordinateToIndexShouldMapTopLeftToTopLeft()
         {
             // Arrange
             var mapRadius = 10000;
-            var map = new AreaMap(new AreaProviderStub(), mapRadius);
-            map.Complete();
+            var map = AreaMapBuilder
+                .BiomeMap(mapRadius)
+                .UseAreaProvider(new AreaProviderStub())
+                .CompileMap();
 
             var index = 0;
 

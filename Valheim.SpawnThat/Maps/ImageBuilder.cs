@@ -1,15 +1,9 @@
 ﻿using BepInEx;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Maps;
 
-namespace Valheim.SpawnThat.WorldMap
+namespace Valheim.SpawnThat.Maps
 {
     public class ImageBuilder
     {
@@ -56,7 +50,7 @@ namespace Valheim.SpawnThat.WorldMap
 
                     var (r, g, b) = ColourMapper.ToBiomeColourGrayscale(value);
 
-                    builder.image.SetPixel(x, y, new Color32((byte)r, (byte)g, (byte)b, (byte)255));
+                    builder.image.SetPixel(x, y, new Color32((byte)r, (byte)g, (byte)b, 255));
                 }
             }
 
@@ -74,7 +68,7 @@ namespace Valheim.SpawnThat.WorldMap
                     var value = areaMap.AreaIds[x][y];
 
                     var (r, g, b) = ColourMapper.IntegerToColour3Byte(value);
-                    Color32 color = new Color32((byte)r, (byte)g, (byte)b, (byte)255);
+                    Color32 color = new Color32((byte)r, (byte)g, (byte)b, 255);
 
                     builder.image.SetPixel(x, y, color);
                 }
@@ -94,7 +88,7 @@ namespace Valheim.SpawnThat.WorldMap
                     var value = areaMap.AreaIds[x][y];
 
                     var (r, g, b) = ColourMapper.Rainbow255(value);
-                    Color32 color = new Color32((byte)r, (byte)g, (byte)b, (byte)255);
+                    Color32 color = new Color32((byte)r, (byte)g, (byte)b, 255);
 
                     builder.image.SetPixel(x, y, color);
                 }

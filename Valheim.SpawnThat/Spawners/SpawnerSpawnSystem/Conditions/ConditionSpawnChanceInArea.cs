@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
+using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Maps.Managers;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
@@ -22,6 +23,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
                 return false;
             }
 
+            Log.LogTrace($"Ignoring world config {config.Name} due to area chance.");
             return true;
         }
 

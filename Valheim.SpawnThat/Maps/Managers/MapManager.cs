@@ -5,8 +5,8 @@ using UnityEngine;
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions;
 using Valheim.SpawnThat.Utilities.Extensions;
-using Valheim.SpawnThat.WorldMap;
 
 namespace Valheim.SpawnThat.Maps.Managers
 {
@@ -14,10 +14,14 @@ namespace Valheim.SpawnThat.Maps.Managers
     {
         internal static AreaMap AreaMap { get; set; }
 
+        private static int Seed { get; set; }
+
         public static void Initialize()
         {
-            AreaMap = new AreaMap(new WorldGeneratorAreaProvider(), 10000);
-            AreaMap.Complete();
+            Seed = WorldGenerator.instance.GetSeed();
+            AreaMap = AreaMapBuilder
+                .BiomeMap(10500)
+                .CompileMap();
         }
 
         public static int GetAreaId(Vector3 position)
@@ -35,7 +39,7 @@ namespace Valheim.SpawnThat.Maps.Managers
 
             int id = AreaMap.AreaIds[x][y];
 
-            System.Random random = new(id + WorldGenerator.instance.GetSeed() + modifier);
+            System.Random random = new(id + Seed + modifier);
 
             return (float)random.NextDouble();
         }
@@ -56,12 +60,12 @@ namespace Valheim.SpawnThat.Maps.Managers
 
                     if (chanceById.ContainsKey(id))
                     {
-                        heatmap[x][y] = chanceById[id] * scaling;
+                        heatmap[x][y] = chanceById[id];
                     }
                     else
                     {
-                        System.Random rnd = new System.Random(id + WorldGenerator.instance.GetSeed() + templateIndex);
-                        chanceById[id] = (float)rnd.NextDouble();
+                        System.Random rnd = new System.Random(id + Seed + templateIndex);
+                        chanceById[id] = (float)rnd.NextDouble() * scaling;
                     }
                 }
             }
@@ -87,15 +91,49 @@ namespace Valheim.SpawnThat.Maps.Managers
                 return null;
             }
 
+#if FALSE && DEBUG
+            var indexX = AreaMap.CoordinateToIndex(-76);
+            var indexY = AreaMap.CoordinateToIndex(384);
+
+            Log.LogDebug($"Runestone_Boars map index: ({indexX}, {indexY})");
+
+            var locX = AreaMap.IndexToCoordinate(indexX);
+            var locY = AreaMap.IndexToCoordinate(indexY);
+
+            Log.LogDebug($"Re-estimated coordinates: ({locX}, {locY})");
+
+            var zoneId = ZoneSystem.instance.GetZone(new Vector3(locX + 1, 0, locY + 1));
+            var realZoneId = ZoneSystem.instance.GetZone(new Vector3(-76.9f, 0, 384.7f));
+
+            Log.LogDebug($"ZoneId:      {zoneId}");
+            Log.LogDebug($"Real ZoneId: {realZoneId}");
+#endif
+
+            var allowedBiomes = config.ExtractBiomeMask();
+
             for (int x = 0; x < spawnMap.Length; ++x)
             {
                 spawnMap[x] = new int[spawnMap.Length];
 
                 for (int y = 0; y < spawnMap.Length; ++y)
                 {
-                    var allowedBiomes = config.ExtractBiomeMask();
-
                     if ((AreaMap.Biomes[x][y] & (int)allowedBiomes) == 0)
+                    {
+                        continue;
+                    }
+
+                    var coordX = AreaMap.IndexToCoordinate(x);
+                    var coordY = AreaMap.IndexToCoordinate(y);
+
+                    var position = new Vector3(coordX, 0, coordY);
+
+                    if (!ConditionLocation.Instance.IsValid(position, config))
+                    {
+                        continue;
+                    }
+
+
+                    if(!ConditionDistanceToCenter.Instance.IsValid(position, config))
                     {
                         continue;
                     }

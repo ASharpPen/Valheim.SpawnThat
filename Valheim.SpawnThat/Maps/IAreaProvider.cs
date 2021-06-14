@@ -1,4 +1,4 @@
-﻿namespace Valheim.SpawnThat.WorldMap
+﻿namespace Valheim.SpawnThat.Maps
 {
     public interface IAreaProvider
     {

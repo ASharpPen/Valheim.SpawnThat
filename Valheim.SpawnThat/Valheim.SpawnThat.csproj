@@ -113,6 +113,8 @@
     <Compile Include="Locations\SimpleLocationPackage.cs" />
     <Compile Include="Locations\ZoneSystemMultiplayerPatch.cs" />
     <Compile Include="Locations\ZoneSystemStartPatch.cs" />
+    <Compile Include="Maps\AreaMapBuilder.cs" />
+    <Compile Include="Maps\Patches\Patch_Game_FindSpawnPoint_PrintMaps.cs" />
     <Compile Include="Reset\GameStartupPatch.cs" />
     <Compile Include="Reset\IReset.cs" />
     <Compile Include="Reset\StateResetter.cs" />

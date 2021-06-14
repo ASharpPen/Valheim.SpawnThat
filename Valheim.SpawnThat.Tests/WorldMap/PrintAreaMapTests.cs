@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Valheim.SpawnThat.Maps;
 using Valheim.SpawnThat.TestUtils;
 
 namespace Valheim.SpawnThat.WorldMap
@@ -13,53 +14,21 @@ namespace Valheim.SpawnThat.WorldMap
     public class PrintAreaMapTests
     {
         [TestMethod]
-        public void CanPrintMap()
-        {
-            // Arrange
-            var mapRadius = 10000;
-            var areaProvider = new AreaFromPngProvider(mapRadius);
-            var map = new AreaMap(areaProvider, mapRadius);
-            areaProvider.Map = map;
-
-            // Act
-            map.Init(mapRadius);
-            map.FirstScan();
-            map.Build();
-        }
-
-        [TestMethod]
         public void CanPrintMapWithMergedLabels()
         {
             // Arrange
             var mapRadius = 10000;
             var areaProvider = new AreaFromPngProvider(mapRadius);
-            var map = new AreaMap(areaProvider, mapRadius);
-            areaProvider.Map = map;
+
+            var map = AreaMapBuilder
+                .BiomeMap(mapRadius)
+                .UseAreaProvider(areaProvider)
+                .CompileMap();
 
             var printer = new BmpImagePrinter();
 
             // Act
-            map.Complete();
-
             printer.PrintSquareMap(map.AreaIds, "ids_merged", false);
-        }
-
-        [TestMethod]
-        public void TestAreaFromPngProvider()
-        {
-            // Arrange
-            var mapRadius = 10000;
-            var provider = new AreaFromPngProvider(mapRadius);
-            var map = new AreaMap(provider, mapRadius);
-
-            var coordinateX = map.IndexToCoordinate(0);
-            var coordinateY = map.IndexToCoordinate(0);
-
-            // Act
-            var resultPixel = provider.GetArea(coordinateX, coordinateY);
-
-            // Assert
-            Assert.AreEqual((byte)10, resultPixel);
         }
 
         public class AreaFromPngProvider : IAreaProvider
@@ -68,13 +37,9 @@ namespace Valheim.SpawnThat.WorldMap
 
             public AreaMap Map { get; set; }
 
-            private int _mapSize;
-            private int _radius;
-
             public AreaFromPngProvider(int radius)
             {
-                _mapSize = radius * 2;
-                _radius = radius;
+                Map = new AreaMap(radius);
             }
 
             public int GetArea(int x, int y)
