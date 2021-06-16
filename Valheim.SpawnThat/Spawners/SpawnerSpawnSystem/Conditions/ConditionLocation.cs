@@ -31,6 +31,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
                 return false;
             }
 
+            Log.LogTrace($"Ignoring world config {config.Name} due to spawner not being in required location.");
             return true;
         }
 
@@ -56,7 +57,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 
             if(location is null)
             {
-                Log.LogTrace($"Ignoring world config {config.Name} due to spawner not being in required location.");
                 return false;
             }
 
@@ -65,7 +65,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
                 return true;
             }
 
-            Log.LogTrace($"Ignoring world config {config.Name} due to spawner not being in required location.");
             return false;
         }
     }

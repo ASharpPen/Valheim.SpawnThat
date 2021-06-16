@@ -39,13 +39,11 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 
             if (distance < config.ConditionDistanceToCenterMin.Value)
             {
-                Log.LogTrace($"Ignoring world config {config.Name} due to distance less than min.");
                 return false;
             }
 
             if (config.ConditionDistanceToCenterMax.Value > 0 && distance > config.ConditionDistanceToCenterMax.Value)
             {
-                Log.LogTrace($"Ignoring world config {config.Name} due to distance greater than max.");
                 return false;
             }
 

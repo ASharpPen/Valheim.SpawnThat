@@ -8,6 +8,7 @@ using Valheim.SpawnThat.Debugging;
 using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.Caches;
 using Valheim.SpawnThat.Utilities;
+using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 {
@@ -221,7 +222,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
                 return;
             }
 
-            Heightmap.Biome biome = ConvertToBiomeFlag(config);
+            Heightmap.Biome biome = config.ExtractBiomeMask();
 
             var envs = config.RequiredEnvironments?.Value?.SplitByComma() ?? new List<string>(0);
 
@@ -267,7 +268,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
                 return null;
             }
 
-            Heightmap.Biome biome = ConvertToBiomeFlag(config);
+            Heightmap.Biome biome = config.ExtractBiomeMask();
 
             var envs = config.RequiredEnvironments?.Value?.SplitByComma() ?? new List<string>(0);
 
@@ -306,34 +307,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
             };
 
             return spawnData;
-        }
-
-        private static Heightmap.Biome ConvertToBiomeFlag(SpawnConfiguration config)
-        {
-            //Well, since you bastards were packing enums before, lets return the gesture (not really, <3 you devs!)
-            Heightmap.Biome biome = Heightmap.Biome.None;
-
-            var biomeArray = config.Biomes?.Value?.SplitByComma() ?? new List<string>(0);
-
-            if (biomeArray.Count == 0)
-            {
-                //Set all biomes allowed.
-                biome = (Heightmap.Biome)1023;
-            }
-
-            foreach (var requiredBiome in biomeArray)
-            {
-                if (Enum.TryParse(requiredBiome, out Heightmap.Biome reqBiome))
-                {
-                    biome |= reqBiome;
-                }
-                else
-                {
-                    Log.LogWarning($"Unable to parse biome '{requiredBiome}' of spawner config {config.Index}");
-                }
-            }
-
-            return biome;
         }
     }
 }

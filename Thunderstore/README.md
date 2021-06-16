@@ -193,6 +193,27 @@ Eg. "spawn_that.world_spawners.my_custom_configuration.cfg" and "spawn_that.loca
 
 The configurations loaded will be merged with the one loaded from the main files.
 
+# Console Commands
+
+Additional console commands are added for debugging purposes.
+
+```
+spawnthat room - prints if in a dungeon room and which one
+spawnthat area - prints the area id of the players current location
+spawnthat arearoll <index> - prints the rolled chance for a template, in area player is currently in
+spawnthat arearoll <index> <x> <y> - prints the rolled chance for a template, in the area with indicated coordinates
+spawnthat arearollheatmap <index> - prints a png map of area rolls for a template to disk.
+spawnthat wheredoesitspawn <index> - prints a png map of areas in which the world spawner template with <index> spawns to disk.
+```
+
+All the indexes mentioned refer to the number used in your WorldSpawn template.
+
+Eg. 
+To print a png of where `[WorldSpawner.321]` is allowed to spawn, write the command:
+```
+spawnthat wheredoesitspawn 321
+```
+
 # World Spawners - Details
 
 ``` INI
@@ -388,6 +409,15 @@ SetTamedCommandable = false
 ## Eg. Wet, Burning
 # Setting type: String
 ConditionNearbyPlayersStatus =
+
+## Chance for spawn to spawn at all in the area. The chance will be rolled once for the area. Range is 0 to 100. Eg. if a whole area of BlackForest rolls higher than the indicated chance, this spawn template will never be active in that forest. Another BlackForest will have another roll however, that may activate this template there. Chance is rolled based on world seed, area id and template index.
+# Setting type: Single
+ConditionAreaSpawnChance = 100
+
+## Advanced feature. List of area id's in which the template is valid. Note: If ConditionSpawnChanceInArea is not 100 or disabled, it will still roll area chance.
+## Eg. 1, 123, 543
+# Setting type: String
+ConditionAreaIds =
 
 ```
 
@@ -730,6 +760,11 @@ Apart from that, every attack will have a hit-noise and swing noise. By default 
 For those who got this far: An additional "feature" hint. The game does not care what prefab you give it, it does NOT need to be a mob. Do with this knowledge what you will.
 
 Changelog: 
+- v0.11.0: 
+	- Added region labelling for map biomes. Will now scan for connected biome zones, and assign an id for that whole area.
+	- Added condition for spawning only in specified areas. Intended as a world specific setting. For those who have been waiting, this is the option to use for designated monster islands.
+	- Added condition for spawning in an area, chance is pr area and only rolled once, to allow for variety in spawning across the world.
+	- Added console commands for areas.
 - v0.10.1: 
 	- Fixed issue with world-spawner mobs not spawning in mountains.
 - v0.10.0: 

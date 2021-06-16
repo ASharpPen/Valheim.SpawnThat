@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
@@ -78,6 +80,10 @@
       <HintPath>..\..\..\Games\Steam\steamapps\common\Valheim\valheim_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\MHS\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Valheim - Spawn That\unstripped_corlib\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <Private>False</Private>
     </Reference>
@@ -107,6 +113,8 @@
     <Compile Include="Locations\SimpleLocationPackage.cs" />
     <Compile Include="Locations\ZoneSystemMultiplayerPatch.cs" />
     <Compile Include="Locations\ZoneSystemStartPatch.cs" />
+    <Compile Include="Maps\AreaMapBuilder.cs" />
+    <Compile Include="Maps\Patches\Patch_Game_FindSpawnPoint_PrintMaps.cs" />
     <Compile Include="Reset\GameStartupPatch.cs" />
     <Compile Include="Reset\IReset.cs" />
     <Compile Include="Reset\StateResetter.cs" />
@@ -136,7 +144,9 @@
     <Compile Include="Spawners\SpawnerCreatureSpawner\SpawnerConfigApplier.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\Types\LocationSpawner.cs" />
     <Compile Include="Locations\LocationHelper.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionAreaIds.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionLocation.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionAreaSpawnChance.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Managers\SpawnConditionManager.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionDaytime.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionDistanceToCenter.cs" />
@@ -191,12 +201,20 @@
     <Compile Include="Spawns\TameableSetCommandablePatch.cs" />
     <Compile Include="SpawnThatPlugin.cs" />
     <Compile Include="Utilities\Extensions\CodeMatcherExtensions.cs" />
+    <Compile Include="Utilities\Extensions\SpawnConfigurationExtensions.cs" />
+    <Compile Include="Maps\ColourMapper.cs" />
     <Compile Include="Utilities\PlayerUtils.cs" />
     <Compile Include="Utilities\Spatial\IHaveVector3.cs" />
     <Compile Include="Utilities\Spatial\IPoint.cs" />
     <Compile Include="Utilities\Spatial\SearchSpatial.cs" />
     <Compile Include="Utilities\Spatial\SpatialListExtensions.cs" />
     <Compile Include="Utilities\Extensions\StringExtensions.cs" />
+    <Compile Include="Maps\ImageBuilder.cs" />
+    <Compile Include="Maps\IAreaProvider.cs" />
+    <Compile Include="Maps\WorldGeneratorAreaProvider.cs" />
+    <Compile Include="Maps\AreaMap.cs" />
+    <Compile Include="Maps\Patches\Patch_ZNet_Awake_ScanWorld.cs" />
+    <Compile Include="Maps\Managers\MapManager.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

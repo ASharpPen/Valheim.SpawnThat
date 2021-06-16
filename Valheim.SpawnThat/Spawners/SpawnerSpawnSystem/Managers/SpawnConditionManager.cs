@@ -45,8 +45,11 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
             OnSpawnConditions.Add(ConditionNearbyPlayersCarryItem.Instance);
             OnSpawnConditions.Add(ConditionNearbyPlayersNoise.Instance);
             OnSpawnConditions.Add(ConditionNearbyPlayersStatus.Instance);
+            OnSpawnConditions.Add(ConditionAreaSpawnChance.Instance);
+            OnSpawnConditions.Add(ConditionAreaIds.Instance);
 
             OnSpawnConditions.Add(ConditionLoaderCLLC.ConditionWorldLevel);
+
 
             // Default conditions
 
