@@ -5,11 +5,11 @@ using Valheim.SpawnThat.Maps.Managers;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 {
-    public class ConditionSpawnChanceInArea : IConditionOnSpawn
+    public class ConditionAreaSpawnChance : IConditionOnSpawn
     {
-        private static ConditionSpawnChanceInArea _instance;
+        private static ConditionAreaSpawnChance _instance;
 
-        public static ConditionSpawnChanceInArea Instance => _instance ??= new();
+        public static ConditionAreaSpawnChance Instance => _instance ??= new();
 
         public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
         {
@@ -29,19 +29,19 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 
         public bool IsValid(Vector3 position, SpawnConfiguration config)
         {
-            if (config.ConditionSpawnChanceInArea.Value >= 100)
+            if (config.ConditionAreaSpawnChance.Value >= 100)
             {
                 return true;
             }
 
-            if (config.ConditionSpawnChanceInArea.Value <= 0)
+            if (config.ConditionAreaSpawnChance.Value <= 0)
             {
                 return false;
             }
 
             var areaChance = MapManager.GetAreaChance(position, config.Index) * 100;
 
-            if(areaChance > config.ConditionSpawnChanceInArea.Value)
+            if(areaChance > config.ConditionAreaSpawnChance.Value)
             {
                 return false;
             }

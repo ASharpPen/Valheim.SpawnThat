@@ -142,7 +142,7 @@ namespace Valheim.SpawnThat.Maps.Managers
                         continue;
                     }
 
-                    if (chanceMap[x][y] <= config.ConditionSpawnChanceInArea.Value)
+                    if (chanceMap[x][y] <= config.ConditionAreaSpawnChance.Value)
                     {
                         spawnMap[x][y] = 255;
                     }
@@ -157,13 +157,34 @@ namespace Valheim.SpawnThat.Maps.Managers
             Dictionary<int, int> biomes = new();
 
             if (y + 1 < AreaMap.Biomes.Length)
-                biomes[AreaMap.Biomes[x][y + 1]] += 1;
+            {
+                int biome = AreaMap.Biomes[x][y + 1];
+                biomes.TryGetValue(biome, out var counter);
+                biomes[biome] = counter + 1;
+            }
+
             if (x + 1 < AreaMap.Biomes.Length)
-                biomes[AreaMap.Biomes[x + 1][y]] += 1;
+            {
+                int biome = AreaMap.Biomes[x + 1][y];
+                biomes.TryGetValue(biome, out var counter);
+                biomes[biome] = counter + 1;
+
+            }
+
             if (y - 1 >= 0)
-                biomes[AreaMap.Biomes[x][y-1]] += 1;
+            {
+                int biome = AreaMap.Biomes[x][y - 1];
+                biomes.TryGetValue(biome, out var counter);
+                biomes[biome] = counter + 1;
+            }
+
             if (x - 1 >= 0)
-                biomes[AreaMap.Biomes[x-1][y]] += 1;
+            {
+                int biome = AreaMap.Biomes[x - 1][y];
+                biomes.TryGetValue(biome, out var counter);
+                biomes[biome] = counter + 1;
+
+            }
 
             return biomes
                 .OrderByDescending(x => x.Value)

@@ -38,12 +38,15 @@ namespace Valheim.SpawnThat.Maps.Patches
             if (ConfigurationManager.GeneralConfig?.PrintAreaMap?.Value == true)
             {
                 ImageBuilder
-                    .SetBiomes(MapManager.AreaMap)
-                    .Print("Debug", "biome_map");
-
-                ImageBuilder
                     .SetIds(MapManager.AreaMap)
                     .Print("Debug", "area_ids_map");
+            }
+
+            if (ConfigurationManager.GeneralConfig?.PrintBiomeMap?.Value == true)
+            {
+                ImageBuilder
+                    .SetBiomes(MapManager.AreaMap)
+                    .Print("Debug", "biome_map");
             }
 
             if (ConfigurationManager.GeneralConfig?.PrintFantasticBeastsAndWhereToKillThem?.Value == true)
