@@ -36,6 +36,10 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
             {
                 newModConfig = new SpawnSystemConfigMobAI();
             }
+            else if(subsectionName == SpawnSystemConfigEpicLoot.ModName.Trim().ToUpperInvariant())
+            {
+                newModConfig = new SpawnSystemConfigEpicLoot();
+            }
 
             return newModConfig;
         }
@@ -200,5 +204,14 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
         public ConfigurationEntry<string> SetAI = new ConfigurationEntry<string>("", "Name of MobAI to register for spawn. Eg. the defaults 'Fixer' and 'Worker'.");
 
         public ConfigurationFileEntry AIConfigFile = new ConfigurationFileEntry("", "Configuration file to use for the SetAI. Eg. 'MyFixerConfig.json', can include path, but will always start searching from config folder. See MobAI documentation for file setup.");
+    }
+
+    public class SpawnSystemConfigEpicLoot: Config
+    {
+        public const string ModName = "EpicLoot";
+
+        public ConfigurationEntry<string> ConditionNearbyPlayerCarryItemWithRarity = new ConfigurationEntry<string>("", "Checks if nearby players have any items of the listed rarities.\nEg. Magic, Legendary");
+
+        public ConfigurationEntry<string> ConditionNearbyPlayerCarryLegendaryItem = new ConfigurationEntry<string>("", "Checks if nearby players have any of the listed epic loot legendary id's in inventory.\nEg. HeimdallLegs, RagnarLegs");
     }
 }
