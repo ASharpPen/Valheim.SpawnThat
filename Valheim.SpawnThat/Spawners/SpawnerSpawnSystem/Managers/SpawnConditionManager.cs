@@ -50,6 +50,8 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 
             OnSpawnConditions.Add(ConditionLoaderCLLC.ConditionWorldLevel);
 
+            OnSpawnConditions.Add(ConditionLoaderEpicLoot.ConditionNearbyPlayerCarryItemWithRarity);
+            OnSpawnConditions.Add(ConditionLoaderEpicLoot.ConditionNearbyPlayerCarryLegendaryItem);
 
             // Default conditions
 

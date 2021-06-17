@@ -22,6 +22,7 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 - Modify the spawners in camps, villages and dungeons
 - Support for [Creature Level and Loot Control](https://valheim.thunderstore.io/package/Smoothbrain/CreatureLevelAndLootControl/)
 - Support for [MobAILib](https://www.nexusmods.com/valheim/mods/1188)
+- Support for [Epic Loot](https://valheim.thunderstore.io/package/RandyKnapp/EpicLoot/)
 
 ## FAQ
 
@@ -547,6 +548,32 @@ SetAI = Fixer
 AIConfigFile=MyFixerConfig.json
 ```
 
+## Epic Loot
+Additional options for [Epic Loot](https://valheim.thunderstore.io/package/RandyKnapp/EpicLoot/).
+See the mod page for more in-depth documentation.
+
+### World Spawners
+
+Mod-specific configs can be added to each world spawner as `[WorldSpawner.Index.EpicLoot]`
+
+```INI
+
+## Checks if nearby players have any of the listed epic loot legendary id's in inventory.
+## Eg. HeimdallLegs, RagnarLegs
+ConditionNearbyPlayerCarryLegendaryItem = 
+
+## Checks if nearby players have any items of the listed rarities. 
+## Eg. Magic, Legendary
+ConditionNearbyPlayerCarryItemWithRarity = 
+
+```
+
+### Rarity
+
+- Magic
+- Rare
+- Epic
+- Legendary
 
 ## Creature Level and Loot Control
 
@@ -765,6 +792,7 @@ Changelog:
 	- Added condition for spawning only in specified areas. Intended as a world specific setting. For those who have been waiting, this is the option to use for designated monster islands.
 	- Added condition for spawning in an area, chance is pr area and only rolled once, to allow for variety in spawning across the world.
 	- Added console commands for areas.
+	- Added conditions for epic loot based items on nearby players.
 - v0.10.1: 
 	- Fixed issue with world-spawner mobs not spawning in mountains.
 - v0.10.0: 

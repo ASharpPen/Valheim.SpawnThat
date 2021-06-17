@@ -1,0 +1,89 @@
+﻿using EpicLoot;
+using ExtendedItemDataFramework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+using Valheim.SpawnThat.Configuration.ConfigTypes;
+using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Core.Configuration;
+using Valheim.SpawnThat.Utilities;
+
+namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific.EpicLoot
+{
+    public class ConditionNearbyPlayerCarryLegendaryItem : IConditionOnSpawn
+    {
+        private static ConditionNearbyPlayerCarryLegendaryItem instance;
+
+        public static ConditionNearbyPlayerCarryLegendaryItem Instance => instance ??= new();
+
+        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
+        {
+            if (!spawner || spawner is null || config is null)
+            {
+                return false;
+            }
+
+            if (IsValid(spawner.transform.position, config))
+            {
+                return false;
+            }
+
+            Log.LogTrace($"Ignoring world config {config.Name} due to no players in area carrying required legendary.");
+            return true;
+        }
+
+        public bool IsValid(Vector3 center, SpawnConfiguration spawnConfig)
+        {
+            if ((spawnConfig.DistanceToTriggerPlayerConditions?.Value ?? 0) <= 0)
+            {
+                return true;
+            }
+
+
+            if (!spawnConfig.TryGet(SpawnSystemConfigEpicLoot.ModName, out Config modConfig) || modConfig is not SpawnSystemConfigEpicLoot config)
+            {
+                return true;
+            }
+            
+            if (string.IsNullOrWhiteSpace(config.ConditionNearbyPlayerCarryLegendaryItem?.Value))
+            {
+                return true;
+            }
+
+            List<Player> players = PlayerUtils.GetPlayersInRadius(center, spawnConfig.DistanceToTriggerPlayerConditions.Value);
+
+            var itemsLookedFor = config.ConditionNearbyPlayerCarryLegendaryItem.Value.SplitByComma().ToHashSet();
+
+            foreach (var player in players.Where(x => x is not null && x))
+            {
+                var items = player.GetInventory()?.GetAllItems();
+
+                if (items is null)
+                {
+                    continue;
+                }
+
+                if(items.Any(
+                    x =>
+                    {
+                        var magicComponent = x?.Extended()?.GetComponent<MagicItemComponent>();
+
+                        if(magicComponent is null)
+                        {
+                            return false;
+                        }
+
+                        return itemsLookedFor.Contains(magicComponent.MagicItem.LegendaryID);
+                    }))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
+}

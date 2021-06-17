@@ -57,6 +57,12 @@
       <HintPath>LibsStripped\CreatureLevelControl.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="EpicLoot">
+      <HintPath>C:\Users\MHS\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Valheim - Drop That\BepInEx\plugins\RandyKnapp-EpicLoot\EpicLoot.dll</HintPath>
+    </Reference>
+    <Reference Include="ExtendedItemDataFramework">
+      <HintPath>C:\Users\MHS\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Valheim - Drop That\BepInEx\plugins\RandyKnapp-ExtendedItemDataFramework\ExtendedItemDataFramework.dll</HintPath>
+    </Reference>
     <Reference Include="MobAILib">
       <HintPath>C:\Users\MHS\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Valheim - Spawn That\BepInEx\plugins\MobAILib.dll</HintPath>
     </Reference>
@@ -147,6 +153,9 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionAreaIds.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionLocation.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionAreaSpawnChance.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\ConditionLoaderEpicLoot.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\EpicLoot\ConditionNearbyPlayerCarryItemWithRarity.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\EpicLoot\ConditionNearbyPlayerCarryLegendaryItem.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Managers\SpawnConditionManager.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionDaytime.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionDistanceToCenter.cs" />
