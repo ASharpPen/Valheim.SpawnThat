@@ -4,6 +4,7 @@ using System.Linq;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Reset;
+using Valheim.SpawnThat.Spawners.Caches;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific;
 
@@ -12,18 +13,12 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
     public class SpawnConditionManager
     {
         private HashSet<IConditionOnAwake> OnAwakeConditions = new HashSet<IConditionOnAwake>();
-        private HashSet<IConditionOnSpawn> OnSpawnConditions = new HashSet<IConditionOnSpawn>();
+        private List<IConditionOnSpawn> OnSpawnConditions = new();
         private HashSet<IConditionOnSpawn> DefaultSpawnConditions = new HashSet<IConditionOnSpawn>();
 
         private static SpawnConditionManager _instance;
 
-        public static SpawnConditionManager Instance
-        {
-            get
-            {
-                return _instance ??= new SpawnConditionManager();
-            }
-        }
+        public static SpawnConditionManager Instance => _instance ??= new();
 
         SpawnConditionManager()
         {
@@ -79,18 +74,35 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 
         public bool FilterOnSpawn(SpawnSystem spawner, SpawnSystem.SpawnData spawn)
         {
-            var cache = SpawnSystemConfigCache.Get(spawn);
+            var cache = SpawnDataCache.Get(spawn);
 
             if (cache?.Config == null)
             {
                 return false;
             }
 
+            if (spawn?.m_prefab is null)
+            {
+                return true;
+            }
+
+            if(spawner is null)
+            {
+                return true;
+            }
+
+            var context = new SpawnConditionContext
+            {
+                Config = cache.Config,
+                Position = spawner.transform.position,
+                SpawnData = spawn
+            };
+
             return OnSpawnConditions.Any(x =>
             {
                 try
                 {
-                    return x?.ShouldFilter(spawner, spawn, cache.Config) ?? false;
+                    return x?.ShouldFilter(context) ?? false;
                 }
                 catch (Exception e)
                 {
@@ -104,7 +116,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
         {
             if (config is null)
             {
-                var cache = SpawnSystemConfigCache.Get(spawn);
+                var cache = SpawnDataCache.Get(spawn);
 
                 if (cache?.Config == null)
                 {
@@ -114,7 +126,24 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
                 config = cache.Config;
             }
 
-            return DefaultSpawnConditions.Any(x => x?.ShouldFilter(spawner, spawn, config) ?? false);
+            if (spawn?.m_prefab is null)
+            {
+                return true;
+            }
+
+            if (spawner is null)
+            {
+                return true;
+            }
+
+            var context = new SpawnConditionContext
+            {
+                Config = config,
+                Position = spawner.transform.position,
+                SpawnData = spawn,
+            };
+
+            return DefaultSpawnConditions.Any(x => x?.ShouldFilter(context) ?? false);
         }
     }
 }

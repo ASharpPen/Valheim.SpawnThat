@@ -9,22 +9,11 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 
         private static ConditionEnvironments _instance;
 
-        public static ConditionEnvironments Instance
-        {
-            get
-            {
-                return _instance ??= new ConditionEnvironments();
-            }
-        }
+        public static ConditionEnvironments Instance => _instance ??= new();
 
-        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
+        public bool ShouldFilter(SpawnConditionContext context)
         {
-            if (config is null)
-            {
-                return false;
-            }
-
-            return !IsValid(config.RequiredEnvironments.Value);
+            return !IsValid(context.Config.RequiredEnvironments.Value);
         }
 
         public bool IsValid(string requiredEnvironments)

@@ -6,6 +6,7 @@ using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Reset;
+using Valheim.SpawnThat.Spawners.Caches;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Position;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
@@ -29,7 +30,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 
         public static bool ShouldFilter(SpawnSystem.SpawnData spawn, Vector3 position)
         {
-            var config = SpawnSystemConfigCache.Get(spawn);
+            var config = SpawnDataCache.Get(spawn);
 
             if (config?.Config is null)
             {

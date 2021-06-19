@@ -11,20 +11,11 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
     {
         private static ConditionNearbyPlayersStatus _instance;
 
-        public static ConditionNearbyPlayersStatus Instance
-        {
-            get
-            {
-                return _instance ??= new ConditionNearbyPlayersStatus();
-            }
-        }
+        public static ConditionNearbyPlayersStatus Instance => _instance ??= new();
 
-        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
+        public bool ShouldFilter(SpawnConditionContext context)
         {
-            if (!spawner || !spawner.transform || spawner is null || config is null || spawner.transform?.position is null)
-            {
-                return false;
-            }
+            var config = context.Config;
 
             if ((config.DistanceToTriggerPlayerConditions?.Value ?? 0) <= 0)
             {
@@ -36,7 +27,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
                 return false;
             }
 
-            List<Player> players = PlayerUtils.GetPlayersInRadius(spawner.transform.position, config.DistanceToTriggerPlayerConditions.Value);
+            List<Player> players = PlayerUtils.GetPlayersInRadius(context.Position, config.DistanceToTriggerPlayerConditions.Value);
 
             if (players.Count == 0)
             {

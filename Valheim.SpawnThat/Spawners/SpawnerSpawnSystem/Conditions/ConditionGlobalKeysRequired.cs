@@ -12,27 +12,16 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
     {
         private static ConditionGlobalKeysRequired _instance;
 
-        public static ConditionGlobalKeysRequired Instance
-        {
-            get
-            {
-                return _instance ??= new ConditionGlobalKeysRequired();
-            }
-        }
+        public static ConditionGlobalKeysRequired Instance => _instance ??= new();
 
-        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
+        public bool ShouldFilter(SpawnConditionContext context)
         {
-            if(config is null)
+            if(IsValid(context.Config))
             {
                 return false;
             }
 
-            if(IsValid(config))
-            {
-                return false;
-            }
-
-            Log.LogTrace($"Filtering {config.Name} due to global keys required.");
+            Log.LogTrace($"Filtering {context.Config.Name} due to global keys required.");
             return true;
         }
 

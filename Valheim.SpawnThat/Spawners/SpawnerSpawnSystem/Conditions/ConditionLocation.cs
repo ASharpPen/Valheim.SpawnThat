@@ -11,13 +11,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
     {
         private static ConditionLocation _instance;
 
-        public static ConditionLocation Instance
-        {
-            get
-            {
-                return _instance ??= new ConditionLocation();
-            }
-        }
+        public static ConditionLocation Instance => _instance ??= new();
 
         public bool ShouldFilter(SpawnSystem spawner, SpawnConfiguration config)
         {
