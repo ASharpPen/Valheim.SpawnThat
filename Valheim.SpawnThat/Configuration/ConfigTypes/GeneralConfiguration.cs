@@ -65,6 +65,7 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
             DebugLoggingOn.Bind(Config, "Debug", "DebugLoggingOn");
             TraceLoggingOn.Bind(Config, "Debug", "TraceLoggingOn");
             PrintAreaMap.Bind(Config, "Debug", "PrintAreaMap");
+            PrintBiomeMap.Bind(Config, "Debug", nameof(PrintBiomeMap));
             PrintFantasticBeastsAndWhereToKillThem.Bind(Config, "Debug", "PrintFantasticBeastsAndWhereToKillThem");
 
             WriteCreatureSpawnersToFile.Bind(Config, "LocalSpawner", "WriteSpawnTablesToFileBeforeChanges");
