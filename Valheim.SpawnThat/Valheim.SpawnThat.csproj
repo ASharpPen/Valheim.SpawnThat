@@ -342,6 +342,8 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionLocation.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionAreaSpawnChance.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionMaxSpawnedNonAI.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionNearbyPlayersWithHealth.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ConditionNearbyPlayersWithHealthPercent.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\ConditionLoaderEpicLoot.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\EpicLoot\ConditionNearbyPlayerCarryItemWithRarity.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Conditions\ModSpecific\EpicLoot\ConditionNearbyPlayerCarryLegendaryItem.cs" />

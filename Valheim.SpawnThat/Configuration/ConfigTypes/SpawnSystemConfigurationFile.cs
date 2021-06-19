@@ -119,6 +119,14 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<string> ConditionAreaIds = new ConfigurationEntry<string>("", "Advanced feature. List of area id's in which the template is valid. Note: If ConditionSpawnChanceInArea is not 100 or disabled, it will still roll area chance.\nEg. 1, 123, 543");
 
+        public ConfigurationEntry<float> ConditionNearbyPlayerWithHealthMin = new ConfigurationEntry<float>(0, "Checks if any nearby player has above the required mininum of health.");
+
+        public ConfigurationEntry<float> ConditionNearbyPlayerWithHealthMax = new ConfigurationEntry<float>(0, "Checks if any nearby player has below the required maximum of health. 0 means no max.");
+        
+        public ConfigurationEntry<float> ConditionNearbyPlayerWithHealthPercentMin = new ConfigurationEntry<float>(0, "Checks if any nearby player has above the required mininum of health percentage.");
+        
+        public ConfigurationEntry<float> ConditionNearbyPlayerWithHealthPercentMax = new ConfigurationEntry<float>(0, "Checks if any nearby player has below the required maximum of health percentage. 0 means no max.");
+
         #region Default Configuration Options
 
         public ConfigurationEntry<string> PrefabName = new ConfigurationEntry<string>("Deer", "Prefab name of the entity to spawn.");
