@@ -793,6 +793,7 @@ Changelog:
 	- Added condition for spawning in an area, chance is pr area and only rolled once, to allow for variety in spawning across the world.
 	- Added console commands for areas.
 	- Added conditions for epic loot based items on nearby players.
+	- Added support for spawning non-ai entities. MaxSpawned and SpawnDistance should now work properly for any prefab. SpawnDistance should work for any distance now, be aware this may cause performance issues if set too high.
 - v0.10.1: 
 	- Fixed issue with world-spawner mobs not spawning in mountains.
 - v0.10.0: 
