@@ -8,22 +8,16 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
     {
         private static ConditionNotGlobalKeys _instance;
 
-        public static ConditionNotGlobalKeys Instance
-        {
-            get
-            {
-                return _instance ??= new ConditionNotGlobalKeys();
-            }
-        }
+        public static ConditionNotGlobalKeys Instance => _instance ??= new();
 
-        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
+        public bool ShouldFilter(SpawnConditionContext context)
         {
-            if(IsValid(config))
+            if(IsValid(context.Config))
             {
                 return false;
             }
 
-            Log.LogTrace($"Ignoring world config {config.Name} due to finding a global key from {nameof(config.RequiredNotGlobalKey)}.");
+            Log.LogTrace($"Ignoring world config {context.Config.Name} due to finding a global key from {nameof(context.Config.RequiredNotGlobalKey)}.");
             return true;
         }
 

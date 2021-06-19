@@ -146,6 +146,7 @@ namespace Valheim.SpawnThat.Maps
                 Heightmap.Biome.Ocean => (0, 0, 1),
                 Heightmap.Biome.Mistlands => (0.5f, 0.5f, 0.5f),
                 Heightmap.Biome.BiomesMax => (0, 0, 0),
+                _ => (0, 0, 0)
             };
         }
 

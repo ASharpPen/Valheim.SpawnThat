@@ -120,7 +120,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 
                             Override(spawner, spawnConfig);
 
-                            SpawnSystemConfigCache.Set(spawner, spawnConfig);
+                            SpawnDataCache.Set(spawner, spawnConfig);
                         }
                         else
                         {
@@ -132,7 +132,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
                                 continue;
                             }
 
-                            SpawnSystemConfigCache.Set(spawner, spawnConfig);
+                            SpawnDataCache.Set(spawner, spawnConfig);
 
                             __instance.m_spawners.Add(spawner);
                         }

@@ -9,13 +9,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
     {
         private static ConditionDistanceToCenter _instance;
 
-        public static ConditionDistanceToCenter Instance
-        {
-            get
-            {
-                return _instance ??= new ConditionDistanceToCenter();
-            }
-        }
+        public static ConditionDistanceToCenter Instance => _instance ??= new();
 
         public bool ShouldFilter(SpawnSystem spawner, SpawnConfiguration spawnConfig)
         {

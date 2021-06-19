@@ -11,34 +11,23 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
     {
         private static ConditionNearbyPlayersCarryItem _instance;
 
-        public static ConditionNearbyPlayersCarryItem Instance
+        public static ConditionNearbyPlayersCarryItem Instance => _instance ??= new();
+
+        public bool ShouldFilter(SpawnConditionContext context)
         {
-            get
-            {
-                return _instance ??= new ConditionNearbyPlayersCarryItem();
-            }
-        }
-
-        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
-        {
-            if (!spawner || !spawner.transform || spawner is null || config is null || spawner.transform?.position is null)
+            if ((context.Config.DistanceToTriggerPlayerConditions?.Value ?? 0) <= 0)
             {
                 return false;
             }
 
-            if ((config.DistanceToTriggerPlayerConditions?.Value ?? 0) <= 0)
+            if(string.IsNullOrWhiteSpace(context.Config.ConditionNearbyPlayerCarriesItem?.Value))
             {
                 return false;
             }
 
-            if(string.IsNullOrWhiteSpace(config.ConditionNearbyPlayerCarriesItem?.Value))
-            {
-                return false;
-            }
+            List<Player> players = PlayerUtils.GetPlayersInRadius(context.Position, context.Config.DistanceToTriggerPlayerConditions.Value);
 
-            List<Player> players = PlayerUtils.GetPlayersInRadius(spawner.transform.position, config.DistanceToTriggerPlayerConditions.Value);
-
-            var itemsLookedFor = config.ConditionNearbyPlayerCarriesItem?.Value?.SplitByComma(true)?.ToHashSet();
+            var itemsLookedFor = context.Config.ConditionNearbyPlayerCarriesItem?.Value?.SplitByComma(true)?.ToHashSet();
 
             if(itemsLookedFor is null)
             {
@@ -75,7 +64,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
                 }
             }
 
-            Log.LogTrace($"Ignoring world config {config.Name} due to not finding any of the items on nearby players.");
+            Log.LogTrace($"Ignoring world config {context.Config.Name} due to not finding any of the items on nearby players.");
             return true;
         }
     }

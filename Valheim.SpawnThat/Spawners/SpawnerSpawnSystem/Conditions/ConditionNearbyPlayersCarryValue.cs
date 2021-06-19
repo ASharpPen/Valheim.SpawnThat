@@ -11,39 +11,28 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
     {
         private static ConditionNearbyPlayersCarryValue _instance;
 
-        public static ConditionNearbyPlayersCarryValue Instance
+        public static ConditionNearbyPlayersCarryValue Instance => _instance ??= new();
+
+        public bool ShouldFilter(SpawnConditionContext context)
         {
-            get
-            {
-                return _instance ??= new ConditionNearbyPlayersCarryValue();
-            }
-        }
-
-        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
-        {
-            if (!spawner || !spawner.transform || spawner is null || config is null || spawner.transform?.position is null)
+            if((context.Config.DistanceToTriggerPlayerConditions?.Value ?? 0) <= 0)
             {
                 return false;
             }
 
-            if((config.DistanceToTriggerPlayerConditions?.Value ?? 0) <= 0)
+            if(context.Config.ConditionNearbyPlayersCarryValue.Value <= 0)
             {
                 return false;
             }
 
-            if(config.ConditionNearbyPlayersCarryValue.Value <= 0)
-            {
-                return false;
-            }
+            List<Player> players = PlayerUtils.GetPlayersInRadius(context.Position, context.Config.DistanceToTriggerPlayerConditions.Value);
 
-            List<Player> players = PlayerUtils.GetPlayersInRadius(spawner.transform.position, config.DistanceToTriggerPlayerConditions.Value);
-
-            var requiredSum = config.ConditionNearbyPlayersCarryValue?.Value ?? 0;
+            var requiredSum = context.Config.ConditionNearbyPlayersCarryValue?.Value ?? 0;
             var valueSum = 0;
 
             if((players?.Count ?? 0) == 0)
             {
-                Log.LogTrace($"Ignoring world config {config.Name} due to condition {nameof(ConditionNearbyPlayersCarryValue)}.");
+                Log.LogTrace($"Ignoring world config {context.Config.Name} due to condition {nameof(ConditionNearbyPlayersCarryValue)}.");
                 return true;
             }
 
@@ -74,7 +63,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 
             if (valueSum < requiredSum)
             {
-                Log.LogTrace($"Filtering {config.Name} due to summed value of nearby players inventory.");
+                Log.LogTrace($"Filtering {context.Config.Name} due to summed value of nearby players inventory.");
                 return true;
             }
 

@@ -19,19 +19,14 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific.E
 
         public static ConditionNearbyPlayerCarryLegendaryItem Instance => instance ??= new();
 
-        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
+        public bool ShouldFilter(SpawnConditionContext context)
         {
-            if (!spawner || spawner is null || config is null)
+            if (IsValid(context.Position, context.Config))
             {
                 return false;
             }
 
-            if (IsValid(spawner.transform.position, config))
-            {
-                return false;
-            }
-
-            Log.LogTrace($"Ignoring world config {config.Name} due to no players in area carrying required legendary.");
+            Log.LogTrace($"Ignoring world config {context.Config.Name} due to no players in area carrying required legendary.");
             return true;
         }
 
