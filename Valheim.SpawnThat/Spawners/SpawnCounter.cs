@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Spawners
 {
@@ -41,10 +40,6 @@ namespace Valheim.SpawnThat.Spawners
             // Get sectors to check
             sectors = GetSectors(MinX, MinZ, MaxX, MaxZ);
 
-#if DEBUG
-            Log.LogTrace($"Counting in {sectors.Count} sectors.");
-#endif
-
             // Get zdo's
             zdos = new List<ZDO>();
 
@@ -52,10 +47,6 @@ namespace Valheim.SpawnThat.Spawners
             {
                 ZDOMan.instance.FindObjects(sector, zdos);
             }
-
-#if DEBUG
-            Log.LogTrace($"Found {zdos.Count} zdos.");
-#endif
 
             initialized = true;
         }
@@ -86,24 +77,12 @@ namespace Valheim.SpawnThat.Spawners
                 return cachedCount;
             }
 
-#if DEBUG
-            Log.LogTrace($"Testing prefab hash: {prefabId}");
-#endif
-
             int instances = 0;
-
-#if DEBUG
-            Log.LogTrace($"Checking {zdos.Count} zdos for prefab.");
-#endif
 
             // Search zdo's with same prefab
             instances = zdos.Count(x => WithinRange(x, prefabId));
 
             CachedPrefabResults[prefabId] = instances;
-
-#if DEBUG
-            Log.LogTrace($"Found {instances} entities in range");
-#endif
 
             return instances;
 

@@ -48,9 +48,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
             var id = areaId.ToString();
             if (areaIds.Any(x => x == id))
             {
-#if DEBUG
-                Log.LogTrace($"Found required area with id: {areaId}");
-#endif
                 return true;
             }
 
@@ -80,9 +77,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 
             if (areaIds.Any(x => x == areaId))
             {
-#if DEBUG
-                Log.LogTrace($"Found required area with id: {areaId}");
-#endif
                 return true;
             }
 
