@@ -40,16 +40,8 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
                 return true;
             }
 
-#if DEBUG
-            Log.LogTrace($"Testing if prefab {prefab.name} is within range of another:");
-#endif
-
             SpawnCounter counter = new SpawnCounter(centerPoint, (int)minDistance);
             __result = counter.HasAnyInRange(prefab);
-
-#if DEBUG
-            Log.LogTrace($"\t{__result}");
-#endif
 
             return false;
         }

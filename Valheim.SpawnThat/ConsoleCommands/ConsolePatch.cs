@@ -156,7 +156,7 @@ namespace Valheim.SpawnThat.ConsoleCommands
             var areaId = MapManager.GetAreaId(position.Value);
             var chance = MapManager.GetAreaChance(position.Value, templateIndex);
 
-            Console.instance.Print($"Template '{templateIndex}', in area '{areaId}' rolled chance '{chance}'.");
+            Console.instance.Print($"Template '{templateIndex}', in area '{areaId}' rolled chance '{chance * 100}'.");
         }
 
         public static void CommandPrintTemplateAreaHeatMap(int templateIndex)

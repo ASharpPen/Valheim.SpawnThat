@@ -16,15 +16,36 @@ namespace Valheim.SpawnThat.Maps.Patches
         [HarmonyPostfix]
         private static void ScanWorld()
         {
-            Log.LogDebug("Scanning map for biomes..");
+            if (WorldGenerator.instance is not null)
+            {
+                Log.LogDebug("Scanning map for biomes..");
 
-            DateTimeOffset start = DateTimeOffset.UtcNow;
+                DateTimeOffset start = DateTimeOffset.UtcNow;
 
-            MapManager.Initialize();
+                MapManager.Initialize();
 
-            DateTimeOffset stop = DateTimeOffset.UtcNow;
+                DateTimeOffset stop = DateTimeOffset.UtcNow;
 
-            Log.LogDebug("Scanning map and assigning id's to areas took: " + (stop - start));
+                Log.LogDebug("Scanning map and assigning id's to areas took: " + (stop - start));
+            }
+        }
+
+        [HarmonyPatch(nameof(ZNet.RPC_PeerInfo))]
+        [HarmonyPostfix]
+        private static void ScanJoinedWorld()
+        {
+            if (WorldGenerator.instance is not null)
+            {
+                Log.LogDebug("Scanning map for biomes..");
+
+                DateTimeOffset start = DateTimeOffset.UtcNow;
+
+                MapManager.Initialize();
+
+                DateTimeOffset stop = DateTimeOffset.UtcNow;
+
+                Log.LogDebug("Scanning map and assigning id's to areas took: " + (stop - start));
+            }
         }
     }
 }
