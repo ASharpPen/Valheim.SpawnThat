@@ -206,6 +206,7 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
         public ConfigurationFileEntry AIConfigFile = new ConfigurationFileEntry("", "Configuration file to use for the SetAI. Eg. 'MyFixerConfig.json', can include path, but will always start searching from config folder. See MobAI documentation for file setup.");
     }
 
+    [Serializable]
     public class SpawnSystemConfigEpicLoot: Config
     {
         public const string ModName = "EpicLoot";
