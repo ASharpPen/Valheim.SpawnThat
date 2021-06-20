@@ -7,22 +7,11 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
     {
         private static ConditionMaxSpawned _instance;
 
-        public static ConditionMaxSpawned Instance
-        {
-            get
-            {
-                return _instance ??= new ConditionMaxSpawned();
-            }
-        }
+        public static ConditionMaxSpawned Instance => _instance ??= new();
 
-        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
+        public bool ShouldFilter(SpawnConditionContext context)
         {
-            if (spawn is null || !spawn.m_prefab || spawn.m_prefab is null || config is null)
-            {
-                return false;
-            }
-
-            return !IsValid(spawn.m_prefab, config);
+            return !IsValid(context.SpawnData.m_prefab, context.Config);
         }
 
         public bool IsValid(GameObject spawn, SpawnConfiguration config)

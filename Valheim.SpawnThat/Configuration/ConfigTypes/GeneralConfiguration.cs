@@ -16,6 +16,12 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<bool> TraceLoggingOn = new ConfigurationEntry<bool>(false, "Enables in-depth logging. Note, this might generate a LOT of log entries.");
 
+        public ConfigurationEntry<bool> PrintAreaMap = new ConfigurationEntry<bool>(false, "Prints a set of pngs showing the area id's assigned by Spawn That to each biome 'area'. Each pixel's hex value corresponds to an area id, when converted into a decimal.");
+
+        public ConfigurationEntry<bool> PrintBiomeMap = new ConfigurationEntry<bool>(false, "Prints a map of the biome of each zone.");
+
+        public ConfigurationEntry<bool> PrintFantasticBeastsAndWhereToKillThem = new ConfigurationEntry<bool>(false, "Prints maps marking where each configured world spawn template can spawn. This will be done for every config entry.");
+
         #endregion
 
         #region General
@@ -58,6 +64,9 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
             DebugLoggingOn.Bind(Config, "Debug", "DebugLoggingOn");
             TraceLoggingOn.Bind(Config, "Debug", "TraceLoggingOn");
+            PrintAreaMap.Bind(Config, "Debug", "PrintAreaMap");
+            PrintBiomeMap.Bind(Config, "Debug", nameof(PrintBiomeMap));
+            PrintFantasticBeastsAndWhereToKillThem.Bind(Config, "Debug", "PrintFantasticBeastsAndWhereToKillThem");
 
             WriteCreatureSpawnersToFile.Bind(Config, "LocalSpawner", "WriteSpawnTablesToFileBeforeChanges");
             DontCollapseFile.Bind(Config, "LocalSpawner", nameof(DontCollapseFile));

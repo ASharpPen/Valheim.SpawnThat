@@ -4,6 +4,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 {
     public interface IConditionOnAwake
     {
-        bool ShouldFilter(SpawnSystem instance, SpawnConfiguration config);
+        bool ShouldFilter(SpawnSystem spawner, SpawnConfiguration config);
     }
 }

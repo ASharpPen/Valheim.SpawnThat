@@ -2,11 +2,12 @@
 using UnityEngine;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Reset;
+using Valheim.SpawnThat.Spawners.Caches;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
+namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 {
     public class SpawnModificationManager
     {
@@ -47,7 +48,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 
         public void ApplyModifiers(SpawnSystem spawnSystem, GameObject spawn, SpawnSystem.SpawnData spawner)
         {
-            var spawnData = SpawnSystemConfigCache.Get(spawner);
+            var spawnData = SpawnDataCache.Get(spawner);
 
             if (spawnData?.Config is null)
             {

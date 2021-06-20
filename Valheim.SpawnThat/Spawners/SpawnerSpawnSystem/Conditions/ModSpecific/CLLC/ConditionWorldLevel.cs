@@ -16,9 +16,9 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific.C
             }
         }
 
-        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration spawnerConfig)
+        public bool ShouldFilter(SpawnConditionContext context)
         {
-            if(spawnerConfig.TryGet(SpawnSystemConfigCLLC.ModName, out Config modConfig))
+            if(context.Config.TryGet(SpawnSystemConfigCLLC.ModName, out Config modConfig))
             {
                 if (modConfig is SpawnSystemConfigCLLC config)
                 { 
@@ -26,13 +26,13 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific.C
 
                     if (config.ConditionWorldLevelMin.Value >= 0 && worldLevel < config.ConditionWorldLevelMin.Value)
                     {
-                        Log.LogTrace($"Filtering spawner {spawn.m_name} due to CLLC world level being too low. {worldLevel} < {config.ConditionWorldLevelMin}.");
+                        Log.LogTrace($"Filtering spawner {context.SpawnData.m_name} due to CLLC world level being too low. {worldLevel} < {config.ConditionWorldLevelMin}.");
                         return true;
                     }
 
                     if (config.ConditionWorldLevelMax.Value >= 0 && worldLevel > config.ConditionWorldLevelMax.Value)
                     {
-                        Log.LogTrace($"Filtering spawner {spawn.m_name} due to CLLC world level being too high. {worldLevel} > {config.ConditionWorldLevelMax}.");
+                        Log.LogTrace($"Filtering spawner {context.SpawnData.m_name} due to CLLC world level being too high. {worldLevel} > {config.ConditionWorldLevelMax}.");
                         return true;
                     }
                 }

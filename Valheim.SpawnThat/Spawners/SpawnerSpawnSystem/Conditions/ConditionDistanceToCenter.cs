@@ -9,13 +9,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
     {
         private static ConditionDistanceToCenter _instance;
 
-        public static ConditionDistanceToCenter Instance
-        {
-            get
-            {
-                return _instance ??= new ConditionDistanceToCenter();
-            }
-        }
+        public static ConditionDistanceToCenter Instance => _instance ??= new();
 
         public bool ShouldFilter(SpawnSystem spawner, SpawnConfiguration spawnConfig)
         {
@@ -39,13 +33,11 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 
             if (distance < config.ConditionDistanceToCenterMin.Value)
             {
-                Log.LogTrace($"Ignoring world config {config.Name} due to distance less than min.");
                 return false;
             }
 
             if (config.ConditionDistanceToCenterMax.Value > 0 && distance > config.ConditionDistanceToCenterMax.Value)
             {
-                Log.LogTrace($"Ignoring world config {config.Name} due to distance greater than max.");
                 return false;
             }
 

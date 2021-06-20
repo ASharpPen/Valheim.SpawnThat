@@ -36,6 +36,10 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
             {
                 newModConfig = new SpawnSystemConfigMobAI();
             }
+            else if(subsectionName == SpawnSystemConfigEpicLoot.ModName.Trim().ToUpperInvariant())
+            {
+                newModConfig = new SpawnSystemConfigEpicLoot();
+            }
 
             return newModConfig;
         }
@@ -108,6 +112,12 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
         public ConfigurationEntry<bool> SetTamed = new ConfigurationEntry<bool>(false, "When true, mob will be set to tamed status on spawn.");
 
         public ConfigurationEntry<bool> SetTamedCommandable = new ConfigurationEntry<bool>(false, "Experimental. When true, will set mob as commandable when tamed. When false, whatever was default for the creature is used. Does not always seem to work for creatures not tameable in vanilla.");
+
+        public ConfigurationEntry<string> ConditionLocation = new ConfigurationEntry<string>("", "Array of locations in which this spawn is enabled. If empty, allows all.\nEg. Runestone_Boars, FireHole");
+
+        public ConfigurationEntry<float> ConditionAreaSpawnChance = new ConfigurationEntry<float>(100, "Chance for spawn to spawn at all in the area. The chance will be rolled once for the area. Range is 0 to 100. Eg. if a whole area of BlackForest rolls higher than the indicated chance, this spawn template will never be active in that forest. Another BlackForest will have another roll however, that may activate this template there. Chance is rolled based on world seed, area id and template index.");
+
+        public ConfigurationEntry<string> ConditionAreaIds = new ConfigurationEntry<string>("", "Advanced feature. List of area id's in which the template is valid. Note: If ConditionSpawnChanceInArea is not 100 or disabled, it will still roll area chance.\nEg. 1, 123, 543");
 
         #region Default Configuration Options
 
@@ -194,5 +204,15 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
         public ConfigurationEntry<string> SetAI = new ConfigurationEntry<string>("", "Name of MobAI to register for spawn. Eg. the defaults 'Fixer' and 'Worker'.");
 
         public ConfigurationFileEntry AIConfigFile = new ConfigurationFileEntry("", "Configuration file to use for the SetAI. Eg. 'MyFixerConfig.json', can include path, but will always start searching from config folder. See MobAI documentation for file setup.");
+    }
+
+    [Serializable]
+    public class SpawnSystemConfigEpicLoot: Config
+    {
+        public const string ModName = "EpicLoot";
+
+        public ConfigurationEntry<string> ConditionNearbyPlayerCarryItemWithRarity = new ConfigurationEntry<string>("", "Checks if nearby players have any items of the listed rarities.\nEg. Magic, Legendary");
+
+        public ConfigurationEntry<string> ConditionNearbyPlayerCarryLegendaryItem = new ConfigurationEntry<string>("", "Checks if nearby players have any of the listed epic loot legendary id's in inventory.\nEg. HeimdallLegs, RagnarLegs");
     }
 }

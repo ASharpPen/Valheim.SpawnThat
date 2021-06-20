@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
 {
@@ -35,7 +36,14 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
                 return;
             }
 
-            SpawnModificationManager.Instance.ApplyModifiers(spawnSystem, spawn, spawner);
+            try
+            {
+                SpawnModificationManager.Instance.ApplyModifiers(spawnSystem, spawn, spawner);
+            }
+            catch(Exception e)
+            {
+                Log.LogError($"Error while attempting to modify entity '{spawn?.name}' after spawning it.", e);
+            }
         }
     }
 }

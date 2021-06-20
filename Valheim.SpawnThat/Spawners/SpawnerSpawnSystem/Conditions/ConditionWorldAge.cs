@@ -7,22 +7,16 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
     {
         private static ConditionWorldAge _instance;
 
-        public static ConditionWorldAge Instance
-        {
-            get
-            {
-                return _instance ??= new ConditionWorldAge();
-            }
-        }
+        public static ConditionWorldAge Instance => _instance ??= new();
 
-        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
+        public bool ShouldFilter(SpawnConditionContext context)
         {
-            if (IsValid(config))
+            if (IsValid(context.Config))
             {
                 return false;
             }
 
-            Log.LogTrace($"Filtering spawner {spawn.m_name} due to world age.");
+            Log.LogTrace($"Filtering spawner {context.SpawnData.m_name} due to world age.");
             return true;
         }
 

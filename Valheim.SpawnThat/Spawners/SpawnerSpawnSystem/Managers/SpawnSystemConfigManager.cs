@@ -8,8 +8,9 @@ using Valheim.SpawnThat.Debugging;
 using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.Caches;
 using Valheim.SpawnThat.Utilities;
+using Valheim.SpawnThat.Utilities.Extensions;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
+namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 {
     public static class SpawnSystemConfigManager
     {
@@ -105,7 +106,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                         continue;
                     }
 
-                    if (ConditionManager.Instance.FilterOnAwake(__instance, spawnConfig))
+                    if (SpawnConditionManager.Instance.FilterOnAwake(__instance, spawnConfig))
                     {
                         continue;
                     }
@@ -119,24 +120,24 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
 
                             Override(spawner, spawnConfig);
 
-                            SpawnSystemConfigCache.Set(spawner, spawnConfig);
+                            SpawnDataCache.Set(spawner, spawnConfig);
                         }
                         else
                         {
                             Log.LogTrace($"Adding new spawner entry {spawnConfig.Name}");
                             var spawner = CreateNewEntry(spawnConfig);
 
-                            if(spawner is null)
+                            if (spawner is null)
                             {
                                 continue;
                             }
 
-                            SpawnSystemConfigCache.Set(spawner, spawnConfig);
+                            SpawnDataCache.Set(spawner, spawnConfig);
 
                             __instance.m_spawners.Add(spawner);
                         }
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         Log.LogError($"Failed to apply config {spawnConfig.Name} to world spawner.", e);
                     }
@@ -162,7 +163,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                         spawner.m_maxSpawned = (int)Math.Round(spawner.m_maxSpawned * simpleConfig.SpawnMaxMultiplier.Value);
                         spawner.m_groupSizeMin = (int)Math.Round(spawner.m_groupSizeMin * simpleConfig.GroupSizeMinMultiplier.Value);
                         spawner.m_groupSizeMax = (int)Math.Round(spawner.m_groupSizeMax * simpleConfig.GroupSizeMaxMultiplier.Value);
-                        spawner.m_spawnInterval = (simpleConfig.SpawnFrequencyMultiplier.Value != 0)
+                        spawner.m_spawnInterval = simpleConfig.SpawnFrequencyMultiplier.Value != 0
                             ? spawner.m_spawnInterval / simpleConfig.SpawnFrequencyMultiplier.Value
                             : 0;
                     }
@@ -215,13 +216,13 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
         {
             var prefab = ZNetScene.instance.GetPrefab(config.PrefabName.Value);
 
-            if(!prefab || prefab is null)
+            if (!prefab || prefab is null)
             {
                 Log.LogWarning($"Unable to find prefab for {config.PrefabName.Value}");
                 return;
             }
 
-            Heightmap.Biome biome = ConvertToBiomeFlag(config);
+            Heightmap.Biome biome = config.ExtractBiomeMask();
 
             var envs = config.RequiredEnvironments?.Value?.SplitByComma() ?? new List<string>(0);
 
@@ -267,7 +268,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
                 return null;
             }
 
-            Heightmap.Biome biome = ConvertToBiomeFlag(config);
+            Heightmap.Biome biome = config.ExtractBiomeMask();
 
             var envs = config.RequiredEnvironments?.Value?.SplitByComma() ?? new List<string>(0);
 
@@ -306,34 +307,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
             };
 
             return spawnData;
-        }
-
-        private static Heightmap.Biome ConvertToBiomeFlag(SpawnConfiguration config)
-        {
-            //Well, since you bastards were packing enums before, lets return the gesture (not really, <3 you devs!)
-            Heightmap.Biome biome = Heightmap.Biome.None;
-
-            var biomeArray = config.Biomes?.Value?.SplitByComma() ?? new List<string>(0);
-
-            if (biomeArray.Count == 0)
-            {
-                //Set all biomes allowed.
-                biome = (Heightmap.Biome)1023;
-            }
-
-            foreach (var requiredBiome in biomeArray)
-            {
-                if (Enum.TryParse(requiredBiome, out Heightmap.Biome reqBiome))
-                {
-                    biome |= reqBiome;
-                }
-                else
-                {
-                    Log.LogWarning($"Unable to parse biome '{requiredBiome}' of spawner config {config.Index}");
-                }
-            }
-
-            return biome;
         }
     }
 }

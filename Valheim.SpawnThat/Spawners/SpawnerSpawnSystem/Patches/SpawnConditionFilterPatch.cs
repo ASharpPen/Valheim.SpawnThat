@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Spawners.Caches;
+using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
 {
     [HarmonyPatch(typeof(SpawnSystem))]
-    public static class PreSpawnFilterPatch
+    public static class SpawnConditionFilterPatch
     {
         private static FieldInfo FieldAnchor = AccessTools.Field(typeof(SpawnSystem.SpawnData), "m_enabled");
-        private static MethodInfo FilterMethod = AccessTools.Method(typeof(PreSpawnFilterPatch), nameof(FilterSpawners), new[] { typeof(SpawnSystem), typeof(SpawnSystem.SpawnData), typeof(bool) });
+        private static MethodInfo FilterMethod = AccessTools.Method(typeof(SpawnConditionFilterPatch), nameof(FilterSpawners), new[] { typeof(SpawnSystem), typeof(SpawnSystem.SpawnData), typeof(bool) });
 
         [HarmonyPatch("UpdateSpawnList")]
         [HarmonyTranspiler]
@@ -43,7 +45,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
 
             try
             {
-                return ConditionManager.Instance.FilterOnSpawn(spawner, spawn);
+                return SpawnConditionManager.Instance.FilterOnSpawn(spawner, spawn);
             }
             catch(Exception e)
             {

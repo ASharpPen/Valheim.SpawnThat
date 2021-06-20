@@ -15,27 +15,16 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 
         private static ConditionDaytime _instance;
 
-        public static ConditionDaytime Instance
-        {
-            get
-            {
-                return _instance ??= new ConditionDaytime();
-            }
-        }
+        public static ConditionDaytime Instance => _instance ??= new();
 
-        public bool ShouldFilter(SpawnSystem spawner, SpawnSystem.SpawnData spawn, SpawnConfiguration config)
+        public bool ShouldFilter(SpawnConditionContext context)
         {
-            if(config is null)
+            if(IsValid(context.Config.SpawnDuringDay.Value, context.Config.SpawnDuringNight.Value))
             {
                 return false;
             }
 
-            if(IsValid(config.SpawnDuringDay.Value, config.SpawnDuringNight.Value))
-            {
-                return false;
-            }
-
-            Log.LogTrace($"Filtering {config.Name} due to daytime.");
+            Log.LogTrace($"Filtering {context.Config.Name} due to daytime.");
             return true;
         }
 
