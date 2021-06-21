@@ -1,4 +1,5 @@
-﻿# Spawn That! 
+﻿
+# Spawn That! 
 
 This is an advanced tool for configuring all world spawners.
 
@@ -8,7 +9,7 @@ Want to have a world with ONLY trolls? Possible! (almost)
 Want to have a world where greydwarves only spawn at night? Possible!
 Just want to have more/less of a mob type? Simple modifiers exist!
 
-# <a id="intro-features"></a>Features
+# Features
 
 - Change spawning rates of specific mobs
 - Replace existing spawn configurations throughout the world
@@ -24,6 +25,8 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 	- [Creature Level and Loot Control](https://valheim.thunderstore.io/package/Smoothbrain/CreatureLevelAndLootControl/)
 	- [MobAILib](https://www.nexusmods.com/valheim/mods/1188)
 	- [Epic Loot](https://valheim.thunderstore.io/package/RandyKnapp/EpicLoot/)
+
+# Documentation
 
 Documentation can be found on the [mod wiki](https://github.com/ASharpPen/Valheim.SpawnThat/wiki).
 
@@ -54,6 +57,9 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
 ```
 
 # Changelog: 
+- v0.11.1: 
+	- Fixed issue with local spawners being disabled due to missing location info.
+	- Made local spawners less demanding of config application. Should revert to default spawn if Spawn That fails to apply its changes.
 - v0.11.0: 
 	- Added region labelling for map biomes. Will now scan for connected biome zones, and assign an id for that whole area.
 	- Added condition for spawning only in specified areas. Intended as a world specific setting. For those who have been waiting, this is the option to use for designated monster islands.
