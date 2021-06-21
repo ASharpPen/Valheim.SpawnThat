@@ -32,7 +32,9 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Patches
 
             if(config?.Config is null)
             {
+#if DEBUG
                 Log.LogTrace($"Found no config for {spawn}.");
+#endif
                 return;
             }
 
