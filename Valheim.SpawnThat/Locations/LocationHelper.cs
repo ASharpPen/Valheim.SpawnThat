@@ -7,21 +7,14 @@ namespace Valheim.SpawnThat.Locations
 {
     public static class LocationHelper
     {
-        private static Dictionary<Vector2i, ZoneSystem.LocationInstance> _locationInstances { get; set; }
         private static Dictionary<Vector2i, SimpleLocation> _simpleLocationsByZone { get; set; }
 
         static LocationHelper()
         {
             StateResetter.Subscribe(() =>
             {
-                _locationInstances = null;
                 _simpleLocationsByZone = null;
             });
-        }
-
-        internal static void SetLocationInstances(Dictionary<Vector2i, ZoneSystem.LocationInstance> locations)
-        {
-            _locationInstances = locations;
         }
 
         internal static void SetLocations(IEnumerable<SimpleLocation> locations)
@@ -54,9 +47,9 @@ namespace Valheim.SpawnThat.Locations
 
             var zoneId = ZoneSystem.instance.GetZone(position);
 
-            if ((_locationInstances?.Count ?? 0) > 0)
+            if ((ZoneSystem.instance?.m_locationInstances?.Count ?? 0) > 0)
             {
-                if(_locationInstances.TryGetValue(zoneId, out ZoneSystem.LocationInstance defaultLocation))
+                if(ZoneSystem.instance.m_locationInstances.TryGetValue(zoneId, out ZoneSystem.LocationInstance defaultLocation))
                 {
                     return new SimpleLocation
                     {

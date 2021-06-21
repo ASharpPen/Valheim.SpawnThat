@@ -45,6 +45,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
             {
                 Log.LogTrace($"Too many failed initialization attempts for spawner {__instance}, will stop retrying.");
                 __instance.SetInitialized(true);
+                __instance.SetShouldWait(false);
                 return;
             }
         }
@@ -52,6 +53,12 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
         public static void ApplyConfigs(CreatureSpawner __instance)
         {
             if (!ConfigurationManager.GeneralConfig.EnableLocalSpawner.Value)
+            {
+                __instance.SetSuccessfulInit();
+                return;
+            }
+
+            if (ConfigurationManager.CreatureSpawnerConfig is not null && ConfigurationManager.CreatureSpawnerConfig.Subsections.Count == 0)
             {
                 __instance.SetSuccessfulInit();
                 return;
