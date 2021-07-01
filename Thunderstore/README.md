@@ -57,6 +57,8 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
 ```
 
 # Changelog: 
+- v0.11.2: 
+	- Fixed the setting SpawnInPlayerBase not being assigned to local spawners.
 - v0.11.1: 
 	- Fixed issue with local spawners being disabled due to missing location info.
 	- Made local spawners less demanding of config application. Should revert to default spawn if Spawn That fails to apply its changes.

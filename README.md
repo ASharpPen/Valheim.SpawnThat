@@ -28,7 +28,7 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 
 # Documentation
 
-Documentation can be found on the [mod wiki](https://github.com/ASharpPen/Valheim.SpawnThat/wiki).
+Documentation can be found on the [Spawn That! wiki](https://github.com/ASharpPen/Valheim.SpawnThat/wiki).
 
 
 # Example 
@@ -57,6 +57,8 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
 ```
 
 # Changelog: 
+- v0.11.2: 
+	- Fixed the setting SpawnInPlayerBase not being assigned to local spawners.
 - v0.11.1: 
 	- Fixed issue with local spawners being disabled due to missing location info.
 	- Made local spawners less demanding of config application. Should revert to default spawn if Spawn That fails to apply its changes.
