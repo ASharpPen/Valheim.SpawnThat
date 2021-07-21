@@ -14,8 +14,6 @@ namespace Valheim.SpawnThat.Locations
     [HarmonyPatch(typeof(ZNet))]
     public static class ZoneSystemMultiplayerPatch
     {
-		private static FieldInfo _zoneSystemLocations = AccessTools.Field(typeof(ZoneSystem), "m_locationInstances");
-
 		private static bool HaveReceivedLocations = false;
 
 		static ZoneSystemMultiplayerPatch()
@@ -59,7 +57,7 @@ namespace Valheim.SpawnThat.Locations
 
 				ZPackage package = new ZPackage();
 
-				var locations = _zoneSystemLocations.GetValue(ZoneSystem.instance) as Dictionary<Vector2i, ZoneSystem.LocationInstance>;
+				var locations = ZoneSystem.instance.m_locationInstances;
 
 				if(locations is null)
                 {

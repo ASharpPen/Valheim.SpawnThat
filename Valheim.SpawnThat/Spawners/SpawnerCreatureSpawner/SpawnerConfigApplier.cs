@@ -48,6 +48,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
                 spawner.m_spawnAtNight = config.SpawnAtNight.Value;
                 spawner.m_triggerDistance = config.TriggerDistance.Value;
                 spawner.m_triggerNoise = config.TriggerNoise.Value;
+                spawner.m_spawnInPlayerBase = config.SpawnInPlayerBase.Value;
             }
 
             spawner.SetSuccessfulInit();
