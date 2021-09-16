@@ -294,7 +294,7 @@
     <Compile Include="Configuration\ConfigTypes\SpawnSystemConfigurationFile.cs" />
     <Compile Include="Configuration\ConfigurationManager.cs" />
     <Compile Include="Configuration\ConfigurationMerger.cs" />
-    <Compile Include="ConsoleCommands\ConsolePatch.cs" />
+    <Compile Include="ConsoleCommands\TerminalPatch.cs" />
     <Compile Include="Core\Configuration\Config.cs" />
     <Compile Include="Core\Configuration\ConfigurationEntry.cs" />
     <Compile Include="Core\Configuration\ConfigurationFileEntry.cs" />

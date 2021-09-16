@@ -1,65 +1,46 @@
-﻿using HarmonyLib;
-using System.Collections.Generic;
+﻿using BepInEx;
+using HarmonyLib;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
 using UnityEngine;
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Maps;
 using Valheim.SpawnThat.Maps.Managers;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner;
-using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.ConsoleCommands
 {
-    [HarmonyPatch(typeof(Console))]
-    public static class ConsolePatch
+    [HarmonyPatch(typeof(Terminal))]
+    internal static class TerminalPatch
     {
-        private static MethodInfo Print = AccessTools.Method(typeof(Console), "AddString", new[] { typeof(string) });
-
-        [HarmonyPatch("InputText")]
-        [HarmonyTranspiler]
-        private static IEnumerable<CodeInstruction> InsertCommandIntoHelp(IEnumerable<CodeInstruction> instructions)
+        [HarmonyPatch(nameof(Terminal.TryRunCommand))]
+        [HarmonyPostfix]
+        private static void AddCommandsToHelp(string text)
         {
-            return new CodeMatcher(instructions)
-                .MatchForward(true, new CodeMatch(OpCodes.Ldstr, "info - print system info"))
-                .Advance(2)
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat room - prints if in a dungeon room and which one"))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Call, Print))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat area - prints the area id of the players current location"))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Call, Print))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat arearoll <index> - prints the rolled chance for a template, in area player is currently in"))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Call, Print))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat arearoll <index> <x> <y> - prints the rolled chance for a template, in the area with indicated coordinates"))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Call, Print))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat arearollheatmap <index> - prints a png map of area rolls for a template to disk."))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Call, Print))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldstr, "spawnthat wheredoesitspawn <index> - prints a png map of areas in which the world spawner template with <index> spawns to disk."))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Call, Print))
-                .InstructionEnumeration();
+            if (text == "help")
+            {
+                Console.instance.Print("spawnthat room - prints if in a dungeon room and which one");
+                Console.instance.Print("spawnthat area - prints the area id of the players current location");
+                Console.instance.Print("spawnthat arearoll [index] - prints the rolled chance for a template, in area player is currently in");
+                Console.instance.Print("spawnthat arearoll [index] [x] [y] - prints the rolled chance for a template, in the area with indicated coordinates");
+                Console.instance.Print("spawnthat arearollheatmap [index] - prints a png map of area rolls for a template to disk.");
+                Console.instance.Print("spawnthat wheredoesitspawn [index] - prints a png map of areas in which the world spawner template with <index> spawns to disk.");
+            }
         }
 
-        [HarmonyPatch("InputText")]
+        [HarmonyPatch(nameof(Terminal.TryRunCommand))]
         [HarmonyPrefix]
-        private static bool CheckCommands(Console __instance)
+        private static bool RunOwnCommand(string text)
         {
-            if(Player.m_localPlayer is null)
+            if (Player.m_localPlayer is null)
             {
                 return true;
             }
 
-            var text = __instance.m_input.text;
             var commandPieces = text.Split(new char[] { ' ' });
 
-            if(commandPieces.Length < 2)
+            if (commandPieces.Length < 2)
             {
                 return true;
             }
@@ -68,38 +49,39 @@ namespace Valheim.SpawnThat.ConsoleCommands
             {
                 return true;
             }
-
-            if (commandPieces[1].ToUpperInvariant() == "ROOM")
+            else if (commandPieces[1].ToUpperInvariant() == "ROOM")
             {
                 CommandInRoom();
+                return false;
             }
             else if (commandPieces.Length >= 3 && commandPieces[1].ToUpperInvariant() == "AREAROLL")
             {
-                if(!int.TryParse(commandPieces[2], out int templateIndex))
+                if (!int.TryParse(commandPieces[2], out int templateIndex))
                 {
                     return true;
                 }
 
-                if(commandPieces.Length >= 5)
+                if (commandPieces.Length >= 5)
                 {
-                    if(int.TryParse(commandPieces[3], out int x))
+                    if (int.TryParse(commandPieces[3], out int x))
                     {
-                        if(int.TryParse(commandPieces[4], out int y))
+                        if (int.TryParse(commandPieces[4], out int y))
                         {
                             CommandAreaTemplateSpawnChance(templateIndex, new Vector3(x, y));
-
-                            return true;
+                            return false;
                         }
                     }
                 }
 
                 CommandAreaTemplateSpawnChance(templateIndex);
+                return false;
             }
-            else if(commandPieces.Length >= 3 && commandPieces[1].ToUpperInvariant() == "WHEREDOESITSPAWN")
+            else if (commandPieces.Length >= 3 && commandPieces[1].ToUpperInvariant() == "WHEREDOESITSPAWN")
             {
                 if (int.TryParse(commandPieces[2], out int templateIndex))
                 {
                     CommandPrintTemplateSpawnAreas(templateIndex);
+                    return false;
                 }
             }
             else if (commandPieces.Length >= 3 && commandPieces[1].ToUpperInvariant() == "AREAROLLHEATMAP")
@@ -107,19 +89,22 @@ namespace Valheim.SpawnThat.ConsoleCommands
                 if (int.TryParse(commandPieces[2], out int templateIndex))
                 {
                     CommandPrintTemplateAreaHeatMap(templateIndex);
+                    return false;
                 }
             }
-            else if(commandPieces.Length >= 2 && commandPieces[1].ToUpperInvariant() == "ZONE")
+            else if (commandPieces.Length >= 2 && commandPieces[1].ToUpperInvariant() == "ZONE")
             {
                 var zone = ZoneSystem.instance.GetZone(Player.m_localPlayer.transform.position);
 
                 Console.instance.Print($"Zone: {zone}");
+                return false;
             }
             else if (commandPieces.Length >= 2 && commandPieces[1].ToUpperInvariant() == "AREA")
             {
                 var areaId = MapManager.GetAreaId(Player.m_localPlayer.transform.position);
 
                 Console.instance.Print($"Area Id: {areaId}");
+                return false;
             }
             return true;
         }
@@ -143,11 +128,11 @@ namespace Valheim.SpawnThat.ConsoleCommands
 
         public static void CommandAreaTemplateSpawnChance(int templateIndex, Vector3? position = null)
         {
-            if(position is null)
+            if (position is null)
             {
                 position = Player.m_localPlayer?.transform?.position;
 
-                if(position is null)
+                if (position is null)
                 {
                     return;
                 }
@@ -164,7 +149,7 @@ namespace Valheim.SpawnThat.ConsoleCommands
             float[][] chanceMap = MapManager.GetTemplateAreaChanceMap(templateIndex);
             int[][] heatmap = new int[chanceMap.Length][];
 
-            for(int x = 0; x < heatmap.Length; ++x)
+            for (int x = 0; x < heatmap.Length; ++x)
             {
                 heatmap[x] = new int[heatmap.Length];
 
@@ -178,6 +163,11 @@ namespace Valheim.SpawnThat.ConsoleCommands
                 .Init(MapManager.AreaMap)
                 .AddHeatZones(heatmap, false)
                 .Print("Debug", $"area_roll_{templateIndex}");
+
+            var file = Path.Combine("Debug", $"area_roll_{templateIndex}");
+            var filePath = Path.Combine(Paths.BepInExRootPath, $"{file}.png");
+
+            Console.instance.Print("Printing heatmap map of templates area rolls to: " + filePath);
         }
 
         public static void CommandPrintTemplateSpawnAreas(int templateIndex)
@@ -196,11 +186,21 @@ namespace Valheim.SpawnThat.ConsoleCommands
             {
                 prefabName = config.PrefabName.Value;
             }
+            else
+            {
+                Console.instance.Print($"Unable to find config for template '{templateIndex}', skipping print.");
+                return;
+            }
 
             ImageBuilder
                 .SetGrayscaleBiomes(MapManager.AreaMap)
                 .AddHeatZones(spawnMap)
                 .Print("Debug", $"spawn_map_{templateIndex}_{prefabName}");
+
+            var file = Path.Combine("Debug", $"spawn_map_{templateIndex}_{prefabName}");
+            var filePath = Path.Combine(Paths.BepInExRootPath, $"{file}.png");
+
+            Console.instance.Print("Printing map of spawn areas to: " + filePath);
         }
     }
 }
