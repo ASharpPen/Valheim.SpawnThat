@@ -1,8 +1,7 @@
 ﻿using BepInEx.Logging;
 using System;
-using Valheim.SpawnThat.Configuration;
 
-namespace Valheim.SpawnThat.Core
+namespace Valheim.SpawnThat.ServerSide
 {
     public class Log
     {
@@ -10,7 +9,7 @@ namespace Valheim.SpawnThat.Core
 
         public static void LogDebug(string message)
         {
-           // if (ConfigurationManager.GeneralConfig?.DebugLoggingOn?.Value == true)
+            //if (ConfigurationManager.GeneralConfig?.DebugLoggingOn?.Value == true)
             { 
                 Logger.LogInfo($"{message}");
             }

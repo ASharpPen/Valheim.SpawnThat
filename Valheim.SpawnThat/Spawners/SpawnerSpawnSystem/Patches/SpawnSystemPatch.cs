@@ -1,8 +1,11 @@
-﻿using HarmonyLib;
+﻿#define TEST
+
+using HarmonyLib;
 using System;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.Caches;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers;
+using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
 {
@@ -13,12 +16,24 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
         [HarmonyPostfix]
         private static void SetupConfigs(SpawnSystem __instance, Heightmap ___m_heightmap)
         {
+            if (__instance.transform.position.WithinSquare(1000000, 1000000, 200))
+            {
+                // Ignore server spawners way outside map range.
+                return;
+            }
+
             if(ZNet.instance is null)
             {
+#if TEST && DEBUG
+                Log.LogTrace("SpawnSystem.Awake -> ApplyConfigs");
+#endif
                 SpawnSystemConfigManager.ApplyConfigs(__instance, ___m_heightmap);
             }
             else if(ZNet.instance.IsServer())
             {
+#if TEST && DEBUG
+                Log.LogTrace("SpawnSystem.Awake (server) -> ApplyConfigs");
+#endif
                 SpawnSystemConfigManager.ApplyConfigs(__instance, ___m_heightmap);
             }
         }
@@ -35,6 +50,9 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
 
             try
             {
+#if TEST && DEBUG
+                Log.LogTrace("UpdateSpawnList -> ApplyConfigsIfMissing");
+#endif
                 SpawnSystemConfigManager.ApplyConfigsIfMissing(__instance, ___m_heightmap);
             }
             catch (Exception e)

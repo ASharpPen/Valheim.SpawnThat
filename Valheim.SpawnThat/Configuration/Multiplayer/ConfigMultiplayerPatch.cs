@@ -1,13 +1,14 @@
 ﻿using HarmonyLib;
 using System;
-using System.Linq;
 using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Configuration.Multiplayer
 {
 	[HarmonyPatch(typeof(ZNet))]
-	internal static class ConfigMultiplayerPatch
+	public static class ConfigMultiplayerPatch
 	{
+		public static bool EnableSync { get; set; } = true;
+
 		[HarmonyPatch("OnNewConnection")]
 		[HarmonyPostfix]
 		private static void SyncConfigs(ZNet __instance, ZNetPeer peer)
@@ -36,7 +37,13 @@ namespace Valheim.SpawnThat.Configuration.Multiplayer
 					Log.LogWarning("Non-server instance received request for configs. Ignoring request.");
 				}
 
-				Log.LogInfo("Sending  request for configs.");
+				Log.LogInfo("Received request for configs.");
+
+				if (!EnableSync)
+				{
+					Log.LogInfo("Config sync disabled. Ignoring config request.");
+					return;
+				}
 
 				var configPackage = new ConfigPackage();
 				var zpack = configPackage.Pack();

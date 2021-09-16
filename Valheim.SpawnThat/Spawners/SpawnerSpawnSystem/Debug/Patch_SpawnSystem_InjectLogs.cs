@@ -1,4 +1,4 @@
-﻿#if TRUE && DEBUG
+﻿#if false && DEBUG
 
 using HarmonyLib;
 using System;

@@ -56,6 +56,11 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
             DefaultSpawnConditions.Add(ConditionEnvironments.Instance);
         }
 
+        public void RegisterCondition(IConditionOnSpawn condition)
+        {
+            OnSpawnConditions.Add(condition);
+        }
+
         public bool FilterOnAwake(SpawnSystem spawner, SpawnConfiguration config)
         {
             return OnAwakeConditions.Any(x =>

@@ -32,6 +32,10 @@ namespace Valheim.SpawnThat.Maps.Managers
             return AreaMap.AreaIds[x][y];
         }
 
+        /// <summary>
+        /// Returns area chance for area of position, based on modifier.
+        /// </summary>
+        /// <returns>Chance roll in range [0,1)</returns>
         public static float GetAreaChance(Vector3 position, int modifier = 0)
         {
             int x = Math.Min(AreaMap.MapWidth, Math.Max(0, AreaMap.CoordinateToIndex((int)position.x)));
