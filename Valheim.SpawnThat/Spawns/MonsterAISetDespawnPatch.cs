@@ -29,7 +29,7 @@ namespace Valheim.SpawnThat.Spawns
                 .MatchForward(false,
                     new CodeMatch(OpCodes.Ldarg_0),
                     new CodeMatch(OpCodes.Ldarg_1),
-                    new CodeMatch(OpCodes.Ldc_I4_1),
+                    new CodeMatch(x => x.opcode == OpCodes.Ldc_I4_0 || x.opcode == OpCodes.Ldc_I4_1), // Don't want this to break every time someone changes their mind on making creatures run or walk.
                     new CodeMatch(OpCodes.Call, MoveAwayAndDespawn))
                 .AddLabel(out Label innerScopeLabel)
                 //Move back to before start of if-statement.

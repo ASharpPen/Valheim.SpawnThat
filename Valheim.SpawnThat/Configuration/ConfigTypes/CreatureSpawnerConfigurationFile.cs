@@ -60,7 +60,7 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
         public ConfigurationEntry<bool> SpawnAtNight = new ConfigurationEntry<bool>(true, "Enable spawning during night.");
         public ConfigurationEntry<int> LevelMin = new ConfigurationEntry<int>(1, "Minimum level of spawn.");
         public ConfigurationEntry<int> LevelMax = new ConfigurationEntry<int>(1, "Maximum level of spawn.");
-        public ConfigurationEntry<float> LevelUpChance = new ConfigurationEntry<float>(15, "Chance to level up, starting at minimum level and rolling again for each level gained. Range is 0 to 100.");
+        public ConfigurationEntry<float> LevelUpChance = new ConfigurationEntry<float>(10, "Chance to level up, starting at minimum level and rolling again for each level gained. Range is 0 to 100.");
         public ConfigurationEntry<float> RespawnTime = new ConfigurationEntry<float>(20, "Minutes between checks for respawn. Only one mob can be spawned at time per spawner.");
         public ConfigurationEntry<float> TriggerDistance = new ConfigurationEntry<float>(60, "Distance to trigger spawning.");
         public ConfigurationEntry<float> TriggerNoise = new ConfigurationEntry<float>(0, "If not 0, adds a minimum noise required for spawning, on top of distance requirement.");
