@@ -8,7 +8,7 @@ namespace Valheim.SpawnThat
     [BepInDependency("RagnarsRokare.MobAILib", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("org.bepinex.plugins.creaturelevelcontrol", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("randyknapp.mods.epicloot", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInPlugin("asharppen.valheim.spawn_that", "Spawn That!", "0.11.2")]
+    [BepInPlugin("asharppen.valheim.spawn_that", "Spawn That!", "0.11.3")]
     public class SpawnThatPlugin : BaseUnityPlugin
     {        
         // Awake is called once when both the game and the plug-in are loaded
