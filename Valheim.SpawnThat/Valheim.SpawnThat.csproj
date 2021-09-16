@@ -41,31 +41,39 @@
       <HintPath>packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="assembly_googleanalytics, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_googleanalytics.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>LibsStripped\assembly_googleanalytics.dll</HintPath>
     </Reference>
     <Reference Include="assembly_guiutils, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_guiutils.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>LibsStripped\assembly_guiutils.dll</HintPath>
     </Reference>
     <Reference Include="assembly_lux, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_lux.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>LibsStripped\assembly_lux.dll</HintPath>
     </Reference>
     <Reference Include="assembly_postprocessing, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_postprocessing.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>LibsStripped\assembly_postprocessing.dll</HintPath>
     </Reference>
-    <Reference Include="assembly_simplemeshcombine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_simplemeshcombine.dll</HintPath>
+    <Reference Include="assembly_simplemeshcombine">
+      <HintPath>LibsStripped\assembly_simplemeshcombine.dll</HintPath>
     </Reference>
     <Reference Include="assembly_steamworks, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_steamworks.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>LibsStripped\assembly_steamworks.dll</HintPath>
     </Reference>
     <Reference Include="assembly_sunshafts, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_sunshafts.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>LibsStripped\assembly_sunshafts.dll</HintPath>
     </Reference>
     <Reference Include="assembly_utils, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_utils.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>LibsStripped\assembly_utils.dll</HintPath>
     </Reference>
     <Reference Include="assembly_valheim, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_valheim.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>LibsStripped\assembly_valheim.dll</HintPath>
     </Reference>
     <Reference Include="bepinex, Version=5.4.10.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\bepinex.dll</HintPath>
@@ -311,10 +319,12 @@
     <Compile Include="Spawners\Caches\PrefabCache.cs" />
     <Compile Include="Spawners\Caches\SpawnSystemCache.cs" />
     <Compile Include="Spawners\Caches\SpawnerInitializationCache.cs" />
+    <Compile Include="Spawners\Constants.cs" />
     <Compile Include="Spawners\SpawnCounter.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\ConfigFinder.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\CreatureSpawnerConfigCache.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\CreatureSpawnerConfigManager.cs" />
+    <Compile Include="Spawners\SpawnerCreatureSpawner\Patches\CreatureSpawnerConfigureLevelUpChancePatch.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\Patches\CreatureSpawnerPatch.cs" />
     <Compile Include="Reset\WorldStartupResetPatch.cs" />
     <Compile Include="Spawners\SpawnerCreatureSpawner\Patches\CreatureSpawnerWaitPatch.cs" />

@@ -38,7 +38,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
 
                 //Override existing config values:
                 spawner.m_creaturePrefab = prefab;
-                spawner.m_levelupChance = config.LevelUpChance.Value;
                 spawner.m_maxLevel = config.LevelMax.Value;
                 spawner.m_minLevel = config.LevelMin.Value;
                 //__instance.m_requireSpawnArea = config.RequireSpawnArea.Value; //Disabled for now, since it isn't being used by the game.
