@@ -1,12 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.PositionConditions
+﻿
+namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Positions
 {
-    public class PositionConditionDistanceToPlayer : ISpawnPositions
+    public class PositionConditionDistanceToPlayer : ISpawnPositionCondition
     {
+        private int Distance { get; }
+
+        public PositionConditionDistanceToPlayer(int distance)
+        {
+            Distance = distance;
+        }
+
+        public bool IsValid(PositionContext context)
+        {
+            foreach (ZDO player in ZNet.instance.GetAllCharacterZDOS())
+            {
+                if (Utils.DistanceXZ(player.GetPosition(), context.Point) < Distance)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

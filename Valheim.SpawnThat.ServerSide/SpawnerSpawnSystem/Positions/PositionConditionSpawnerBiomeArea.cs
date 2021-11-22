@@ -1,10 +1,7 @@
-﻿using Valheim.SpawnThat.ServerSide.Map;
+﻿using Valheim.SpawnThat.Utilities.World;
 
 namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Positions
 {
-    /// <summary>
-    /// This seems stupidly volatile.
-    /// </summary>
     public class PositionConditionSpawnerBiomeArea : ISpawnPositionCondition
     {
         public PositionConditionSpawnerBiomeArea()

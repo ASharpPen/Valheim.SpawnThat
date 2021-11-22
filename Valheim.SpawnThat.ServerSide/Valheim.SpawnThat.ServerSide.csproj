@@ -304,12 +304,12 @@
     <Compile Include="SpawnerSpawnSystem\Positions\DefaultPositionSuggester.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\ISpawnPositionCondition.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionAltitude.cs" />
+    <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionForestOutside.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionSpawnerBiome.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionSpawnerBiomeArea.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionDistanceToPlayer.cs" />
-    <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionForest.cs" />
+    <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionForestInside.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionNotBlocked.cs" />
-    <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionNotForest.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionOceanDepth.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionPlayerBase.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionSurfaceTilt.cs" />
@@ -330,8 +330,6 @@
     <Compile Include="SpawnThatServerSidePlugin.cs" />
     <Compile Include="Utilities\PrefabData.cs" />
     <Compile Include="Utilities\ZdoExtensions.cs" />
-    <Compile Include="Map\WorldData.cs" />
-    <Compile Include="Map\Zone.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

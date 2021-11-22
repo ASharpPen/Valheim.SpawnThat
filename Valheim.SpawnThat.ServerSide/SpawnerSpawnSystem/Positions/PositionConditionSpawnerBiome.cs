@@ -1,4 +1,4 @@
-﻿using Valheim.SpawnThat.ServerSide.Map;
+﻿using Valheim.SpawnThat.Utilities.World;
 
 namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Positions
 {

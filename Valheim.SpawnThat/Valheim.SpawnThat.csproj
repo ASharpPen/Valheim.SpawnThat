@@ -419,6 +419,7 @@
     <Compile Include="Utilities\Extensions\CodeMatcherExtensions.cs" />
     <Compile Include="Utilities\Extensions\SpawnConfigurationExtensions.cs" />
     <Compile Include="Maps\ColourMapper.cs" />
+    <Compile Include="Utilities\Extensions\ZdoExtensions.cs" />
     <Compile Include="Utilities\PlayerUtils.cs" />
     <Compile Include="Utilities\Spatial\IHaveVector3.cs" />
     <Compile Include="Utilities\Spatial\IPoint.cs" />
@@ -432,6 +433,10 @@
     <Compile Include="Maps\Patches\Patch_ZNet_Awake_ScanWorld.cs" />
     <Compile Include="Maps\Managers\MapManager.cs" />
     <Compile Include="Utilities\Extensions\Vector3Extensions.cs" />
+    <Compile Include="Utilities\Spatial\ZdoPrefabQueries.cs" />
+    <Compile Include="Utilities\World\WorldData.cs" />
+    <Compile Include="Utilities\Spatial\ZdoQuery.cs" />
+    <Compile Include="Utilities\World\Zone.cs" />
     <Compile Include="Utilities\ZoneUtils.cs" />
   </ItemGroup>
   <ItemGroup />
