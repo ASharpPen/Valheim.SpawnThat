@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup>
-    <LangVersion>preview</LangVersion>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\0Harmony.dll</HintPath>

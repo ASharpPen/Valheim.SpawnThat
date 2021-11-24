@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valheim.SpawnThat", "Valheim.SpawnThat.csproj", "{39872480-C9DD-4B79-A847-6660B2DA72E3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7B88838B-E2E6-4494-90DA-C0D6CE7731B1}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valheim.SpawnThat.Tests", "..\Valheim.SpawnThat.Tests\Valheim.SpawnThat.Tests.csproj", "{1CE9C406-726C-4519-92DA-B21E61DC548B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valheim.SpawnThat", "Valheim.SpawnThat\Valheim.SpawnThat.csproj", "{39872480-C9DD-4B79-A847-6660B2DA72E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valheim.SpawnThat.ServerSide", "..\Valheim.SpawnThat.ServerSide\Valheim.SpawnThat.ServerSide.csproj", "{07FAA798-1467-4EC4-B2BF-5C3186B8DB4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valheim.SpawnThat.ServerSide", "Valheim.SpawnThat.ServerSide\Valheim.SpawnThat.ServerSide.csproj", "{07FAA798-1467-4EC4-B2BF-5C3186B8DB4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valheim.SpawnThat.Tests", "Valheim.SpawnThat.Tests\Valheim.SpawnThat.Tests.csproj", "{1CE9C406-726C-4519-92DA-B21E61DC548B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +24,14 @@ Global
 		{39872480-C9DD-4B79-A847-6660B2DA72E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39872480-C9DD-4B79-A847-6660B2DA72E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39872480-C9DD-4B79-A847-6660B2DA72E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1CE9C406-726C-4519-92DA-B21E61DC548B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CE9C406-726C-4519-92DA-B21E61DC548B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CE9C406-726C-4519-92DA-B21E61DC548B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CE9C406-726C-4519-92DA-B21E61DC548B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{07FAA798-1467-4EC4-B2BF-5C3186B8DB4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{07FAA798-1467-4EC4-B2BF-5C3186B8DB4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07FAA798-1467-4EC4-B2BF-5C3186B8DB4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07FAA798-1467-4EC4-B2BF-5C3186B8DB4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CE9C406-726C-4519-92DA-B21E61DC548B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CE9C406-726C-4519-92DA-B21E61DC548B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CE9C406-726C-4519-92DA-B21E61DC548B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CE9C406-726C-4519-92DA-B21E61DC548B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
