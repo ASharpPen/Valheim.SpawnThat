@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Conditions;
+using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Positions;
 
 namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Models
 {
@@ -19,5 +18,7 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Models
         public int Index { get; set; }
 
         public List<ISpawnCondition> SpawnConditions { get; set; } = new();
+
+        public List<ISpawnPositionCondition> PositionConditions { get; set; } = new();
     }
 }

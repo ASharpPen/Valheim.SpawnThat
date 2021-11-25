@@ -301,6 +301,9 @@
     <Compile Include="SpawnerSpawnSystem\Models\SpawnContext.cs" />
     <Compile Include="SpawnerSpawnSystem\Models\SpawnSessionContext.cs" />
     <Compile Include="SpawnerSpawnSystem\Models\SpawnTemplate.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\ISpawnModifier.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\SpawnModifierDefaultSetLevel.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\SpawnModifierSetHunted.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\DefaultPositionSuggester.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\ISpawnPositionCondition.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionAltitude.cs" />
@@ -340,8 +343,6 @@
       <Name>Valheim.SpawnThat</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SpawnerSpawnSystem\Modifiers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

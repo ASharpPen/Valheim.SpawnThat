@@ -160,7 +160,7 @@ public class Zone
     }
 
     /// <summary>
-    /// Based on <c>Heightmap.UpdateCornerDepths</c>
+    /// Based on <c>Heightmap.UpdateCornerDepths</c>.
     /// </summary>
     /// <returns></returns>
     private float[] CalculateOceanDepths()

@@ -1,0 +1,58 @@
+﻿using System;
+using UnityEngine;
+using Valheim.SpawnThat.Core.Cache;
+using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Models;
+
+namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Modifiers;
+
+/// <summary>
+/// Based on default level assignment logic of <c>SpawnSystem.Spawn</c>.
+/// </summary>
+public class SpawnModifierDefaultSetLevel : ISpawnModifier
+{
+    private int MinLevel { get; }
+    private int MaxLevel { get; }
+    private double MinDistanceForLevelups { get; }
+    private double LevelupChance { get; }
+
+    public SpawnModifierDefaultSetLevel(int minLevel, int maxLevel, double minDistanceForLevelups, double levelupChance)
+    {
+        MinLevel = minLevel;
+        MaxLevel = maxLevel;
+        MinDistanceForLevelups = minDistanceForLevelups;
+        LevelupChance = levelupChance;
+    }
+    public void Modify(SpawnContext context, GameObject entity, ZDO entityZdo)
+    {
+        if (MaxLevel <= 1)
+        {
+            return;
+        }
+
+        if (MinDistanceForLevelups > 0 && entityZdo.m_position.magnitude < MinDistanceForLevelups)
+        {
+            return;
+        }
+
+        int minLevel = Math.Max(1, MinLevel);
+        int level = minLevel;
+
+        for (; level < MaxLevel; ++level)
+        {
+            if (UnityEngine.Random.Range(0f, 100f) > LevelupChance)
+            {
+                break;
+            }
+        }
+
+        if (minLevel > 1)
+        {
+            Character character = ComponentCache.GetComponent<Character>(entity);
+
+            if (character != null)
+            {
+                character.SetLevel(minLevel);
+            }
+        }
+    }
+}

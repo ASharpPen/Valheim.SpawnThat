@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Valheim.SpawnThat.Caches
 {
+    [Obsolete("Use Core.Cache.ComponentCache instead. This one still uses the potentially unreliable ConditionalWeakTable.")]
     public class ComponentCache
     {
         private static ConditionalWeakTable<GameObject, ComponentCache> Cache { get; } = new();
