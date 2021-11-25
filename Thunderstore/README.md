@@ -57,6 +57,8 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
 ```
 
 # Changelog: 
+- v0.11.4:
+	- Fixes for Valheim v0.205.5
 - v0.11.3:
 	- Fixes for Valheim v0.202.14
 - v0.11.2: 
