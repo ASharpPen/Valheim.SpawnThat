@@ -71,20 +71,16 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
             var spawnerPos = __instance.transform.position;
             Log.LogTrace($"Modifying SpawnSystem at pos {spawnerPos}");
 
-            if (__instance.m_spawners is null)
-            {
-                __instance.m_spawners = new List<SpawnSystem.SpawnData>();
-            }
-
             if (ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileBeforeChanges?.Value == true && FirstApplication)
             {
-                SpawnDataFileDumper.WriteToFile(__instance.m_spawners, FileNamePre);
+                var preChangeSpawners = __instance.m_spawnLists.SelectMany(x => x.m_spawners).ToList();
+                SpawnDataFileDumper.WriteToFile(preChangeSpawners, FileNamePre);
             }
 
             if (ConfigurationManager.GeneralConfig?.ClearAllExisting?.Value == true)
             {
                 Log.LogTrace($"Clearing spawners from spawn system: {spawnerPos}");
-                __instance.m_spawners.Clear();
+                __instance.m_spawnLists.ForEach(x => x.m_spawners.Clear());
             }
 
             //SpawnSystem config is only expected to have a single first layer, namely "WorldSpawner", so we just grab the first entry.
@@ -95,6 +91,11 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
                 .FirstOrDefault()?
                 .Subsections?//[WorldSpawner.*]
                 .Values;
+
+            //var spawnerCount = __instance.m_spawnLists.Sum(x => x.m_spawners.Count);
+            var spawners = __instance.m_spawnLists
+                .SelectMany(x => x.m_spawners)
+                .ToList();
 
             if ((spawnSystemConfigs?.Count ?? 0) > 0)
             {
@@ -113,10 +114,10 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 
                     try
                     {
-                        if (spawnConfig.Index < __instance.m_spawners.Count && ConfigurationManager.GeneralConfig?.AlwaysAppend?.Value == false)
+                        if (spawnConfig.Index < spawners.Count && ConfigurationManager.GeneralConfig?.AlwaysAppend?.Value == false)
                         {
                             Log.LogTrace($"Overriding world spawner entry {spawnConfig.Index}");
-                            var spawner = __instance.m_spawners[spawnConfig.Index];
+                            var spawner = spawners[spawnConfig.Index];
 
                             Override(spawner, spawnConfig);
 
@@ -134,7 +135,9 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 
                             SpawnDataCache.Set(spawner, spawnConfig);
 
-                            __instance.m_spawners.Add(spawner);
+                            // Just add to the first spawnlist, and hope for the best?
+                            __instance.m_spawnLists?.FirstOrDefault()?.m_spawners?.Add(spawner);
+                            spawners.Add(spawner);
                         }
                     }
                     catch (Exception e)
@@ -148,7 +151,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 
             if (simpleConfigs is not null && simpleConfigs.Count > 0)
             {
-                foreach (var spawner in __instance.m_spawners)
+                foreach (var spawner in spawners)
                 {
                     if (string.IsNullOrWhiteSpace(spawner.m_prefab?.name))
                     {
@@ -174,10 +177,10 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 
             if (ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileAfterChanges?.Value == true && FirstApplication)
             {
-                SpawnDataFileDumper.WriteToFile(__instance.m_spawners, FileNamePost, true);
+                SpawnDataFileDumper.WriteToFile(spawners, FileNamePost, true);
             }
 
-            DisableOutsideBiome(___m_heightmap, __instance.m_spawners);
+            DisableOutsideBiome(___m_heightmap, spawners);
 
             FirstApplication = false;
         }
