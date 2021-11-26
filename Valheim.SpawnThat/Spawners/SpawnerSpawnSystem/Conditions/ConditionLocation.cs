@@ -7,25 +7,25 @@ using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 {
-    public class ConditionLocation : IConditionOnAwake
+    public class ConditionLocation : IConditionOnSpawn
     {
         private static ConditionLocation _instance;
 
         public static ConditionLocation Instance => _instance ??= new();
-
-        public bool ShouldFilter(SpawnSystem spawner, SpawnConfiguration config)
+        
+        public bool ShouldFilter(SpawnConditionContext context)
         {
-            if (!spawner || spawner is null || config is null)
+            if (context is null || context.Config is null)
             {
                 return false;
             }
 
-            if (IsValid(spawner.transform.position, config))
+            if (IsValid(context.Position, context.Config))
             {
                 return false;
             }
 
-            Log.LogTrace($"Ignoring world config {config.Name} due to spawner not being in required location.");
+            Log.LogTrace($"Ignoring world config {context.Config.Name} due to spawner not being in required location.");
             return true;
         }
 
