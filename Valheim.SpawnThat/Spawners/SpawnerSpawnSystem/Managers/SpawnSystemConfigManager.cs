@@ -62,6 +62,12 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 
         public static void ApplyConfigs(SpawnSystem __instance, Heightmap ___m_heightmap)
         {
+            if (!FirstApplication)
+            {
+                __instance.SetSuccessfulInit();
+                return;
+            }
+
             if (__instance.transform?.position is null)
             {
                 __instance.SetSuccessfulInit();
@@ -153,7 +159,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
             {
                 foreach (var spawner in spawners)
                 {
-                    if (string.IsNullOrWhiteSpace(spawner.m_prefab?.name))
+                    if (spawner is null || !spawner.m_prefab || string.IsNullOrWhiteSpace(spawner.m_prefab?.name))
                     {
                         continue;
                     }

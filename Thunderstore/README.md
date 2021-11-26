@@ -57,6 +57,8 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
 ```
 
 # Changelog: 
+- v0.11.5:
+	- More v0.205.5 fixes. World spawners were changed from no longer being per zone, but properly global, meaning Spawn That was reapplying its changes more than once.
 - v0.11.4:
 	- Fixes for Valheim v0.205.5
 - v0.11.3:
