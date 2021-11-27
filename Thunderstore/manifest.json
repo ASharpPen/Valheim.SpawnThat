@@ -1,6 +1,6 @@
 {
   "name": "Spawn_That",
-  "version_number": "0.11.5",
+  "version_number": "0.11.6",
   "website_url": "https://github.com/ASharpPen/Valheim.SpawnThat",
   "description": "Advanced tool for customizing mob spawners throughout the world with configuration files.",
   "dependencies": [
