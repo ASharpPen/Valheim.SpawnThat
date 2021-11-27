@@ -17,6 +17,12 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
 
             if (config is not null)
             {
+                if (!config.Enabled.Value)
+                {
+                    spawner.SetSuccessfulInit();
+                    return;
+                }
+
                 Log.LogDebug($"Found and applying config for local spawner {spawner.name}");
 
                 CreatureSpawnerConfigCache.Set(spawner, config);
