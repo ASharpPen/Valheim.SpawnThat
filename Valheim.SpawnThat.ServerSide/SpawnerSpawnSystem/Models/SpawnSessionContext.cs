@@ -8,6 +8,6 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Models
 
         public ZDO SpawnSystemZDO { get; set; }
 
-        public IEntityCounterService EntityAreaCounter => entityAreaCounter ??= new EntityCounterService(SpawnSystemZDO.GetPosition(), 250);
+        public IEntityCounterService EntityAreaCounter => entityAreaCounter ??= new EntityCounterService(SpawnSystemZDO.GetPosition(), 128);
     }
 }

@@ -3,6 +3,7 @@ using ExtendedItemDataFramework;
 using System.Collections.Generic;
 using System.Linq;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Models;
+using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.SpawnTemplates;
 using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Conditions.ModSpecific.EpicLoot

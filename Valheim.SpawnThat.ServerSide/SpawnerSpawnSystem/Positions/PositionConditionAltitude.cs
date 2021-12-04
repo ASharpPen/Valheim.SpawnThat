@@ -1,5 +1,4 @@
-﻿
-namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Positions
+﻿namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Positions
 {
     public class PositionConditionAltitude : ISpawnPositionCondition
     {
@@ -20,11 +19,17 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Positions
 
             if (MinAltitude != null && altitude < MinAltitude)
             {
+#if false && DEBUG
+                Log.LogTrace("Altitude: " + altitude + ", Min: " + MinAltitude);
+#endif
                 return false;
             }
 
             if (MaxAltitude != null && altitude > MaxAltitude)
             {
+#if false && DEBUG
+                Log.LogTrace("Altitude: " + altitude + ", Max: " + MaxAltitude);
+#endif
                 return false;
             }
 

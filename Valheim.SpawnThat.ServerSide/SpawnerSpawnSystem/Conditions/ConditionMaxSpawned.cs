@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using Valheim.SpawnThat.Core.Cache;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Models;
+using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.SpawnTemplates;
 using Valheim.SpawnThat.ServerSide.Utilities;
 
 namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Conditions
 {
     public class ConditionMaxSpawned : ISpawnCondition
     {
-        private int Max { get; }
+        public int Max { get; }
 
         public ConditionMaxSpawned(int max)
         {

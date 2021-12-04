@@ -18,5 +18,19 @@ namespace Valheim.SpawnThat.Utilities
 
             return players;
         }
+
+        public static List<ZDO> GetPlayerZdosInRadius(Vector3 point, float range)
+        {
+            List<ZDO> players = new();
+            foreach (ZDO player in ZNet.instance.GetAllCharacterZDOS())
+            {
+                if (Utils.DistanceXZ(player.GetPosition(), point) < range)
+                {
+                    players.Add(player);
+                }
+            }
+
+            return players;
+        }
     }
 }

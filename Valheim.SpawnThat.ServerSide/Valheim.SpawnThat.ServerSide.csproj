@@ -36,37 +36,40 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\0Harmony.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="assembly_googleanalytics, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_googleanalytics.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\assembly_googleanalytics.dll</HintPath>
     </Reference>
     <Reference Include="assembly_guiutils, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_guiutils.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\assembly_guiutils.dll</HintPath>
     </Reference>
     <Reference Include="assembly_lux, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_lux.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\assembly_lux.dll</HintPath>
     </Reference>
     <Reference Include="assembly_postprocessing, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_postprocessing.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\assembly_postprocessing.dll</HintPath>
     </Reference>
     <Reference Include="assembly_simplemeshcombine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_simplemeshcombine.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\assembly_simplemeshcombine.dll</HintPath>
     </Reference>
     <Reference Include="assembly_steamworks, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_steamworks.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\assembly_steamworks.dll</HintPath>
     </Reference>
     <Reference Include="assembly_sunshafts, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_sunshafts.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\assembly_sunshafts.dll</HintPath>
     </Reference>
     <Reference Include="assembly_utils, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_utils.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\assembly_utils.dll</HintPath>
     </Reference>
     <Reference Include="assembly_valheim, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\assembly_valheim.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\assembly_valheim.dll</HintPath>
     </Reference>
-    <Reference Include="bepinex, Version=5.4.10.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\bepinex.dll</HintPath>
+    <Reference Include="bepinex, Version=5.4.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\bepinex.dll</HintPath>
     </Reference>
     <Reference Include="CreatureLevelControl">
       <HintPath>..\Valheim.SpawnThat\LibsStripped\CreatureLevelControl.dll</HintPath>
@@ -79,6 +82,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\MHS\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Valheim - Drop That\BepInEx\plugins\RandyKnapp-ExtendedItemDataFramework\ExtendedItemDataFramework.dll</HintPath>
     </Reference>
+    <Reference Include="MobAILib, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\MHS\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Valheim - Spawn That\BepInEx\plugins\MobAILib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -88,196 +95,197 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AccessibilityModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.AccessibilityModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.AccessibilityModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.AIModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.AIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AndroidJNIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.AndroidJNIModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.AndroidJNIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ARModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.ARModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.ARModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ClothModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.ClothModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.ClothModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ClusterInputModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.ClusterInputModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.ClusterInputModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ClusterRendererModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.ClusterRendererModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.ClusterRendererModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CrashReportingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.CrashReportingModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.CrashReportingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.DirectorModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.DirectorModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.DirectorModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.DSPGraphModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.DSPGraphModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.DSPGraphModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GameCenterModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.GameCenterModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.GameCenterModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GridModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.GridModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.GridModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.HotReloadModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.HotReloadModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.HotReloadModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.InputModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.InputModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.LocalizationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.LocalizationModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.LocalizationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PerformanceReportingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.PerformanceReportingModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.PerformanceReportingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Physics2DModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.Physics2DModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.Physics2DModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ProfilerModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.ProfilerModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.ProfilerModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ScreenCaptureModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.ScreenCaptureModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.ScreenCaptureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SharedInternalsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.SharedInternalsModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.SharedInternalsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpriteMaskModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.SpriteMaskModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.SpriteMaskModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpriteShapeModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.SpriteShapeModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.SpriteShapeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StreamingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.StreamingModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.StreamingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SubstanceModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.SubstanceModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.SubstanceModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SubsystemsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.SubsystemsModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.SubsystemsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TerrainModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.TerrainModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.TerrainModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TerrainPhysicsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.TerrainPhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextCoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.TextCoreModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.TextCoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TilemapModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.TilemapModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.TilemapModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TLSModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.TLSModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.TLSModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIElementsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.UIElementsModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.UIElementsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.UIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UmbraModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.UmbraModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.UmbraModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UNETModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.UNETModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.UNETModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityAnalyticsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.UnityAnalyticsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityConnectModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.UnityConnectModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityTestProtocolModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.UnityTestProtocolModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestAudioModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestTextureModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestWWWModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VehiclesModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.VehiclesModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.VehiclesModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VFXModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.VFXModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.VFXModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VideoModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.VideoModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.VideoModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VRModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.VRModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.VRModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.WindModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.WindModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.WindModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XRModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Valheim.SpawnThat\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.6\lib\net46\UnityEngine.XRModule.dll</HintPath>
+      <HintPath>..\packages\Pfhoenix.Valheim.ModProjectReferences.1.0.11\lib\net46\UnityEngine.XRModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Log.cs" />
+    <Compile Include="Debug\InitializeDefaultServerSideSpawner.cs" />
     <Compile Include="Debug\WhoIsConnecting.cs" />
     <Compile Include="SpawnerSpawnSystem\Builders\ISpawnSystemTemplateBuilder.cs" />
-    <Compile Include="SpawnerSpawnSystem\Builders\SpawnSystemTemplateBuilder.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionAreaIds.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionAreaSpawnChance.cs" />
+    <Compile Include="SpawnerSpawnSystem\Conditions\ConditionBiome.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionIsDay.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionDistanceToCenter.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionEnvironments.cs" />
@@ -297,21 +305,33 @@
     <Compile Include="SpawnerSpawnSystem\Conditions\ModSpecific\CLLC\ConditionWorldLevel.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ModSpecific\EpicLoot\ConditionNearbyPlayerCarryItemWithRarity.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ModSpecific\EpicLoot\ConditionNearbyPlayerCarryLegendaryItem.cs" />
+    <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionForest.cs" />
+    <Compile Include="SpawnerSpawnSystem\Services\TickService.cs" />
+    <Compile Include="SpawnerSpawnSystem\SpawnTemplates\DefaultSpawnSystemTemplate.cs" />
     <Compile Include="SpawnerSpawnSystem\Managers\SpawnTemplateManager.cs" />
     <Compile Include="SpawnerSpawnSystem\Models\SpawnContext.cs" />
     <Compile Include="SpawnerSpawnSystem\Models\SpawnSessionContext.cs" />
-    <Compile Include="SpawnerSpawnSystem\Models\SpawnTemplate.cs" />
+    <Compile Include="SpawnerSpawnSystem\SpawnTemplates\SpawnTemplate.cs" />
     <Compile Include="SpawnerSpawnSystem\Modifiers\ISpawnModifier.cs" />
-    <Compile Include="SpawnerSpawnSystem\Modifiers\SpawnModifierDefaultSetLevel.cs" />
-    <Compile Include="SpawnerSpawnSystem\Modifiers\SpawnModifierSetHunted.cs" />
-    <Compile Include="SpawnerSpawnSystem\Positions\DefaultPositionSuggester.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\ModSpecific\CLLC\SpawnModifierCllcBossAffix.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\ModSpecific\CLLC\SpawnModifierCllcExtraEffect.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\ModSpecific\CLLC\SpawnModifierCllcInfusion.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\ModSpecific\CLLC\SpawnModifierCllcRandomLevel.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\ModSpecific\MobAI\SpawnModifierSetAI.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\SpawnModifierDefaultRollLevel.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\SpawnModifierSetDespawnInDay.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\SpawnModifierSetEventCreature.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\SpawnModifierSetHuntPlayer.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\SpawnModifierSetLevel.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\SpawnModifierSetTamed.cs" />
+    <Compile Include="SpawnerSpawnSystem\Modifiers\SpawnModifierSetTemplateId.cs" />
+    <Compile Include="SpawnerSpawnSystem\Positions\ISuggestPosition.cs" />
+    <Compile Include="SpawnerSpawnSystem\Positions\PositionSuggesterDefault.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\ISpawnPositionCondition.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionAltitude.cs" />
-    <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionForestOutside.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionSpawnerBiome.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionSpawnerBiomeArea.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionDistanceToPlayer.cs" />
-    <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionForestInside.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionNotBlocked.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionOceanDepth.cs" />
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionPlayerBase.cs" />
@@ -335,14 +355,13 @@
     <Compile Include="Utilities\ZdoExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Valheim.SpawnThat\Valheim.SpawnThat.csproj">
       <Project>{39872480-c9dd-4b79-a847-6660b2da72e3}</Project>
       <Name>Valheim.SpawnThat</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

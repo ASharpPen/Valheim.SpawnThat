@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
 using static Heightmap;
-using static MeleeWeaponTrail;
 
 namespace Valheim.SpawnThat.Utilities.World;
 
@@ -27,7 +26,15 @@ public class Zone
     public Zone(Vector2i zoneId)
     {
         ZoneId = zoneId;
-        ZonePos = ZoneSystem.instance.GetZonePos(ZoneId);
+
+        if (ZoneSystem.instance != null)
+        {
+            ZonePos = ZoneSystem.instance.GetZonePos(ZoneId);
+        }
+        else
+        {
+            ZonePos = new Vector3(zoneId.x * Width, 0, zoneId.y * Width);
+        }
 
         BiomeCorners = CalculateCornerBiomes(ZonePos);
 
@@ -83,7 +90,7 @@ public class Zone
     /// </para>
     /// <para>
     /// Based on <c>HeightmapBuilder.Build</c>, but instead of calculating 
-    /// a full grid of 4226 heights, only the requested position is calculated.
+    /// a full grid of 65*65 heights, only the requested position is calculated.
     /// </para>
     /// </summary>
     public float Height(Vector2i zoneLocalCoordinate)
@@ -91,10 +98,12 @@ public class Zone
         int y = zoneLocalCoordinate.y;
         int x = zoneLocalCoordinate.x;
 
-        float wy = ZonePos.z + y;
+        Vector3 zonePos = ZonePos + new Vector3(Width * -0.5f, 0f, Width * -0.5f);
+
+        float wy = zonePos.z + y;
         float t = Mathf.SmoothStep(0f, 1f, y / (float)Width);
 
-        float wx = ZonePos.x + x;
+        float wx = zonePos.x + x;
         float t2 = Mathf.SmoothStep(0f, 1f, x / (float)Width);
         float value;
 

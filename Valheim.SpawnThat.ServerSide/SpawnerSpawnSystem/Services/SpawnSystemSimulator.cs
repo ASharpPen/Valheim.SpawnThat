@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Conditions;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Models;
+using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.SpawnTemplates;
 
 namespace Valheim.SpawnThat.ServerSide.Services
 {

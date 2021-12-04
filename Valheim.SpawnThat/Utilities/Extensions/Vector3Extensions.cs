@@ -25,7 +25,7 @@ namespace Valheim.SpawnThat.Utilities.Extensions
 
         public static Vector2i GetZoneId(this Vector3 position)
         {
-            return ZoneUtils.GetZone((int)position.x, (int)position.y);
+            return ZoneUtils.GetZone((int)position.x, (int)position.z);
         }
     }
 }

@@ -3,9 +3,9 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Positions
 {
     public class PositionConditionDistanceToPlayer : ISpawnPositionCondition
     {
-        private int Distance { get; }
+        private float Distance { get; }
 
-        public PositionConditionDistanceToPlayer(int distance)
+        public PositionConditionDistanceToPlayer(float distance)
         {
             Distance = distance;
         }

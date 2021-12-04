@@ -8,6 +8,7 @@ using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Maps;
 using Valheim.SpawnThat.Maps.Managers;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner;
+using Valheim.SpawnThat.Utilities.World;
 
 namespace Valheim.SpawnThat.ConsoleCommands
 {
@@ -48,6 +49,11 @@ namespace Valheim.SpawnThat.ConsoleCommands
             if (commandPieces[0].ToUpperInvariant() != "SPAWNTHAT")
             {
                 return true;
+            }
+            else if (commandPieces[1].ToUpperInvariant() == "TILT")
+            {
+                PrintCalculatedTilt();
+                return false;
             }
             else if (commandPieces[1].ToUpperInvariant() == "ROOM")
             {
@@ -107,6 +113,14 @@ namespace Valheim.SpawnThat.ConsoleCommands
                 return false;
             }
             return true;
+        }
+
+        public static void PrintCalculatedTilt()
+        {
+            var pos = Player.m_localPlayer.transform.position;
+            var angle = WorldData.Tilt(pos);
+
+            Console.instance.Print("Tilt: " + angle);
         }
 
         public static void CommandInRoom()

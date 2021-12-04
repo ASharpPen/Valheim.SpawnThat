@@ -1,61 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
-using Valheim.SpawnThat.Core.Configuration;
-using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem;
-using Valheim.SpawnThat.Spawns.Caches;
+﻿using UnityEngine;
+using Valheim.SpawnThat.Core.Cache;
+using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Models;
 
 namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Modifiers
 {
     public class SpawnModifierSetLevel : ISpawnModifier
     {
-        private static SpawnModifierSetLevel _instance;
+        public int Level { get; }
 
-        public static SpawnModifierSetLevel Instance
+        public SpawnModifierSetLevel(int level)
         {
-            get
-            {
-                return _instance ??= new SpawnModifierSetLevel();
-            }
+            Level = level;
         }
 
-        public void Modify(SpawnContext context)
+        public void Modify(SpawnContext context, GameObject entity, ZDO entityZdo)
         {
-            if (context.Spawn is null)
+            if (Level <= 0)
             {
                 return;
             }
 
-            if (context.Config.TryGet(SpawnSystemConfigCLLC.ModName, out Config modConfig))
+            var character = ComponentCache.GetComponent<Character>(entity);
+
+            if (!character || character is null)
             {
-                if (modConfig is SpawnSystemConfigCLLC config && config.UseDefaultLevels.Value)
-                {
-                    var character = SpawnCache.GetCharacter(context.Spawn);
-
-                    if (character is null)
-                    {
-                        return;
-                    }
-
-                    var level = context.Config.LevelMin.Value;
-
-                    for (int i = 0; i < context.Config.LevelMax.Value - context.Config.LevelMin.Value; ++i)
-                    {
-                        if (UnityEngine.Random.Range(0, 100) > 10)
-                        {
-                            break;
-                        }
-
-                        ++level;
-                    }
-
-                    character.SetLevel(level);
-                }
+                return;
             }
+
+            character.SetLevel(Level);
         }
     }
 }

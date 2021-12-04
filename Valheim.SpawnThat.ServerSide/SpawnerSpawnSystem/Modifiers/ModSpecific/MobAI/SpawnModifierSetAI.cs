@@ -1,61 +1,46 @@
 ﻿using RagnarsRokare.MobAI;
 using System;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
-using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Core.Configuration;
-using Valheim.SpawnThat.Spawns.Caches;
+using UnityEngine;
+using Valheim.SpawnThat.Core.Cache;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific.MobAI
+namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Modifiers.ModSpecific.MobAI;
+
+public class SpawnModifierSetAI : ISpawnModifier
 {
-    internal class SpawnModifierSetAI : ISpawnModifier
-    {
-        private static SpawnModifierSetAI _instance;
+    public string AiName { get; }
+    public string Config { get; }
 
-        public static SpawnModifierSetAI Instance
+    public SpawnModifierSetAI(string aiName, string config)
+    {
+        AiName = aiName;
+        Config = config;
+    }
+
+    public void Modify(Models.SpawnContext context, GameObject entity, ZDO entityZdo)
+    {
+        var character = ComponentCache.GetComponent<Character>(entity);
+
+        if (character is null)
         {
-            get
-            {
-                return _instance ??= new SpawnModifierSetAI();
-            }
+            return;
         }
 
-        public void Modify(SpawnContext context)
+        string aiConfig = "{}";
+
+        if (!string.IsNullOrWhiteSpace(Config))
         {
-            if (context.Spawn is null)
-            {
-                return;
-            }
+            aiConfig = Config;
+        }
 
-            if (context.Config.TryGet(SpawnSystemConfigMobAI.ModName, out Config modConfig))
-            {
-                if (modConfig is SpawnSystemConfigMobAI config && !string.IsNullOrWhiteSpace(config.SetAI.Value))
-                {
-                    var character = SpawnCache.GetCharacter(context.Spawn);
+        try
+        {
+            MobManager.RegisterMob(character, Guid.NewGuid().ToString(), AiName, aiConfig);
 
-                    if (character is null)
-                    {
-                        return;
-                    }
-
-                    string aiConfig = "{}";
-                    
-                    if(!string.IsNullOrWhiteSpace(config.AIConfigFile.DefaultValue))
-                    {
-                        aiConfig = config.AIConfigFile.DefaultValue;
-                    }
-
-                    try
-                    {
-                        MobManager.RegisterMob(character, Guid.NewGuid().ToString(), config.SetAI.Value, aiConfig);
-
-                        Log.LogTrace($"Set AI {config.SetAI.Value} for spawn {context.Config.Name}");
-                    }
-                    catch(Exception e)
-                    {
-                        Log.LogError($"Failure while attempting to set AI {config.SetAI.Value} for spawn {context.Config.Name}", e);
-                    }
-                }
-            }
+            Log.LogTrace($"Set AI '{AiName}' for spawn '{entity.name}'.");
+        }
+        catch (Exception e)
+        {
+            Log.LogError($"Failure while attempting to set AI '{AiName}' for spawn '{entity.name}'", e);
         }
     }
 }
