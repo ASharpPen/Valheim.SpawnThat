@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Disabled until a use for this has been found. Frequency and chance is instead part of the simulator logic itself.
+#if false
+using System;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Models;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.SpawnTemplates;
 
@@ -46,3 +48,4 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Conditions
         }
     }
 }
+#endif

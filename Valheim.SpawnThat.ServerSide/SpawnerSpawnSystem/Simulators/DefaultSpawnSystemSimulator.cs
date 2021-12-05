@@ -30,7 +30,9 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
 
                 var zdos = GetSimulatedZones();
 
+#if false && DEBUG
                 Log.LogTrace("Simulating " + zdos.Count + " spawners.");
+#endif
 
                 foreach (var zone in zdos)
                 {
@@ -50,7 +52,7 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
             Log.LogTrace("Running spawn simulation for " + Templates.Count + " spawn templates.");
 #endif
 
-            foreach (var template in Templates)
+            foreach (var template in templates)
             {
                 // Check conditions
                 if (!template.Enabled)
@@ -64,10 +66,6 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
 
                 if (!HasValidConditions(sessionContext, template))
                 {
-#if false && DEBUG
-                    Log.LogTrace("Template " + template.Index + " invalid conditions.");
-#endif
-
                     continue;
                 }
 
@@ -91,7 +89,7 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
                 long currentTicks = (long)(currentSeconds * 10_000_000L);
                 spawnSystem.Set(template.SpawnHash, currentTicks);
 
-                var existingSpawns = sessionContext.EntityAreaCounter.CountEntitiesInRange(template.PrefabHash);
+                var existingSpawns = GetNearbyEntityCount(sessionContext, template);
                 var maxSpawns = template.MaxSpawned;
 
                 for (int i = 0; i < spawnRounds; ++i)
@@ -128,10 +126,7 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
                     if (point is null)
                     {
 #if false && DEBUG
-                        if (template.Index <= 1)
-                        {
-                            Log.LogTrace("Template " + template.Index + ":" + i + " no valid spawn point.");
-                        }
+                        Log.LogTrace("Template " + template.Index + ":" + i + " no valid spawn point.");
 #endif
                         continue;
                     }
@@ -159,7 +154,7 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
 
                             if (!entity || entity is null)
                             {
-#if DEBUG
+#if false && DEBUG
                                 Log.LogTrace("Template " + template.Index + ":" + i + ":" + j + " spawned empty.");
 #endif
 
@@ -196,7 +191,7 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
             }
         }
 
-        public GameObject Spawn(SpawnTemplate template, Vector3 point)
+        public GameObject Spawn(DefaultSpawnSystemTemplate template, Vector3 point)
         {
             var prefab = ZNetScene.instance.GetPrefab(template.PrefabHash);
 
@@ -222,7 +217,7 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
 #if false && DEBUG
                 var valid = x.IsValid(context, template);
 
-                if (!valid && template.Index <= 1)
+                if (!valid)
                 {
                     Log.LogTrace($"[{template.Index}] Condition {x.GetType().Name} is invalid.");
                 }
@@ -234,7 +229,12 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
             });
         }
 
-        public List<ZDO> GetSimulatedZones()
+        protected virtual int GetNearbyEntityCount(SpawnSessionContext sessionContext, DefaultSpawnSystemTemplate template)
+        {
+            return sessionContext.EntityAreaCounter.CountEntitiesInRange(template.PrefabHash);
+        }
+
+        public virtual List<ZDO> GetSimulatedZones()
         {
             var players = ZNet.instance.GetAllCharacterZDOS();
 

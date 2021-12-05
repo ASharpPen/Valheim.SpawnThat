@@ -29,7 +29,7 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Managers
             {
                 if (RegisteredTemplates.TryGetValue(template.Index, out SpawnTemplate existing))
                 {
-                    Log.LogWarning($"Overlapping world spawner configs for index '{template.Index}', overriding existing template for entity '{existing.PrefabName}' with entity '{template.PrefabName}'.");
+                    //Log.LogWarning($"Overlapping world spawner configs for index '{template.Index}', overriding existing template for entity '{existing.PrefabName}' with entity '{template.PrefabName}'.");
                 }
             }
 

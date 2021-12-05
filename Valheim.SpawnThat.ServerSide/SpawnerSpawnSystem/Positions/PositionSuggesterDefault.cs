@@ -71,7 +71,7 @@ public class PositionSuggesterDefault : ISuggestPosition
                 }
                 catch (Exception e)
                 {
-                    Log.LogError($"Error while attempting to check position condition '{condition.GetType().Name}' for spawn '{context.Template.PrefabName}'.", e);
+                    Log.LogError($"Error while attempting to check position condition '{condition.GetType().Name}' for spawn template '{context.Template.Index}'.", e);
                     return false;
                 }
             }))
@@ -104,7 +104,7 @@ public class PositionSuggesterDefault : ISuggestPosition
             }
             catch (Exception e)
             {
-                Log.LogError($"Error while attempting to check position condition '{condition.GetType().Name}' for spawn '{context.Template.PrefabName}'.", e);
+                Log.LogError($"Error while attempting to check position condition '{condition.GetType().Name}' for spawn template '{context.Template.Index}'.", e);
                 return false;
             }
         }))

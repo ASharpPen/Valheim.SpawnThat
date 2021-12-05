@@ -8,19 +8,26 @@ namespace Valheim.SpawnThat.Core
     {
         internal static ManualLogSource Logger;
 
-        public static void LogDebug(string message)
+        public static void LogIL(string message)
         {
-           // if (ConfigurationManager.GeneralConfig?.DebugLoggingOn?.Value == true)
-            { 
-                Logger.LogInfo($"{message}");
-            }
+#if DEBUG
+            Logger.LogMessage(message);
+#endif
         }
 
         public static void LogTrace(string message)
         {
-            //if (ConfigurationManager.GeneralConfig?.TraceLoggingOn?.Value == true)
+            if (ConfigurationManager.GeneralConfig?.TraceLoggingOn?.Value == true)
             {
                 Logger.LogDebug($"{message}");
+            }
+        }
+
+        public static void LogDebug(string message)
+        {
+            if (ConfigurationManager.GeneralConfig?.DebugLoggingOn?.Value == true)
+            { 
+                Logger.LogInfo($"{message}");
             }
         }
 

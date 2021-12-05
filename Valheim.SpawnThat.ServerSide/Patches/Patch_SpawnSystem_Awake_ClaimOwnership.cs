@@ -51,8 +51,7 @@ namespace Valheim.SpawnThat.ServerSide
                 return;
             }
 
-            __instance.StartCoroutine(
-                () =>
+            __instance.StartCoroutine(() =>
                 {
                     Log.LogInfo($"Claiming spawner at {__instance.transform.position}.");
                     __instance.m_nview.ClaimOwnership();

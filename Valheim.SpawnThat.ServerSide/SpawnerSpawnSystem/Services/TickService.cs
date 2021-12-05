@@ -30,7 +30,14 @@ internal static class TickService
     {
         foreach (var action in UpdateSubscribers)
         {
-            action();
+            try
+            {
+                action();
+            }
+            catch(Exception e)
+            {
+                Log.LogError("Error during attempt at running action.", e);
+            }
         }
     }
 

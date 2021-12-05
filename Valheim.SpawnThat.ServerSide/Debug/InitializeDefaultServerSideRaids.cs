@@ -1,65 +1,79 @@
 ﻿using System;
+using System.Collections.Generic;
 using HarmonyLib;
 using Valheim.SpawnThat.Reset;
-using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Conditions;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Modifiers;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Positions;
-using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Services;
+using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators;
+using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Services;
 
 namespace Valheim.SpawnThat.ServerSide.Debug;
 
 [HarmonyPatch]
-public static class InitializeDefaultServerSideSpawner
+internal class InitializeDefaultServerSideRaids
 {
-    private static DefaultSpawnSystemSimulator defaultSimulator = new();
+    private static DefaultRaidSimulator RaidSimulator { get; set; } = new();
 
-    private static bool Initialized = false;
+    private static bool Initialized { get; set; }
 
-    static InitializeDefaultServerSideSpawner()
+    static InitializeDefaultServerSideRaids()
     {
         StateResetter.Subscribe(() =>
         {
-            defaultSimulator = new();
+            RaidSimulator = new();
             Initialized = false;
         });
 
-        // TODO: Disabled temporarily while testing raids.
-        //TickService.SubscribeToUpdate(defaultSimulator.Update);
+        TickService.SubscribeToUpdate(RaidSimulator.Update);
     }
 
-    [HarmonyPatch(typeof(SpawnSystem), nameof(SpawnSystem.Awake))]
+    [HarmonyPatch(typeof(RandEventSystem), nameof(RandEventSystem.Awake))]
     [HarmonyPriority(Priority.Last)]
     [HarmonyPostfix]
-    public static void InitSpawner(SpawnSystem __instance)
+    public static void InitSpawner(RandEventSystem __instance)
     {
         if (Initialized)
-        { 
+        {
             return;
         }
 
         Initialized = true;
 
-        int index = 0;
+#if DEBUG
+        // Get them raids rolling real quick
+        __instance.m_eventIntervalMin = 0.5f;
+        __instance.m_eventChance = 100f;
+#endif
 
-        foreach(var spawnList in __instance.m_spawnLists)
+        foreach (var raid in __instance.m_events)
         {
-            foreach(var spawner in spawnList.m_spawners)
+            Log.LogTrace("Registering raid " + raid.m_name + " for server-side simulation.");
+
+            List<DefaultSpawnSystemTemplate> spawners = new(raid.m_spawn.Count);
+
+            int index = 0;
+
+            foreach (var spawner in raid.m_spawn)
             {
-                if(spawner is null)
+                if (spawner is null)
                 {
                     continue;
                 }
+
+                Log.LogTrace($"[{raid.m_name}:{index}] {spawner.m_prefab.name}");
 
                 var template = ConvertToTemplate(spawner);
 
                 template.Index = index;
 
-                defaultSimulator.Templates.Add(template);
+                spawners.Add(template);
 
                 index++;
             }
+
+            RaidSimulator.Raids[raid.m_name] = spawners;
         }
     }
 
@@ -69,6 +83,7 @@ public static class InitializeDefaultServerSideSpawner
 
         template.Enabled = spawnData.m_enabled;
         template.PrefabName = spawnData.m_prefab.name;
+        template.IsRaidMob = true;
         template.MinSpawned = spawnData.m_groupSizeMin;
         template.MaxSpawned = spawnData.m_groupSizeMax;
         template.Radius = spawnData.m_groupRadius;
@@ -98,7 +113,7 @@ public static class InitializeDefaultServerSideSpawner
             template.SpawnConditions.Add(new ConditionGlobalKeysRequireOneOf(spawnData.m_requiredGlobalKey));
         }
 
-        template.SpawnConditions.Add(new ConditionMaxSpawned(spawnData.m_maxSpawned));
+        template.SpawnConditions.Add(new ConditionMaxSpawnedEventMobs(spawnData.m_maxSpawned));
 
         // Positions
         template.PositionConditions.Add(new PositionConditionForest(spawnData.m_inForest, spawnData.m_outsideForest));
@@ -124,9 +139,9 @@ public static class InitializeDefaultServerSideSpawner
         }
 
         template.Modifiers.Add(new SpawnModifierDefaultRollLevel(
-            spawnData.m_minLevel, 
-            spawnData.m_maxLevel, 
-            spawnData.m_levelUpMinCenterDistance, 
+            spawnData.m_minLevel,
+            spawnData.m_maxLevel,
+            spawnData.m_levelUpMinCenterDistance,
             10));
 
         return template;

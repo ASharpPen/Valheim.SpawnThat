@@ -22,16 +22,22 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Conditions
                 return false;
             }
 
-            var entityCounter = context.EntityAreaCounter;
+            // TODO: Not the best solution. Need to figure out a better way to deal with the templates and their variations.
+            if (template is DefaultSpawnSystemTemplate defaultTemplate)
+            {
+                var entityCounter = context.EntityAreaCounter;
 
-            GameObject prefab = ZNetScene.instance.GetPrefab(template.PrefabHash);
+                GameObject prefab = ZNetScene.instance.GetPrefab(defaultTemplate.PrefabHash);
 
-            // Check if we are dealing with a creature. If so, don't count tamed.
-            int count = ComponentCache.GetComponent<Character>(prefab) is not null
-                ? entityCounter.CountEntitiesInRange(template.PrefabHash, x => !x.GetTamed())
-                : entityCounter.CountEntitiesInRange(template.PrefabHash);
+                // Check if we are dealing with a creature. If so, don't count tamed.
+                int count = ComponentCache.GetComponent<Character>(prefab) is not null
+                    ? entityCounter.CountEntitiesInRange(defaultTemplate.PrefabHash, x => !x.GetTamed())
+                    : entityCounter.CountEntitiesInRange(defaultTemplate.PrefabHash);
 
-            return count <= Max;
+                return count <= Max;
+            }
+
+            return true;
         }
     }
 }
