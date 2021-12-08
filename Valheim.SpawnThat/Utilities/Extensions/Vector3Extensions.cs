@@ -27,5 +27,12 @@ namespace Valheim.SpawnThat.Utilities.Extensions
         {
             return ZoneUtils.GetZone((int)position.x, (int)position.z);
         }
+
+        public static float DistanceHorizontal(this Vector3 source, Vector3 destination)
+        {
+            float dx = source.x - destination.x;
+            float dz = source.z - destination.z;
+            return Mathf.Sqrt(dx * dx + dz * dz);
+        }
     }
 }

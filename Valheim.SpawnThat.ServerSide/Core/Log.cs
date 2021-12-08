@@ -27,6 +27,8 @@ namespace Valheim.SpawnThat.ServerSide
 
         public static void LogWarning(string message) => Logger.LogWarning($"{message}");
 
+        public static void LogWarning(string message, Exception e) => Logger.LogWarning($"{message}; {e?.Message ?? ""}");
+
         public static void LogError(string message, Exception e = null) => Logger.LogError($"{message}; {e?.Message ?? ""}");
     }
 }

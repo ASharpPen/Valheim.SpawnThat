@@ -8,7 +8,7 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators;
 
 internal class DefaultRaidSimulator : DefaultSpawnSystemSimulator
 {
-    public Dictionary<string, List<DefaultSpawnSystemTemplate>> Raids { get; set; } = new();
+    public Dictionary<string, List<DefaultSpawnTemplate>> Raids { get; set; } = new();
 
     public override void Update()
     {
@@ -20,7 +20,7 @@ internal class DefaultRaidSimulator : DefaultSpawnSystemSimulator
             {
                 var zdos = GetSimulatedZones();
 
-                Log.LogTrace("Simulating " + zdos.Count + " raid spawners.");
+                //Log.LogTrace("Simulating " + zdos.Count + " raid spawners.");
 
                 foreach (var zone in zdos)
                 {
@@ -38,7 +38,7 @@ internal class DefaultRaidSimulator : DefaultSpawnSystemSimulator
         {
             if (RandEventSystem.instance.m_randomEvent != null)
             {
-                Log.LogTrace("Random event " + RandEventSystem.instance.m_randomEvent.m_name + " is ongoing, but not set as active.");
+                //Log.LogTrace("Random event " + RandEventSystem.instance.m_randomEvent.m_name + " is ongoing, but not set as active.");
             }
         }
     }
@@ -70,7 +70,7 @@ internal class DefaultRaidSimulator : DefaultSpawnSystemSimulator
         return spawnSystemZDOs;
     }
 
-    protected override int GetNearbyEntityCount(SpawnSessionContext sessionContext, DefaultSpawnSystemTemplate template)
+    protected override int GetNearbyEntityCount(SpawnSessionContext sessionContext, DefaultSpawnTemplate template)
     {
         return sessionContext.EntityAreaCounter.CountEntitiesInRange(template.PrefabHash, x => x.GetEventCreature());
     }

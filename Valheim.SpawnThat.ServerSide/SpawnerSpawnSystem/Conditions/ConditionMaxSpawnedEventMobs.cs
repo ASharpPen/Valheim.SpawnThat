@@ -6,14 +6,14 @@ using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Conditions;
 
-internal class ConditionMaxSpawnedEventMobs : ISpawnCondition
+public class ConditionMaxSpawnedEventMobs : ISpawnCondition
 {
-        public int Max { get; }
+    public int Max { get; }
 
-        public ConditionMaxSpawnedEventMobs(int max)
-        {
-            Max = max;
-        }
+    public ConditionMaxSpawnedEventMobs(int max)
+    {
+        Max = max;
+    }
 
     public bool IsValid(SpawnSessionContext context, SpawnTemplate template)
     {
@@ -23,7 +23,7 @@ internal class ConditionMaxSpawnedEventMobs : ISpawnCondition
         }
 
         // TODO: Not the best solution. Need to figure out a better way to deal with the templates and their variations.
-        if (template is DefaultSpawnSystemTemplate defaultTemplate)
+        if (template is DefaultSpawnTemplate defaultTemplate)
         {
             var entityCounter = context.EntityAreaCounter;
 

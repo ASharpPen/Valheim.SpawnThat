@@ -4,13 +4,25 @@ using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.SpawnTemplates;
 
 namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Conditions
 {
-    public class ConditionIsDay : ISpawnCondition
+    public class ConditionSpawnDuringDay : ISpawnCondition
     {
         public const string ZdoConditionDay = "spawnthat_condition_daytime_day";
 
+        public ConditionSpawnDuringDay(bool allowedDuringDay)
+        {
+            AllowedDuringDay = allowedDuringDay;
+        }
+
+        public bool AllowedDuringDay { get; }
+
         public bool IsValid(SpawnSessionContext context, SpawnTemplate template)
         {
-            return EnvMan.instance.IsDay();
+            if (!AllowedDuringDay && EnvMan.instance.IsDay())
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

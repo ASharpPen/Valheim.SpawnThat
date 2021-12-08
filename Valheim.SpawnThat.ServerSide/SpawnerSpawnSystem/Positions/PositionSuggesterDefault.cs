@@ -56,7 +56,7 @@ public class PositionSuggesterDefault : ISuggestPosition
             {
                 try
                 {
-#if true && DEBUG
+#if false && DEBUG
                     var valid = condition?.IsValid(positionContext) ?? false;
 
                     if (!valid && context.Template.Index <= 1)

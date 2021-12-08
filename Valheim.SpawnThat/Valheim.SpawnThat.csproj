@@ -74,11 +74,13 @@
       <HintPath>LibsStripped\CreatureLevelControl.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="EpicLoot">
-      <HintPath>C:\Users\MHS\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Valheim - Drop That\BepInEx\plugins\RandyKnapp-EpicLoot\EpicLoot.dll</HintPath>
+    <Reference Include="EpicLoot, Version=0.8.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\MHS\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Valheim - Spawn That\BepInEx\plugins\RandyKnapp-EpicLoot\EpicLoot.dll</HintPath>
     </Reference>
-    <Reference Include="ExtendedItemDataFramework">
-      <HintPath>C:\Users\MHS\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Valheim - Drop That\BepInEx\plugins\RandyKnapp-ExtendedItemDataFramework\ExtendedItemDataFramework.dll</HintPath>
+    <Reference Include="ExtendedItemDataFramework, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\MHS\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Valheim - Spawn That\BepInEx\plugins\RandyKnapp-ExtendedItemDataFramework\ExtendedItemDataFramework.dll</HintPath>
     </Reference>
     <Reference Include="MobAILib">
       <HintPath>C:\Users\MHS\AppData\Roaming\r2modmanPlus-local\Valheim\profiles\Valheim - Spawn That\BepInEx\plugins\MobAILib.dll</HintPath>
@@ -280,7 +282,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caches\ComponentCache.cs" />
     <Compile Include="Configuration\ConfigTypes\CreatureSpawnerConfigurationFile.cs" />
     <Compile Include="Configuration\ConfigTypes\GeneralConfiguration.cs" />
     <Compile Include="Configuration\ConfigTypes\SimpleConfigurationFile.cs" />
@@ -302,7 +303,12 @@
     <Compile Include="Core\Log.cs" />
     <Compile Include="Debugging\CreatureSpawnerFileDumper.cs" />
     <Compile Include="Debugging\DoIPlaceTheZone.cs" />
+    <Compile Include="Debugging\Gizmos\Gizmo.cs" />
+    <Compile Include="Debugging\Gizmos\BoxGizmo.cs" />
+    <Compile Include="Debugging\Gizmos\LineGizmo.cs" />
+    <Compile Include="Debugging\Gizmos\SphereGizmo.cs" />
     <Compile Include="Debugging\RoomCreatureSpawnerFileDumper.cs" />
+    <Compile Include="Debugging\ShowCreatureSpawnerGizmos.cs" />
     <Compile Include="Debugging\SpawnDataFileDumper.cs" />
     <Compile Include="Locations\SimpleLocation.cs" />
     <Compile Include="Configuration\Multiplayer\ConfigMultiplayerPatch.cs" />

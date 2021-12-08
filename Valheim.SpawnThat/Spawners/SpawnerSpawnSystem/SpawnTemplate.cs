@@ -11,7 +11,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem
     {
         public int? PrefabHash { get; set; }
 
-        public GameObject? Prefab { get; set; }
+        public GameObject Prefab { get; set; }
 
         public SpawnConfiguration Config { get; set; }
 

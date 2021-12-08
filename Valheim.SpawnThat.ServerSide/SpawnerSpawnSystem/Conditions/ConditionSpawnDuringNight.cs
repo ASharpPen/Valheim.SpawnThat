@@ -4,13 +4,25 @@ using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.SpawnTemplates;
 
 namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Conditions
 {
-    public class ConditionIsNight : ISpawnCondition
+    public class ConditionSpawnDuringNight : ISpawnCondition
     {
         public const string ZdoConditionNight = "spawnthat_condition_daytime_night";
 
+        public ConditionSpawnDuringNight(bool allowedDuringNight)
+        {
+            AllowedDuringNight = allowedDuringNight;
+        }
+
+        public bool AllowedDuringNight { get; }
+
         public bool IsValid(SpawnSessionContext context, SpawnTemplate template)
         {
-            return EnvMan.instance.IsNight();
+            if (!AllowedDuringNight && EnvMan.instance.IsNight())
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

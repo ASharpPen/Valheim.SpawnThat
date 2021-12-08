@@ -25,8 +25,7 @@ public static class InitializeDefaultServerSideSpawner
             Initialized = false;
         });
 
-        // TODO: Disabled temporarily while testing raids.
-        //TickService.SubscribeToUpdate(defaultSimulator.Update);
+        TickService.SubscribeToUpdate(defaultSimulator.Update);
     }
 
     [HarmonyPatch(typeof(SpawnSystem), nameof(SpawnSystem.Awake))]
@@ -63,15 +62,16 @@ public static class InitializeDefaultServerSideSpawner
         }
     }
 
-    private static DefaultSpawnSystemTemplate ConvertToTemplate(SpawnSystem.SpawnData spawnData)
+    private static DefaultSpawnTemplate ConvertToTemplate(SpawnSystem.SpawnData spawnData)
     {
-        var template = new DefaultSpawnSystemTemplate();
+        var template = new DefaultSpawnTemplate();
 
         template.Enabled = spawnData.m_enabled;
         template.PrefabName = spawnData.m_prefab.name;
-        template.MinSpawned = spawnData.m_groupSizeMin;
-        template.MaxSpawned = spawnData.m_groupSizeMax;
-        template.Radius = spawnData.m_groupRadius;
+        template.MinPackSize = spawnData.m_groupSizeMin;
+        template.MaxPackSize = spawnData.m_groupSizeMax;
+        template.MaxSpawned = spawnData.m_maxSpawned;
+        template.PackRadius = spawnData.m_groupRadius;
         template.SpawnChance = spawnData.m_spawnChance;
         template.SpawnInterval = TimeSpan.FromSeconds(spawnData.m_spawnInterval);
 
@@ -80,12 +80,12 @@ public static class InitializeDefaultServerSideSpawner
 
         if (!spawnData.m_spawnAtDay)
         {
-            template.SpawnConditions.Add(new ConditionIsDay());
+            template.SpawnConditions.Add(new ConditionSpawnDuringDay(false));
         }
 
         if (!spawnData.m_spawnAtNight)
         {
-            template.SpawnConditions.Add(new ConditionIsNight());
+            template.SpawnConditions.Add(new ConditionSpawnDuringNight(false));
         }
 
         if (spawnData.m_requiredEnvironments?.Count > 0)

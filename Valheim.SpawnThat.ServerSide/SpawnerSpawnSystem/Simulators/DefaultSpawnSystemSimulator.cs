@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Valheim.SpawnThat.Core.Cache;
+using Valheim.SpawnThat.Debugging.Gizmos;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Models;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Positions;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.SpawnTemplates;
@@ -12,9 +13,9 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
 {
     internal class DefaultSpawnSystemSimulator
     {
-        public List<DefaultSpawnSystemTemplate> Templates { get; set; } = new();
+        public List<DefaultSpawnTemplate> Templates { get; set; } = new();
 
-        private DateTimeOffset lastUpdate { get; set; } = DateTimeOffset.UtcNow;
+        private DateTimeOffset LastUpdate { get; set; } = DateTimeOffset.UtcNow;
 
         public ISuggestPosition PositionSuggester { get; set; } = new PositionSuggesterDefault();
 
@@ -24,9 +25,9 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
 
         public virtual void Update()
         {
-            if (lastUpdate + TimeSpan.FromSeconds(4) < DateTimeOffset.UtcNow)
+            if (LastUpdate + TimeSpan.FromSeconds(4) < DateTimeOffset.UtcNow)
             {
-                lastUpdate = DateTimeOffset.UtcNow;
+                LastUpdate = DateTimeOffset.UtcNow;
 
                 var zdos = GetSimulatedZones();
 
@@ -41,7 +42,7 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
             }
         }
 
-        public void SimulateSpawnSystem(ZDO spawnSystem, List<DefaultSpawnSystemTemplate> templates)
+        public void SimulateSpawnSystem(ZDO spawnSystem, List<DefaultSpawnTemplate> templates)
         {
             SpawnSessionContext sessionContext = new SpawnSessionContext
             {
@@ -112,11 +113,8 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
                     }
 #endif
 
-
                     SpawnContext spawnContext = new SpawnContext(sessionContext)
                     {
-                        SpawnRounds = spawnRounds,
-                        SpawnSystemZdo = spawnSystem,
                         Template = template,
                     };
 
@@ -132,66 +130,73 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
                     }
 
                     // Spawn group
-                    // TODO: Need to figure out a better way of dealing with this part of the spawn data. It needs to be extensible, and not hardcoded like this.
-                    if (template is DefaultSpawnSystemTemplate groupTemplate)
+                    int randomGroupSize = UnityEngine.Random.Range(template.MinPackSize, template.MaxPackSize + 1);
+                    int toSpawn = Math.Min(randomGroupSize, maxSpawns - existingSpawns);
+
+#if DEBUG
+                    if (toSpawn == 0 && this is DefaultRaidSimulator)
                     {
-                        int randomGroupSize = UnityEngine.Random.Range(groupTemplate.MinSpawned, groupTemplate.MaxSpawned + 1);
-                        int toSpawn = Math.Min(randomGroupSize, maxSpawns - existingSpawns);
+                        Log.LogTrace($"[{template.PrefabName}:{template.Index}] Max spawns already reached. {existingSpawns} out of  {maxSpawns}");
+                    }
+#endif
 
-                        for (int j = 0; j < toSpawn; ++j)
+                    for (int j = 0; j < toSpawn; ++j)
+                    {
+                        // Calculate new position for each group spawn
+                        float circleRadius = Math.Min(template.PackRadius, 0);
+                        Vector2 circle = UnityEngine.Random.insideUnitCircle * circleRadius;
+
+                        Vector3 spawnPoint = point.Value + new Vector3(circle.x, 0, circle.y);
+
+                        var zone = WorldData.GetZone(spawnPoint);
+                        var y = zone.Height(spawnPoint) + template.GroundOffset;
+
+                        // Spawn entity
+                        var entity = Spawn(template, new Vector3(spawnPoint.x, y, spawnPoint.z));
+
+                        if (!entity || entity is null)
                         {
-                            // Calculate new position for each group spawn
-                            float circleRadius = Math.Min(groupTemplate.Radius, 0);
-                            Vector2 circle = UnityEngine.Random.insideUnitCircle * circleRadius;
-
-                            Vector3 spawnPoint = point.Value + new Vector3(circle.x, 0, circle.y);
-
-                            var zone = WorldData.GetZone(spawnPoint);
-                            var y = zone.Height(spawnPoint) + groupTemplate.GroundOffset;
-
-                            // Spawn entity
-                            var entity = Spawn(template, new Vector3(spawnPoint.x, y, spawnPoint.z));
-
-                            if (!entity || entity is null)
-                            {
 #if false && DEBUG
                                 Log.LogTrace("Template " + template.Index + ":" + i + ":" + j + " spawned empty.");
 #endif
 
-                                continue;
-                            }
+                            continue;
+                        }
 
-                            // Modify spawn
-                            var znetView = ComponentCache.GetComponent<ZNetView>(entity);
-                            var zdo = (znetView && znetView != null)
-                                ? znetView.GetZDO()
-                                : null;
+                        // Modify spawn
+                        var znetView = ComponentCache.GetComponent<ZNetView>(entity);
+                        var zdo = (znetView && znetView != null)
+                            ? znetView.GetZDO()
+                            : null;
+#if DEBUG
+                        SphereGizmo.Create(entity.transform.position, 1f, lifeTime: TimeSpan.FromSeconds(30));
+                        SphereGizmo.Create(entity.transform.position, 0.1f, lifeTime: TimeSpan.FromSeconds(30));
+#endif
 
-                            foreach(var modifier in template.Modifiers ?? new List<Modifiers.ISpawnModifier>(0))
+                        foreach (var modifier in template.Modifiers ?? new List<Modifiers.ISpawnModifier>(0))
+                        {
+                            try
                             {
-                                try
-                                {
-                                    modifier?.Modify(spawnContext, entity, zdo);
-                                }
-                                catch(Exception e)
-                                {
-                                    Log.LogError($"Error while attempting to apply modifier '{modifier.GetType().Name}'.", e);
-                                }
+                                modifier?.Modify(spawnContext, entity, zdo);
                             }
-
-                            existingSpawns += 1;
-
-                            if (existingSpawns >= maxSpawns)
+                            catch (Exception e)
                             {
-                                break;
+                                Log.LogError($"Error while attempting to apply modifier '{modifier.GetType().Name}'.", e);
                             }
+                        }
+
+                        existingSpawns += 1;
+
+                        if (existingSpawns >= maxSpawns)
+                        {
+                            break;
                         }
                     }
                 }
             }
         }
 
-        public GameObject Spawn(DefaultSpawnSystemTemplate template, Vector3 point)
+        public GameObject Spawn(DefaultSpawnTemplate template, Vector3 point)
         {
             var prefab = ZNetScene.instance.GetPrefab(template.PrefabHash);
 
@@ -205,7 +210,7 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
 
             GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(prefab, point, Quaternion.identity);
 
-            Log.LogInfo($"Spawned {template.PrefabName}({template.Index}) x 1");
+            Log.LogInfo($"Spawned {template.PrefabName}({template.Index}) x 1 ({GetType().Name})");
 
             return gameObject;
         }
@@ -214,10 +219,10 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
         {
             return template.SpawnConditions.All(x =>
             {
-#if false && DEBUG
+#if true && DEBUG
                 var valid = x.IsValid(context, template);
 
-                if (!valid)
+                if (!valid && this is DefaultRaidSimulator)
                 {
                     Log.LogTrace($"[{template.Index}] Condition {x.GetType().Name} is invalid.");
                 }
@@ -229,7 +234,7 @@ namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Simulators
             });
         }
 
-        protected virtual int GetNearbyEntityCount(SpawnSessionContext sessionContext, DefaultSpawnSystemTemplate template)
+        protected virtual int GetNearbyEntityCount(SpawnSessionContext sessionContext, DefaultSpawnTemplate template)
         {
             return sessionContext.EntityAreaCounter.CountEntitiesInRange(template.PrefabHash);
         }

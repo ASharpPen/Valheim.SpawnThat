@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Models;
 using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.SpawnTemplates;
-using Valheim.SpawnThat.ServerSide.Utilities;
-using Valheim.SpawnThat.Utilities;
+using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.Conditions
 {

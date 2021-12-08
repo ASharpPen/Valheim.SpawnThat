@@ -3,7 +3,7 @@ using Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem.SpawnTemplates;
 
 namespace Valheim.SpawnThat.ServerSide.SpawnerSpawnSystem;
 
-public class DefaultSpawnSystemTemplate : SpawnTemplate
+public class DefaultSpawnTemplate : SpawnTemplate
 {
     private int? _prefabHash;
     private int? _spawnHash;
@@ -12,11 +12,13 @@ public class DefaultSpawnSystemTemplate : SpawnTemplate
 
     public string PrefabName { get; set; }
 
-    public int MinSpawned { get; set; } = 1;
+    public int MinPackSize { get; set; } = 1;
+
+    public int MaxPackSize { get; set; } = 1;
+
+    public float PackRadius { get; set; } = 3f;
 
     public int MaxSpawned { get; set; } = 1;
-
-    public float Radius { get; set; } = 3f;
 
     public float GroundOffset { get; set; } = 0.5f;
 

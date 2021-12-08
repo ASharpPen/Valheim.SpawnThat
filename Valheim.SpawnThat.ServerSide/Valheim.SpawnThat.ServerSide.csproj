@@ -279,20 +279,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contexts\SpawnSessionContext.cs" />
     <Compile Include="Core\Log.cs" />
+    <Compile Include="Debug\InitializeDefaultCreatureSpawner.cs" />
     <Compile Include="Debug\InitializeDefaultServerSideRaids.cs" />
     <Compile Include="Debug\InitializeDefaultServerSideSpawner.cs" />
     <Compile Include="Debug\WhoIsConnecting.cs" />
+    <Compile Include="Patches\Patch_CreatureSpawner_Disable.cs" />
     <Compile Include="Patches\Patch_RandEventSystem_FixedUpdate_FixActiveEventOnServer.cs" />
+    <Compile Include="Patches\Patch_SpawnSystem_Disable.cs" />
+    <Compile Include="Patches\Patch_ZDOMan_ClaimSpawners.cs" />
+    <Compile Include="SpawnConditions\ConditionCloseToPlayer.cs" />
+    <Compile Include="SpawnConditions\ConditionNoise.cs" />
+    <Compile Include="SpawnConditions\ConditionSpawnDuringDay.cs" />
+    <Compile Include="SpawnConditions\ConditionSpawnDuringNight.cs" />
+    <Compile Include="SpawnConditions\ISpawnCondition.cs" />
+    <Compile Include="SpawnerCreatureSpawner\Data\CreatureSpawnerPrefabData.cs" />
+    <Compile Include="SpawnerCreatureSpawner\Simulators\CreatureSpawnerSimulator.cs" />
+    <Compile Include="SpawnerCreatureSpawner\Templates\DefaultLocalTemplate.cs" />
     <Compile Include="SpawnerSpawnSystem\Builders\ISpawnSystemTemplateBuilder.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionAreaIds.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionAreaSpawnChance.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionBiome.cs" />
-    <Compile Include="SpawnerSpawnSystem\Conditions\ConditionIsDay.cs" />
+    <Compile Include="SpawnerSpawnSystem\Conditions\ConditionSpawnDuringDay.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionDistanceToCenter.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionEnvironments.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionGlobalKeysRequireOneOf.cs" />
-    <Compile Include="SpawnerSpawnSystem\Conditions\ConditionIsNight.cs" />
+    <Compile Include="SpawnerSpawnSystem\Conditions\ConditionSpawnDuringNight.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionLocation.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionMaxSpawned.cs" />
     <Compile Include="SpawnerSpawnSystem\Conditions\ConditionMaxSpawnedEventMobs.cs" />
@@ -311,7 +324,7 @@
     <Compile Include="SpawnerSpawnSystem\Positions\PositionConditionForest.cs" />
     <Compile Include="SpawnerSpawnSystem\Services\TickService.cs" />
     <Compile Include="SpawnerSpawnSystem\Simulators\DefaultRaidSimulator.cs" />
-    <Compile Include="SpawnerSpawnSystem\SpawnTemplates\DefaultSpawnSystemTemplate.cs" />
+    <Compile Include="SpawnerSpawnSystem\SpawnTemplates\DefaultSpawnTemplate.cs" />
     <Compile Include="SpawnerSpawnSystem\Managers\SpawnTemplateManager.cs" />
     <Compile Include="SpawnerSpawnSystem\Models\SpawnContext.cs" />
     <Compile Include="SpawnerSpawnSystem\Models\SpawnSessionContext.cs" />
@@ -344,15 +357,25 @@
     <Compile Include="SpawnerSpawnSystem\Services\EntityCounterService.cs" />
     <Compile Include="SpawnerSpawnSystem\Services\IEntityCounterService.cs" />
     <Compile Include="SpawnerSpawnSystem\Simulators\DefaultSpawnSystemSimulator.cs" />
+    <Compile Include="SpawnModifiers\ISpawnModifier.cs" />
+    <Compile Include="SpawnModifiers\SpawnModifierActivateSpawnEffect.cs" />
+    <Compile Include="SpawnModifiers\SpawnModifierDefaultRollLevel.cs" />
+    <Compile Include="SpawnModifiers\SpawnModifierSetDespawnInDay.cs" />
+    <Compile Include="SpawnModifiers\SpawnModifierSetEventCreature.cs" />
+    <Compile Include="SpawnModifiers\SpawnModifierSetHuntPlayer.cs" />
+    <Compile Include="SpawnModifiers\SpawnModifierSetLevel.cs" />
+    <Compile Include="SpawnModifiers\SpawnModifierSetPatrol.cs" />
+    <Compile Include="SpawnModifiers\SpawnModifierSetTamed.cs" />
+    <Compile Include="SpawnModifiers\SpawnModifierSetTemplateId.cs" />
+    <Compile Include="SpawnPositionConditions\ISpawnPositionCondition.cs" />
+    <Compile Include="SpawnPositionConditions\PositionConditionPlayerBase.cs" />
     <Compile Include="Utilities\GameConstants.cs" />
-    <Compile Include="Patches\Patch_CreatureSpawner_Awake_ClaimOwnership.cs" />
-    <Compile Include="Patches\Patch_KeepSpawnersAlive.cs" />
-    <Compile Include="Patches\Patch_SpawnSystem_Awake_ClaimOwnership.cs" />
+    <Compile Include="Patches\Patch_CreatureSpawner_Claim.cs" />
+    <Compile Include="Patches\Patch_SpawnSystem_Claim.cs" />
     <Compile Include="Patches\Patch_SpawnSystem_UpdateSpawning_RemoveServerRestriction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpawnThatServerSidePlugin.cs" />
     <Compile Include="Utilities\PrefabData.cs" />
-    <Compile Include="Utilities\ZdoExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Valheim.SpawnThat\Valheim.SpawnThat.csproj">
@@ -363,5 +386,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

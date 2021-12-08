@@ -11,23 +11,27 @@ namespace Valheim.SpawnThat.ServerSide
         [HarmonyPostfix]
         private static void ClaimOwnership(CreatureSpawner __instance)
         {
-            __instance.StartCoroutine(
-                () =>
+            if (!__instance.m_nview.IsOwner())
+            {
+                if (ZNet.instance.IsServer())
                 {
                     Log.LogInfo("Claiming spawner.");
-                    __instance.m_nview.ClaimOwnership(); 
-                }, 
-                TimeSpan.FromMilliseconds(1));   
+                    __instance.m_nview.ClaimOwnership();
+                }
+            }
         }
 
         [HarmonyPatch(nameof(CreatureSpawner.UpdateSpawner))]
         [HarmonyPrefix]
         private static void KeepClaiming(CreatureSpawner __instance)
         {
-            if (__instance.m_nview.IsOwner())
+            if (!__instance.m_nview.IsOwner())
             {
-                Log.LogInfo("Claiming spawner.");
-                __instance.m_nview.ClaimOwnership();
+                if (ZNet.instance.IsServer())
+                {
+                    Log.LogInfo("Claiming creature spawner.");
+                    __instance.m_nview.ClaimOwnership();
+                }
             }
         }
     }

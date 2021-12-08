@@ -25,8 +25,6 @@ internal class InitializeDefaultServerSideRaids
             RaidSimulator = new();
             Initialized = false;
         });
-
-        TickService.SubscribeToUpdate(RaidSimulator.Update);
     }
 
     [HarmonyPatch(typeof(RandEventSystem), nameof(RandEventSystem.Awake))]
@@ -41,6 +39,8 @@ internal class InitializeDefaultServerSideRaids
 
         Initialized = true;
 
+        TickService.SubscribeToUpdate(RaidSimulator.Update, TimeSpan.FromSeconds(1));
+
 #if DEBUG
         // Get them raids rolling real quick
         __instance.m_eventIntervalMin = 0.5f;
@@ -51,7 +51,7 @@ internal class InitializeDefaultServerSideRaids
         {
             Log.LogTrace("Registering raid " + raid.m_name + " for server-side simulation.");
 
-            List<DefaultSpawnSystemTemplate> spawners = new(raid.m_spawn.Count);
+            List<DefaultSpawnTemplate> spawners = new(raid.m_spawn.Count);
 
             int index = 0;
 
@@ -77,16 +77,17 @@ internal class InitializeDefaultServerSideRaids
         }
     }
 
-    private static DefaultSpawnSystemTemplate ConvertToTemplate(SpawnSystem.SpawnData spawnData)
+    private static DefaultSpawnTemplate ConvertToTemplate(SpawnSystem.SpawnData spawnData)
     {
-        var template = new DefaultSpawnSystemTemplate();
+        var template = new DefaultSpawnTemplate();
 
         template.Enabled = spawnData.m_enabled;
         template.PrefabName = spawnData.m_prefab.name;
         template.IsRaidMob = true;
-        template.MinSpawned = spawnData.m_groupSizeMin;
-        template.MaxSpawned = spawnData.m_groupSizeMax;
-        template.Radius = spawnData.m_groupRadius;
+        template.MinPackSize = spawnData.m_groupSizeMin;
+        template.MaxPackSize = spawnData.m_groupSizeMax;
+        template.PackRadius = spawnData.m_groupRadius;
+        template.MaxSpawned = spawnData.m_maxSpawned;
         template.SpawnChance = spawnData.m_spawnChance;
         template.SpawnInterval = TimeSpan.FromSeconds(spawnData.m_spawnInterval);
 
@@ -95,12 +96,12 @@ internal class InitializeDefaultServerSideRaids
 
         if (!spawnData.m_spawnAtDay)
         {
-            template.SpawnConditions.Add(new ConditionIsDay());
+            template.SpawnConditions.Add(new ConditionSpawnDuringDay(false));
         }
 
         if (!spawnData.m_spawnAtNight)
         {
-            template.SpawnConditions.Add(new ConditionIsNight());
+            template.SpawnConditions.Add(new ConditionSpawnDuringNight(false));
         }
 
         if (spawnData.m_requiredEnvironments?.Count > 0)
@@ -133,6 +134,7 @@ internal class InitializeDefaultServerSideRaids
         template.PositionConditions.Add(new PositionConditionSpawnerBiome());
 
         // Modifiers
+        template.Modifiers.Add(new SpawnModifierSetEventCreature());
         if (spawnData.m_huntPlayer)
         {
             template.Modifiers.Add(new SpawnModifierSetHuntPlayer());
