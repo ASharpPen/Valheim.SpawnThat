@@ -2,61 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Valheim.SpawnThat.Core.Cache
+namespace Valheim.SpawnThat.Core.Cache;
+
+public class ComponentCache
 {
-    public class ComponentCache
+    private static ManagedCache<ComponentCache> CacheTable { get; } = new();
+    private Dictionary<Type, Component> ComponentTable { get; } = new();
+
+    public static T GetComponent<T>(GameObject obj) where T : Component
     {
-        private static ManagedCache<ComponentCache> CacheTable { get; } = new();
+        ComponentCache cache = CacheTable.GetOrCreate(obj);
 
-        public static T GetComponent<T>(GameObject obj) where T : Component
+        Type componentType = typeof(T);
+
+        if (cache.ComponentTable.TryGetValue(componentType, out Component cached))
         {
-            ComponentCache cache = CacheTable.GetOrCreate(obj);
-
-            Type componentType = typeof(T);
-
-            if (cache.ComponentTable.TryGetValue(componentType, out Component cached))
-            {
-                return (T)cached;
-            }
-
-            if (obj.TryGetComponent(componentType, out Component component))
-            {
-                cache.ComponentTable.Add(componentType, component);
-                return (T)component;
-            }
-            else
-            {
-                cache.ComponentTable.Add(componentType, null);
-                return null;
-            }
+            return (T)cached;
         }
 
-        public static T GetComponentInChildren<T>(GameObject obj, bool includeInactive = false)
-            where T : Component
+        if (obj.TryGetComponent(componentType, out Component component))
         {
-            ComponentCache cache = CacheTable.GetOrCreate(obj);
+            cache.ComponentTable.Add(componentType, component);
+            return (T)component;
+        }
+        else
+        {
+            cache.ComponentTable.Add(componentType, null);
+            return null;
+        }
+    }
 
-            Type componentType = typeof(T);
+    public static T GetComponentInChildren<T>(GameObject obj, bool includeInactive = false)
+        where T : Component
+    {
+        ComponentCache cache = CacheTable.GetOrCreate(obj);
 
-            if (cache.ComponentTable.TryGetValue(componentType, out Component cached))
-            {
-                return (T)cached;
-            }
+        Type componentType = typeof(T);
 
-            T component = obj.GetComponentInChildren<T>(includeInactive);
-
-            if (component is not null)
-            {
-                cache.ComponentTable.Add(componentType, component);
-                return component;
-            }
-            else
-            {
-                cache.ComponentTable.Add(componentType, null);
-                return null;
-            }
+        if (cache.ComponentTable.TryGetValue(componentType, out Component cached))
+        {
+            return (T)cached;
         }
 
-        private Dictionary<Type, Component> ComponentTable { get; } = new();
+        T component = obj.GetComponentInChildren<T>(includeInactive);
+
+        if (component is not null)
+        {
+            cache.ComponentTable.Add(componentType, component);
+            return component;
+        }
+        else
+        {
+            cache.ComponentTable.Add(componentType, null);
+            return null;
+        }
     }
 }
