@@ -5,6 +5,8 @@ using System.Linq;
 using UnityEngine;
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
+using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Debugging.Gizmos;
 using Valheim.SpawnThat.Maps;
 using Valheim.SpawnThat.Maps.Managers;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner;
@@ -49,7 +51,16 @@ namespace Valheim.SpawnThat.ConsoleCommands
             if (commandPieces[0].ToUpperInvariant() != "SPAWNTHAT")
             {
                 return true;
+
             }
+#if DEBUG
+            else if(commandPieces[1].ToUpperInvariant() == "TEST")
+            {
+                SphereGizmo.Create(Player.m_localPlayer.transform.position, 0.5f);
+                //LineGizmo.Create(Player.m_localPlayer.transform.position);
+                Log.LogDebug("Attempted to create sphere.");
+            }
+#endif
             else if (commandPieces[1].ToUpperInvariant() == "TILT")
             {
                 PrintCalculatedTilt();
