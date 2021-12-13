@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
@@ -39,6 +40,8 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers
             SpawnModifiers.Add(SpawnModifierLoaderCLLC.SetLevel);
 
             SpawnModifiers.Add(SpawnModifierLoaderMobAI.SetAI);
+
+            SpawnModifiers.RemoveWhere(x => x is null);
         }
 
         public void ApplyModifiers(GameObject spawn, CreatureSpawnerConfig config)
@@ -55,12 +58,19 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers
             {
                 if (modifier is not null)
                 {
-                    modifier.Modify(spawn, config);
+                    try
+                    {
+                        modifier.Modify(spawn, config);
+                    }
+                    catch(Exception e)
+                    {
+                        Log.LogWarning($"Error while attempting to apply modifier '{modifier?.GetType()?.Name}' to spawn '{spawn?.name}'", e);                        //Log.LogWarning($"Error while attempting to apply modifier '{modifier.GetType().Name}' to spawn {spawn.name}", e);
+                    }
                 }
                 else
                 {
 #if DEBUG
-                    Log.LogDebug($"CreatureSpawn modifier: {modifier.GetType().Name} is null" );
+                    Log.LogDebug($"CreatureSpawn modifier is null. Skipping." );
 #endif
                 }
             }

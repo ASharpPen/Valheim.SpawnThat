@@ -26,19 +26,19 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.Gener
 
         public void Modify(GameObject spawn, CreatureSpawnerConfig config)
         {
-            if (spawn is null)
+            if (!spawn || spawn is null)
             {
                 return;
             }
 
             var character = SpawnCache.GetCharacter(spawn);
 
-            if (character is null)
+            if (!character || character is null)
             {
                 return;
             }
 
-            if (!config.SetTamedCommandable.Value)
+            if (config.SetTamedCommandable?.Value != true)
             {
                 return;
             }
@@ -51,10 +51,9 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.Gener
             if (tameable is not null && tameable)
             {
                 tameable.m_commandable = true;
+
+                SpawnCache.GetZDO(character).Set(ZdoFeature, true);
             }
-
-
-            SpawnCache.GetZDO(character).Set(ZdoFeature, true);
         }
     }
 }

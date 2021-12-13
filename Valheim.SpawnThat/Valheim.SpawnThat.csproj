@@ -308,6 +308,7 @@
     <Compile Include="Debugging\Gizmos\LineGizmo.cs" />
     <Compile Include="Debugging\Gizmos\SphereGizmo.cs" />
     <Compile Include="Debugging\RoomCreatureSpawnerFileDumper.cs" />
+    <Compile Include="Debugging\ShowCreatureGizmos.cs" />
     <Compile Include="Debugging\ShowCreatureSpawnerGizmos.cs" />
     <Compile Include="Debugging\SpawnDataFileDumper.cs" />
     <Compile Include="Locations\SimpleLocation.cs" />
