@@ -18,9 +18,11 @@ public class SphereGizmo : Gizmo
 
     public static void Create(Vector3 position, float radius, Color? color = null, TimeSpan? lifeTime = null)
     {
-#if DEBUG
-        if (Player.m_localPlayer is null && ZNet.instance.IsServer())
-        {
+#if !DEBUG
+        return;
+#endif
+        if (ZNet.instance.IsDedicated())
+        { 
             // Don't do anything while on a server.
             return;
         }
@@ -36,7 +38,31 @@ public class SphereGizmo : Gizmo
         gizmo.Init();
 
         gameObject.SetActive(true);
+    }
+
+    public static void Create(GameObject parent, float radius, Color? color = null, TimeSpan? lifeTime = null)
+    {
+#if !DEBUG
+        return;
 #endif
+        if (ZNet.instance.IsDedicated())
+        {
+            // Don't do anything while on a server.
+            return;
+        }
+
+        var gameObject = new GameObject();
+        gameObject.transform.SetParent(parent.transform);
+        gameObject.transform.localScale = Vector3.zero;
+
+        var gizmo = gameObject.AddComponent<SphereGizmo>();
+        gizmo.Radius = radius;
+        gizmo.LifeTime = lifeTime;
+        gizmo.Color = color ?? Color.blue;
+
+        gizmo.Init();
+
+        gameObject.SetActive(true);
     }
 
     public void Init()
@@ -45,6 +71,21 @@ public class SphereGizmo : Gizmo
         RenderCircleX = CreateRenderer(Color);
         RenderCircleZ = CreateRenderer(Color);
 
+        var positionsY = GetCircleSegments1(Radius);
+        RenderCircleY.positionCount = positionsY.Length;
+        RenderCircleY.SetPositions(positionsY);
+
+        var positionsX = GetCircleSegments2(Radius);
+        RenderCircleX.positionCount = positionsX.Length;
+        RenderCircleX.SetPositions(positionsX);
+
+        var positionsZ = GetCircleSegments3(Radius);
+        RenderCircleZ.positionCount = positionsZ.Length;
+        RenderCircleZ.SetPositions(positionsZ);
+    }
+
+    protected override void OnUpdate()
+    {
         var positionsY = GetCircleSegments1(Radius);
         RenderCircleY.positionCount = positionsY.Length;
         RenderCircleY.SetPositions(positionsY);

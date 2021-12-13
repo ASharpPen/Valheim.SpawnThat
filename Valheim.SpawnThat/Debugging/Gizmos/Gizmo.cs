@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.Debugging.Gizmos;
@@ -24,68 +25,54 @@ public abstract class Gizmo : MonoBehaviour
         RendererShader = Shader.Find("Particles/Standard Unlit");
     }
 
-    void Awake()
-    {
-        if (ZNet.instance != null)
-        {
-            Timestamp = ZNet.instance.m_netTime;
-        }
-
-        OnAwake();
-    }
-
-    protected virtual void OnAwake()
-    { 
-    }
-
     void Update()
     {
         try
         {
-            if (!ZNet.instance && this.gameObject)
+            if (!gameObject)
             {
-                GameObject.Destroy(this.gameObject);
                 return;
             }
 
-            if (!Player.m_localPlayer && ZNet.instance.IsServer() && this.gameObject)
+            // Ignore while znet and player is not loaded.
+            if (ZNet.instance != null && ZNet.instance && Player.m_localPlayer)
             {
-                GameObject.Destroy(this.gameObject);
-                return;
-            }
+                if (Timestamp == null && ZNet.instance != null && ZNet.instance)
+                {
+                    Timestamp = ZNet.instance.GetTimeSeconds();
+                };
 
-            if (Timestamp is null)
-            {
-                Timestamp = ZNet.instance.m_netTime;
-
-                if (ZNet.instance is null)
+                if (LifeTime != null && ZNet.instance.m_netTime - Timestamp > LifeTime.Value.TotalSeconds && this.gameObject)
                 {
                     GameObject.Destroy(this.gameObject);
+                    Log.LogTrace($"{GetType().Name} too old. Removing object.");
                     return;
                 }
-            }
 
-            if (LifeTime != null && ZNet.instance.m_netTime - Timestamp > LifeTime.Value.TotalSeconds && this.gameObject)
-            {
-                GameObject.Destroy(this.gameObject);
-                return;
-            }
+                if (!Player.m_localPlayer)
+                {
+                    GameObject.Destroy(this.gameObject);
+                    Log.LogTrace($"No local player for {GetType().Name}. Removing object.");
+                    return;
+                }
 
-            if (!Player.m_localPlayer && this.gameObject)
-            {
-                GameObject.Destroy(this.gameObject);
-                return;
-            }
+                var dist = Player.m_localPlayer.m_nview.GetZDO().GetPosition().DistanceHorizontal(transform.position);
+                if (dist > MaxDistanceToPlayer && this.gameObject)
+                {
+                    GameObject.Destroy(this.gameObject);
+                    Log.LogTrace($"{GetType().Name} is {dist} await from player, at max {MaxDistanceToPlayer}. Removing object.");
+                    return;
+                }
 
-            if (Player.m_localPlayer.m_nview.GetZDO().GetPosition().DistanceHorizontal(transform.position) > MaxDistanceToPlayer && this.gameObject)
-            {
-                GameObject.Destroy(this.gameObject);
-                return;
+                OnUpdate();
             }
-
-            OnUpdate();
         }
-        catch { }
+        catch (Exception e) 
+        {
+#if DEBUG
+            Log.LogError($"Error during {this.GetType().Name}.Update", e);
+#endif
+        }
     }
 
     protected virtual void OnUpdate()
@@ -105,11 +92,12 @@ public abstract class Gizmo : MonoBehaviour
         material.SetFloat("_BlendOp", (float)UnityEngine.Rendering.BlendOp.Subtract);
         material.SetTexture("_MainTex", RendererTexture);
 
-
         renderer.useWorldSpace = false;
         renderer.material = material;
         renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         renderer.widthMultiplier = 0.05f;
+
+        goZ.SetActive(true);
 
         return renderer;
     }
