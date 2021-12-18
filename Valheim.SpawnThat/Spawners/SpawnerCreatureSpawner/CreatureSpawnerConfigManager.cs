@@ -37,7 +37,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
             }
             catch (Exception e)
             {
-                Log.LogError($"Error while applying configs to SpawnSystem spawner {__instance}.", e);
+                Log.LogError($"Error while applying configs to local spawner {__instance}.", e);
                 __instance.SetFailedInitialization();
             }
 
