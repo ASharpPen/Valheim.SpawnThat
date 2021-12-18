@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Spawns.Caches;
 
 namespace Valheim.SpawnThat.Spawns
 {

@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General;
-using Valheim.SpawnThat.Spawns.Caches;
+using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawns
 {
@@ -30,7 +30,7 @@ namespace Valheim.SpawnThat.Spawns
         [HarmonyPrefix]
         private static void ForceAlert(BaseAI __instance, ref bool alert)
         {
-            var zdo = SpawnCache.GetZDO(__instance.gameObject);
+            var zdo = ComponentCache.GetZdo(__instance);
 
             if (zdo is null)
             {

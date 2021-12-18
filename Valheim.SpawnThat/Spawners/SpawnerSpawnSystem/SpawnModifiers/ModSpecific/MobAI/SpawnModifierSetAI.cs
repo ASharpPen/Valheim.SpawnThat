@@ -3,7 +3,7 @@ using System;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Configuration;
-using Valheim.SpawnThat.Spawns.Caches;
+using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific.MobAI
 {
@@ -30,7 +30,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecif
             {
                 if (modConfig is SpawnSystemConfigMobAI config && !string.IsNullOrWhiteSpace(config.SetAI.Value))
                 {
-                    var character = SpawnCache.GetCharacter(context.Spawn);
+                    var character = ComponentCache.Get<Character>(context.Spawn);
 
                     if (character is null)
                     {
