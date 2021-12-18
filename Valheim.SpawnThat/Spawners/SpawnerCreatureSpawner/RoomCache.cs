@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Cache;
-using Valheim.SpawnThat.Reset;
+using Valheim.SpawnThat.Startup;
 using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner;

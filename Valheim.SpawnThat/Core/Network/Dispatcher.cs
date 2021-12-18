@@ -46,6 +46,10 @@ internal class Dispatcher
 
             for (int i = 0; i < sockets; ++i)
             {
+                // TODO: This seems somewhat dumb now that I look at it again.
+                // Not sure it even makes sense to bother with the async aspect,
+                // when we are going to await anyway, and we can't avoid locks
+                // since the sockets are not threadsafe.
                 socketTasks[i] = Instance.DispatchSocket(currentSockets[i]);
             }
 
@@ -81,7 +85,7 @@ internal class Dispatcher
 
         // Check if socket is ready for new packages.
         int queueSize = socket.GetSendQueueSize();
-        if (socket.GetSendQueueSize() > MaxQueueSizeForDispatch)
+        if (queueSize > MaxQueueSizeForDispatch)
         {
 #if DEBUG
             Log.LogTrace("Package queue size: " + queueSize);

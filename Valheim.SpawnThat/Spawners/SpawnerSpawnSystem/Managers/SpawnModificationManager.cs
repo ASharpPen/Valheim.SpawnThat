@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.Caches;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific;
+using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 {

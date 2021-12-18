@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Maps.Managers;
-using Valheim.SpawnThat.Reset;
+using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Maps.Patches
 {

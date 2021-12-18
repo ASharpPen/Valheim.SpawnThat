@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Valheim.SpawnThat.Reset;
+using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Core.Network;
 

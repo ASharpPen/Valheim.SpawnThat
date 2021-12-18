@@ -2,7 +2,7 @@
 using System;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Network;
-using Valheim.SpawnThat.Reset;
+using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Locations;
 
