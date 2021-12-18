@@ -27,13 +27,9 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
                 _instance = null;
             });
 
-            // OnAwake conditions
-
-            OnAwakeConditions.Add(ConditionDistanceToCenter.Instance);
-            OnAwakeConditions.Add(ConditionLocation.Instance);
-
             // OnSpawn conditions
-
+            OnSpawnConditions.Add(ConditionDistanceToCenter.Instance);
+            OnSpawnConditions.Add(ConditionLocation.Instance);
             OnSpawnConditions.Add(ConditionWorldAge.Instance);
             OnSpawnConditions.Add(ConditionNotGlobalKeys.Instance);
             OnSpawnConditions.Add(ConditionNearbyPlayersCarryValue.Instance);

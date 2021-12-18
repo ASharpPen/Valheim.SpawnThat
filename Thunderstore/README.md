@@ -57,6 +57,12 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
 ```
 
 # Changelog: 
+- v0.11.6:
+	- It's the season of bugs! World spawner templates are now instantiated on entering world, meaning changes applied are no longer carried between worlds / re-entering. This is hopefully getting changed by IG in the future.
+	- Fixed local spawners not honouring "Enabled=false". Configs were still attempted applied.
+	- Fixed leftover optimizations causing spawners to get disabled in biomes outside the one player logged into.
+- v0.11.5:
+	- More v0.205.5 fixes. World spawners were changed from no longer being per zone, but properly global, meaning Spawn That was reapplying its changes more than once.
 - v0.11.4:
 	- Fixes for Valheim v0.205.5
 - v0.11.3:

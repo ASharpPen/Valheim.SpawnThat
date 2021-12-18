@@ -371,6 +371,7 @@
     <Compile Include="Spawners\SpawnerSpawnSystem\Patches\SpawnPositionFilterPatch.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Patches\SpawnSystemGetNrOfInstancesPatch.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Patches\SpawnSystemHaveInstanceInRangePatch.cs" />
+    <Compile Include="Spawners\SpawnerSpawnSystem\Patches\SpawnSystemInstantiateSpawnListPatch.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Patches\SpawnSystemSpawnSessionPatch.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Position\PositionConditionLocation.cs" />
     <Compile Include="Spawners\SpawnerSpawnSystem\Position\ISpawnPositionCondition.cs" />

@@ -1,29 +1,28 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 {
-    internal class ConditionDistanceToCenter : IConditionOnAwake
+    internal class ConditionDistanceToCenter : IConditionOnSpawn
     {
         private static ConditionDistanceToCenter _instance;
 
         public static ConditionDistanceToCenter Instance => _instance ??= new();
 
-        public bool ShouldFilter(SpawnSystem spawner, SpawnConfiguration spawnConfig)
+        public bool ShouldFilter(SpawnConditionContext context)
         {
-            if(!spawner || spawner is null || spawnConfig is null)
+            if (context is null || context.Config is null)
             {
                 return false;
             }
 
-            if(IsValid(spawner.transform.position, spawnConfig))
+            if (IsValid(context.Position, context.Config))
             {
                 return false;
             }
 
-            Log.LogTrace($"Filtering {spawnConfig.Name} due to distance to center.");
+            Log.LogTrace($"Filtering {context.Config.Name} due to distance to center.");
             return true;
         }
 

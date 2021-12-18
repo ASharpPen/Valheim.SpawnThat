@@ -62,6 +62,12 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
 
         public static void ApplyConfigs(SpawnSystem __instance, Heightmap ___m_heightmap)
         {
+            if (!FirstApplication)
+            {
+                __instance.SetSuccessfulInit();
+                return;
+            }
+
             if (__instance.transform?.position is null)
             {
                 __instance.SetSuccessfulInit();
@@ -107,11 +113,6 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
                         continue;
                     }
 
-                    if (SpawnConditionManager.Instance.FilterOnAwake(__instance, spawnConfig))
-                    {
-                        continue;
-                    }
-
                     try
                     {
                         if (spawnConfig.Index < spawners.Count && ConfigurationManager.GeneralConfig?.AlwaysAppend?.Value == false)
@@ -153,7 +154,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
             {
                 foreach (var spawner in spawners)
                 {
-                    if (string.IsNullOrWhiteSpace(spawner.m_prefab?.name))
+                    if (spawner is null || !spawner.m_prefab || string.IsNullOrWhiteSpace(spawner.m_prefab?.name))
                     {
                         continue;
                     }
@@ -180,34 +181,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers
                 SpawnDataFileDumper.WriteToFile(spawners, FileNamePost, true);
             }
 
-            DisableOutsideBiome(___m_heightmap, spawners);
-
             FirstApplication = false;
-        }
-
-        /// <summary>
-        /// Minor improvements to disable spawners when unchanging conditions are not met.
-        /// No more checking the same thing every update.
-        /// </summary>
-        public static void DisableOutsideBiome(Heightmap heightmap, List<SpawnSystem.SpawnData> spawners)
-        {
-            if (spawners is null)
-            {
-                return;
-            }
-
-            foreach (var spawner in spawners)
-            {
-                if (!spawner.m_enabled)
-                {
-                    continue;
-                }
-
-                if (!heightmap.HaveBiome(spawner.m_biome))
-                {
-                    spawner.m_enabled = false;
-                }
-            }
         }
 
         /// <summary>
