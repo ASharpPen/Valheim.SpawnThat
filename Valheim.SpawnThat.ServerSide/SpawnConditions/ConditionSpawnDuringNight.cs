@@ -12,6 +12,8 @@ public class ConditionSpawnDuringNight : ISpawnCondition
     }
 
     public bool AllowedDuringNight { get; }
+    public bool CanRunClientSide => true;
+    public bool CanRunServerSide => true;
 
     public bool IsValid(SpawnSessionContext context)
     {

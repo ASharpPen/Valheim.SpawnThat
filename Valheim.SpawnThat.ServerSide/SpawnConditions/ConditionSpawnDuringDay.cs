@@ -7,6 +7,8 @@ public class ConditionSpawnDuringDay : ISpawnCondition
     public const string ZdoConditionDay = "spawnthat_condition_daytime_day";
 
     public bool AllowedDuringDay { get; }
+    public bool CanRunClientSide => true;
+    public bool CanRunServerSide => true;
 
     public ConditionSpawnDuringDay(bool allowedDuringDay = true)
     {

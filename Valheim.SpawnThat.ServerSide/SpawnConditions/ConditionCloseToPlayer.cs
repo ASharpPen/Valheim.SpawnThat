@@ -13,6 +13,8 @@ public class ConditionCloseToPlayer : ISpawnCondition
     }
 
     public float WithinDistance { get; }
+    public bool CanRunClientSide => true;
+    public bool CanRunServerSide => true;
 
     public bool IsValid(SpawnSessionContext sessionContext)
     {

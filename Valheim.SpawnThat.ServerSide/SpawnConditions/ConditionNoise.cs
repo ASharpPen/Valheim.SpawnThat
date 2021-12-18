@@ -11,6 +11,8 @@ public class ConditionNoise : ISpawnCondition
     private int SearchDistance { get; }
 
     private int NoiseThreshold { get; }
+    public bool CanRunClientSide => true;
+    public bool CanRunServerSide => true;
 
     public ConditionNoise(int distanceToSearch, int noiseRequired)
     {

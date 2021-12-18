@@ -290,6 +290,7 @@
     <Compile Include="Patches\Patch_SpawnSystem_Disable.cs" />
     <Compile Include="Patches\Patch_ZDOMan_ClaimSpawners.cs" />
     <Compile Include="SpawnConditions\ConditionCloseToPlayer.cs" />
+    <Compile Include="SpawnConditions\ConditionServerSideEnvironment.cs" />
     <Compile Include="SpawnConditions\ConditionNoise.cs" />
     <Compile Include="SpawnConditions\ConditionSpawnDuringDay.cs" />
     <Compile Include="SpawnConditions\ConditionSpawnDuringNight.cs" />
@@ -376,6 +377,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpawnThatServerSidePlugin.cs" />
     <Compile Include="Utilities\PrefabData.cs" />
+    <Compile Include="Utilities\World\Environment.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Valheim.SpawnThat\Valheim.SpawnThat.csproj">
