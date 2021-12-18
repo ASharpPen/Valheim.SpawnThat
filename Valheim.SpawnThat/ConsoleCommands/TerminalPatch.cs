@@ -162,12 +162,11 @@ namespace Valheim.SpawnThat.ConsoleCommands
             ImageBuilder
                 .Init(MapManager.AreaMap)
                 .AddHeatZones(heatmap, false)
-                .Print("Debug", $"area_roll_{templateIndex}");
+                .Print($"area_roll_{templateIndex}");
 
-            var file = Path.Combine("Debug", $"area_roll_{templateIndex}");
-            var filePath = Path.Combine(Paths.BepInExRootPath, $"{file}.png");
+            var debugFolder = Path.Combine(Paths.BepInExRootPath, ConfigurationManager.GeneralConfig?.DebugFileFolder?.Value ?? "Debug");
 
-            Console.instance.Print("Printing heatmap map of templates area rolls to: " + filePath);
+            Console.instance.Print("Printing heatmap map of templates area rolls to: " + debugFolder);
         }
 
         public static void CommandPrintTemplateSpawnAreas(int templateIndex)
@@ -195,12 +194,11 @@ namespace Valheim.SpawnThat.ConsoleCommands
             ImageBuilder
                 .SetGrayscaleBiomes(MapManager.AreaMap)
                 .AddHeatZones(spawnMap)
-                .Print("Debug", $"spawn_map_{templateIndex}_{prefabName}");
+                .Print($"spawn_map_{templateIndex}_{prefabName}");
+            
+            var debugFolder = Path.Combine(Paths.BepInExRootPath, ConfigurationManager.GeneralConfig?.DebugFileFolder?.Value ?? "Debug");
 
-            var file = Path.Combine("Debug", $"spawn_map_{templateIndex}_{prefabName}");
-            var filePath = Path.Combine(Paths.BepInExRootPath, $"{file}.png");
-
-            Console.instance.Print("Printing map of spawn areas to: " + filePath);
+            Console.instance.Print("Printing map of spawn areas to: " + debugFolder);
         }
     }
 }

@@ -22,6 +22,8 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
 
         public ConfigurationEntry<bool> PrintFantasticBeastsAndWhereToKillThem = new ConfigurationEntry<bool>(false, "Prints maps marking where each configured world spawn template can spawn. This will be done for every config entry.");
 
+        public ConfigurationEntry<string> DebugFileFolder = new("Debug", "Folder path to write to. Root folder is BepInEx.");
+
         #endregion
 
         #region General
@@ -67,6 +69,7 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
             PrintAreaMap.Bind(Config, "Debug", "PrintAreaMap");
             PrintBiomeMap.Bind(Config, "Debug", nameof(PrintBiomeMap));
             PrintFantasticBeastsAndWhereToKillThem.Bind(Config, "Debug", "PrintFantasticBeastsAndWhereToKillThem");
+            DebugFileFolder.Bind(Config, "Debug", nameof(DebugFileFolder));
 
             WriteCreatureSpawnersToFile.Bind(Config, "LocalSpawner", "WriteSpawnTablesToFileBeforeChanges");
             DontCollapseFile.Bind(Config, "LocalSpawner", nameof(DontCollapseFile));

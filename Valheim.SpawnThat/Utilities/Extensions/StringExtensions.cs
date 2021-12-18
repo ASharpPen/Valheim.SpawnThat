@@ -2,32 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Valheim.SpawnThat.Utilities
+namespace Valheim.SpawnThat.Utilities;
+
+public static class StringExtensions
 {
-    public static class StringExtensions
+    private static readonly char[] Comma = new[] { ',' };
+    private static readonly char[] Slash = new[] { '/', '\\' };
+
+    public static List<string> SplitByComma(this string value, bool toUpper = false)
+        => SplitBy(value, Comma, toUpper).ToList();
+
+    public static string[] SplitBySlash(this string value, bool toUpper = false)
+        => SplitBy(value, Slash, toUpper).ToArray();
+
+    public static IEnumerable<string> SplitBy(this string value, char[] chars, bool toUpper = false)
     {
-        private static char[] Comma = new[] { ',' };
+        var split = value.Split(chars, StringSplitOptions.RemoveEmptyEntries);
 
-        public static List<string> SplitByComma(this string value, bool toUpper = false)
+        if ((split?.Length ?? 0) == 0)
         {
-            var split = value.Split(Comma, StringSplitOptions.RemoveEmptyEntries);
+            return Enumerable.Empty<string>();
+        }
 
-            if((split?.Length ?? 0) == 0)
+        return split.Select(Clean);
+
+        string Clean(string x)
+        {
+            var result = x.Trim();
+            if (toUpper)
             {
-                return new List<string>();
+                return result.ToUpperInvariant();
             }
-
-            return split.Select(Clean).ToList();
-
-            string Clean(string x)
-            {
-                var result = x.Trim();
-                if (toUpper)
-                {
-                    return result.ToUpperInvariant();
-                }
-                return result;
-            }
+            return result;
         }
     }
 }
