@@ -2,6 +2,7 @@
 using UnityEngine;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.Caches;
+using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
 {
@@ -33,7 +34,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
                 return true;
             }
 
-            BaseAI baseAI = PrefabCache.GetBaseAI(prefab);
+            BaseAI baseAI = ComponentCache.Get<BaseAI>(prefab);
 
             if (baseAI && baseAI is not null)
             {

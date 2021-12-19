@@ -1,6 +1,6 @@
 ﻿using System;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Spawns.Caches;
+using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General
 {
@@ -23,7 +23,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General
                 return;
             }
 
-            var character = SpawnCache.GetCharacter(context.Spawn);
+            var character = ComponentCache.Get<Character>(context.Spawn);
 
             if(character is null)
             {
@@ -43,7 +43,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General
                 Log.LogDebug($"Setting faction {faction}");
 #endif
                 character.m_faction = faction;
-                SpawnCache.GetZDO(character).Set("faction", (int)faction);
+                ComponentCache.GetZdo(context.Spawn)?.Set("faction", (int)faction);
             }
             else
             {

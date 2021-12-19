@@ -2,9 +2,9 @@
 using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.General;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.ModSpecific;
+using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers
 {

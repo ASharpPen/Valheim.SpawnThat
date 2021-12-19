@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Spawns.Caches;
+using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.General
 {
@@ -31,7 +26,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.Gener
                 return;
             }
 
-            var character = SpawnCache.GetCharacter(spawn);
+            var character = ComponentCache.Get<Character>(spawn);
 
             if (character is null)
             {
@@ -46,7 +41,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.Gener
 #if DEBUG
             Log.LogDebug($"Setting tamed commandable");
 #endif
-            var tameable = SpawnCache.GetTameable(spawn);
+            var tameable = ComponentCache.Get<Tameable>(spawn);
 
             if (tameable is not null && tameable)
             {
@@ -54,7 +49,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.Gener
             }
 
 
-            SpawnCache.GetZDO(character).Set(ZdoFeature, true);
+            ComponentCache.GetZdo(spawn)?.Set(ZdoFeature, true);
         }
     }
 }

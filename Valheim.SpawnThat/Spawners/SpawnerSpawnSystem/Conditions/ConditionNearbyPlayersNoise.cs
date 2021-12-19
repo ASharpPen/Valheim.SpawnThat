@@ -1,12 +1,6 @@
-﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Spawns.Caches;
 using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
@@ -37,7 +31,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
             {
                 Log.LogTrace($"Checking noise of player {player.GetPlayerName()}");
 
-                var zdo = SpawnCache.GetZDO(player);
+                var zdo = ComponentCache.GetZdo(player);
                 if (zdo is not null)
                 {
                     var noise = zdo.GetFloat("noise", 0);

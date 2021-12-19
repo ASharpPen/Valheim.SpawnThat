@@ -1,14 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Valheim.SpawnThat.Locations
+namespace Valheim.SpawnThat.Locations;
+
+public class SimpleLocation
 {
-    public class SimpleLocation
-    {
-        public Vector3 Position;
+    public Vector3 Position;
 
-        public Vector2i ZonePosition;
+    public Vector2i ZonePosition;
 
-        public string LocationName;
-    }
+    public string LocationName;
 }

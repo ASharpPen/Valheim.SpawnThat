@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Spawns.Caches;
+using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.General
 {
@@ -24,7 +24,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.Gener
                 return;
             }
 
-            var character = SpawnCache.GetCharacter(spawn);
+            var character = ComponentCache.Get<Character>(spawn);
 
             if (character is null)
             {

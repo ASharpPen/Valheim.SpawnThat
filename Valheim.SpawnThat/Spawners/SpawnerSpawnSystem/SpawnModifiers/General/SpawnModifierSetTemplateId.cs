@@ -1,6 +1,5 @@
-﻿
-using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Spawns.Caches;
+﻿using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General
 {
@@ -30,7 +29,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General
                 return;
             }
 
-            var zdo = SpawnCache.GetZDO(context.Spawn);
+            var zdo = ComponentCache.GetZdo(context.Spawn);
 
             if (zdo is null)
             {

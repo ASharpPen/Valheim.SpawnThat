@@ -1,14 +1,9 @@
 ﻿using CreatureLevelControl;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Configuration;
-using Valheim.SpawnThat.Spawns.Caches;
+using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific.CLLC
 {
@@ -35,7 +30,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecif
             {
                 if (modConfig is SpawnSystemConfigCLLC config && config.SetInfusion.Value.Length > 0)
                 {
-                    var character = SpawnCache.GetCharacter(context.Spawn);
+                    var character = ComponentCache.Get<Character>(context.Spawn);
 
                     if (character is null)
                     {

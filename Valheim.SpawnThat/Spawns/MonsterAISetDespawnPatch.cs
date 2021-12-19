@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General;
-using Valheim.SpawnThat.Spawns.Caches;
+using Valheim.SpawnThat.Utilities;
 using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.Spawns
@@ -50,7 +50,7 @@ namespace Valheim.SpawnThat.Spawns
 
         private static bool CheckIfShouldDespawn(MonsterAI monsterAI)
         {
-            var zdo = SpawnCache.GetZDO(monsterAI.gameObject);
+            var zdo = ComponentCache.GetZdo(monsterAI);
 
             var despawnState = DespawnStateTable.GetOrCreateValue(monsterAI);
 

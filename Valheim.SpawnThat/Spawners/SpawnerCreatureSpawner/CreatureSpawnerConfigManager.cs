@@ -1,9 +1,9 @@
 ﻿using System;
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Reset;
 using Valheim.SpawnThat.Spawners.Caches;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types;
+using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
 {
@@ -37,7 +37,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner
             }
             catch (Exception e)
             {
-                Log.LogError($"Error while applying configs to SpawnSystem spawner {__instance}.", e);
+                Log.LogError($"Error while applying configs to local spawner {__instance}.", e);
                 __instance.SetFailedInitialization();
             }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using HarmonyLib;
 using UnityEngine;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Reset;
+using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
 {

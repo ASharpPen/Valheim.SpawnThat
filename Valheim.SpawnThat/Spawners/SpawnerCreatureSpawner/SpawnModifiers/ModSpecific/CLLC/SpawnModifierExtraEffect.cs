@@ -4,7 +4,7 @@ using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Configuration;
-using Valheim.SpawnThat.Spawns.Caches;
+using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.ModSpecific.CLLC
 {
@@ -31,7 +31,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.ModSp
             {
                 if (modConfig is CreatureSpawnerConfigCLLC config && config.SetExtraEffect.Value.Length > 0)
                 {
-                    var character = SpawnCache.GetCharacter(spawn);
+                    var character = ComponentCache.Get<Character>(spawn);
 
                     if (character is null)
                     {

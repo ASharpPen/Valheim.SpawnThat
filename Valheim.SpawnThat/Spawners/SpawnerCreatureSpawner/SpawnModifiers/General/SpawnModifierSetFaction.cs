@@ -2,7 +2,7 @@
 using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Spawns.Caches;
+using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.General
 {
@@ -25,7 +25,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.Gener
                 return;
             }
 
-            var character = SpawnCache.GetCharacter(spawn);
+            var character = ComponentCache.Get<Character>(spawn);
 
             if (character is null)
             {
@@ -45,7 +45,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.SpawnModifiers.Gener
                 Log.LogDebug($"Setting faction {faction}");
 #endif
                 character.m_faction = faction;
-                SpawnCache.GetZDO(character).Set("faction", (int)faction);
+                ComponentCache.GetZdo(spawn)?.Set("faction", (int)faction);
             }
             else
             {

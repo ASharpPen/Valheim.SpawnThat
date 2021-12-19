@@ -1,5 +1,5 @@
 ﻿using HarmonyLib;
-using Valheim.SpawnThat.Spawns.Caches;
+using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawns
 {
@@ -10,7 +10,7 @@ namespace Valheim.SpawnThat.Spawns
         [HarmonyPatch("Awake")]
         private static void SetCommandable(Tameable __instance)
         { 
-            var zdo = SpawnCache.GetZDO(__instance.gameObject);
+            var zdo = ComponentCache.GetZdo(__instance);
 
             if(zdo.GetBool("spawnthat_tamed_commandable", false))
             {
