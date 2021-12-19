@@ -2,7 +2,7 @@
 using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Locations;
+using Valheim.SpawnThat.World.Locations;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types
 {
@@ -53,7 +53,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types
 
         private static string FindLocationName(Vector3 pos)
         {
-            var location = LocationHelper.FindLocation(pos);
+            var location = LocationManager.GetLocation(pos);
 
             if (string.IsNullOrWhiteSpace(location?.LocationName))
             {

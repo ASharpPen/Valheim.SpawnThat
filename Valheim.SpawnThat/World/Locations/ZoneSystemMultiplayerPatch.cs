@@ -7,7 +7,7 @@ using Valheim.SpawnThat.Startup;
 namespace Valheim.SpawnThat.Locations;
 
 [HarmonyPatch(typeof(ZNet))]
-public static class ZoneSystemMultiplayerPatch
+internal static class ZoneSystemMultiplayerPatch
 {
     private static bool HaveReceivedLocations = false;
 

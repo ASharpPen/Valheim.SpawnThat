@@ -1,11 +1,10 @@
 ﻿using HarmonyLib;
-using System.IO;
 using System.Linq;
 using Valheim.SpawnThat.Configuration;
-using Valheim.SpawnThat.Maps.Managers;
 using Valheim.SpawnThat.Startup;
+using Valheim.SpawnThat.World.Maps.Area;
 
-namespace Valheim.SpawnThat.Maps.Patches;
+namespace Valheim.SpawnThat.World.Maps.Patches;
 
 [HarmonyPatch(typeof(Game))]
 public class Patch_Game_FindSpawnPoint_PrintMaps

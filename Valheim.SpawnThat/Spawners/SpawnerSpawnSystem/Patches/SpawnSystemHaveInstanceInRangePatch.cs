@@ -1,8 +1,8 @@
 ﻿using HarmonyLib;
 using UnityEngine;
+using Valheim.SpawnThat.Caches;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.Caches;
-using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
 {

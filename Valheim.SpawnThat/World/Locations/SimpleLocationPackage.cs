@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Network;
+using Valheim.SpawnThat.World.Locations;
 
 namespace Valheim.SpawnThat.Locations;
 
@@ -67,7 +68,7 @@ internal class SimpleLocationPackage : CompressedPackage
                 });
             }
 
-            LocationHelper.SetLocations(simpleLocations);
+            LocationManager.SetLocations(simpleLocations);
 
             Log.LogDebug($"Unpacked locations: {simpleLocations?.Count ?? 0}");
 

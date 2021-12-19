@@ -4,6 +4,7 @@ using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Locations;
 using Valheim.SpawnThat.Utilities;
+using Valheim.SpawnThat.World.Locations;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
 {
@@ -43,8 +44,8 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions
                 return true;
             }
 
-            var location = LocationHelper
-                .FindLocation(position)?
+            var location = LocationManager
+                .GetLocation(position)?
                 .LocationName?
                 .Trim()?
                 .ToUpperInvariant();

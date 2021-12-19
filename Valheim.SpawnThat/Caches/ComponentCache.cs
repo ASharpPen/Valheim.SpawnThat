@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valheim.SpawnThat.Core.Cache;
 
-namespace Valheim.SpawnThat.Utilities;
+namespace Valheim.SpawnThat.Caches;
 
 public class ComponentCache
 {

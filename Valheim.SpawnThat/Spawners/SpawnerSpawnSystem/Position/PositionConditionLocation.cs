@@ -3,6 +3,7 @@ using UnityEngine;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Locations;
 using Valheim.SpawnThat.Utilities;
+using Valheim.SpawnThat.World.Locations;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Position
 {
@@ -45,8 +46,8 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Position
 
             var locations = config.ConditionLocation.Value.SplitByComma(true);
 
-            var location = LocationHelper
-                .FindLocation(position)?
+            var location = LocationManager
+                .GetLocation(position)?
                 .LocationName?
                 .Trim()?
                 .ToUpperInvariant();

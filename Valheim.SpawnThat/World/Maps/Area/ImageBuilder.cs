@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using Valheim.SpawnThat.Debugging;
 
-namespace Valheim.SpawnThat.Maps;
+namespace Valheim.SpawnThat.World.Maps.Area;
 
-public class ImageBuilder
+internal class ImageBuilder
 {
     private AreaMap areaMap;
     private Texture2D image;

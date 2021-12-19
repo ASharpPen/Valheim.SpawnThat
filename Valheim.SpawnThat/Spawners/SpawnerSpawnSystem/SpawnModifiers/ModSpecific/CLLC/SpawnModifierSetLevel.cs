@@ -1,6 +1,6 @@
-﻿using Valheim.SpawnThat.Configuration.ConfigTypes;
+﻿using Valheim.SpawnThat.Caches;
+using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core.Configuration;
-using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific.CLLC
 {

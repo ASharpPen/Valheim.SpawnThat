@@ -1,9 +1,9 @@
 ﻿using RagnarsRokare.MobAI;
 using System;
+using Valheim.SpawnThat.Caches;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Configuration;
-using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.ModSpecific.MobAI
 {

@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
+using Valheim.SpawnThat.Caches;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.SpawnModifiers.General;
-using Valheim.SpawnThat.Utilities;
 
 namespace Valheim.SpawnThat.Spawns
 {

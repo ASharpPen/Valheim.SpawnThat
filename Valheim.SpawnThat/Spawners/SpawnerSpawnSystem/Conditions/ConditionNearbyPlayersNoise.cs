@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Valheim.SpawnThat.Caches;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Utilities;
 
