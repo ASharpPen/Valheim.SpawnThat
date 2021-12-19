@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Valheim.SpawnThat.Startup;
 
@@ -22,6 +21,15 @@ internal partial class DataTransferService : IDisposable
     }
 
     public Dictionary<string, Queue<QueueItem>> SocketQueues { get; private set; } = new();
+
+    public Task AddToQueueAsync(Func<ZPackage> preparePackage, string rpcRoute, ZRpc zrpc)
+    {
+        var zpackage = preparePackage();
+
+        AddToQueue(zpackage, rpcRoute, zrpc);
+
+        return Task.CompletedTask;
+    }
 
     public void AddToQueue(ZPackage package, string rpcRoute, long playerId)
     {
@@ -45,15 +53,15 @@ internal partial class DataTransferService : IDisposable
             string queueIdentifier = item.ZRpc.GetSocket().GetEndPointString();
             lock (SocketQueues)
             {
-                if (SocketQueues.ContainsKey(queueIdentifier))
+                if (SocketQueues.TryGetValue(queueIdentifier, out var queue))
                 {
-                    SocketQueues[queueIdentifier].Enqueue(item);
+                    queue.Enqueue(item);
                 }
                 else
                 {
-                    var queue = new Queue<QueueItem>();
-                    queue.Enqueue(item);
-                    SocketQueues[queueIdentifier] = queue;
+                    var newQueue = new Queue<QueueItem>();
+                    newQueue.Enqueue(item);
+                    SocketQueues[queueIdentifier] = newQueue;
                 }
             }
         }

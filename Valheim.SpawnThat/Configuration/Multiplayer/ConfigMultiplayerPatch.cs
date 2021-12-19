@@ -38,9 +38,9 @@ internal static class ConfigMultiplayerPatch
 
             Log.LogInfo("Received request for configs.");
 
-            DataTransferService.Service.AddToQueue(new GeneralConfigPackage().Pack(), nameof(RPC_ReceiveConfigsSpawnThat), rpc);
-            DataTransferService.Service.AddToQueue(new CreatureSpawnerConfigPackage().Pack(), nameof(RPC_ReceiveConfigsSpawnThat), rpc);
-            DataTransferService.Service.AddToQueue(new SpawnSystemConfigPackage().Pack(), nameof(RPC_ReceiveConfigsSpawnThat), rpc);
+            DataTransferService.Service.AddToQueueAsync(() => new GeneralConfigPackage().Pack(), nameof(RPC_ReceiveConfigsSpawnThat), rpc);
+            DataTransferService.Service.AddToQueueAsync(() => new CreatureSpawnerConfigPackage().Pack(), nameof(RPC_ReceiveConfigsSpawnThat), rpc);
+            DataTransferService.Service.AddToQueueAsync(() => new SpawnSystemConfigPackage().Pack(), nameof(RPC_ReceiveConfigsSpawnThat), rpc);
 
             Log.LogTrace("Sending config packages.");
         }

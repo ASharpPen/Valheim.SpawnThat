@@ -56,7 +56,7 @@ public static class ZoneSystemMultiplayerPatch
                 return;
             }
 
-            DataTransferService.Service.AddToQueue(new SimpleLocationPackage().Pack(), nameof(RPC_ReceiveLocationsSpawnThat), rpc);
+            DataTransferService.Service.AddToQueueAsync(() => new SimpleLocationPackage().Pack(), nameof(RPC_ReceiveLocationsSpawnThat), rpc);
 
             Log.LogTrace($"Sending location data.");
         }

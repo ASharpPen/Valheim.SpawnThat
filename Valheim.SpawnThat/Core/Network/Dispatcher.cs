@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using HarmonyLib;
 
@@ -30,27 +29,19 @@ internal class Dispatcher
     [HarmonyPatch(typeof(ZNet))]
     internal static class Patch_ZNet_Update_Dispatcher
     {
-
         [HarmonyPatch(nameof(ZNet.Update))]
         [HarmonyPostfix]
         private static void Dispatch()
         {
-            var currentSockets = ZNet.instance
-                .GetPeers()
-                .Select(x => x.m_socket)
-                .ToList();
+            var peers = ZNet.instance.GetPeers();
 
-            int sockets = currentSockets.Count;
+            int sockets = peers.Count;
 
             Task[] socketTasks = new Task[sockets];
 
             for (int i = 0; i < sockets; ++i)
             {
-                // TODO: This seems somewhat dumb now that I look at it again.
-                // Not sure it even makes sense to bother with the async aspect,
-                // when we are going to await anyway, and we can't avoid locks
-                // since the sockets are not threadsafe.
-                socketTasks[i] = Instance.DispatchSocket(currentSockets[i]);
+                socketTasks[i] = Instance.DispatchSocket(peers[i].m_socket);
             }
 
             Task.WaitAll(socketTasks);
