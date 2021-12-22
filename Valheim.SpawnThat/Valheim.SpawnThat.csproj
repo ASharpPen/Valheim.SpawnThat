@@ -23,4 +23,7 @@
       <HintPath>LibsStripped\RagnarsRokare-MobAILib\MobAILib.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Spawners\DefaultWorldSpawner\" />
+  </ItemGroup>
 </Project>
