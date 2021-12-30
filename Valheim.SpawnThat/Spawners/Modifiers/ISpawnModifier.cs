@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using UnityEngine;
 
 namespace Valheim.SpawnThat.Spawners.Modifiers;
 
 public interface ISpawnModifier
 {
+    bool CanRun();
+
+    void Apply(GameObject entity, ZDO entityZdo);
 }

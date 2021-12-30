@@ -1,7 +1,9 @@
-﻿using HarmonyLib;
+﻿using System;
+using HarmonyLib;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Patches
 {
+    [Obsolete("Being replaced by LocalSpawner patches")]
     [HarmonyPatch(typeof(CreatureSpawner))]
     public static class CreatureSpawnerPatch
     {

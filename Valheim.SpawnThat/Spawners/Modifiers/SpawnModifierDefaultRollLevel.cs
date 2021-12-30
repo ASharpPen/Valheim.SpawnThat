@@ -5,8 +5,19 @@ using Valheim.SpawnThat.Caches;
 namespace Valheim.SpawnThat.Spawners.Modifiers;
 
 /// <summary>
-/// Based on default level assignment logic of <c>SpawnSystem.Spawn</c>.
+/// <para>
+/// Simulates the vanilla level assignment logic.
+///</para>
+/// <para>
+/// Level is assigned by setting level to Min(1, <c>minLevel</c>).
+/// </para>
+/// <para>
+/// If <c>minDistanceForLevelups</c> is greater than distance to center,
+/// and <c>maxLevel</c> is greater than level, the <c>levelupChance</c> is rolled.
+/// This is repeated until either <c>maxLevel</c> is reached, or a levelup roll fails.
+/// </para>
 /// </summary>
+/// <remarks>Based on default level assignment logic of <c>SpawnSystem.Spawn</c>.</remarks>
 public class SpawnModifierDefaultRollLevel : ISpawnModifier
 {
     private int MinLevel { get; }
@@ -21,6 +32,8 @@ public class SpawnModifierDefaultRollLevel : ISpawnModifier
         MinDistanceForLevelups = minDistanceForLevelups;
         LevelupChance = levelupChance;
     }
+
+    public bool CanRun => true;
 
     public void Apply(GameObject entity, ZDO entityZdo)
     {
@@ -47,7 +60,7 @@ public class SpawnModifierDefaultRollLevel : ISpawnModifier
 
         if (minLevel > 1)
         {
-            Character character = ComponentCache.GetComponent<Character>(entity);
+            Character character = ComponentCache.Get<Character>(entity);
 
             if (character != null && character)
             {

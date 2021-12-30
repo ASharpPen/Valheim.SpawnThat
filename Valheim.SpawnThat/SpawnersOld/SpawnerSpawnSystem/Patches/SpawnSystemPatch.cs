@@ -2,6 +2,7 @@
 using System;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.Caches;
+using Valheim.SpawnThat.Spawners.LocalSpawner.Caches;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Managers;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Patches
