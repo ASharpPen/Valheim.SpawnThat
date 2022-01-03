@@ -17,13 +17,26 @@ internal static class TestSpawnApiUsage
         SpawnerConfigurationManager.SubscribeConfiguration((spawnerConfigs) => 
         {
             // Configure local spawners
-            spawnerConfigs.ConfigureLocalSpawnerByName("Spawner_Goblin")
+            spawnerConfigs
+                .ConfigureLocalSpawnerByName("Spawner_Goblin")
                 .SetMinLevel(1);
 
-            spawnerConfigs.ConfigureLocalSpawnerByLocationAndCreature("GoblinCamp1", "Goblin")
+            spawnerConfigs
+                .ConfigureLocalSpawnerByLocationAndCreature("GoblinCamp1", "Goblin")
                 .SetMinLevel(3)
                 .SetMaxLevel(5)
                 .SetPrefabName("Skeleton");
+        });
+
+        SpawnerConfigurationManager.SubscribeConfiguration(spawnerConfigs =>
+        {
+            // Configure world spawners
+            spawnerConfigs
+                .ConfigureWorldSpawner(1001)
+                .SetPrefabName("Skeleton")
+                .SetMaxSpawned(100)
+                .SetMinLevel(1)
+                .SetMaxSpawned(5);
         });
     }
 
@@ -44,10 +57,30 @@ internal static class TestSpawnApiUsage
                     template.SpawnConditions.RemoveAll(x => !x.CanRunClientSide);
                 });
         });
+
+        SpawnerConfigurationManager.SubscribeConfiguration(spawnerConfigs =>
+        {
+            spawnerConfigs
+                .ConfigureWorldSpawner(1)
+                .SetMinLevel(2)
+                .SetMaxSpawned(20)
+                .SetPackSizeMin(5)
+                .SetPackSizeMax(10);
+        });
     }
 
     public static void RemoveSpawner()
     {
-
+        SpawnerConfigurationManager.SubscribeConfiguration(spawnerConfigs =>
+        {
+            spawnerConfigs
+                .ConfigureWorldSpawner(2)
+                .SetEnabled(false)
+                .AddPostConfiguration(template =>
+                {
+                    // Try to force it
+                    template.Enabled = false;
+                });
+        });
     }
 }

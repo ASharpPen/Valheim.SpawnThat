@@ -5,6 +5,7 @@ using UnityEngine;
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Spawners.Conditions;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions;
 using Valheim.SpawnThat.Utilities.Extensions;
 using Valheim.SpawnThat.World.Maps.Area;

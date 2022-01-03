@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.Caches;
+using Valheim.SpawnThat.Spawners.WorldSpawner.Caches;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Patches
 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Valheim.SpawnThat.Spawners.Conditions;
 using Valheim.SpawnThat.Spawners.Modifiers;
+using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.Spawners.LocalSpawner.Configuration;
 
@@ -30,18 +31,7 @@ internal class LocalSpawnBuilder : ILocalSpawnBuilder
     public ILocalSpawnBuilder AddOrReplaceCondition<TCondition>(TCondition condition)
         where TCondition : class, ISpawnCondition
     {
-        var conditionType = typeof(TCondition);
-        int existingConditionIndex = Template.SpawnConditions.FindIndex(x => x.GetType() == conditionType);
-
-        if (existingConditionIndex < 0)
-        {
-            Template.SpawnConditions.Add(condition);
-        }
-        else
-        {
-            Template.SpawnConditions[existingConditionIndex] = condition;
-        }
-
+        Template.SpawnConditions.AddOrReplaceByType(condition);
         return this;
     }
 
@@ -54,18 +44,7 @@ internal class LocalSpawnBuilder : ILocalSpawnBuilder
     public ILocalSpawnBuilder AddOrReplaceModifier<TModifier>(TModifier modifier)
         where TModifier : class, ISpawnModifier
     {
-        var modifierType = typeof(TModifier);
-        var index = Template.Modifiers.FindIndex(x => x.GetType() == modifierType);
-
-        if (index >= 0)
-        {
-            Template.Modifiers[index] = modifier;
-        }
-        else
-        {
-            Template.Modifiers.Add(modifier);
-        }
-
+        Template.Modifiers.AddOrReplaceByType(modifier);
         return this;
     }
 

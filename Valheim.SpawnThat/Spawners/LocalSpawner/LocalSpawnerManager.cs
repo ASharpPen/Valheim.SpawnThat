@@ -3,6 +3,7 @@ using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Cache;
 using Valheim.SpawnThat.Spawners.LocalSpawner.Caches;
 using Valheim.SpawnThat.Spawners.LocalSpawner.Services;
+using Valheim.SpawnThat.Spawners.WorldSpawner.Caches;
 using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Spawners.LocalSpawner;
@@ -39,7 +40,7 @@ internal static class LocalSpawnerManager
             var template = GetTemplate(spawner);
 
             // Try apply template to spawner.
-            TemplateApplierService.ConfigureSpawner(spawner, template);
+            LocalSpawnerConfigurationService.ConfigureSpawner(spawner, template);
             spawner.SetSuccessfulInit();
         }
         catch(Exception e)

@@ -3,6 +3,7 @@ using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.Caches;
 using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner.Types;
+using Valheim.SpawnThat.Spawners.WorldSpawner.Caches;
 using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner

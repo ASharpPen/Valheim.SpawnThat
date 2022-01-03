@@ -4,6 +4,7 @@ using System.Linq;
 using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawners.Caches;
+using Valheim.SpawnThat.Spawners.Conditions;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific;
 using Valheim.SpawnThat.Startup;

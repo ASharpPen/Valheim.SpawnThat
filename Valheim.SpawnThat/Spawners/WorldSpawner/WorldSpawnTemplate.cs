@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Valheim.SpawnThat.Spawners.Conditions;
+using Valheim.SpawnThat.Spawners.Modifiers;
 using static Heightmap;
 
 namespace Valheim.SpawnThat.Spawners.WorldSpawner;
@@ -11,6 +10,12 @@ public class WorldSpawnTemplate
 {
     private string _prefabName;
     private int? _prefabHash;
+
+    public List<ISpawnCondition> SpawnConditions { get; } = new();
+
+    public List<ISpawnPositionCondition> SpawnPositionConditions { get; } = new();
+
+    public List<ISpawnModifier> SpawnModifiers { get; } = new();
 
     /// <summary>   
     /// <para>Prefab to override existing with.</para>
@@ -30,6 +35,20 @@ public class WorldSpawnTemplate
     {
         get => _prefabHash ?? _prefabName.GetStableHashCode();
     }
+
+    /// <summary>
+    /// Toggles this template.
+    /// If disabled, this spawn entry will not run.
+    /// Can be used to disable existing spawn templates.
+    /// </summary>
+    public bool Enabled { get; set; } = true;
+
+    /// <summary>
+    /// Toggles this configuration on / off.
+    /// If disabled, template will be ignored.
+    /// Cannot be used to disable existing spawn templates.
+    /// </summary>
+    public bool TemplateEnabled { get; set; } = true;
 
     /// <summary>
     /// <para>Just a field for setting a custom name for the template. This is just for debugging.</para>
@@ -71,9 +90,9 @@ public class WorldSpawnTemplate
     /// </summary>
     public float? PackSpawnCircleRadius { get; set; }
 
-    public float? PackSizeMin { get; set; }
+    public int? PackSizeMin { get; set; }
 
-    public float? PackSizeMax { get; set; }
+    public int? PackSizeMax { get; set; }
 
     public bool? ConditionAllowInForest { get; set; }
 
@@ -81,9 +100,9 @@ public class WorldSpawnTemplate
 
     public float? LevelUpDistance { get; set; }
 
-    public float? MinLevel { get; set; }
+    public int? MinLevel { get; set; }
 
-    public float? MaxLevel { get; set; }
+    public int? MaxLevel { get; set; }
 
     //public float? LevelUpChance { get; set; }
 
@@ -99,9 +118,9 @@ public class WorldSpawnTemplate
 
     public float? ConditionMaxTilt { get; set; }
 
-    public List<string>? ConditionEnvironments { get; set; }
+    public List<string> ConditionEnvironments { get; set; }
 
-    public List<string>? ConditionRequiredGlobalKeys { get; set; }
+    public string ConditionRequiredGlobalKey { get; set; }
 
     public bool? ConditionAllowDuringDay { get; set; }
 

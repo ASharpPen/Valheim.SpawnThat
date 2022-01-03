@@ -5,5 +5,5 @@ public interface ISpawnerConfiguration
     /// <summary>
     /// Build finalized configurations.
     /// </summary>
-    void Build();
+    internal void Build();
 }

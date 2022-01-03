@@ -6,8 +6,6 @@ namespace Valheim.SpawnThat.Spawners.LocalSpawner.Configuration;
 
 public interface ILocalSpawnBuilder
 {
-    LocalSpawnTemplate Build();
-
     ILocalSpawnBuilder SetEnabled(bool enabled = true);
 
     ILocalSpawnBuilder SetPrefabName(string prefabName);
@@ -28,7 +26,13 @@ public interface ILocalSpawnBuilder
 
     ILocalSpawnBuilder AddCondition(ISpawnCondition condition);
 
+    ILocalSpawnBuilder AddOrReplaceCondition<TCondition>(TCondition condition)
+        where TCondition : class, ISpawnCondition;
+
     ILocalSpawnBuilder AddModifier(ISpawnModifier modifier);
+
+    ILocalSpawnBuilder AddOrReplaceModifier<TModifier>(TModifier modifier)
+        where TModifier : class, ISpawnModifier;
 
     ILocalSpawnBuilder AddPostConfiguration(Action<LocalSpawnTemplate> configure);
 }

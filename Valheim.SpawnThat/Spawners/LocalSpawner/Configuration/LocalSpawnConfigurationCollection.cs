@@ -11,9 +11,9 @@ public record struct RoomIdentifier(string Room, string PrefabName);
 
 internal class LocalSpawnConfigurationCollection : ISpawnerConfiguration
 {
-    private Dictionary<SpawnerNameIdentifier, ILocalSpawnBuilder> spawnerBuilders { get; set; } = new();
-    private Dictionary<LocationIdentifier, ILocalSpawnBuilder> locationBuilders { get; set; } = new();
-    private Dictionary<RoomIdentifier, ILocalSpawnBuilder> roomBuilders { get; set; } = new();
+    private Dictionary<SpawnerNameIdentifier, LocalSpawnBuilder> spawnerBuilders { get; set; } = new();
+    private Dictionary<LocationIdentifier, LocalSpawnBuilder> locationBuilders { get; set; } = new();
+    private Dictionary<RoomIdentifier, LocalSpawnBuilder> roomBuilders { get; set; } = new();
 
     private bool finalized = false;
 
