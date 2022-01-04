@@ -10,6 +10,7 @@ internal static class TestSpawnApiUsage
         SpawnerConfigurationManager.OnConfigure += AddNewSpawner;
         SpawnerConfigurationManager.OnConfigure += ModifySpawner;
         SpawnerConfigurationManager.OnConfigure += RemoveSpawner;
+        SpawnerConfigurationManager.OnConfigure += ConfigureUsingIntegration;
     }
 
     public static void AddNewSpawner()
@@ -81,6 +82,17 @@ internal static class TestSpawnApiUsage
                     // Try to force it
                     template.Enabled = false;
                 });
+        });
+    }
+
+    public static void ConfigureUsingIntegration()
+    {
+        SpawnerConfigurationManager.SubscribeConfiguration(spawnerConfigs =>
+        {
+            // Epic Loot for World Spawner
+            spawnerConfigs
+                .ConfigureWorldSpawner(1)
+                .AddEpicLootConditionNearbyPlayersCarryItemWithRarity(30, "");
         });
     }
 }

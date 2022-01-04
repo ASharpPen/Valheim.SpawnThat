@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Integrations.EpicLoot.Conditions;
 using Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific.EpicLoot;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific
