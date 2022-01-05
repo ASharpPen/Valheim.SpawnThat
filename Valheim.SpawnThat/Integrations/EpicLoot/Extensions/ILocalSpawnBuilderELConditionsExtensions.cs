@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Valheim.SpawnThat.Integrations;
 using Valheim.SpawnThat.Integrations.EpicLoot.Conditions;
 using Valheim.SpawnThat.Integrations.EpicLoot.Models;
-using Valheim.SpawnThat.Spawners.WorldSpawner;
+using Valheim.SpawnThat.Spawners.LocalSpawner.Configuration;
 
 namespace Valheim.SpawnThat.Spawners;
 
-public static class IWorldSpawnBuilderELConditionsExtensions
+public static class ILocalSpawnBuilderELConditionsExtensions
 {
-    public static IWorldSpawnBuilder AddEpicLootConditionNearbyPlayersCarryItemWithRarity(this IWorldSpawnBuilder builder, int distanceToSearch, IEnumerable<string> rarities)
+    public static ILocalSpawnBuilder AddEpicLootConditionNearbyPlayersCarryItemWithRarity(this ILocalSpawnBuilder builder, int distanceToSearch, IEnumerable<string> rarities)
     {
         if (IntegrationManager.InstalledEpicLoot)
         {
@@ -19,7 +19,7 @@ public static class IWorldSpawnBuilderELConditionsExtensions
         return builder;
     }
 
-    public static IWorldSpawnBuilder AddEpicLootConditionNearbyPlayersCarryItemWithRarity(this IWorldSpawnBuilder builder, int distanceToSearch, IEnumerable<EpicLootRarity> rarities)
+    public static ILocalSpawnBuilder AddEpicLootConditionNearbyPlayersCarryItemWithRarity(this ILocalSpawnBuilder builder, int distanceToSearch, IEnumerable<EpicLootRarity> rarities)
     {
         if (IntegrationManager.InstalledEpicLoot)
         {
@@ -29,7 +29,7 @@ public static class IWorldSpawnBuilderELConditionsExtensions
         return builder;
     }
 
-    public static IWorldSpawnBuilder AddEpicLootConditionNearbyPlayerCarryLegendaryItem(this IWorldSpawnBuilder builder, int distanceToSearch, IEnumerable<string> legendaryItemIds)
+    public static ILocalSpawnBuilder AddEpicLootConditionNearbyPlayerCarryLegendaryItem(this ILocalSpawnBuilder builder, int distanceToSearch, IEnumerable<string> legendaryItemIds)
     {
         if (IntegrationManager.InstalledEpicLoot)
         {
@@ -39,7 +39,7 @@ public static class IWorldSpawnBuilderELConditionsExtensions
         return builder;
     }
 
-    public static IWorldSpawnBuilder AddEpicLootConditionNearbyPlayerCarryLegendaryItem(this IWorldSpawnBuilder builder, int distanceToSearch, params string[] legendaryItemIds)
+    public static ILocalSpawnBuilder AddEpicLootConditionNearbyPlayerCarryLegendaryItem(this ILocalSpawnBuilder builder, int distanceToSearch, params string[] legendaryItemIds)
     {
         if (IntegrationManager.InstalledEpicLoot)
         {

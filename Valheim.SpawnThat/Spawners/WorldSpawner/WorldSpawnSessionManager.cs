@@ -131,7 +131,7 @@ internal static class WorldSpawnSessionManager
         {
             try
             {
-                modifier?.Apply(spawn, zdo);
+                modifier?.Modify(spawn, zdo);
             }
             catch (Exception e)
             {

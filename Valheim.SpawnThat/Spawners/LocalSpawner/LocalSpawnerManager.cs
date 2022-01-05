@@ -3,7 +3,6 @@ using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Cache;
 using Valheim.SpawnThat.Spawners.LocalSpawner.Caches;
 using Valheim.SpawnThat.Spawners.LocalSpawner.Services;
-using Valheim.SpawnThat.Spawners.WorldSpawner.Caches;
 using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Spawners.LocalSpawner;

@@ -1,6 +1,6 @@
 ﻿using System;
-using Valheim.SpawnThat.Spawners.Conditions;
-using Valheim.SpawnThat.Spawners.Modifiers;
+using Valheim.SpawnThat.Spawn.Conditions;
+using Valheim.SpawnThat.Spawn.Modifiers;
 
 namespace Valheim.SpawnThat.Spawners.LocalSpawner.Configuration;
 

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Valheim.SpawnThat.Spawners.Conditions;
-using Valheim.SpawnThat.Spawners.Modifiers;
+using Valheim.SpawnThat.Spawn.Conditions;
+using Valheim.SpawnThat.Spawn.Modifiers;
+using Valheim.SpawnThat.Spawn.PositionConditions;
 using static Heightmap;
 
 namespace Valheim.SpawnThat.Spawners.WorldSpawner;

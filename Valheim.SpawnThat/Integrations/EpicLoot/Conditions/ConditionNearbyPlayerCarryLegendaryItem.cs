@@ -3,82 +3,73 @@ using ExtendedItemDataFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
-using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Core.Configuration;
+using Valheim.SpawnThat.Spawn.Conditions;
+using Valheim.SpawnThat.Spawners.Contexts;
 using Valheim.SpawnThat.Utilities;
 
-namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Conditions.ModSpecific.EpicLoot
+namespace Valheim.SpawnThat.Integrations.EpicLoot.Conditions;
+
+public class ConditionNearbyPlayerCarryLegendaryItem : ISpawnCondition
 {
-    public class ConditionNearbyPlayerCarryLegendaryItem : IConditionOnSpawn
+    private int SearchDistance { get; }
+    private HashSet<string> LegendaryIds { get; }
+
+    public bool CanRunClientSide { get; } = true;
+    public bool CanRunServerSide { get; } = false;
+
+    public ConditionNearbyPlayerCarryLegendaryItem(int distanceToSearch, IEnumerable<string> legendaryIdsToSearch)
     {
-        private static ConditionNearbyPlayerCarryLegendaryItem instance;
+        SearchDistance = distanceToSearch;
 
-        public static ConditionNearbyPlayerCarryLegendaryItem Instance => instance ??= new();
+        LegendaryIds = legendaryIdsToSearch
+            .Select(x => x.Trim().ToUpperInvariant())
+            .ToHashSet();
+    }
 
-        public bool ShouldFilter(SpawnConditionContext context)
+    public ConditionNearbyPlayerCarryLegendaryItem(int distanceToSearch, params string[] legendaryIdsToSearch)
+    {
+        SearchDistance = distanceToSearch;
+
+        LegendaryIds = legendaryIdsToSearch
+            .Select(x => x.Trim().ToUpperInvariant())
+            .ToHashSet();
+    }
+
+    public bool IsValid(SpawnSessionContext context)
+    {
+        if (LegendaryIds.Count == 0)
         {
-            if (IsValid(context.Position, context.Config))
-            {
-                return false;
-            }
-
-            Log.LogTrace($"Ignoring world config {context.Config.Name} due to no players in area carrying required legendary.");
             return true;
         }
 
-        public bool IsValid(Vector3 center, SpawnConfiguration spawnConfig)
+        if (SearchDistance <= 0)
         {
-            if ((spawnConfig.DistanceToTriggerPlayerConditions?.Value ?? 0) <= 0)
-            {
-                return true;
-            }
-
-
-            if (!spawnConfig.TryGet(SpawnSystemConfigEpicLoot.ModName, out Config modConfig) || modConfig is not SpawnSystemConfigEpicLoot config)
-            {
-                return true;
-            }
-            
-            if (string.IsNullOrWhiteSpace(config.ConditionNearbyPlayerCarryLegendaryItem?.Value))
-            {
-                return true;
-            }
-
-            List<Player> players = PlayerUtils.GetPlayersInRadius(center, spawnConfig.DistanceToTriggerPlayerConditions.Value);
-
-            var itemsLookedFor = config.ConditionNearbyPlayerCarryLegendaryItem.Value.SplitByComma().ToHashSet();
-
-            foreach (var player in players.Where(x => x is not null && x))
-            {
-                var items = player.GetInventory()?.GetAllItems();
-
-                if (items is null)
-                {
-                    continue;
-                }
-
-                if(items.Any(
-                    x =>
-                    {
-                        var magicComponent = x?.Extended()?.GetComponent<MagicItemComponent>();
-
-                        if(magicComponent is null)
-                        {
-                            return false;
-                        }
-
-                        return itemsLookedFor.Contains(magicComponent.MagicItem.LegendaryID);
-                    }))
-                {
-                    return true;
-                }
-            }
-
             return false;
         }
+
+        List<Player> players = PlayerUtils.GetPlayersInRadius(context.SpawnerZdo.GetPosition(), SearchDistance);
+
+        foreach (var player in players)
+        {
+            var items = player?.GetInventory()?.GetAllItems() ?? new(0);
+
+            if (items.Any(
+                x =>
+                {
+                    var magicComponent = x?.Extended()?.GetComponent<MagicItemComponent>();
+
+                    if (magicComponent is null)
+                    {
+                        return false;
+                    }
+
+                    return LegendaryIds.Contains(magicComponent.MagicItem.LegendaryID?.Trim()?.ToUpperInvariant());
+                }))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
