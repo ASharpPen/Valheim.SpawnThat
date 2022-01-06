@@ -1,5 +1,6 @@
 
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Integrations.EpicLoot.Models;
 
 namespace Valheim.SpawnThat.Spawners.Debug;
 
@@ -92,7 +93,7 @@ internal static class TestSpawnApiUsage
             // Epic Loot for World Spawner
             spawnerConfigs
                 .ConfigureWorldSpawner(1)
-                .AddEpicLootConditionNearbyPlayersCarryItemWithRarity(30, "");
+                .AddEpicLootConditionNearbyPlayersCarryItemWithRarity(30, new[] { EpicLootRarity.Rare });
         });
     }
 }

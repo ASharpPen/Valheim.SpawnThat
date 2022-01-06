@@ -1,6 +1,8 @@
 ﻿using HarmonyLib;
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Spawners.LocalSpawner;
+using Valheim.SpawnThat.Spawners.WorldSpawner;
 
 namespace Valheim.SpawnThat.Startup;
 
@@ -17,8 +19,8 @@ public static class WorldStartupResetPatch
         Log.LogDebug("Resetting configurations");
         StateResetter.Reset();
         ConfigurationManager.LoadAllConfigurations();
-        SpawnSystemConfigManager.Wait = false;
-        CreatureSpawnerConfigManager.Wait = false;
+        WorldSpawnerManager.WaitingForConfigs = false;
+        LocalSpawnerManager.WaitingForConfigs = false;
     }
 
     /// <summary>
@@ -42,7 +44,7 @@ public static class WorldStartupResetPatch
         Log.LogDebug("Resetting configurations");
         StateResetter.Reset();
         ConfigurationManager.LoadAllConfigurations();
-        SpawnSystemConfigManager.Wait = false;
-        CreatureSpawnerConfigManager.Wait = false;
+        WorldSpawnerManager.WaitingForConfigs = false;
+        LocalSpawnerManager.WaitingForConfigs = false;
     }
 }

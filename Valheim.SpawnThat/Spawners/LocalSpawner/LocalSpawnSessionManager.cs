@@ -71,16 +71,11 @@ internal static class LocalSpawnSessionManager
             {
                 try
                 {
-                    if (modifier?.CanRun() != true)
-                    {
-                        continue;
-                    }
-
-                    modifier.Apply(spawn, spawnZdo);
+                    modifier?.Modify(spawn, spawnZdo);
                 }
                 catch(Exception e)
                 {
-                    Log.LogError($"Error while attempting to apply modifier '{modifier?.GetType()?.Name}' to local spawner '{spawner.name}'´", e);
+                    Log.LogError($"Error while attempting to apply modifier '{modifier?.GetType()?.Name}' to local spawner '{spawner.name}'", e);
                 }
             }
         }

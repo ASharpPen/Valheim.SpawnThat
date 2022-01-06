@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Spawners.LocalSpawner;
+using Valheim.SpawnThat.Spawners.WorldSpawner;
 
 namespace Valheim.SpawnThat.Startup;
 
@@ -36,7 +38,7 @@ public static class GameStartupPatch
         yield return new WaitForSeconds(2);
 
         Log.LogDebug("Finished early delay for config application.");
-        SpawnSystemConfigManager.Wait = false;
-        CreatureSpawnerConfigManager.Wait = false;
+        WorldSpawnerManager.WaitingForConfigs = false;
+        LocalSpawnerManager.WaitingForConfigs = false;
     }
 }

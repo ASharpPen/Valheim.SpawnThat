@@ -1,11 +1,13 @@
 ﻿using HarmonyLib;
 using System.Linq;
 using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Spawners.WorldSpawner.Services;
 using Valheim.SpawnThat.Startup;
 using Valheim.SpawnThat.World.Maps.Area;
 
 namespace Valheim.SpawnThat.World.Maps.Patches;
 
+// TODO: Move to Debug
 [HarmonyPatch(typeof(Game))]
 public class Patch_Game_FindSpawnPoint_PrintMaps
 {
@@ -55,7 +57,7 @@ public class Patch_Game_FindSpawnPoint_PrintMaps
 
             foreach (var config in spawnSystemConfigs.Subsections.Values)
             {
-                var spawnMap = MapManager.GetSpawnMap(config.Index);
+                var spawnMap = WorldSpawnerSpawnMapService.GetMapOfTemplatesActiveAreas(config.Index);
 
                 ImageBuilder
                     .SetGrayscaleBiomes(MapManager.AreaMap)
