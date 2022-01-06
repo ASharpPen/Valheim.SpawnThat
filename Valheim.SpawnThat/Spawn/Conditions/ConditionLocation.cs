@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
+using UnityEngine;
 using Valheim.SpawnThat.Spawners.Contexts;
 using Valheim.SpawnThat.World.Locations;
 
@@ -28,6 +30,27 @@ public class ConditionLocation : ISpawnCondition
 
         var location = LocationManager
             .GetLocation(context.SpawnerZdo.GetPosition())?
+            .LocationName?
+            .Trim()?
+            .ToUpperInvariant();
+
+        if (location is null)
+        {
+            return false;
+        }
+
+        return Locations.Any(x => x == location);
+    }
+
+    public bool IsValid(Vector3 position)
+    {
+        if ((Locations?.Count ?? 0) == 0)
+        {
+            return true;
+        }
+
+        var location = LocationManager
+            .GetLocation(position)?
             .LocationName?
             .Trim()?
             .ToUpperInvariant();

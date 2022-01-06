@@ -1,4 +1,6 @@
-﻿using Valheim.SpawnThat.Spawners.Contexts;
+﻿using System.Runtime.Remoting.Contexts;
+using UnityEngine;
+using Valheim.SpawnThat.Spawners.Contexts;
 
 namespace Valheim.SpawnThat.Spawn.Conditions;
 
@@ -28,6 +30,30 @@ public class ConditionDistanceToCenter : ISpawnCondition
         }
 
         var distance = context.SpawnerZdo.GetPosition().magnitude;
+
+        if (MinDistance is not null
+            && distance < MinDistance)
+        {
+            return false;
+        }
+
+        if (MaxDistance is not null
+            && distance > MaxDistance)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public bool IsValid(Vector3 position)
+    {
+        if (MinDistance is null && MaxDistance is null)
+        {
+            return true;
+        }
+
+        var distance = position.magnitude;
 
         if (MinDistance is not null
             && distance < MinDistance)

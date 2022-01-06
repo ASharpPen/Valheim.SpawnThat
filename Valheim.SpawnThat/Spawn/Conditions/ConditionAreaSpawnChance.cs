@@ -5,7 +5,7 @@ namespace Valheim.SpawnThat.Spawn.Conditions;
 
 public class ConditionAreaSpawnChance : ISpawnCondition
 {
-    private double AreaChance { get; }
+    public double AreaChance { get; }
     public int EntityId { get; }
 
     public bool CanRunClientSide { get; } = true;

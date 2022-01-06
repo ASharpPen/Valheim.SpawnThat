@@ -4,8 +4,9 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using Valheim.SpawnThat.Configuration;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
-using Valheim.SpawnThat.Spawners.SpawnerCreatureSpawner;
+using Valheim.SpawnThat.Spawners.WorldSpawner;
+using Valheim.SpawnThat.Spawners.WorldSpawner.Services;
+using Valheim.SpawnThat.World.Dungeons;
 using Valheim.SpawnThat.World.Maps;
 using Valheim.SpawnThat.World.Maps.Area;
 
@@ -112,7 +113,7 @@ internal static class TerminalPatch
     public static void CommandInRoom()
     {
         var pos = Player.m_localPlayer.transform.position;
-        var roomData = RoomCache.GetContainingRoom(pos);
+        var roomData = RoomManager.GetContainingRoom(pos);
 
         string roomNameCleaned = roomData?.Name?.Split(new[] { '(' })?.FirstOrDefault();
 
@@ -171,30 +172,20 @@ internal static class TerminalPatch
 
     public static void CommandPrintTemplateSpawnAreas(int templateIndex)
     {
-        var spawnMap = MapManager.GetSpawnMap(templateIndex);
+        var spawnMap = WorldSpawnerSpawnMapService.GetMapOfTemplatesActiveAreas(templateIndex);
 
-        //SpawnSystem config is only expected to have a single first layer, namely "WorldSpawner", so we just grab the first entry.
-        var spawnSystemConfigs = ConfigurationManager
-            .SpawnSystemConfig?
-            .Subsections? //[*]
-            .Values?
-            .FirstOrDefault();
+        var template = WorldSpawnTemplateManager.GetTemplate(templateIndex);
 
-        string prefabName = "";
-        if (spawnSystemConfigs.Subsections.TryGetValue(templateIndex.ToString(), out SpawnConfiguration config))
+        if (spawnMap is null || template is null)
         {
-            prefabName = config.PrefabName.Value;
-        }
-        else
-        {
-            Console.instance.Print($"Unable to find config for template '{templateIndex}', skipping print.");
+            Console.instance.Print($"Unable to find template '{templateIndex}', skipping print.");
             return;
         }
 
         ImageBuilder
-            .SetGrayscaleBiomes(MapManager.AreaMap)
-            .AddHeatZones(spawnMap)
-            .Print($"spawn_map_{templateIndex}_{prefabName}");
+           .SetGrayscaleBiomes(MapManager.AreaMap)
+           .AddHeatZones(spawnMap)
+           .Print($"spawn_map_{templateIndex}_{template.PrefabName}");
 
         var debugFolder = Path.Combine(Paths.BepInExRootPath, ConfigurationManager.GeneralConfig?.DebugFileFolder?.Value ?? "Debug");
 
