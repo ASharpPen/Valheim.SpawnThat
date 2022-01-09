@@ -3,10 +3,17 @@ using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Spawn.Modifiers;
 
-public class ModifierRelentless : ISpawnModifier
+public class ModifierSetRelentless : ISpawnModifier
 {
     public const string ZdoFeature = "spawnthat_relentless";
     public static int ZdoFeatureHash { get; } = ZdoFeature.GetStableHashCode();
+
+    public bool Relentless { get; }
+
+    public ModifierSetRelentless(bool relentless)
+    {
+        Relentless = relentless;
+    }
 
     public void Modify(GameObject entity, ZDO entityZdo)
     {
@@ -15,7 +22,10 @@ public class ModifierRelentless : ISpawnModifier
             return;
         }
 
-        Log.LogDebug("Setting relentless");
-        entityZdo.Set(ZdoFeatureHash, true);
+        if (Relentless)
+        {
+            Log.LogDebug("Setting relentless");
+            entityZdo.Set(ZdoFeatureHash, Relentless);
+        }
     }
 }

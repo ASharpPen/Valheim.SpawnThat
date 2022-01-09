@@ -12,7 +12,7 @@ internal static class LocalSpawnTemplateManager
 
     static LocalSpawnTemplateManager()
     {
-        StateResetter.Subscribe(() =>
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             templatesBySpawnerName = new();
             templatesByLocation = new();

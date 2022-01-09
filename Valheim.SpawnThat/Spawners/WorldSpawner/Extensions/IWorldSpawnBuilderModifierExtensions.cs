@@ -6,9 +6,9 @@ namespace Valheim.SpawnThat.Spawners;
 
 public static class IWorldSpawnBuilderModifierExtensions
 {
-    public static IWorldSpawnBuilder SetModifierDespawnOnAlert(this IWorldSpawnBuilder builder)
+    public static IWorldSpawnBuilder SetModifierDespawnOnAlert(this IWorldSpawnBuilder builder, bool despawnOnAlert)
     {
-        builder.AddOrReplaceModifier(new ModifierDespawnOnAlert());
+        builder.AddOrReplaceModifier(new ModifierDespawnOnAlert(despawnOnAlert));
         return builder;
     }
 
@@ -26,9 +26,9 @@ public static class IWorldSpawnBuilderModifierExtensions
         return builder;
     }
 
-    public static IWorldSpawnBuilder SetModifierRelentless(this IWorldSpawnBuilder builder)
+    public static IWorldSpawnBuilder SetModifierRelentless(this IWorldSpawnBuilder builder, bool relentless)
     {
-        builder.AddOrReplaceModifier(new ModifierRelentless());
+        builder.AddOrReplaceModifier(new ModifierSetRelentless(relentless));
         return builder;
     }
 
@@ -38,15 +38,15 @@ public static class IWorldSpawnBuilderModifierExtensions
         return builder;
     }
 
-    public static IWorldSpawnBuilder SetModifierTamed(this IWorldSpawnBuilder builder)
+    public static IWorldSpawnBuilder SetModifierTamed(this IWorldSpawnBuilder builder, bool tamed = true)
     {
-        builder.AddOrReplaceModifier(new ModifierSetTamed());
+        builder.AddOrReplaceModifier(new ModifierSetTamed(tamed));
         return builder;
     }
 
-    public static IWorldSpawnBuilder SetModifierTamedCommandable(this IWorldSpawnBuilder builder)
+    public static IWorldSpawnBuilder SetModifierTamedCommandable(this IWorldSpawnBuilder builder, bool commandable)
     {
-        builder.AddOrReplaceModifier(new ModifierSetTamedCommandable());
+        builder.AddOrReplaceModifier(new ModifierSetTamedCommandable(commandable));
         return builder;
     }
 

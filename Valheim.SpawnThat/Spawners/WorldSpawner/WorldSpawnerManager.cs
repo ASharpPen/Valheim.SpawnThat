@@ -24,7 +24,7 @@ internal static class WorldSpawnerManager
 
     static WorldSpawnerManager()
     {
-        StateResetter.Subscribe(() =>
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             WaitingForConfigs = true;
 

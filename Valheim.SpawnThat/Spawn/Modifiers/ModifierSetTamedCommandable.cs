@@ -8,6 +8,12 @@ public class ModifierSetTamedCommandable : ISpawnModifier
 {
     public const string ZdoFeature = "spawnthat_tamed_commandable";
     public static int ZdoFeatureHash { get; } = ZdoFeature.GetStableHashCode();
+    public bool Commandable { get; }
+
+    public ModifierSetTamedCommandable(bool commandable)
+    {
+        Commandable = commandable;
+    }
 
     public void Modify(GameObject entity, ZDO entityZdo)
 {
@@ -25,8 +31,8 @@ public class ModifierSetTamedCommandable : ISpawnModifier
 #if DEBUG
             Log.LogDebug($"Setting tamed commandable");
 #endif
-            tameable.m_commandable = true;
-            entityZdo?.Set(ZdoFeatureHash, true);
+            tameable.m_commandable = Commandable;
+            entityZdo?.Set(ZdoFeatureHash, Commandable);
         }
     }
 }

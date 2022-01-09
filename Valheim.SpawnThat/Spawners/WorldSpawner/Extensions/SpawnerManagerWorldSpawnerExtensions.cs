@@ -9,6 +9,6 @@ public static class SpawnerManagerWorldSpawnerExtensions
         this ISpawnerConfigurationCollection configCollection,
         uint id)
         => configCollection
-            .GetOrAddSpawnerConfiguration(new WorldSpawnConfigurationCollection())
+            .GetOrAddSpawnerConfiguration(new WorldSpawnerConfiguration())
             .GetBuilder(id);
 }

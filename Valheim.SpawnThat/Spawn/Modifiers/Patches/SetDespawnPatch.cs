@@ -142,7 +142,7 @@ internal static class SetDespawnPatch
         {
             if (result)
             {
-                zdo.Set(ModifierRelentless.ZdoFeatureHash, false);
+                zdo.Set(ModifierSetRelentless.ZdoFeatureHash, false);
             }
         }
     }

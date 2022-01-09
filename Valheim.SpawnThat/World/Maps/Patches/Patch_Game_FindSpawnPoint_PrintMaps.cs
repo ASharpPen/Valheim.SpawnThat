@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using System.Linq;
 using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 using Valheim.SpawnThat.Spawners.WorldSpawner.Services;
 using Valheim.SpawnThat.Startup;
 using Valheim.SpawnThat.World.Maps.Area;
@@ -15,7 +16,7 @@ public class Patch_Game_FindSpawnPoint_PrintMaps
 
     static Patch_Game_FindSpawnPoint_PrintMaps()
     {
-        StateResetter.Subscribe(() =>
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             FirstTime = true;
         });
@@ -48,8 +49,10 @@ public class Patch_Game_FindSpawnPoint_PrintMaps
 
         if (ConfigurationManager.GeneralConfig?.PrintFantasticBeastsAndWhereToKillThem?.Value == true)
         {
+            // TODO: Base on WorldSpawnerConfigurationCollection instead.
+
             //SpawnSystem config is only expected to have a single first layer, namely "WorldSpawner", so we just grab the first entry.
-            var spawnSystemConfigs = ConfigurationManager
+            var spawnSystemConfigs = SpawnSystemConfigurationManager
                 .SpawnSystemConfig?
                 .Subsections? //[*]
                 .Values?

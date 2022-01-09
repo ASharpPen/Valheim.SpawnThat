@@ -1,7 +1,7 @@
 ﻿using System;
 using Valheim.SpawnThat.Core.Configuration;
 
-namespace Valheim.SpawnThat.Configuration.ConfigTypes
+namespace Valheim.SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx
 {
     [Serializable]
     public class SpawnSystemConfigurationFile : ConfigWithSubsections<SpawnSystemConfiguration>, IConfigFile
@@ -32,11 +32,11 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
             {
                 newModConfig = new SpawnSystemConfigCLLC();
             }
-            else if(subsectionName == SpawnSystemConfigMobAI.ModName.Trim().ToUpperInvariant())
+            else if (subsectionName == SpawnSystemConfigMobAI.ModName.Trim().ToUpperInvariant())
             {
                 newModConfig = new SpawnSystemConfigMobAI();
             }
-            else if(subsectionName == SpawnSystemConfigEpicLoot.ModName.Trim().ToUpperInvariant())
+            else if (subsectionName == SpawnSystemConfigEpicLoot.ModName.Trim().ToUpperInvariant())
             {
                 newModConfig = new SpawnSystemConfigEpicLoot();
             }
@@ -207,7 +207,7 @@ namespace Valheim.SpawnThat.Configuration.ConfigTypes
     }
 
     [Serializable]
-    public class SpawnSystemConfigEpicLoot: Config
+    public class SpawnSystemConfigEpicLoot : Config
     {
         public const string ModName = "EpicLoot";
 

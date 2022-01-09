@@ -4,9 +4,8 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using Valheim.SpawnThat.Configuration;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Spawners;
+using Valheim.SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
 
 namespace Valheim.SpawnThat.Debugging;
 

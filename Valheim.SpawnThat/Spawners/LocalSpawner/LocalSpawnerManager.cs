@@ -19,7 +19,7 @@ internal static class LocalSpawnerManager
 
     static LocalSpawnerManager()
     {
-        StateResetter.Subscribe(() =>
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             WaitingForConfigs = true;
         });

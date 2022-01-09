@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Valheim.SpawnThat.Reset
 {
-    public interface IReset
+    internal interface IReset
     {
         void Reset();
     }

@@ -8,22 +8,55 @@ namespace Valheim.SpawnThat.Spawners;
 public static class SpawnerConfigurationManager
 {
     private static List<Action<ISpawnerConfigurationCollection>> _configurations = new();
+    private static List<Action<ISpawnerConfigurationCollection>> _lateConfigurations = new();
+
+    public static ISpawnerConfigurationCollection ConfigurationCollection { get; private set; }
 
     static SpawnerConfigurationManager()
     {
-        StateResetter.Subscribe(() =>
+        // Reset on new world entered.
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             _configurations = new();
+            _lateConfigurations = new();
+            ConfigurationCollection = null;
         });
     }
 
-    public delegate void SpawnerConfigurationEvent();
+    internal delegate void SpawnerEarlyConfigurationEvent(ISpawnerConfigurationCollection spawnerConfigs);
+    internal static event SpawnerEarlyConfigurationEvent OnEarlyConfigure;
 
+    public delegate void SpawnerConfigurationEvent(ISpawnerConfigurationCollection spawnerConfigs);
     public static event SpawnerConfigurationEvent OnConfigure;
 
-    internal static void ApplyConfigurations(ISpawnerConfigurationCollection configuration)
+    internal delegate void SpawnerLateConfigurationEvent(ISpawnerConfigurationCollection spawnerConfigs);
+    internal static event SpawnerLateConfigurationEvent OnLateConfigure;
+
+    // TODO: Consider removing this if it gets reset anyway?
+    // TODO: Consider not resetting this, so that it can be configured once instead, without having to worry about it. OnConfigure should be easier to manage with regards to subscribing / unsubscribing..
+    /// <summary>
+    /// Subscribe configuration action.
+    /// </summary>
+    /// <remarks>Subscriptions are reset by OnWorldInit. Use OnConfigure to manage subscription yourself.</remarks>
+    public static void SubscribeConfiguration(Action<ISpawnerConfigurationCollection> configure)
     {
-        OnConfigure();
+        _configurations.Add(configure);
+    }
+
+    // TODO: Consider removing this if it gets reset anyway?
+    // TODO: Consider not resetting this, so that it can be configured once instead, without having to worry about it. OnConfigure should be easier to manage with regards to subscribing / unsubscribing..
+    internal static void SubscribeLateConfiguration(Action<ISpawnerConfigurationCollection> configure)
+    {
+        _lateConfigurations.Add(configure);
+    }
+
+    internal static void BuildConfigurations()
+    {
+        SpawnerConfigurationCollection configuration = new();
+
+        OnEarlyConfigure(configuration);
+
+        OnConfigure(configuration);
 
         foreach (var configure in _configurations)
         {
@@ -39,10 +72,26 @@ public static class SpawnerConfigurationManager
                 Log.LogError("Error while attempting to apply spawner configuration", e);
             }
         }
-    }
 
-    public static void SubscribeConfiguration(Action<ISpawnerConfigurationCollection> configure)
-    {
-        _configurations.Add(configure);
+        OnLateConfigure(configuration);
+
+        foreach (var configure in _lateConfigurations)
+        {
+            try
+            {
+                if (configure is not null)
+                {
+                    configure(configuration);
+                }
+            }
+            catch (Exception e)
+            {
+                Log.LogError("Error while attempting to apply spawner configuration", e);
+            }
+        }
+
+        configuration.SpawnerConfigurations.ForEach(x => x.Build());
+
+        ConfigurationCollection = configuration;
     }
 }

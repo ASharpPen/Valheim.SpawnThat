@@ -20,7 +20,7 @@ public static class RoomManager
 
     static RoomManager()
     {
-        StateResetter.Subscribe(() =>
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             HasAdded = new HashSet<Vector3>();
             RoomList = new List<RoomData>();

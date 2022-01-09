@@ -9,9 +9,20 @@ internal static class TestSpawnApiUsage
     public static void Setup()
     {
         SpawnerConfigurationManager.OnConfigure += AddNewSpawner;
-        SpawnerConfigurationManager.OnConfigure += ModifySpawner;
-        SpawnerConfigurationManager.OnConfigure += RemoveSpawner;
-        SpawnerConfigurationManager.OnConfigure += ConfigureUsingIntegration;
+    }
+
+    public static void AddNewSpawner(ISpawnerConfigurationCollection spawnerConfigs)
+    {
+        // Configure local spawners
+        spawnerConfigs
+            .ConfigureLocalSpawnerByName("Spawner_Goblin")
+            .SetMinLevel(1);
+
+        spawnerConfigs
+            .ConfigureLocalSpawnerByLocationAndCreature("GoblinCamp1", "Goblin")
+            .SetMinLevel(3)
+            .SetMaxLevel(5)
+            .SetPrefabName("Skeleton");
     }
 
     public static void AddNewSpawner()
@@ -77,12 +88,14 @@ internal static class TestSpawnApiUsage
         {
             spawnerConfigs
                 .ConfigureWorldSpawner(2)
-                .SetEnabled(false)
+                .SetEnabled(false);
+                /*
                 .AddPostConfiguration(template =>
                 {
                     // Try to force it
                     template.Enabled = false;
                 });
+                */
         });
     }
 

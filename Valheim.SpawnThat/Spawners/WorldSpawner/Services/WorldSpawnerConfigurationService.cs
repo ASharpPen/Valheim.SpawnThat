@@ -5,6 +5,7 @@ using UnityEngine;
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Debugging;
+using Valheim.SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Spawners.WorldSpawner.Services;
@@ -16,7 +17,7 @@ internal static class WorldSpawnerConfigurationService
 
     static WorldSpawnerConfigurationService()
     {
-        StateResetter.Subscribe(() =>
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             IsConfigured = false;
             FirstRun = true;
@@ -98,7 +99,34 @@ internal static class WorldSpawnerConfigurationService
 
     private static void ApplySimpleTemplates(List<SpawnSystemList> spawnLists)
     {
+        var simpleConfigs = SpawnSystemConfigurationManager.SimpleConfig?.Subsections;
 
+        if (simpleConfigs is not null && simpleConfigs.Count > 0)
+        {
+            foreach (var spawnList in spawnLists)
+            {
+                foreach (var spawner in spawnList.m_spawners)
+                {
+                    if (string.IsNullOrWhiteSpace(spawner.m_prefab?.name))
+                    {
+                        continue;
+                    }
+
+                    var name = spawner.m_prefab.name;
+                    var cleanedName = name.Trim().ToUpper();
+
+                    if (simpleConfigs.TryGetValue(cleanedName, out SimpleConfig simpleConfig))
+                    {
+                        spawner.m_maxSpawned = (int)Math.Round(spawner.m_maxSpawned * simpleConfig.SpawnMaxMultiplier.Value);
+                        spawner.m_groupSizeMin = (int)Math.Round(spawner.m_groupSizeMin * simpleConfig.GroupSizeMinMultiplier.Value);
+                        spawner.m_groupSizeMax = (int)Math.Round(spawner.m_groupSizeMax * simpleConfig.GroupSizeMaxMultiplier.Value);
+                        spawner.m_spawnInterval = simpleConfig.SpawnFrequencyMultiplier.Value != 0
+                            ? spawner.m_spawnInterval / simpleConfig.SpawnFrequencyMultiplier.Value
+                            : 0;
+                    }
+                }
+            }
+        }
     }
 
     private static void ConfigureEntry(SpawnSystem.SpawnData entry, WorldSpawnTemplate template)

@@ -1,7 +1,4 @@
-﻿// Disabled until it gets relevant to look into level roll simulations.
-#if FALSE
-
-using System;
+﻿using System;
 using UnityEngine;
 using Valheim.SpawnThat.Caches;
 namespace Valheim.SpawnThat.Spawn.Modifiers;
@@ -35,9 +32,7 @@ public class ModifierDefaultRollLevel : ISpawnModifier
         LevelupChance = levelupChance;
     }
 
-    public bool CanRun => true;
-
-    public void Apply(GameObject entity, ZDO entityZdo)
+    public void Modify(GameObject entity, ZDO entityZdo)
     {
         if (MaxLevel <= 1)
         {
@@ -71,5 +66,3 @@ public class ModifierDefaultRollLevel : ISpawnModifier
         }
     }
 }
-
-#endif

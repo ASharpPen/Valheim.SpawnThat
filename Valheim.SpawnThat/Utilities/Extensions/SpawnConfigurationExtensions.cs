@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
 namespace Valheim.SpawnThat.Utilities.Extensions
 {

@@ -24,9 +24,18 @@ public interface IWorldSpawnBuilder
     IWorldSpawnBuilder AddOrReplaceModifier<TModifier>(TModifier modifier)
         where TModifier : class, ISpawnModifier;
 
+    /*
+    /// <summary>
+    /// Late running configurations. Run after configurations registered by
+    /// <c>SpawnerConfigurationManager.OnConfigure</c> and <c>SpawnerConfigurationManager.SubscribeConfiguration</c>
+    /// have been applied.
+    /// </summary>
     IWorldSpawnBuilder AddPostConfiguration(Action<WorldSpawnTemplate> configure);
+    */
 
     IWorldSpawnBuilder SetEnabled(bool enabled);
+
+    IWorldSpawnBuilder SetTemplateEnabled(bool enabled);
 
     IWorldSpawnBuilder SetPrefabName(string prefabName);
 

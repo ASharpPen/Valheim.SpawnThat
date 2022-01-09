@@ -74,7 +74,7 @@ public static class IWorldSpawnBuilderConditionExtensions
         return builder;
     }
 
-    public static IWorldSpawnBuilder SetConditionNearbyPlayersNoise(this IWorldSpawnBuilder builder, int distance, int noiseRequired)
+    public static IWorldSpawnBuilder SetConditionNearbyPlayersNoise(this IWorldSpawnBuilder builder, int distance, float noiseRequired)
     {
         builder.AddOrReplaceCondition(new ConditionNearbyPlayersNoise(distance, noiseRequired));
         return builder;

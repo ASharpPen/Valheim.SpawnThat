@@ -18,7 +18,7 @@ internal static class SetRelentlessPatch
             return;
         }
 
-        var forceAlert = zdo.GetBool(ModifierRelentless.ZdoFeatureHash, false);
+        var forceAlert = zdo.GetBool(ModifierSetRelentless.ZdoFeatureHash, false);
 
         if (forceAlert)
         {
@@ -38,7 +38,7 @@ internal static class SetRelentlessPatch
             return;
         }
 
-        var forceAlert = zdo.GetBool(ModifierRelentless.ZdoFeatureHash, false);
+        var forceAlert = zdo.GetBool(ModifierSetRelentless.ZdoFeatureHash, false);
 
         if (!alert && forceAlert)
         {

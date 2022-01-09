@@ -13,7 +13,7 @@ internal static class ZoneSystemMultiplayerPatch
 
     static ZoneSystemMultiplayerPatch()
     {
-        StateResetter.Subscribe(() =>
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             HaveReceivedLocations = false;
         });

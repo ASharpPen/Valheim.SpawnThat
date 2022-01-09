@@ -14,7 +14,7 @@ public static class GameStartupPatch
 
     static GameStartupPatch()
     {
-        StateResetter.Subscribe(() =>
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             FirstTime = true;
         });
@@ -22,16 +22,16 @@ public static class GameStartupPatch
 
     [HarmonyPatch(nameof(Game.FindSpawnPoint))]
     [HarmonyPostfix]
-    private static void LoadConfigs(Game __instance)
+    private static void WaitForConfigs(Game __instance)
     {
         if (FirstTime)
         {
             FirstTime = false;
-            _ = __instance.StartCoroutine(ReleaseConfigs());
+            _ = __instance.StartCoroutine(StopWaiting());
         }
     }
 
-    public static IEnumerator ReleaseConfigs()
+    public static IEnumerator StopWaiting()
     {
         Log.LogDebug("Starting early delay for config application.");
 

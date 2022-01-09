@@ -6,6 +6,13 @@ namespace Valheim.SpawnThat.Spawn.Modifiers;
 
 public class ModifierSetTamed : ISpawnModifier
 {
+    public ModifierSetTamed(bool tamed)
+    {
+        Tamed = tamed;
+    }
+
+    public bool Tamed { get; }
+
     public void Modify(GameObject entity, ZDO entityZdo)
     {
         var character = ComponentCache.Get<Character>(entity);
@@ -18,6 +25,6 @@ public class ModifierSetTamed : ISpawnModifier
 #if DEBUG
         Log.LogDebug($"Setting tamed");
 #endif
-        character.SetTamed(true);
+        character.SetTamed(Tamed);
     }
 }

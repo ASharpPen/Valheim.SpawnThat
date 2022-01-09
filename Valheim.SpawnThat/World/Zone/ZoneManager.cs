@@ -12,7 +12,7 @@ public static class ZoneManager
 
     static ZoneManager()
     {
-        StateResetter.Subscribe(() =>
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             HeightmapsLoaded = new();
             SimulatedCache = new();

@@ -13,7 +13,7 @@ public static class LocationManager
 
     static LocationManager()
     {
-        StateResetter.Subscribe(() =>
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             _simpleLocationsByZone = null;
         });

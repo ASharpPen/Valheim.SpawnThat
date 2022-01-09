@@ -7,7 +7,7 @@ using Valheim.SpawnThat.Caches;
 namespace Valheim.SpawnThat.Spawners.WorldSpawner.Patches;
 
 [HarmonyPatch(typeof(SpawnSystem))]
-internal static class SpawnSystem_Workflow_Patch
+internal static class SpawnSystem_WorldSpawner_Workflow_Patch
 {
     [HarmonyPatch(nameof(SpawnSystem.UpdateSpawning))]
     [HarmonyPrefix]

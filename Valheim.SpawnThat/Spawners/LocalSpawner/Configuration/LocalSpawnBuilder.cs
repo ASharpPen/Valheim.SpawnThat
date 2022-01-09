@@ -107,4 +107,22 @@ internal class LocalSpawnBuilder : ILocalSpawnBuilder
         Template.SpawnInterval = frequency ?? TimeSpan.Zero;
         return this;
     }
+
+    public ILocalSpawnBuilder SetLevelUpChance(float chance)
+    {
+        Template.LevelUpChance = chance;
+        return this;
+    }
+
+    public ILocalSpawnBuilder SetConditionPlayerDistance(float withinDistance)
+    {
+        Template.ConditionPlayerDistance = withinDistance;
+        return this;
+    }
+
+    public ILocalSpawnBuilder SetConditionPlayerNoise(float noise)
+    {
+        Template.ConditionPlayerNoise = noise;
+        return this;
+    }
 }

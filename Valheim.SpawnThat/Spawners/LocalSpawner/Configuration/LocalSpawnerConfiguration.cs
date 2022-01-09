@@ -9,7 +9,7 @@ public record struct LocationIdentifier(string Location, string PrefabName);
 
 public record struct RoomIdentifier(string Room, string PrefabName);
 
-internal class LocalSpawnConfigurationCollection : ISpawnerConfiguration
+internal class LocalSpawnerConfiguration : ISpawnerConfiguration
 {
     private Dictionary<SpawnerNameIdentifier, LocalSpawnBuilder> spawnerBuilders { get; set; } = new();
     private Dictionary<LocationIdentifier, LocalSpawnBuilder> locationBuilders { get; set; } = new();

@@ -14,7 +14,7 @@ internal partial class DataTransferService : IDisposable
 
     static DataTransferService()
     {
-        StateResetter.Subscribe(() =>
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             _service = null;
         });

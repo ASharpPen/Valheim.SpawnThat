@@ -1,7 +1,7 @@
 ﻿using System;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Network;
+using Valheim.SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
 
 namespace Valheim.SpawnThat.Configuration.Multiplayer;
 
@@ -12,7 +12,7 @@ internal class CreatureSpawnerConfigPackage : CompressedPackage
 
     protected override void BeforePack()
     {
-        CreatureSpawnerConfig = ConfigurationManager.CreatureSpawnerConfig;
+        CreatureSpawnerConfig = CreatureSpawnerConfigurationManager.CreatureSpawnerConfig;
 
         Log.LogDebug($"Packaged local spawner configurations: {CreatureSpawnerConfig?.Subsections?.Count ?? 0}");
     }
@@ -23,9 +23,9 @@ internal class CreatureSpawnerConfigPackage : CompressedPackage
         {
             Log.LogDebug("Received and deserialized local spawner config package");
 
-            ConfigurationManager.CreatureSpawnerConfig = configPackage.CreatureSpawnerConfig;
+            CreatureSpawnerConfigurationManager.CreatureSpawnerConfig = configPackage.CreatureSpawnerConfig;
 
-            Log.LogDebug($"Unpacked local spawner configurations: {ConfigurationManager.CreatureSpawnerConfig?.Subsections?.Count ?? 0}");
+            Log.LogDebug($"Unpacked local spawner configurations: {CreatureSpawnerConfigurationManager.CreatureSpawnerConfig?.Subsections?.Count ?? 0}");
 
             Log.LogInfo("Successfully unpacked local spawner configs.");
         }

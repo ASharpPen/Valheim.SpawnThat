@@ -10,7 +10,7 @@ internal static class WorldSpawnTemplateManager
 
     static WorldSpawnTemplateManager()
     {
-        StateResetter.Subscribe(() =>
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             templatesById = new();
         });
