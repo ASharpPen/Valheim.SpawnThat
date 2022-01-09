@@ -6,38 +6,38 @@ namespace Valheim.SpawnThat.Spawners.LocalSpawner;
 
 internal static class LocalSpawnTemplateManager
 {
-    private static Dictionary<SpawnerNameIdentifier, LocalSpawnTemplate> templatesBySpawnerName = new();
-    private static Dictionary<LocationIdentifier, LocalSpawnTemplate> templatesByLocation = new();
-    private static Dictionary<RoomIdentifier, LocalSpawnTemplate> templatesByRoom = new();
+    public static Dictionary<SpawnerNameIdentifier, LocalSpawnTemplate> TemplatesBySpawnerName { get; internal set; } = new();
+    public static Dictionary<LocationIdentifier, LocalSpawnTemplate> TemplatesByLocation { get; internal set; } = new();
+    public static Dictionary<RoomIdentifier, LocalSpawnTemplate> TemplatesByRoom { get; internal set; } = new();
 
     static LocalSpawnTemplateManager()
     {
         LifecycleManager.SubscribeToWorldInit(() =>
         {
-            templatesBySpawnerName = new();
-            templatesByLocation = new();
-            templatesByRoom = new();
+            TemplatesBySpawnerName = new();
+            TemplatesByLocation = new();
+            TemplatesByRoom = new();
         });
     }
 
     public static void SetTemplate(SpawnerNameIdentifier identifier, LocalSpawnTemplate template)
     {
-        templatesBySpawnerName[identifier] = template;
+        TemplatesBySpawnerName[identifier] = template;
     }
 
     public static void SetTemplate(LocationIdentifier identifier, LocalSpawnTemplate template)
     {
-        templatesByLocation[identifier] = template;
+        TemplatesByLocation[identifier] = template;
     }
 
     public static void SetTemplate(RoomIdentifier identifier, LocalSpawnTemplate template)
     {
-        templatesByRoom[identifier] = template;
+        TemplatesByRoom[identifier] = template;
     }
 
     public static LocalSpawnTemplate GetTemplate(SpawnerNameIdentifier identifier)
     {
-        if (templatesBySpawnerName.TryGetValue(identifier, out LocalSpawnTemplate template))
+        if (TemplatesBySpawnerName.TryGetValue(identifier, out LocalSpawnTemplate template))
         {
             return template;
         }
@@ -46,7 +46,7 @@ internal static class LocalSpawnTemplateManager
 
     public static LocalSpawnTemplate GetTemplate(LocationIdentifier identifier)
     {
-        if (templatesByLocation.TryGetValue(identifier, out LocalSpawnTemplate template))
+        if (TemplatesByLocation.TryGetValue(identifier, out LocalSpawnTemplate template))
         {
             return template;
         }
@@ -55,7 +55,7 @@ internal static class LocalSpawnTemplateManager
 
     public static LocalSpawnTemplate GetTemplate(RoomIdentifier identifier)
     {
-        if (templatesByRoom.TryGetValue(identifier, out LocalSpawnTemplate template))
+        if (TemplatesByRoom.TryGetValue(identifier, out LocalSpawnTemplate template))
         {
             return template;
         }
