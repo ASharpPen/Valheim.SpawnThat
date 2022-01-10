@@ -8,6 +8,13 @@ internal static class Log
 {
     internal static ManualLogSource Logger;
 
+    public static void LogIL(string message)
+    {
+#if DEBUG
+        Logger.LogMessage(message);
+#endif
+    }
+
     public static void LogTrace(string message)
     {
         if (ConfigurationManager.GeneralConfig?.TraceLoggingOn?.Value == true)

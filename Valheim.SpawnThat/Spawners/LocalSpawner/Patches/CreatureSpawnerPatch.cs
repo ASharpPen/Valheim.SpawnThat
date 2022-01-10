@@ -2,6 +2,7 @@
 using System.Reflection.Emit;
 using System.Reflection;
 using HarmonyLib;
+using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.Spawners.LocalSpawner.Patches;
 
@@ -31,11 +32,12 @@ internal static class CreatureSpawnerPatch
 
         return new CodeMatcher(instructions)
             // Move to before Spawn is called.
-            .MatchForward(false, new CodeMatch(OpCodes.Call))
+            .MatchForward(false, new CodeMatch(OpCodes.Call, spawn))
             .Advance(-1)
             // Set a label, so we can jump to the original flow if conditions are valid.
-            .CreateLabel(out Label spawnBeginLabel)
+            .AddLabel(out Label spawnBeginLabel)
             // Insert check for valid template conditions, and return if not valid.
+            .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
             .InsertAndAdvance(Transpilers.EmitDelegate(LocalSpawnSessionManager.CheckConditionsValid))
             .InsertAndAdvance(new CodeInstruction(OpCodes.Brtrue, spawnBeginLabel))
             .InsertAndAdvance(new CodeInstruction(OpCodes.Ret))
