@@ -51,6 +51,11 @@ internal static class WorldSpawnerConfigurationService
         // TODO: Depends on whether simple templates are merged into world spawn templates or not.
         ApplySimpleTemplates(spawnLists);
 
+        if (ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileAfterChanges?.Value == true)
+        {
+            SpawnDataFileDumper.WriteToFile(spawnLists.SelectMany(x => x.m_spawners).ToList(), "world_spawners_post_changes", true);
+        }
+
         IsConfigured = true;
     }
 
@@ -62,6 +67,8 @@ internal static class WorldSpawnerConfigurationService
             .OrderBy(x => x.id)
             .ToList();
 
+        Log.LogTrace($"Found {templates.Count} world spawner templates to apply.");
+
         if (templates.Count == 0)
         {
             return;
@@ -70,6 +77,8 @@ internal static class WorldSpawnerConfigurationService
         var spawners = spawnLists
             .SelectMany(x => x.m_spawners)
             .ToList();
+
+        var mainSpawnList = spawnLists.FirstOrDefault() ?? new();
 
         foreach((int id, WorldSpawnTemplate template) in templates)
         {
@@ -82,13 +91,16 @@ internal static class WorldSpawnerConfigurationService
             SpawnSystem.SpawnData entry;
 
             if (ConfigurationManager.GeneralConfig?.AlwaysAppend?.Value == true ||
-                id < spawners.Count)
+                id >= spawners.Count)
             {
                 entry = new SpawnSystem.SpawnData();
-                spawners.Add(entry);
+                mainSpawnList.m_spawners.Add(entry);
+
+                Log.LogTrace($"Creating spawner entry for template [{id}:{template.PrefabName}]");
             }
             else
             {
+                Log.LogTrace($"Overriding spawner entry [{id}:{spawners[id].m_prefab.name}] with template [{id}:{template.PrefabName}]");
                 entry = spawners[id];
             }
 
@@ -133,7 +145,7 @@ internal static class WorldSpawnerConfigurationService
     {
         GameObject prefab = null;
 
-        if (string.IsNullOrWhiteSpace(template.PrefabName))
+        if (!string.IsNullOrWhiteSpace(template.PrefabName))
         {
             prefab = ZNetScene.instance.GetPrefab(template.PrefabHash);
         }

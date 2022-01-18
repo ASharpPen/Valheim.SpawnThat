@@ -12,6 +12,13 @@ public class WorldSpawnTemplate
     private string _prefabName;
     private int? _prefabHash;
 
+    public WorldSpawnTemplate(int index)
+    {
+        Index = index;
+    }
+
+    public int Index { get; }
+
     public List<ISpawnCondition> SpawnConditions { get; } = new();
 
     public List<ISpawnPositionCondition> SpawnPositionConditions { get; } = new();

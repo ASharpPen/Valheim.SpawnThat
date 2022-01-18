@@ -52,28 +52,69 @@ public static class SpawnerConfigurationManager
 
     internal static void BuildConfigurations()
     {
+        Log.LogDebug("Building configurations.");
+
         SpawnerConfigurationCollection configuration = new();
 
-        OnEarlyConfigure(configuration);
+        if (OnEarlyConfigure is not null)
+        {
+            foreach (var configure in OnEarlyConfigure.GetInvocationList())
+            {
+                try
+                {
+                    configure.DynamicInvoke(configuration);
+                }
+                catch (Exception e)
+                {
+                    Log.LogError("Error during early configuration.", e);
+                }
+            }
+        }
 
-        OnConfigure(configuration);
+        if (OnConfigure is not null)
+        {
+            try
+            {
+                foreach (var configure in OnConfigure.GetInvocationList())
+                {
+                    configure.DynamicInvoke(configuration);
+                }
+            }
+            catch (Exception e)
+            {
+                Log.LogError("Error during configure event", e);
+            }
+        }
 
         foreach (var configure in _configurations)
         {
-            try 
+            try
             {
                 if (configure is not null)
                 {
                     configure(configuration);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.LogError("Error while attempting to apply spawner configuration", e);
             }
         }
 
-        OnLateConfigure(configuration);
+        if (OnLateConfigure is not null)
+        {
+            try
+            {
+                foreach (var lateConfigure in OnLateConfigure.GetInvocationList())
+                {
+                    lateConfigure.DynamicInvoke(configuration);
+                }
+            }
+            catch (Exception e)
+            {
+                Log.LogError("Error during late configure event", e);
+            }
+        }
 
         foreach (var configure in _lateConfigurations)
         {
@@ -90,8 +131,18 @@ public static class SpawnerConfigurationManager
             }
         }
 
-        configuration.SpawnerConfigurations.ForEach(x => x.Build());
-
+        foreach (var spawnerConfig in configuration.SpawnerConfigurations)
+        {
+            try 
+            {
+                spawnerConfig.Build();
+            }
+            catch (Exception e)
+            {
+                Log.LogError($"Error during build of spawner config {spawnerConfig?.GetType()?.Name}", e);
+            }
+        }
+        
         ConfigurationCollection = configuration;
     }
 }

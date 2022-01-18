@@ -8,13 +8,6 @@ internal static class Log
 {
     internal static ManualLogSource Logger;
 
-    public static void LogIL(string message)
-    {
-#if DEBUG
-        Logger.LogMessage(message);
-#endif
-    }
-
     public static void LogTrace(string message)
     {
         if (ConfigurationManager.GeneralConfig?.TraceLoggingOn?.Value == true)
@@ -35,7 +28,7 @@ internal static class Log
 
     public static void LogWarning(string message) => Logger.LogWarning($"{message}");
 
-    public static void LogWarning(string message, Exception e) => Logger.LogWarning($"{message}; {e?.Message ?? ""}");
+    public static void LogWarning(string message, Exception e) => Logger.LogWarning($"{message}\n{e?.Message ?? ""}\n{e?.StackTrace ?? ""}");
 
-    public static void LogError(string message, Exception e = null) => Logger.LogError($"{message}; {e?.Message ?? ""}");
+    public static void LogError(string message, Exception e = null) => Logger.LogError($"{message}\n{e?.Message ?? ""}\n{e?.StackTrace ?? ""}");
 }

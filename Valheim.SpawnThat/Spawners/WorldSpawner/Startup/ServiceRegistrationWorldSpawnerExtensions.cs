@@ -13,6 +13,8 @@ internal static class ServiceRegistrationWorldSpawnerExtensions
 
         // TODO: This SHOULD be on late configure, but configs doesn't have a concept of null yet, so to avoid overriding everything always, they will be applied first.
         SpawnerConfigurationManager.OnEarlyConfigure += ApplyBepInExConfigs;
+
+        //SpawnerConfigurationManager.SubscribeConfiguration(ApplyBepInExConfigs);
     }
 
     internal static void LoadBepInExConfigs()

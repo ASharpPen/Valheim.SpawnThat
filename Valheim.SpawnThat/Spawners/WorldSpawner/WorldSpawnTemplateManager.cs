@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Spawners.WorldSpawner;
@@ -18,6 +19,8 @@ internal static class WorldSpawnTemplateManager
 
     public static void SetTemplate(int id, WorldSpawnTemplate template)
     {
+        Log.LogTrace($"Assigned template [{template.Index}:{template.PrefabName}]");
+
         TemplatesById[id] = template;
     }
 

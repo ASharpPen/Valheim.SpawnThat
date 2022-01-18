@@ -45,18 +45,17 @@ internal static class WorldSpawnerSpawnMapService
 
                 var position = new Vector3(coordX, 0, coordY);
 
-                if (!locationCondition.IsValid(position))
+                if (locationCondition?.IsValid(position) == false)
                 {
                     continue;
                 }
 
-
-                if (!distanceToCenterCondition.IsValid(position))
+                if (distanceToCenterCondition?.IsValid(position) == false)
                 {
                     continue;
                 }
 
-                if (!areaIdsCondition.IsValid(MapManager.AreaMap.AreaIds[x][y]))
+                if (areaIdsCondition?.IsValid(MapManager.AreaMap.AreaIds[x][y]) == false)
                 {
                     continue;
                 }

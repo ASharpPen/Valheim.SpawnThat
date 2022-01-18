@@ -20,11 +20,18 @@ public static class CodeMatcherExtensions
         return codeMatcher;
     }
 
-    internal static CodeMatcher Print(this CodeMatcher codeMatcher, int count, int offset = 0)
+    public static CodeMatcher GetOperand(this CodeMatcher codeMatcher, out object operand)
     {
-        for (int i = 0; i < count; ++i)
+        operand = codeMatcher.Operand;
+        return codeMatcher;
+    }
+
+    internal static CodeMatcher Print(this CodeMatcher codeMatcher, int before, int after)
+    {
+#if DEBUG
+        for (int i = -before; i <= after; ++i)
         {
-            int currentOffset = offset + i;
+            int currentOffset = i;
             int index = codeMatcher.Pos + currentOffset;
 
             if (index <= 0)
@@ -40,14 +47,14 @@ public static class CodeMatcherExtensions
             try
             {
                 var line = codeMatcher.InstructionAt(currentOffset);
-                Log.LogIL($"[{currentOffset}] " + line.ToString());
+                Log.LogTrace($"[{currentOffset}] " + line.ToString());
             }
             catch (Exception e)
             {
-                Log.LogIL(e.Message);
+                Log.LogTrace(e.Message);
             }
         }
-
+#endif
         return codeMatcher;
     }
 }

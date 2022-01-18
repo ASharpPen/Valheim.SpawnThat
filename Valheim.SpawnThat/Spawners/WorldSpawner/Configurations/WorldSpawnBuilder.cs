@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawn.Conditions;
 using Valheim.SpawnThat.Spawn.Modifiers;
@@ -11,20 +12,31 @@ namespace Valheim.SpawnThat.Spawners.WorldSpawner;
 
 internal class WorldSpawnBuilder : IWorldSpawnBuilder
 {
-    private WorldSpawnTemplate Template { get; } = new();
+    public int Id { get; }
+
+    private WorldSpawnTemplate Template { get; }
 
     private List<Action<WorldSpawnTemplate>> PostConfigurations { get; } = new();
 
     public bool Finalized { get; private set; } = false;
 
-    public WorldSpawnBuilder()
+    public WorldSpawnBuilder(int id)
     {
+        Id = id;
+
+        Template = new WorldSpawnTemplate(id);
+
         // Set all biomes allowed by default.
         Template.BiomeMask = (Heightmap.Biome)1023;
     }
 
     public WorldSpawnTemplate Build()
     {
+#if DEBUG
+        Log.LogTrace($"Building WorlSpawnBuilder [{Id}:{Template.PrefabName}]");
+#endif
+
+
         if (Finalized)
         {
             throw new InvalidOperationException("Builder has already been finalized.");

@@ -22,7 +22,7 @@ internal class WorldSpawnerConfiguration : ISpawnerConfiguration
             return existing;
         }
 
-        return builders[id] = new WorldSpawnBuilder();
+        return builders[id] = new WorldSpawnBuilder((int)id);
     }
 
     public void Build()

@@ -5,37 +5,31 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Spawns.Caches;
 
 namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Debug
 {
     [HarmonyPatch(typeof(SpawnSystem))]
     internal static class Patch_SpawnSystem_InjectLogs
     {
-        [HarmonyPatch("UpdateSpawnList")]
+        [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> IsEnabledInject(IEnumerable<CodeInstruction> instructions)
         {
             return new CodeMatcher(instructions)
-                .MatchForward(true, new CodeMatch(OpCodes.Ldfld, AccessTools.Field(typeof(SpawnSystem.SpawnData), "m_enabled")))
-                .Advance(1)
+                .MatchForward(false, new CodeMatch(OpCodes.Ldfld, AccessTools.Field(typeof(SpawnSystem.SpawnData), "m_enabled")))
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_3))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Patch_SpawnSystem_InjectLogs), nameof(LogIsEnabled))))
+                .InsertAndAdvance(Transpilers.EmitDelegate(LogIsEnabled))
                 .InstructionEnumeration();
         }
 
-        public static bool LogIsEnabled(bool isEnabled, SpawnSystem.SpawnData spawnData)
+        public static void LogIsEnabled(SpawnSystem.SpawnData spawnData)
         {
-            Log.LogTrace($"[{spawnData.m_prefab.name}] Is enabled: {isEnabled}");
-
-            return isEnabled;
+            Log.LogTrace($"[{spawnData.m_prefab.name}] Is enabled: {spawnData.m_enabled}");
         }
 
-        [HarmonyPatch("UpdateSpawnList")]
+        [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> HaveBiomeInject(IEnumerable<CodeInstruction> instructions)
         {
@@ -43,7 +37,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Debug
                 .MatchForward(true, new CodeMatch(OpCodes.Callvirt, AccessTools.Method(typeof(Heightmap), "HaveBiome")))
                 .Advance(1)
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_3))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Patch_SpawnSystem_InjectLogs), nameof(LogHaveBiome))))
+                .InsertAndAdvance(Transpilers.EmitDelegate(LogHaveBiome))
                 .InstructionEnumeration();
         }
 
@@ -54,31 +48,33 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Debug
             return result;
         }
 
-        [HarmonyPatch("UpdateSpawnList")]
+        [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> ToSpawnInject(IEnumerable<CodeInstruction> instructions)
         {
             return new CodeMatcher(instructions)
+                .MatchForward(true, new CodeMatch(OpCodes.Call, AccessTools.Property(typeof(TimeSpan), nameof(TimeSpan.TotalSeconds))))
+                .Advance(1)
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Dup))
                 .MatchForward(true, new CodeMatch(OpCodes.Call, AccessTools.Method(typeof(UnityEngine.Mathf), "Min", new[] { typeof(int), typeof(int) })))
                 .Advance(1)
+                .InsertAndAdvance(new CodeInstruction(OpCodes.Dup))
                 .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_3))
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Patch_SpawnSystem_InjectLogs), nameof(ToSpawnLog))))
+                .InsertAndAdvance(Transpilers.EmitDelegate(ToSpawnLog))
                 .InstructionEnumeration();
         }
 
-        public static int ToSpawnLog(int result, SpawnSystem.SpawnData spawnData)
+        public static void ToSpawnLog(double totalSeconds, int result, SpawnSystem.SpawnData spawnData)
         {
             Log.LogTrace($"[{spawnData.m_prefab.name}] Min(MaxSpawned, (TotalSeconds / SpawnInterval)): {result}");
 
-            if (result is 0)
+            if (result == 0)
             {
-                Log.LogTrace($"[{spawnData.m_prefab.name}] MaxSpawned: {spawnData.m_maxSpawned}, SpawnInterval: {spawnData.m_spawnInterval}");
+                Log.LogTrace($"[{spawnData.m_prefab.name}] Conditions invalid. Additional info; MaxSpawned: {spawnData.m_maxSpawned}, TotalSeconds: {totalSeconds}, SpawnInterval: {spawnData.m_spawnInterval}");
             }
-
-            return result;
         }
 
-        [HarmonyPatch("UpdateSpawnList")]
+        [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> SpawnChanceInject(IEnumerable<CodeInstruction> instructions)
         {
@@ -97,7 +93,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Debug
             return result;
         }
 
-        [HarmonyPatch("UpdateSpawnList")]
+        [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> HaveGlobalKeyInject(IEnumerable<CodeInstruction> instructions)
         {
@@ -116,7 +112,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Debug
             return result;
         }
 
-        [HarmonyPatch("UpdateSpawnList")]
+        [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> HaveEnvironmentInject(IEnumerable<CodeInstruction> instructions)
         {
@@ -135,7 +131,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Debug
             return result;
         }
 
-        [HarmonyPatch("UpdateSpawnList")]
+        [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> SpawnAtDayInject(IEnumerable<CodeInstruction> instructions)
         {
@@ -154,7 +150,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Debug
             return result;
         }
 
-        [HarmonyPatch("UpdateSpawnList")]
+        [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> SpawnAtNightInject(IEnumerable<CodeInstruction> instructions)
         {
@@ -173,7 +169,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Debug
             return result;
         }
 
-        [HarmonyPatch("UpdateSpawnList")]
+        [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> MaxSpawnedInject(IEnumerable<CodeInstruction> instructions)
         {
@@ -192,7 +188,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Debug
             return result;
         }
 
-        [HarmonyPatch("UpdateSpawnList")]
+        [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> FindBaseSpawnPointInject(IEnumerable<CodeInstruction> instructions)
         {
@@ -211,7 +207,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Debug
             return result;
         }
 
-        [HarmonyPatch("UpdateSpawnList")]
+        [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> HaveInstanceInRangeInject(IEnumerable<CodeInstruction> instructions)
         {
@@ -230,7 +226,7 @@ namespace Valheim.SpawnThat.Spawners.SpawnerSpawnSystem.Debug
             return result;
         }
 
-        [HarmonyPatch("UpdateSpawnList")]
+        [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> IsSpawnPointGoodInject(IEnumerable<CodeInstruction> instructions)
         {

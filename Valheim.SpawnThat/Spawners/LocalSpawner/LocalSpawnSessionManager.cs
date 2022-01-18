@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define VERBOSE
+
+using System;
 using UnityEngine;
 using Valheim.SpawnThat.Caches;
 using Valheim.SpawnThat.Core;

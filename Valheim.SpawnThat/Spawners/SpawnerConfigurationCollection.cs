@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Valheim.SpawnThat.Core;
 
 namespace Valheim.SpawnThat.Spawners;
 
@@ -27,6 +28,9 @@ internal class SpawnerConfigurationCollection : ISpawnerConfigurationCollection
         }
         else
         {
+#if DEBUG
+            Log.LogTrace($"Adding new spawner type {spawnerType.Name} to collection.");
+#endif            
             spawnerCollections[spawnerType] = spawnerConfig;
             return spawnerConfig;
         }

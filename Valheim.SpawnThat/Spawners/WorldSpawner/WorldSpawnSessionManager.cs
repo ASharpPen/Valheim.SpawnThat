@@ -1,4 +1,6 @@
-﻿using System;
+﻿//#define VERBOSE
+
+using System;
 using System.Linq;
 using UnityEngine;
 using Valheim.SpawnThat.Caches;
@@ -19,6 +21,10 @@ internal static class WorldSpawnSessionManager
     {
         try
         {
+#if FALSE && DEBUG && VERBOSE
+            Log.LogDebug("WorldSpawnSessionManager.StartSession");
+#endif
+
             Spawner = spawner;
             Context = new(ComponentCache.GetZdo(Spawner));
         }
@@ -30,12 +36,25 @@ internal static class WorldSpawnSessionManager
 
     public static void StartSpawnSession(SpawnSystem.SpawnData currentEntry)
     {
-        SpawnDataEntry = currentEntry;
-        SpawnTemplate = WorldSpawnerManager.GetTemplate(SpawnDataEntry);
+        try
+        {
+#if DEBUG && VERBOSE
+            Log.LogDebug("WorldSpawnSessionManager.StartSpawnSession");
+#endif
+            SpawnDataEntry = currentEntry;
+            SpawnTemplate = WorldSpawnerManager.GetTemplate(SpawnDataEntry);
+        }
+        catch(Exception e)
+        {
+            Log.LogError("Error during initialization of spawner entry session.", e);
+        }
     }
 
     public static bool ValidSpawnEntry(bool eventSpawner)
     {
+#if DEBUG && VERBOSE
+        Log.LogDebug("WorldSpawnSessionManager.ValidSpawnEntry");
+#endif
         if (eventSpawner)
         {
             return true;
@@ -55,7 +74,14 @@ internal static class WorldSpawnSessionManager
         {
             try
             {
-                return x?.IsValid(Context) ?? true;
+                var isValid = x?.IsValid(Context) ?? true;
+#if DEBUG
+                if (!isValid)
+                {
+                    Log.LogDebug($"[{SpawnTemplate.Index}:{SpawnTemplate.PrefabName}] condition {x.GetType().Name} is invalid.");
+                }
+#endif
+                return isValid;
             }
             catch(Exception e)
             {
@@ -65,35 +91,73 @@ internal static class WorldSpawnSessionManager
         });
     }
 
+    public static int GetSpawnEntryId(int originalId)
+    {
+        return SpawnTemplate?.Index ?? originalId;
+    }
+
+    public static int GetCustomHash(int original, string type, int index, GameObject prefab)
+    {
+        if (SpawnTemplate is null)
+        {
+            return original;
+        }
+        return (type + SpawnTemplate.Index + prefab.name).GetStableHashCode();
+    }
+
     public static bool AnyInRange(GameObject prefab, Vector3 center, int radius)
     {
-        var query = new ZdoPrefabQuery(center, radius);
-        var prefabHash = prefab.name.GetStableHashCode();
+#if DEBUG && VERBOSE
+        Log.LogDebug("WorldSpawnSessionManager.AnyInRange");
+#endif
+        try
+        {
+            var query = new ZdoPrefabQuery(center, radius);
+            var prefabHash = prefab.name.GetStableHashCode();
 
-        return query.HasAny(prefabHash);
+            return query.HasAny(prefabHash);
+        }
+        catch (Exception e)
+        {
+            Log.LogError($"Error while attempting to find any entity {prefab} nearby", e);
+            return false;
+        }
     }
 
     public static int CountEntitiesInArea(GameObject entityPrefab, Vector3 center, float range)
     {
-        ZdoPrefabQuery query;
-
-        if (center == Vector3.zero && range == 0)
+#if DEBUG && VERBOSE
+        Log.LogDebug("WorldSpawnSessionManager.CountEntitiesInArea");
+#endif
+        try
         {
-            // TODO: Consider lowering the range, or making it configurable.
-            query = new ZdoPrefabQuery(Context.SpawnerZdo.m_position, 250);
+            ZdoPrefabQuery query;
+            if (center == Vector3.zero && range == 0)
+            {
+                // TODO: Consider lowering the range, or making it configurable.
+                query = new ZdoPrefabQuery(Context.SpawnerZdo.m_position, 250);
+            }
+            else
+            {
+                query = new ZdoPrefabQuery(center, (int)range);
+            }
+
+            var prefabHash = entityPrefab.name.GetStableHashCode();
+
+            return query.CountEntities(prefabHash);
         }
-        else
+        catch (Exception e)
         {
-            query = new ZdoPrefabQuery(center, (int)range);
+            Log.LogError($"Error while attempting to count nearby entities {entityPrefab}", e);
+            return 0;
         }
-
-        var prefabHash = entityPrefab.name.GetStableHashCode();
-
-        return query.CountEntities(prefabHash);
     }
 
     public static bool ValidSpawnPosition(Vector3 pos)
     {
+#if DEBUG && VERBOSE
+        Log.LogDebug("WorldSpawnSessionManager.ValidSpawnPosition");
+#endif
         if (SpawnTemplate?.SpawnPositionConditions is null)
         {
             return true;
@@ -115,6 +179,9 @@ internal static class WorldSpawnSessionManager
 
     public static void ModifySpawn(GameObject spawn, bool isEventCreature)
     {
+#if DEBUG && VERBOSE
+        Log.LogDebug("WorldSpawnSessionManager.ModifySpawn");
+#endif
         if (isEventCreature)
         {
             return;
@@ -126,6 +193,11 @@ internal static class WorldSpawnSessionManager
         }
 
         var zdo = ComponentCache.GetZdo(spawn);
+
+        if (zdo is null)
+        {
+            return;
+        }
 
         foreach(var modifier in SpawnTemplate.SpawnModifiers)
         {

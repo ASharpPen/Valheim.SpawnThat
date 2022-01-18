@@ -13,7 +13,9 @@ internal static class SpawnSystemConfigApplier
 {
     internal static void ApplyBepInExConfigs(ISpawnerConfigurationCollection spawnerConfigs)
     {
-
+#if DEBUG
+        Log.LogTrace("SpawnSystemConfigApplier.ApplyBepInExConfigs");
+#endif
         var spawnSystemConfigs = SpawnSystemConfigurationManager
             .SpawnSystemConfig?
             .Subsections? //[*]

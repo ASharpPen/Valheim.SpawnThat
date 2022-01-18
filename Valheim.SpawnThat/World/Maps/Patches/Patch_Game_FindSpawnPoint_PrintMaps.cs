@@ -60,7 +60,17 @@ public class Patch_Game_FindSpawnPoint_PrintMaps
 
             foreach (var config in spawnSystemConfigs.Subsections.Values)
             {
+                if (!config.Enabled.Value)
+                {
+                    continue;
+                }
+
                 var spawnMap = WorldSpawnerSpawnMapService.GetMapOfTemplatesActiveAreas(config.Index);
+
+                if (spawnMap is null)
+                {
+                    continue;
+                }
 
                 ImageBuilder
                     .SetGrayscaleBiomes(MapManager.AreaMap)

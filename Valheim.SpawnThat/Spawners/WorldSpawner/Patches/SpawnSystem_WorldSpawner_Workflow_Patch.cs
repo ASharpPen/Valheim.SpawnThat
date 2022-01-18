@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
 using UnityEngine;
 using Valheim.SpawnThat.Caches;
+using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.Spawners.WorldSpawner.Patches;
 
@@ -14,8 +18,15 @@ internal static class SpawnSystem_WorldSpawner_Workflow_Patch
     [HarmonyPriority(Priority.Last)]
     private static void InitSpawner(SpawnSystem __instance)
     {
-        WorldSpawnerManager.ConfigureSpawnList(__instance);
-        WorldSpawnSessionManager.StartSession(__instance);
+        try
+        {
+            WorldSpawnerManager.ConfigureSpawnList(__instance);
+            WorldSpawnSessionManager.StartSession(__instance);
+        }
+        catch (Exception e)
+        {
+            Log.LogError("Error during Spawn That world spawner init", e);
+        }
     }
 
     [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
@@ -36,22 +47,25 @@ internal static class SpawnSystem_WorldSpawner_Workflow_Patch
     [HarmonyTranspiler]
     private static IEnumerable<CodeInstruction> CheckSpawnConditions(IEnumerable<CodeInstruction> instructions)
     {
-        var fieldAnchor = AccessTools.Field(typeof(SpawnSystem.SpawnData), nameof(SpawnSystem.SpawnData.m_enabled));
+        FieldInfo m_enabled = AccessTools.Field(typeof(SpawnSystem.SpawnData), nameof(SpawnSystem.SpawnData.m_enabled));
 
-        var matcher = new CodeMatcher(instructions)
+        return new CodeMatcher(instructions)
+            // Move to right before m_enabled is checked.
             .MatchForward(
                 true,
-                new CodeMatch(OpCodes.Ldfld, fieldAnchor),
-                new CodeMatch(OpCodes.Brfalse));
-
-        var escapeLoopLabel = matcher.Operand;
-
-        return matcher
+                new CodeMatch(OpCodes.Ldfld, m_enabled),
+                new CodeMatch(OpCodes.Brfalse))
+            // Get the label to where the code goes if m_enabled == false.
+            .GetOperand(out object escapeLoopLabel)
+            // Step forward, so we are just past the check.
+            .Advance(1)
+            // Run spawn session init
             .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_3))
             .InsertAndAdvance(Transpilers.EmitDelegate(WorldSpawnSessionManager.StartSpawnSession))
+            // Run custom conditions for spawn.
             .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_3))
             .InsertAndAdvance(Transpilers.EmitDelegate(WorldSpawnSessionManager.ValidSpawnEntry))
-            .InsertAndAdvance(new CodeInstruction(OpCodes.Brtrue, escapeLoopLabel))
+            .InsertAndAdvance(new CodeInstruction(OpCodes.Brfalse, escapeLoopLabel))
             .InstructionEnumeration();
     }
 

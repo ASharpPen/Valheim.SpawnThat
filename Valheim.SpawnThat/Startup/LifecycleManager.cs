@@ -43,7 +43,10 @@ public static class LifecycleManager
     private static void WorldInit()
     {
         Log.LogDebug("Running world init actions");
-        OnWorldInit();
+        if (OnWorldInit is not null)
+        {
+            OnWorldInit();
+        }
 
         foreach (var onReset in OnResetActions)
         {
@@ -59,13 +62,18 @@ public static class LifecycleManager
     private static void ResetState()
     {
         GameState = GameState.Singleplayer;
-
         WorldInit();
 
         Log.LogDebug("Running singleplayer init actions");
-        OnSinglePlayerInit();
+        if (OnSinglePlayerInit is not null)
+        { 
+            OnSinglePlayerInit();
+        }
 
-        AfterInit();
+        if (AfterInit is not null)
+        {
+            AfterInit();
+        }
     }
 
     /// <summary>
@@ -76,13 +84,18 @@ public static class LifecycleManager
     private static void ResetStateMultiplayer()
     {
         GameState = GameState.Multiplayer;
-
         WorldInit();
 
         Log.LogDebug("Running multiplayer init actions");
-        OnMultiplayerInit();
+        if (OnMultiplayerInit is not null)
+        {
+            OnMultiplayerInit();
+        }
 
-        AfterInit();
+        if (AfterInit is not null)
+        {
+            AfterInit();
+        }
     }
 
     /// <summary>
@@ -97,8 +110,14 @@ public static class LifecycleManager
         WorldInit();
 
         Log.LogDebug("Running dedicated server init actions");
-        OnDedicatedServerInit();
+        if (OnDedicatedServerInit is not null)
+        {
+            OnDedicatedServerInit();
+        }
 
-        AfterInit();
+        if (AfterInit is not null)
+        {
+            AfterInit();
+        }
     }
 }
