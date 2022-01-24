@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
 namespace Valheim.SpawnThat.Debugging;
 

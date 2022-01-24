@@ -1,4 +1,6 @@
-﻿using BepInEx.Configuration;
+﻿//#define VERBOSE
+
+using BepInEx.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -53,14 +55,16 @@ namespace Valheim.SpawnThat.Core.Configuration
 
             foreach (var sectionHead in sectionHeaders)
             {
+#if VERBOSE
                 Log.LogTrace($"Loading config entries for '{sectionHead}'.");
+#endif
 
                 //Identify header components
                 var components = sectionHead.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
 
                 if (components.Length < 1 || string.IsNullOrEmpty(components[0]))
                 {
-#if DEBUG
+#if DEBUG && VERBOSE
                     Log.LogTrace("Early stop. 0 components found.");
 #endif
 
@@ -81,7 +85,7 @@ namespace Valheim.SpawnThat.Core.Configuration
             //Check if we have reached the end
             if(depth == sectionParts.Count - 1 && currentConfig is not IConfigFile)
             {
-#if DEBUG
+#if DEBUG && VERBOSE
                 Log.LogTrace($"Binding entries for {sectionKey}:{currentConfig.GetType().Name}");
 #endif
                 BindObjectEntries(configFile, currentConfig, sectionKey);
@@ -117,7 +121,9 @@ namespace Valheim.SpawnThat.Core.Configuration
 
             foreach (var field in fields)
             {
+#if VERBOSE
                 Log.LogTrace($"Creating and binding entry for '{sectionHeader}:{field.Name}'");
+#endif
 
                 var entry = field.GetValue(config) as IConfigurationEntry;
 
@@ -128,8 +134,9 @@ namespace Valheim.SpawnThat.Core.Configuration
                 }
 
                 entry.Bind(configFile, sectionHeader, field.Name);
-
+#if VERBOSE
                 Log.LogTrace($"[{sectionHeader}]: Loaded {field.Name}:{entry}");
+#endif
             }
         }
 
@@ -139,9 +146,9 @@ namespace Valheim.SpawnThat.Core.Configuration
             {
                 return new List<string>();
             }
-
+#if VERBOSE
             Log.LogTrace($"Scanning config sections in {configFile}");
-
+#endif
             //Scan for headers
             var lines = File.ReadAllLines(configFile);
 
@@ -154,9 +161,9 @@ namespace Valheim.SpawnThat.Core.Configuration
                 if (sectionMatch.Success)
                 {
                     var sectionHeader = sectionMatch.Value;
-
+#if VERBOSE
                     Log.LogTrace($"Found section '{sectionHeader}'");
-
+#endif
                     sectionHeaders.Add(sectionHeader);
                 }
             }

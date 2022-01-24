@@ -36,4 +36,18 @@ public static class StringExtensions
             return result;
         }
     }
+
+    public static bool IsEmpty(this string s)
+    {
+        return string.IsNullOrWhiteSpace(s);
+    }
+
+    public static bool IsNotEmpty(this string s)
+    {
+        if (string.IsNullOrWhiteSpace(s))
+        {
+            return false;
+        }
+        return true;
+    }
 }

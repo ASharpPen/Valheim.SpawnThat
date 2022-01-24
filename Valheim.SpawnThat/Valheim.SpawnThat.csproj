@@ -8,6 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Pfhoenix.Valheim.ModProjectReferences" Version="1.0.11" />
+    <PackageReference Include="YamlDotNet" Version="11.2.1" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CreatureLevelControl">

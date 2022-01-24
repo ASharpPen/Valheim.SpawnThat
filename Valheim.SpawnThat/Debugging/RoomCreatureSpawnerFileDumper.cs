@@ -4,9 +4,8 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using Valheim.SpawnThat.Configuration;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Spawners;
+using Valheim.SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
 
 namespace Valheim.SpawnThat.Debugging;
 
@@ -125,7 +124,7 @@ internal static class RoomCreatureSpawnerFileDumper
             stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.SpawnAtNight)}={spawner.m_spawnAtNight}");
             stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.LevelMin)}={spawner.m_minLevel}");
             stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.LevelMax)}={spawner.m_maxLevel}");
-            stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.LevelUpChance)}={Constants.CreatureSpawner_LevelUpChance.ToString(CultureInfo.InvariantCulture)}");
+            stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.LevelUpChance)}={10}");
             stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.RespawnTime)}={spawner.m_respawnTimeMinuts.ToString(CultureInfo.InvariantCulture)}");
             stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.TriggerDistance)}={spawner.m_triggerDistance.ToString(CultureInfo.InvariantCulture)}");
             stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.TriggerNoise)}={spawner.m_triggerNoise.ToString(CultureInfo.InvariantCulture)}");

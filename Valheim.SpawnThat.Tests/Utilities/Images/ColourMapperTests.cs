@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿#if FALSE
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,3 +33,4 @@ namespace Valheim.SpawnThat.Utilities.Images
         }
     }
 }
+#endif

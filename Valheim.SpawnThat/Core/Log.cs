@@ -12,7 +12,7 @@ internal static class Log
     {
         if (ConfigurationManager.GeneralConfig?.TraceLoggingOn?.Value == true)
         {
-            Logger.LogDebug($"{message}");
+            Logger?.LogDebug($"{message}");
         }
     }
 
@@ -20,15 +20,15 @@ internal static class Log
     {
         if (ConfigurationManager.GeneralConfig?.DebugLoggingOn?.Value == true)
         {
-            Logger.LogInfo($"{message}");
+            Logger?.LogInfo($"{message}");
         }
     }
 
-    public static void LogInfo(string message) => Logger.LogMessage($"{message}");
+    public static void LogInfo(string message) => Logger?.LogMessage($"{message}");
 
-    public static void LogWarning(string message) => Logger.LogWarning($"{message}");
+    public static void LogWarning(string message) => Logger?.LogWarning($"{message}");
 
-    public static void LogWarning(string message, Exception e) => Logger.LogWarning($"{message}; {e?.Message ?? ""}");
+    public static void LogWarning(string message, Exception e) => Logger?.LogWarning($"{message}\n{e?.Message ?? ""}\n{e?.StackTrace ?? ""}");
 
-    public static void LogError(string message, Exception e = null) => Logger.LogError($"{message}; {e?.Message ?? ""}");
+    public static void LogError(string message, Exception e = null) => Logger?.LogError($"{message}\n{e?.Message ?? ""}\n{e?.StackTrace ?? ""}");
 }

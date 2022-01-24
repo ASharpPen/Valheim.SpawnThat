@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿#if FALSE
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Valheim.SpawnThat.Maps;
 
 namespace Valheim.SpawnThat.WorldMap
 {
@@ -172,3 +172,4 @@ namespace Valheim.SpawnThat.WorldMap
         }
     }
 }
+#endif

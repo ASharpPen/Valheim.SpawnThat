@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Valheim.SpawnThat.Startup;
+using Valheim.SpawnThat.Lifecycle;
 
 namespace Valheim.SpawnThat.Core.Network;
 
@@ -14,7 +14,7 @@ internal partial class DataTransferService : IDisposable
 
     static DataTransferService()
     {
-        StateResetter.Subscribe(() =>
+        LifecycleManager.SubscribeToWorldInit(() =>
         {
             _service = null;
         });
