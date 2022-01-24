@@ -18,8 +18,6 @@ public static class SpawnerConfigurationManager
         // Reset on new world entered.
         LifecycleManager.SubscribeToWorldInit(() =>
         {
-            _configurations = new();
-            _lateConfigurations = new();
             ConfigurationCollection = null;
         });
     }
@@ -33,19 +31,15 @@ public static class SpawnerConfigurationManager
     internal delegate void SpawnerLateConfigurationEvent(ISpawnerConfigurationCollection spawnerConfigs);
     internal static event SpawnerLateConfigurationEvent OnLateConfigure;
 
-    // TODO: Consider removing this if it gets reset anyway?
-    // TODO: Consider not resetting this, so that it can be configured once instead, without having to worry about it. OnConfigure should be easier to manage with regards to subscribing / unsubscribing..
     /// <summary>
     /// Subscribe configuration action.
     /// </summary>
-    /// <remarks>Subscriptions are reset by OnWorldInit. Use OnConfigure to manage subscription yourself.</remarks>
+    /// <remarks>Subscriptions are never reset. Use OnConfigure to manage subscription yourself.</remarks>
     public static void SubscribeConfiguration(Action<ISpawnerConfigurationCollection> configure)
     {
         _configurations.Add(configure);
     }
 
-    // TODO: Consider removing this if it gets reset anyway?
-    // TODO: Consider not resetting this, so that it can be configured once instead, without having to worry about it. OnConfigure should be easier to manage with regards to subscribing / unsubscribing..
     internal static void SubscribeLateConfiguration(Action<ISpawnerConfigurationCollection> configure)
     {
         _lateConfigurations.Add(configure);
