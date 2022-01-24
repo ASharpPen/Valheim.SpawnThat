@@ -14,9 +14,7 @@ internal static class WorldSpawnerSetup
         LifecycleManager.OnDedicatedServerInit += LoadBepInExConfigs;
         LifecycleManager.OnFindSpawnPointFirstTime += DelayedConfigRelease;
 
-        // TODO: This SHOULD be on late configure, but configs doesn't have a concept of null yet, so to avoid overriding everything always, they will be applied first.
-        SpawnerConfigurationManager.OnEarlyConfigure += ApplyBepInExConfigs;
-        //SpawnerConfigurationManager.SubscribeConfiguration(ApplyBepInExConfigs);
+        SpawnerConfigurationManager.OnLateConfigure += ApplyBepInExConfigs;
 
         WorldSpawnerSyncSetup.Configure();
     }

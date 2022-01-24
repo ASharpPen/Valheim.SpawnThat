@@ -3,7 +3,6 @@ using UnityEngine;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
 using SpawnThat.Spawners.LocalSpawner.Sync;
-using SpawnThat.Spawners.WorldSpawner;
 
 namespace SpawnThat.Spawners.LocalSpawner.Startup;
 
@@ -15,8 +14,7 @@ internal static class LocalSpawnerSetup
         LifecycleManager.OnDedicatedServerInit += LoadBepInExConfigs;
         LifecycleManager.OnFindSpawnPointFirstTime += DelayedConfigRelease;
 
-        // TODO: This SHOULD be on late configure, but configs doesn't have a concept of null yet, so to avoid overriding everything always, they will be applied first.
-        SpawnerConfigurationManager.OnEarlyConfigure += ApplyBepInExConfigs;
+        SpawnerConfigurationManager.OnLateConfigure += ApplyBepInExConfigs;
 
         LocalSpawnerSyncSetup.Configure();
     }
