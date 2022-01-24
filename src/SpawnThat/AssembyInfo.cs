@@ -1,3 +1,3 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("SpawnThat.Tests")]
+[assembly: InternalsVisibleTo("Valheim.SpawnThat.Tests")]

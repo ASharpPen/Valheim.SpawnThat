@@ -3,6 +3,7 @@ using SpawnThat.Core;
 using SpawnThat.Core.Cache;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.LocalSpawner.Caches;
+using SpawnThat.Spawners.LocalSpawner.Models;
 using SpawnThat.Spawners.LocalSpawner.Services;
 
 namespace SpawnThat.Spawners.LocalSpawner;

@@ -12,6 +12,6 @@
     <Folder Include="Core\Networking\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SpawnThat\SpawnThat.csproj" />
+    <ProjectReference Include="..\SpawnThat\Valheim.SpawnThat.csproj" />
   </ItemGroup>
 </Project>

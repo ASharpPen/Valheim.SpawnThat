@@ -1,6 +1,7 @@
 ﻿using System;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
+using SpawnThat.Spawners.LocalSpawner.Models;
 
 namespace SpawnThat.Spawners.LocalSpawner.Configuration;
 

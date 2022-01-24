@@ -4,7 +4,7 @@ using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
 using YamlDotNet.Serialization;
 
-namespace SpawnThat.Spawners.LocalSpawner;
+namespace SpawnThat.Spawners.LocalSpawner.Models;
 
 public class LocalSpawnTemplate
 {

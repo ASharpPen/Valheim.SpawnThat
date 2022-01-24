@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
+using SpawnThat.Spawners.LocalSpawner.Models;
 using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Spawners.LocalSpawner.Configuration;
