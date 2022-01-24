@@ -20,7 +20,7 @@ namespace Valheim.SpawnThat.Configuration
 
         public static GeneralConfiguration LoadGeneral()
         {
-            Log.LogInfo("Loading general configurations");
+            Log.LogDebug("Loading general configurations");
 
             string configPath = Path.Combine(Paths.ConfigPath, GeneralConfigFile);
 
@@ -30,7 +30,7 @@ namespace Valheim.SpawnThat.Configuration
             var generalConfig = new GeneralConfiguration();
             generalConfig.Load(configFile);
 
-            Log.LogInfo("Finished loading general configurations");
+            Log.LogDebug("Finished loading general configurations");
 
             return generalConfig;
         }

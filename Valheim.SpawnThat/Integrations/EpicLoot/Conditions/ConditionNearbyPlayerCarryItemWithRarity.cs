@@ -13,11 +13,11 @@ namespace Valheim.SpawnThat.Integrations.EpicLoot.Conditions;
 
 public class ConditionNearbyPlayerCarryItemWithRarity : ISpawnCondition
 {
-    private int SearchDistance { get; }
-    private List<EpicLootRarity> RaritiesRequired { get; set; }
+    public int SearchDistance { get; set; }
+    public List<EpicLootRarity> RaritiesRequired { get; set; }
 
-    public bool CanRunClientSide { get; } = true;
-    public bool CanRunServerSide { get; } = false;
+    public ConditionNearbyPlayerCarryItemWithRarity()
+    { }
 
     public ConditionNearbyPlayerCarryItemWithRarity(int distanceToSearch, IEnumerable<EpicLootRarity> rarities)
     {

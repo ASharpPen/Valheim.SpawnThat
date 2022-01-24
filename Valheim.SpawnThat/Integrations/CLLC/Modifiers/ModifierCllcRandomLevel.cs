@@ -7,6 +7,9 @@ namespace Valheim.SpawnThat.Integrations.CLLC.Modifiers;
 
 public class ModifierCllcRandomLevel : ISpawnModifier
 {
+    public ModifierCllcRandomLevel()
+    { }
+
     public void Modify(GameObject entity, ZDO entityZdo)
     {
         var character = ComponentCache.Get<Character>(entity);

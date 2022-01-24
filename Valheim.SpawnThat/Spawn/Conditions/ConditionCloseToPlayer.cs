@@ -7,14 +7,15 @@ namespace Valheim.SpawnThat.Spawn.Conditions;
 
 public class ConditionCloseToPlayer : ISpawnCondition
 {
+    public float WithinDistance { get; set; }
+
+    public ConditionCloseToPlayer()
+    { }
+
     public ConditionCloseToPlayer(float withinDistance)
     {
         WithinDistance = withinDistance;
     }
-
-    public float WithinDistance { get; }
-    public bool CanRunClientSide => true;
-    public bool CanRunServerSide => true;
 
     public bool IsValid(SpawnSessionContext sessionContext)
     {

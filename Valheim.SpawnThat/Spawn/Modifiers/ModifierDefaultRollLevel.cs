@@ -19,10 +19,13 @@ namespace Valheim.SpawnThat.Spawn.Modifiers;
 /// <remarks>Based on default level assignment logic of <c>SpawnSystem.Spawn</c>.</remarks>
 public class ModifierDefaultRollLevel : ISpawnModifier
 {
-    private int MinLevel { get; }
-    private int MaxLevel { get; }
-    private double MinDistanceForLevelups { get; }
-    private double LevelupChance { get; }
+    public int MinLevel { get; set; }
+    public int MaxLevel { get; set; }
+    public double MinDistanceForLevelups { get; set; }
+    public double LevelupChance { get; set; }
+
+    public ModifierDefaultRollLevel()
+    { }
 
     public ModifierDefaultRollLevel(int minLevel, int maxLevel, double minDistanceForLevelups, double levelupChance)
     {

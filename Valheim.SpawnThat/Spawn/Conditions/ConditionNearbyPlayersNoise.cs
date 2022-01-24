@@ -7,11 +7,11 @@ namespace Valheim.SpawnThat.Spawn.Conditions;
 
 public class ConditionNearbyPlayersNoise : ISpawnCondition
 {
-    private int SearchDistance { get; }
-    private float NoiseThreshold { get; }
+    public int SearchDistance { get; set; }
+    public float NoiseThreshold { get; set; }
 
-    public bool CanRunClientSide => true;
-    public bool CanRunServerSide => true;
+    public ConditionNearbyPlayersNoise()
+    { }
 
     public ConditionNearbyPlayersNoise(int distanceToSearch, float noiseRequired)
     {

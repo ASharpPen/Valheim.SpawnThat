@@ -5,8 +5,8 @@ using UnityEngine;
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Debugging;
+using Valheim.SpawnThat.Lifecycle;
 using Valheim.SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
-using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Spawners.WorldSpawner.Services;
 

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using UnityEngine;
 using Valheim.SpawnThat.Spawners.Contexts;
 using Valheim.SpawnThat.World.Locations;
@@ -9,10 +8,10 @@ namespace Valheim.SpawnThat.Spawn.Conditions;
 
 public class ConditionLocation : ISpawnCondition
 {
-    private List<string> Locations { get; }
+    public List<string> Locations { get; set; }
 
-    public bool CanRunClientSide { get; } = true;
-    public bool CanRunServerSide { get; } = true;
+    public ConditionLocation()
+    { }
 
     public ConditionLocation(params string[] requireOneOfLocations)
     {

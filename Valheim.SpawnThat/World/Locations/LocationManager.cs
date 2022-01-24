@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Lifecycle;
 using Valheim.SpawnThat.Locations;
-using Valheim.SpawnThat.Startup;
 using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.World.Locations;
@@ -18,6 +18,34 @@ public static class LocationManager
             _simpleLocationsByZone = null;
         });
     }
+
+    public static Dictionary<Vector2i, SimpleLocation> GetLocations()
+    {
+        if (_simpleLocationsByZone is not null)
+        {
+            return new(_simpleLocationsByZone);
+        }
+        else if (ZoneSystem.instance && ZoneSystem.instance?.m_locationInstances is not null)
+        {
+            Dictionary<Vector2i, SimpleLocation> simpleLocations = new();
+
+            foreach (var instance in ZoneSystem.instance.m_locationInstances)
+            {
+                simpleLocations[instance.Key] = new SimpleLocation
+                {
+                    LocationName = instance.Value.m_location?.m_prefabName ?? "",
+                    Position = instance.Value.m_position,
+                    ZonePosition = instance.Key,
+                };
+            }
+
+            _simpleLocationsByZone = simpleLocations;
+            return simpleLocations;
+        }
+
+        return null;
+    }
+
     public static SimpleLocation GetLocation(Vector3 position)
     {
         var zoneSystem = ZoneSystem.instance;

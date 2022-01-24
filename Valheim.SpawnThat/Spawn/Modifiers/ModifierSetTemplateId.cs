@@ -8,7 +8,10 @@ public class ModifierSetTemplateId : ISpawnModifier
     public const string ZdoFeature = "spawn_template_id";
     public static int ZdoFeatureHash { get; } = ZdoFeature.GetStableHashCode();
 
-    private string TemplateId { get; set; }
+    public string TemplateId { get; set; }
+
+    public ModifierSetTemplateId()
+    { }
 
     public ModifierSetTemplateId(string templateId)
     {

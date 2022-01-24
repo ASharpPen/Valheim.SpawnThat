@@ -1,16 +1,15 @@
-﻿using System;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
+﻿using Valheim.SpawnThat.Configuration.ConfigTypes;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Network;
+using YamlDotNet.Serialization;
 
-namespace Valheim.SpawnThat.Configuration.Multiplayer;
+namespace Valheim.SpawnThat.Configuration.Sync;
 
-[Serializable]
-internal class GeneralConfigPackage : CompressedPackage
+public class GeneralConfigPackage : CompressedPackage
 {
     public GeneralConfiguration GeneralConfig;
 
-    protected override void BeforePack()
+    protected override void BeforePack(SerializerBuilder builder)
     {
         GeneralConfig = ConfigurationManager.GeneralConfig;
     }

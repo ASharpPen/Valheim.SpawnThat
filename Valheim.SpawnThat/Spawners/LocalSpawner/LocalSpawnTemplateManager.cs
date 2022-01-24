@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Valheim.SpawnThat.Spawners.LocalSpawner.Configuration;
-using Valheim.SpawnThat.Startup;
+using Valheim.SpawnThat.Lifecycle;
+using Valheim.SpawnThat.Spawners.LocalSpawner.Models;
 
 namespace Valheim.SpawnThat.Spawners.LocalSpawner;
 

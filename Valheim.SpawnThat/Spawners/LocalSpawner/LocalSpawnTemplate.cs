@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Valheim.SpawnThat.Spawn.Conditions;
 using Valheim.SpawnThat.Spawn.Modifiers;
+using YamlDotNet.Serialization;
 
 namespace Valheim.SpawnThat.Spawners.LocalSpawner;
 
@@ -26,6 +27,22 @@ public class LocalSpawnTemplate
         {
             _prefabName = value;
             _prefabHash = null;
+        }
+    }
+
+    [YamlIgnore]
+    public int PrefabHash
+    {
+        get
+        {
+            if (_prefabHash is null && PrefabName is not null)
+            {
+                int hash = PrefabName.GetStableHashCode();
+                _prefabHash = hash;
+                return hash;
+            }
+
+            return _prefabHash ?? -1;
         }
     }
 
@@ -113,9 +130,4 @@ public class LocalSpawnTemplate
     /// Set of modifiers which will be run/applied on spawned entity.
     /// </summary>
     public List<ISpawnModifier> Modifiers { get; set; } = new();
-
-    public int PrefabHash
-    {
-        get { return _prefabHash ??= PrefabName.GetStableHashCode(); }
-    }
 }

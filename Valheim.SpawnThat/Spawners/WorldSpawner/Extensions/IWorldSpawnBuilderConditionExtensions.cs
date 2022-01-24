@@ -44,6 +44,12 @@ public static class IWorldSpawnBuilderConditionExtensions
         return builder;
     }
 
+    public static IWorldSpawnBuilder SetGlobalKeysRequiredMissing(this IWorldSpawnBuilder builder, params string[] globalKeys)
+    {
+        builder.AddOrReplaceCondition(new ConditionGlobalKeysRequiredMissing(globalKeys));
+        return builder;
+    }
+
     public static IWorldSpawnBuilder SetConditionLocation(this IWorldSpawnBuilder builder, IEnumerable<string> locationNames)
     {
         builder.AddOrReplaceCondition(new ConditionLocation(locationNames.ToArray()));

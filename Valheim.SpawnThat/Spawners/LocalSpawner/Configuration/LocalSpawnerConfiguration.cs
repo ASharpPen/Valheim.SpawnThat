@@ -1,13 +1,8 @@
 ﻿using System.Collections.Generic;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Spawners.LocalSpawner.Models;
 
 namespace Valheim.SpawnThat.Spawners.LocalSpawner.Configuration;
-
-public record struct SpawnerNameIdentifier(string SpawnerPrefabName);
-
-public record struct LocationIdentifier(string Location, string PrefabName);
-
-public record struct RoomIdentifier(string Room, string PrefabName);
 
 internal class LocalSpawnerConfiguration : ISpawnerConfiguration
 {

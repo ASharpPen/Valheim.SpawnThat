@@ -5,11 +5,11 @@ namespace Valheim.SpawnThat.Integrations.CLLC.Conditions;
 
 public class ConditionWorldLevel : ISpawnCondition
 {
-    private int? MinWorldLevel { get; }
-    private int? MaxWorldLevel { get; }
+    public int? MinWorldLevel { get; set; }
+    public int? MaxWorldLevel { get; set; }
 
-    public bool CanRunClientSide { get; } = true;
-    public bool CanRunServerSide { get; } = true;
+    public ConditionWorldLevel()
+    { }
 
     public ConditionWorldLevel(int? minWorldLevel, int? maxWorldLevel)
     {

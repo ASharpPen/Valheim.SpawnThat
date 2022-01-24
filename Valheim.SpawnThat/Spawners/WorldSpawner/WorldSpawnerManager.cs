@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valheim.SpawnThat.Core;
+using Valheim.SpawnThat.Lifecycle;
 using Valheim.SpawnThat.Spawners.WorldSpawner.Services;
-using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat.Spawners.WorldSpawner;
 

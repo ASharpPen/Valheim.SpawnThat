@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Valheim.SpawnThat.Reset
+namespace Valheim.SpawnThat.Lifecycle
 {
     internal interface IReset
     {

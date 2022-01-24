@@ -1,4 +1,5 @@
 ﻿using Valheim.SpawnThat.Spawners.LocalSpawner.Configuration;
+using Valheim.SpawnThat.Spawners.LocalSpawner.Models;
 
 namespace Valheim.SpawnThat.Spawners;
 

@@ -9,7 +9,10 @@ namespace Valheim.SpawnThat.Integrations.CLLC.Modifiers;
 
 public class ModifierCllcBossAffix : ISpawnModifier
 {
-    private BossAffix? Affix { get; }
+    public BossAffix? Affix { get; set; }
+
+    public ModifierCllcBossAffix()
+    { }
 
     public ModifierCllcBossAffix(string bossAffixName)
     {

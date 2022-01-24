@@ -1,4 +1,4 @@
-﻿using Valheim.SpawnThat.Spawners.LocalSpawner.Configuration;
+﻿using Valheim.SpawnThat.Spawners.LocalSpawner.Models;
 using Valheim.SpawnThat.World.Dungeons;
 using Valheim.SpawnThat.World.Locations;
 

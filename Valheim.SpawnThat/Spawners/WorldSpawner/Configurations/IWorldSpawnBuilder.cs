@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Valheim.SpawnThat.Spawn.Conditions;
 using Valheim.SpawnThat.Spawn.Modifiers;
 using Valheim.SpawnThat.Spawn.PositionConditions;
+using Valheim.SpawnThat.Utilities.Enums;
 using static Heightmap;
 
 namespace Valheim.SpawnThat.Spawners.WorldSpawner;
@@ -77,6 +78,7 @@ public interface IWorldSpawnBuilder
 
     IWorldSpawnBuilder SetConditionEnvironments(IEnumerable<string> environmentNames);
     IWorldSpawnBuilder SetConditionEnvironments(params string[] environmentNames);
+    IWorldSpawnBuilder SetConditionEnvironments(params EnvironmentName[] environmentNames);
 
     IWorldSpawnBuilder SetConditionRequiredGlobalKey(string globalKey);
 

@@ -9,14 +9,14 @@ namespace Valheim.SpawnThat.Spawn.Conditions;
 /// </summary>
 public class ConditionGlobalKeysRequiredMissing : ISpawnCondition
 {
-    private IList<string> RequiredMissing { get; set; }
+    public List<string> RequiredMissing { get; set; }
 
-    public bool CanRunClientSide { get; } = true;
-    public bool CanRunServerSide { get; } = false;
+    public ConditionGlobalKeysRequiredMissing()
+    { }
 
     public ConditionGlobalKeysRequiredMissing(params string[] requiredMissing)
     {
-        RequiredMissing = requiredMissing;
+        RequiredMissing = requiredMissing.ToList();
     }
 
     public bool IsValid(SpawnSessionContext context)

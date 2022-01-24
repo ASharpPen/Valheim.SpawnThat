@@ -8,7 +8,10 @@ public class ModifierSetRelentless : ISpawnModifier
     public const string ZdoFeature = "spawnthat_relentless";
     public static int ZdoFeatureHash { get; } = ZdoFeature.GetStableHashCode();
 
-    public bool Relentless { get; }
+    public bool Relentless { get; set; }
+
+    public ModifierSetRelentless()
+    { }
 
     public ModifierSetRelentless(bool relentless)
     {

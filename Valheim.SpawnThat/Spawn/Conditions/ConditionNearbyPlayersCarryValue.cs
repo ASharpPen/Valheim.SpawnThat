@@ -1,8 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
-using Valheim.SpawnThat.Configuration.ConfigTypes;
-using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Utilities;
 using Valheim.SpawnThat.Spawners.Contexts;
 
@@ -10,11 +6,11 @@ namespace Valheim.SpawnThat.Spawn.Conditions;
 
 public class ConditionNearbyPlayersCarryValue : ISpawnCondition
 {
-    private int SearchDistance { get; }
-    private int RequiredValue { get; }
+    public int SearchDistance { get; set; }
+    public int RequiredValue { get; set; }
 
-    public bool CanRunClientSide { get; } = true;
-    public bool CanRunServerSide { get; } = false;
+    public ConditionNearbyPlayersCarryValue()
+    { }
 
     public ConditionNearbyPlayersCarryValue(int distanceToSearch, int combinedValueRequired)
     {

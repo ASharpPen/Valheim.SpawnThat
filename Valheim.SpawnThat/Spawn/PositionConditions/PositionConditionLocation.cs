@@ -8,7 +8,10 @@ namespace Valheim.SpawnThat.Spawn.PositionConditions;
 
 public class PositionConditionLocation : ISpawnPositionCondition
 {
-    private List<string> LocationNames { get; }
+    public List<string> LocationNames { get; set; }
+
+    public PositionConditionLocation()
+    { }
 
     public PositionConditionLocation(IEnumerable<string> locationNames)
     {

@@ -16,9 +16,12 @@ public class ModifierDespawnOnConditionsInvalid : ISpawnModifier
     public static int ZdoConditionEnvironmentHash { get; } = ZdoConditionEnvironment.GetStableHashCode();
     public static int ZdoFeatureHash { get; } = ZdoFeature.GetStableHashCode();
 
-    private bool? ConditionAllowDuringDay { get; }
-    private bool? ConditionAllowDuringNight { get; }
-    private string ConditionAllowDuringEnvironments { get; }
+    public bool? ConditionAllowDuringDay { get; set; }
+    public bool? ConditionAllowDuringNight { get; set; }
+    public string ConditionAllowDuringEnvironments { get; set; }
+
+    public ModifierDespawnOnConditionsInvalid()
+    { }
 
     public ModifierDespawnOnConditionsInvalid(
         bool? conditionAllowDuringDay = null, 

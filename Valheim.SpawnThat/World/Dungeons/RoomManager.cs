@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valheim.SpawnThat.Core.Cache;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Startup;
 using Valheim.SpawnThat.Utilities;
 using HarmonyLib;
 using System.Reflection.Emit;
 using System.Reflection;
+using Valheim.SpawnThat.Lifecycle;
 
 namespace Valheim.SpawnThat.World.Dungeons;
 

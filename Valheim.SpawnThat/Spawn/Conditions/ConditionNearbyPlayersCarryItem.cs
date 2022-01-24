@@ -7,11 +7,11 @@ namespace Valheim.SpawnThat.Spawn.Conditions;
 
 public class ConditionNearbyPlayersCarryItem : ISpawnCondition
 {
-    private int SearchDistance { get; }
-    private HashSet<string> ItemsSearchedFor { get; }
+    public int SearchDistance { get; set; }
+    public HashSet<string> ItemsSearchedFor { get; set; }
 
-    public bool CanRunClientSide { get; } = true;
-    public bool CanRunServerSide { get; } = false;
+    public ConditionNearbyPlayersCarryItem()
+    { }
 
     public ConditionNearbyPlayersCarryItem(int distanceToSearch, params string[] itemPrefabNames)
     {

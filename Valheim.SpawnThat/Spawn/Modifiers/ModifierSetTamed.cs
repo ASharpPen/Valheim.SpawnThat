@@ -6,12 +6,15 @@ namespace Valheim.SpawnThat.Spawn.Modifiers;
 
 public class ModifierSetTamed : ISpawnModifier
 {
+    public bool Tamed { get; set; }
+
+    public ModifierSetTamed()
+    { }
+
     public ModifierSetTamed(bool tamed)
     {
         Tamed = tamed;
     }
-
-    public bool Tamed { get; }
 
     public void Modify(GameObject entity, ZDO entityZdo)
     {

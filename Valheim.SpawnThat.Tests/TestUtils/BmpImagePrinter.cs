@@ -1,11 +1,11 @@
-﻿using System.Drawing;
+﻿#if FALSE
+
+using System.Drawing;
 using System.Drawing.Imaging;
 //using System.Drawing;
 //using System.Drawing.Imaging;
 using System.IO;
 using System.Threading.Tasks;
-using Valheim.SpawnThat.Maps;
-using Valheim.SpawnThat.WorldMap;
 
 namespace Valheim.SpawnThat.TestUtils
 {
@@ -130,3 +130,4 @@ namespace Valheim.SpawnThat.TestUtils
         }
     }
 }
+#endif

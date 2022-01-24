@@ -9,7 +9,10 @@ namespace Valheim.SpawnThat.Integrations.CLLC.Modifiers;
 
 internal class ModifierCllcExtraEffect : ISpawnModifier
 {
-    private CreatureExtraEffect? ExtraEffect { get; }
+    public CreatureExtraEffect? ExtraEffect { get; set; }
+
+    public ModifierCllcExtraEffect()
+    { }
 
     public ModifierCllcExtraEffect(string extraEffectName)
     {

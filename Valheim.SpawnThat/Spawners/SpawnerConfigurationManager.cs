@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Startup;
+using Valheim.SpawnThat.Lifecycle;
+using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.Spawners;
 
@@ -56,35 +57,13 @@ public static class SpawnerConfigurationManager
 
         SpawnerConfigurationCollection configuration = new();
 
-        if (OnEarlyConfigure is not null)
-        {
-            foreach (var configure in OnEarlyConfigure.GetInvocationList())
-            {
-                try
-                {
-                    configure.DynamicInvoke(configuration);
-                }
-                catch (Exception e)
-                {
-                    Log.LogError("Error during early configuration.", e);
-                }
-            }
-        }
+        OnEarlyConfigure.RaiseSafely(
+            "Error during early configuration",
+            configuration);
 
-        if (OnConfigure is not null)
-        {
-            try
-            {
-                foreach (var configure in OnConfigure.GetInvocationList())
-                {
-                    configure.DynamicInvoke(configuration);
-                }
-            }
-            catch (Exception e)
-            {
-                Log.LogError("Error during configure event", e);
-            }
-        }
+        OnConfigure.RaiseSafely(
+            "Error during configure event",
+            configuration);
 
         foreach (var configure in _configurations)
         {
@@ -101,20 +80,9 @@ public static class SpawnerConfigurationManager
             }
         }
 
-        if (OnLateConfigure is not null)
-        {
-            try
-            {
-                foreach (var lateConfigure in OnLateConfigure.GetInvocationList())
-                {
-                    lateConfigure.DynamicInvoke(configuration);
-                }
-            }
-            catch (Exception e)
-            {
-                Log.LogError("Error during late configure event", e);
-            }
-        }
+        OnLateConfigure.RaiseSafely(
+            "Error during late configure event",
+            configuration);
 
         foreach (var configure in _lateConfigurations)
         {

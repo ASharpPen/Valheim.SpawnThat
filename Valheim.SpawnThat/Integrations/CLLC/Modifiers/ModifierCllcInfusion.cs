@@ -9,7 +9,10 @@ namespace Valheim.SpawnThat.Integrations.CLLC.Modifiers;
 
 public class ModifierCllcInfusion : ISpawnModifier
 {
-    public CreatureInfusion? Infusion { get; }
+    public CreatureInfusion? Infusion { get; set; }
+
+    public ModifierCllcInfusion()
+    { }
 
     public ModifierCllcInfusion(string infusionName)
     {

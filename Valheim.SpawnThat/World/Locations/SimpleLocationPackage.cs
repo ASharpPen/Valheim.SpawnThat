@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Core.Network;
 using Valheim.SpawnThat.World.Locations;
+using YamlDotNet.Serialization;
 
 namespace Valheim.SpawnThat.Locations;
 
-[Serializable]
-internal class SimpleLocationPackage : CompressedPackage
+public class SimpleLocationPackage : CompressedPackage
 {
     public string[] LocationNames;
 
     public SimpleLocationDTO[] Locations;
 
-    protected override void BeforePack()
+    protected override void BeforePack(SerializerBuilder builder)
     {
-        var locationInstances = ZoneSystem.instance.m_locationInstances;
+        var locationInstances = ZoneSystem.instance?.m_locationInstances;
 
         Dictionary<string, ushort> locationNameIndexes = new Dictionary<string, ushort>();
 
@@ -58,11 +58,11 @@ internal class SimpleLocationPackage : CompressedPackage
 
             foreach (var location in package.Locations)
             {
-                var position = new Vector2i(location.PositionX, location.PositionY);
+                var position = new Vector2i(location.X, location.Y);
 
                 simpleLocations.Add(new SimpleLocation
                 {
-                    LocationName = package.LocationNames[location.Location],
+                    LocationName = package.LocationNames[location.L],
                     Position = ZoneSystem.instance.GetZonePos(position),
                     ZonePosition = position
                 });
@@ -84,16 +84,16 @@ internal class SimpleLocationPackage : CompressedPackage
 [Serializable]
 public struct SimpleLocationDTO
 {
-    public int PositionX;
-    public int PositionY;
+    public int X;
+    public int Y;
 
-    public ushort Location;
+    public ushort L;
 
     public SimpleLocationDTO(Vector2i pos, ushort location)
     {
-        PositionX = pos.x;
-        PositionY = pos.y;
+        X = pos.x;
+        Y = pos.y;
 
-        Location = location;
+        L = location;
     }
 }

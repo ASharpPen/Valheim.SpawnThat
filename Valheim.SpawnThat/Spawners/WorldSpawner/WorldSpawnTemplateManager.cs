@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Startup;
+using Valheim.SpawnThat.Lifecycle;
 
 namespace Valheim.SpawnThat.Spawners.WorldSpawner;
 

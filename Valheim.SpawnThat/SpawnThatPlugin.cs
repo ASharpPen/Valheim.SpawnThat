@@ -2,7 +2,6 @@
 using HarmonyLib;
 using Valheim.SpawnThat.Configuration;
 using Valheim.SpawnThat.Core;
-using Valheim.SpawnThat.Startup;
 
 namespace Valheim.SpawnThat
 {
@@ -19,7 +18,7 @@ namespace Valheim.SpawnThat
 
             ConfigurationManager.GeneralConfig = ConfigurationManager.LoadGeneral();
 
-            ServiceRegistrationManager.SetupServices();
+            Startup.SetupServices();
 
             new Harmony("mod.spawn_that").PatchAll();
         }

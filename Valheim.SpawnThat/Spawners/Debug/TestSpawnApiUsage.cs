@@ -66,8 +66,6 @@ internal static class TestSpawnApiUsage
                 .AddPostConfiguration((template) =>
                 {
                     Log.LogDebug($"Testing post configurations for local spawner configuration [{location}:{creaturePrefabName}]: {template.PrefabName}");
-
-                    template.SpawnConditions.RemoveAll(x => !x.CanRunClientSide);
                 });
         });
 

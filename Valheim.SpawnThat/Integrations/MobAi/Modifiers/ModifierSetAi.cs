@@ -9,8 +9,11 @@ namespace Valheim.SpawnThat.Integrations.MobAi.Modifiers;
 
 public class ModifierSetAI : ISpawnModifier
 {
-    public string AiName { get; }
-    public string Config { get; }
+    public string AiName { get; set; }
+    public string Config { get; set; }
+
+    public ModifierSetAI()
+    { }
 
     public ModifierSetAI(string aiName, string config)
     {

@@ -10,11 +10,11 @@ namespace Valheim.SpawnThat.Spawn.Conditions;
 /// </summary>
 public class ConditionNearbyPlayersStatus : ISpawnCondition
 {
-    private int SearchDistance { get; }
-    private HashSet<string> RequiredStatusEffects { get; }
+    public int SearchDistance { get; set; }
+    public HashSet<string> RequiredStatusEffects { get; set; }
 
-    public bool CanRunClientSide { get; } = true;
-    public bool CanRunServerSide { get; } = false;
+    public ConditionNearbyPlayersStatus()
+    { }
 
     public ConditionNearbyPlayersStatus(int distanceToSearch, params string[] requireOneOfStatusEffects)
     {

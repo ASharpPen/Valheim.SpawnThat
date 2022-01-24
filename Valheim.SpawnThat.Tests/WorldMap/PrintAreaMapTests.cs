@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿#if FALSE
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -104,3 +105,4 @@ namespace Valheim.SpawnThat.WorldMap
         }
     }
 }
+#endif

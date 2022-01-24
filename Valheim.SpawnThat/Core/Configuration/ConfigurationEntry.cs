@@ -1,83 +1,86 @@
 ﻿using BepInEx.Configuration;
 using System;
-using System.Runtime.Serialization;
+using YamlDotNet.Serialization;
 
-namespace Valheim.SpawnThat.Core.Configuration
+namespace Valheim.SpawnThat.Core.Configuration;
+
+public interface IConfigurationEntry
 {
-    public interface IConfigurationEntry
+    void Bind(ConfigFile config, string section, string key);
+}
+
+public class ConfigurationEntry<TIn> : IConfigurationEntry
+{
+    public TIn DefaultValue { get; set; }
+
+    [YamlIgnore]
+    public string Description;
+
+    [YamlIgnore]
+    public ConfigEntry<TIn> Config;
+
+    public void Bind(ConfigFile config, string section, string key)
     {
-        void Bind(ConfigFile config, string section, string key);
-    }
-
-    [Serializable]
-    public class ConfigurationEntry<TIn> : IConfigurationEntry
-    {
-        public TIn DefaultValue { get; set; }
-
-        [NonSerialized]
-        public string Description;
-
-        [NonSerialized]
-        public ConfigEntry<TIn> Config;
-
-        [OnSerializing]
-        internal void OnSerialize()
+        if (Description is null)
         {
-            // We cheat, and don't actually use the bepinex bindings for syncronized configurations.
-            // Due to Config not being set, this should result in DefaultValue always being used instead.
-            if(Config != null)
-            {
-                DefaultValue = Config.Value;
-            }
+            Config = config.Bind<TIn>(section, key, DefaultValue);
+            // Hack: Ensures default value get set before sync.
+            DefaultValue = Config.Value;
+        }
+        else
+        {
+            Config = config.Bind<TIn>(section, key, DefaultValue, Description);
+            // Hack: Ensures default value get set before sync.
+            DefaultValue = Config.Value;
         }
 
-        public void Bind(ConfigFile config, string section, string key)
+        PostBind();
+    }
+
+    protected virtual void PostBind() { }
+
+    public override string ToString()
+    {
+        if (Config == null)
         {
-            if (Description is null)
+            return $"[Entry: {DefaultValue}]";
+        }
+        return $"[{Config.Definition.Key}:{Config.Definition.Section}]: {Config.Value}";
+    }
+
+    [YamlIgnore]
+    public TIn Value
+    {
+        get
+        {
+            if (Config is null)
             {
-                Config = config.Bind<TIn>(section, key, DefaultValue);
+                return DefaultValue;
+            }
+
+            return Config.Value;
+        }
+        set
+        {
+            if (Config is null)
+            {
+                DefaultValue = value;
             }
             else
             {
-                Config = config.Bind<TIn>(section, key, DefaultValue, Description);
-            }
-
-            PostBind();
-        }
-
-        protected virtual void PostBind() { }
-
-        public override string ToString()
-        {
-            if(Config == null)
-            {
-                return $"[Entry: {DefaultValue}]";
-            }
-            return $"[{Config.Definition.Key}:{Config.Definition.Section}]: {Config.Value}";
-        }
-
-        public TIn Value 
-        {
-            get
-            {
-                if(Config is null)
-                {
-                    return DefaultValue;
-                }
-
-                return Config.Value;
+                Config.Value = value;
             }
         }
+    }
 
-        public ConfigurationEntry()
-        {
+    public ConfigurationEntry()
+    {
 
-        }
+    }
 
-        public ConfigurationEntry(TIn defaultValue, string description = null)
-        {
-            Description = description;
-            DefaultValue = defaultValue;
-        }
+    public ConfigurationEntry(TIn defaultValue, string description = null)
+    {
+        Description = description;
+        DefaultValue = defaultValue;
     }
 }

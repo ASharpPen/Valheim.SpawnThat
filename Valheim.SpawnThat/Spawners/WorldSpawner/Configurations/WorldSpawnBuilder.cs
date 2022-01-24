@@ -6,6 +6,7 @@ using Valheim.SpawnThat.Core;
 using Valheim.SpawnThat.Spawn.Conditions;
 using Valheim.SpawnThat.Spawn.Modifiers;
 using Valheim.SpawnThat.Spawn.PositionConditions;
+using Valheim.SpawnThat.Utilities.Enums;
 using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.Spawners.WorldSpawner;
@@ -221,6 +222,12 @@ internal class WorldSpawnBuilder : IWorldSpawnBuilder
     public IWorldSpawnBuilder SetConditionEnvironments(params string[] environmentNames)
     {
         Template.ConditionEnvironments = environmentNames.ToList();
+        return this;
+    }
+
+    public IWorldSpawnBuilder SetConditionEnvironments(params EnvironmentName[] environmentNames)
+    {
+        Template.ConditionEnvironments = environmentNames.Select(x => x.GetName()).ToList();
         return this;
     }
 

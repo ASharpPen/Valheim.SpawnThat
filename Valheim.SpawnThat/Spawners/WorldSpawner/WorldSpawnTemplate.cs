@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Valheim.SpawnThat.Spawn.Conditions;
 using Valheim.SpawnThat.Spawn.Modifiers;
 using Valheim.SpawnThat.Spawn.PositionConditions;
+using YamlDotNet.Serialization;
 using static Heightmap;
 
 namespace Valheim.SpawnThat.Spawners.WorldSpawner;
@@ -12,18 +13,22 @@ public class WorldSpawnTemplate
     private string _prefabName;
     private int? _prefabHash;
 
+    public WorldSpawnTemplate()
+    {
+    }
+
     public WorldSpawnTemplate(int index)
     {
         Index = index;
     }
 
-    public int Index { get; }
+    public int Index { get; internal set; }
 
-    public List<ISpawnCondition> SpawnConditions { get; } = new();
+    public List<ISpawnCondition> SpawnConditions { get; set; } = new();
 
-    public List<ISpawnPositionCondition> SpawnPositionConditions { get; } = new();
+    public List<ISpawnPositionCondition> SpawnPositionConditions { get; set; } = new();
 
-    public List<ISpawnModifier> SpawnModifiers { get; } = new();
+    public List<ISpawnModifier> SpawnModifiers { get; set; } = new();
 
     /// <summary>   
     /// <para>Prefab to override existing with.</para>
@@ -39,9 +44,20 @@ public class WorldSpawnTemplate
         }
     }
 
+    [YamlIgnore]
     public int PrefabHash
     {
-        get => _prefabHash ?? _prefabName.GetStableHashCode();
+        get
+        {
+            if (_prefabHash is null && PrefabName is not null)
+            {
+                int hash = PrefabName.GetStableHashCode();
+                _prefabHash = hash;
+                return hash;
+            }
+
+            return _prefabHash ?? -1;
+        }
     }
 
     /// <summary>

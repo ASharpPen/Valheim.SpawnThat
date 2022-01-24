@@ -1,9 +1,9 @@
 ﻿using HarmonyLib;
 using System.Linq;
 using Valheim.SpawnThat.Configuration;
+using Valheim.SpawnThat.Lifecycle;
 using Valheim.SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 using Valheim.SpawnThat.Spawners.WorldSpawner.Services;
-using Valheim.SpawnThat.Startup;
 using Valheim.SpawnThat.World.Maps.Area;
 
 namespace Valheim.SpawnThat.World.Maps.Patches;

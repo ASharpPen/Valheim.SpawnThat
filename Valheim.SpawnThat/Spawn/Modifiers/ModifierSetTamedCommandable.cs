@@ -8,7 +8,11 @@ public class ModifierSetTamedCommandable : ISpawnModifier
 {
     public const string ZdoFeature = "spawnthat_tamed_commandable";
     public static int ZdoFeatureHash { get; } = ZdoFeature.GetStableHashCode();
-    public bool Commandable { get; }
+
+    public bool Commandable { get; set; }
+
+    public ModifierSetTamedCommandable()
+    { }
 
     public ModifierSetTamedCommandable(bool commandable)
     {

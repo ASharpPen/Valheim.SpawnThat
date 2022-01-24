@@ -11,11 +11,11 @@ namespace Valheim.SpawnThat.Integrations.EpicLoot.Conditions;
 
 public class ConditionNearbyPlayerCarryLegendaryItem : ISpawnCondition
 {
-    private int SearchDistance { get; }
-    private HashSet<string> LegendaryIds { get; }
+    public int SearchDistance { get; set; }
+    public HashSet<string> LegendaryIds { get; set; }
 
-    public bool CanRunClientSide { get; } = true;
-    public bool CanRunServerSide { get; } = false;
+    public ConditionNearbyPlayerCarryLegendaryItem()
+    { }
 
     public ConditionNearbyPlayerCarryLegendaryItem(int distanceToSearch, IEnumerable<string> legendaryIdsToSearch)
     {

@@ -8,7 +8,10 @@ namespace Valheim.SpawnThat.Spawn.Modifiers;
 
 public class ModifierSetFaction : ISpawnModifier
 {
-    private Character.Faction? Faction { get; }
+    public Character.Faction? Faction { get; set; }
+
+    public ModifierSetFaction()
+    { }
 
     public ModifierSetFaction(Character.Faction faction)
     {
@@ -30,9 +33,9 @@ public class ModifierSetFaction : ISpawnModifier
     public void Modify(GameObject entity, ZDO entityZdo)
     {
         if (entity is null)
-{
-return;
-}
+        {
+            return;
+        }
 
         var character = ComponentCache.Get<Character>(entity);
 
@@ -47,7 +50,7 @@ return;
         }
 
 #if DEBUG
-            Log.LogDebug($"Setting faction {Faction}");
+        Log.LogDebug($"Setting faction {Faction}");
 #endif
         character.m_faction = Faction.Value;
         entityZdo?.SetFaction(Faction.Value);

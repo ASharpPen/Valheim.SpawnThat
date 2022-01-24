@@ -8,9 +8,10 @@ namespace Valheim.SpawnThat.Spawn.Conditions;
 
 public class ConditionAreaIds : ISpawnCondition
 {
-    private List<int> RequiredAreaIds { get; }
-    public bool CanRunClientSide { get; } = true;
-    public bool CanRunServerSide { get; } = true;
+    public List<int> RequiredAreaIds { get; set; } = new();
+
+    public ConditionAreaIds()
+    { }
 
     public ConditionAreaIds(List<int> requiredAreaIds = null)
     {

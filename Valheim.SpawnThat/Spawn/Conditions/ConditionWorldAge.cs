@@ -4,11 +4,11 @@ namespace Valheim.SpawnThat.Spawn.Conditions;
 
 public class ConditionWorldAge : ISpawnCondition
 {
-    private int? MinDays { get; }
-    private int? MaxDays { get; }
+    public int? MinDays { get; set; }
+    public int? MaxDays { get; set; }
 
-    public bool CanRunClientSide { get; } = true;
-    public bool CanRunServerSide { get; } = true;
+    public ConditionWorldAge()
+    { }
 
     public ConditionWorldAge(int? minDays, int? maxDays)
     {

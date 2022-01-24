@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using HarmonyLib;
-using Valheim.SpawnThat.Startup;
+using Valheim.SpawnThat.Lifecycle;
 using Valheim.SpawnThat.Utilities.Extensions;
 
 namespace Valheim.SpawnThat.World.Zone;
@@ -37,7 +37,7 @@ public static class ZoneManager
     [HarmonyPatch]
     private static class PatchHeightmap
     {
-        [HarmonyPatch(typeof(Heightmap), nameof(Heightmap.Awake))]
+        [HarmonyPatch(typeof(Heightmap), nameof(Heightmap.Regenerate))]
         [HarmonyPostfix]
         private static void Record(Heightmap __instance)
         {

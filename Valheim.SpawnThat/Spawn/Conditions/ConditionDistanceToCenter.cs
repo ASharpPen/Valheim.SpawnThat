@@ -6,11 +6,11 @@ namespace Valheim.SpawnThat.Spawn.Conditions;
 
 public class ConditionDistanceToCenter : ISpawnCondition
 {
-    public double? MinDistance { get; }
-    public double? MaxDistance { get; }
+    public double? MinDistance { get; set; }
+    public double? MaxDistance { get; set; }
 
-    public bool CanRunClientSide { get; } = true;
-    public bool CanRunServerSide { get; } = true;
+    public ConditionDistanceToCenter()
+    { }
 
     public ConditionDistanceToCenter(double? minDistanceRequired, double? maxDistanceRequired)
     {
