@@ -5,9 +5,19 @@
     <AssemblyVersion></AssemblyVersion>
     <FileVersion></FileVersion>
     <Version>0.11.6</Version>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    <AssemblyName>Valheim.SpawnThat</AssemblyName>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>A Sharp Pen</Authors>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ASharpPen/Valheim.SpawnThat</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Valheim;Mod;Spawn</PackageTags>
+    <Description>Valheim mod and tool for configuring spawners.</Description>
+    <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Pfhoenix.Valheim.ModProjectReferences" Version="1.0.11" />
+	<PackageReference Include="Pfhoenix.Valheim.ModProjectReferences" Version="1.0.11" PrivateAssets="all"/>
     <PackageReference Include="YamlDotNet" Version="11.2.1" />
   </ItemGroup>
   <ItemGroup>
