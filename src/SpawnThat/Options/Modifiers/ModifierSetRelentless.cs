@@ -3,6 +3,9 @@ using SpawnThat.Core;
 
 namespace SpawnThat.Options.Modifiers;
 
+/// <summary>
+/// Forces eternally alerted.
+/// </summary>
 public class ModifierSetRelentless : ISpawnModifier
 {
     public const string ZdoFeature = "spawnthat_relentless";
@@ -10,7 +13,7 @@ public class ModifierSetRelentless : ISpawnModifier
 
     public bool Relentless { get; set; }
 
-    public ModifierSetRelentless()
+    internal ModifierSetRelentless()
     { }
 
     public ModifierSetRelentless(bool relentless)

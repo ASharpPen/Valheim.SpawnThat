@@ -13,7 +13,7 @@ public class ConditionNearbyPlayersStatus : ISpawnCondition
     public int SearchDistance { get; set; }
     public HashSet<string> RequiredStatusEffects { get; set; }
 
-    public ConditionNearbyPlayersStatus()
+    internal ConditionNearbyPlayersStatus()
     { }
 
     public ConditionNearbyPlayersStatus(int distanceToSearch, params string[] requireOneOfStatusEffects)

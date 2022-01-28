@@ -11,7 +11,7 @@ internal class ModifierCllcExtraEffect : ISpawnModifier
 {
     public CreatureExtraEffect? ExtraEffect { get; set; }
 
-    public ModifierCllcExtraEffect()
+    internal ModifierCllcExtraEffect()
     { }
 
     public ModifierCllcExtraEffect(string extraEffectName)

@@ -105,7 +105,7 @@ internal static class CreatureSpawnerFileDumper
             }
             catch (Exception e)
             {
-                Log.LogWarning($"Error while attempting to read name of prefab for spawner {spawner}");
+                Log.LogWarning($"Error while attempting to read name of prefab for spawner {spawner}", e);
             }
 
             stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.PrefabName)}={spawner.m_creaturePrefab.name}");

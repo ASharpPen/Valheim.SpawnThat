@@ -107,7 +107,7 @@ internal static class RoomCreatureSpawnerFileDumper
             }
             catch (Exception e)
             {
-                Log.LogWarning($"Failed to read prefa name for spawner {spawner}");
+                Log.LogWarning($"Failed to read prefa name for spawner {spawner}", e);
             }
 
             try
@@ -116,7 +116,7 @@ internal static class RoomCreatureSpawnerFileDumper
             }
             catch (Exception e)
             {
-                Log.LogWarning($"Error while attempting to read name of prefab for spawner {spawner}");
+                Log.LogWarning($"Error while attempting to read name of prefab for spawner {spawner}", e);
             }
 
             stringBuilder.AppendLine($"{nameof(CreatureSpawnerConfig.Enabled)}={spawner.enabled}");

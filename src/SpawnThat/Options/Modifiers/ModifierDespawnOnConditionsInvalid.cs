@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace SpawnThat.Options.Modifiers;
 
+/// <summary>
+/// Attempt to trigger vanilla run away and despawn, when no longer
+/// fulfilling conditions for ConditionAllowDuringDay, ConditionAllowDuringNight and 
+/// ConditionAllowDuringEnvironments.
+/// </summary>
+/// <remarks>Requires MonsterAI component on entity.</remarks>
 public class ModifierDespawnOnConditionsInvalid : ISpawnModifier
 {
     public const string ZdoConditionDay = "spawnthat_condition_daytime_day";
@@ -20,7 +26,7 @@ public class ModifierDespawnOnConditionsInvalid : ISpawnModifier
     public bool? ConditionAllowDuringNight { get; set; }
     public string ConditionAllowDuringEnvironments { get; set; }
 
-    public ModifierDespawnOnConditionsInvalid()
+    internal ModifierDespawnOnConditionsInvalid()
     { }
 
     public ModifierDespawnOnConditionsInvalid(

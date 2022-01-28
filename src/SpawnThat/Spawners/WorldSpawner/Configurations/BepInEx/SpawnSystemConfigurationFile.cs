@@ -1,5 +1,4 @@
-﻿using System;
-using SpawnThat.Core.Configuration;
+﻿using SpawnThat.Core.Configuration;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
