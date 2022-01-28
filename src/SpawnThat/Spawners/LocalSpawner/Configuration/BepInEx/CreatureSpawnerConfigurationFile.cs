@@ -3,8 +3,7 @@ using SpawnThat.Core.Configuration;
 
 namespace SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
 
-[Serializable]
-public class CreatureSpawnerConfigurationFile : ConfigWithSubsections<CreatureLocationConfig>, IConfigFile
+internal class CreatureSpawnerConfigurationFile : ConfigWithSubsections<CreatureLocationConfig>, IConfigFile
 {
     protected override CreatureLocationConfig InstantiateSubsection(string subsectionName)
     {
@@ -12,8 +11,7 @@ public class CreatureSpawnerConfigurationFile : ConfigWithSubsections<CreatureLo
     }
 }
 
-[Serializable]
-public class CreatureLocationConfig : ConfigWithSubsections<CreatureSpawnerConfig>
+internal class CreatureLocationConfig : ConfigWithSubsections<CreatureSpawnerConfig>
 {
     protected override CreatureSpawnerConfig InstantiateSubsection(string subsectionName)
     {
@@ -21,8 +19,7 @@ public class CreatureLocationConfig : ConfigWithSubsections<CreatureSpawnerConfi
     }
 }
 
-[Serializable]
-public class CreatureSpawnerConfig : ConfigWithSubsections<Config>
+internal class CreatureSpawnerConfig : ConfigWithSubsections<Config>
 {
     protected override Config InstantiateSubsection(string subsectionName)
     {
@@ -79,8 +76,7 @@ public class CreatureSpawnerConfig : ConfigWithSubsections<Config>
     #endregion
 }
 
-[Serializable]
-public class CreatureSpawnerConfigCLLC : Config
+internal class CreatureSpawnerConfigCLLC : Config
 {
     public const string ModName = "CreatureLevelAndLootControl";
 
@@ -93,8 +89,7 @@ public class CreatureSpawnerConfigCLLC : Config
     public ConfigurationEntry<bool> UseDefaultLevels = new ConfigurationEntry<bool>(false, "Use the default LevelMin and LevelMax for level assignment, ignoring the usual CLLC level control.");
 }
 
-[Serializable]
-public class CreatureSpawnerConfigMobAI : Config
+internal class CreatureSpawnerConfigMobAI : Config
 {
     public const string ModName = "MobAI";
 

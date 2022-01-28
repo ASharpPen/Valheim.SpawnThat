@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using SpawnThat.Utilities;
+using SpawnThat.Utilities.Spatial;
 
 namespace SpawnThat.World.Dungeons;
 

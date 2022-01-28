@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace SpawnThat.Lifecycle;
+namespace SpawnThat.Lifecycle.Patches;
 
 [HarmonyPatch]
 internal static class FejdStartup_TriggerLifecycle_Patch

@@ -18,7 +18,11 @@ public abstract class CompressedPackage
 {
     private HashSet<Type> RegisteredTypes { get; } = new();
 
-    protected void RegisterType<T>(SerializerBuilder builder, IEnumerable<T> objs)
+    /// <summary>
+    /// Register types that need to store the type info when serializing.
+    /// This becomes relevant when storing lists of interfaces for instance.
+    /// </summary>
+    protected void RegisterType<T>(IEnumerable<T> objs)
     {
         foreach(var obj in objs)
         {
@@ -26,18 +30,18 @@ public abstract class CompressedPackage
         }
     }
 
-    protected virtual void BeforePack(SerializerBuilder builder) { }
+    protected virtual void BeforePack() { }
 
     protected virtual void AfterUnpack(object obj) { }
 
     public ZPackage Pack()
     {
+        BeforePack();
+
         var serializerBuilder = new SerializerBuilder();
 
-        BeforePack(serializerBuilder);
-
         foreach (var type in RegisteredTypes)
-{
+        {
             serializerBuilder.WithTagMapping("!" + type.AssemblyQualifiedName, type);
         }
 

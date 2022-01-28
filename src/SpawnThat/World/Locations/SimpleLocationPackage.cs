@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using SpawnThat.Core;
 using SpawnThat.Core.Network;
 using SpawnThat.World.Locations;
-using YamlDotNet.Serialization;
 
 namespace SpawnThat.Locations;
 
-public class SimpleLocationPackage : CompressedPackage
+internal class SimpleLocationPackage : CompressedPackage
 {
     public string[] LocationNames;
 
     public SimpleLocationDTO[] Locations;
 
-    protected override void BeforePack(SerializerBuilder builder)
+    protected override void BeforePack()
     {
         var locationInstances = ZoneSystem.instance?.m_locationInstances;
 

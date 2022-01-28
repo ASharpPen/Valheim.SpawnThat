@@ -12,7 +12,7 @@ public static class StringExtensions
     public static List<string> SplitByComma(this string value, bool toUpper = false)
         => SplitBy(value, Comma, toUpper).ToList();
 
-    public static string[] SplitBySlash(this string value, bool toUpper = false)
+    internal static string[] SplitBySlash(this string value, bool toUpper = false)
         => SplitBy(value, Slash, toUpper).ToArray();
 
     public static IEnumerable<string> SplitBy(this string value, char[] chars, bool toUpper = false)

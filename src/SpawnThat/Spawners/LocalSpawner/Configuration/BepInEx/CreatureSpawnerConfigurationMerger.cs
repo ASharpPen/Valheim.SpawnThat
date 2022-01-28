@@ -2,7 +2,7 @@
 
 namespace SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
 
-public static class CreatureSpawnerConfigurationMerger
+internal static class CreatureSpawnerConfigurationMerger
 {
     public static void MergeInto(this CreatureSpawnerConfigurationFile source, CreatureSpawnerConfigurationFile target)
     {

@@ -3,7 +3,7 @@ using SpawnThat.Core.Configuration;
 
 namespace SpawnThat.Configuration;
 
-public class GeneralConfiguration
+internal class GeneralConfiguration
 {
     public GeneralConfiguration()
     { }

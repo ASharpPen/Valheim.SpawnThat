@@ -1,12 +1,8 @@
-﻿using System;
+﻿namespace SpawnThat.Core.Configuration;
 
-namespace SpawnThat.Core.Configuration
+internal abstract class Config
 {
-    [Serializable]
-    public abstract class Config
-    {
-        public string SectionName;
+    public string SectionName;
 
-        public string SectionKey;
-    }
+    public string SectionKey;
 }

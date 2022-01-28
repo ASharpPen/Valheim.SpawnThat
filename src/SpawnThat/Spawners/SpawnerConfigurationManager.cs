@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using SpawnThat.Core;
-using SpawnThat.Lifecycle;
 using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Spawners;
@@ -10,17 +9,6 @@ public static class SpawnerConfigurationManager
 {
     private static List<Action<ISpawnerConfigurationCollection>> _configurations = new();
     private static List<Action<ISpawnerConfigurationCollection>> _lateConfigurations = new();
-
-    public static ISpawnerConfigurationCollection ConfigurationCollection { get; private set; }
-
-    static SpawnerConfigurationManager()
-    {
-        // Reset on new world entered.
-        LifecycleManager.SubscribeToWorldInit(() =>
-        {
-            ConfigurationCollection = null;
-        });
-    }
 
     internal delegate void SpawnerEarlyConfigurationEvent(ISpawnerConfigurationCollection spawnerConfigs);
     internal static event SpawnerEarlyConfigurationEvent OnEarlyConfigure;
@@ -34,7 +22,7 @@ public static class SpawnerConfigurationManager
     /// <summary>
     /// Subscribe configuration action.
     /// </summary>
-    /// <remarks>Subscriptions are never reset. Use OnConfigure to manage subscription yourself.</remarks>
+    /// <remarks>Subscribed actions are never reset. Use OnConfigure to manage subscription yourself.</remarks>
     public static void SubscribeConfiguration(Action<ISpawnerConfigurationCollection> configure)
     {
         _configurations.Add(configure);
@@ -104,7 +92,5 @@ public static class SpawnerConfigurationManager
                 Log.LogError($"Error during build of spawner config {spawnerConfig?.GetType()?.Name}", e);
             }
         }
-        
-        ConfigurationCollection = configuration;
     }
 }

@@ -2,7 +2,6 @@
 using System.Linq;
 using SpawnThat.Core.Configuration;
 using SpawnThat.Core;
-using SpawnThat.Utilities.Extensions;
 using SpawnThat.Utilities;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;

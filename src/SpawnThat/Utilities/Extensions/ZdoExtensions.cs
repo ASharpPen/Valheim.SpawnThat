@@ -24,6 +24,10 @@ public static class ZdoExtensions
         return zdo.GetBool(EventCreatureHash);
     }
 
+    /// <summary>
+    /// Gets "faction" from zdo.
+    /// </summary>
+    /// <remarks>Spawn That setting.</remarks>
     public static Character.Faction? GetFaction(this ZDO zdo)
     {
         var faction = zdo.GetInt(FactionHash, -1);
@@ -36,6 +40,10 @@ public static class ZdoExtensions
         return (Character.Faction)faction;
     }
 
+    /// <summary>
+    /// Sets "faction" in zdo.
+    /// </summary>
+    /// <remarks>Spawn That setting.</remarks>
     public static void SetFaction(this ZDO zdo, Character.Faction faction)
     {
         zdo.Set(FactionHash, (int)faction);

@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace SpawnThat.Utilities.Spatial;
 
-namespace SpawnThat.Utilities
+internal interface IPoint
 {
-    public interface IPoint
-    {
-        float X { get; set; }
+    float X { get; set; }
 
-        float Y { get; set; }
-    }
+    float Y { get; set; }
 }

@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace SpawnThat.Lifecycle;
+namespace SpawnThat.Lifecycle.Patches;
 
 [HarmonyPatch(typeof(ZNet))]
 internal static class ZNet_OnNewConnection_TriggerSync_Patch

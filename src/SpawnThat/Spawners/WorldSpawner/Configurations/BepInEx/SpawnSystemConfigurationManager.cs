@@ -9,7 +9,7 @@ using SpawnThat.Core.Configuration;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
-public static class SpawnSystemConfigurationManager
+internal static class SpawnSystemConfigurationManager
 {
     public static SpawnSystemConfigurationFile SpawnSystemConfig;
     public static SimpleConfigurationFile SimpleConfig;
