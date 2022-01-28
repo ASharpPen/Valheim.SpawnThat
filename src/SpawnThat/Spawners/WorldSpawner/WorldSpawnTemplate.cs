@@ -8,7 +8,7 @@ using static Heightmap;
 
 namespace SpawnThat.Spawners.WorldSpawner;
 
-public class WorldSpawnTemplate
+internal class WorldSpawnTemplate
 {
     private string _prefabName;
     private int? _prefabHash;

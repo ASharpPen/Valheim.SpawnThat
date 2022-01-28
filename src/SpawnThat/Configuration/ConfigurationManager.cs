@@ -1,38 +1,36 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
-using SpawnThat.Configuration;
 using System.IO;
 using SpawnThat.Core;
 using SpawnThat.Core.Configuration;
 
-namespace SpawnThat.Configuration
+namespace SpawnThat.Configuration;
+
+internal static class ConfigurationManager
 {
-    public static class ConfigurationManager
+    public static GeneralConfiguration GeneralConfig;
+
+    internal const string GeneralConfigFile = "spawn_that.cfg";
+
+    public static void LoadAllConfigurations()
     {
-        public static GeneralConfiguration GeneralConfig;
+        GeneralConfig = LoadGeneral();
+    }
 
-        internal const string GeneralConfigFile = "spawn_that.cfg";
+    public static GeneralConfiguration LoadGeneral()
+    {
+        Log.LogDebug("Loading general configurations");
 
-        public static void LoadAllConfigurations()
-        {
-            GeneralConfig = LoadGeneral();
-        }
+        string configPath = Path.Combine(Paths.ConfigPath, GeneralConfigFile);
 
-        public static GeneralConfiguration LoadGeneral()
-        {
-            Log.LogDebug("Loading general configurations");
+        ConfigurationLoader.SanitizeSectionHeaders(configPath);
+        ConfigFile configFile = new ConfigFile(configPath, true);
 
-            string configPath = Path.Combine(Paths.ConfigPath, GeneralConfigFile);
+        var generalConfig = new GeneralConfiguration();
+        generalConfig.Load(configFile);
 
-            ConfigurationLoader.SanitizeSectionHeaders(configPath);
-            ConfigFile configFile = new ConfigFile(configPath, true);
+        Log.LogDebug("Finished loading general configurations");
 
-            var generalConfig = new GeneralConfiguration();
-            generalConfig.Load(configFile);
-
-            Log.LogDebug("Finished loading general configurations");
-
-            return generalConfig;
-        }
+        return generalConfig;
     }
 }

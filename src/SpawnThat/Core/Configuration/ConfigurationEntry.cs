@@ -1,15 +1,14 @@
 ﻿using BepInEx.Configuration;
-using System;
 using YamlDotNet.Serialization;
 
 namespace SpawnThat.Core.Configuration;
 
-public interface IConfigurationEntry
+internal interface IConfigurationEntry
 {
     void Bind(ConfigFile config, string section, string key);
 }
 
-public class ConfigurationEntry<TIn> : IConfigurationEntry
+internal class ConfigurationEntry<TIn> : IConfigurationEntry
 {
     public TIn DefaultValue { get; set; }
 

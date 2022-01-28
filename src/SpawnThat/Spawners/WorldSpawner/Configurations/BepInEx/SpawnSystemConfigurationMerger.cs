@@ -3,7 +3,7 @@ using SpawnThat.Core;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
-public static class SpawnSystemConfigurationMerger
+internal static class SpawnSystemConfigurationMerger
 {
     public static void MergeInto(this SpawnSystemConfigurationFile source, SpawnSystemConfigurationFile target)
     {

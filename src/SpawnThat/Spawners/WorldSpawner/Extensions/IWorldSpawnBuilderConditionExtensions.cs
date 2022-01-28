@@ -19,10 +19,9 @@ public static class IWorldSpawnBuilderConditionExtensions
         return builder;
     }
 
-    // TODO: Add some internal state for the id, so user doesn't need to specify it.
-    public static IWorldSpawnBuilder SetConditionAreaSpawnChance(this IWorldSpawnBuilder builder, double areaChance, uint templateId)
+    public static IWorldSpawnBuilder SetConditionAreaSpawnChance(this IWorldSpawnBuilder builder, double areaChance)
     {
-        builder.AddOrReplaceCondition(new ConditionAreaSpawnChance(areaChance, (int)templateId));
+        builder.AddOrReplaceCondition(new ConditionAreaSpawnChance(areaChance, builder.Id));
         return builder;
     }
 

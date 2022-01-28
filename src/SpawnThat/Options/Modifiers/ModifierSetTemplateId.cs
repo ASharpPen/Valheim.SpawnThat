@@ -10,7 +10,7 @@ public class ModifierSetTemplateId : ISpawnModifier
 
     public string TemplateId { get; set; }
 
-    public ModifierSetTemplateId()
+    internal ModifierSetTemplateId()
     { }
 
     public ModifierSetTemplateId(string templateId)

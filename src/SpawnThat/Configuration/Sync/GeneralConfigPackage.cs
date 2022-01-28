@@ -1,15 +1,13 @@
-﻿using SpawnThat.Configuration;
-using SpawnThat.Core;
+﻿using SpawnThat.Core;
 using SpawnThat.Core.Network;
-using YamlDotNet.Serialization;
 
 namespace SpawnThat.Configuration.Sync;
 
-public class GeneralConfigPackage : CompressedPackage
+internal class GeneralConfigPackage : CompressedPackage
 {
     public GeneralConfiguration GeneralConfig;
 
-    protected override void BeforePack(SerializerBuilder builder)
+    protected override void BeforePack()
     {
         GeneralConfig = ConfigurationManager.GeneralConfig;
     }

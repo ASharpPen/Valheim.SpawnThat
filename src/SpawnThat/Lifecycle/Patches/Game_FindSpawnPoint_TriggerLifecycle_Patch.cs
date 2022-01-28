@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using SpawnThat.Utilities.Extensions;
 
-namespace SpawnThat.Lifecycle;
+namespace SpawnThat.Lifecycle.Patches;
 
 [HarmonyPatch(typeof(Game))]
 internal static class Game_FindSpawnPoint_TriggerLifecycle_Patch

@@ -7,7 +7,7 @@ namespace SpawnThat.Integrations.CLLC.Modifiers;
 
 public class ModifierCllcRandomLevel : ISpawnModifier
 {
-    public ModifierCllcRandomLevel()
+    internal ModifierCllcRandomLevel()
     { }
 
     public void Modify(GameObject entity, ZDO entityZdo)

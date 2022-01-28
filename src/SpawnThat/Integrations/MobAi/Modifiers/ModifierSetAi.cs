@@ -12,7 +12,7 @@ public class ModifierSetAI : ISpawnModifier
     public string AiName { get; set; }
     public string Config { get; set; }
 
-    public ModifierSetAI()
+    internal ModifierSetAI()
     { }
 
     public ModifierSetAI(string aiName, string config)

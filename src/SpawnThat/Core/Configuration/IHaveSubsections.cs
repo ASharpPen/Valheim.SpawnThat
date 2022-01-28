@@ -1,8 +1,7 @@
 ﻿
-namespace SpawnThat.Core.Configuration
+namespace SpawnThat.Core.Configuration;
+
+internal interface IHaveSubsections
 {
-    public interface IHaveSubsections
-    {
-        Config GetSubsection(string subsectionName);
-    }
+    Config GetSubsection(string subsectionName);
 }

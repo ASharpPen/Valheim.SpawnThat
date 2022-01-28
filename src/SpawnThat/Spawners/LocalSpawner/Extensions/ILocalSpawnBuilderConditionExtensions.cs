@@ -19,7 +19,6 @@ public static class ILocalSpawnBuilderConditionExtensions
         return builder;
     }
 
-    // TODO: Add some internal state for the id, so user doesn't need to specify it.
     public static ILocalSpawnBuilder SetConditionAreaSpawnChance(this ILocalSpawnBuilder builder, double areaChance, uint templateId)
     {
         builder.AddOrReplaceCondition(new ConditionAreaSpawnChance(areaChance, (int)templateId));

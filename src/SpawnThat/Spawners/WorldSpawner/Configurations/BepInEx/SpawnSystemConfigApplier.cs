@@ -2,7 +2,6 @@
 using System.Linq;
 using SpawnThat.Core.Configuration;
 using SpawnThat.Core;
-using SpawnThat.Utilities.Extensions;
 using SpawnThat.Utilities;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
@@ -129,7 +128,7 @@ internal static class SpawnSystemConfigApplier
         }
         if (config.ConditionAreaSpawnChance.Value != 100)
         {
-            builder.SetConditionAreaSpawnChance(config.ConditionAreaSpawnChance.Value, (uint)config.Index);
+            builder.SetConditionAreaSpawnChance(config.ConditionAreaSpawnChance.Value);
         }
         if (config.ConditionAreaIds.Value.IsNotEmpty())
         {

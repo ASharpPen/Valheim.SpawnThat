@@ -3,16 +3,15 @@ using System.Linq;
 using SpawnThat.Core;
 using SpawnThat.Core.Network;
 using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
-using YamlDotNet.Serialization;
 
 namespace SpawnThat.Spawners.WorldSpawner.Sync;
 
-public class WorldSpawnerConfigPackage : CompressedPackage
+internal class WorldSpawnerConfigPackage : CompressedPackage
 {
     public Dictionary<int, WorldSpawnTemplate> TemplatesById;
     public SimpleConfigurationFile SimpleConfig = SpawnSystemConfigurationManager.SimpleConfig;
 
-    protected override void BeforePack(SerializerBuilder builder)
+    protected override void BeforePack()
     {
         TemplatesById = new(WorldSpawnTemplateManager.TemplatesById);
 
@@ -21,9 +20,9 @@ public class WorldSpawnerConfigPackage : CompressedPackage
         Log.LogDebug($"Packaged world spawner configurations: {TemplatesById?.Count ?? 0}");
         Log.LogDebug($"Packaged simple world spawner configurations: {SimpleConfig?.Subsections?.Count ?? 0}");
 
-        RegisterType(builder, TemplatesById.Values.SelectMany(x => x.SpawnConditions));
-        RegisterType(builder, TemplatesById.Values.SelectMany(x => x.SpawnPositionConditions));
-        RegisterType(builder, TemplatesById.Values.SelectMany(x => x.SpawnModifiers));
+        RegisterType(TemplatesById.Values.SelectMany(x => x.SpawnConditions));
+        RegisterType(TemplatesById.Values.SelectMany(x => x.SpawnPositionConditions));
+        RegisterType(TemplatesById.Values.SelectMany(x => x.SpawnModifiers));
     }
 
     protected override void AfterUnpack(object obj)

@@ -2,7 +2,6 @@
 using System.Linq;
 using SpawnThat.Core.Network;
 using SpawnThat.Core;
-using YamlDotNet.Serialization;
 using SpawnThat.Spawners.LocalSpawner.Models;
 
 namespace SpawnThat.Spawners.LocalSpawner.Sync;
@@ -13,7 +12,7 @@ internal class LocalSpawnerConfigPackage : CompressedPackage
     public Dictionary<LocationIdentifier, LocalSpawnTemplate> TemplatesByLocation;
     public Dictionary<RoomIdentifier, LocalSpawnTemplate> TemplatesByRoom;
 
-    protected override void BeforePack(SerializerBuilder builder)
+    protected override void BeforePack()
     {
         TemplatesBySpawnerName = new(LocalSpawnTemplateManager.TemplatesBySpawnerName);
         TemplatesByLocation = new(LocalSpawnTemplateManager.TemplatesByLocation);
@@ -25,12 +24,12 @@ internal class LocalSpawnerConfigPackage : CompressedPackage
             (TemplatesByRoom?.Count ?? 0);
         Log.LogDebug($"Packaged local spawner configurations: {count}");
 
-        RegisterType(builder, TemplatesBySpawnerName.Values.SelectMany(x => x.SpawnConditions));
-        RegisterType(builder, TemplatesBySpawnerName.Values.SelectMany(x => x.Modifiers));
-        RegisterType(builder, TemplatesByLocation.Values.SelectMany(x => x.SpawnConditions));
-        RegisterType(builder, TemplatesByLocation.Values.SelectMany(x => x.Modifiers));
-        RegisterType(builder, TemplatesByRoom.Values.SelectMany(x => x.SpawnConditions));
-        RegisterType(builder, TemplatesByRoom.Values.SelectMany(x => x.Modifiers));
+        RegisterType(TemplatesBySpawnerName.Values.SelectMany(x => x.SpawnConditions));
+        RegisterType(TemplatesBySpawnerName.Values.SelectMany(x => x.Modifiers));
+        RegisterType(TemplatesByLocation.Values.SelectMany(x => x.SpawnConditions));
+        RegisterType(TemplatesByLocation.Values.SelectMany(x => x.Modifiers));
+        RegisterType(TemplatesByRoom.Values.SelectMany(x => x.SpawnConditions));
+        RegisterType(TemplatesByRoom.Values.SelectMany(x => x.Modifiers));
     }
 
     protected override void AfterUnpack(object obj)

@@ -10,7 +10,7 @@ public class ConditionNearbyPlayersNoise : ISpawnCondition
     public int SearchDistance { get; set; }
     public float NoiseThreshold { get; set; }
 
-    public ConditionNearbyPlayersNoise()
+    internal ConditionNearbyPlayersNoise()
     { }
 
     public ConditionNearbyPlayersNoise(int distanceToSearch, float noiseRequired)

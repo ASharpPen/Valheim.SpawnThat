@@ -1,35 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace SpawnThat.Core.Configuration
+namespace SpawnThat.Core.Configuration;
+
+internal abstract class ConfigWithSubsections<T> : Config, IHaveSubsections where T : Config
 {
-    [Serializable]
-    public abstract class ConfigWithSubsections<T> : Config, IHaveSubsections where T : Config
+    public Dictionary<string, T> Subsections { get; set; } = new Dictionary<string, T>();
+
+    public Config GetSubsection(string subsectionName)
     {
-        public Dictionary<string, T> Subsections { get; set; } = new Dictionary<string, T>();
+        var cleanedName = subsectionName.Trim().ToUpperInvariant();
 
-        public Config GetSubsection(string subsectionName)
+        if (Subsections.TryGetValue(cleanedName, out T existingItem))
         {
-            var cleanedName = subsectionName.Trim().ToUpperInvariant();
-
-            if (Subsections.TryGetValue(cleanedName, out T existingItem))
-            {
-                return existingItem;
-            }
-            else
-            {
-                var newItem = InstantiateSubsection(cleanedName);
-                Subsections[cleanedName] = newItem;
-
-                return newItem;
-            }
+            return existingItem;
         }
-
-        public bool TryGet(string key, out T value)
+        else
         {
-            return Subsections.TryGetValue(key.Trim().ToUpperInvariant(), out value);
-        }
+            var newItem = InstantiateSubsection(cleanedName);
+            Subsections[cleanedName] = newItem;
 
-        protected abstract T InstantiateSubsection(string subsectionName);
+            return newItem;
+        }
     }
+
+    public bool TryGet(string key, out T value)
+    {
+        return Subsections.TryGetValue(key.Trim().ToUpperInvariant(), out value);
+    }
+
+    protected abstract T InstantiateSubsection(string subsectionName);
 }

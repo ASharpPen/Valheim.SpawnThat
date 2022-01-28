@@ -10,6 +10,8 @@ namespace SpawnThat.Spawners.WorldSpawner;
 
 public interface IWorldSpawnBuilder
 {
+    int Id { get; }
+
     IWorldSpawnBuilder AddCondition(ISpawnCondition condition);
 
     IWorldSpawnBuilder AddPositionCondition(ISpawnPositionCondition condition);

@@ -13,7 +13,6 @@ internal static class WorldSpawnerManager
     private static List<GameObject> SpawnListsObjects { get; set; } = new();
     private static List<SpawnSystemList> SpawnLists { get; set; } = new();
 
-    // TODO: Move management to WorldSpawnTemplateManager?
     private static Dictionary<SpawnSystem.SpawnData, WorldSpawnTemplate> TemplatesBySpawnEntry { get; set; } = new();
 
     /// <summary>

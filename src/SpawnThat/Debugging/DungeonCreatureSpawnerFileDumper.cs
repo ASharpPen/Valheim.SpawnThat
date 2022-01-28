@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
-using SpawnThat.Debugging;
 
-namespace SpawnThat.Spawners.SpawnerCreatureSpawner.Patches;
+namespace SpawnThat.Debugging;
 
 [HarmonyPatch(typeof(DungeonDB))]
-public static class DungeonCreatureSpawnerFileDumper
+internal static class DungeonCreatureSpawnerFileDumper
 {
     [HarmonyPatch("Start")]
     [HarmonyPostfix]

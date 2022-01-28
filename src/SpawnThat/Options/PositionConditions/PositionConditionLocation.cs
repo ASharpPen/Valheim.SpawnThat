@@ -10,7 +10,7 @@ public class PositionConditionLocation : ISpawnPositionCondition
 {
     public List<string> LocationNames { get; set; }
 
-    public PositionConditionLocation()
+    internal PositionConditionLocation()
     { }
 
     public PositionConditionLocation(IEnumerable<string> locationNames)

@@ -10,7 +10,7 @@ public class ConditionNearbyPlayersCarryItem : ISpawnCondition
     public int SearchDistance { get; set; }
     public HashSet<string> ItemsSearchedFor { get; set; }
 
-    public ConditionNearbyPlayersCarryItem()
+    internal ConditionNearbyPlayersCarryItem()
     { }
 
     public ConditionNearbyPlayersCarryItem(int distanceToSearch, params string[] itemPrefabNames)

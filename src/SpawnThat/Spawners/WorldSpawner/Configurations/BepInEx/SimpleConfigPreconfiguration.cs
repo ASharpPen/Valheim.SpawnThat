@@ -9,7 +9,7 @@ using SpawnThat.Core.Configuration;
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
 // TODO: Generate this more dynamically, so we don't just have hardcoded version.
-public static class SimpleConfigPreconfiguration
+internal static class SimpleConfigPreconfiguration
 {
     public static void Initialize()
     {

@@ -9,7 +9,7 @@ using SpawnThat.Core.Configuration;
 
 namespace SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
 
-public static class CreatureSpawnerConfigurationManager
+internal static class CreatureSpawnerConfigurationManager
 {
     public static CreatureSpawnerConfigurationFile CreatureSpawnerConfig;
 

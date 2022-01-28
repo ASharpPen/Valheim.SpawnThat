@@ -9,7 +9,7 @@ public class ConditionCloseToPlayer : ISpawnCondition
 {
     public float WithinDistance { get; set; }
 
-    public ConditionCloseToPlayer()
+    internal ConditionCloseToPlayer()
     { }
 
     public ConditionCloseToPlayer(float withinDistance)

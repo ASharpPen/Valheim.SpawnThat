@@ -1,192 +1,189 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 
-namespace SpawnThat.Utilities
+namespace SpawnThat.Utilities.Spatial;
+
+internal static class SpatialListExtensions
 {
-    public static class SpatialListExtensions
+    public static void Insert<T>(this List<T> points, T point) where T : IPoint
     {
+        int index = points.IndexLeft(point.X) + 1;
 
-        public static void Insert<T>(this List<T> points, T point) where T : IPoint
+        for (int i = index; i < points.Count; ++i)
         {
-            int index = points.IndexLeft(point.X) + 1;
+            T checkPoint = points[i];
 
-            for(int i = index; i < points.Count; ++i)
+            if (checkPoint.X > point.X)
             {
-                T checkPoint = points[i];
-
-                if(checkPoint.X > point.X)
-                {
-                    break;
-                }
-                if(checkPoint.Y > point.Y)
-                {
-                    break;
-                }
-
-                index = i;
+                break;
+            }
+            if (checkPoint.Y > point.Y)
+            {
+                break;
             }
 
-            if (index >= points.Count)
+            index = i;
+        }
+
+        if (index >= points.Count)
+        {
+            points.Add(point);
+        }
+        else
+        {
+            points.Insert(index, point);
+        }
+    }
+
+    public static int IndexLeft<T>(this IList<T> points, T point) where T : IPoint
+    {
+        return points.IndexLeft(point.X);
+    }
+
+    public static int IndexLeft<T>(this IList<T> points, float x) where T : IPoint
+    {
+        int n = points.Count;
+        int left = 0;
+        int right = n;
+
+        while (left < right)
+        {
+            int middle = (left + right) / 2;
+
+            float value = points[middle].X;
+            float nextValue = points[Math.Min(middle + 1, n - 1)].X;
+
+            if (value < x)
             {
-                points.Add(point);
+                if (nextValue > x)
+                {
+                    return middle;
+                }
+                else
+                {
+                    left = middle + 1;
+                }
             }
             else
             {
-                points.Insert(index, point);
+                right = middle;
             }
         }
 
-        public static int IndexLeft<T>(this IList<T> points, T point) where T : IPoint
-        {
-            return IndexLeft(points, point.X);
-        }
+        return left;
+    }
 
-        public static int IndexLeft<T>(this IList<T> points, float x) where T : IPoint
-        {
-            int n = points.Count;
-            int left = 0;
-            int right = n;
+    public static int IndexRight<T>(this IList<T> points, T point) where T : IPoint
+    {
+        return points.IndexRight(point.X);
+    }
 
-            while (left < right)
+    public static int IndexRight<T>(this IList<T> points, float x) where T : IPoint
+    {
+        int n = points.Count;
+        int left = 0;
+        int right = n;
+
+        while (left < right)
+        {
+            int middle = (left + right) / 2;
+
+            var value = points[middle].X;
+            var prevValue = points[Math.Max(middle - 1, 0)].X;
+
+            if (value > x)
             {
-                int middle = (left + right) / 2;
-
-                float value = points[middle].X;
-                float nextValue = points[Math.Min(middle + 1, n - 1)].X;
-
-                if (value < x)
+                if (prevValue < x)
                 {
-                    if (nextValue > x)
-                    {
-                        return middle;
-                    }
-                    else
-                    {
-                        left = middle + 1;
-                    }
+                    //This won't actually return the rightmost in the case of fuzzy match, and value having duplicates
+                    //But we don't really care, since this is just used to return an index that will correctly put the input into the correct order.
+                    return middle;
                 }
-                else
-                {
-                    right = middle;
-                }
+
+                right = middle;
             }
-
-            return left;
-        }
-
-        public static int IndexRight<T>(this IList<T> points, T point) where T : IPoint
-        {
-            return IndexRight(points, point.X);
-        }
-
-        public static int IndexRight<T>(this IList<T> points, float x) where T : IPoint
-        {
-            int n = points.Count;
-            int left = 0;
-            int right = n;
-
-            while (left < right)
+            else
             {
-                int middle = (left + right) / 2;
-
-                var value = points[middle].X;
-                var prevValue = points[Math.Max(middle - 1, 0)].X;
-
-                if (value > x)
-                {
-                    if (prevValue < x)
-                    {
-                        //This won't actually return the rightmost in the case of fuzzy match, and value having duplicates
-                        //But we don't really care, since this is just used to return an index that will correctly put the input into the correct order.
-                        return middle;
-                    }
-
-                    right = middle;
-                }
-                else
-                {
-                    left = middle + 1;
-                }
+                left = middle + 1;
             }
-
-            return right - 1;
         }
 
-        public static int IndexUp<T>(this IList<T> points, int xLower, int xUpper, T point) where T : IPoint
-        {
-            return IndexUp(points, xLower, xUpper, point.Y);
-        }
+        return right - 1;
+    }
 
-        public static int IndexUp<T>(this IList<T> points, int xLower, int xUpper, float y) where T : IPoint
-        {
-            int n = points.Count;
-            int left = xLower;
-            int right = xUpper;
+    public static int IndexUp<T>(this IList<T> points, int xLower, int xUpper, T point) where T : IPoint
+    {
+        return points.IndexUp(xLower, xUpper, point.Y);
+    }
 
-            while (left < right)
+    public static int IndexUp<T>(this IList<T> points, int xLower, int xUpper, float y) where T : IPoint
+    {
+        int n = points.Count;
+        int left = xLower;
+        int right = xUpper;
+
+        while (left < right)
+        {
+            int middle = (left + right) / 2;
+
+            float value = points[middle].Y;
+            float nextValue = points[Math.Min(middle + 1, n - 1)].Y;
+
+            if (value < y)
             {
-                int middle = (left + right) / 2;
-
-                float value = points[middle].Y;
-                float nextValue = points[Math.Min(middle + 1, n - 1)].Y;
-
-                if (value < y)
+                if (nextValue > y)
                 {
-                    if (nextValue > y)
-                    {
-                        return middle;
-                    }
-                    else
-                    {
-                        left = middle + 1;
-                    }
-                }
-                else
-                {
-                    right = middle;
-                }
-            }
-
-            return left;
-        }
-
-        public static int IndexDown<T>(this IList<T> points, int xIndex, T point) where T : IPoint
-        {
-            return IndexDown(points, xIndex, point.Y);
-        }
-
-        public static int IndexDown<T>(this IList<T> points, int xIndex, float y) where T : IPoint
-        {
-            if (xIndex >= points.Count)
-            {
-                return xIndex;
-            }
-
-            var xValue = points[xIndex].X;
-
-            int left = xIndex;
-            int right = points.Count;
-
-            while (left < right)
-            {
-                int middle = (left + right) / 2;
-
-                if(points[middle].X > xValue)
-                {
-                    return middle - 1;
-                }
-                else if (points[middle].Y > y)
-                {
-                    right = middle;
+                    return middle;
                 }
                 else
                 {
                     left = middle + 1;
                 }
             }
-
-            return right - 1;
+            else
+            {
+                right = middle;
+            }
         }
+
+        return left;
+    }
+
+    public static int IndexDown<T>(this IList<T> points, int xIndex, T point) where T : IPoint
+    {
+        return points.IndexDown(xIndex, point.Y);
+    }
+
+    public static int IndexDown<T>(this IList<T> points, int xIndex, float y) where T : IPoint
+    {
+        if (xIndex >= points.Count)
+        {
+            return xIndex;
+        }
+
+        var xValue = points[xIndex].X;
+
+        int left = xIndex;
+        int right = points.Count;
+
+        while (left < right)
+        {
+            int middle = (left + right) / 2;
+
+            if (points[middle].X > xValue)
+            {
+                return middle - 1;
+            }
+            else if (points[middle].Y > y)
+            {
+                right = middle;
+            }
+            else
+            {
+                left = middle + 1;
+            }
+        }
+
+        return right - 1;
     }
 }

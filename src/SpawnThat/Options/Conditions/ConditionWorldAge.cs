@@ -7,7 +7,7 @@ public class ConditionWorldAge : ISpawnCondition
     public int? MinDays { get; set; }
     public int? MaxDays { get; set; }
 
-    public ConditionWorldAge()
+    internal ConditionWorldAge()
     { }
 
     public ConditionWorldAge(int? minDays, int? maxDays)

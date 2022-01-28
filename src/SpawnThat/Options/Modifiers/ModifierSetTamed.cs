@@ -8,7 +8,7 @@ public class ModifierSetTamed : ISpawnModifier
 {
     public bool Tamed { get; set; }
 
-    public ModifierSetTamed()
+    internal ModifierSetTamed()
     { }
 
     public ModifierSetTamed(bool tamed)

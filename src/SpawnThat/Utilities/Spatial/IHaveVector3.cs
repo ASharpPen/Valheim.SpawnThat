@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace SpawnThat.Utilities
+namespace SpawnThat.Utilities.Spatial;
+
+internal interface IHaveVector3
 {
-    public interface IHaveVector3
-    {
-        Vector3 Pos { get; }
-    }
+    Vector3 Pos { get; }
 }
