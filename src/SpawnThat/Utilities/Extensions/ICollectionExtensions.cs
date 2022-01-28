@@ -17,6 +17,12 @@ internal static class ICollectionExtensions
             return;
         }
 
+        if (newEntry is UnityEngine.Object unityObj &&
+            !unityObj)
+        {
+            return;
+        }
+
         collection.Add(newEntry);
     }
 }
