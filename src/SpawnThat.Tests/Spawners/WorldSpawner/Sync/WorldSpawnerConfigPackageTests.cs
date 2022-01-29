@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpawnThat.Spawners;
-using SpawnThat.Spawners.WorldSpawner;
 using SpawnThat.Spawners.WorldSpawner.Configurations;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 using SpawnThat.Spawners.WorldSpawner.Sync;
 using SpawnThat.Utilities.Enums;
 using static Heightmap;

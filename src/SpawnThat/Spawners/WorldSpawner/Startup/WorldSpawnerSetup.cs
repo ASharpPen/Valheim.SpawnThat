@@ -3,6 +3,7 @@ using UnityEngine;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 using SpawnThat.Spawners.WorldSpawner.Sync;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 
 namespace SpawnThat.Spawners.WorldSpawner.Startup;
 

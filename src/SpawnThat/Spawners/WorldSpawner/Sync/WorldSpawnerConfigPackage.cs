@@ -3,6 +3,7 @@ using System.Linq;
 using SpawnThat.Core;
 using SpawnThat.Core.Network;
 using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 
 namespace SpawnThat.Spawners.WorldSpawner.Sync;
 

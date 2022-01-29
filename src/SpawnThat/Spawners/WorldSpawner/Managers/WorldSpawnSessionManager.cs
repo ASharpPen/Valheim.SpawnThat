@@ -8,7 +8,7 @@ using SpawnThat.Core;
 using SpawnThat.Spawners.Contexts;
 using SpawnThat.World.Queries;
 
-namespace SpawnThat.Spawners.WorldSpawner;
+namespace SpawnThat.Spawners.WorldSpawner.Managers;
 
 internal static class WorldSpawnSessionManager
 {
@@ -28,7 +28,7 @@ internal static class WorldSpawnSessionManager
             Spawner = spawner;
             Context = new(ComponentCache.GetZdo(Spawner));
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Log.LogError("Error during initialization of new SpawnSystem session", e);
         }
@@ -44,7 +44,7 @@ internal static class WorldSpawnSessionManager
             SpawnDataEntry = currentEntry;
             SpawnTemplate = WorldSpawnerManager.GetTemplate(SpawnDataEntry);
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Log.LogError("Error during initialization of spawner entry session.", e);
         }
@@ -83,7 +83,7 @@ internal static class WorldSpawnSessionManager
 #endif
                 return isValid;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.LogError($"Error while attempting to check spawn condition {x.GetType().Name} for world spawner template '{SpawnTemplate?.TemplateName}'. Skipping spawn", e);
                 return false;
@@ -199,7 +199,7 @@ internal static class WorldSpawnSessionManager
             return;
         }
 
-        foreach(var modifier in SpawnTemplate.SpawnModifiers)
+        foreach (var modifier in SpawnTemplate.SpawnModifiers)
         {
             try
             {

@@ -3,7 +3,7 @@ using System.Linq;
 using SpawnThat.Core;
 using SpawnThat.Lifecycle;
 
-namespace SpawnThat.Spawners.WorldSpawner;
+namespace SpawnThat.Spawners.WorldSpawner.Managers;
 
 internal static class WorldSpawnTemplateManager
 {

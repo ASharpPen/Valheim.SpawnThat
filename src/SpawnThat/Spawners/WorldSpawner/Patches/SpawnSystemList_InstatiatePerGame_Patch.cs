@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using SpawnThat.Caches;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 
 namespace SpawnThat.Spawners.WorldSpawner.Patches;
 

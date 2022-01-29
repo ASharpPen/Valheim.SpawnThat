@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SpawnThat.Core;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations;
 

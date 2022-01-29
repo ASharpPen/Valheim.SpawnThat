@@ -7,6 +7,7 @@ using UnityEngine;
 using SpawnThat.Caches;
 using SpawnThat.Core;
 using SpawnThat.Utilities.Extensions;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 
 namespace SpawnThat.Spawners.WorldSpawner.Patches;
 

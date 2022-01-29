@@ -5,7 +5,7 @@ using SpawnThat.Core;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Services;
 
-namespace SpawnThat.Spawners.WorldSpawner;
+namespace SpawnThat.Spawners.WorldSpawner.Managers;
 
 internal static class WorldSpawnerManager
 {
@@ -62,7 +62,7 @@ internal static class WorldSpawnerManager
             foreach (var spawnList in PrefabSpawnSystemLists)
             {
                 Log.LogTrace($"Instantiating spawn list: '{spawnList.name}'");
-                var instantiatedSpawnList = GameObject.Instantiate(spawnList.gameObject);
+                var instantiatedSpawnList = UnityEngine.Object.Instantiate(spawnList.gameObject);
 
                 SpawnListsObjects.Add(instantiatedSpawnList);
                 SpawnLists.Add(instantiatedSpawnList.GetComponent<SpawnSystemList>());

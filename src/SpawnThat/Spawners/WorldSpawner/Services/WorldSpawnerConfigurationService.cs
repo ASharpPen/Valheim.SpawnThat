@@ -7,6 +7,7 @@ using SpawnThat.Core;
 using SpawnThat.Debugging;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 
 namespace SpawnThat.Spawners.WorldSpawner.Services;
 
