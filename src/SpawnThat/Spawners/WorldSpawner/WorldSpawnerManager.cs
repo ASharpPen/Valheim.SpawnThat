@@ -15,6 +15,8 @@ internal static class WorldSpawnerManager
 
     private static Dictionary<SpawnSystem.SpawnData, WorldSpawnTemplate> TemplatesBySpawnEntry { get; set; } = new();
 
+    private static List<SpawnSystemList> PrefabSpawnSystemLists { get; set; } = new(0);
+
     /// <summary>
     /// Disables world spawner updates while true.
     /// Indended to delay updates until configs have been loaded.
@@ -35,6 +37,16 @@ internal static class WorldSpawnerManager
         });
     }
 
+    public static void SetPrefabSpawnSystemLists()
+    {
+        if (PrefabSpawnSystemLists.Count == 0)
+        {
+            var prefabSpawnSystem = ZoneSystem.instance.m_zoneCtrlPrefab.GetComponent<SpawnSystem>();
+
+            PrefabSpawnSystemLists = prefabSpawnSystem.m_spawnLists;
+        }
+    }
+
     public static void EnsureInstantiatedSpawnListAssigned(SpawnSystem spawner)
     {
         if (HasInstantiatedSpawnLists)
@@ -43,9 +55,11 @@ internal static class WorldSpawnerManager
             return;
         }
 
+        GameObject testForPrefabGo = new GameObject();
+
         try
         {
-            foreach (var spawnList in spawner.m_spawnLists)
+            foreach (var spawnList in PrefabSpawnSystemLists)
             {
                 Log.LogTrace($"Instantiating spawn list: '{spawnList.name}'");
                 var instantiatedSpawnList = GameObject.Instantiate(spawnList.gameObject);
