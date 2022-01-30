@@ -1,12 +1,12 @@
 ﻿
 namespace SpawnThat.Spawners.LocalSpawner.Models;
 
-public record RoomIdentifier
+internal record RoomIdentifier
 {
-    public string Room { get; set; }
-    public string PrefabName { get; set; }
+    public string Room { get; internal set; }
+    public string PrefabName { get; internal set; }
 
-    public RoomIdentifier()
+    internal RoomIdentifier()
     { }
 
     public RoomIdentifier(string room, string prefabName)

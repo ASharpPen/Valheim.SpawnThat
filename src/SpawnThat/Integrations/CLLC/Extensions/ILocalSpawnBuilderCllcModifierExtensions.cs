@@ -10,7 +10,7 @@ public static class ILocalSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.AddOrReplaceModifier(new ModifierCllcBossAffix(bossAffixName));
+            builder.SetModifier(new ModifierCllcBossAffix(bossAffixName));
         }
 
         return builder;
@@ -20,7 +20,7 @@ public static class ILocalSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.AddOrReplaceModifier(new ModifierCllcExtraEffect(extraEffectName));
+            builder.SetModifier(new ModifierCllcExtraEffect(extraEffectName));
         }
 
         return builder;
@@ -30,7 +30,7 @@ public static class ILocalSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.AddOrReplaceModifier(new ModifierCllcInfusion(infusionName));
+            builder.SetModifier(new ModifierCllcInfusion(infusionName));
         }
 
         return builder;
@@ -40,7 +40,7 @@ public static class ILocalSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.AddOrReplaceModifier(new ModifierCllcRandomLevel());
+            builder.SetModifier(new ModifierCllcRandomLevel());
         }
 
         return builder;

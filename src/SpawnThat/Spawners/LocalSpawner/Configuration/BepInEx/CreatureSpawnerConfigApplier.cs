@@ -46,16 +46,16 @@ internal static class CreatureSpawnerConfigApplier
         builder.SetLevelUpChance(config.LevelUpChance.Value);
         builder.SetSpawnInterval(TimeSpan.FromMinutes(config.RespawnTime.Value));
         builder.SetPatrolSpawn(config.SetPatrolPoint.Value);
-        builder.SetSpawnAtDay(config.SpawnAtDay.Value);
-        builder.SetSpawnAtNight(config.SpawnAtNight.Value);
-        builder.SetConditionPlayerDistance(config.TriggerDistance.Value);
+        builder.SetConditionAllowDuringNight(config.SpawnAtDay.Value);
+        builder.SetConditionAllowDuringDay(config.SpawnAtNight.Value);
+        builder.SetConditionPlayerWithinDistance(config.TriggerDistance.Value);
         builder.SetConditionPlayerNoise(config.TriggerNoise.Value);
-        builder.SetSpawnInPlayerBase(config.SpawnInPlayerBase.Value);
+        builder.SetAllowSpawnInPlayerBase(config.SpawnInPlayerBase.Value);
 
         // Modifiers
         if (config.SetFaction.Value.IsNotEmpty())
         {
-            builder.AddOrReplaceModifier(new ModifierSetFaction(config.SetFaction.Value));
+            builder.SetModifier(new ModifierSetFaction(config.SetFaction.Value));
         }
 
         builder.SetModifierTamed(config.SetTamed.Value);
@@ -83,7 +83,7 @@ internal static class CreatureSpawnerConfigApplier
 
                 if (cllcConfig.UseDefaultLevels.Value)
                 {
-                    builder.AddOrReplaceModifier(new ModifierDefaultRollLevel(config.LevelMin.Value, config.LevelMax.Value, 0, config.LevelUpChance.Value));
+                    builder.SetModifier(new ModifierDefaultRollLevel(config.LevelMin.Value, config.LevelMax.Value, 0, config.LevelUpChance.Value));
                 }
             }
 

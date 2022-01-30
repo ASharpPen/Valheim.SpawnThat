@@ -7,7 +7,7 @@ using SpawnThat.Utilities.Extensions;
 namespace SpawnThat.Spawners.LocalSpawner.Patches;
 
 [HarmonyPatch(typeof(CreatureSpawner))]
-internal static class CreatureSpawnerPatch
+internal static class CreatureSpawner_LocalSpawner_Workflow_Patch
 {
     [HarmonyPatch(nameof(CreatureSpawner.UpdateSpawner))]
     [HarmonyPrefix]
