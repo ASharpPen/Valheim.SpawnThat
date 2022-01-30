@@ -12,7 +12,7 @@ public static class IWorldSpawnBuilderELConditionsExtensions
     {
         if (IntegrationManager.InstalledEpicLoot)
         {
-            builder.AddCondition(new ConditionNearbyPlayerCarryItemWithRarity(distanceToSearch, rarities));
+            builder.SetCondition(new ConditionNearbyPlayerCarryItemWithRarity(distanceToSearch, rarities));
         }
 
         return builder;
@@ -22,7 +22,7 @@ public static class IWorldSpawnBuilderELConditionsExtensions
     {
         if (IntegrationManager.InstalledEpicLoot)
         {
-            builder.AddCondition(new ConditionNearbyPlayerCarryItemWithRarity(distanceToSearch, rarities));
+            builder.SetCondition(new ConditionNearbyPlayerCarryItemWithRarity(distanceToSearch, rarities));
         }
 
         return builder;
@@ -32,7 +32,7 @@ public static class IWorldSpawnBuilderELConditionsExtensions
     {
         if (IntegrationManager.InstalledEpicLoot)
         {
-            builder.AddCondition(new ConditionNearbyPlayerCarryLegendaryItem(distanceToSearch, legendaryItemIds));
+            builder.SetCondition(new ConditionNearbyPlayerCarryLegendaryItem(distanceToSearch, legendaryItemIds));
         }
 
         return builder;
@@ -42,7 +42,7 @@ public static class IWorldSpawnBuilderELConditionsExtensions
     {
         if (IntegrationManager.InstalledEpicLoot)
         {
-            builder.AddCondition(new ConditionNearbyPlayerCarryLegendaryItem(distanceToSearch, legendaryItemIds));
+            builder.SetCondition(new ConditionNearbyPlayerCarryLegendaryItem(distanceToSearch, legendaryItemIds));
         }
 
         return builder;

@@ -4,6 +4,7 @@ using UnityEngine;
 using SpawnThat.Caches;
 using SpawnThat.Core;
 using SpawnThat.Options.Modifiers;
+using SpawnThat.Integrations.CLLC.Models;
 
 namespace SpawnThat.Integrations.CLLC.Modifiers;
 
@@ -26,9 +27,9 @@ public class ModifierCllcBossAffix : ISpawnModifier
         }
     }
 
-    public ModifierCllcBossAffix(BossAffix bossAffix)
+    public ModifierCllcBossAffix(CllcBossAffix bossAffix)
     {
-        Affix = bossAffix;
+        Affix = bossAffix.Convert();
     }
 
     public void Modify(GameObject entity, ZDO entityZdo)
