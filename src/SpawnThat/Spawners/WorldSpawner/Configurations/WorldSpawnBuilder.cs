@@ -59,39 +59,21 @@ internal class WorldSpawnBuilder : IWorldSpawnBuilder
         return Template;
     }
 
-    public IWorldSpawnBuilder AddCondition(ISpawnCondition condition)
-    {
-        Template.SpawnConditions.AddNullSafe(condition);
-        return this;
-    }
-
-    public IWorldSpawnBuilder AddOrReplaceCondition<TCondition>(TCondition condition)
+    public IWorldSpawnBuilder SetCondition<TCondition>(TCondition condition)
         where TCondition : class, ISpawnCondition
     {
         Template.SpawnConditions.AddOrReplaceByType(condition);
         return this;
     }
 
-    public IWorldSpawnBuilder AddPositionCondition(ISpawnPositionCondition condition)
-    {
-        Template.SpawnPositionConditions.AddNullSafe(condition);
-        return this;
-    }
-
-    public IWorldSpawnBuilder AddOrReplacePositionCondition<TCondition>(TCondition condition)
+    public IWorldSpawnBuilder SetPositionCondition<TCondition>(TCondition condition)
         where TCondition : class, ISpawnPositionCondition
     {
         Template.SpawnPositionConditions.AddOrReplaceByType(condition);
         return this;
     }
 
-    public IWorldSpawnBuilder AddModifier(ISpawnModifier modifier)
-    {
-        Template.SpawnModifiers.AddNullSafe(modifier);
-        return this;
-    }
-
-    public IWorldSpawnBuilder AddOrReplaceModifier<TModifier>(TModifier modifier)
+    public IWorldSpawnBuilder SetModifier<TModifier>(TModifier modifier)
         where TModifier : class, ISpawnModifier
     {
         Template.SpawnModifiers.AddOrReplaceByType(modifier);
@@ -131,6 +113,18 @@ internal class WorldSpawnBuilder : IWorldSpawnBuilder
     public IWorldSpawnBuilder SetConditionAltitude(float? minAltitude, float? maxAltitude)
     {
         Template.ConditionMinAltitude = minAltitude;
+        Template.ConditionMaxAltitude = maxAltitude;
+        return this;
+    }
+
+    public IWorldSpawnBuilder SetConditionAltitudeMin(float? minAltitude)
+    {
+        Template.ConditionMinAltitude = minAltitude;
+        return this;
+    }
+
+    public IWorldSpawnBuilder SetConditionAltitudeMax(float? maxAltitude)
+    {
         Template.ConditionMaxAltitude = maxAltitude;
         return this;
     }
@@ -234,7 +228,18 @@ internal class WorldSpawnBuilder : IWorldSpawnBuilder
     {
         Template.ConditionMinOceanDepth = minOceanDepth;
         Template.ConditionMaxOceanDepth = maxOceanDepth;
+        return this;
+    }
 
+    public IWorldSpawnBuilder SetConditionOceanDepthMin(float? minOceanDepth)
+    {
+        Template.ConditionMinOceanDepth = minOceanDepth;
+        return this;
+    }
+
+    public IWorldSpawnBuilder SetConditionOceanDepthMax(float? maxOceanDepth)
+    {
+        Template.ConditionMaxOceanDepth = maxOceanDepth;
         return this;
     }
 
@@ -244,9 +249,27 @@ internal class WorldSpawnBuilder : IWorldSpawnBuilder
         return this;
     }
 
+    public IWorldSpawnBuilder SetConditionRequiredGlobalKey(GlobalKey globalKey)
+    {
+        Template.ConditionRequiredGlobalKey = globalKey.GetName();
+        return this;
+    }
+
     public IWorldSpawnBuilder SetConditionTilt(float? minTilt, float? maxTilt)
     {
         Template.ConditionMinTilt = minTilt;
+        Template.ConditionMaxTilt = maxTilt;
+        return this;
+    }
+
+    public IWorldSpawnBuilder SetConditionTiltMin(float? minTilt)
+    {
+        Template.ConditionMinTilt = minTilt;
+        return this;
+    }
+
+    public IWorldSpawnBuilder SetConditionTiltMax(float? maxTilt)
+    {
         Template.ConditionMaxTilt = maxTilt;
         return this;
     }
@@ -263,7 +286,7 @@ internal class WorldSpawnBuilder : IWorldSpawnBuilder
         return this;
     }
 
-    public IWorldSpawnBuilder SetLevelUpDistance(float distance)
+    public IWorldSpawnBuilder DistanceToCenterForLevelUp(float distance)
     {
         Template.LevelUpDistance = distance;
         return this;

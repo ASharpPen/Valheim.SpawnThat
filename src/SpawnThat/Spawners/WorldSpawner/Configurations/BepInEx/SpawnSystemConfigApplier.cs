@@ -74,7 +74,7 @@ internal static class SpawnSystemConfigApplier
         builder.SetSpawnChance(config.SpawnChance.Value);
         builder.SetMinLevel((uint)config.LevelMin.Value);
         builder.SetMaxLevel((uint)config.LevelMax.Value);
-        builder.SetLevelUpDistance(config.LevelUpMinCenterDistance.Value);
+        builder.DistanceToCenterForLevelUp(config.LevelUpMinCenterDistance.Value);
         builder.SetMinDistanceToOther(config.SpawnDistance.Value);
         builder.SetSpawnAtDistanceToPlayerMin(config.SpawnRadiusMin.Value);
         builder.SetSpawnAtDistanceToPlayerMax(config.SpawnRadiusMax.Value);
@@ -108,7 +108,7 @@ internal static class SpawnSystemConfigApplier
         builder.SetConditionWorldAge((int)config.ConditionWorldAgeDaysMin.Value, (int)config.ConditionWorldAgeDaysMax.Value);
         if (config.RequiredNotGlobalKey.Value.IsNotEmpty())
         {
-            builder.AddOrReplaceCondition(new ConditionGlobalKeysRequiredMissing(config.RequiredNotGlobalKey.Value.SplitByComma().ToArray()));
+            builder.SetCondition(new ConditionGlobalKeysRequiredMissing(config.RequiredNotGlobalKey.Value.SplitByComma().ToArray()));
         }
         if (config.ConditionNearbyPlayersCarryValue.Value > 0)
         {
@@ -116,7 +116,7 @@ internal static class SpawnSystemConfigApplier
         }
         if (config.ConditionNearbyPlayerCarriesItem.Value.IsNotEmpty())
         {
-            builder.AddConditionNearbyPlayersCarryItem((int)config.DistanceToTriggerPlayerConditions.Value, config.ConditionNearbyPlayerCarriesItem.Value.SplitByComma());
+            builder.SetConditionNearbyPlayersCarryItem((int)config.DistanceToTriggerPlayerConditions.Value, config.ConditionNearbyPlayerCarriesItem.Value.SplitByComma());
         }
         if (config.ConditionNearbyPlayersNoiseThreshold.Value > 0)
         {
@@ -124,7 +124,7 @@ internal static class SpawnSystemConfigApplier
         }
         if (config.ConditionNearbyPlayersStatus.Value.IsNotEmpty())
         {
-            builder.AddConditionNearbyPlayersStatus((int)config.DistanceToTriggerPlayerConditions.Value, config.ConditionNearbyPlayersStatus.Value.SplitByComma().ToArray());
+            builder.SetConditionNearbyPlayersStatus((int)config.DistanceToTriggerPlayerConditions.Value, config.ConditionNearbyPlayersStatus.Value.SplitByComma().ToArray());
         }
         if (config.ConditionAreaSpawnChance.Value != 100)
         {
@@ -171,7 +171,7 @@ internal static class SpawnSystemConfigApplier
         // Modifiers
         if (config.SetFaction.Value.IsNotEmpty())
         {
-            builder.AddOrReplaceModifier(new ModifierSetFaction(config.SetFaction.Value));
+            builder.SetModifier(new ModifierSetFaction(config.SetFaction.Value));
         }
         if (config.SetRelentless.Value)
         {
@@ -212,7 +212,7 @@ internal static class SpawnSystemConfigApplier
 
                 if (cllcConfig.UseDefaultLevels.Value)
                 {
-                    builder.AddOrReplaceModifier(new ModifierDefaultRollLevel(config.LevelMin.Value, config.LevelMax.Value, 0, 10f));
+                    builder.SetModifier(new ModifierDefaultRollLevel(config.LevelMin.Value, config.LevelMax.Value, 0, 10f));
                 }
             }
 
