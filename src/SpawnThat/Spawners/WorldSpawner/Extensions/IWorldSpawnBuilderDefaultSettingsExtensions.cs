@@ -5,7 +5,7 @@ using SpawnThat.Spawners.WorldSpawner.Configurations;
 
 namespace SpawnThat.Spawners;
 
-public static class IWorldSpawnerBuilderDefaultSettingsExtensions
+public static class IWorldSpawnBuilderDefaultSettingsExtensions
 {
     public static IWorldSpawnBuilder WithSettings(this IWorldSpawnBuilder builder, DefaultWorldSpawnSettings settings)
     {
@@ -20,7 +20,7 @@ public static class IWorldSpawnerBuilderDefaultSettingsExtensions
         settings.PackSizeMax.Set(builder.SetPackSizeMax);
         settings.ConditionAllowInForest.Set(builder.SetConditionAllowInForest);
         settings.ConditionAllowOutsideForest.Set(builder.SetConditionAllowOutsideForest);
-        settings.DistanceToCenterForLevelUp.Set(builder.DistanceToCenterForLevelUp);
+        settings.DistanceToCenterForLevelUp.Set(builder.SetDistanceToCenterForLevelUp);
         settings.MinLevel.Set(builder.SetMinLevel);
         settings.MaxLevel.Set(builder.SetMaxLevel);
         settings.ConditionMinAltitude.SetNullable(builder.SetConditionAltitudeMin);

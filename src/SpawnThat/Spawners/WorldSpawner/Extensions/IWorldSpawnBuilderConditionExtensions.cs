@@ -208,7 +208,7 @@ public static class IWorldSpawnBuilderConditionExtensions
     }
 
     /// <summary>
-    /// Template only enabled the world day is within the indicated range.
+    /// Template only enabled when the world day is within the indicated range.
     /// </summary>
     /// <param name="minDays">Minimum days required before template is activated.</param>
     /// <param name="maxDays">Maximum days after which template is deactivated. If null, there is no limit.</param>

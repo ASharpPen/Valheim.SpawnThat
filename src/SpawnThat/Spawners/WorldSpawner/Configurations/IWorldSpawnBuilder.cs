@@ -218,7 +218,7 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: 0</para>
     /// </summary>
     /// <remarks>Vanilla name: m_levelUpMinCenterDistance</remarks>
-    IWorldSpawnBuilder DistanceToCenterForLevelUp(float distance);
+    IWorldSpawnBuilder SetDistanceToCenterForLevelUp(float distance);
 
     /// <summary>
     /// <para>Set altitude (distance to water surface) range enabling spawn.</para>

@@ -74,7 +74,7 @@ internal static class SpawnSystemConfigApplier
         builder.SetSpawnChance(config.SpawnChance.Value);
         builder.SetMinLevel((uint)config.LevelMin.Value);
         builder.SetMaxLevel((uint)config.LevelMax.Value);
-        builder.DistanceToCenterForLevelUp(config.LevelUpMinCenterDistance.Value);
+        builder.SetDistanceToCenterForLevelUp(config.LevelUpMinCenterDistance.Value);
         builder.SetMinDistanceToOther(config.SpawnDistance.Value);
         builder.SetSpawnAtDistanceToPlayerMin(config.SpawnRadiusMin.Value);
         builder.SetSpawnAtDistanceToPlayerMax(config.SpawnRadiusMax.Value);

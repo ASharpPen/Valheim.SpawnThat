@@ -51,7 +51,7 @@ public static class IWorldSpawnBuilderModifierExtensions
     }
 
     /// <summary>
-    /// Sets a custom id on entity zdo as "spawn_template_id".
+    /// Sets a custom string on entity zdo with key "spawn_template_id".
     /// Intended for integration between mods, and detecting a modified entity.
     /// </summary>
     public static IWorldSpawnBuilder SetModifierTemplateId(this IWorldSpawnBuilder builder, string templateId)
