@@ -3,6 +3,7 @@ using System.Reflection.Emit;
 using System.Reflection;
 using HarmonyLib;
 using SpawnThat.Utilities.Extensions;
+using SpawnThat.Spawners.LocalSpawner.Managers;
 
 namespace SpawnThat.Spawners.LocalSpawner.Patches;
 

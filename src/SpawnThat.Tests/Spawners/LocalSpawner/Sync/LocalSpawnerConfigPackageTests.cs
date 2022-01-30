@@ -2,8 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpawnThat.Core.Network;
 using SpawnThat.Spawners;
-using SpawnThat.Spawners.LocalSpawner;
 using SpawnThat.Spawners.LocalSpawner.Configuration;
+using SpawnThat.Spawners.LocalSpawner.Managers;
 using SpawnThat.Spawners.LocalSpawner.Models;
 using SpawnThat.Spawners.LocalSpawner.Sync;
 using static Heightmap;

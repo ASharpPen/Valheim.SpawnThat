@@ -35,7 +35,7 @@ public interface ILocalSpawnBuilder
 
     /// <summary>
     /// <para>Time between new spawn checks.</para>
-    /// <para>If null, uses existing when overriding.</para>
+    /// <para>If null, uses existing.</para>
     /// <para>Default if new template: 00:20:00</para>
     /// </summary>
     /// <remarks>Vanilla name: m_respawnTimeMinuts</remarks>
@@ -51,7 +51,7 @@ public interface ILocalSpawnBuilder
     ///     This means if levelup chance is 10 (default), there is 10% chance for
     ///     a MinLevel 1 to become level 2, and 1% chance to become level 3.
     /// </para>
-    /// <para>If not set, uses existing when overriding.</para>
+    /// <para>If not set, uses existing.</para>
     /// <para>Default if new template: 1</para>
     /// </summary>
     /// <remarks>Vanilla name: m_minLevel</remarks>

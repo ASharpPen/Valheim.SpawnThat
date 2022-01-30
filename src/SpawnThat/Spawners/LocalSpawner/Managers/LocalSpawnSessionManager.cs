@@ -6,11 +6,11 @@ using SpawnThat.Caches;
 using SpawnThat.Core;
 using SpawnThat.Spawners.Contexts;
 
-namespace SpawnThat.Spawners.LocalSpawner;
+namespace SpawnThat.Spawners.LocalSpawner.Managers;
 
 internal static class LocalSpawnSessionManager
 {
-    internal static float GetChanceToLevelUp(float defaultChance, CreatureSpawner spawner) 
+    internal static float GetChanceToLevelUp(float defaultChance, CreatureSpawner spawner)
         => LocalSpawnerManager.GetTemplate(spawner)?.LevelUpChance ?? defaultChance;
 
     internal static bool CheckConditionsValid(CreatureSpawner spawner)
@@ -31,7 +31,7 @@ internal static class LocalSpawnSessionManager
 
         SpawnSessionContext context = new(spawnerZdo);
 
-        foreach(var condition in template.SpawnConditions)
+        foreach (var condition in template.SpawnConditions)
         {
             try
             {
@@ -42,7 +42,7 @@ internal static class LocalSpawnSessionManager
                     return false;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.LogError($"Error while attempting to check spawn condition '{condition?.GetType()?.Name}' for local spawner '{spawner.name}'. Ignoring condition", e);
             }
@@ -75,7 +75,7 @@ internal static class LocalSpawnSessionManager
                 {
                     modifier?.Modify(spawn, spawnZdo);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Log.LogError($"Error while attempting to apply modifier '{modifier?.GetType()?.Name}' to local spawner '{spawner.name}'", e);
                 }

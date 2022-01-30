@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.LocalSpawner.Models;
 
-namespace SpawnThat.Spawners.LocalSpawner;
+namespace SpawnThat.Spawners.LocalSpawner.Managers;
 
 internal static class LocalSpawnTemplateManager
 {
