@@ -39,7 +39,7 @@ public static class IWorldSpawnBuilderConditionExtensions
     ///     This allows for sitations where only some areas (eg., 10% of blackforests) will have a spawn show up.
     /// </para>
     /// </summary>
-    public static IWorldSpawnBuilder SetConditionAreaSpawnChance(this IWorldSpawnBuilder builder, double areaChance)
+    public static IWorldSpawnBuilder SetConditionAreaSpawnChance(this IWorldSpawnBuilder builder, float areaChance)
     {
         builder.SetCondition(new ConditionAreaSpawnChance(areaChance, builder.Id));
         return builder;

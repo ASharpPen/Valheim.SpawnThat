@@ -3,8 +3,9 @@ using System.Linq;
 using SpawnThat.Core.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Utilities;
-using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
+using System.Collections.Generic;
+using SpawnThat.Integrations.CLLC.Models;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
@@ -55,19 +56,13 @@ internal static class SpawnSystemConfigApplier
     private static void ApplyConfigToBuilder(SpawnConfiguration config, IWorldSpawnBuilder builder)
     {
         // Default
-        if (config.Name?.Value.IsNotEmpty() == true)
-        {
-            builder.SetTemplateName(config.Name.Value);
-        }
+        config.Name.SetIfHasValue(builder.SetTemplateName);
+        config.PrefabName.SetIfHasValue(builder.SetPrefabName);
+        config.RequiredGlobalKey.SetIfHasValue(builder.SetConditionRequiredGlobalKey);
+        config.RequiredEnvironments.SetIfHasValue(builder.SetConditionEnvironments);
 
         builder.SetTemplateEnabled(config.Enabled.Value);
         builder.SetConditionBiomes(config.ExtractBiomeMask());
-
-        if (config.PrefabName.Value.IsNotEmpty())
-        {
-            builder.SetPrefabName(config.PrefabName.Value);
-        }
-
         builder.SetModifierHuntPlayer(config.HuntPlayer.Value);
         builder.SetMaxSpawned((uint)config.MaxSpawned.Value);
         builder.SetSpawnInterval(TimeSpan.FromSeconds(config.SpawnInterval.Value));
@@ -78,15 +73,6 @@ internal static class SpawnSystemConfigApplier
         builder.SetMinDistanceToOther(config.SpawnDistance.Value);
         builder.SetSpawnAtDistanceToPlayerMin(config.SpawnRadiusMin.Value);
         builder.SetSpawnAtDistanceToPlayerMax(config.SpawnRadiusMax.Value);
-
-        if (config.RequiredGlobalKey.Value.IsNotEmpty())
-        {
-            builder.SetConditionRequiredGlobalKey(config.RequiredGlobalKey.Value);
-        }
-        if (config.RequiredEnvironments.Value.IsNotEmpty())
-        {
-            builder.SetConditionEnvironments(config.RequiredEnvironments.Value.SplitByComma());
-        }
         builder.SetPackSizeMin((uint)config.GroupSizeMin.Value);
         builder.SetPackSizeMax((uint)config.GroupSizeMax.Value);
         builder.SetPackSpawnCircleRadius(config.GroupRadius.Value);
@@ -100,35 +86,24 @@ internal static class SpawnSystemConfigApplier
         builder.SetConditionOceanDepth(config.OceanDepthMin.Value, config.OceanDepthMax.Value);
 
         // Conditions
+        var playerConditionsDistance = (int)config.DistanceToTriggerPlayerConditions.Value;
+
+        config.ConditionLocation.SetIfHasValue(builder.SetConditionLocation);
+        config.RequiredNotGlobalKey.SetIfHasValue(builder.SetGlobalKeysRequiredMissing);
+        config.ConditionNearbyPlayersCarryValue.SetIfGreaterThanZero(x => builder.SetConditionNearbyPlayersCarryValue(playerConditionsDistance, x));
+        config.ConditionNearbyPlayersNoiseThreshold.SetIfGreaterThanZero(x => builder.SetConditionNearbyPlayersNoise(playerConditionsDistance, x));
+        config.ConditionAreaSpawnChance.SetIfNotEqual(100, builder.SetConditionAreaSpawnChance);
+
         builder.SetConditionDistanceToCenter(config.ConditionDistanceToCenterMin.Value, config.ConditionDistanceToCenterMax.Value);
-        if (config.ConditionLocation.Value.IsNotEmpty())
-        {
-            builder.SetConditionLocation(config.ConditionLocation.Value.SplitByComma());
-        }
         builder.SetConditionWorldAge((int)config.ConditionWorldAgeDaysMin.Value, (int)config.ConditionWorldAgeDaysMax.Value);
-        if (config.RequiredNotGlobalKey.Value.IsNotEmpty())
-        {
-            builder.SetCondition(new ConditionGlobalKeysRequiredMissing(config.RequiredNotGlobalKey.Value.SplitByComma().ToArray()));
-        }
-        if (config.ConditionNearbyPlayersCarryValue.Value > 0)
-        {
-            builder.SetConditionNearbyPlayersCarryValue((int)config.DistanceToTriggerPlayerConditions.Value, config.ConditionNearbyPlayersCarryValue.Value);
-        }
+
         if (config.ConditionNearbyPlayerCarriesItem.Value.IsNotEmpty())
         {
             builder.SetConditionNearbyPlayersCarryItem((int)config.DistanceToTriggerPlayerConditions.Value, config.ConditionNearbyPlayerCarriesItem.Value.SplitByComma());
         }
-        if (config.ConditionNearbyPlayersNoiseThreshold.Value > 0)
-        {
-            builder.SetConditionNearbyPlayersNoise((int)config.DistanceToTriggerPlayerConditions.Value, config.ConditionNearbyPlayersNoiseThreshold.Value);
-        }
         if (config.ConditionNearbyPlayersStatus.Value.IsNotEmpty())
         {
             builder.SetConditionNearbyPlayersStatus((int)config.DistanceToTriggerPlayerConditions.Value, config.ConditionNearbyPlayersStatus.Value.SplitByComma().ToArray());
-        }
-        if (config.ConditionAreaSpawnChance.Value != 100)
-        {
-            builder.SetConditionAreaSpawnChance(config.ConditionAreaSpawnChance.Value);
         }
         if (config.ConditionAreaIds.Value.IsNotEmpty())
         {
@@ -163,32 +138,20 @@ internal static class SpawnSystemConfigApplier
         }
 
         // Position conditions
-        if (config.ConditionLocation.Value.IsNotEmpty())
-        {
-            builder.SetPositionConditionLocation(config.ConditionLocation.Value.SplitByComma());
-        }
+        config.ConditionLocation.SetIfHasValue(builder.SetPositionConditionLocation);
 
         // Modifiers
         if (config.SetFaction.Value.IsNotEmpty())
         {
             builder.SetModifier(new ModifierSetFaction(config.SetFaction.Value));
         }
-        if (config.SetRelentless.Value)
-        {
-            builder.SetModifierRelentless(config.SetRelentless.Value);
-        }
-        if (config.SetTryDespawnOnConditionsInvalid.Value)
-        {
-            builder.SetModifierDespawnOnConditionsInvalid(config.SpawnDuringDay.Value, config.SpawnDuringNight.Value, config.RequiredEnvironments.Value.SplitByComma());
-        }
-        if (config.SetTryDespawnOnAlert.Value)
-        {
-            builder.SetModifierDespawnOnAlert(config.SetTryDespawnOnAlert.Value);
-        }
-        if (config.TemplateId.Value.IsNotEmpty())
-        {
-            builder.SetModifierTemplateId(config.TemplateId.Value);
-        }
+
+        builder.SetModifierRelentless(config.SetRelentless.Value);
+        builder.SetModifierDespawnOnConditionsInvalid(config.SpawnDuringDay.Value, config.SpawnDuringNight.Value, config.RequiredEnvironments.Value.SplitByComma());
+        builder.SetModifierDespawnOnAlert(config.SetTryDespawnOnAlert.Value);
+
+        config.TemplateId.SetIfHasValue(builder.SetModifierTemplateId);
+
         builder.SetModifierTamed(config.SetTamed.Value);
         builder.SetModifierTamedCommandable(config.SetTamedCommandable.Value);
 
@@ -197,17 +160,22 @@ internal static class SpawnSystemConfigApplier
             if (config.TryGet(SpawnSystemConfigCLLC.ModName, out cfg) &&
                 cfg is SpawnSystemConfigCLLC cllcConfig)
             {
-                if (cllcConfig.SetBossAffix.Value.IsNotEmpty())
+                if (cllcConfig.SetBossAffix.Value.IsNotEmpty() &&
+                    Enum.TryParse(cllcConfig.SetBossAffix.Value, out CllcBossAffix bossAffix))
                 {
-                    builder.SetCllcModifierBossAffix(cllcConfig.SetBossAffix.Value);
+                    builder.SetCllcModifierBossAffix(bossAffix);
                 }
-                if (cllcConfig.SetExtraEffect.Value.IsNotEmpty())
+
+                if (cllcConfig.SetExtraEffect.Value.IsNotEmpty() &&
+                    Enum.TryParse(cllcConfig.SetExtraEffect.Value, out CllcCreatureExtraEffect extraEffect))
                 {
-                    builder.SetCllcModifierExtraEffect(cllcConfig.SetExtraEffect.Value);
+                    builder.SetCllcModifierExtraEffect(extraEffect);
                 }
-                if (cllcConfig.SetInfusion.Value.IsNotEmpty())
+
+                if (cllcConfig.SetInfusion.Value.IsNotEmpty() &&
+                    Enum.TryParse(cllcConfig.SetInfusion.Value, out CllcCreatureInfusion infusion))
                 {
-                    builder.SetCllcModifierInfusion(cllcConfig.SetInfusion.Value);
+                    builder.SetCllcModifierInfusion(infusion);
                 }
 
                 if (cllcConfig.UseDefaultLevels.Value)
@@ -227,4 +195,48 @@ internal static class SpawnSystemConfigApplier
         }
     }
 
+    private static void SetIfHasValue(this ConfigurationEntry<string> value, Func<string, IWorldSpawnBuilder> apply)
+    {
+        if (value is not null && 
+            value.Value.IsNotEmpty())
+        {
+            apply(value.Value);
+        }
+    }
+
+    private static void SetIfHasValue(this ConfigurationEntry<string> value, Func<List<string>, IWorldSpawnBuilder> apply)
+    {
+        if (value is not null &&
+            value.Value.IsNotEmpty())
+        {
+            apply(value.Value.SplitByComma());
+        }
+    }
+
+    private static void SetIfGreaterThanZero(this ConfigurationEntry<int> value, Func<int, IWorldSpawnBuilder> apply)
+    {
+        if (value is not null &&
+            value.Value > 0)
+        {
+            apply(value.Value);
+        }
+    }
+
+    private static void SetIfNotEqual<T>(this ConfigurationEntry<T> value, T compare, Func<T, IWorldSpawnBuilder> apply)
+    {
+        if (value is not null &&
+            value.Value.Equals(compare))
+        {
+            apply(value.Value);
+        }
+    }
+
+    private static void SetIfGreaterThanZero(this ConfigurationEntry<float> value, Func<float, IWorldSpawnBuilder> apply)
+    {
+        if (value is not null &&
+            value.Value > 0)
+        {
+            apply(value.Value);
+        }
+    }
 }

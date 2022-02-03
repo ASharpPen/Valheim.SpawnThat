@@ -288,7 +288,7 @@ internal class WorldSpawnBuilder : IWorldSpawnBuilder
 
     public IWorldSpawnBuilder SetDistanceToCenterForLevelUp(float distance)
     {
-        Template.LevelUpDistance = distance;
+        Template.DistanceToCenterForLevelUp = distance;
         return this;
     }
 
