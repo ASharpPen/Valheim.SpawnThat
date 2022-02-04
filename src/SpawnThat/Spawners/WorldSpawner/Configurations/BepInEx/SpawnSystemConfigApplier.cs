@@ -77,12 +77,12 @@ internal static class SpawnSystemConfigApplier
         builder.SetPackSizeMax((uint)config.GroupSizeMax.Value);
         builder.SetPackSpawnCircleRadius(config.GroupRadius.Value);
         builder.SetSpawnAtDistanceToGround(config.GroundOffset.Value);
-        builder.SetConditionAllowDuringDay(config.SpawnDuringDay.Value);
-        builder.SetConditionAllowDuringNight(config.SpawnDuringNight.Value);
+        builder.SetSpawnDuringDay(config.SpawnDuringDay.Value);
+        builder.SetSpawnDuringNight(config.SpawnDuringNight.Value);
         builder.SetConditionAltitude(config.ConditionAltitudeMin.Value, config.ConditionAltitudeMax.Value);
         builder.SetConditionTilt(config.ConditionTiltMin.Value, config.ConditionTiltMax.Value);
-        builder.SetConditionAllowInForest(config.SpawnInForest.Value);
-        builder.SetConditionAllowOutsideForest(config.SpawnOutsideForest.Value);
+        builder.SetSpawnInForest(config.SpawnInForest.Value);
+        builder.SetSpawnOutsideForest(config.SpawnOutsideForest.Value);
         builder.SetConditionOceanDepth(config.OceanDepthMin.Value, config.OceanDepthMax.Value);
 
         // Conditions

@@ -86,25 +86,25 @@ internal class WorldSpawnBuilder : IWorldSpawnBuilder
         return this;
     }
 
-    public IWorldSpawnBuilder SetConditionAllowDuringDay(bool allowSpawnDuringDay)
+    public IWorldSpawnBuilder SetSpawnDuringDay(bool allowSpawnDuringDay)
     {
         Template.ConditionAllowDuringDay = allowSpawnDuringDay;
         return this;
     }
 
-    public IWorldSpawnBuilder SetConditionAllowDuringNight(bool allowSpawnDuringNight)
+    public IWorldSpawnBuilder SetSpawnDuringNight(bool allowSpawnDuringNight)
     {
         Template.ConditionAllowDuringNight = allowSpawnDuringNight;
         return this;
     }
 
-    public IWorldSpawnBuilder SetConditionAllowInForest(bool allowSpawnInForest)
+    public IWorldSpawnBuilder SetSpawnInForest(bool allowSpawnInForest)
     {
         Template.ConditionAllowInForest = allowSpawnInForest;
         return this;
     }
 
-    public IWorldSpawnBuilder SetConditionAllowOutsideForest(bool allowSpawnOutsideForest)
+    public IWorldSpawnBuilder SetSpawnOutsideForest(bool allowSpawnOutsideForest)
     {
         Template.ConditionAllowOutsideForest = allowSpawnOutsideForest;
         return this;

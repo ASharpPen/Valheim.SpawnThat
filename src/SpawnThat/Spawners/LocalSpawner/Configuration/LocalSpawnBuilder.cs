@@ -75,19 +75,19 @@ internal class LocalSpawnBuilder : ILocalSpawnBuilder
         return this;
     }
 
-    public ILocalSpawnBuilder SetConditionAllowDuringNight(bool spawnAtDay = true)
+    public ILocalSpawnBuilder SetSpawnDuringNight(bool spawnAtDay = true)
     {
         Template.SpawnAtDay = spawnAtDay;
         return this;
     }
 
-    public ILocalSpawnBuilder SetConditionAllowDuringDay(bool spawnAtNight = true)
+    public ILocalSpawnBuilder SetSpawnDuringDay(bool spawnAtNight = true)
     {
         Template.SpawnAtNight = spawnAtNight;
         return this;
     }
 
-    public ILocalSpawnBuilder SetAllowSpawnInPlayerBase(bool spawnInPlayerBase = false)
+    public ILocalSpawnBuilder SetSpawnInPlayerBase(bool spawnInPlayerBase = false)
     {
         Template.AllowSpawnInPlayerBase = spawnInPlayerBase;
         return this;

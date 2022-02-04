@@ -6,20 +6,30 @@ namespace SpawnThat.Spawners;
 
 public static class ILocalSpawnBuilderDefaultSettingsExtensions
 {
-    public static ILocalSpawnBuilder WithSettings(this ILocalSpawnBuilder builder, DefaultLocalSpawnSettings settings)
+    public static ILocalSpawnBuilder WithSettings(this ILocalSpawnBuilder builder, LocalSpawnSettings settings)
     {
         settings.PrefabName.Set(builder.SetPrefabName);
         settings.Enabled.Set(builder.SetEnabled);
         settings.SpawnInterval.SetNullable(builder.SetSpawnInterval);
         settings.MinLevel.Set(builder.SetMinLevel);
         settings.MaxLevel.Set(builder.SetMaxLevel);
-        settings.ConditionAllowDuringNight.Set(builder.SetConditionAllowDuringDay);
-        settings.ConditionAllowDuringNight.Set(builder.SetConditionAllowDuringNight);
-        settings.AllowSpawnInPlayerBase.Set(builder.SetAllowSpawnInPlayerBase);
+        settings.SpawnDuringNight.Set(builder.SetSpawnDuringDay);
+        settings.SpawnDuringNight.Set(builder.SetSpawnDuringNight);
+        settings.SpawnInPlayerBase.Set(builder.SetSpawnInPlayerBase);
         settings.SetPatrolSpawn.Set(builder.SetPatrolSpawn);
         settings.LevelUpChance.Set(builder.SetLevelUpChance);
         settings.ConditionPlayerWithinDistance.Set(builder.SetConditionPlayerWithinDistance);
         settings.ConditionPlayerNoise.Set(builder.SetConditionPlayerNoise);
+
+        foreach (var condition in settings.Conditions)
+        {
+            builder.SetCondition(condition);
+        }
+
+        foreach (var modifier in settings.Modifiers)
+        {
+            builder.SetModifier(modifier);
+        }
 
         return builder;
     }

@@ -94,7 +94,7 @@ public interface ILocalSpawnBuilder
     /// <para>Default if new template: true</para>
     /// </summary>
     /// <remarks>Vanilla name: m_spawnAtDay</remarks>
-    ILocalSpawnBuilder SetConditionAllowDuringDay(bool allowSpawnDuringDay = true);
+    ILocalSpawnBuilder SetSpawnDuringDay(bool allowSpawnDuringDay = true);
 
     /// <summary>
     /// <para>Can spawn during night.</para>
@@ -102,14 +102,14 @@ public interface ILocalSpawnBuilder
     /// <para>Default if new template: true</para>
     /// </summary>
     /// <remarks>Vanilla name: m_spawnAtNight</remarks>
-    ILocalSpawnBuilder SetConditionAllowDuringNight(bool allowSpawnDuringNight = true);
+    ILocalSpawnBuilder SetSpawnDuringNight(bool allowSpawnDuringNight = true);
 
     /// <para>Allows spawning if within usual player base protected areas, such as workbench.</para>
     /// <para>If not set, uses existing when overriding.</para>
     /// <para>Default if new template: false</para>
     /// </summary>
     /// <remarks>Vanilla name: m_spawnInPlayerBase</remarks>
-    ILocalSpawnBuilder SetAllowSpawnInPlayerBase(bool spawnInPlayerBase = false);
+    ILocalSpawnBuilder SetSpawnInPlayerBase(bool spawnInPlayerBase = false);
 
     /// <summary>
     /// <para>Sets patrol point at spawn position. Creatures will run back to this point.</para>

@@ -170,7 +170,7 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: true</para>
     /// </summary>
     /// <remarks>Vanilla name: m_inForest</remarks>
-    IWorldSpawnBuilder SetConditionAllowInForest(bool allowSpawnInForest);
+    IWorldSpawnBuilder SetSpawnInForest(bool allowSpawnInForest);
 
     /// <summary>
     /// <para>If true, allows pawning outside forested areas.</para>
@@ -178,7 +178,7 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: true</para>
     /// </summary>
     /// <remarks>Vanilla name: m_outsideForest</remarks>
-    IWorldSpawnBuilder SetConditionAllowOutsideForest(bool allowSpawnOutsideForest);
+    IWorldSpawnBuilder SetSpawnOutsideForest(bool allowSpawnOutsideForest);
 
     /// <summary>
     /// <para>Minimum level to spawn at.</para>
@@ -351,7 +351,7 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: true</para>
     /// </summary>
     /// <remarks>Vanilla name: m_spawnAtDay</remarks>
-    IWorldSpawnBuilder SetConditionAllowDuringDay(bool allowSpawnDuringDay);
+    IWorldSpawnBuilder SetSpawnDuringDay(bool allowSpawnDuringDay);
 
     /// <summary>
     /// <para>Can spawn during night.</para>
@@ -359,7 +359,7 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: true</para>
     /// </summary>
     /// <remarks>Vanilla name: m_spawnAtNight</remarks>
-    IWorldSpawnBuilder SetConditionAllowDuringNight(bool allowSpawnDuringNight);
+    IWorldSpawnBuilder SetSpawnDuringNight(bool allowSpawnDuringNight);
 
     /// <summary>
     /// <para>Chance to spawn per check. Range 0 to 100.</para>

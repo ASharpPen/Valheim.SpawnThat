@@ -1,9 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
+using SpawnThat.Options.Conditions;
+using SpawnThat.Options.Modifiers;
 
 namespace SpawnThat.Spawners.LocalSpawner;
 
-public class DefaultLocalSpawnSettings
+/// <summary>
+/// <para>
+///     Local spawn builder settings.
+///     Any property not set will be ignored.
+/// </para>
+/// <para>
+///     Any setting not set for a builder will mean Spawn That will use the existing setting
+///     when overriding a template, or set a default value if creating a new.
+/// </para>
+/// <para>
+///     Intended as an optional way to configure ILocalSpawnBuilder.
+/// </para>
+/// </summary>
+public class LocalSpawnSettings
 {
+    /// <summary>
+    /// Spawn conditions to set.
+    /// If a condition with the same type already exists, it will be replaced.
+    /// </summary>
+    public ICollection<ISpawnCondition> Conditions { get; set; } = new List<ISpawnCondition>();
+
+    /// <summary>
+    /// Modifiers conditions to set.
+    /// If a condition with the same type already exists, it will be replaced.
+    /// </summary>
+    public ICollection<ISpawnModifier> Modifiers { get; set; } = new List<ISpawnModifier>();
+
     /// <summary>
     /// Prefab name of entity to spawn.
     /// </summary>
@@ -57,21 +85,21 @@ public class DefaultLocalSpawnSettings
     /// <para>Default if new template: true</para>
     /// </summary>
     /// <remarks>Vanilla name: m_spawnAtDay</remarks>
-    public bool? ConditionAllowDuringDay { get; set; } = true;
+    public bool? SpawnDuringDay { get; set; } = true;
 
     /// <summary>
     /// <para>Can spawn during night.</para>
     /// <para>Default if new template: true</para>
     /// </summary>
     /// <remarks>Vanilla name: m_spawnAtNight</remarks>
-    public bool? ConditionAllowDuringNight { get; set; } = true;
+    public bool? SpawnDuringNight { get; set; } = true;
 
     /// <summary>
     /// <para>Allows spawning if within usual player base protected areas, such as workbench.</para>
     /// <para>Default if new template: false</para>
     /// </summary>
     /// <remarks>Vanilla name: m_spawnInPlayerBase</remarks>
-    public bool? AllowSpawnInPlayerBase { get; set; }
+    public bool? SpawnInPlayerBase { get; set; }
 
     /// <summary>
     /// <para>Sets patrol point at spawn position. Creatures will run back to this point.</para>

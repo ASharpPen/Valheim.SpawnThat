@@ -46,11 +46,11 @@ internal static class CreatureSpawnerConfigApplier
         builder.SetLevelUpChance(config.LevelUpChance.Value);
         builder.SetSpawnInterval(TimeSpan.FromMinutes(config.RespawnTime.Value));
         builder.SetPatrolSpawn(config.SetPatrolPoint.Value);
-        builder.SetConditionAllowDuringNight(config.SpawnAtDay.Value);
-        builder.SetConditionAllowDuringDay(config.SpawnAtNight.Value);
+        builder.SetSpawnDuringNight(config.SpawnAtDay.Value);
+        builder.SetSpawnDuringDay(config.SpawnAtNight.Value);
         builder.SetConditionPlayerWithinDistance(config.TriggerDistance.Value);
         builder.SetConditionPlayerNoise(config.TriggerNoise.Value);
-        builder.SetAllowSpawnInPlayerBase(config.SpawnInPlayerBase.Value);
+        builder.SetSpawnInPlayerBase(config.SpawnInPlayerBase.Value);
 
         // Modifiers
         if (config.SetFaction.Value.IsNotEmpty())

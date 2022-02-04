@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using SpawnThat.Options.Conditions;
+using SpawnThat.Options.Modifiers;
+using SpawnThat.Options.PositionConditions;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations;
 
 /// <summary>
 /// <para>
-///     World spawn builder settings available in vanilla.
+///     World spawn builder settings.
 ///     Any property not set will be ignored.
 /// </para>
 /// <para>
@@ -13,11 +16,29 @@ namespace SpawnThat.Spawners.WorldSpawner.Configurations;
 ///     when overriding a template, or set a default value if creating a new.
 /// </para>
 /// <para>
-///     Intended as an optional way to configure IWorldSpawnBuilder with the basics.
+///     Intended as an optional way to configure IWorldSpawnBuilder.
 /// </para>
 /// </summary>
-public class DefaultWorldSpawnSettings
+public class WorldSpawnSettings
 {
+    /// <summary>
+    /// Spawn conditions to set.
+    /// If a condition with the same type already exists, it will be replaced.
+    /// </summary>
+    public ICollection<ISpawnCondition> Conditions { get; set; } = new List<ISpawnCondition>();
+
+    /// <summary>
+    /// Spawn position conditions to set.
+    /// If a condition with the same type already exists, it will be replaced.
+    /// </summary>
+    public ICollection<ISpawnPositionCondition> PositionConditions { get; set; } = new List<ISpawnPositionCondition>();
+
+    /// <summary>
+    /// Modifiers conditions to set.
+    /// If a condition with the same type already exists, it will be replaced.
+    /// </summary>
+    public ICollection<ISpawnModifier> Modifiers { get; set; } = new List<ISpawnModifier>();
+
     /// <summary>
     /// Prefab name of entity to spawn.
     /// </summary>
@@ -94,14 +115,14 @@ public class DefaultWorldSpawnSettings
     /// <para>Default if new template: true</para>
     /// </summary>
     /// <remarks>Vanilla name: m_inForest</remarks>
-    public bool? ConditionAllowInForest { get; set; }
+    public bool? SpawnInForest { get; set; }
 
     /// <summary>
     /// <para>If true, allows pawning outside forested areas.</para>
     /// <para>Default if new template: true</para>
     /// </summary>
     /// <remarks>Vanilla name: m_outsideForest</remarks>
-    public bool? ConditionAllowOutsideForest { get; set; }
+    public bool? SpawnOutsideForest { get; set; }
 
     /// <summary>
     /// <para>Minimum distance for creature to increase level beyond MinLevel.</para>
@@ -208,14 +229,14 @@ public class DefaultWorldSpawnSettings
     /// <para>Default if new template: true</para>
     /// </summary>
     /// <remarks>Vanilla name: m_spawnAtDay</remarks>
-    public bool? ConditionAllowDuringDay { get; set; }
+    public bool? SpawnDuringDay { get; set; }
 
     /// <summary>
     /// <para>Can spawn during night.</para>
     /// <para>Default if new template: true</para>
     /// </summary>
     /// <remarks>Vanilla name: m_spawnAtNight</remarks>
-    public bool? ConditionAllowDuringNight { get; set; }
+    public bool? SpawnDuringNight { get; set; }
 
     /// <summary>
     /// <para>Minimum required distance to another entity of same type.</para>

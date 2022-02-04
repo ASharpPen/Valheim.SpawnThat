@@ -5,9 +5,9 @@ using SpawnThat.Spawners.WorldSpawner.Configurations;
 
 namespace SpawnThat.Spawners;
 
-public static class IWorldSpawnBuilderDefaultSettingsExtensions
+public static class IWorldSpawnBuilderSettingsExtensions
 {
-    public static IWorldSpawnBuilder WithSettings(this IWorldSpawnBuilder builder, DefaultWorldSpawnSettings settings)
+    public static IWorldSpawnBuilder WithSettings(this IWorldSpawnBuilder builder, WorldSpawnSettings settings)
     {
         settings.PrefabName.Set(builder.SetPrefabName);
         settings.Enabled.Set(builder.SetEnabled);
@@ -18,8 +18,8 @@ public static class IWorldSpawnBuilderDefaultSettingsExtensions
         settings.PackSpawnCircleRadius.Set(builder.SetPackSpawnCircleRadius);
         settings.PackSizeMin.Set(builder.SetPackSizeMin);
         settings.PackSizeMax.Set(builder.SetPackSizeMax);
-        settings.ConditionAllowInForest.Set(builder.SetConditionAllowInForest);
-        settings.ConditionAllowOutsideForest.Set(builder.SetConditionAllowOutsideForest);
+        settings.SpawnInForest.Set(builder.SetSpawnInForest);
+        settings.SpawnOutsideForest.Set(builder.SetSpawnOutsideForest);
         settings.DistanceToCenterForLevelUp.Set(builder.SetDistanceToCenterForLevelUp);
         settings.MinLevel.Set(builder.SetMinLevel);
         settings.MaxLevel.Set(builder.SetMaxLevel);
@@ -31,12 +31,27 @@ public static class IWorldSpawnBuilderDefaultSettingsExtensions
         settings.ConditionMaxTilt.SetNullable(builder.SetConditionTiltMax);
         settings.ConditionEnvironments.Set(builder.SetConditionEnvironments);
         settings.ConditionRequiredGlobalKey.Set(builder.SetConditionRequiredGlobalKey);
-        settings.ConditionAllowDuringDay.Set(builder.SetConditionAllowDuringDay);
-        settings.ConditionAllowDuringNight.Set(builder.SetConditionAllowDuringNight);
+        settings.SpawnDuringDay.Set(builder.SetSpawnDuringDay);
+        settings.SpawnDuringNight.Set(builder.SetSpawnDuringNight);
         settings.MinDistanceToOther.Set(builder.SetMinDistanceToOther);
         settings.SpawnAtDistanceToPlayerMin.SetNullable(builder.SetSpawnAtDistanceToPlayerMin);
         settings.SpawnAtDistanceToPlayerMax.SetNullable(builder.SetSpawnAtDistanceToPlayerMax);
         settings.SpawnAtDistanceToGround.SetNullable(builder.SetSpawnAtDistanceToGround);
+
+        foreach (var condition in settings.Conditions)
+        {
+            builder.SetCondition(condition);
+        }
+
+        foreach (var condition in settings.PositionConditions)
+        {
+            builder.SetPositionCondition(condition);
+        }
+
+        foreach (var modifier in settings.Modifiers)
+        {
+            builder = builder.SetModifier(modifier);
+        }
 
         return builder;
 
