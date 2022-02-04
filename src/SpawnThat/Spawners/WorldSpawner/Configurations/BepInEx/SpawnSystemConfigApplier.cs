@@ -31,7 +31,7 @@ internal static class SpawnSystemConfigApplier
 
         var configs = spawnSystemConfigs
             .OrderBy(x => x.Index)
-            .Where(x => x.Enabled.Value);
+            .Where(x => x.TemplateEnabled.Value);
 
         foreach (var spawnConfig in configs)
         {
@@ -61,7 +61,8 @@ internal static class SpawnSystemConfigApplier
         config.RequiredGlobalKey.SetIfHasValue(builder.SetConditionRequiredGlobalKey);
         config.RequiredEnvironments.SetIfHasValue(builder.SetConditionEnvironments);
 
-        builder.SetTemplateEnabled(config.Enabled.Value);
+        builder.SetEnabled(config.Enabled.Value);
+        builder.SetTemplateEnabled(config.TemplateEnabled.Value);
         builder.SetConditionBiomes(config.ExtractBiomeMask());
         builder.SetModifierHuntPlayer(config.HuntPlayer.Value);
         builder.SetMaxSpawned((uint)config.MaxSpawned.Value);

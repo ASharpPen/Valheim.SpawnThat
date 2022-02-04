@@ -68,7 +68,9 @@ internal class SpawnConfiguration : ConfigWithSubsections<Config>
 
     public ConfigurationEntry<string> Name = new("My spawner", "Just a field for naming the configuration entry.");
 
-    public ConfigurationEntry<bool> Enabled = new(true, "Enable/disable this entry.");
+    public ConfigurationEntry<bool> Enabled = new(true, "Enable/disable this spawner entry.");
+
+    public ConfigurationEntry<bool> TemplateEnabled = new(true, "Enable/disable this configuration. This does not disable existing entries, just this configuration itself.");
 
     public ConfigurationEntry<string> Biomes = new("", "Biomes in which entity can spawn. Leave empty for all.");
 

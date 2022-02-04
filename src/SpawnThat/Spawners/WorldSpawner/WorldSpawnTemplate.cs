@@ -61,7 +61,7 @@ internal class WorldSpawnTemplate
     }
 
     /// <summary>
-    /// Toggles this template.
+    /// Toggles this spawner.
     /// If disabled, this spawn entry will not run.
     /// Can be used to disable existing spawn templates.
     /// </summary>
