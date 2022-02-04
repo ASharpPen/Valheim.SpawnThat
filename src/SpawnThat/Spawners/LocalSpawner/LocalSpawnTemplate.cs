@@ -12,9 +12,14 @@ public class LocalSpawnTemplate
     private int? _prefabHash;
 
     /// <summary>
-    /// Toggles this template on / off. Does not disable the spawner itself.
+    /// Toggles the spawner on/off.
     /// </summary>
     public bool Enabled { get; set; } = true;
+
+    /// <summary>
+    /// Toggles this template on / off. Does not disable the spawner itself.
+    /// </summary>
+    public bool TemplateEnabled { get; set; } = true;
 
     /// <summary>
     /// <para>Prefab to override existing with.</para>

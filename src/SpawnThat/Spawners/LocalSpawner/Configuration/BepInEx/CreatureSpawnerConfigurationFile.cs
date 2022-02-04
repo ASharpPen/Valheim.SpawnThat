@@ -39,7 +39,9 @@ internal class CreatureSpawnerConfig : ConfigWithSubsections<Config>
 
     public ConfigurationEntry<string> PrefabName = new ConfigurationEntry<string>("", "PrefabName of entity to spawn.");
 
-    public ConfigurationEntry<bool> Enabled = new ConfigurationEntry<bool>(true, "Enable/disable this configuration.");
+    public ConfigurationEntry<bool> Enabled = new ConfigurationEntry<bool>(true, "Enable/disable this spawner.");
+
+    public ConfigurationEntry<bool> TemplateEnabled = new(true, "Enable/disable this configuration. Does not disable the spawner itself.");
 
     #region New options
 

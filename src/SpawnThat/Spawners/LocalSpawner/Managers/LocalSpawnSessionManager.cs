@@ -17,6 +17,11 @@ internal static class LocalSpawnSessionManager
     {
         var template = LocalSpawnerManager.GetTemplate(spawner);
 
+        if (template is not null && !template.Enabled)
+        {
+            return false;
+        }
+
         if (template?.SpawnConditions is null)
         {
             return true;

@@ -12,8 +12,7 @@ internal static class LocalSpawnerConfigurationService
             return;
         }
 
-        // TODO: Disable spawner, not template.
-        if (!template.Enabled)
+        if (!template.TemplateEnabled)
         {
             return;
         }

@@ -22,11 +22,17 @@ public interface ILocalSpawnBuilder
 
     /// <summary>
     /// Toggles this template.
-    /// If disabled, this spawn entry will not run.
-    /// Can be used to disable existing spawn entries.
+    /// If disabled, will disable the spawner.
     /// <para>Default if new template: true</para>
     /// </summary>
     ILocalSpawnBuilder SetEnabled(bool enabled = true);
+
+    /// <summary>
+    /// Toggles this configuration.
+    /// If disabled, this template will not be applied.
+    /// <para>Default if new template: true</para>
+    /// </summary>
+    ILocalSpawnBuilder SetTemplateEnabled(bool enabled = true);
 
     /// <summary>
     /// Prefab name of entity to spawn.

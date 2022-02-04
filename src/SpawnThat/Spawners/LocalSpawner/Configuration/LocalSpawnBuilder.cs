@@ -51,6 +51,12 @@ internal class LocalSpawnBuilder : ILocalSpawnBuilder
         return this;
     }
 
+    public ILocalSpawnBuilder SetTemplateEnable(bool enabled = true)
+    {
+        Template.TemplateEnabled = enabled;
+        return this;
+    }
+
     public ILocalSpawnBuilder SetMaxLevel(int maxLevel = 1)
     {
         Template.MaxLevel = maxLevel;
