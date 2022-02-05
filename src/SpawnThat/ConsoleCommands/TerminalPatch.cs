@@ -131,7 +131,12 @@ internal static class TerminalPatch
     {
         if (position is null)
         {
-            position = Player.m_localPlayer?.transform?.position;
+            if (Player.m_localPlayer == null || !Player.m_localPlayer)
+            {
+                return;
+            }
+
+            position = Player.m_localPlayer.transform.position;
 
             if (position is null)
             {

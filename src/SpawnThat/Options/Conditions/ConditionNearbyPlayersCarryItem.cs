@@ -2,6 +2,7 @@
 using System.Linq;
 using SpawnThat.Spawners.Contexts;
 using SpawnThat.Utilities;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Options.Conditions;
 
@@ -37,11 +38,23 @@ public class ConditionNearbyPlayersCarryItem : ISpawnCondition
 
         foreach (var player in players)
         {
-            var items = player?.GetInventory()?.GetAllItems() ?? new(0);
+            if (player.IsNull())
+            {
+                continue;
+            }
+
+            var items = player.GetInventory()?.GetAllItems() ?? new(0);
 
             foreach (var item in items)
             {
-                string itemName = item?.m_dropPrefab?.name?.Trim()?.ToUpperInvariant();
+                var itemPrefab = item?.m_dropPrefab;
+
+                if (itemPrefab.IsNull())
+                {
+                    continue;
+                }
+
+                string itemName = itemPrefab.name.Trim().ToUpperInvariant();
 
                 if (string.IsNullOrWhiteSpace(itemName))
                 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using SpawnThat.Core;
 using SpawnThat.Core.Network;
+using SpawnThat.Utilities.Extensions;
 using SpawnThat.World.Locations;
 
 namespace SpawnThat.Locations;
@@ -14,7 +15,9 @@ internal class SimpleLocationPackage : CompressedPackage
 
     protected override void BeforePack()
     {
-        var locationInstances = ZoneSystem.instance?.m_locationInstances;
+        var locationInstances = ZoneSystem.instance.IsNotNull()
+            ? ZoneSystem.instance.m_locationInstances
+            : null;
 
         Dictionary<string, ushort> locationNameIndexes = new Dictionary<string, ushort>();
 

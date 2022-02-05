@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using SpawnThat.Utilities;
 using SpawnThat.Spawners.Contexts;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Options.Conditions;
 
@@ -37,7 +38,12 @@ public class ConditionNearbyPlayersCarryValue : ISpawnCondition
 
         foreach (var player in players)
         {
-            var items = player?.GetInventory()?.GetAllItems() ?? new(0);
+            if (player.IsNull())
+            {
+                continue;
+            }
+
+            var items = player.GetInventory()?.GetAllItems() ?? new(0);
 
             foreach (var item in items)
             {

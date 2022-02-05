@@ -7,6 +7,7 @@ using SpawnThat.Caches;
 using SpawnThat.Core;
 using SpawnThat.Spawners.Contexts;
 using SpawnThat.World.Queries;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Spawners.WorldSpawner.Managers;
 
@@ -207,7 +208,11 @@ internal static class WorldSpawnSessionManager
             }
             catch (Exception e)
             {
-                Log.LogError($"Error while attempting to apply modifier {modifier.GetType().Name} to entity '{spawn?.name}' from world spawn template {SpawnTemplate.TemplateName}", e);
+                string spawnName = spawn.IsNotNull()
+                    ? spawn.name
+                    : "";
+
+                Log.LogError($"Error while attempting to apply modifier {modifier.GetType().Name} to entity '{spawnName}' from world spawn template {SpawnTemplate.TemplateName}", e);
             }
         }
     }

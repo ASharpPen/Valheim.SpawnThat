@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using SpawnThat.Core;
 using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Debugging;
 
@@ -115,11 +116,13 @@ internal static class SpawnDataFileDumper
         {
             if (!postChange)
             {
+                Character character = spawner.m_prefab.IsNull() 
+                    ? null
+                    : spawner.m_prefab.GetComponent<Character>();
 
-                var character = spawner.m_prefab?.GetComponent<Character>();
                 string factionName = "";
 
-                if (character && character is not null)
+                if (character.IsNotNull())
                 {
                     factionName = character.m_faction.ToString();
                 }

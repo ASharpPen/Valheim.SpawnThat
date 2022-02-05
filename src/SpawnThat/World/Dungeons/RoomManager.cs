@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SpawnThat.Core.Cache;
-using SpawnThat.Core;
 using HarmonyLib;
 using System.Reflection.Emit;
 using System.Reflection;
@@ -138,14 +137,6 @@ public static class RoomManager
 
         private static void CacheRoom(Room component)
         {
-#if !DEBUG
-            if((ConfigurationManager.CreatureSpawnerConfig?.Subsections?.Count ?? 0) == 0)
-            {
-                //Skip if we have no spawner configs to actually use the rooms for.
-                return;
-            }
-#endif
-
 #if DEBUG
             Log.LogDebug($"Registering room at {component.transform.position} with name {component.name}");
 #endif

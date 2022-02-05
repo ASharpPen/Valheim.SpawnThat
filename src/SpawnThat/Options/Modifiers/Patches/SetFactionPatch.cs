@@ -10,7 +10,9 @@ internal static class SetFactionPatch
     [HarmonyPostfix]
     private static void AssignFaction(Character __instance)
     {
-        var zdo = __instance.m_nview?.GetZDO();
+        var zdo = __instance.m_nview.IsNotNull()
+            ?  __instance.m_nview.GetZDO()
+            : null;
 
         if (zdo is null)
         {

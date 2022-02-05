@@ -8,6 +8,7 @@ using SpawnThat.Debugging;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 using SpawnThat.Spawners.WorldSpawner.Managers;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Spawners.WorldSpawner.Services;
 
@@ -79,7 +80,13 @@ internal static class WorldSpawnerConfigurationService
             .SelectMany(x => x.m_spawners)
             .ToList();
 
-        var mainSpawnList = spawnLists.FirstOrDefault() ?? new();
+        var mainSpawnList = spawnLists.FirstOrDefault();
+
+        if (mainSpawnList.IsNull())
+        {
+            Log.LogWarning("Something is really wrong. No SpawnSystemLists found. Skipping configuration of world spawners.");
+            return;
+        }
 
         foreach((int id, WorldSpawnTemplate template) in templates)
         {
@@ -123,7 +130,7 @@ internal static class WorldSpawnerConfigurationService
             {
                 foreach (var spawner in spawnList.m_spawners)
                 {
-                    if (string.IsNullOrWhiteSpace(spawner.m_prefab?.name))
+                    if (spawner.m_prefab.IsNull() || string.IsNullOrWhiteSpace(spawner.m_prefab.name))
                     {
                         continue;
                     }
