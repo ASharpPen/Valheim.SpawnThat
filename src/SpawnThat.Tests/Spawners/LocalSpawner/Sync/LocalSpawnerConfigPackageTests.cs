@@ -2,8 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpawnThat.Core.Network;
 using SpawnThat.Spawners;
-using SpawnThat.Spawners.LocalSpawner;
 using SpawnThat.Spawners.LocalSpawner.Configuration;
+using SpawnThat.Spawners.LocalSpawner.Managers;
 using SpawnThat.Spawners.LocalSpawner.Models;
 using SpawnThat.Spawners.LocalSpawner.Sync;
 using static Heightmap;
@@ -28,9 +28,9 @@ public class LocalSpawnerConfigPackageTests
                 .SetMinLevel(1)
                 .SetMaxLevel(3)
                 .SetLevelUpChance(10)
-                .SetSpawnAtDay(true)
-                .SetSpawnAtNight(true)
-                .SetConditionPlayerDistance(60)
+                .SetSpawnDuringNight(true)
+                .SetSpawnDuringDay(true)
+                .SetConditionPlayerWithinDistance(60)
                 .SetConditionPlayerNoise(0)
                 .SetModifierFaction(Character.Faction.Boss)
                 .SetModifierTamed(true)
@@ -44,9 +44,9 @@ public class LocalSpawnerConfigPackageTests
                 .SetMinLevel(1)
                 .SetMaxLevel(3)
                 .SetLevelUpChance(10)
-                .SetSpawnAtDay(true)
-                .SetSpawnAtNight(true)
-                .SetConditionPlayerDistance(60)
+                .SetSpawnDuringNight(true)
+                .SetSpawnDuringDay(true)
+                .SetConditionPlayerWithinDistance(60)
                 .SetConditionPlayerNoise(0)
                 .SetModifierFaction(Character.Faction.Boss)
                 .SetModifierTamed(true)

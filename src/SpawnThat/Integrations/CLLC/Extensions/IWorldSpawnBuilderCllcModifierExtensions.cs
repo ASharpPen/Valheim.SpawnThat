@@ -1,4 +1,5 @@
 ﻿using SpawnThat.Integrations;
+using SpawnThat.Integrations.CLLC.Models;
 using SpawnThat.Integrations.CLLC.Modifiers;
 using SpawnThat.Spawners.WorldSpawner;
 
@@ -10,27 +11,37 @@ public static class IWorldSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.AddOrReplaceModifier(new ModifierCllcBossAffix(bossAffixName));
+            builder.SetModifier(new ModifierCllcBossAffix(bossAffixName));
         }
 
         return builder;
     }
 
-    public static IWorldSpawnBuilder SetCllcModifierExtraEffect(this IWorldSpawnBuilder builder, string extraEffectName)
+    public static IWorldSpawnBuilder SetCllcModifierBossAffix(this IWorldSpawnBuilder builder, CllcBossAffix bossAffix)
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.AddOrReplaceModifier(new ModifierCllcExtraEffect(extraEffectName));
+            builder.SetModifier(new ModifierCllcBossAffix(bossAffix));
         }
 
         return builder;
     }
 
-    public static IWorldSpawnBuilder SetCllcModifierInfusion(this IWorldSpawnBuilder builder, string infusionName)
+    public static IWorldSpawnBuilder SetCllcModifierExtraEffect(this IWorldSpawnBuilder builder, CllcCreatureExtraEffect extraEffect)
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.AddOrReplaceModifier(new ModifierCllcInfusion(infusionName));
+            builder.SetModifier(new ModifierCllcExtraEffect(extraEffect));
+        }
+
+        return builder;
+    }
+
+    public static IWorldSpawnBuilder SetCllcModifierInfusion(this IWorldSpawnBuilder builder, CllcCreatureInfusion infusion)
+    {
+        if (IntegrationManager.InstalledCLLC)
+        {
+            builder.SetModifier(new ModifierCllcInfusion(infusion));
         }
 
         return builder;
@@ -40,7 +51,7 @@ public static class IWorldSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.AddOrReplaceModifier(new ModifierCllcRandomLevel());
+            builder.SetModifier(new ModifierCllcRandomLevel());
         }
 
         return builder;

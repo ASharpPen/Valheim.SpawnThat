@@ -3,7 +3,7 @@ using System.Linq;
 using SpawnThat.Core;
 using SpawnThat.Lifecycle;
 
-namespace SpawnThat.Spawners.WorldSpawner;
+namespace SpawnThat.Spawners.WorldSpawner.Managers;
 
 internal static class WorldSpawnTemplateManager
 {
@@ -19,9 +19,12 @@ internal static class WorldSpawnTemplateManager
 
     public static void SetTemplate(int id, WorldSpawnTemplate template)
     {
-        Log.LogTrace($"Assigned template [{template.Index}:{template.PrefabName}]");
+        if (template.TemplateEnabled)
+        {
+            Log.LogTrace($"Assigned template [{template.Index}:{template.PrefabName}]");
 
-        TemplatesById[id] = template;
+            TemplatesById[id] = template;
+        }
     }
 
     public static List<(int id, WorldSpawnTemplate template)> GetTemplates()

@@ -10,7 +10,7 @@ public static class ILocalSpawnBuilderMobAiExtensions
     {
         if (IntegrationManager.InstalledMobAI)
         {
-            builder.AddOrReplaceModifier(new ModifierSetAI(aiName, mobAiConfig));
+            builder.SetModifier(new ModifierSetAI(aiName, mobAiConfig));
         }
 
         return builder;

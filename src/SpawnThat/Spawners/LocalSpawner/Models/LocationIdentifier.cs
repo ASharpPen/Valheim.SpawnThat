@@ -1,11 +1,11 @@
 ﻿namespace SpawnThat.Spawners.LocalSpawner.Models;
 
-public record LocationIdentifier
+internal record LocationIdentifier
 {
-    public string Location { get; set; }
-    public string PrefabName { get; set; }
+    public string Location { get; internal set; }
+    public string PrefabName { get; internal set; }
 
-    public LocationIdentifier()
+    internal LocationIdentifier()
     { }
 
     public LocationIdentifier(string location, string prefabName)

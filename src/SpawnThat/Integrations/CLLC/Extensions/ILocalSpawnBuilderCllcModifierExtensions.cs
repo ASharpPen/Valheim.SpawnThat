@@ -1,4 +1,5 @@
 ﻿using SpawnThat.Integrations;
+using SpawnThat.Integrations.CLLC.Models;
 using SpawnThat.Integrations.CLLC.Modifiers;
 using SpawnThat.Spawners.LocalSpawner.Configuration;
 
@@ -10,7 +11,17 @@ public static class ILocalSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.AddOrReplaceModifier(new ModifierCllcBossAffix(bossAffixName));
+            builder.SetModifier(new ModifierCllcBossAffix(bossAffixName));
+        }
+
+        return builder;
+    }
+
+    public static ILocalSpawnBuilder SetCllcModifierBossAffix(this ILocalSpawnBuilder builder, CllcBossAffix bossAffix)
+    {
+        if (IntegrationManager.InstalledCLLC)
+        {
+            builder.SetModifier(new ModifierCllcBossAffix(bossAffix));
         }
 
         return builder;
@@ -20,7 +31,17 @@ public static class ILocalSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.AddOrReplaceModifier(new ModifierCllcExtraEffect(extraEffectName));
+            builder.SetModifier(new ModifierCllcExtraEffect(extraEffectName));
+        }
+
+        return builder;
+    }
+
+    public static ILocalSpawnBuilder SetCllcModifierExtraEffect(this ILocalSpawnBuilder builder, CllcCreatureExtraEffect extraEffect)
+    {
+        if (IntegrationManager.InstalledCLLC)
+        {
+            builder.SetModifier(new ModifierCllcExtraEffect(extraEffect));
         }
 
         return builder;
@@ -30,7 +51,17 @@ public static class ILocalSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.AddOrReplaceModifier(new ModifierCllcInfusion(infusionName));
+            builder.SetModifier(new ModifierCllcInfusion(infusionName));
+        }
+
+        return builder;
+    }
+
+    public static ILocalSpawnBuilder SetCllcModifierInfusion(this ILocalSpawnBuilder builder, CllcCreatureInfusion infusion)
+    {
+        if (IntegrationManager.InstalledCLLC)
+        {
+            builder.SetModifier(new ModifierCllcInfusion(infusion));
         }
 
         return builder;
@@ -40,7 +71,7 @@ public static class ILocalSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.AddOrReplaceModifier(new ModifierCllcRandomLevel());
+            builder.SetModifier(new ModifierCllcRandomLevel());
         }
 
         return builder;

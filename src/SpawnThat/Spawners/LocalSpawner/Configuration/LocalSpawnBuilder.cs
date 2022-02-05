@@ -23,41 +23,37 @@ internal class LocalSpawnBuilder : ILocalSpawnBuilder
         return Template;
     }
 
-    public ILocalSpawnBuilder AddCondition(ISpawnCondition condition)
-    {
-        Template.SpawnConditions.Add(condition);
-        return this;
-    }
-
-    public ILocalSpawnBuilder AddOrReplaceCondition<TCondition>(TCondition condition)
+    public ILocalSpawnBuilder SetCondition<TCondition>(TCondition condition)
         where TCondition : class, ISpawnCondition
     {
         Template.SpawnConditions.AddOrReplaceByType(condition);
         return this;
     }
 
-    public ILocalSpawnBuilder AddModifier(ISpawnModifier modifier)
-    {
-        Template.Modifiers.Add(modifier);
-        return this;
-    }
-
-    public ILocalSpawnBuilder AddOrReplaceModifier<TModifier>(TModifier modifier)
+    public ILocalSpawnBuilder SetModifier<TModifier>(TModifier modifier)
         where TModifier : class, ISpawnModifier
     {
         Template.Modifiers.AddOrReplaceByType(modifier);
         return this;
     }
 
+    /*
     public ILocalSpawnBuilder AddPostConfiguration(Action<LocalSpawnTemplate> configure)
     {
         PostConfigurations.Add(configure);
         return this;
     }
+    */
 
     public ILocalSpawnBuilder SetEnabled(bool enabled = true)
     {
         Template.Enabled = enabled;
+        return this;
+    }
+
+    public ILocalSpawnBuilder SetTemplateEnabled(bool enabled = true)
+    {
+        Template.TemplateEnabled = enabled;
         return this;
     }
 
@@ -85,13 +81,13 @@ internal class LocalSpawnBuilder : ILocalSpawnBuilder
         return this;
     }
 
-    public ILocalSpawnBuilder SetSpawnAtDay(bool spawnAtDay = true)
+    public ILocalSpawnBuilder SetSpawnDuringNight(bool spawnAtDay = true)
     {
         Template.SpawnAtDay = spawnAtDay;
         return this;
     }
 
-    public ILocalSpawnBuilder SetSpawnAtNight(bool spawnAtNight = true)
+    public ILocalSpawnBuilder SetSpawnDuringDay(bool spawnAtNight = true)
     {
         Template.SpawnAtNight = spawnAtNight;
         return this;
@@ -115,7 +111,7 @@ internal class LocalSpawnBuilder : ILocalSpawnBuilder
         return this;
     }
 
-    public ILocalSpawnBuilder SetConditionPlayerDistance(float withinDistance)
+    public ILocalSpawnBuilder SetConditionPlayerWithinDistance(float withinDistance)
     {
         Template.ConditionPlayerDistance = withinDistance;
         return this;

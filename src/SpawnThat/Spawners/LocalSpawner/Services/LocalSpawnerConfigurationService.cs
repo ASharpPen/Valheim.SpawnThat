@@ -12,7 +12,7 @@ internal static class LocalSpawnerConfigurationService
             return;
         }
 
-        if (!template.Enabled)
+        if (!template.TemplateEnabled)
         {
             return;
         }

@@ -8,6 +8,7 @@ using SpawnThat.Integrations.EpicLoot.Models;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Spawners.Contexts;
 using SpawnThat.Utilities;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Integrations.EpicLoot.Conditions;
 
@@ -60,7 +61,12 @@ public class ConditionNearbyPlayerCarryItemWithRarity : ISpawnCondition
 
         foreach (var player in players)
         {
-            var items = player?.GetInventory()?.GetAllItems() ?? new(0);
+            if (player.IsNull())
+            {
+                continue;
+            }
+
+            var items = player.GetInventory()?.GetAllItems() ?? new(0);
 
             if (items.Any(x =>
                 {

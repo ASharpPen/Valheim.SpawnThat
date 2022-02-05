@@ -2,104 +2,219 @@
 using System.Linq;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Spawners.WorldSpawner;
+using SpawnThat.Utilities.Enums;
 
 namespace SpawnThat.Spawners;
 
 public static class IWorldSpawnBuilderConditionExtensions
 {
+    /// <summary>
+    /// <para>Set area ids in which spawning is enabled.</para>
+    /// <para>Should only be used when map is pre-determined.</para>
+    /// </summary>
     public static IWorldSpawnBuilder SetConditionAreaIds(this IWorldSpawnBuilder builder, IEnumerable<int> areaIds)
     {
-        builder.AddOrReplaceCondition(new ConditionAreaIds(areaIds.ToList()));
+        builder.SetCondition(new ConditionAreaIds(areaIds.ToList()));
         return builder;
     }
 
+    /// <summary>
+    /// <para>Set area ids in which spawning is enabled.</para>
+    /// <para>Should only be used when map is pre-determined.</para>
+    /// </summary>
     public static IWorldSpawnBuilder SetConditionAreaIds(this IWorldSpawnBuilder builder, params int[] areaIds)
     {
-        builder.AddOrReplaceCondition(new ConditionAreaIds(areaIds.ToList()));
+        builder.SetCondition(new ConditionAreaIds(areaIds.ToList()));
         return builder;
     }
 
-    public static IWorldSpawnBuilder SetConditionAreaSpawnChance(this IWorldSpawnBuilder builder, double areaChance)
+    /// <summary>
+    /// <para>Set spawn chance based on each area.</para>
+    /// <para>
+    ///     Each area rolls chance pr template id once pr seed.
+    ///     If the chance roll is less than listed here,
+    ///     this area will never activate this template, and vice versa.
+    /// </para>
+    /// <para>
+    ///     This allows for sitations where only some areas (eg., 10% of blackforests) will have a spawn show up.
+    /// </para>
+    /// </summary>
+    public static IWorldSpawnBuilder SetConditionAreaSpawnChance(this IWorldSpawnBuilder builder, float areaChance)
     {
-        builder.AddOrReplaceCondition(new ConditionAreaSpawnChance(areaChance, builder.Id));
+        builder.SetCondition(new ConditionAreaSpawnChance(areaChance, builder.Id));
         return builder;
     }
 
+    /// <summary>
+    /// <para>Spawn template is only active when player is within <c>withinDistance</c> to Spawner.</para>
+    /// </summary>
     public static IWorldSpawnBuilder SetConditionCloseToPlayer(this IWorldSpawnBuilder builder, float withinDistance)
     {
-        builder.AddOrReplaceCondition(new ConditionCloseToPlayer(withinDistance));
+        builder.SetCondition(new ConditionCloseToPlayer(withinDistance));
         return builder;
     }
 
+    /// <summary>
+    /// Sets range from center of world, in which spawning is allowed.
+    /// </summary>
+    /// <param name="minDistance">Required distance from center.</param>
+    /// <param name="maxDistance">Maximum distance from center. If null, there will be no limit.</param>
     public static IWorldSpawnBuilder SetConditionDistanceToCenter(this IWorldSpawnBuilder builder, double? minDistance = null, double? maxDistance = null)
     {
-        builder.AddOrReplaceCondition(new ConditionDistanceToCenter(minDistance, maxDistance));
+        builder.SetCondition(new ConditionDistanceToCenter(minDistance, maxDistance));
         return builder;
     }
 
+    /// <summary>
+    /// <para>Sets global keys which must not be present for spawning to be allowed.</para>
+    /// <para>
+    ///     Eg., if "KilledTroll", "defeated_eikthyr" and world has global key "defeated_eikthyr",
+    ///     then this template will be disabled.
+    /// </para>
+    /// </summary>
     public static IWorldSpawnBuilder SetGlobalKeysRequiredMissing(this IWorldSpawnBuilder builder, IEnumerable<string> globalKeys)
     {
-        builder.AddOrReplaceCondition(new ConditionGlobalKeysRequiredMissing(globalKeys.ToArray()));
+        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys.ToArray()));
         return builder;
     }
 
+    /// <summary>
+    /// <para>Sets global keys which must not be present for spawning to be allowed.</para>
+    /// <para>
+    ///     Eg., if "KilledTroll", "defeated_eikthyr" and world has global key "defeated_eikthyr",
+    ///     then this template will be disabled.
+    /// </para>
+    /// </summary>
     public static IWorldSpawnBuilder SetGlobalKeysRequiredMissing(this IWorldSpawnBuilder builder, params string[] globalKeys)
     {
-        builder.AddOrReplaceCondition(new ConditionGlobalKeysRequiredMissing(globalKeys));
+        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys));
         return builder;
     }
 
+    /// <summary>
+    /// <para>Sets global keys which must not be present for spawning to be allowed.</para>
+    /// <para>
+    ///     Eg., if GlobalKey.Troll, GlobalKey.Eikthyr and world has global key "defeated_eikthyr",
+    ///     then this template will be disabled.
+    /// </para>
+    /// </summary>
+    public static IWorldSpawnBuilder SetGlobalKeysRequiredMissing(this IWorldSpawnBuilder builder, IEnumerable<GlobalKey> globalKeys)
+    {
+        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys.Select(x => x.GetName()).ToArray()));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Sets global keys which must not be present for spawning to be allowed.</para>
+    /// <para>
+    ///     Eg., if GlobalKey.Troll, GlobalKey.Eikthyr and world has global key "defeated_eikthyr",
+    ///     then this template will be disabled.
+    /// </para>
+    /// </summary>
+    public static IWorldSpawnBuilder SetGlobalKeysRequiredMissing(this IWorldSpawnBuilder builder, params GlobalKey[] globalKeys)
+    {
+        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys.Select(x => x.GetName()).ToArray()));
+        return builder;
+    }
+
+    /// <summary>
+    /// Sets locations in which spawning is allowed.
+    /// </summary>
     public static IWorldSpawnBuilder SetConditionLocation(this IWorldSpawnBuilder builder, IEnumerable<string> locationNames)
     {
-        builder.AddOrReplaceCondition(new ConditionLocation(locationNames.ToArray()));
+        builder.SetCondition(new ConditionLocation(locationNames.ToArray()));
         return builder;
     }
 
+    /// <summary>
+    /// Sets locations in which spawning is allowed.
+    /// </summary>
     public static IWorldSpawnBuilder SetConditionLocation(this IWorldSpawnBuilder builder, params string[] locationNames)
     {
-        builder.AddOrReplaceCondition(new ConditionLocation(locationNames));
+        builder.SetCondition(new ConditionLocation(locationNames));
         return builder;
     }
 
-    public static IWorldSpawnBuilder AddConditionNearbyPlayersCarryItem(this IWorldSpawnBuilder builder, int distance, IEnumerable<string> itemPrefabNames)
+    /// <summary>
+    /// Template only enabled when a player within <c>distance</c> of spawner has one of the listed items in inventory.
+    /// </summary>
+    public static IWorldSpawnBuilder SetConditionNearbyPlayersCarryItem(this IWorldSpawnBuilder builder, int distance, IEnumerable<string> itemPrefabNames)
     {
-        builder.AddCondition(new ConditionNearbyPlayersCarryItem(distance, itemPrefabNames.ToArray()));
+        builder.SetCondition(new ConditionNearbyPlayersCarryItem(distance, itemPrefabNames.ToArray()));
         return builder;
     }
 
-    public static IWorldSpawnBuilder AddConditionNearbyPlayersCarryItem(this IWorldSpawnBuilder builder, int distance, params string[] itemPrefabNames)
+    /// <summary>
+    /// Template only enabled when a player within <c>distance</c> of spawner has one of the listed items in inventory.
+    /// </summary>
+    public static IWorldSpawnBuilder SetConditionNearbyPlayersCarryItem(this IWorldSpawnBuilder builder, int distance, params string[] itemPrefabNames)
     {
-        builder.AddCondition(new ConditionNearbyPlayersCarryItem(distance, itemPrefabNames));
+        builder.SetCondition(new ConditionNearbyPlayersCarryItem(distance, itemPrefabNames));
         return builder;
     }
 
+    /// <summary>
+    /// Template only enabled when players within <c>distance</c> of spawner has a combined inventory value greater than <c>combinedValueRequired</c>.
+    /// </summary>
     public static IWorldSpawnBuilder SetConditionNearbyPlayersCarryValue(this IWorldSpawnBuilder builder, int distance, int combinedValueRequired)
     {
-        builder.AddOrReplaceCondition(new ConditionNearbyPlayersCarryValue(distance, combinedValueRequired));
+        builder.SetCondition(new ConditionNearbyPlayersCarryValue(distance, combinedValueRequired));
         return builder;
     }
 
+    /// <summary>
+    /// Template only enabled when a player within <c>distance</c> of spawner emits more noise than <c>noiseRequired</c>.
+    /// </summary>
     public static IWorldSpawnBuilder SetConditionNearbyPlayersNoise(this IWorldSpawnBuilder builder, int distance, float noiseRequired)
     {
-        builder.AddOrReplaceCondition(new ConditionNearbyPlayersNoise(distance, noiseRequired));
+        builder.SetCondition(new ConditionNearbyPlayersNoise(distance, noiseRequired));
         return builder;
     }
 
-    public static IWorldSpawnBuilder AddConditionNearbyPlayersStatus(this IWorldSpawnBuilder builder, int distance, IEnumerable<string> statusEffectNames)
+    /// <summary>
+    /// Template only enabled when a player within <c>distance</c> of spawner has a status in <c>statusEffectNames</c>.
+    /// </summary>
+    public static IWorldSpawnBuilder SetConditionNearbyPlayersStatus(this IWorldSpawnBuilder builder, int distance, IEnumerable<string> statusEffectNames)
     {
-        builder.AddCondition(new ConditionNearbyPlayersStatus(distance, statusEffectNames.ToArray()));
+        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffectNames.ToArray()));
         return builder;
     }
 
-    public static IWorldSpawnBuilder AddConditionNearbyPlayersStatus(this IWorldSpawnBuilder builder, int distance, params string[] statusEffectNames)
+    /// <summary>
+    /// Template only enabled when a player within <c>distance</c> of spawner has a status in <c>statusEffectNames</c>.
+    /// </summary>
+    public static IWorldSpawnBuilder SetConditionNearbyPlayersStatus(this IWorldSpawnBuilder builder, int distance, params string[] statusEffectNames)
     {
-        builder.AddCondition(new ConditionNearbyPlayersStatus(distance, statusEffectNames));
+        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffectNames));
         return builder;
     }
 
+    /// <summary>
+    /// Template only enabled when a player within <c>distance</c> of spawner has a status in <c>statusEffects</c>.
+    /// </summary>
+    public static IWorldSpawnBuilder SetConditionNearbyPlayersStatus(this IWorldSpawnBuilder builder, int distance, IEnumerable<StatusEffect> statusEffects)
+    {
+        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffects.Select(x => x.ToString()).ToArray()));
+        return builder;
+    }
+
+    /// <summary>
+    /// Template only enabled when a player within <c>distance</c> of spawner has a status in <c>statusEffects</c>.
+    /// </summary>
+    public static IWorldSpawnBuilder SetConditionNearbyPlayersStatus(this IWorldSpawnBuilder builder, int distance, params StatusEffect[] statusEffects)
+    {
+        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffects.Select(x => x.ToString()).ToArray()));
+        return builder;
+    }
+
+    /// <summary>
+    /// Template only enabled when the world day is within the indicated range.
+    /// </summary>
+    /// <param name="minDays">Minimum days required before template is activated.</param>
+    /// <param name="maxDays">Maximum days after which template is deactivated. If null, there is no limit.</param>
     public static IWorldSpawnBuilder SetConditionWorldAge(this IWorldSpawnBuilder builder, int? minDays = null, int? maxDays = null)
     {
-        builder.AddOrReplaceCondition(new ConditionWorldAge(minDays, maxDays));
+        builder.SetCondition(new ConditionWorldAge(minDays, maxDays));
         return builder;
     }
 }

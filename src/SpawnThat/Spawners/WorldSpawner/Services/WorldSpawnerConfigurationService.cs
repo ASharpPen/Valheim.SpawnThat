@@ -7,6 +7,8 @@ using SpawnThat.Core;
 using SpawnThat.Debugging;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
+using SpawnThat.Spawners.WorldSpawner.Managers;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Spawners.WorldSpawner.Services;
 
@@ -78,7 +80,13 @@ internal static class WorldSpawnerConfigurationService
             .SelectMany(x => x.m_spawners)
             .ToList();
 
-        var mainSpawnList = spawnLists.FirstOrDefault() ?? new();
+        var mainSpawnList = spawnLists.FirstOrDefault();
+
+        if (mainSpawnList.IsNull())
+        {
+            Log.LogWarning("Something is really wrong. No SpawnSystemLists found. Skipping configuration of world spawners.");
+            return;
+        }
 
         foreach((int id, WorldSpawnTemplate template) in templates)
         {
@@ -97,14 +105,17 @@ internal static class WorldSpawnerConfigurationService
                 mainSpawnList.m_spawners.Add(entry);
 
                 Log.LogTrace($"Creating spawner entry for template [{id}:{template.PrefabName}]");
+
+                ConfigureNewEntry(entry, template);
             }
             else
             {
                 Log.LogTrace($"Overriding spawner entry [{id}:{spawners[id].m_prefab.name}] with template [{id}:{template.PrefabName}]");
                 entry = spawners[id];
+
+                ConfigureExistingEntry(entry, template);
             }
 
-            ConfigureEntry(entry, template);
             WorldSpawnerManager.SetTemplate(entry, template);
         }
     }
@@ -119,7 +130,7 @@ internal static class WorldSpawnerConfigurationService
             {
                 foreach (var spawner in spawnList.m_spawners)
                 {
-                    if (string.IsNullOrWhiteSpace(spawner.m_prefab?.name))
+                    if (spawner.m_prefab.IsNull() || string.IsNullOrWhiteSpace(spawner.m_prefab.name))
                     {
                         continue;
                     }
@@ -141,7 +152,7 @@ internal static class WorldSpawnerConfigurationService
         }
     }
 
-    private static void ConfigureEntry(SpawnSystem.SpawnData entry, WorldSpawnTemplate template)
+    private static void ConfigureNewEntry(SpawnSystem.SpawnData entry, WorldSpawnTemplate template)
     {
         GameObject prefab = null;
 
@@ -156,9 +167,53 @@ internal static class WorldSpawnerConfigurationService
             return;
         }
 
-        float? spawnInterval = template.SpawnInterval is null
-            ? null
-            : (float)template.SpawnInterval.Value.TotalSeconds;
+        entry.m_prefab = prefab;
+
+        Configure(ref entry.m_biome, template.BiomeMask, (Heightmap.Biome)int.MaxValue);
+        Configure(ref entry.m_enabled, template.Enabled);
+        Configure(ref entry.m_groundOffset, template.SpawnAtDistanceToGround, 0.5f);
+        Configure(ref entry.m_groupRadius, template.PackSpawnCircleRadius, 3f);
+        Configure(ref entry.m_groupSizeMin, template.PackSizeMin, 1);
+        Configure(ref entry.m_groupSizeMax, template.PackSizeMax, 1);
+        Configure(ref entry.m_huntPlayer, template.ModifierHuntPlayer, false);
+        Configure(ref entry.m_inForest, template.ConditionAllowInForest, true);
+        Configure(ref entry.m_outsideForest, template.ConditionAllowOutsideForest, true);
+        Configure(ref entry.m_levelUpMinCenterDistance, template.DistanceToCenterForLevelUp, 0);
+        Configure(ref entry.m_minAltitude, template.ConditionMinAltitude, -1000);
+        Configure(ref entry.m_maxAltitude, template.ConditionMaxAltitude, 1000);
+        Configure(ref entry.m_minLevel, template.MinLevel, 1);
+        Configure(ref entry.m_maxLevel, template.MaxLevel, 1);
+        Configure(ref entry.m_minTilt, template.ConditionMinTilt, 0);
+        Configure(ref entry.m_maxTilt, template.ConditionMaxTilt, 35);
+        Configure(ref entry.m_minOceanDepth, template.ConditionMinOceanDepth, 0);
+        Configure(ref entry.m_maxOceanDepth, template.ConditionMaxOceanDepth, 0);
+        Configure(ref entry.m_maxSpawned, entry.m_maxSpawned, 1);
+        Configure(ref entry.m_name, template.TemplateName, "");
+        Configure(ref entry.m_requiredEnvironments, template.ConditionEnvironments, new(0));
+        Configure(ref entry.m_requiredGlobalKey, template.ConditionRequiredGlobalKey, "");
+        Configure(ref entry.m_spawnAtDay, template.ConditionAllowDuringDay, true);
+        Configure(ref entry.m_spawnAtNight, template.ConditionAllowDuringNight, true);
+        Configure(ref entry.m_spawnChance, template.SpawnChance, 100);
+        Configure(ref entry.m_spawnDistance, template.MinDistanceToOther, 0);
+        Configure(ref entry.m_spawnInterval, (float?)template.SpawnInterval?.TotalSeconds, 90f);
+        Configure(ref entry.m_spawnRadiusMin, template.SpawnAtDistanceToPlayerMin, 0);
+        Configure(ref entry.m_spawnRadiusMax, template.SpawnAtDistanceToPlayerMax, 0);
+    }
+
+    private static void ConfigureExistingEntry(SpawnSystem.SpawnData entry, WorldSpawnTemplate template)
+    {
+        GameObject prefab = null;
+
+        if (!string.IsNullOrWhiteSpace(template.PrefabName))
+        {
+            prefab = ZNetScene.instance.GetPrefab(template.PrefabHash);
+        }
+
+        if (!prefab || prefab is null)
+        {
+            Log.LogWarning($"Unable to find prefab for {template.PrefabName}. Skipping world spawn template {template.TemplateName}");
+            return;
+        }
 
         Configure(ref entry.m_name, template.TemplateName);
         Configure(ref entry.m_enabled, template.Enabled);
@@ -166,11 +221,11 @@ internal static class WorldSpawnerConfigurationService
         Configure(ref entry.m_prefab, prefab);
         Configure(ref entry.m_huntPlayer, template.ModifierHuntPlayer);
         Configure(ref entry.m_maxSpawned, template.MaxSpawned);
-        Configure(ref entry.m_spawnInterval, spawnInterval);
+        Configure(ref entry.m_spawnInterval, (float?)template.SpawnInterval?.TotalSeconds);
         Configure(ref entry.m_spawnChance, template.SpawnChance);
         Configure(ref entry.m_minLevel, template.MinLevel);
         Configure(ref entry.m_maxLevel, template.MaxLevel);
-        Configure(ref entry.m_levelUpMinCenterDistance, template.LevelUpDistance);
+        Configure(ref entry.m_levelUpMinCenterDistance, template.DistanceToCenterForLevelUp);
         Configure(ref entry.m_spawnDistance, template.MinDistanceToOther);
         Configure(ref entry.m_spawnRadiusMin, template.SpawnAtDistanceToPlayerMin);
         Configure(ref entry.m_spawnRadiusMax, template.SpawnAtDistanceToPlayerMax);
@@ -190,6 +245,22 @@ internal static class WorldSpawnerConfigurationService
         Configure(ref entry.m_outsideForest, template.ConditionAllowOutsideForest);
         Configure(ref entry.m_minOceanDepth, template.ConditionMinOceanDepth);
         Configure(ref entry.m_maxOceanDepth, template.ConditionMaxOceanDepth);
+    }
+
+    private static void Configure<T>(ref T entry, T newValue, T defaultValue)
+        where T : class
+    {
+        entry = newValue is not null
+            ? newValue
+            : defaultValue;
+    }
+
+    private static void Configure<T>(ref T entry, T? newValue, T defaultValue)
+    where T : struct
+    {
+        entry = newValue is not null
+            ? newValue.Value
+            : defaultValue;
     }
 
     private static void Configure<T>(ref T entry, T newValue)

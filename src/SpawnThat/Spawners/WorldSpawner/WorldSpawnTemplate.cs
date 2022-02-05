@@ -61,7 +61,7 @@ internal class WorldSpawnTemplate
     }
 
     /// <summary>
-    /// Toggles this template.
+    /// Toggles this spawner.
     /// If disabled, this spawn entry will not run.
     /// Can be used to disable existing spawn templates.
     /// </summary>
@@ -122,7 +122,7 @@ internal class WorldSpawnTemplate
 
     public bool? ConditionAllowOutsideForest { get; set; }
 
-    public float? LevelUpDistance { get; set; }
+    public float? DistanceToCenterForLevelUp { get; set; }
 
     public int? MinLevel { get; set; }
 

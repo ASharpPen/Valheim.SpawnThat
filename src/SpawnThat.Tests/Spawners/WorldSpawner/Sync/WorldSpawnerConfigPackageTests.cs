@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpawnThat.Spawners;
-using SpawnThat.Spawners.WorldSpawner;
 using SpawnThat.Spawners.WorldSpawner.Configurations;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 using SpawnThat.Spawners.WorldSpawner.Sync;
 using SpawnThat.Utilities.Enums;
 using static Heightmap;
@@ -19,8 +19,8 @@ public class LocalSpawnerConfigPackageTests
         {
             WorldSpawnerConfiguration configuration = new();
             configuration.GetBuilder(1)
-                .SetConditionAllowDuringDay(true)
-                .SetConditionAllowDuringNight(false)
+                .SetSpawnDuringDay(true)
+                .SetSpawnDuringNight(false)
                 .SetMaxLevel(3);
             configuration.GetBuilder(2)
                 .SetConditionAreaIds(123)
@@ -59,10 +59,10 @@ public class LocalSpawnerConfigPackageTests
             configuration.GetBuilder(i)
                 .SetPrefabName("MySpawner" + i)
                 .SetMaxLevel(3)
-                .SetConditionEnvironments(EnvironmentName.Ashrain, EnvironmentName.Clear)
+                .SetConditionEnvironments(Weather.Ashrain, Weather.Clear)
                 .SetConditionBiomesAll()
-                .SetConditionAllowDuringDay(true)
-                .SetConditionAllowDuringNight(true)
+                .SetSpawnDuringDay(true)
+                .SetSpawnDuringNight(true)
                 .SetConditionDistanceToCenter(500 * (int)i, 2500 * (int)i)
                 .SetConditionWorldAge(1 * (int)i, 200 * (int)i)
                 .SetGlobalKeysRequiredMissing("Test1", "Test2")

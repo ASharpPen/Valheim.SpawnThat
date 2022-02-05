@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.LocalSpawner.Models;
 
-namespace SpawnThat.Spawners.LocalSpawner;
+namespace SpawnThat.Spawners.LocalSpawner.Managers;
 
 internal static class LocalSpawnTemplateManager
 {
@@ -22,17 +22,26 @@ internal static class LocalSpawnTemplateManager
 
     public static void SetTemplate(SpawnerNameIdentifier identifier, LocalSpawnTemplate template)
     {
-        TemplatesBySpawnerName[identifier] = template;
+        if (template.Enabled)
+        {
+            TemplatesBySpawnerName[identifier] = template;
+        }
     }
 
     public static void SetTemplate(LocationIdentifier identifier, LocalSpawnTemplate template)
     {
-        TemplatesByLocation[identifier] = template;
+        if (template.Enabled)
+        {
+            TemplatesByLocation[identifier] = template;
+        }
     }
 
     public static void SetTemplate(RoomIdentifier identifier, LocalSpawnTemplate template)
     {
-        TemplatesByRoom[identifier] = template;
+        if (template.Enabled)
+        {
+            TemplatesByRoom[identifier] = template;
+        }
     }
 
     public static LocalSpawnTemplate GetTemplate(SpawnerNameIdentifier identifier)

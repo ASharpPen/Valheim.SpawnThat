@@ -25,7 +25,7 @@ public static class LocationManager
         {
             return new(_simpleLocationsByZone);
         }
-        else if (ZoneSystem.instance && ZoneSystem.instance?.m_locationInstances is not null)
+        else if (ZoneSystem.instance.IsNotNull() && ZoneSystem.instance.m_locationInstances is not null)
         {
             Dictionary<Vector2i, SimpleLocation> simpleLocations = new();
 

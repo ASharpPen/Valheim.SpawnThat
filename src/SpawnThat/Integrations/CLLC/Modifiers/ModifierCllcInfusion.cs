@@ -4,6 +4,7 @@ using UnityEngine;
 using SpawnThat.Caches;
 using SpawnThat.Core;
 using SpawnThat.Options.Modifiers;
+using SpawnThat.Integrations.CLLC.Models;
 
 namespace SpawnThat.Integrations.CLLC.Modifiers;
 
@@ -26,9 +27,9 @@ public class ModifierCllcInfusion : ISpawnModifier
         }
     }
 
-    public ModifierCllcInfusion(CreatureInfusion infusion)
+    public ModifierCllcInfusion(CllcCreatureInfusion infusion)
     {
-        Infusion = infusion;
+        Infusion = infusion.Convert();
     }
 
     public void Modify(GameObject entity, ZDO entityZdo)

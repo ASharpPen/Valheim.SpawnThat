@@ -4,6 +4,7 @@ using UnityEngine;
 using SpawnThat.Caches;
 using SpawnThat.Core;
 using SpawnThat.Options.Modifiers;
+using SpawnThat.Integrations.CLLC.Models;
 
 namespace SpawnThat.Integrations.CLLC.Modifiers;
 
@@ -26,9 +27,9 @@ internal class ModifierCllcExtraEffect : ISpawnModifier
         }
     }
 
-    public ModifierCllcExtraEffect(CreatureExtraEffect extraEffect)
+    public ModifierCllcExtraEffect(CllcCreatureExtraEffect extraEffect)
     {
-        ExtraEffect = extraEffect;
+        ExtraEffect = extraEffect.Convert();
     }
 
     public void Modify(GameObject entity, ZDO entityZdo)

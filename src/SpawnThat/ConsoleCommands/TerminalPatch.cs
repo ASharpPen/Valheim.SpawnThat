@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using SpawnThat.Configuration;
-using SpawnThat.Spawners.WorldSpawner;
 using SpawnThat.Spawners.WorldSpawner.Services;
 using SpawnThat.World.Dungeons;
 using SpawnThat.World.Maps;
 using SpawnThat.World.Maps.Area;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 
 namespace SpawnThat.ConsoleCommands;
 
@@ -131,7 +131,12 @@ internal static class TerminalPatch
     {
         if (position is null)
         {
-            position = Player.m_localPlayer?.transform?.position;
+            if (Player.m_localPlayer == null || !Player.m_localPlayer)
+            {
+                return;
+            }
+
+            position = Player.m_localPlayer.transform.position;
 
             if (position is null)
             {

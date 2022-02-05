@@ -3,11 +3,12 @@ using System.Reflection.Emit;
 using System.Reflection;
 using HarmonyLib;
 using SpawnThat.Utilities.Extensions;
+using SpawnThat.Spawners.LocalSpawner.Managers;
 
 namespace SpawnThat.Spawners.LocalSpawner.Patches;
 
 [HarmonyPatch(typeof(CreatureSpawner))]
-internal static class CreatureSpawnerPatch
+internal static class CreatureSpawner_LocalSpawner_Workflow_Patch
 {
     [HarmonyPatch(nameof(CreatureSpawner.UpdateSpawner))]
     [HarmonyPrefix]

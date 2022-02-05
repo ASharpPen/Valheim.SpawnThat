@@ -6,7 +6,7 @@ using SpawnThat.Spawners.LocalSpawner.Caches;
 using SpawnThat.Spawners.LocalSpawner.Models;
 using SpawnThat.Spawners.LocalSpawner.Services;
 
-namespace SpawnThat.Spawners.LocalSpawner;
+namespace SpawnThat.Spawners.LocalSpawner.Managers;
 
 internal static class LocalSpawnerManager
 {
@@ -43,7 +43,7 @@ internal static class LocalSpawnerManager
             LocalSpawnerConfigurationService.ConfigureSpawner(spawner, template);
             spawner.SetSuccessfulInit();
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Log.LogError($"Error while attempting to apply template to local spawner '{spawner.name}'.", e);
             spawner.SetFailedInitialization();

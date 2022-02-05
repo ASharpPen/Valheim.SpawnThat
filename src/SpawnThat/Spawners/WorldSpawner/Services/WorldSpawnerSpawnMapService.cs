@@ -4,6 +4,7 @@ using UnityEngine;
 using SpawnThat.Core;
 using SpawnThat.World.Maps;
 using SpawnThat.Options.Conditions;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 
 namespace SpawnThat.Spawners.WorldSpawner.Services;
 

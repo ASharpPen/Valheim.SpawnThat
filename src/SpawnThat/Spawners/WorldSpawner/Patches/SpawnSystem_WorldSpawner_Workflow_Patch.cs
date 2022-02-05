@@ -7,6 +7,7 @@ using UnityEngine;
 using SpawnThat.Caches;
 using SpawnThat.Core;
 using SpawnThat.Utilities.Extensions;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 
 namespace SpawnThat.Spawners.WorldSpawner.Patches;
 
@@ -74,7 +75,7 @@ internal static class SpawnSystem_WorldSpawner_Workflow_Patch
     private static bool FixSpawnsInRangeForNonAI(GameObject prefab, Vector3 centerPoint, float minDistance, ref bool __result)
     {
         //Fish and birds all seem to have this tag assigned. It will be counted by the standard method.
-        if (prefab.tag == "spawned")
+        if (prefab.CompareTag("spawned"))
         {
             return true;
         }
@@ -96,7 +97,7 @@ internal static class SpawnSystem_WorldSpawner_Workflow_Patch
     private static bool FixSpawnCount(GameObject prefab, Vector3 center, float maxRange, ref int __result)
     {
         //Fish and birds all seem to have this tag assigned. It will be counted by the standard method.
-        if (prefab.tag == "spawned")
+        if (prefab.CompareTag("spawned"))
         {
             return true;
         }

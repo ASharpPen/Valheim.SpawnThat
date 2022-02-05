@@ -20,6 +20,11 @@ internal static class CreatureSpawnerConfigApplier
         {
             foreach (var creatureConfig in locationConfig.Value.Subsections)
             {
+                if (!creatureConfig.Value.TemplateEnabled.Value)
+                {
+                    continue;
+                }
+
                 // BepInEx configs are not set up to distinguish between rooms and locations in config path.
                 // Instead, the first matching name is used. Therefore, two builders are configured to leave
                 // it up to the first and most specific identified to be used.
@@ -46,16 +51,16 @@ internal static class CreatureSpawnerConfigApplier
         builder.SetLevelUpChance(config.LevelUpChance.Value);
         builder.SetSpawnInterval(TimeSpan.FromMinutes(config.RespawnTime.Value));
         builder.SetPatrolSpawn(config.SetPatrolPoint.Value);
-        builder.SetSpawnAtDay(config.SpawnAtDay.Value);
-        builder.SetSpawnAtNight(config.SpawnAtNight.Value);
-        builder.SetConditionPlayerDistance(config.TriggerDistance.Value);
+        builder.SetSpawnDuringNight(config.SpawnAtDay.Value);
+        builder.SetSpawnDuringDay(config.SpawnAtNight.Value);
+        builder.SetConditionPlayerWithinDistance(config.TriggerDistance.Value);
         builder.SetConditionPlayerNoise(config.TriggerNoise.Value);
         builder.SetSpawnInPlayerBase(config.SpawnInPlayerBase.Value);
 
         // Modifiers
         if (config.SetFaction.Value.IsNotEmpty())
         {
-            builder.AddOrReplaceModifier(new ModifierSetFaction(config.SetFaction.Value));
+            builder.SetModifier(new ModifierSetFaction(config.SetFaction.Value));
         }
 
         builder.SetModifierTamed(config.SetTamed.Value);
@@ -83,7 +88,7 @@ internal static class CreatureSpawnerConfigApplier
 
                 if (cllcConfig.UseDefaultLevels.Value)
                 {
-                    builder.AddOrReplaceModifier(new ModifierDefaultRollLevel(config.LevelMin.Value, config.LevelMax.Value, 0, config.LevelUpChance.Value));
+                    builder.SetModifier(new ModifierDefaultRollLevel(config.LevelMin.Value, config.LevelMax.Value, 0, config.LevelUpChance.Value));
                 }
             }
 

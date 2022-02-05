@@ -5,7 +5,7 @@ using SpawnThat.Core;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Services;
 
-namespace SpawnThat.Spawners.WorldSpawner;
+namespace SpawnThat.Spawners.WorldSpawner.Managers;
 
 internal static class WorldSpawnerManager
 {
@@ -14,6 +14,8 @@ internal static class WorldSpawnerManager
     private static List<SpawnSystemList> SpawnLists { get; set; } = new();
 
     private static Dictionary<SpawnSystem.SpawnData, WorldSpawnTemplate> TemplatesBySpawnEntry { get; set; } = new();
+
+    private static List<SpawnSystemList> PrefabSpawnSystemLists { get; set; } = new(0);
 
     /// <summary>
     /// Disables world spawner updates while true.
@@ -35,6 +37,16 @@ internal static class WorldSpawnerManager
         });
     }
 
+    public static void SetPrefabSpawnSystemLists()
+    {
+        if (PrefabSpawnSystemLists.Count == 0)
+        {
+            var prefabSpawnSystem = ZoneSystem.instance.m_zoneCtrlPrefab.GetComponent<SpawnSystem>();
+
+            PrefabSpawnSystemLists = prefabSpawnSystem.m_spawnLists;
+        }
+    }
+
     public static void EnsureInstantiatedSpawnListAssigned(SpawnSystem spawner)
     {
         if (HasInstantiatedSpawnLists)
@@ -43,12 +55,14 @@ internal static class WorldSpawnerManager
             return;
         }
 
+        GameObject testForPrefabGo = new GameObject();
+
         try
         {
-            foreach (var spawnList in spawner.m_spawnLists)
+            foreach (var spawnList in PrefabSpawnSystemLists)
             {
                 Log.LogTrace($"Instantiating spawn list: '{spawnList.name}'");
-                var instantiatedSpawnList = GameObject.Instantiate(spawnList.gameObject);
+                var instantiatedSpawnList = UnityEngine.Object.Instantiate(spawnList.gameObject);
 
                 SpawnListsObjects.Add(instantiatedSpawnList);
                 SpawnLists.Add(instantiatedSpawnList.GetComponent<SpawnSystemList>());

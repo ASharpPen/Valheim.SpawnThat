@@ -5,13 +5,13 @@ namespace SpawnThat.Options.Conditions;
 
 public class ConditionAreaSpawnChance : ISpawnCondition
 {
-    public double AreaChance { get; set; }
+    public float AreaChance { get; set; }
     public int EntityId { get; set; }
 
     internal ConditionAreaSpawnChance()
     { }
 
-    public ConditionAreaSpawnChance(double areaChance, int entityId)
+    public ConditionAreaSpawnChance(float areaChance, int entityId)
     {
         AreaChance = areaChance;
         EntityId = entityId;

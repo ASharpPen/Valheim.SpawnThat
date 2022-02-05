@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using SpawnThat.Core;
+using SpawnThat.Spawners.LocalSpawner.Managers;
 using SpawnThat.Spawners.LocalSpawner.Models;
 
 namespace SpawnThat.Spawners.LocalSpawner.Configuration;
