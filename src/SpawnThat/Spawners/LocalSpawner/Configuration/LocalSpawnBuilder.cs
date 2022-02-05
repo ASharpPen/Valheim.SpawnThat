@@ -51,7 +51,7 @@ internal class LocalSpawnBuilder : ILocalSpawnBuilder
         return this;
     }
 
-    public ILocalSpawnBuilder SetTemplateEnable(bool enabled = true)
+    public ILocalSpawnBuilder SetTemplateEnabled(bool enabled = true)
     {
         Template.TemplateEnabled = enabled;
         return this;

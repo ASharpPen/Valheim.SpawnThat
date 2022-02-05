@@ -20,6 +20,11 @@ internal static class CreatureSpawnerConfigApplier
         {
             foreach (var creatureConfig in locationConfig.Value.Subsections)
             {
+                if (!creatureConfig.Value.TemplateEnabled.Value)
+                {
+                    continue;
+                }
+
                 // BepInEx configs are not set up to distinguish between rooms and locations in config path.
                 // Instead, the first matching name is used. Therefore, two builders are configured to leave
                 // it up to the first and most specific identified to be used.
