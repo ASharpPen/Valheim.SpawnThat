@@ -55,7 +55,7 @@ internal static class WorldSpawnerConfigurationService
 
         if (ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileAfterChanges?.Value == true)
         {
-            SpawnDataFileDumper.WriteToFile(spawnLists.SelectMany(x => x.m_spawners).ToList(), "world_spawners_post_changes", true);
+            SpawnDataFileDumper.WriteToFile(spawnLists.SelectMany(x => x.m_spawners).ToList(), "world_spawners_post_changes.txt", true);
         }
 
         IsConfigured = true;
