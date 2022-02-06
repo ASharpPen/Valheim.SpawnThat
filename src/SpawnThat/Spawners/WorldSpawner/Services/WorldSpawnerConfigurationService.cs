@@ -55,7 +55,7 @@ internal static class WorldSpawnerConfigurationService
 
         if (ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileAfterChanges?.Value == true)
         {
-            SpawnDataFileDumper.WriteToFile(spawnLists.SelectMany(x => x.m_spawners).ToList(), "world_spawners_post_changes", true);
+            SpawnDataFileDumper.WriteToFile(spawnLists.SelectMany(x => x.m_spawners).ToList(), "world_spawners_post_changes.txt", true);
         }
 
         IsConfigured = true;
@@ -110,7 +110,7 @@ internal static class WorldSpawnerConfigurationService
             }
             else
             {
-                Log.LogTrace($"Overriding spawner entry [{id}:{spawners[id].m_prefab.name}] with template [{id}:{template.PrefabName}]");
+                Log.LogTrace($"Overriding spawner entry [{id}:{spawners[id].m_prefab.name}] with template '{template.TemplateName}'");
                 entry = spawners[id];
 
                 ConfigureExistingEntry(entry, template);
@@ -154,21 +154,26 @@ internal static class WorldSpawnerConfigurationService
 
     private static void ConfigureNewEntry(SpawnSystem.SpawnData entry, WorldSpawnTemplate template)
     {
-        GameObject prefab = null;
+        if (!template.Enabled)
+        {
+            entry.m_enabled = template.Enabled;
+            return;
+        }
+
+        GameObject prefab = entry.m_prefab;
 
         if (!string.IsNullOrWhiteSpace(template.PrefabName))
         {
             prefab = ZNetScene.instance.GetPrefab(template.PrefabHash);
+
+            if (prefab.IsNull())
+            {
+                Log.LogWarning($"Unable to find prefab '{template.PrefabName}' for {template.PrefabName}. Skipping world spawn template {template.TemplateName}");
+                return;
+            }
         }
 
-        if (!prefab || prefab is null)
-        {
-            Log.LogWarning($"Unable to find prefab for {template.PrefabName}. Skipping world spawn template {template.TemplateName}");
-            return;
-        }
-
-        entry.m_prefab = prefab;
-
+        Configure(ref entry.m_prefab, prefab);
         Configure(ref entry.m_biome, template.BiomeMask, (Heightmap.Biome)int.MaxValue);
         Configure(ref entry.m_enabled, template.Enabled);
         Configure(ref entry.m_groundOffset, template.SpawnAtDistanceToGround, 0.5f);
@@ -187,7 +192,7 @@ internal static class WorldSpawnerConfigurationService
         Configure(ref entry.m_maxTilt, template.ConditionMaxTilt, 35);
         Configure(ref entry.m_minOceanDepth, template.ConditionMinOceanDepth, 0);
         Configure(ref entry.m_maxOceanDepth, template.ConditionMaxOceanDepth, 0);
-        Configure(ref entry.m_maxSpawned, entry.m_maxSpawned, 1);
+        Configure(ref entry.m_maxSpawned, template.MaxSpawned, 1);
         Configure(ref entry.m_name, template.TemplateName, "");
         Configure(ref entry.m_requiredEnvironments, template.ConditionEnvironments, new(0));
         Configure(ref entry.m_requiredGlobalKey, template.ConditionRequiredGlobalKey, "");
@@ -202,17 +207,23 @@ internal static class WorldSpawnerConfigurationService
 
     private static void ConfigureExistingEntry(SpawnSystem.SpawnData entry, WorldSpawnTemplate template)
     {
-        GameObject prefab = null;
+        if (!template.Enabled)
+        {
+            entry.m_enabled = template.Enabled;
+            return;
+        }
+
+        GameObject prefab = entry.m_prefab;
 
         if (!string.IsNullOrWhiteSpace(template.PrefabName))
         {
             prefab = ZNetScene.instance.GetPrefab(template.PrefabHash);
-        }
 
-        if (!prefab || prefab is null)
-        {
-            Log.LogWarning($"Unable to find prefab for {template.PrefabName}. Skipping world spawn template {template.TemplateName}");
-            return;
+            if (prefab.IsNull())
+            {
+                Log.LogWarning($"Unable to find prefab '{template.PrefabName}' for {template.PrefabName}. Skipping world spawn template {template.TemplateName}");
+                return;
+            }
         }
 
         Configure(ref entry.m_name, template.TemplateName);

@@ -10,14 +10,9 @@ public static class SpawnerConfigurationManager
     private static List<Action<ISpawnerConfigurationCollection>> _configurations = new();
     private static List<Action<ISpawnerConfigurationCollection>> _lateConfigurations = new();
 
-    internal delegate void SpawnerEarlyConfigurationEvent(ISpawnerConfigurationCollection spawnerConfigs);
-    internal static event SpawnerEarlyConfigurationEvent OnEarlyConfigure;
-
-    public delegate void SpawnerConfigurationEvent(ISpawnerConfigurationCollection spawnerConfigs);
-    public static event SpawnerConfigurationEvent OnConfigure;
-
-    internal delegate void SpawnerLateConfigurationEvent(ISpawnerConfigurationCollection spawnerConfigs);
-    internal static event SpawnerLateConfigurationEvent OnLateConfigure;
+    internal static event Action<ISpawnerConfigurationCollection> OnEarlyConfigure;
+    public static event Action<ISpawnerConfigurationCollection> OnConfigure;
+    internal static event Action<ISpawnerConfigurationCollection> OnLateConfigure;
 
     /// <summary>
     /// Subscribe configuration action.

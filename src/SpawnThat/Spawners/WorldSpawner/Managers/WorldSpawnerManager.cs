@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 using SpawnThat.Core;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Services;
@@ -10,7 +9,6 @@ namespace SpawnThat.Spawners.WorldSpawner.Managers;
 internal static class WorldSpawnerManager
 {
     private static bool HasInstantiatedSpawnLists;
-    private static List<GameObject> SpawnListsObjects { get; set; } = new();
     private static List<SpawnSystemList> SpawnLists { get; set; } = new();
 
     private static Dictionary<SpawnSystem.SpawnData, WorldSpawnTemplate> TemplatesBySpawnEntry { get; set; } = new();
@@ -30,20 +28,26 @@ internal static class WorldSpawnerManager
             WaitingForConfigs = true;
 
             HasInstantiatedSpawnLists = false;
-            SpawnListsObjects.Clear();
             SpawnLists.Clear();
 
             TemplatesBySpawnEntry = new();
         });
     }
 
+    /// <summary>
+    /// Grab references to spawnlists before anyone starts adding to them.
+    /// This is to ensure that when later instantiating the default lists,
+    /// only the prefab's will be instantiated. The ones added by other mods
+    /// will be untouched, and thereby let them keep their references intact.
+    /// </summary>
     public static void SetPrefabSpawnSystemLists()
     {
+        // Initialize only once.
         if (PrefabSpawnSystemLists.Count == 0)
         {
             var prefabSpawnSystem = ZoneSystem.instance.m_zoneCtrlPrefab.GetComponent<SpawnSystem>();
 
-            PrefabSpawnSystemLists = prefabSpawnSystem.m_spawnLists;
+            PrefabSpawnSystemLists = new(prefabSpawnSystem.m_spawnLists);
         }
     }
 
@@ -55,22 +59,28 @@ internal static class WorldSpawnerManager
             return;
         }
 
-        GameObject testForPrefabGo = new GameObject();
-
         try
         {
-            foreach (var spawnList in PrefabSpawnSystemLists)
+            foreach (var spawnList in spawner.m_spawnLists)
             {
-                Log.LogTrace($"Instantiating spawn list: '{spawnList.name}'");
-                var instantiatedSpawnList = UnityEngine.Object.Instantiate(spawnList.gameObject);
-
-                SpawnListsObjects.Add(instantiatedSpawnList);
-                SpawnLists.Add(instantiatedSpawnList.GetComponent<SpawnSystemList>());
+                if (PrefabSpawnSystemLists.Contains(spawnList))
+                {
+                    // spawnlist is a prefab
+                    Log.LogTrace($"Instantiating spawn list: '{spawnList.name}'");
+                    var instantiatedSpawnList = UnityEngine.Object.Instantiate(spawnList.gameObject);
+                    SpawnLists.Add(instantiatedSpawnList.GetComponent<SpawnSystemList>());
+                }
+                else
+                {
+                    // Spawnlist is custom, add it normally.
+                    SpawnLists.Add(spawnList);
+                }
             }
         }
         catch (Exception e)
         {
             Log.LogWarning("Unable to instantiate SpawnSystemLists. Skipping step. Avoid entering multiple worlds without restarting, then everything will still be fine", e);
+            SpawnLists = spawner.m_spawnLists;
             HasInstantiatedSpawnLists = true;
             return;
         }

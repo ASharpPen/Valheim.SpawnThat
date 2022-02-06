@@ -9,7 +9,7 @@ namespace SpawnThat.Spawners;
 
 public static class ILocalSpawnBuilderELConditionsExtensions
 {
-    public static ILocalSpawnBuilder AddEpicLootConditionNearbyPlayersCarryItemWithRarity(this ILocalSpawnBuilder builder, int distanceToSearch, IEnumerable<string> rarities)
+    public static ILocalSpawnBuilder SetEpicLootConditionNearbyPlayersCarryItemWithRarity(this ILocalSpawnBuilder builder, int distanceToSearch, IEnumerable<string> rarities)
     {
         if (IntegrationManager.InstalledEpicLoot)
         {
@@ -19,7 +19,7 @@ public static class ILocalSpawnBuilderELConditionsExtensions
         return builder;
     }
 
-    public static ILocalSpawnBuilder AddEpicLootConditionNearbyPlayersCarryItemWithRarity(this ILocalSpawnBuilder builder, int distanceToSearch, IEnumerable<EpicLootRarity> rarities)
+    public static ILocalSpawnBuilder SetEpicLootConditionNearbyPlayersCarryItemWithRarity(this ILocalSpawnBuilder builder, int distanceToSearch, params string[] rarities)
     {
         if (IntegrationManager.InstalledEpicLoot)
         {
@@ -29,7 +29,27 @@ public static class ILocalSpawnBuilderELConditionsExtensions
         return builder;
     }
 
-    public static ILocalSpawnBuilder AddEpicLootConditionNearbyPlayerCarryLegendaryItem(this ILocalSpawnBuilder builder, int distanceToSearch, IEnumerable<string> legendaryItemIds)
+    public static ILocalSpawnBuilder SetEpicLootConditionNearbyPlayersCarryItemWithRarity(this ILocalSpawnBuilder builder, int distanceToSearch, IEnumerable<EpicLootRarity> rarities)
+    {
+        if (IntegrationManager.InstalledEpicLoot)
+        {
+            builder.SetCondition(new ConditionNearbyPlayerCarryItemWithRarity(distanceToSearch, rarities));
+        }
+
+        return builder;
+    }
+
+    public static ILocalSpawnBuilder SetEpicLootConditionNearbyPlayersCarryItemWithRarity(this ILocalSpawnBuilder builder, int distanceToSearch, params EpicLootRarity[] rarities)
+    {
+        if (IntegrationManager.InstalledEpicLoot)
+        {
+            builder.SetCondition(new ConditionNearbyPlayerCarryItemWithRarity(distanceToSearch, rarities));
+        }
+
+        return builder;
+    }
+
+    public static ILocalSpawnBuilder SetEpicLootConditionNearbyPlayerCarryLegendaryItem(this ILocalSpawnBuilder builder, int distanceToSearch, IEnumerable<string> legendaryItemIds)
     {
         if (IntegrationManager.InstalledEpicLoot)
         {
@@ -39,7 +59,7 @@ public static class ILocalSpawnBuilderELConditionsExtensions
         return builder;
     }
 
-    public static ILocalSpawnBuilder AddEpicLootConditionNearbyPlayerCarryLegendaryItem(this ILocalSpawnBuilder builder, int distanceToSearch, params string[] legendaryItemIds)
+    public static ILocalSpawnBuilder SetEpicLootConditionNearbyPlayerCarryLegendaryItem(this ILocalSpawnBuilder builder, int distanceToSearch, params string[] legendaryItemIds)
     {
         if (IntegrationManager.InstalledEpicLoot)
         {

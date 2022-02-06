@@ -20,6 +20,9 @@ internal class WorldSpawnerConfiguration : ISpawnerConfiguration
 
         if (builders.TryGetValue(id, out WorldSpawnBuilder existing))
         {
+#if DEBUG
+            Log.LogWarning($"Potentially conflicting configurations for world spawner '{id}' detected.");
+#endif
             return existing;
         }
 

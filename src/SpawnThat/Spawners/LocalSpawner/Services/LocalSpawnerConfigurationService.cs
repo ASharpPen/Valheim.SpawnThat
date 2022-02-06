@@ -1,5 +1,7 @@
-﻿using SpawnThat.Core;
+﻿using System;
+using SpawnThat.Core;
 using SpawnThat.Spawners.LocalSpawner.Models;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Spawners.LocalSpawner.Services;
 
@@ -22,12 +24,19 @@ internal static class LocalSpawnerConfigurationService
         var prefab = spawner.m_creaturePrefab;
 
         //Find creature prefab, if it needs to be overriden
-        if (string.IsNullOrWhiteSpace(template.PrefabName) || 
-            prefab.name != template.PrefabName)
+        if (!string.IsNullOrWhiteSpace(template.PrefabName) && 
+            prefab.GetCleanedName() != template.PrefabName.Trim())
         {
-            prefab = ZNetScene.instance.GetPrefab(template.PrefabName);
+            try
+            {
+                prefab = ZNetScene.instance.GetPrefab(template.PrefabName);
+            }
+            catch (Exception)
+            {
+                Log.LogWarning($"Unable to find prefab for '{template.PrefabName}'. Skipping configuration of local spawner.");
+            }
 
-            if (!prefab || prefab is null)
+            if (prefab.IsNull())
             {
                 Log.LogWarning($"Unable to find prefab for {template.PrefabName}. Skipping configuration.");
                 return;
@@ -35,7 +44,7 @@ internal static class LocalSpawnerConfigurationService
         }
 
         //Override existing config values:
-        spawner.m_creaturePrefab = prefab;
+        spawner.m_creaturePrefab = prefab.IsNotNull() ? prefab : spawner.m_creaturePrefab;
         spawner.m_maxLevel = template.MaxLevel ?? spawner.m_maxLevel;
         spawner.m_minLevel = template.MinLevel ?? spawner.m_minLevel;
         //__instance.m_requireSpawnArea = config.RequireSpawnArea.Value; //Disabled for now, since it isn't being used by the game.

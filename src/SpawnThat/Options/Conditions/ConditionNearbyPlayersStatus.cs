@@ -33,7 +33,7 @@ public class ConditionNearbyPlayersStatus : ISpawnCondition
 
         if (SearchDistance <= 0)
         {
-            return false;
+            return true;
         }
 
         List<Player> players = PlayerUtils.GetPlayersInRadius(context.SpawnerZdo.GetPosition(), SearchDistance);

@@ -23,12 +23,12 @@ public class ConditionNearbyPlayersNoise : ISpawnCondition
     {
         if (SearchDistance <= 0)
         {
-            return false;
+            return true;
         }
 
         if (NoiseThreshold <= 0)
         {
-            return false;
+            return true;
         }
 
         List<ZDO> players = PlayerUtils.GetPlayerZdosInRadius(context.SpawnerZdo.GetPosition(), SearchDistance);

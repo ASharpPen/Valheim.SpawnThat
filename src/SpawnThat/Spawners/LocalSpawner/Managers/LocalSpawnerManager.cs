@@ -67,6 +67,17 @@ internal static class LocalSpawnerManager
 
         var template = TemplateMatcherService.MatchMostSpecificTemplate(spawner);
 
+#if DEBUG
+        if (template is null)
+        {
+            Log.LogTrace($"Found no template for local spawner '{spawner.name}:{spawner.transform.position}'");
+        }
+        else
+        {
+            Log.LogTrace($"Found template for local spawner '{spawner.name}:{spawner.transform.position}'");
+        }
+#endif
+
         templateBySpawner.Set(spawner, template);
 
         return template;

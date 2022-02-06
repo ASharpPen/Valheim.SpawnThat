@@ -7,6 +7,7 @@ using System.Reflection.Emit;
 using System.Reflection;
 using SpawnThat.Lifecycle;
 using SpawnThat.Utilities.Spatial;
+using SpawnThat.Core;
 
 namespace SpawnThat.World.Dungeons;
 

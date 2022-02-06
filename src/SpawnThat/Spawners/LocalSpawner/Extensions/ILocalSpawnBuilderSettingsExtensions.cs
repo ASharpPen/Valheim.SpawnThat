@@ -4,7 +4,7 @@ using SpawnThat.Spawners.LocalSpawner.Configuration;
 
 namespace SpawnThat.Spawners;
 
-public static class ILocalSpawnBuilderDefaultSettingsExtensions
+public static class ILocalSpawnBuilderSettingsExtensions
 {
     public static ILocalSpawnBuilder WithSettings(this ILocalSpawnBuilder builder, LocalSpawnSettings settings)
     {

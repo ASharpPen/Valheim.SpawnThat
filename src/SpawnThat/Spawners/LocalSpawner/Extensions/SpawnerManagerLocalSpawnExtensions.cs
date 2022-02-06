@@ -11,7 +11,7 @@ public static class SpawnerManagerLocalSpawnExtensions
         => configCollection
             .GetOrAddSpawnerConfiguration(new LocalSpawnerConfiguration())
             .GetBuilder(new SpawnerNameIdentifier(
-                spawnerPrefabName.ToUpperInvariant().Trim()));
+                spawnerPrefabName));
 
     public static ILocalSpawnBuilder ConfigureLocalSpawnerByLocationAndCreature(
         this ISpawnerConfigurationCollection configCollection,
@@ -20,8 +20,8 @@ public static class SpawnerManagerLocalSpawnExtensions
         => configCollection
             .GetOrAddSpawnerConfiguration(new LocalSpawnerConfiguration())
             .GetBuilder(new LocationIdentifier(
-                locationName.ToUpperInvariant().Trim(), 
-                creaturePrefabName.ToUpperInvariant().Trim()));
+                locationName, 
+                creaturePrefabName));
 
     public static ILocalSpawnBuilder ConfigureLocalSpawnerByRoomAndCreature(
         this ISpawnerConfigurationCollection configCollection,
@@ -30,6 +30,6 @@ public static class SpawnerManagerLocalSpawnExtensions
         => configCollection
             .GetOrAddSpawnerConfiguration(new LocalSpawnerConfiguration())
             .GetBuilder(new RoomIdentifier(
-                roomName.ToUpperInvariant().Trim(), 
-                creaturePrefabName.ToUpperInvariant().Trim()));
+                roomName, 
+                creaturePrefabName));
 }

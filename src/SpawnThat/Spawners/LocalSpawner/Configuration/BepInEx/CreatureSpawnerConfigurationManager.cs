@@ -6,6 +6,7 @@ using System.IO;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Core.Configuration;
+using System.Linq;
 
 namespace SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
 

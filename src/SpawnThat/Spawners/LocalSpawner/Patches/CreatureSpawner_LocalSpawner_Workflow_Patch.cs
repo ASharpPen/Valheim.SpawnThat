@@ -32,15 +32,17 @@ internal static class CreatureSpawner_LocalSpawner_Workflow_Patch
         var spawn = AccessTools.Method(typeof(CreatureSpawner), nameof(CreatureSpawner.Spawn));
 
         return new CodeMatcher(instructions)
-            // Move to before Spawn is called.
+            // Move to Spawn call
             .MatchForward(false, new CodeMatch(OpCodes.Call, spawn))
-            .Advance(-1)
-            // Set a label, so we can jump to the original flow if conditions are valid.
-            .AddLabel(out Label spawnBeginLabel)
+            // Add label so we can continue flow.
+            .AddLabel(out var callSpawnLabel)
             // Insert check for valid template conditions, and return if not valid.
             .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
             .InsertAndAdvance(Transpilers.EmitDelegate(LocalSpawnSessionManager.CheckConditionsValid))
-            .InsertAndAdvance(new CodeInstruction(OpCodes.Brtrue, spawnBeginLabel))
+            // Continue original flow if conditions valid
+            .InsertAndAdvance(new CodeInstruction(OpCodes.Brtrue, callSpawnLabel))
+            // Clean up parameters on stack and return, if not valid.
+            .InsertAndAdvance(new CodeInstruction(OpCodes.Pop))
             .InsertAndAdvance(new CodeInstruction(OpCodes.Ret))
             .InstructionEnumeration();
     }
@@ -65,6 +67,7 @@ internal static class CreatureSpawner_LocalSpawner_Workflow_Patch
     }
 
     // TODO: Find more stable anchor. Eg., use the gameobject instantiation call.
+    // TODO: Actually, Spawn return the object. Maybe just grab it with a postfix?!
     [HarmonyPatch(nameof(CreatureSpawner.Spawn))]
     [HarmonyTranspiler]
     private static IEnumerable<CodeInstruction> ModifySpawn(IEnumerable<CodeInstruction> instructions)

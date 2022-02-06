@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using SpawnThat.Core;
 using SpawnThat.Spawners.LocalSpawner.Managers;
 using SpawnThat.Spawners.LocalSpawner.Models;
@@ -25,20 +26,41 @@ internal class LocalSpawnerConfiguration : ISpawnerConfiguration
 
         foreach (var spawnerBuilder in spawnerBuilders)
         {
-            var template = spawnerBuilder.Value.Build();
-            LocalSpawnTemplateManager.SetTemplate(spawnerBuilder.Key, template);
+            try
+            {
+                var template = spawnerBuilder.Value.Build();
+                LocalSpawnTemplateManager.SetTemplate(spawnerBuilder.Key, template);
+            }
+            catch (Exception e)
+            {
+                Log.LogWarning($"Error while attempting to build configuration for named local spawner '{spawnerBuilder.Key.SpawnerPrefabName}'.", e);
+            }
         }
 
         foreach (var spawnerBuilder in locationBuilders)
         {
-            var template = spawnerBuilder.Value.Build();
-            LocalSpawnTemplateManager.SetTemplate(spawnerBuilder.Key, template);
+            try
+            {
+                var template = spawnerBuilder.Value.Build();
+                LocalSpawnTemplateManager.SetTemplate(spawnerBuilder.Key, template);
+            }
+            catch (Exception e)
+            {
+                Log.LogWarning($"Error while attempting to build configuration for location local spawner '{spawnerBuilder.Key.Location}.{spawnerBuilder.Key.PrefabName}'.", e);
+            }
         }
 
         foreach (var spawnerBuilder in roomBuilders)
         {
-            var template = spawnerBuilder.Value.Build();
-            LocalSpawnTemplateManager.SetTemplate(spawnerBuilder.Key, template);
+            try
+            {
+                var template = spawnerBuilder.Value.Build();
+                LocalSpawnTemplateManager.SetTemplate(spawnerBuilder.Key, template);
+            }
+            catch (Exception e)
+            {
+                Log.LogWarning($"Error while attempting to build configuration for room local spawner '{spawnerBuilder.Key.Room}.{spawnerBuilder.Key.PrefabName}'.", e);
+            }
         }
 
         LocalSpawnerManager.WaitingForConfigs = false;
@@ -48,6 +70,10 @@ internal class LocalSpawnerConfiguration : ISpawnerConfiguration
     {
         if (spawnerBuilders.TryGetValue(identifier, out var existing))
         {
+#if DEBUG
+            Log.LogWarning($"Potentially conflicting configurations for local spawner with name '{identifier.SpawnerPrefabName}' detected.");
+#endif
+
             return existing;
         }
 
@@ -58,6 +84,10 @@ internal class LocalSpawnerConfiguration : ISpawnerConfiguration
     {
         if (locationBuilders.TryGetValue(identifier, out var existing))
         {
+#if DEBUG
+            Log.LogWarning($"Potentially conflicting configurations for local spawner '{identifier.Location}.{identifier.PrefabName}' detected.");
+#endif
+
             return existing;
         }
 
@@ -68,6 +98,10 @@ internal class LocalSpawnerConfiguration : ISpawnerConfiguration
     {
         if (roomBuilders.TryGetValue(identifier, out var existing))
         {
+#if DEBUG
+            Log.LogWarning($"Potentially conflicting configurations for local spawner '{identifier.Room}.{identifier.PrefabName}' detected.");
+#endif
+
             return existing;
         }
 

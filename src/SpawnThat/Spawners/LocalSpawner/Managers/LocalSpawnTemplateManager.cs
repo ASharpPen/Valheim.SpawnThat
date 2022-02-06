@@ -22,7 +22,7 @@ internal static class LocalSpawnTemplateManager
 
     public static void SetTemplate(SpawnerNameIdentifier identifier, LocalSpawnTemplate template)
     {
-        if (template.Enabled)
+        if (template.TemplateEnabled)
         {
             TemplatesBySpawnerName[identifier] = template;
         }
@@ -30,7 +30,7 @@ internal static class LocalSpawnTemplateManager
 
     public static void SetTemplate(LocationIdentifier identifier, LocalSpawnTemplate template)
     {
-        if (template.Enabled)
+        if (template.TemplateEnabled)
         {
             TemplatesByLocation[identifier] = template;
         }
@@ -38,7 +38,7 @@ internal static class LocalSpawnTemplateManager
 
     public static void SetTemplate(RoomIdentifier identifier, LocalSpawnTemplate template)
     {
-        if (template.Enabled)
+        if (template.TemplateEnabled)
         {
             TemplatesByRoom[identifier] = template;
         }
