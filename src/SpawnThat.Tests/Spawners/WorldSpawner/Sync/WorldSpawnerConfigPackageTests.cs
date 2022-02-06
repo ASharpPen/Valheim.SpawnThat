@@ -59,7 +59,7 @@ public class LocalSpawnerConfigPackageTests
             configuration.GetBuilder(i)
                 .SetPrefabName("MySpawner" + i)
                 .SetMaxLevel(3)
-                .SetConditionEnvironments(Weather.Ashrain, Weather.Clear)
+                .SetConditionEnvironments(EnvironmentName.Ashrain, EnvironmentName.Clear)
                 .SetConditionBiomesAll()
                 .SetSpawnDuringDay(true)
                 .SetSpawnDuringNight(true)

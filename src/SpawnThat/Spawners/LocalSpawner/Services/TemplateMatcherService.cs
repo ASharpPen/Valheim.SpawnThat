@@ -1,5 +1,6 @@
 ﻿using SpawnThat.Spawners.LocalSpawner.Managers;
 using SpawnThat.Spawners.LocalSpawner.Models;
+using SpawnThat.Utilities.Extensions;
 using SpawnThat.World.Dungeons;
 using SpawnThat.World.Locations;
 
@@ -12,9 +13,9 @@ internal static class TemplateMatcherService
         var position = spawner.transform.position;
         string creatureName = "";
 
-        if (spawner.m_creaturePrefab is not null || spawner.m_creaturePrefab)
+        if (spawner.m_creaturePrefab.IsNotNull())
         {
-            creatureName = spawner.m_creaturePrefab.name?.ToUpperInvariant()?.Trim();
+            creatureName = spawner.m_creaturePrefab.GetCleanedName();
         }
 
         // Check room match
@@ -23,7 +24,7 @@ internal static class TemplateMatcherService
         if (room is not null)
         {
             var roomTemplate = LocalSpawnTemplateManager.GetTemplate(new RoomIdentifier(
-                room.Name.ToUpperInvariant().Trim(),
+                room.Name,
                 creatureName));
 
             if (roomTemplate is not null)
@@ -38,7 +39,7 @@ internal static class TemplateMatcherService
         if (location is not null)
         {
             var locationTemplate = LocalSpawnTemplateManager.GetTemplate(new LocationIdentifier(
-                location.LocationName.ToUpperInvariant().Trim(),
+                location.LocationName,
                 creatureName));
 
             if (locationTemplate is not null)
@@ -48,13 +49,6 @@ internal static class TemplateMatcherService
         }
 
         // Check spawner name match
-        if (string.IsNullOrWhiteSpace(spawner.name))
-        {
-            return null;
-        }
-
-        var spawnerName = spawner.name.ToUpperInvariant().Trim();
-
-        return LocalSpawnTemplateManager.GetTemplate(new SpawnerNameIdentifier(spawnerName));
+        return LocalSpawnTemplateManager.GetTemplate(new SpawnerNameIdentifier(spawner.GetCleanedName()));
     }
 }

@@ -110,7 +110,7 @@ internal static class WorldSpawnerConfigurationService
             }
             else
             {
-                Log.LogTrace($"Overriding spawner entry [{id}:{spawners[id].m_prefab.name}] with template [{id}:{template.PrefabName}]");
+                Log.LogTrace($"Overriding spawner entry [{id}:{spawners[id].m_prefab.name}] with template '{template.TemplateName}'");
                 entry = spawners[id];
 
                 ConfigureExistingEntry(entry, template);
