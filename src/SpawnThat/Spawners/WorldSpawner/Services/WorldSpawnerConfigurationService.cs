@@ -187,7 +187,7 @@ internal static class WorldSpawnerConfigurationService
         Configure(ref entry.m_maxTilt, template.ConditionMaxTilt, 35);
         Configure(ref entry.m_minOceanDepth, template.ConditionMinOceanDepth, 0);
         Configure(ref entry.m_maxOceanDepth, template.ConditionMaxOceanDepth, 0);
-        Configure(ref entry.m_maxSpawned, entry.m_maxSpawned, 1);
+        Configure(ref entry.m_maxSpawned, template.MaxSpawned, 1);
         Configure(ref entry.m_name, template.TemplateName, "");
         Configure(ref entry.m_requiredEnvironments, template.ConditionEnvironments, new(0));
         Configure(ref entry.m_requiredGlobalKey, template.ConditionRequiredGlobalKey, "");
