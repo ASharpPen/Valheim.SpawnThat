@@ -21,10 +21,21 @@
 	  <PrivateAssets>all</PrivateAssets>
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
-	<PackageReference Include="Pfhoenix.Valheim.ModProjectReferences" Version="1.0.11" PrivateAssets="all" />
     <PackageReference Include="YamlDotNet" Version="11.2.1" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\Libs\BepInEx\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="assembly_utils">
+      <HintPath>..\Libs\Valheim\assembly_utils.dll</HintPath>
+    </Reference>
+    <Reference Include="assembly_valheim">
+      <HintPath>..\Libs\Valheim\assembly_valheim.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>..\Libs\BepInEx\BepInEx.dll</HintPath>
+    </Reference>
     <Reference Include="CreatureLevelControl">
       <HintPath>..\Libs\Smoothbrain-CreatureLevelAndLootControl\CreatureLevelControl.dll</HintPath>
     </Reference>
@@ -36,6 +47,21 @@
     </Reference>
     <Reference Include="MobAILib">
       <HintPath>..\Libs\RagnarsRokare-MobAILib\MobAILib.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\Libs\Unity\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\Libs\Unity\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\Libs\Unity\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\Libs\Unity\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\Libs\Unity\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
