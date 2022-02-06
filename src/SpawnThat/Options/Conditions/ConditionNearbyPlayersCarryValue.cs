@@ -1,7 +1,12 @@
-﻿using System.Collections.Generic;
+﻿//#define VERBOSE
+
+using System.Collections.Generic;
 using SpawnThat.Utilities;
 using SpawnThat.Spawners.Contexts;
 using SpawnThat.Utilities.Extensions;
+using System.Linq;
+using SpawnThat.Core;
+using HarmonyLib;
 
 namespace SpawnThat.Options.Conditions;
 
@@ -29,7 +34,7 @@ public class ConditionNearbyPlayersCarryValue : ISpawnCondition
 
         if (SearchDistance <= 0)
         {
-            return false;
+            return true;
         }
 
         List<Player> players = PlayerUtils.GetPlayersInRadius(context.SpawnerZdo.GetPosition(), SearchDistance);
@@ -43,19 +48,18 @@ public class ConditionNearbyPlayersCarryValue : ISpawnCondition
                 continue;
             }
 
-            var items = player.GetInventory()?.GetAllItems() ?? new(0);
+            var items = player.GetInventory()?.GetAllItems() ?? Enumerable.Empty<ItemDrop.ItemData>();
 
-            foreach (var item in items)
+#if DEBUG && VERBOSE
+            Log.LogTrace($"Player '{player.m_name}': {items.Join(x => x.m_shared?.m_name)}");
+#endif
+
+            foreach (var item in items)                     
             {
-                if (item?.m_shared is null)
-                {
-                    continue;
-                }
-
-                valueSum += item.GetValue();
+                valueSum += item?.GetValue() ?? 0;
             }
         }
 
-        return valueSum <= RequiredValue;
+        return valueSum >= RequiredValue;
     }
 }
