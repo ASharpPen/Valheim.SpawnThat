@@ -1,8 +1,11 @@
-﻿using System;
+﻿// #define VERBOSE
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using EpicLoot;
 using ExtendedItemDataFramework;
+using HarmonyLib;
 using SpawnThat.Core;
 using SpawnThat.Integrations.EpicLoot.Models;
 using SpawnThat.Options.Conditions;
@@ -54,7 +57,7 @@ public class ConditionNearbyPlayerCarryItemWithRarity : ISpawnCondition
 
         if (SearchDistance <= 0)
         {
-            return false;
+            return true;
         }
 
         List<Player> players = PlayerUtils.GetPlayersInRadius(context.SpawnerZdo.GetPosition(), SearchDistance);
@@ -67,6 +70,10 @@ public class ConditionNearbyPlayerCarryItemWithRarity : ISpawnCondition
             }
 
             var items = player.GetInventory()?.GetAllItems() ?? new(0);
+
+#if DEBUG && VERBOSE
+            Log.LogTrace($"Player '{player.m_name}': {items.Join(x => x.m_shared.m_name + ":" + x?.Extended()?.GetComponent<MagicItemComponent>()?.MagicItem?.Rarity.ToRarity().ToString() ?? "")}");
+#endif
 
             if (items.Any(x =>
                 {

@@ -120,7 +120,7 @@ internal static class SpawnSystemConfigApplier
             {
                 if (cllcConfig.ConditionWorldLevelMin.Value >= 0 || cllcConfig.ConditionWorldLevelMax.Value >= 0)
                 {
-                    builder.AddCllcConditionWorldLevel(cllcConfig.ConditionWorldLevelMin.Value, cllcConfig.ConditionWorldLevelMax.Value);
+                    builder.SetCllcConditionWorldLevel(cllcConfig.ConditionWorldLevelMin.Value, cllcConfig.ConditionWorldLevelMax.Value);
                 }
             }
 
@@ -129,11 +129,11 @@ internal static class SpawnSystemConfigApplier
             {
                 if (elConfig.ConditionNearbyPlayerCarryLegendaryItem.Value.IsNotEmpty())
                 {
-                    builder.AddEpicLootConditionNearbyPlayerCarryLegendaryItem((int)config.DistanceToTriggerPlayerConditions.Value, elConfig.ConditionNearbyPlayerCarryLegendaryItem.Value.SplitByComma());
+                    builder.SetEpicLootConditionNearbyPlayerCarryLegendaryItem((int)config.DistanceToTriggerPlayerConditions.Value, elConfig.ConditionNearbyPlayerCarryLegendaryItem.Value.SplitByComma());
                 }
                 if (elConfig.ConditionNearbyPlayerCarryItemWithRarity.Value.IsNotEmpty())
                 {
-                    builder.AddEpicLootConditionNearbyPlayersCarryItemWithRarity((int)config.DistanceToTriggerPlayerConditions.Value, elConfig.ConditionNearbyPlayerCarryItemWithRarity.Value.SplitByComma());
+                    builder.SetEpicLootConditionNearbyPlayersCarryItemWithRarity((int)config.DistanceToTriggerPlayerConditions.Value, elConfig.ConditionNearbyPlayerCarryItemWithRarity.Value.SplitByComma());
                 }
             }
         }

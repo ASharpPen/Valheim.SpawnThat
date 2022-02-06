@@ -6,7 +6,7 @@ namespace SpawnThat.Spawners;
 
 public static class IWorldSpawnBuilderCllcConditionExtensions
 {
-    public static IWorldSpawnBuilder AddCllcConditionWorldLevel(this IWorldSpawnBuilder builder, int? minWorldLevel, int? maxWorldLevel)
+    public static IWorldSpawnBuilder SetCllcConditionWorldLevel(this IWorldSpawnBuilder builder, int? minWorldLevel, int? maxWorldLevel)
     {
         if (IntegrationManager.InstalledCLLC)
         {
