@@ -9,23 +9,17 @@ public static class LifecycleManager
 {
     private static HashSet<Action> OnWorldInitActions = new HashSet<Action>();
 
-    public delegate void WorldInitEvent();
-    public static event WorldInitEvent OnWorldInit;
+    public static event Action OnWorldInit;
 
-    public delegate void AfterInitEvent();
-    public static event AfterInitEvent OnLateInit;
+    public static event Action OnLateInit;
 
-    public delegate void SinglePlayerInitEvent();
-    public static event SinglePlayerInitEvent OnSinglePlayerInit;
+    public static event Action OnSinglePlayerInit;
 
-    public delegate void MultiplayerInitEvent();
-    public static event MultiplayerInitEvent OnMultiplayerInit;
+    public static event Action OnMultiplayerInit;
 
-    public delegate void DedicatedServerInitEvent();
-    public static event DedicatedServerInitEvent OnDedicatedServerInit;
+    public static event Action OnDedicatedServerInit;
 
-    public delegate void FindSpawnPointEvent();
-    public static FindSpawnPointEvent OnFindSpawnPointFirstTime;
+    public static Action OnFindSpawnPointFirstTime;
 
     public static GameState GameState { get; private set; }
 
