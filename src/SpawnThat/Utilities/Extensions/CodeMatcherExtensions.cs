@@ -20,6 +20,18 @@ public static class CodeMatcherExtensions
         return codeMatcher;
     }
 
+    public static CodeMatcher GetOpcode(this CodeMatcher codeMatcher, out OpCode opcode)
+    {
+        opcode = codeMatcher.Opcode;
+        return codeMatcher;
+    }
+
+    public static CodeMatcher GetInstruction(this CodeMatcher codeMatcher, out CodeInstruction instruction)
+    {
+        instruction = codeMatcher.Instruction;
+        return codeMatcher;
+    }
+
     public static CodeMatcher GetOperand(this CodeMatcher codeMatcher, out object operand)
     {
         operand = codeMatcher.Operand;
@@ -51,7 +63,7 @@ public static class CodeMatcherExtensions
             }
             catch (Exception e)
             {
-                Log.LogTrace(e.Message);
+                Log.LogError(e.Message);
             }
         }
 #endif

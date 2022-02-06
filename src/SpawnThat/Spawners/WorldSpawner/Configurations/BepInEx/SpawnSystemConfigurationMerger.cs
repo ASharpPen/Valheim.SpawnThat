@@ -29,9 +29,12 @@ internal static class SpawnSystemConfigurationMerger
                 continue;
             }
 
-            if (targetTemplates.Subsections.ContainsKey(sourceTemplate.Key))
+            if (targetTemplates.Subsections.TryGetValue(sourceTemplate.Key, out var targetConfig))
             {
-                Log.LogWarning($"Overlapping world spawner configs for {sourceTemplate.Value.SectionKey}, overriding existing.");
+                if (targetConfig.TemplateEnabled.Value)
+                {
+                    Log.LogWarning($"Overlapping world spawner configs for {sourceTemplate.Value.SectionKey}, overriding existing.");
+                }
             }
 
             targetTemplates.Subsections[sourceTemplate.Key] = sourceTemplate.Value;

@@ -15,6 +15,10 @@ internal static class LocalSpawnSessionManager
 
     internal static bool CheckConditionsValid(CreatureSpawner spawner)
     {
+#if DEBUG && VERBOSE
+        Log.LogTrace($"Testing conditions of spawner '{spawner.name}:{spawner.transform.position}'");
+#endif
+
         var template = LocalSpawnerManager.GetTemplate(spawner);
 
         if (template is not null && !template.Enabled)
@@ -44,6 +48,9 @@ internal static class LocalSpawnSessionManager
 
                 if (!validCondition)
                 {
+#if DEBUG && VERBOSE
+                    Log.LogTrace($"Local Spawner '{spawner.name}', Invalid condition '{condition.GetType().Name}'");
+#endif
                     return false;
                 }
             }
