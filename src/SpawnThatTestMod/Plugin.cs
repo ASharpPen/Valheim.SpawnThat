@@ -1,6 +1,8 @@
 ﻿using System;
 using BepInEx;
 using BepInEx.Logging;
+using SpawnThat.Integrations.CLLC.Models;
+using SpawnThat.Integrations.EpicLoot.Models;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Spawners;
 using SpawnThat.Spawners.LocalSpawner;
@@ -29,8 +31,10 @@ namespace SpawnThatTestMod
         {
             try
             {
-                ConfigureNamedLocalSpawner(config);
-                ConfigureFileOverridenLocalSpawner(config);
+                ConfigureLocalSpawnerByNamed(config);
+                ConfigureLocalSpawnerOverridenByFile(config);
+                ConfigureLocalSpawnerWithIntegration(config);
+
                 ConfigureWorldSpawner(config);
                 ConfigureWorldSpawnerBySettings(config);
                 ConfigureWorldSpawnerOverrideDefault(config);
@@ -41,7 +45,7 @@ namespace SpawnThatTestMod
             }
         }
 
-        private static void ConfigureNamedLocalSpawner(ISpawnerConfigurationCollection config)
+        private static void ConfigureLocalSpawnerByNamed(ISpawnerConfigurationCollection config)
         {
             try
             {
@@ -69,10 +73,20 @@ namespace SpawnThatTestMod
             }
         }
 
+        private static void ConfigureLocalSpawnerWithIntegration(ISpawnerConfigurationCollection config)
+        {
+            config.ConfigureLocalSpawnerByLocationAndCreature("StoneTowerRuins08", "Skeleton")
+                .SetMinLevel(5)
+                .SetMaxLevel(10)
+                .SetSpawnInterval(TimeSpan.FromSeconds(1))
+                .SetCllcModifierInfusion(CllcCreatureInfusion.Fire)
+                .SetEpicLootConditionNearbyPlayersCarryItemWithRarity(100, EpicLootRarity.Magic, EpicLootRarity.Epic, EpicLootRarity.Rare);
+        }
+
         /// <summary>
-        /// TODO: Add an automatically created test cfg to configs.
+        /// TODO: Add an automatically created test cfg to configs. Currently just assumes a cfg exists which sets [Runestone_Boars.Boar].
         /// </summary>
-        private static void ConfigureFileOverridenLocalSpawner(ISpawnerConfigurationCollection config)
+        private static void ConfigureLocalSpawnerOverridenByFile(ISpawnerConfigurationCollection config)
         {
             try
             {

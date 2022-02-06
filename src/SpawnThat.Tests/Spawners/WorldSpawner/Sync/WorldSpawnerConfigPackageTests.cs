@@ -66,7 +66,7 @@ public class LocalSpawnerConfigPackageTests
                 .SetConditionDistanceToCenter(500 * (int)i, 2500 * (int)i)
                 .SetConditionWorldAge(1 * (int)i, 200 * (int)i)
                 .SetGlobalKeysRequiredMissing("Test1", "Test2")
-                .AddCllcConditionWorldLevel(1, 3)
+                .SetCllcConditionWorldLevel(1, 3)
                 .SetConditionLocation("TestLoc1", "TestLoc2")
                 .SetConditionAltitude(5, 100)
                 .SetConditionNearbyPlayersNoise(25, 100)
