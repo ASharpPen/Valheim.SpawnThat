@@ -9,6 +9,7 @@ using SpawnThat.Spawners.LocalSpawner;
 
 namespace SpawnThatTestMod
 {
+    [BepInDependency("asharppen.valheim.spawn_that", BepInDependency.DependencyFlags.HardDependency)]
     [BepInPlugin("asharppen.valheim.spawn_that_test", "Spawn That - Test", "0.0.0")]
     public class Plugin : BaseUnityPlugin
     {
@@ -107,12 +108,12 @@ namespace SpawnThatTestMod
                     .SetPrefabName("Boar")
                     .SetTemplateName("Skydiver Boars")
                     .SetSpawnInterval(TimeSpan.FromSeconds(30))
-                    .SetSpawnAtDistanceToGround(200)
+                    .SetSpawnAtDistanceToGround(100)
                     .SetPackSizeMin(3)
                     .SetPackSizeMax(3)
                     .SetMaxSpawned(20)
                     .SetSpawnAtDistanceToPlayerMin(1)
-                    .SetSpawnAtDistanceToPlayerMin(5)
+                    .SetSpawnAtDistanceToPlayerMax(5)
                     ;
             }
             catch (Exception e)

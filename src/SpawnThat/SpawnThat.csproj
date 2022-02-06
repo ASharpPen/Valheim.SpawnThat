@@ -4,7 +4,7 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <AssemblyVersion></AssemblyVersion>
     <FileVersion></FileVersion>
-    <Version>0.11.6</Version>
+    <Version>1.0.0-preview.1</Version>
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
     <AssemblyName>Valheim.SpawnThat</AssemblyName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>

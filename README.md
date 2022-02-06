@@ -30,7 +30,6 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 
 Documentation can be found on the [Spawn That! wiki](https://github.com/ASharpPen/Valheim.SpawnThat/wiki).
 
-
 # Example 
 
 ```INI
@@ -56,7 +55,83 @@ SetInfusion=Fire
 ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
 ```
 
+# v1.0.0 Details
+
+## Config changes
+
+`Enabled` now toggles the actual spawner on/off. This can be used to both disable local spawners and world spawner entries.
+
+`TemplateEnabled` added, which behaves like the old `Enabled` by disabling the configuration entry itself.
+
+## API support
+
+Spawn That now supports configurations by code. Configurations are merged with configs from file. File configurations will be applied last, ensuring that users can still override the settings made by mods.
+
+A nuget release has also been made available.
+
+Configurations are applied once pr world entered, and synced from server-side.
+
+API is more feature-rich than the config files though.
+
+Example:
+```cs
+public class Plugin : BaseUnityPlugin
+{
+	public void Awake()
+	{
+		// Register for configuration event.
+		SpawnThat.Spawners.SpawnerConfigurationManager.OnConfigure += MySpawnerConfigurations;
+	}
+
+	public void MySpawnerConfigurations(ISpawnerConfigurationCollection spawnerConfig)
+	{
+		// Add a new world spawner
+		spawnerConfig
+			.ConfigureWorldSpawner(123)
+			.SetPrefabName("Skeleton")
+			.SetMinLevel(2)
+			.SetMaxLevel(3);
+
+		// Modify an existing vanilla spawner
+		spawnerConfig
+			.ConfigureWorldSpawner(1)
+			.SetSpawnInterval(TimeSpan.FromSeconds(30))
+			.SetPackSizeMin(3)
+			.SetPackSizeMax(10);
+
+		// Modify a local spawner
+		spawnerConfig
+			.ConfigureLocalSpawnerByLocationAndCreature("Runestone_Boars", "Boar")
+			.SetPrefabName("Skeleton");
+	}
+}
+```
+Proper documentation for the API is in the works, but the code itself already has comments for most settings.
+
+## Future
+
+v1.0.0 is almost a full rewrite of Spawn That, which should allow for a much more extensible framework. Several additional spawner types, options, internal improvements and QoL are being considered.
+
+Currently planned up-coming features are:
+- New spawner type for AreaSpawner (eg., the destructible greydwarf nests)
+
 # Changelog: 
+- v1.0.0:
+	- WorldSpawner config `Enabled` now toggles the actual spawn entry on/off.
+	- Added WorldSpawner option `TemplateEnabled` to replace `Enabled`.
+	- LocalSpawner config `Enabled` now toggles the spawner itself on/off.
+	- Added LocalSpawner option `TemplateEnabled` to replace `Enabled`.
+	- Added API for using Spawn That by code.
+	- Debug files are now printed to BepInEx/Debug by default. Output folder is configurable.
+	- A ton of internal work and improvements.
+- v0.11.6:
+	- It's the season of bugs! World spawner templates are now instantiated on entering world, meaning changes applied are no longer carried between worlds / re-entering. This is hopefully getting changed by IG in the future.
+	- Fixed local spawners not honouring "Enabled=false". Configs were still attempted applied.
+	- Fixed leftover optimizations causing spawners to get disabled in biomes outside the one player logged into.
+- v0.11.5:
+	- More v0.205.5 fixes. World spawners were changed from no longer being per zone, but properly global, meaning Spawn That was reapplying its changes more than once.
+- v0.11.4:
+	- Fixes for Valheim v0.205.5
 - v0.11.3:
 	- Fixes for Valheim v0.202.14
 - v0.11.2: 
