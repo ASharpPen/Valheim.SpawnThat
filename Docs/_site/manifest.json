@@ -1,0 +1,1536 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/Code/Valheim.SpawnThat/src/SpawnThat.Docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api-reference/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/index.html",
+          "hash": "VUzyzYkBxSJLLqt/pLcpyxkv3bo2lzq2gPjQb93gtg0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "HE1cmIptPMqI/WqG+MHCCfk0QIkD1qrQKt7FEH/CTDA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "BlPxk5mtl2kgfcZUgkEguqiSAR/EUyUTT4EdebwkQvs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "5EkOV4peNW8eGqeFjXzC2itwnVURIjVI3ZDrXEuOmIQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel.html",
+          "hash": "cvbxTwoQtDicrQenna0vtMqav8gU4yblL7W0NYa9zAI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.CLLC.Conditions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.CLLC.Conditions.html",
+          "hash": "ogLJIGWMI5nDWegp2oDnfqamO6MpHHJsCYVFqidabOE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.CLLC.Models.CllcBossAffix.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.CLLC.Models.CllcBossAffix.html",
+          "hash": "13YCy1o9RrrgT2mhjIHNwd29yWXiPC2vkPWwmeBDxh8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.CLLC.Models.CllcCreatureExtraEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.CLLC.Models.CllcCreatureExtraEffect.html",
+          "hash": "g/m/X/JWYJ+D++r9LMKJ8u0RbQXdGZMl99R4V+/3SmY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.CLLC.Models.CllcCreatureInfusion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.CLLC.Models.CllcCreatureInfusion.html",
+          "hash": "eO2NnWq3aJp1wfmtYYsev0aAboO+I4+p4Ri1peRHATc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.CLLC.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.CLLC.Models.html",
+          "hash": "ExCJhx/ZbBDyu7mXefTKZphCHj8PA8Plsa65Vo70K+E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix.html",
+          "hash": "r3ZrOdummwRoCkh0SaF2gzgLnYdx/TrRzeH+IezpSMs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion.html",
+          "hash": "hjK/Ck93hMydLN0Qq9qWfDvD8QJ98BCYvkGiZGpf6IM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.html",
+          "hash": "dvBU1QKOTPv7zZPbo7c6XBwgzczCFiWHMt/HPIwR/EE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.CLLC.Modifiers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.CLLC.Modifiers.html",
+          "hash": "mYSAaPO5313kVe9Bd7TqJd307G2pVPUPpAF3Rk2jzV4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity.html",
+          "hash": "2+cQV9PVJgw4pQ+vzYjredorDL/mNpc5dZ+guVrzsec="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem.html",
+          "hash": "r5kXOBST4kfTuGWSQpfjT4Q1UkKEjIX/Nxqy4dJPGYQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.EpicLoot.Conditions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.EpicLoot.Conditions.html",
+          "hash": "UUV0xA6Z/k/y5a6Ajiknmsz+nCQ2lZXRw1XG0WBavh0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.html",
+          "hash": "HysPW4I7v//12njJcOZTL/nHL9TkzzJZlFqnWOBPGak="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.EpicLoot.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.EpicLoot.Models.html",
+          "hash": "OSv5S8dsIYDF/6T62PIgXy6Fk3AGFG5jW0GERAYXhqA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.IntegrationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.IntegrationManager.html",
+          "hash": "NroETHMag1qvTKy3bzx6zjr5xUHlEMzZxYnoRlpIxiw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI.html",
+          "hash": "xs8fhMf1RgM4273Aq7sdnnpJcgZW5IIdAhZoj127r70="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.MobAi.Modifiers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.MobAi.Modifiers.html",
+          "hash": "zeuzPG9h/QX/FJn3DGnR0ZpuXSbn0/hJZMGOacQxSmA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Integrations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Integrations.html",
+          "hash": "UlKV/6titEqTeGvtQdhkbjUqWax9hpHUTrUONUe8pgw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Lifecycle.GameState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Lifecycle.GameState.html",
+          "hash": "74uc1ilUDaQLHJi0tw1O/E8QrHuq+5OuoxuvMues3/I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Lifecycle.LifecycleManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Lifecycle.LifecycleManager.html",
+          "hash": "cJfKS445/RLeJ3QUugBBJOfSNYWQXgZQF5PbX8M1uvo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Lifecycle.SyncManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Lifecycle.SyncManager.html",
+          "hash": "sDPc8C1HD4qLGxxQjN2fNs8z0/7coy9FORXp4w9UFhM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Lifecycle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Lifecycle.html",
+          "hash": "BSTDLiV1fx/sYiM5wNajeOGey9QPKxhvkyuYvEAakxk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Locations.SimpleLocation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Locations.SimpleLocation.html",
+          "hash": "eCSi3eCsJ/DgWN5HWew/Uk1A/AAHVfXvECJzkoIiuuk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Locations.SimpleLocationDTO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Locations.SimpleLocationDTO.html",
+          "hash": "o6yIFDkPrlWjXL9OW4beJY14DIN6VKV5nWAiF2qxaNU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Locations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Locations.html",
+          "hash": "e8u/bpywCN5kdwNk5XAz3cVCooiJhu+ip6R/wLvhRNU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Conditions.ConditionAreaIds.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Conditions.ConditionAreaIds.html",
+          "hash": "8nKMYtAZF+2F9pFvHH4WOKodSenDVaOkhWn4+p28VgU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Conditions.ConditionAreaSpawnChance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Conditions.ConditionAreaSpawnChance.html",
+          "hash": "p1p+2LD/NQ5bpMNda1VXEHo1bsyjaUZnD4/P3wxD3Oc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Conditions.ConditionCloseToPlayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Conditions.ConditionCloseToPlayer.html",
+          "hash": "oLYYxWr8E0d7EYeL4q+IVQMFKIzyomeOMGcYz/XoNU8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Conditions.ConditionDistanceToCenter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Conditions.ConditionDistanceToCenter.html",
+          "hash": "zmIabwLFSOUtrkjLpOJq02CSAq7lyvBffE/AI7p58u4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing.html",
+          "hash": "+WHgp/VTXo3L2jC/3kxbeaUyCJ6Xs9DB+r3+7xr9edA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Conditions.ConditionLocation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Conditions.ConditionLocation.html",
+          "hash": "bb8ZS7mUU4gtaWtEZSAkD5yF63MrMnjgujYiVX46yeQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem.html",
+          "hash": "B24+gLUz3PWU10Ds1LnKU1hF+tkcPgQwvCTsTDEKSbw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue.html",
+          "hash": "00PrLnrZEK/9lTRkxP3VVka7nialmQSsl7pf2sSTFDg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise.html",
+          "hash": "ze0mrYqYFpPmKYyIgynXu0rcYUKGEw5juzgbPkVYH/Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus.html",
+          "hash": "lEMVa38zOHHVG9FlVZVnTWqnQ/Ad4hazVo9upzlHzV8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Conditions.ConditionWorldAge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Conditions.ConditionWorldAge.html",
+          "hash": "UU56KjPmnRjYm+jK/tbU3FhT4f2MxgdYDfyc5nyxvqY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Conditions.ISpawnCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Conditions.ISpawnCondition.html",
+          "hash": "QKxjtYvX9A2F+KFMANfCCSYm42vBB+8YJzvJDRzzuDs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Conditions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Conditions.html",
+          "hash": "Uit4nFpxioaxIcGWv/1LG457XTzaJAyNc4VPI8L7iXA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Modifiers.ISpawnModifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Modifiers.ISpawnModifier.html",
+          "hash": "K9A+P9c3cnAzaUqGF2Ol451cmWS5PMaNy23x/wJNDkE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Modifiers.ModifierDefaultRollLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Modifiers.ModifierDefaultRollLevel.html",
+          "hash": "8qpOU2uvXPvTElZ8rySS6VAYBwG8pzkxEwXTHX+8Jek="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Modifiers.ModifierDespawnOnAlert.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Modifiers.ModifierDespawnOnAlert.html",
+          "hash": "B2Ij+7TYXaea5b3K42aHrWxequLNeykmzeYFANKmkNg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid.html",
+          "hash": "qLIMgztZxMbcXZX0leni2RpWyrc8K2Q/78Q6yF6zBG8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Modifiers.ModifierSetFaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Modifiers.ModifierSetFaction.html",
+          "hash": "0R81nixPGM3+KyLPkBYmaVDFvg/en9dHelPPUtgt58s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Modifiers.ModifierSetRelentless.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Modifiers.ModifierSetRelentless.html",
+          "hash": "x3pO2i00kdX4PPDdfqNlklPRFRP5pSuNrl2jRgxtXyE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Modifiers.ModifierSetTamed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Modifiers.ModifierSetTamed.html",
+          "hash": "wMzP4Rtd3KrWDKqqrav0BxkPICaeDprvW+X2qvvRPuA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Modifiers.ModifierSetTamedCommandable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Modifiers.ModifierSetTamedCommandable.html",
+          "hash": "PB0S/qQJVfsQHWZ9TNvosQhHdoGDBAaF4vLubBJ7+X4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Modifiers.ModifierSetTemplateId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Modifiers.ModifierSetTemplateId.html",
+          "hash": "Q/IC7mrda9UGo/a+vsKJYwvII3psJvyOqudcYJC6nHo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.Modifiers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.Modifiers.html",
+          "hash": "ki0lFNXS6w0YHZJyfOqanTilnM9XsJaoqmTpQKqDbHk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.PositionConditions.ISpawnPositionCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.PositionConditions.ISpawnPositionCondition.html",
+          "hash": "hWS4eO2wLgHrFg0OaWvzBqa730YLdC1t6uxfscHwRoU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.PositionConditions.PositionConditionLocation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.PositionConditions.PositionConditionLocation.html",
+          "hash": "pfkBtb7hV0Mj7O6fJaFrKGwqVp0wUDI7n/jVdO8vI1c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Options.PositionConditions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Options.PositionConditions.html",
+          "hash": "k/Sh2KBtRAABmT0hcjhWo+XKBzV7CCSS0EB7A+RWlKg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.Contexts.SpawnSessionContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.Contexts.SpawnSessionContext.html",
+          "hash": "l9zxM8jRY2dhlL0E4KNU4oEgUWeirxcPA/2J1pGiJbU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.Contexts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.Contexts.html",
+          "hash": "VOLxkdwWG+bBnfEPkMGOHEWqU0I4oZwXE1wcFwXgOzE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.ILocalSpawnBuilderCllcConditionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.ILocalSpawnBuilderCllcConditionExtensions.html",
+          "hash": "9901EkczoNq+5Xm/+ms29JOL0eEWEFpT251D75xtoAY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.ILocalSpawnBuilderCllcModifierExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.ILocalSpawnBuilderCllcModifierExtensions.html",
+          "hash": "wThbH+17We5yGqOTfwWfTOATYzWll+XPvCDq7kfCsvE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.ILocalSpawnBuilderConditionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.ILocalSpawnBuilderConditionExtensions.html",
+          "hash": "MhorJgBhhAglrAOV08qeNPKkOwVPGcy+ayo49AYcWkw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.ILocalSpawnBuilderELConditionsExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.ILocalSpawnBuilderELConditionsExtensions.html",
+          "hash": "d1lG1MruEMicM//gvzAhvmsNNb3OkxBupb/jYLQ9p9s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.ILocalSpawnBuilderMobAiExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.ILocalSpawnBuilderMobAiExtensions.html",
+          "hash": "0poaGvD4R2u2BQ7zy8i94CTtf5uegj7ToKzBIIW/yLs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.ILocalSpawnBuilderModifierExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.ILocalSpawnBuilderModifierExtensions.html",
+          "hash": "5/1ixswAElKl8DpWviAW5aKMS1g6bpjOwK426oy5Slc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.ILocalSpawnBuilderSettingsExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.ILocalSpawnBuilderSettingsExtensions.html",
+          "hash": "bULBkRZ/xaHZUYaC82XA+FngZ7aiC/TQITNH9mMNv0c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.ISpawnerConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.ISpawnerConfiguration.html",
+          "hash": "bwu44YIfn6R4vKPWzwo0IUadMJzrMbIbn/vlAPuvFZc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.ISpawnerConfigurationCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.ISpawnerConfigurationCollection.html",
+          "hash": "RTtI0nD2b4kh3kFsGRIPt8/MYAhgA88ymWJkbnnL5hM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.IWorldSpawnBuilderCllcConditionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.IWorldSpawnBuilderCllcConditionExtensions.html",
+          "hash": "tvSv7xtB4Nk25VRdnhDSfnA8HOUAT1M0nXVALB8LpaM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.IWorldSpawnBuilderCllcModifierExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.IWorldSpawnBuilderCllcModifierExtensions.html",
+          "hash": "KeFchphJqC95NIzNvIUjdA6UDOdwlB5sTzuy638xk+k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.IWorldSpawnBuilderConditionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.IWorldSpawnBuilderConditionExtensions.html",
+          "hash": "SfFyJOz5UBjG/ktHuW1j3XpZUYa3/V97cOEFsVbSTlk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.IWorldSpawnBuilderELConditionsExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.IWorldSpawnBuilderELConditionsExtensions.html",
+          "hash": "WBxJ90AmByWE66Nfpl/Zf2mDbyCDDv7xmOqaMdHzejU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.IWorldSpawnBuilderMobAiExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.IWorldSpawnBuilderMobAiExtensions.html",
+          "hash": "+z0Q48u0HolzZgZfnoPK3o/jP1O1MSxzjh1xIOHz3Wc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.IWorldSpawnBuilderModifierExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.IWorldSpawnBuilderModifierExtensions.html",
+          "hash": "3H2LS8CWwf8umSz8IRuJ46YQRQXBsvioADzEJJA/MFo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.IWorldSpawnBuilderPositionConditionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.IWorldSpawnBuilderPositionConditionExtensions.html",
+          "hash": "jEz+2AHruzR81wmIVlQyycp6kMIetWq5JQTmwiiqsCY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.IWorldSpawnBuilderSettingsExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.IWorldSpawnBuilderSettingsExtensions.html",
+          "hash": "E9g+ka77f0hMMnVVfItjc0806+ZMEYOEnPiMWkZWjJw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.LocalSpawner.Configuration.ILocalSpawnBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.LocalSpawner.Configuration.ILocalSpawnBuilder.html",
+          "hash": "Wo+rldpaT4iQKlIfHzYinS08UKv3pnPotYXOhUqc7ss="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.LocalSpawner.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.LocalSpawner.Configuration.html",
+          "hash": "4udoedytpiVvvTp/wv8PIc/j4GPExblHzOOshcY8wTs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.LocalSpawner.LocalSpawnSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.LocalSpawner.LocalSpawnSettings.html",
+          "hash": "Qe8tL4qidTkY25Acipa7DjjSz0DU/MUdW7ZImyGwdeE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.LocalSpawner.Models.LocalSpawnTemplate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.LocalSpawner.Models.LocalSpawnTemplate.html",
+          "hash": "pWOvX++E5HVA0hEMK9xSoX41vpzRxmeO+ijPCIFaBIo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.LocalSpawner.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.LocalSpawner.Models.html",
+          "hash": "ebWjX0YmcLCpDbjdU/JOzz+Lmw0MYLbqokC7iq/fCX4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.LocalSpawner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.LocalSpawner.html",
+          "hash": "9q90dYld1YwFZy5YUWU2lmjrIMw0OyXbwjctienlOeU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.SpawnerConfigurationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.SpawnerConfigurationManager.html",
+          "hash": "Wva9zkAcQSKGxN971o8PHRo3zl6wa5q0f7j53vva8jU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.SpawnerManagerLocalSpawnExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.SpawnerManagerLocalSpawnExtensions.html",
+          "hash": "p9SM3PVRnWmaTQg5XMuXcFc8HAGiHfHaEW7FXDNJoIA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.SpawnerManagerWorldSpawnerExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.SpawnerManagerWorldSpawnerExtensions.html",
+          "hash": "RaN3hm0fu3EKv9OHUs+cwe9vjyLmqrkC2VA+h8gcCXw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.WorldSpawner.Configurations.WorldSpawnSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.WorldSpawner.Configurations.WorldSpawnSettings.html",
+          "hash": "Z8MM2j0YdUc6HBxmq+7DSaNDq3L7zfR9MdpCeRT6nyw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.WorldSpawner.Configurations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.WorldSpawner.Configurations.html",
+          "hash": "dZuknB0AiJm3olxzFRh/onzWVouPfx9rr5huQ4mpXyY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.html",
+          "hash": "t9lBcgxPrbyqGGwF2rZ+yAHh9NTsNZKc3cCHG4wgozg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.WorldSpawner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.WorldSpawner.html",
+          "hash": "HjoLhHEY/dUXTKclTm26g6UXSeefzTnsXzyDpXu1/8k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Spawners.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Spawners.html",
+          "hash": "gb/DK6v6HknW3QMWZvrO/IFE3ifmkBp/H06MswTucKk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.Enums.EnvironmentName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.Enums.EnvironmentName.html",
+          "hash": "dIoJHkNNhL0xt3MGKOEtQbg1ri8+D3x9/E8s9smmzok="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.Enums.EnvironmentNameExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.Enums.EnvironmentNameExtensions.html",
+          "hash": "cxGhFeszVx113ZdtNm0BzZPS7VWBMKHwdonjlsDztqQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.Enums.GlobalKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.Enums.GlobalKey.html",
+          "hash": "pCpWld8FIQFdTQm60Ut0dLj6X/mPIt0HoSNzzTwvjws="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.Enums.GlobalKeyExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.Enums.GlobalKeyExtensions.html",
+          "hash": "7y7PFvy93DMb/dwDi8stQGEgDzFw+psznm2WIgPJfPo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.Enums.StatusEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.Enums.StatusEffect.html",
+          "hash": "0YJMJY6P9H1bZ3obKyfqI4ZTNf6H8X0iNB5vKYVWNkw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.Enums.html",
+          "hash": "gupZadoU47CjgYDQWiDfKvHIYz/yiNdOAw3F2kyfISI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.Extensions.CodeMatcherExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.Extensions.CodeMatcherExtensions.html",
+          "hash": "WgMEf6U+QxPomaicyeYxfhgc+RcOU+lqgCIybVadg6g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.Extensions.UnityObjectExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.Extensions.UnityObjectExtensions.html",
+          "hash": "mwOEmGzd7el+VHl9ysoF7Em8uCPKjaSZkZlGvQc1mA8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.Extensions.Vector3Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.Extensions.Vector3Extensions.html",
+          "hash": "wn/RuoGBtMhXKVzmEXPOuLDgAdqBgRhY3cMdtNPijz4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.Extensions.ZdoExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.Extensions.ZdoExtensions.html",
+          "hash": "u73rD5/YnlMravRVEjkfVu6aQmvM9rfxs6TRDRA5BUM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.Extensions.html",
+          "hash": "oLnwBr3XzbIz7VLJxXyeExOd6o3F+beWo91eYZ7I5CE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.FileUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.FileUtils.html",
+          "hash": "eph5h8KUajLvyTJdLmvZqABz/eHz2ypAhocc4BBHW8M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.PlayerUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.PlayerUtils.html",
+          "hash": "GOPoEL2x/CTUrzYmFi9j2sGk6bIWPHG/8gj/Haw3rAY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.StringExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.StringExtensions.html",
+          "hash": "8HxzEAOMN9p+WSe2zHk0OO/mHeNyQe8k33DInMnm0kw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.Utilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.Utilities.html",
+          "hash": "VvYDNOplWyaLWKfuai3jn85SSEuGGkbBCof6+FHBB7c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Dungeons.RoomData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Dungeons.RoomData.html",
+          "hash": "qXS8Upx14tBVeY939ndpEwJaDjERKa78+Z5bkcoA/3I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Dungeons.RoomManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Dungeons.RoomManager.html",
+          "hash": "MLRFdaDbrNOhXtFN//DSM26uELTUmeJGsDpQyg+rpIs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Dungeons.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Dungeons.html",
+          "hash": "/Dh/8lCNLHSBF7m3DjNENGIDsud3qUx0NUrb0LXPS3g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.IZone.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.IZone.html",
+          "hash": "p/i50NuE6LGKHloZA3yXkTK7V8PqrOZIwNQ5ZXfgp4s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Locations.LocationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Locations.LocationManager.html",
+          "hash": "UowRyIfu4Up/t/p+7Td97FX+LTRAowVH/hou301LAXg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Locations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Locations.html",
+          "hash": "kw1+7k3sSuhNH6msFt4ONljmjw55kFswASgvQflktP4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Maps.MapManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Maps.MapManager.html",
+          "hash": "DlC+AB83TL9qn9zTpE6RoenPAL9llNhSAiOC6sXImSE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Maps.Patches.Patch_Game_FindSpawnPoint_PrintMaps.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Maps.Patches.Patch_Game_FindSpawnPoint_PrintMaps.html",
+          "hash": "JN9Am4K4jcjIib9ULOQ2CcykGY7r1NKVZdnMXrfyOG4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Maps.Patches.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Maps.Patches.html",
+          "hash": "Hy4nOGUHyYKFlr9tTcq/eYIIeUwxPUxGCPC/ZbVVYSQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Maps.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Maps.html",
+          "hash": "EoCqmleALYZZcWU5UYhtWdlHKuaorDIyRw4GRLtn6EM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Queries.BaseZdoQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Queries.BaseZdoQuery.html",
+          "hash": "0wg9LURzm7xtHuqSmNZtqgo9H2T0k549Oo/mSmKt9N0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Queries.ZdoPrefabQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Queries.ZdoPrefabQuery.html",
+          "hash": "dXYp4a+9QvqWfim6LaGbHUR5Rh2AH9Oj9bGoHPIouBo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Queries.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Queries.html",
+          "hash": "56e7SjqFYUMxOqXucAFPNy3MjsKDLVndCW4Q/I73+BI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Zone.ZoneManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Zone.ZoneManager.html",
+          "hash": "Lj5+11Ulf7FHqb9C0qrssrQPVOcMLgNTXu1Jer2AG3E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Zone.ZoneUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Zone.ZoneUtils.html",
+          "hash": "3q6E1GNudPAC847tkRuSLAxQ8ps1jSFw9+FpqfmLaBo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.Zone.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.Zone.html",
+          "hash": "NhNVcoDsij2gZK3iZkPgGAIDKkWwzj+1QDJKyCsz0vw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api-reference/SpawnThat.World.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/SpawnThat.World.html",
+          "hash": "YnSqFr8eP7DCQj/JVPNPFDyzyOLBHuHEDKN+TW/FTlk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Toc",
+      "source_relative_path": "obj/api-reference/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference/toc.html",
+          "hash": "hzE5q/8YU5kESOOJpIicBrDBsajNKHnnP1RpH59d/VI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "09nBjtAlYVXw3NOdnfwKa4qFG0b6TDNdypSb3vJ0AO0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 117,
+          "skipped_file_count": 117
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

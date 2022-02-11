@@ -1,0 +1,62 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [ "**.csproj" ],
+          "src": "../SpawnThat"
+        }
+      ],
+      "dest": "obj/api-reference",
+      "filter": "api-reference/filterConfig.yml"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [ "**.yml" ],
+        "src": "obj/api-reference",
+        "dest": "api-reference"
+      },
+      {
+        "files": [
+          "api-reference/**.md",
+          "articles/**.md",
+          "toc.yml",
+          "*.md"
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ]
+      }
+    ],
+    "overwrite": [
+      {
+        "files": [
+          "apidoc/**.md"
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ]
+      }
+    ],
+    "dest": "../../Docs/_site",
+    "template": [
+      "default",
+      "templates/darkfx"
+    ]
+  }
+}

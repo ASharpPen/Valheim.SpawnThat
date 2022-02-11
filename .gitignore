@@ -6,3 +6,4 @@ Valheim.SpawnThat/packages
 .vs
 packages
 src/Libs
+src/SpawnThat.Docs/log.txt
