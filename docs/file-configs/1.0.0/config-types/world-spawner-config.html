@@ -1,0 +1,560 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>World Spawner Config </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="World Spawner Config ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="world-spawner-config">World Spawner Config</h1>
+
+<p>World spawner templates are managed through the <code>spawn_that.world_spawners_advanced.cfg</code> file.
+There are currently 44 default templates, which can be overridden by setting a matching index (starting from 0).</p>
+<p>The <a href="General-Config">general config</a> contains debugging options, which can be toggled to create a file containing all templates before the mod applies its changes, and after.</p>
+<h2 id="example">Example</h2>
+<pre><code class="lang-INI">[WorldSpawner.0]
+Name=deer
+Enabled=True
+Biomes=Meadows,BlackForest,
+PrefabName=Deer
+HuntPlayer=False
+MaxSpawned=4
+SpawnInterval=100
+SpawnChance=50
+LevelMin=1
+LevelMax=3
+LevelUpMinCenterDistance=0
+SpawnDistance=64
+SpawnRadiusMin=0
+SpawnRadiusMax=0
+RequiredGlobalKey=
+RequiredEnvironments=
+GroupSizeMin=1
+GroupSizeMax=3
+GroupRadius=5
+GroundOffset=0.5
+SpawnDuringDay=True
+SpawnDuringNight=True
+ConditionAltitudeMin=0
+ConditionAltitudeMax=1000
+ConditionTiltMin=0
+ConditionTiltMax=35
+SpawnInForest=True
+SpawnOutsideForest=False
+OceanDepthMin=0
+OceanDepthMax=0
+ConditionDistanceToCenterMin=0
+ConditionDistanceToCenterMax=0
+ConditionWorldAgeDaysMin=0
+ConditionWorldAgeDaysMax=0
+
+[WorldSpawner.123]
+PrefabName=Boar
+Name = Angry Boar
+TemplateId=Boar_123
+HuntPlayer = true
+</code></pre><h2 id="config-options">Config Options</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Type</th>
+<th>Default</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#config-options-Name">Name</a></td>
+<td>string</td>
+<td>My spawner</td>
+<td>Murder Dwarf 9000</td>
+<td>Just a field for naming the configuration template</td>
+</tr>
+<tr>
+<td><a href="#config-options-TemplateId">TemplateId</a></td>
+<td>string</td>
+<td></td>
+<td>Murder_Dwarf_9000</td>
+<td>Technical setting intended for cross-mod identification of mobs spawned by this template. Sets a custom identifier which will be assigned to the spawned mobs ZDO as &#39;ZDO.Set(&quot;spawn_template_id&quot;, TemplateIdentifier)&#39;</td>
+</tr>
+<tr>
+<td><a href="#config-options-PrefabName">PrefabName</a></td>
+<td>string</td>
+<td>Deer</td>
+<td>Greydwarf</td>
+<td>Prefab name of the entity to spawn</td>
+</tr>
+<tr>
+<td><a href="#config-options-Enabled">Enabled</a></td>
+<td>bool</td>
+<td>true</td>
+<td>false</td>
+<td>Enable/disable this spawner entry</td>
+</tr>
+<tr>
+<td><a href="#config-options-TemplateEnabled">TemplateEnabled</a></td>
+<td>bool</td>
+<td>true</td>
+<td>false</td>
+<td>Enable/disable this configuration. This does not disable existing entries, just this configuration itself</td>
+</tr>
+<tr>
+<td><a href="#config-options-Biomes">Biomes</a></td>
+<td>string</td>
+<td></td>
+<td>Meadows, BlackForest</td>
+<td>Biomes in which entity can spawn. Leave empty to allow all</td>
+</tr>
+<tr>
+<td><a href="#config-options-HuntPlayer">HuntPlayer</a></td>
+<td>bool</td>
+<td>false</td>
+<td>true</td>
+<td>Sets AI to hunt a player target</td>
+</tr>
+<tr>
+<td><a href="#config-options-MaxSpawned">MaxSpawned</a></td>
+<td>int</td>
+<td>1</td>
+<td>100</td>
+<td>Maximum number of prefab spawned in local surroundings</td>
+</tr>
+<tr>
+<td><a href="#config-options-SpawnInterval">SpawnInterval</a></td>
+<td>int</td>
+<td>90</td>
+<td>300</td>
+<td>Seconds between new spawn checks.</td>
+</tr>
+<tr>
+<td><a href="#config-options-SpawnChance">SpawnChance</a></td>
+<td>int</td>
+<td>100</td>
+<td>0</td>
+<td>Chance to spawn pr spawn check. Range 0 to 100</td>
+</tr>
+<tr>
+<td><a href="#config-options-LevelMin">LevelMin</a></td>
+<td>int</td>
+<td>1</td>
+<td>35</td>
+<td>Minimum level to spawn</td>
+</tr>
+<tr>
+<td><a href="#config-options-LevelMax">LevelMax</a></td>
+<td>int</td>
+<td>1</td>
+<td>3</td>
+<td>Maximum level to spawn</td>
+</tr>
+<tr>
+<td><a href="#config-options-LevleUpMinCenterDistance">LevleUpMinCenterDistance</a></td>
+<td>float</td>
+<td>0</td>
+<td>2000</td>
+<td>Minimum distance from world center, to allow higher than min level</td>
+</tr>
+<tr>
+<td><a href="#config-options-SpawnRadiusMin">SpawnRadiusMin</a></td>
+<td>float</td>
+<td>0</td>
+<td>40</td>
+<td>Minimum spawn distance from player. 0 defaults to 40</td>
+</tr>
+<tr>
+<td><a href="#config-options-SpawnRadiusMax">SpawnRadiusMax</a></td>
+<td>float</td>
+<td>0</td>
+<td>80</td>
+<td>Maximum spawn distance from player. 0 defaults to 80</td>
+</tr>
+<tr>
+<td><a href="#config-options-SpawnDistance">SpawnDistance</a></td>
+<td>float</td>
+<td>0</td>
+<td>10</td>
+<td>Must not have another spawn of same prefab within this distance for this template to spawn</td>
+</tr>
+<tr>
+<td><a href="#config-options-RequiredGlobalKey">RequiredGlobalKey</a></td>
+<td>string</td>
+<td></td>
+<td>defeated_bonemass</td>
+<td>Required global key to spawn</td>
+</tr>
+<tr>
+<td><a href="#config-options-RequiredNotGlobalKey">RequiredNotGlobalKey</a></td>
+<td>string</td>
+<td></td>
+<td>defeated_bonemass, KilledTroll</td>
+<td>Global keys which disable the spawning of this template</td>
+</tr>
+<tr>
+<td><a href="#config-options-RequiredEnvironments">RequiredEnvironments</a></td>
+<td>string</td>
+<td></td>
+<td>Misty, Thunderstorm</td>
+<td>Require one of the listed environments to spawn. Leave empty to allow all</td>
+</tr>
+<tr>
+<td><a href="#config-options-GroupSizeMin">GroupSizeMin</a></td>
+<td>int</td>
+<td>1</td>
+<td>3</td>
+<td>Minimum count to spawn at a time. Group spawning</td>
+</tr>
+<tr>
+<td><a href="#config-options-GroupSizeMax">GroupSizeMax</a></td>
+<td>int</td>
+<td>1</td>
+<td>10</td>
+<td>Maximum count to spawn at a time. Group spawning</td>
+</tr>
+<tr>
+<td><a href="#config-options-GroupRadius">GroupRadius</a></td>
+<td>float</td>
+<td>3</td>
+<td>10</td>
+<td>Size of circle to spawn group inside. A spot within SpawnRadiusMin and SpawnRadiusMax will be picked as center of this circle</td>
+</tr>
+<tr>
+<td><a href="#config-options-GroundOffset">GroundOffset</a></td>
+<td>float</td>
+<td>0.5</td>
+<td>5</td>
+<td>Offset to ground to spawn at. Negative means below ground, the higher the further into the sky</td>
+</tr>
+<tr>
+<td><a href="#config-options-SpawnDuringDay">SpawnDuringDay</a></td>
+<td>bool</td>
+<td>true</td>
+<td>false</td>
+<td>Toggles spawning at day. Will also cause despawning for creatures at day if false</td>
+</tr>
+<tr>
+<td><a href="#config-options-SpawnDuringNight">SpawnDuringNight</a></td>
+<td>bool</td>
+<td>true</td>
+<td>false</td>
+<td>Toggles spawning during night</td>
+</tr>
+<tr>
+<td><a href="#config-options-SpawnInForest">SpawnInForest</a></td>
+<td>bool</td>
+<td>true</td>
+<td>false</td>
+<td>Toggles spawning in forests</td>
+</tr>
+<tr>
+<td><a href="#config-options-SpawnOutsideForest">SpawnOutsideForest</a></td>
+<td>bool</td>
+<td>true</td>
+<td>false</td>
+<td>Toggles spawning outside forests</td>
+</tr>
+<tr>
+<td><a href="#config-options-OceanDepthMin">OceanDepthMin</a></td>
+<td>float</td>
+<td>0</td>
+<td>0</td>
+<td>Minimum ocean depth to spawn in. Ignored if min == max</td>
+</tr>
+<tr>
+<td><a href="#config-options-OceanDepthMax">OceanDepthMax</a></td>
+<td>float</td>
+<td>0</td>
+<td>0</td>
+<td>Maximum ocean depth to spawn in. Ignored if min == max</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionAltitudeMin">ConditionAltitudeMin</a></td>
+<td>float</td>
+<td>-1000</td>
+<td>123</td>
+<td>Minimum altitude (distance to water surface) to spawn at</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionAltitudeMax">ConditionAltitudeMax</a></td>
+<td>float</td>
+<td>-1000</td>
+<td>123</td>
+<td>Maximum altitude (distance to water surface) to spawn at</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionTiltMin">ConditionTiltMin</a></td>
+<td>float</td>
+<td>0</td>
+<td>120</td>
+<td>Minimum tilt of terrain surface to spawn at</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionTiltMax">ConditionTiltMax</a></td>
+<td>float</td>
+<td>35</td>
+<td>45</td>
+<td>Maximum tilt of terrain surface to spawn at</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionDistanceToCenterMin">ConditionDistanceToCenterMin</a></td>
+<td>float</td>
+<td>0</td>
+<td>1000</td>
+<td>Minimum distance to center to spawn</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionDistanceToCenterMax">ConditionDistanceToCenterMax</a></td>
+<td>float</td>
+<td>0</td>
+<td>5000</td>
+<td>Maximum distance to center to spawn. 0 means limitless</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionWorldAgeDaysMin">ConditionWorldAgeDaysMin</a></td>
+<td>float</td>
+<td>0</td>
+<td>12</td>
+<td>Minimum world age in in-game days to spawn</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionWorldAgeDaysMax">ConditionWorldAgeDaysMax</a></td>
+<td>float</td>
+<td>0</td>
+<td>35</td>
+<td>Maximum world age in in-game days. 0 means no max</td>
+</tr>
+<tr>
+<td><a href="#config-options-DistanceToTriggerPlayerConditions">DistanceToTriggerPlayerConditions</a></td>
+<td>float</td>
+<td>100</td>
+<td>55</td>
+<td>Distance of player to spawner, for player to be included in player based checks such as ConditionNearbyPlayersCarryValue</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionNearbyPlayersCarryValue">ConditionNearbyPlayersCarryValue</a></td>
+<td>float</td>
+<td>0</td>
+<td>100</td>
+<td>Checks if nearby players have a combined value in inventory above this condition. Eg. If set to 100, entry will only activate if nearby players have more than 100 worth of values combined</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionNearbyPlayerCarriesItem">ConditionNearbyPlayerCarriesItem</a></td>
+<td>string</td>
+<td></td>
+<td>IronScrap, DragonEgg</td>
+<td>Checks if any nearby player have any of the listed item prefab names in inventory</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionNearbyPlayersNoiseThreshold">ConditionNearbyPlayersNoiseThreshold</a></td>
+<td>float</td>
+<td>0</td>
+<td>80</td>
+<td>Checks if any nearby player has a noise level at or above the threshold</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionNearbyPlayersStatus">ConditionNearbyPlayersStatus</a></td>
+<td>string</td>
+<td></td>
+<td>Wet, Burning</td>
+<td>Checks if any nearby player has one of the listed status effects</td>
+</tr>
+<tr>
+<td><a href="#config-options-SetFaction">SetFaction</a></td>
+<td>string</td>
+<td></td>
+<td>Undead</td>
+<td>Assign a specific faction to spawn. If empty uses default of prefab</td>
+</tr>
+<tr>
+<td><a href="#config-options-SetRelentless">SetRelentless</a></td>
+<td>bool</td>
+<td>false</td>
+<td>true</td>
+<td>When true, forces mob AI to always be alerted</td>
+</tr>
+<tr>
+<td><a href="#config-options-SetTryDespawnOnConditionsInvalid">SetTryDespawnOnConditionsInvalid</a></td>
+<td>bool</td>
+<td>false</td>
+<td>true</td>
+<td>When true, mob will try to run away and despawn when spawn conditions become invalid. Eg. if spawning only during night, it will run away and despawn at night. Currently this only take into account conditions for daytime and environment</td>
+</tr>
+<tr>
+<td><a href="#config-options-SetTryDespawnOnAlert">SetTryDespawnOnAlert</a></td>
+<td>bool</td>
+<td>false</td>
+<td>true</td>
+<td>When true, mob will try to run away and despawn when alerted</td>
+</tr>
+<tr>
+<td><a href="#config-options-SetTamed">SetTamed</a></td>
+<td>bool</td>
+<td>false</td>
+<td>true</td>
+<td>When true, mob will be set to tamed status on spawn. Only possible if mob can be tamed</td>
+</tr>
+<tr>
+<td><a href="#config-options-SetTamedCommandable">SetTamedCommandable</a></td>
+<td>bool</td>
+<td>false</td>
+<td>true</td>
+<td>Experimental. When true, will set mob as commandable when tamed. When false, whatever was default for the creature is used. Does not always seem to work for creatures not tameable in vanilla</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionLocation">ConditionLocation</a></td>
+<td>string</td>
+<td></td>
+<td>Runestone_Boars, FireHole</td>
+<td>Locations in which this template is enabled. Leave empty for all</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionAreaSpawnChance">ConditionAreaSpawnChance</a></td>
+<td>float</td>
+<td>100</td>
+<td>1.5</td>
+<td>Chance for spawn to spawn at all in the area. The chance will be rolled once for the area. Range is 0 to 100. Eg. if a whole area of BlackForest rolls higher than the indicated chance, this spawn template will never be active in that forest. Another BlackForest will have another roll however, that may activate this template there. Chance is rolled based on world seed, area id and template index</td>
+</tr>
+<tr>
+<td><a href="#config-options-ConditionAreaIds">ConditionAreaIds</a></td>
+<td>string</td>
+<td></td>
+<td>1, 123, 543</td>
+<td>Advanced feature. List of area id&#39;s in which the template is valid. Note: If ConditionAreaSpawnChance is not 100 or disabled, it will still roll area chance</td>
+</tr>
+</tbody>
+</table>
+<h2 id="supplemental">Supplemental</h2>
+<p>Spawn That will load additional configurations from configs with names prefixed with <code>spawn_that.world_spawners.</code></p>
+<p>This allows for adding your own custom templates to Spawn That, or simply separate your configs into more manageable pieces.
+Eg. <code>spawn_that.world_spawners.my_custom_configuration.cfg</code></p>
+<p>The configurations loaded will be merged with the one loaded from the main files.</p>
+<p>Merging may override previously loaded spawner templates.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/documentation-page/src/SpawnThat.Docs/file-configs/1.0.0/config-types/world-spawner-config.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../../../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -28,7 +28,7 @@
       href: mod-specific/epic-loot.md
       items:
         - name: World Spawners
-          href: mod-specific/epic-loot.md.md#world-spawner-options
+          href: mod-specific/epic-loot.md#world-spawner-options
         - name: Field Options
           href: mod-specific/epic-loot.md#field-options
     - name: MobAILib

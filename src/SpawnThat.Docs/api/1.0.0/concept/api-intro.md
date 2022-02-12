@@ -4,9 +4,9 @@ Quick'n'dirty explanation of how to get Spawn That set up for your own code.
 
 ## Reference SpawnThat:
 
-Reference the SpawnThat dll in your preferred manner.
+Get and reference the SpawnThat dll in your preferred manner in your project.
 
-Spawn That can be added by:
+Spawn That can be retrieved from:
 - Install nuget package
 - Download from github release https://github.com/ASharpPen/Valheim.SpawnThat/releases
 
