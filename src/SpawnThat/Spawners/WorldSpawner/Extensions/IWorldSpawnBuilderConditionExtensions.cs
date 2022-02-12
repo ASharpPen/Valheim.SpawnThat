@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SpawnThat.Options.Conditions;
-using SpawnThat.Spawners.WorldSpawner;
 using SpawnThat.Utilities.Enums;
 
-namespace SpawnThat.Spawners;
+namespace SpawnThat.Spawners.WorldSpawner;
 
 public static class IWorldSpawnBuilderConditionExtensions
 {

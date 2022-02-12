@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SpawnThat.Options.Conditions;
-using SpawnThat.Spawners.LocalSpawner.Configuration;
 using SpawnThat.Utilities.Enums;
 
-namespace SpawnThat.Spawners;
+namespace SpawnThat.Spawners.LocalSpawner;
 
 public static class ILocalSpawnBuilderConditionExtensions
 {    

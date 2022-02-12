@@ -2,7 +2,6 @@
 using SpawnThat.Core.Network;
 using SpawnThat.Core;
 using SpawnThat.Lifecycle;
-using SpawnThat.Locations;
 
 namespace SpawnThat.World.Locations;
 

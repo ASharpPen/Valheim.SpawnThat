@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using SpawnThat.Spawners.WorldSpawner;
-using SpawnThat.Spawners.WorldSpawner.Configurations;
 
-namespace SpawnThat.Spawners;
+namespace SpawnThat.Spawners.WorldSpawner;
 
 public static class IWorldSpawnBuilderSettingsExtensions
 {

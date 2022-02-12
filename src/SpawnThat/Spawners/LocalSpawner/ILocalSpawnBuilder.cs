@@ -2,7 +2,7 @@
 using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
 
-namespace SpawnThat.Spawners.LocalSpawner.Configuration;
+namespace SpawnThat.Spawners.LocalSpawner;
 
 public interface ILocalSpawnBuilder
 {

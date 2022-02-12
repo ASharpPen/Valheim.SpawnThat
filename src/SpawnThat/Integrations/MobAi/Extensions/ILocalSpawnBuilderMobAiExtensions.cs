@@ -1,8 +1,7 @@
 ﻿using SpawnThat.Integrations.MobAi.Modifiers;
 using SpawnThat.Integrations;
-using SpawnThat.Spawners.LocalSpawner.Configuration;
 
-namespace SpawnThat.Spawners;
+namespace SpawnThat.Spawners.LocalSpawner;
 
 public static class ILocalSpawnBuilderMobAiExtensions
 {

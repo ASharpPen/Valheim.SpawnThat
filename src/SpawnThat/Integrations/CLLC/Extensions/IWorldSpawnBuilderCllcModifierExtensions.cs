@@ -1,9 +1,8 @@
 ﻿using SpawnThat.Integrations;
 using SpawnThat.Integrations.CLLC.Models;
 using SpawnThat.Integrations.CLLC.Modifiers;
-using SpawnThat.Spawners.WorldSpawner;
 
-namespace SpawnThat.Spawners;
+namespace SpawnThat.Spawners.WorldSpawner;
 
 public static class IWorldSpawnBuilderCllcModifierExtensions
 {

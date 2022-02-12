@@ -1,8 +1,7 @@
 ﻿using SpawnThat.Integrations;
 using SpawnThat.Integrations.CLLC.Conditions;
-using SpawnThat.Spawners.LocalSpawner.Configuration;
 
-namespace SpawnThat.Spawners;
+namespace SpawnThat.Spawners.LocalSpawner;
 
 public static class ILocalSpawnBuilderCllcConditionExtensions
 {

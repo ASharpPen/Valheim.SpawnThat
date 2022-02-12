@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpawnThat.Core.Network;
 using SpawnThat.Lifecycle;
-using SpawnThat.Locations;
 using SpawnThat.World.Locations;
 
 namespace SpawnThat.Tests.World.Locations;

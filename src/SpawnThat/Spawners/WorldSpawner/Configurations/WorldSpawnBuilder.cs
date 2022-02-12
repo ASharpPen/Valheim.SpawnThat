@@ -8,7 +8,7 @@ using SpawnThat.Options.PositionConditions;
 using SpawnThat.Utilities.Enums;
 using SpawnThat.Utilities.Extensions;
 
-namespace SpawnThat.Spawners.WorldSpawner;
+namespace SpawnThat.Spawners.WorldSpawner.Configurations;
 
 internal class WorldSpawnBuilder : IWorldSpawnBuilder
 {
@@ -133,7 +133,7 @@ internal class WorldSpawnBuilder : IWorldSpawnBuilder
     {
         var biomeMask = Heightmap.Biome.None;
 
-        foreach(var biome in biomes)
+        foreach (var biome in biomes)
         {
             biomeMask |= biome;
         }

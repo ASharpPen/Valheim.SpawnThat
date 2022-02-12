@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using SpawnThat.Core;
 using SpawnThat.Core.Network;
 using SpawnThat.Utilities.Extensions;
-using SpawnThat.World.Locations;
 
-namespace SpawnThat.Locations;
+namespace SpawnThat.World.Locations;
 
 internal class SimpleLocationPackage : CompressedPackage
 {

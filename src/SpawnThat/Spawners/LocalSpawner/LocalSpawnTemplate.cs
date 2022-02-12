@@ -6,7 +6,7 @@ using YamlDotNet.Serialization;
 
 namespace SpawnThat.Spawners.LocalSpawner.Models;
 
-public class LocalSpawnTemplate
+internal class LocalSpawnTemplate
 {
     private string _prefabName;
     private int? _prefabHash;

@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using SpawnThat.Options.Modifiers;
-using SpawnThat.Spawners.LocalSpawner.Configuration;
 
-namespace SpawnThat.Spawners;
+namespace SpawnThat.Spawners.LocalSpawner;
 
 public static class ILocalSpawnBuilderModifierExtensions
 {

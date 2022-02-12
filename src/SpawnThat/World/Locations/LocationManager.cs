@@ -2,7 +2,6 @@
 using UnityEngine;
 using SpawnThat.Core;
 using SpawnThat.Lifecycle;
-using SpawnThat.Locations;
 using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.World.Locations;

@@ -1,8 +1,7 @@
 ﻿using SpawnThat.Integrations;
 using SpawnThat.Integrations.CLLC.Conditions;
-using SpawnThat.Spawners.WorldSpawner;
 
-namespace SpawnThat.Spawners;
+namespace SpawnThat.Spawners.WorldSpawner;
 
 public static class IWorldSpawnBuilderCllcConditionExtensions
 {

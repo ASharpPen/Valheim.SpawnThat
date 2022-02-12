@@ -1,9 +1,10 @@
-﻿using SpawnThat.Spawners.LocalSpawner.Configuration;
+﻿using SpawnThat.Spawners.LocalSpawner;
+using SpawnThat.Spawners.LocalSpawner.Configuration;
 using SpawnThat.Spawners.LocalSpawner.Models;
 
 namespace SpawnThat.Spawners;
 
-public static class SpawnerManagerLocalSpawnExtensions
+public static class ISpawnerConfigurationCollectionLocalSpawnExtensions
 {
     public static ILocalSpawnBuilder ConfigureLocalSpawnerByName(
         this ISpawnerConfigurationCollection configCollection,

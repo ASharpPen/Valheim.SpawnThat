@@ -3,7 +3,7 @@ using SpawnThat.Spawners.WorldSpawner.Configurations;
 
 namespace SpawnThat.Spawners;
 
-public static class SpawnerManagerWorldSpawnerExtensions
+public static class ISpawnerConfigurationCollectionWorldSpawnerExtensions
 {
     /// <summary>
     /// <para>Gets an IWorldSpawnBuilder with the indicated id. If none exist, creates a new one.</para>
