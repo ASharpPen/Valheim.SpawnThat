@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>API - Getting Started </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="API - Getting Started ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="api---getting-started">API - Getting Started</h1>
+
+<p>Quick&#39;n&#39;dirty explanation of how to get Spawn That set up for your own code.</p>
+<h2 id="reference-spawnthat">Reference SpawnThat:</h2>
+<p>Get and reference the SpawnThat dll in your preferred manner in your project.</p>
+<p>Spawn That can be retrieved from:</p>
+<ul>
+<li>Install nuget package</li>
+<li>Download from github release <a href="https://github.com/ASharpPen/Valheim.SpawnThat/releases">https://github.com/ASharpPen/Valheim.SpawnThat/releases</a></li>
+</ul>
+<h3 id="optional-add-dependency">(Optional) Add dependency:</h3>
+<p>Add a bepinex dependency to plugin, that ensures your mod is loaded after Spawn That, and also tells BepInEx that Spawn That is expected installed.</p>
+<pre><code class="lang-cs">[BepInDependency(&quot;asharppen.valheim.spawn_that&quot;, BepInDependency.DependencyFlags.HardDependency)]
+public class YourModsPlugin : BaseUnityPlugin
+</code></pre><h2 id="register-to-configuration-event">Register to configuration event.</h2>
+<p>Spawn That calls all registered functions with the main configuration collection, when it starts to gather its configurations.</p>
+<p>There are currently two ways of registering for this callback:
+<code>SpawnerConfigurationManager.OnConfigure += YourFunction;</code>
+or
+<code>SpawnerConfigurationManager.SubscribeConfiguration(YourFunction);</code></p>
+<p>The call to registered actions is made every time a singleplayer world is entered or a server is started. So registrations only need to be made once.</p>
+<pre><code class="lang-cs">using SpawnThat.Spawners;
+...
+public class YourModsPlugin : BaseUnityPlugin
+{
+  void Awake()
+  {
+    SpawnerConfigurationManager.OnConfigure += MySpawnerConfigurations;
+  }
+}
+
+public void MySpawnerConfigurations(ISpawnerConfigurationCollection spawnerConfig)
+{
+}
+</code></pre><h2 id="add-configurations">Add configurations</h2>
+<p>Configurations are made by retrieving a builder for a desired spawner type.</p>
+<p>Usually this has the form of <code>ISpawnerConfigurationCollection.ConfigureSpawnerType</code>.</p>
+<pre><code class="lang-cs">public void MySpawnerConfigurations(ISpawnerConfigurationCollection spawnerConfig)
+{
+  // Configure a new world spawner
+  spawnerConfig
+    .ConfigureWorldSpawner(123)
+    .SetPrefabName(&quot;Skeleton&quot;)
+    .SetMinLevel(2)
+    .SetMaxLevel(3);
+
+  // Modify an existing vanilla spawner
+  spawnerConfig
+    .ConfigureWorldSpawner(1)
+    .SetSpawnInterval(TimeSpan.FromSeconds(30))
+    .SetPackSizeMin(3)
+    .SetPackSizeMax(10);
+
+  // Modify a local spawner
+  spawnerConfig
+    .ConfigureLocalSpawnerByLocationAndCreature(&quot;Runestone_boars&quot;, &quot;Boar&quot;)
+    .SetPrefabName(&quot;Skeleton&quot;);
+}
+</code></pre><p>And done.</p>
+<ul>
+<li>Spawn That will make sure the configurations are merged with file ones. </li>
+<li>The resulting templates after configuration building is done will be synced to players joining a server. </li>
+<li>Any un-assigned setting will use a default value if this is a new spawner, or use existing settings when overriding an existing spawner (eg., if you want to just increase vanilla boar spawn frequency, only that setting will be touched).</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat.Docs/api/1.0.0/concept/api-intro.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../../../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title> </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content=" ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<ul>
+<li>v1.0.0:<ul>
+<li>WorldSpawner config <code>Enabled</code> now toggles the actual spawn entry on/off.</li>
+<li>Added WorldSpawner option <code>TemplateEnabled</code> to replace <code>Enabled</code>.</li>
+<li>LocalSpawner config <code>Enabled</code> now toggles the spawner itself on/off.</li>
+<li>Added LocalSpawner option <code>TemplateEnabled</code> to replace <code>Enabled</code>.</li>
+<li>Added API for using Spawn That by code.</li>
+<li>Debug files are now printed to BepInEx/Debug by default. Output folder is configurable.</li>
+<li>A ton of internal work and improvements.</li>
+<li>Moved documentation to <a href="https://asharppen.github.io/Valheim.SpawnThat/">https://asharppen.github.io/Valheim.SpawnThat/</a>. Documentation will be updated here from now on.</li>
+</ul>
+</li>
+<li>v0.11.6:<ul>
+<li>It&#39;s the season of bugs! World spawner templates are now instantiated on entering world, meaning changes applied are no longer carried between worlds / re-entering. This is hopefully getting changed by IG in the future.</li>
+<li>Fixed local spawners not honouring &quot;Enabled=false&quot;. Configs were still attempted applied.</li>
+<li>Fixed leftover optimizations causing spawners to get disabled in biomes outside the one player logged into.</li>
+</ul>
+</li>
+<li>v0.11.5:<ul>
+<li>More v0.205.5 fixes. World spawners were changed from no longer being per zone, but properly global, meaning Spawn That was reapplying its changes more than once.</li>
+</ul>
+</li>
+<li>v0.11.4:<ul>
+<li>Fixes for Valheim v0.205.5</li>
+</ul>
+</li>
+<li>v0.11.3:<ul>
+<li>Fixes for Valheim v0.202.14</li>
+</ul>
+</li>
+<li>v0.11.2: <ul>
+<li>Fixed the setting SpawnInPlayerBase not being assigned to local spawners.</li>
+</ul>
+</li>
+<li>v0.11.1: <ul>
+<li>Fixed issue with local spawners being disabled due to missing location info.</li>
+<li>Made local spawners less demanding of config application. Should revert to default spawn if Spawn That fails to apply its changes.</li>
+</ul>
+</li>
+<li>v0.11.0: <ul>
+<li>Added region labelling for map biomes. Will now scan for connected biome zones, and assign an id for that whole area.</li>
+<li>Added condition for spawning only in specified areas. Intended as a world specific setting. For those who have been waiting, this is the option to use for designated monster islands.</li>
+<li>Added condition for spawning in an area, chance is pr area and only rolled once, to allow for variety in spawning across the world.</li>
+<li>Added console commands for areas.</li>
+<li>Added conditions for epic loot based items on nearby players.</li>
+<li>Added support for spawning non-ai entities. MaxSpawned and SpawnDistance should now work properly for any prefab. SpawnDistance should work for any distance now, be aware this may cause performance issues if set too high.</li>
+<li>Documentation moved to mod wiki.</li>
+</ul>
+</li>
+<li>v0.10.1: <ul>
+<li>Fixed issue with world-spawner mobs not spawning in mountains.</li>
+</ul>
+</li>
+<li>v0.10.0: <ul>
+<li>Optimized network package sizes.</li>
+<li>Added initial support for <a href="https://www.nexusmods.com/valheim/mods/1188">MobAILib</a>.</li>
+<li>Added setting &quot;SetTamed&quot; for local- and world spawners.</li>
+<li>Added setting &quot;SetTamedCommandable&quot; for local- and world spawners.</li>
+<li>Added world spawner condition &quot;&quot; for nearby players having status effect.</li>
+</ul>
+</li>
+<li>v0.9.1: <ul>
+<li>Fixed issue with too early access of location info. Should resolve issue with local spawners not spawning creatures.</li>
+</ul>
+</li>
+<li>v0.9.0: <ul>
+<li>Added setting &quot;UseDefaultLevels&quot; to CLLC integraiton, to let Spawn That set levels.</li>
+<li>Added setting &quot;SetRelentless&quot;.</li>
+<li>Added setting &quot;SetTryDespawnOnConditionsInvalid&quot;.</li>
+<li>Added setting &quot;SetTryDespawnOnAlert&quot;.</li>
+<li>Added setting &quot;TemplateId&quot;, for assigning a specific identifier to mobs spawned by a template, for other mods to use (intended for future Drop That setting).</li>
+<li>Added condition &quot;ConditionNearbyPlayersNoiseThreshold&quot;.</li>
+</ul>
+</li>
+<li>v0.8.2: <ul>
+<li>Added more helpful warning- and error messages for when configurations are incorrectly set up.</li>
+<li>Changed StopTouchingMyConfigs to be set to true by default when spawn_that.cfg is created. Due to the massive loading time impact of large config files.</li>
+</ul>
+</li>
+<li>v0.8.1: <ul>
+<li>Additional error handling for conditions. Should help fix potential errors coming out of the newly added player conditions.</li>
+</ul>
+</li>
+<li>v0.8.0: <ul>
+<li>Added world spawner condition for nearby players carried items.</li>
+<li>Added world spawner condition for nearby players carried valuables.</li>
+<li>Added option for assigning faction for world- and local spawner entries.</li>
+<li>Added faction to pre-change debug files.</li>
+<li>Changed when configs are applied to spawners, for increased compatibility with mods adding prefabs.</li>
+<li>Additional error checks.</li>
+</ul>
+</li>
+<li>v0.7.1: <ul>
+<li>Fixed simple config being generated with wrong prefab-names.</li>
+<li>Additional error handling.</li>
+<li>Changed location info from server to client slightly, to hopefully stop issues with local spawners.</li>
+</ul>
+</li>
+<li>v0.7.0: <ul>
+<li>Added support for Creature Level and Loot Control (CLLC)</li>
+<li>Added CLLC creature effect options for world- and local spawners.</li>
+<li>Added CLLC world level condition to world spawners.</li>
+</ul>
+</li>
+<li>v0.6.0: <ul>
+<li>Added world spawner condition - RequiredNotGlobalKey</li>
+<li>Added support for supplemental world- and local spawner config files.</li>
+<li>Local spawner configs now work in multiplayer.</li>
+</ul>
+</li>
+<li>v0.5.1: <ul>
+<li>Added a (probably temporary) config to not run local spawner configs, due to issues with multiplayer.</li>
+<li>Fixed error message from local spawners.</li>
+<li>Removed a couple of pointless warnings.</li>
+</ul>
+</li>
+<li>v0.5.0: <ul>
+<li>Added new local spawner defaults to file dumps.</li>
+<li>Added condition for world spawners. World age in days.</li>
+<li>Added console command for getting current room in which player is standing.</li>
+<li>Added configuration for Dungeons, Camps and Villages. All are considered local spawners.</li>
+<li>Lots of bug fixes. Spawners should have an easier time having configuration &quot;stick&quot; now.</li>
+</ul>
+</li>
+<li>v0.4.0: <ul>
+<li>New condition for world spawners. Distance to center min/max.</li>
+<li>Simple config initialized with creatures on file creation by default.</li>
+<li>Various attempts at stabilizing and guarding code.</li>
+</ul>
+</li>
+<li>v0.3.0: <ul>
+<li>Server-to-client config sync added</li>
+</ul>
+</li>
+<li>v0.2.0: <ul>
+<li>Initial release</li>
+</ul>
+</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat.Docs/articles/change-log.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

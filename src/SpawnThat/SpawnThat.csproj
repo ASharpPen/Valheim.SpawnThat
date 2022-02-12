@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AssemblyVersion></AssemblyVersion>
+    <FileVersion></FileVersion>
+    <Version>1.0.0</Version>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    <AssemblyName>Valheim.SpawnThat</AssemblyName>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>A Sharp Pen</Authors>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ASharpPen/Valheim.SpawnThat</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Valheim;Mod;Spawn</PackageTags>
+    <Description>Valheim mod and tool for configuring spawners.</Description>
+    <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
+  </PropertyGroup>
+  <ItemGroup>
+	<PackageReference Include="Microsoft.Unity.Analyzers" Version="1.12.0">
+	  <PrivateAssets>all</PrivateAssets>
+	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+    <PackageReference Include="YamlDotNet" Version="11.2.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\Libs\BepInEx\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="assembly_utils">
+      <HintPath>..\Libs\Valheim\assembly_utils.dll</HintPath>
+    </Reference>
+    <Reference Include="assembly_valheim">
+      <HintPath>..\Libs\Valheim\assembly_valheim.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>..\Libs\BepInEx\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="CreatureLevelControl">
+      <HintPath>..\Libs\Smoothbrain-CreatureLevelAndLootControl\CreatureLevelControl.dll</HintPath>
+    </Reference>
+    <Reference Include="EpicLoot">
+      <HintPath>..\Libs\RandyKnapp-EpicLoot\EpicLoot.dll</HintPath>
+    </Reference>
+    <Reference Include="ExtendedItemDataFramework">
+      <HintPath>..\Libs\RandyKnapp-ExtendedItemDataFramework\ExtendedItemDataFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MobAILib">
+      <HintPath>..\Libs\RagnarsRokare-MobAILib\MobAILib.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\Libs\Unity\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\Libs\Unity\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\Libs\Unity\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\Libs\Unity\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\Libs\Unity\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
