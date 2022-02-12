@@ -75,7 +75,7 @@ public class Plugin : BaseUnityPlugin
 	public void Awake()
 	{
 		// Register for configuration event.
-		SpawnThat.Spawners.SpawnerConfigurationManager.OnConfigure += MySpawnerConfigurations;
+		SpawnerConfigurationManager.OnConfigure += MySpawnerConfigurations;
 	}
 
 	public void MySpawnerConfigurations(ISpawnerConfigurationCollection spawnerConfig)
@@ -101,11 +101,3 @@ public class Plugin : BaseUnityPlugin
 	}
 }
 ```
-Proper documentation for the API is in the works, but the code itself already has comments for most settings.
-
-## Future
-
-v1.0.0 is almost a full rewrite of Spawn That, which should allow for a much more extensible framework. Several additional spawner types, options, internal improvements and QoL are being considered.
-
-Currently planned up-coming features are:
-- New spawner type for AreaSpawner (eg., the destructible greydwarf nests)

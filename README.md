@@ -28,7 +28,7 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 
 # Documentation
 
-Documentation can be found on the [Spawn That! wiki](https://github.com/ASharpPen/Valheim.SpawnThat/wiki).
+Documentation can be found on the [Spawn That github page](https://asharppen.github.io/Valheim.SpawnThat/).
 
 # Example 
 
@@ -106,14 +106,6 @@ public class Plugin : BaseUnityPlugin
 	}
 }
 ```
-Proper documentation for the API is in the works, but the code itself already has comments for most settings.
-
-## Future
-
-v1.0.0 is almost a full rewrite of Spawn That, which should allow for a much more extensible framework. Several additional spawner types, options, internal improvements and QoL are being considered.
-
-Currently planned up-coming features are:
-- New spawner type for AreaSpawner (eg., the destructible greydwarf nests)
 
 # Changelog: 
 - v1.0.0:
@@ -124,6 +116,7 @@ Currently planned up-coming features are:
 	- Added API for using Spawn That by code.
 	- Debug files are now printed to BepInEx/Debug by default. Output folder is configurable.
 	- A ton of internal work and improvements.
+	- Moved documentation to https://asharppen.github.io/Valheim.SpawnThat/. Documentation will be updated here from now on.
 - v0.11.6:
 	- It's the season of bugs! World spawner templates are now instantiated on entering world, meaning changes applied are no longer carried between worlds / re-entering. This is hopefully getting changed by IG in the future.
 	- Fixed local spawners not honouring "Enabled=false". Configs were still attempted applied.

@@ -10,5 +10,8 @@ apiRules:
     uidRegex: ^SpawnThat\.Spawners\.Contexts
     type: Namespace
 - exclude:
+    uidRegex: ^SpawnThat\.Lifecycle\.SyncManager
+    type: Class
+- exclude:
     uidRegex: ^System\..*$
     type: Type

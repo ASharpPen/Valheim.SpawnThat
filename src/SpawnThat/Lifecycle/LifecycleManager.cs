@@ -9,17 +9,32 @@ public static class LifecycleManager
 {
     private static HashSet<Action> OnWorldInitActions = new HashSet<Action>();
 
+    /// <summary>
+    /// Runs when a world is entered/started.
+    /// </summary>
     public static event Action OnWorldInit;
 
+    /// <summary>
+    /// Runs after all other init actions.
+    /// </summary>
     public static event Action OnLateInit;
 
+    /// <summary>
+    /// Runs after OnWorldInit, when a singleplayer game is entered.
+    /// </summary>
     public static event Action OnSinglePlayerInit;
 
+    /// <summary>
+    /// Runs after OnWorldInit, when a multiplayer game is joined.
+    /// </summary>
     public static event Action OnMultiplayerInit;
 
+    /// <summary>
+    /// Runs after OnWorldInit, when a dedicated server is started.
+    /// </summary>
     public static event Action OnDedicatedServerInit;
 
-    public static Action OnFindSpawnPointFirstTime;
+    public static event Action OnFindSpawnPointFirstTime;
 
     public static GameState GameState { get; private set; }
 
@@ -70,5 +85,10 @@ public static class LifecycleManager
         OnDedicatedServerInit.RaiseSafely("Error during dedicated server init event");
 
         OnLateInit.RaiseSafely("Error during dedicated server late init event");
+    }
+
+    internal static void InitFindSpawnPointFirstTime()
+    {
+        OnFindSpawnPointFirstTime.RaiseSafely("Error during OnFindSpawnPointFirstTime event");
     }
 }

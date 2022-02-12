@@ -6,6 +6,7 @@ using SpawnThat.Integrations.EpicLoot.Models;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Spawners;
 using SpawnThat.Spawners.LocalSpawner;
+using SpawnThat.Spawners.WorldSpawner;
 
 namespace SpawnThatTestMod
 {
