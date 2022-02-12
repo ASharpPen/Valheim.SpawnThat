@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using SpawnThat.Integrations;
 using SpawnThat.Integrations.EpicLoot.Conditions;
 using SpawnThat.Integrations.EpicLoot.Models;
-using SpawnThat.Spawners.LocalSpawner.Configuration;
 
-namespace SpawnThat.Spawners;
+namespace SpawnThat.Spawners.LocalSpawner;
 
 public static class ILocalSpawnBuilderELConditionsExtensions
 {

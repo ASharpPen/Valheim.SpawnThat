@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using SpawnThat.Options.Modifiers;
-using SpawnThat.Spawners.WorldSpawner;
 
-namespace SpawnThat.Spawners;
+namespace SpawnThat.Spawners.WorldSpawner;
 
 public static class IWorldSpawnBuilderModifierExtensions
 {

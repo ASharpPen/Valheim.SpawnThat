@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using static Heightmap;
 
-namespace SpawnThat.World;
+namespace SpawnThat.World.Zone;
 
 public interface IZone
 {

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using SpawnThat.Utilities.Extensions;
 using static Heightmap;
+using SpawnThat.World.Zone;
 
 namespace SpawnThat.World;
 

@@ -4,7 +4,7 @@ using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Options.PositionConditions;
 
-namespace SpawnThat.Spawners.WorldSpawner.Configurations;
+namespace SpawnThat.Spawners.WorldSpawner;
 
 /// <summary>
 /// <para>

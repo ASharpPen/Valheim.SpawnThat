@@ -1,8 +1,6 @@
 ﻿using System;
-using SpawnThat.Spawners.LocalSpawner;
-using SpawnThat.Spawners.LocalSpawner.Configuration;
 
-namespace SpawnThat.Spawners;
+namespace SpawnThat.Spawners.LocalSpawner;
 
 public static class ILocalSpawnBuilderSettingsExtensions
 {

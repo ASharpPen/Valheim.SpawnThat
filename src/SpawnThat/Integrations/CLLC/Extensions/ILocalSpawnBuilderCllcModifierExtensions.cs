@@ -1,9 +1,8 @@
 ﻿using SpawnThat.Integrations;
 using SpawnThat.Integrations.CLLC.Models;
 using SpawnThat.Integrations.CLLC.Modifiers;
-using SpawnThat.Spawners.LocalSpawner.Configuration;
 
-namespace SpawnThat.Spawners;
+namespace SpawnThat.Spawners.LocalSpawner;
 
 public static class ILocalSpawnBuilderCllcModifierExtensions
 {

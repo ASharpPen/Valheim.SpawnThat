@@ -2,8 +2,11 @@
 using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
 
-namespace SpawnThat.Spawners.LocalSpawner.Configuration;
+namespace SpawnThat.Spawners.LocalSpawner;
 
+/// <summary>
+/// Configuration for a local spawner.
+/// </summary>
 public interface ILocalSpawnBuilder
 {
     /// <summary>

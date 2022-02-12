@@ -76,42 +76,25 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
-      <h4><a class="xref" href="SpawnThat.Spawners.ILocalSpawnBuilderCllcConditionExtensions.html">ILocalSpawnBuilderCllcConditionExtensions</a></h4>
+      <h4><a class="xref" href="SpawnThat.Spawners.ISpawnerConfigurationCollectionLocalSpawnExtensions.html">ISpawnerConfigurationCollectionLocalSpawnExtensions</a></h4>
       <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.ILocalSpawnBuilderCllcModifierExtensions.html">ILocalSpawnBuilderCllcModifierExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.ILocalSpawnBuilderConditionExtensions.html">ILocalSpawnBuilderConditionExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.ILocalSpawnBuilderELConditionsExtensions.html">ILocalSpawnBuilderELConditionsExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.ILocalSpawnBuilderMobAiExtensions.html">ILocalSpawnBuilderMobAiExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.ILocalSpawnBuilderModifierExtensions.html">ILocalSpawnBuilderModifierExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.ILocalSpawnBuilderSettingsExtensions.html">ILocalSpawnBuilderSettingsExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.IWorldSpawnBuilderCllcConditionExtensions.html">IWorldSpawnBuilderCllcConditionExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.IWorldSpawnBuilderCllcModifierExtensions.html">IWorldSpawnBuilderCllcModifierExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.IWorldSpawnBuilderConditionExtensions.html">IWorldSpawnBuilderConditionExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.IWorldSpawnBuilderELConditionsExtensions.html">IWorldSpawnBuilderELConditionsExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.IWorldSpawnBuilderMobAiExtensions.html">IWorldSpawnBuilderMobAiExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.IWorldSpawnBuilderModifierExtensions.html">IWorldSpawnBuilderModifierExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.IWorldSpawnBuilderPositionConditionExtensions.html">IWorldSpawnBuilderPositionConditionExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.IWorldSpawnBuilderSettingsExtensions.html">IWorldSpawnBuilderSettingsExtensions</a></h4>
+      <h4><a class="xref" href="SpawnThat.Spawners.ISpawnerConfigurationCollectionWorldSpawnerExtensions.html">ISpawnerConfigurationCollectionWorldSpawnerExtensions</a></h4>
       <section></section>
       <h4><a class="xref" href="SpawnThat.Spawners.SpawnerConfigurationManager.html">SpawnerConfigurationManager</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.SpawnerManagerLocalSpawnExtensions.html">SpawnerManagerLocalSpawnExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="SpawnThat.Spawners.SpawnerManagerWorldSpawnerExtensions.html">SpawnerManagerWorldSpawnerExtensions</a></h4>
-      <section></section>
+      <section><p>Handles configuration creation workflow.</p>
+<p>When <code>Lifecycle.OnLateInit</code> and GameState is SinglePlayer or Dedicated,
+the manager initalizes a new <code>ISpawnerConfigurationCollection</code>, and runs
+subscribed configuration actions in the order:</p>
+<ol>
+<li>Actions for OnConfigure</li>
+<li>Actions for SubscribeConfiguration</li>
+<li>Configurations loaded from files</li>
+</ol>
+<p>The collection is then finalized, and results are stored.
+If in Dedicated, and a player joins, the finalized templates are synced to player,
+to later be applied to the various spawners.</p>
+<p>The way the configurations are applied to spawners depends on the spawner type.</p>
+</section>
     <h3 id="interfaces">Interfaces
   </h3>
       <h4><a class="xref" href="SpawnThat.Spawners.ISpawnerConfiguration.html">ISpawnerConfiguration</a></h4>

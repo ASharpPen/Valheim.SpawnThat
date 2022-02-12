@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpawnThat.Locations;
+namespace SpawnThat.World.Locations;
 
 public class SimpleLocation
 {

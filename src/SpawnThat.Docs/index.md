@@ -75,7 +75,7 @@ public class Plugin : BaseUnityPlugin
 	public void Awake()
 	{
 		// Register for configuration event.
-		SpawnThat.Spawners.SpawnerConfigurationManager.OnConfigure += MySpawnerConfigurations;
+		SpawnerConfigurationManager.OnConfigure += MySpawnerConfigurations;
 	}
 
 	public void MySpawnerConfigurations(ISpawnerConfigurationCollection spawnerConfig)
@@ -101,11 +101,9 @@ public class Plugin : BaseUnityPlugin
 	}
 }
 ```
-Proper documentation for the API is in the works, but the code itself already has comments for most settings.
 
-## Future
+# Support
 
-v1.0.0 is almost a full rewrite of Spawn That, which should allow for a much more extensible framework. Several additional spawner types, options, internal improvements and QoL are being considered.
+If you feel like it
 
-Currently planned up-coming features are:
-- New spawner type for AreaSpawner (eg., the destructible greydwarf nests)
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="asharppen" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>

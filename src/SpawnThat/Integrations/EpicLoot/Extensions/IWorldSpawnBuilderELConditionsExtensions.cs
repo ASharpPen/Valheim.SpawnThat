@@ -2,9 +2,8 @@
 using SpawnThat.Integrations;
 using SpawnThat.Integrations.EpicLoot.Conditions;
 using SpawnThat.Integrations.EpicLoot.Models;
-using SpawnThat.Spawners.WorldSpawner;
 
-namespace SpawnThat.Spawners;
+namespace SpawnThat.Spawners.WorldSpawner;
 
 public static class IWorldSpawnBuilderELConditionsExtensions
 {

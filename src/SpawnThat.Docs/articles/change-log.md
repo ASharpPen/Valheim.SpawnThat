@@ -6,6 +6,7 @@
 	- Added API for using Spawn That by code.
 	- Debug files are now printed to BepInEx/Debug by default. Output folder is configurable.
 	- A ton of internal work and improvements.
+	- Moved documentation to https://asharppen.github.io/Valheim.SpawnThat/. Documentation will be updated here from now on.
 - v0.11.6:
 	- It's the season of bugs! World spawner templates are now instantiated on entering world, meaning changes applied are no longer carried between worlds / re-entering. This is hopefully getting changed by IG in the future.
 	- Fixed local spawners not honouring "Enabled=false". Configs were still attempted applied.

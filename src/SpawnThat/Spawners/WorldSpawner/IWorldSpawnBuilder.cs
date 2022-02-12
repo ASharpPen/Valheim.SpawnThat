@@ -8,6 +8,9 @@ using static Heightmap;
 
 namespace SpawnThat.Spawners.WorldSpawner;
 
+/// <summary>
+/// Configuration for a world spawner entry.
+/// </summary>
 public interface IWorldSpawnBuilder
 {
     /// <summary>

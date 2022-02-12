@@ -10,7 +10,7 @@ namespace SpawnThat.World.Maps.Patches;
 
 // TODO: Move to Debug
 [HarmonyPatch(typeof(Game))]
-public class Patch_Game_FindSpawnPoint_PrintMaps
+internal class Patch_Game_FindSpawnPoint_PrintMaps
 {
     private static bool FirstTime = true;
 

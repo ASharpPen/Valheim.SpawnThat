@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Lifecycle.Patches;
 
@@ -23,7 +22,7 @@ internal static class Game_FindSpawnPoint_TriggerLifecycle_Patch
         if (FirstTime)
         {
             FirstTime = false;
-            LifecycleManager.OnFindSpawnPointFirstTime.RaiseSafely("Error during OnFindSpawnPointFirstTime event");
+            LifecycleManager.InitFindSpawnPointFirstTime();
         }
     }
 }

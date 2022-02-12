@@ -2,7 +2,7 @@
 
 namespace SpawnThat.Integrations;
 
-public static class IntegrationManager
+internal static class IntegrationManager
 {
     private static bool? _installedEpicLoot;
     private static bool? _installedCllc;
