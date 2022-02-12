@@ -57,7 +57,7 @@
         ]
       }
     ],
-    "dest": "../../Docs/_site",
+    "dest": "../../Docs",
     "template": [
       "default",
       "templates/darkfx"
