@@ -1,9 +1,20 @@
 
 - name: Articles
   href: articles/
+
+- name: File Configs
+  dropdown: true
+  items:
+    - name: 1.0.0
+      href: file-configs/1.0.0/
+    - name: 0.11.6
+      href: file-configs/0.11.6/
+
 - name: API Documentation
   dropdown: true
   items:
     - name: 1.0.0
-      href: api-reference/index.html
+      href: api/1.0.0/
 
+- name: Github
+  href: https://github.com/ASharpPen/Valheim.SpawnThat/

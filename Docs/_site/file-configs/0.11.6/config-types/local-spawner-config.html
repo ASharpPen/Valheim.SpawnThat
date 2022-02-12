@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Local Spawner Config </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Local Spawner Config ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="local-spawner-config">Local Spawner Config</h1>
+
+<p>Local spawner templates are managed through the <code>spawn_that.local_spawners_advanced.cfg</code> file.</p>
+<p>Local spawners are known internally in the game as <code>CreatureSpawners</code>.
+Each spawner manages only a single creature, and will never have more than one spawned at a time.</p>
+<p>Local spawners are customly set up in the world, based on pre-defined location setups. This means they are each customized to the location at which they are placed, and are not as easily &quot;targeted&quot; as the world spawners templates are. </p>
+<p>Eg. the skeletons of an old ruined tower will each be spawned by a their own invisible local spawner, placed at very specific positions. If only spawning once, it is often due to respawn time being set to 0.</p>
+<p>To modify a local spawner, you must specify a location and mob prefab name you want to apply a configuration to.
+You can also use a room name, if more fine control is necessary for villages, dungeons and camps.</p>
+<p>The format for a new template is <code>[Location.PrefabName]</code> or <code>[DungeonRoom.PrefabName]</code>. </p>
+<p>Eg.
+To override the boar spawners at their runestone, use 
+<code>[Runestone_Boars.Boar]</code></p>
+<p>Every combination of Location and PrefabName must be unique.</p>
+<p>The <a href="General-Config">general config</a> contains debugging options, which can be toggled to create a file containing all default local spawner configs before the mod applies its changes.
+This can also help identify location names, as well as dungeon/dungeon-room names.</p>
+<p>Requirements:</p>
+<ul>
+<li>Location/dungeon-room specified must contain a local spawner</li>
+<li>Local spawner must have an existing prefab set to override</li>
+</ul>
+<p>Limitations:</p>
+<ul>
+<li>Can only override existing local spawners</li>
+<li>When multiple local spawners have same location/dungeon-room name and same prefab, Spawn That cannot differentiate between them, so all gets overridden</li>
+<li>Only one template can be assigned to each local spawner</li>
+</ul>
+<h2 id="example">Example</h2>
+<pre><code class="lang-INI">[Runestone_Boars.Boar]
+PrefabName=Troll
+Enabled=True
+SpawnAtDay=True
+SpawnAtNight=True
+LevelMin=1
+LevelMax=3
+LevelUpChance=10
+RespawnTime=0
+TriggerDistance=60
+TriggerNoise=0
+SpawnInPlayerBase=False
+SetPatrolPoint=True
+</code></pre><h2 id="example-2">Example 2</h2>
+<p>Replaces spawning of blobs in a specific dungeon room with a treasure chest that can respawn every 60 minutes (need to be destroyed for a new one to spawn).</p>
+<pre><code class="lang-INI">[sunkencrypt_Corridor3.Blob]
+PrefabName = TreasureChest_sunkencrypt
+RespawnTime = 60
+</code></pre><h2 id="config-options">Config Options</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Type</th>
+<th>Default</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#config-options-PrefabName">PrefabName</a></td>
+<td>string</td>
+<td></td>
+<td>Troll</td>
+<td>Name of prefab to spawn instead of existing</td>
+</tr>
+<tr>
+<td><a href="#config-options-Enabled">Enabled</a></td>
+<td>bool</td>
+<td>true</td>
+<td>false</td>
+<td>Toggle this template on-off. This means the settings of this template will NOT be applied, it is not a way to disable existing mobs</td>
+</tr>
+<tr>
+<td><a href="#config-options-SpawnAtDay">SpawnAtDay</a></td>
+<td>bool</td>
+<td>true</td>
+<td>false</td>
+<td>Enable spawning during day.</td>
+</tr>
+<tr>
+<td><a href="#config-options-SpawnAtNight">SpawnAtNight</a></td>
+<td>bool</td>
+<td>true</td>
+<td>false</td>
+<td>Enable spawning during night.</td>
+</tr>
+<tr>
+<td><a href="#config-options-LevelMin">LevelMin</a></td>
+<td>int</td>
+<td>1</td>
+<td>3</td>
+<td>Minimum level of spawn</td>
+</tr>
+<tr>
+<td><a href="#config-options-LevelMax">LevelMax</a></td>
+<td>int</td>
+<td>1</td>
+<td>15</td>
+<td>Maximum level of spawn</td>
+</tr>
+<tr>
+<td><a href="#config-options-LevelUpChance">LevelUpChance</a></td>
+<td>float</td>
+<td>15</td>
+<td>100</td>
+<td>Chance to level up, starting at LevelMin and rolling again for each level gained. Range is 0 to 100</td>
+</tr>
+<tr>
+<td><a href="#config-options-RespawnTime">RespawnTime</a></td>
+<td>float</td>
+<td>20</td>
+<td>0</td>
+<td>Minutes between checks for respawn. Only one mob can be spawned at time per spawner</td>
+</tr>
+<tr>
+<td><a href="#config-options-TriggerDistance">TriggerDistance</a></td>
+<td>float</td>
+<td>60</td>
+<td>100</td>
+<td>Distance of spawner to player to trigger spawning</td>
+</tr>
+<tr>
+<td><a href="#config-options-TriggerNoise">TriggerNoise</a></td>
+<td>float</td>
+<td>0</td>
+<td>50</td>
+<td>If not 0, adds a minimum noise required for spawning, on top of distance requirement</td>
+</tr>
+<tr>
+<td><a href="#config-options-SpawnInPlayerBase">SpawnInPlayerBase</a></td>
+<td>bool</td>
+<td>false</td>
+<td>true</td>
+<td>Allow spawning inside player base boundaries</td>
+</tr>
+<tr>
+<td><a href="#config-options-SetPatrolPoint">SetPatrolPoint</a></td>
+<td>bool</td>
+<td>false</td>
+<td>true</td>
+<td>Sets position of spawn as patrol point for spawned creature</td>
+</tr>
+<tr>
+<td><a href="#config-options-SetFaction">SetFaction</a></td>
+<td>string</td>
+<td></td>
+<td>Undead</td>
+<td>Assign a specific faction to spawn. If empty uses prefab default</td>
+</tr>
+<tr>
+<td><a href="#config-options-SetTamed">SetTamed</a></td>
+<td>bool</td>
+<td>false</td>
+<td>true</td>
+<td>When true, mob will be set to tamed status on spawn</td>
+</tr>
+<tr>
+<td><a href="#config-options-SetTamedCommandable">SetTamedCommandable</a></td>
+<td>bool</td>
+<td>false</td>
+<td>true</td>
+<td>Experimental. When true, will set mob as commandable when tamed. When false, whatever was default for the creature is used. Does not always seem to work for creatures not tameable in vanilla</td>
+</tr>
+</tbody>
+</table>
+<h2 id="supplemental-files">Supplemental Files</h2>
+<p>Spawn That will load additional configurations from configs with names prefixed with <code>spawn_that.local_spawners.</code>.</p>
+<p>This allows for adding your own custom templates to Spawn That, or simply separate your configs into more manageable pieces.
+Eg. <code>spawn_that.local_spawners.my_custom_configuration.cfg</code></p>
+<p>The configurations loaded will be merged with the one loaded from the main files.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/documentation-page/src/SpawnThat.Docs/file-configs/0.11.6/config-types/local-spawner-config.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../../../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,224 +1,161 @@
 [CmdletBinding()]
-[Parameter(Mandatory=$true, Position=0)]
 param (
-  $File
-)
+    [Parameter()]
+    [string]
+    $FileIn,
 
-if (-not(Test-Path $File))
-{
-  return Write-Host "Missing path to file."
-}
+    [Parameter()]
+    [string]
+    $FileOut
+)
 
 Import-Module powershell-yaml
 
-Write-Host "Reading $File"
+Write-Host "Reading $FileIn"
 
-$content = Get-Content -Path $File -Raw
+$content = Get-Content -Path $FileIn -Raw
 
 $yaml = ConvertFrom-Yaml $content
 
-$result = New-Object ([System.Collections.specialized.OrderedDictionary])
-
-#$paths = [ordered]@{}
-#$items = [ordered]@{}
-
-$nested = [ordered]@{}
-
-function NestItems2($Entry)
+function Flatten($yml)
 {
-  $currentPath = $nested
+  $flattened = @()
 
-  $depth = 0
+  foreach ($dic in $yml) {
 
-  $namespaces = $Entry['uid'].split('.');
-  for ($i = 0; $i -lt $namespaces.Length; $i++)
-  {
-    $currentKey = $namespaces[$i];
-
-    # Ensure last is not same as name
-    if ($i -ne ($namespaces.Length))
+    if ($dic.Contains('items'))
     {
-      if ($Entry['name'] -ne $currentKey)
+      foreach ($nestedDic in $dic['items']) {
+        $paths = $nestedDic['uid'].split('.');
+        $flattened += 
+          [ordered]@{
+            uid = $nestedDic['uid']
+            name = $paths[-1]
+            path = $paths[0..($paths.Length-2)]
+          }
+      }
+    }
+  }
+
+  return $flattened
+}
+
+$flat = Flatten($yaml)
+
+# Strip SpawnThat from names and namespaces
+foreach ($item in $flat) {
+  $item.name = $item.name.Replace("SpawnThat", "")
+  if ($item.path.Length -gt 0)
+  {
+    $item.path = $item.path[1..($item.path.Length-1)]
+  }
+}
+
+$nested = [ordered]@{
+  path = [ordered]@{}
+}
+
+function AddItemNested($entry)
+{
+  $layer = $nested
+
+  $depth = 0;
+
+  $combinedPath = ""
+
+  foreach ($layerKey in $entry.path) {
+
+    if ($combinedPath.Length -eq 0){
+      $combinedPath += $layerKey
+    }
+    else {
+      $combinedPath += "." + $layerKey
+    }
+
+    if ($null -eq $layer.path)
+    {
+      Write-Host $entry.path
+      Write-Host "Path is null for $combinedPath"
+      return
+    }
+
+    if ($layer.path.Contains($layerKey))
+    {
+      #Write-Host "Existing: $combinedPath"
+      $layer = $layer.path[$layerKey]
+    }
+    else {
+      #Write-Host ("New path $combinedPath")
+
+      $newLayer = [ordered]@{
+        uid = ' '*$depth + '- uid: ' + $combinedPath
+        name = ' '*$depth + '  name: ' + $layerKey        
+        path = [ordered]@{}
+      }
+      $layer.path[$layerKey] = $newLayer
+      $layer = $newLayer
+    }
+    $depth += 2;
+  }
+
+  if (-not $layer.Contains('items'))
+  {
+    $layer['items'] = @()
+  }
+
+  $layer.items += [ordered]@{
+    uid = ' '*$depth + '- uid: ' + $entry.uid
+    name = ' '*$depth + '  name: ' + $entry.name
+  }
+}
+
+foreach ($entry in $flat) {
+  AddItemNested($entry)
+}
+
+function RecursiveWrite($dic)
+{
+  foreach ($layerKey in $dic.Keys) {
+
+    $layer = $dic[$layerKey]
+
+    Add-Content -Path $FileOut -Value $layer.uid
+    Add-Content -Path $FileOut -Value $layer.name
+
+    $itemsAdded = $false
+
+    if ($layer.Contains('items') -and
+        $layer.items.Count -gt 0)
+    {
+      #TODO: Need to gather the indent automatically.
+      $indent = ' '*2*($layer.uid.split('.').Length)
+      Add-Content -Path $FileOut -Value ($indent + "items: ")
+
+      $itemsAdded = $true
+
+      foreach ($item in $layer.items) {
+        Add-Content -Path $FileOut -Value $item.uid
+        Add-Content -Path $FileOut -Value $item.name
+      }
+    }
+
+    if ($layer.path.Count -gt 0)
+    {
+      if (-not $itemsAdded)
       {
-        # We are neither the last key, nor same as name.
-        # Ergo, this must be a namespace part.
-
-        # Ensure nested path table exist
-        if (-not $currentPath.Contains('pathId'))
-        {
-          $currentPath['pathId'] = [ordered]@{}
-        }
-
-        $pathTable = $currentPath['pathId'];
-
-        if ($pathTable.Contains($currentKey))
-        {
-          # Move down to existing nested path.
-          $currentPath = $pathTable[$currentKey]
-        }
-        else 
-        {
-          # Add new nested path.
-          $nestedPath = [ordered]@{}
-          $nestedPath['uid'] = ' '*2*$depth + '- uid: '
-          $nestedPath['name'] = ' '*2*$depth + '  name: ' + $currentKey
-          $pathTable[$currentKey] = $nestedPath
-          $currentPath = $nestedPath
-        }
-
-        $depth++
+        $indent = ' '*2*($layer.uid.split('.').Length)
+        Add-Content -Path $FileOut -Value ($indent + "items: ")
       }
-    }
-  }
 
-  if ($currentKey -eq $Entry['name'])
-  {
-    # This is a file.
-    if (-not $currentPath.Contains('items'))
-    {
-      $currentPath['items'] = {}
-    }
-
-    $indent = ' '*2*$Depth
-    $uid = $indent + "- uid: " + $Entry['uid']
-    $name = $indent + "  name: " + $Entry['name']
-
-    $currentPath['items'].Add($uid, $name);
-  }
-}
-
-function NestItems($Entry)
-{
-  $currentPath = $paths
-  
-  foreach ($currentKey in $Entry['uid'].split('.'))
-  {
-    if ($currentKey -eq $Entry['name'])
-    {
-      #This is a file.
-    }
-
-    if ($currentPath.Contains($currentKey))
-    {
-      $currentPath = $currentPath[$currentKey]
-    }
-    else
-    {
-      $path = [ordered]@{}
-      $currentPath[$currentKey] = $path
-      $currentPath = $path
-    }
-  }
-
-  # Check if this is a file. Files do not contain full namespace in name.
-
-  if ($Entry['uid'] -ne $Entry['name'])
-  {
-    Write-Host ($currentKey + ":" + $Entry['name'])
-    $currentPath['name'] = $Entry['name']
-  }
-
-  foreach ($item in $Entry['items'])
-  {
-    NestItems($item);
-  }
-}
-
-function CreatePaths($Entry)
-{
-  $namespace = $Entry['uid'];
-  $namespaces = $namespace.split(".");
-
-  $currentPath = $paths
-
-  foreach ($currentKey in $namespaces)
-  {
-    #Write-Host $currentKey
-    if ($currentPath.Contains($currentKey))
-    {
-      $currentPath = $currentPath[$currentKey]
-    }
-    else 
-    {
-      $path = [ordered]@{}
-      $currentPath[$currentKey] = $path
-      $currentPath = $path
+      RecursiveWrite($layer.path)
     }
   }
 }
 
-foreach ($dic in $yaml)
-{
-  NestItems2($dic)
-}
+# Replace existing file
+Clear-Content -Path $FileOut
 
-$out = "$File.2"
+# Write new
+RecursiveWrite($nested.path)
 
-function WriteRecursive($Entry, $CurrentPath, $Indent)
-{
-  # Check if we hit a file.
-  if ($Entry -is [System.String])
-  {
-
-  }
-
-  foreach ($key in $Entry.Keys) {
-    
-  }
-
-  $uid = ' '*$Indent +  '- uid: ' + $Entry['uid']
-  $name = ' '*$Indent + '  name: ' + $entry['name']
-  
-  Add-Content -Path $out -Value $uid
-  Add-Content -Path $out -Value $name
-
-  if ($Entry['items'])
-  {
-    $items = ' '*$Indent + ' ' + 'items: '
-    Add-Content -Path $out -Value $items
-
-    foreach ($item in $Entry['items']) {
-      WriteRecursive($item, $Indent + 2)
-    }
-  }
-}
-
-foreach ($key in $paths)
-{
-  #WriteRecursive($key)
-}
-
-function WriteNested($Entry)
-{
-  foreach ($key in $Entry.Keys) {
-    switch ($key)
-    {
-      'uid'{ 
-        Write-Host $Entry[$key] 
-        Add-Content -Path $out -Value $Entry[$key] 
-      }
-      'name'{ 
-        Write-Host $Entry[$key] 
-        Add-Content -Path $out -Value $Entry[$key] 
-      }
-      'items'{
-        foreach ($item in $items) {
-          Write-Host $Entry['items'][$item]          
-          Add-Content -Path $out -Value $Entry['items'][$item]
-        }
-      }
-      'pathId'{
-        foreach ($path in $Entry[$key].Keys) {
-          Write-Host ($key + ":" + $path)
-          WriteNested($Entry[$key][$path])
-        }
-      }
-    }
-  }
-}
-
-#$paths["SpawnThat"]["Integrations"]["CLLC"]
-#$nested["pathId"]['SpawnThat']
-#WriteNested($nested)
-
-$nested['pathId']['SpawnThat']['pathId']['Lifecycle']
+#return $nested['path']['SpawnThat']['path']['Integrations']['path']['CLLC']['path']['Modifiers']['items']

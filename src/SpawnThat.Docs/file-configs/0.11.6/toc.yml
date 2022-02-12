@@ -1,0 +1,56 @@
+- name: Config Types
+  href: config-types/overview.md
+  items:
+    - name: Overview
+      href: config-types/overview.md
+    - name: General Config
+      href: config-types/general-config.md
+    - name: Local Spawner Config
+      href: config-types/local-spawner-config.md
+    - name: World Spawner Config
+      href: config-types/world-spawner-config.md
+    - name: World Spawner Simple Config
+      href: config-types/world-spawner-simple-config.md
+
+- name: Integration Options
+  href: mod-specific/overview.md
+  items:
+    - name: Creature Level and Loot Control
+      href: mod-specific/creature-level-and-loot-control.md
+      items:
+        - name: World Spawners
+          href: mod-specific/creature-level-and-loot-control.md#world-spawner-options
+        - name: Local Spawners
+          href: mod-specific/creature-level-and-loot-control.md#local-spawner-options
+        - name: Field Options
+          href: mod-specific/creature-level-and-loot-control.md#field-options
+    - name: Epic Loot
+      href: mod-specific/epic-loot.md
+      items:
+        - name: World Spawners
+          href: mod-specific/epic-loot.md.md#world-spawner-options
+        - name: Field Options
+          href: mod-specific/epic-loot.md#field-options
+    - name: MobAILib
+      href: mod-specific/mobailib.md
+      items:
+        - name: World Spawners
+          href: mod-specific/mobailib.md#world-spawner-options
+        - name: Local Spawners
+          href: mod-specific/mobailib.md#local-spawner-options
+
+- name: Fields
+  href: field-options/field-options.md
+  items:
+    - name: Biomes
+      href: field-options/field-options.md#biomes
+    - name: Global Keys
+      href: field-options/field-options.md#global-keys
+    - name: Environments
+      href: field-options/field-options.md#environments
+    - name: Factions
+      href: field-options/field-options.md#factions
+    - name: Status Effects
+      href: field-options/field-options.md#status-effects
+    - name: Noise
+      href: field-options/field-options.md#noise

@@ -1,0 +1,11 @@
+### YamlMime:ManagedReference
+apiRules:
+- exclude:
+    uidRegex: ^SpawnThat\.Caches
+    type: Namespace
+- exclude:
+    uidRegex: ^SpawnThat\.Core
+    type: Namespace
+- exclude:
+    uidRegex: ^System\..*$
+    type: Type
