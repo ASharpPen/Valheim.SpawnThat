@@ -1,0 +1,1315 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class WorldSpawnSettings
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class WorldSpawnSettings
+   ">
+    <meta name="generator" content="docfx 2.59.0.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings">
+  
+  
+  <h1 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings" class="text-break">Class WorldSpawnSettings
+  </h1>
+  <div class="markdown level0 summary"><p>
+    World spawn builder settings.
+    Any property not set will be ignored.
+</p>
+<p>
+    Any setting not set for a builder will mean Spawn That will use the existing setting
+    when overriding a template, or set a default value if creating a new.
+</p>
+<p>
+    Intended as an optional way to configure IWorldSpawnBuilder.
+</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">WorldSpawnSettings</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SpawnThat.Spawners.WorldSpawner.html">SpawnThat.Spawners.WorldSpawner</a></h6>
+  <h6><strong>Assembly</strong>: Valheim.SpawnThat.dll</h6>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class WorldSpawnSettings</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Biomes.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.Biomes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L60">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Biomes_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.Biomes*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Biomes" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.Biomes">Biomes</h4>
+  <div class="markdown level1 summary"><p>List of biomes in which template is active.</p>
+<p>Empty list or null will be treated as if property was not set.</p>
+<p>Default if new template: All biomes enabled</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Heightmap.Biome&gt; Biomes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">Heightmap.Biome</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Biomes_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_biome</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionEnvironments.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionEnvironments%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L217">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionEnvironments_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionEnvironments*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionEnvironments" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionEnvironments">ConditionEnvironments</h4>
+  <div class="markdown level1 summary"><p>List of environments in which spawn is active.</p>
+<p>Eg. &quot;Clear&quot;, &quot;Misty&quot;, &quot;Heath clear&quot;.</p>
+<p>Empty list or null will be treated as if property was not set.</p>
+<p>Default if new template: No required environments</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; ConditionEnvironments { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionEnvironments_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_requiredEnvironments</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMaxAltitude.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMaxAltitude%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L176">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMaxAltitude_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMaxAltitude*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMaxAltitude" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMaxAltitude">ConditionMaxAltitude</h4>
+  <div class="markdown level1 summary"><p>Maximum altitude (distance to water surface) to spawn at.</p>
+<p>Default if new template: 1000</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? ConditionMaxAltitude { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMaxAltitude_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_maxAltitude</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMaxOceanDepth.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMaxOceanDepth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L190">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMaxOceanDepth_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMaxOceanDepth*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMaxOceanDepth" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMaxOceanDepth">ConditionMaxOceanDepth</h4>
+  <div class="markdown level1 summary"><p>Maximum ocean depth to spawn at. Ignored if min == max.</p>
+<p>Default if new template: 0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? ConditionMaxOceanDepth { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMaxOceanDepth_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_maxOceanDepth</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMaxTilt.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMaxTilt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L208">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMaxTilt_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMaxTilt*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMaxTilt" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMaxTilt">ConditionMaxTilt</h4>
+  <div class="markdown level1 summary"><p>Maximum tilt of terrain required to spawn. Range 0 to 90.</p>
+<p>Position condition. Tested multiple times to decide where to spawn entity.</p>
+<p>Note: As of this writing, the vanilla calculation is bugged. Be careful with this setting.</p>
+<p>Default if new template: 35</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? ConditionMaxTilt { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMaxTilt_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_maxTilt</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMinAltitude.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMinAltitude%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L169">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMinAltitude_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMinAltitude*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMinAltitude" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMinAltitude">ConditionMinAltitude</h4>
+  <div class="markdown level1 summary"><p>Minimum altitude (distance to water surface) to spawn at.</p>
+<p>Default if new template: -1000</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? ConditionMinAltitude { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMinAltitude_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_minAltitude</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMinOceanDepth.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMinOceanDepth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L183">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMinOceanDepth_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMinOceanDepth*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMinOceanDepth" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMinOceanDepth">ConditionMinOceanDepth</h4>
+  <div class="markdown level1 summary"><p>Minimum ocean depth to spawn at. Ignored if min == max.</p>
+<p>Default if new template: 0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? ConditionMinOceanDepth { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMinOceanDepth_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_minOceanDepth</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMinTilt.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMinTilt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L199">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMinTilt_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMinTilt*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMinTilt" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionMinTilt">ConditionMinTilt</h4>
+  <div class="markdown level1 summary"><p>Minimum tilt of terrain required to spawn. Range 0 to 90.</p>
+<p>Position condition. Tested multiple times to decide where to spawn entity.</p>
+<p>Note: As of this writing, the vanilla calculation is bugged. Be careful with this setting.</p>
+<p>Default if new template: 0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? ConditionMinTilt { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionMinTilt_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_minTilt</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionRequiredGlobalKey.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionRequiredGlobalKey%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L224">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionRequiredGlobalKey_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionRequiredGlobalKey*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionRequiredGlobalKey" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.ConditionRequiredGlobalKey">ConditionRequiredGlobalKey</h4>
+  <div class="markdown level1 summary"><p>Global key required for spawn to be active.</p>
+<p>Default if new template: No required global key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ConditionRequiredGlobalKey { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_ConditionRequiredGlobalKey_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_requiredGlobalKey</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Conditions.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.Conditions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L28">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Conditions_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.Conditions*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Conditions" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.Conditions">Conditions</h4>
+  <div class="markdown level1 summary"><p>Spawn conditions to set.
+If a condition with the same type already exists, it will be replaced.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;ISpawnCondition&gt; Conditions { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="SpawnThat.Options.Conditions.ISpawnCondition.html">ISpawnCondition</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_DistanceToCenterForLevelUp.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.DistanceToCenterForLevelUp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L132">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_DistanceToCenterForLevelUp_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.DistanceToCenterForLevelUp*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_DistanceToCenterForLevelUp" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.DistanceToCenterForLevelUp">DistanceToCenterForLevelUp</h4>
+  <div class="markdown level1 summary"><p>Minimum distance for creature to increase level beyond MinLevel.</p>
+<p>Default if new template: 0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? DistanceToCenterForLevelUp { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_DistanceToCenterForLevelUp_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_levelUpMinCenterDistance</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Enabled.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.Enabled%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L52">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Enabled_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.Enabled*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Enabled" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.Enabled">Enabled</h4>
+  <div class="markdown level1 summary"><p>Toggle this spawner on-off.</p>
+<p>Default if new template: true</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? Enabled { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Enabled_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_enabled</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_HuntPlayer.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.HuntPlayer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L67">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_HuntPlayer_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.HuntPlayer*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_HuntPlayer" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.HuntPlayer">HuntPlayer</h4>
+  <div class="markdown level1 summary"><p>Sets MonsterAI to hunt a player target.</p>
+<p>Default if new template: false</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? HuntPlayer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_HuntPlayer_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_huntPlayer</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MaxLevel.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.MaxLevel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L162">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MaxLevel_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.MaxLevel*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MaxLevel" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.MaxLevel">MaxLevel</h4>
+  <div class="markdown level1 summary"><p>Maximum level to spawn at.</p>
+<p>
+    Level is assigned by rolling levelup-chance for each
+    level from min, until max is reached.
+</p>
+<p>
+    This means if levelup chance is 10 (default), there is 10% chance for
+    a MinLevel 1 to become level 2, and 1% chance to become level 3.
+</p>
+<p>Default if new template: 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? MaxLevel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MaxLevel_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_maxLevel</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MaxSpawned.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.MaxSpawned%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L75">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MaxSpawned_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.MaxSpawned*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MaxSpawned" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.MaxSpawned">MaxSpawned</h4>
+  <div class="markdown level1 summary"><p>Maxium number of same entity in area for template to be active.</p>
+<p>For creatures, area is defined by currently loaded. For non-creatures, it is defined by distance.</p>
+<p>Default if new template: 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? MaxSpawned { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MaxSpawned_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_maxSpawned</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MinDistanceToOther.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.MinDistanceToOther%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L247">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MinDistanceToOther_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.MinDistanceToOther*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MinDistanceToOther" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.MinDistanceToOther">MinDistanceToOther</h4>
+  <div class="markdown level1 summary"><p>Minimum required distance to another entity of same type.</p>
+<p>Positional condition. Tested multiple times to decide where to spawn entity.</p>
+<p>Default if new template: 0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? MinDistanceToOther { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MinDistanceToOther_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_spawnDistance</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MinLevel.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.MinLevel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L147">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MinLevel_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.MinLevel*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MinLevel" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.MinLevel">MinLevel</h4>
+  <div class="markdown level1 summary"><p>Minimum level to spawn at.</p>
+<p>
+    Level is assigned by rolling levelup-chance for each
+    level from min, until max is reached.
+</p>
+<p>
+    This means if levelup chance is 10 (default), there is 10% chance for
+    a MinLevel 1 to become level 2, and 1% chance to become level 3.
+</p>
+<p>Default if new template: 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? MinLevel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MinLevel_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_minLevel</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Modifiers.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.Modifiers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L40">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Modifiers_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.Modifiers*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Modifiers" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.Modifiers">Modifiers</h4>
+  <div class="markdown level1 summary"><p>Modifiers conditions to set.
+If a condition with the same type already exists, it will be replaced.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;ISpawnModifier&gt; Modifiers { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="SpawnThat.Options.Modifiers.ISpawnModifier.html">ISpawnModifier</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PackSizeMax.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PackSizeMax%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L111">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PackSizeMax_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PackSizeMax*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PackSizeMax" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PackSizeMax">PackSizeMax</h4>
+  <div class="markdown level1 summary"><p>Maximum number of entities to attempt to spawn at a time.</p>
+<p>Default if new template: 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? PackSizeMax { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PackSizeMax_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_groupSizeMax</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PackSizeMin.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PackSizeMin%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L104">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PackSizeMin_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PackSizeMin*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PackSizeMin" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PackSizeMin">PackSizeMin</h4>
+  <div class="markdown level1 summary"><p>Minimum number of entities to attempt to spawn at a time.</p>
+<p>Default if new template: 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? PackSizeMin { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PackSizeMin_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_groupSizeMin</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PackSpawnCircleRadius.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PackSpawnCircleRadius%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L97">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PackSpawnCircleRadius_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PackSpawnCircleRadius*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PackSpawnCircleRadius" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PackSpawnCircleRadius">PackSpawnCircleRadius</h4>
+  <div class="markdown level1 summary"><p>Radius of circle, in which to spawn a pack of entities.</p>
+<p>Eg., when pack size is 3, all 3 spawns will happen inside a circle indicated by this radius.</p>
+<p>Default if new template: 3</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? PackSpawnCircleRadius { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PackSpawnCircleRadius_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_groupRadius</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PositionConditions.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PositionConditions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L34">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PositionConditions_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PositionConditions*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PositionConditions" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PositionConditions">PositionConditions</h4>
+  <div class="markdown level1 summary"><p>Spawn position conditions to set.
+If a condition with the same type already exists, it will be replaced.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;ISpawnPositionCondition&gt; PositionConditions { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="SpawnThat.Options.PositionConditions.ISpawnPositionCondition.html">ISpawnPositionCondition</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PrefabName.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PrefabName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L45">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PrefabName_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PrefabName*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_PrefabName" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.PrefabName">PrefabName</h4>
+  <div class="markdown level1 summary"><p>Prefab name of entity to spawn.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PrefabName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnAtDistanceToGround.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnAtDistanceToGround%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L278">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnAtDistanceToGround_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnAtDistanceToGround*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnAtDistanceToGround" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnAtDistanceToGround">SpawnAtDistanceToGround</h4>
+  <div class="markdown level1 summary"><p>Sets how far above the ground the entity will spawn at.</p>
+<p>Default if new template: 0.5</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? SpawnAtDistanceToGround { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnAtDistanceToGround_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_groundOffset</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnAtDistanceToPlayerMax.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnAtDistanceToPlayerMax%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L271">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnAtDistanceToPlayerMax_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnAtDistanceToPlayerMax*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnAtDistanceToPlayerMax" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnAtDistanceToPlayerMax">SpawnAtDistanceToPlayerMax</h4>
+  <div class="markdown level1 summary"><p>Maximum distance from player to spawn at.</p>
+<p>
+    A specific player is chosen as a target, this setting with min basically creates a ring
+    around the player, in which a spawn point can be chosen.
+</p>
+<p>Valheim treats 0 as 80.</p>
+<p>Default if new template: 0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? SpawnAtDistanceToPlayerMax { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnAtDistanceToPlayerMax_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_spawnRadiusMax</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnAtDistanceToPlayerMin.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnAtDistanceToPlayerMin%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L259">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnAtDistanceToPlayerMin_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnAtDistanceToPlayerMin*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnAtDistanceToPlayerMin" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnAtDistanceToPlayerMin">SpawnAtDistanceToPlayerMin</h4>
+  <div class="markdown level1 summary"><p>Minimum distance from player to spawn at.</p>
+<p>
+    A specific player is chosen as a target, this setting with max basically creates a ring
+    around the player, in which a spawn point can be chosen.
+</p>
+<p>Valheim treats 0 as 40.</p>
+<p>Default if new template: 0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? SpawnAtDistanceToPlayerMin { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnAtDistanceToPlayerMin_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_spawnRadiusMin</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnChance.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnChance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L89">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnChance_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnChance*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnChance" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnChance">SpawnChance</h4>
+  <div class="markdown level1 summary"><p>Chance to spawn per check. Range 0 to 100.</p>
+<p>Default if new template: 100</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? SpawnChance { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnChance_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_spawnChance</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnDuringDay.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnDuringDay%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L232">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnDuringDay_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnDuringDay*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnDuringDay" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnDuringDay">SpawnDuringDay</h4>
+  <div class="markdown level1 summary"><p>Can spawn during day.</p>
+<p>Note: If not true, creatures with MonsterAI will attempt to despawn at day.</p>
+<p>Default if new template: true</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? SpawnDuringDay { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnDuringDay_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_spawnAtDay</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnDuringNight.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnDuringNight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L239">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnDuringNight_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnDuringNight*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnDuringNight" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnDuringNight">SpawnDuringNight</h4>
+  <div class="markdown level1 summary"><p>Can spawn during night.</p>
+<p>Default if new template: true</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? SpawnDuringNight { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnDuringNight_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_spawnAtNight</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnInForest.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnInForest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L118">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnInForest_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnInForest*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnInForest" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnInForest">SpawnInForest</h4>
+  <div class="markdown level1 summary"><p>If true, allows spawning inside forested areas.</p>
+<p>Default if new template: true</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? SpawnInForest { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnInForest_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_inForest</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnInterval.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnInterval%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L82">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnInterval_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnInterval*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnInterval" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnInterval">SpawnInterval</h4>
+  <div class="markdown level1 summary"><p>Time between new spawn checks.</p>
+<p>Default if new template: 00:01:30</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan? SpawnInterval { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnInterval_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_spawnInterval</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnOutsideForest.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnOutsideForest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L125">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnOutsideForest_" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnOutsideForest*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnOutsideForest" data-uid="SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnOutsideForest">SpawnOutsideForest</h4>
+  <div class="markdown level1 summary"><p>If true, allows pawning outside forested areas.</p>
+<p>Default if new template: true</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? SpawnOutsideForest { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_SpawnOutsideForest_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_outsideForest</p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/feature/fix-namespaces-and-document/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat/Spawners/WorldSpawner/WorldSpawnSettings.cs/#L22" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../../../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

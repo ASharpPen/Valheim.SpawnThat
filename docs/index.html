@@ -124,7 +124,7 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
     public void Awake()
     {
         // Register for configuration event.
-        SpawnThat.Spawners.SpawnerConfigurationManager.OnConfigure += MySpawnerConfigurations;
+        SpawnerConfigurationManager.OnConfigure += MySpawnerConfigurations;
     }
 
     public void MySpawnerConfigurations(ISpawnerConfigurationCollection spawnerConfig)
@@ -149,14 +149,9 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
             .SetPrefabName(&quot;Skeleton&quot;);
     }
 }
-</code></pre><p>Proper documentation for the API is in the works, but the code itself already has comments for most settings.</p>
-<h2 id="future">Future</h2>
-<p>v1.0.0 is almost a full rewrite of Spawn That, which should allow for a much more extensible framework. Several additional spawner types, options, internal improvements and QoL are being considered.</p>
-<p>Currently planned up-coming features are:</p>
-<ul>
-<li>New spawner type for AreaSpawner (eg., the destructible greydwarf nests)</li>
-</ul>
-</article>
+</code></pre><h1 id="support">Support</h1>
+<p>If you feel like it</p>
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="asharppen" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -164,7 +159,7 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/documentation-page/src/SpawnThat.Docs/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat.Docs/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
