@@ -11,7 +11,7 @@ public class ModifierSetTamedCommandable : ISpawnModifier
 
     public bool Commandable { get; set; }
 
-    internal ModifierSetTamedCommandable()
+    public ModifierSetTamedCommandable()
     { }
 
     public ModifierSetTamedCommandable(bool commandable)

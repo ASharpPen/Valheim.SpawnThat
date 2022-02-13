@@ -7,7 +7,7 @@ internal record LocationIdentifier
     public string Location { get; internal set; }
     public string PrefabName { get; internal set; }
 
-    internal LocationIdentifier()
+    public LocationIdentifier()
     { }
 
     public LocationIdentifier(string location, string prefabName)

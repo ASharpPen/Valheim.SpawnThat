@@ -8,7 +8,7 @@ public class ConditionAreaSpawnChance : ISpawnCondition
     public float AreaChance { get; set; }
     public int EntityId { get; set; }
 
-    internal ConditionAreaSpawnChance()
+    public ConditionAreaSpawnChance()
     { }
 
     public ConditionAreaSpawnChance(float areaChance, int entityId)

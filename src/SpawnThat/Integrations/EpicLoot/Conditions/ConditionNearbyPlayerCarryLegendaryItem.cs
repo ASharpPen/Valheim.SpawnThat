@@ -15,7 +15,7 @@ public class ConditionNearbyPlayerCarryLegendaryItem : ISpawnCondition
     public int SearchDistance { get; set; }
     public HashSet<string> LegendaryIds { get; set; }
 
-    internal ConditionNearbyPlayerCarryLegendaryItem()
+    public ConditionNearbyPlayerCarryLegendaryItem()
     { }
 
     public ConditionNearbyPlayerCarryLegendaryItem(int distanceToSearch, IEnumerable<string> legendaryIdsToSearch)

@@ -13,7 +13,7 @@ public class ModifierSetFaction : ISpawnModifier
     public ModifierSetFaction()
     { }
 
-    internal ModifierSetFaction(Character.Faction faction)
+    public ModifierSetFaction(Character.Faction faction)
     {
         Faction = faction;
     }

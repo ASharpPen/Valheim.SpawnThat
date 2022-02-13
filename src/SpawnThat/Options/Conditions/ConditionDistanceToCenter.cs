@@ -8,7 +8,7 @@ public class ConditionDistanceToCenter : ISpawnCondition
     public double? MinDistance { get; set; }
     public double? MaxDistance { get; set; }
 
-    internal ConditionDistanceToCenter()
+    public ConditionDistanceToCenter()
     { }
 
     public ConditionDistanceToCenter(double? minDistanceRequired, double? maxDistanceRequired)

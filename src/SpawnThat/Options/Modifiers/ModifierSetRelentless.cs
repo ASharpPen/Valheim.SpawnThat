@@ -13,7 +13,7 @@ public class ModifierSetRelentless : ISpawnModifier
 
     public bool Relentless { get; set; }
 
-    internal ModifierSetRelentless()
+    public ModifierSetRelentless()
     { }
 
     public ModifierSetRelentless(bool relentless)

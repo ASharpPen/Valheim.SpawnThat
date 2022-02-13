@@ -10,7 +10,7 @@ public class ConditionLocation : ISpawnCondition
 {
     public List<string> Locations { get; set; }
 
-    internal ConditionLocation()
+    public ConditionLocation()
     { }
 
     public ConditionLocation(params string[] requireOneOfLocations)

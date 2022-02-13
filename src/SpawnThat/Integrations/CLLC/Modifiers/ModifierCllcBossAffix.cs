@@ -12,7 +12,7 @@ public class ModifierCllcBossAffix : ISpawnModifier
 {
     public BossAffix? Affix { get; set; }
 
-    internal ModifierCllcBossAffix()
+    public ModifierCllcBossAffix()
     { }
 
     public ModifierCllcBossAffix(string bossAffixName)
