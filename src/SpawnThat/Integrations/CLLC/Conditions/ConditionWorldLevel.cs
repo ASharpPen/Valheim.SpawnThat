@@ -8,7 +8,7 @@ public class ConditionWorldLevel : ISpawnCondition
     public int? MinWorldLevel { get; set; }
     public int? MaxWorldLevel { get; set; }
 
-    internal ConditionWorldLevel()
+    public ConditionWorldLevel()
     { }
 
     public ConditionWorldLevel(int? minWorldLevel, int? maxWorldLevel)

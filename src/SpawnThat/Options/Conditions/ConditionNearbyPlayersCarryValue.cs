@@ -15,7 +15,7 @@ public class ConditionNearbyPlayersCarryValue : ISpawnCondition
     public int SearchDistance { get; set; }
     public int RequiredValue { get; set; }
 
-    internal ConditionNearbyPlayersCarryValue()
+    public ConditionNearbyPlayersCarryValue()
     { }
 
     public ConditionNearbyPlayersCarryValue(int distanceToSearch, int combinedValueRequired)

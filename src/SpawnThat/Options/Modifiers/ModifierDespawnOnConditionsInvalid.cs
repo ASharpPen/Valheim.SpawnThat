@@ -26,7 +26,7 @@ public class ModifierDespawnOnConditionsInvalid : ISpawnModifier
     public bool? ConditionAllowDuringNight { get; set; }
     public string ConditionAllowDuringEnvironments { get; set; }
 
-    internal ModifierDespawnOnConditionsInvalid()
+    public ModifierDespawnOnConditionsInvalid()
     { }
 
     public ModifierDespawnOnConditionsInvalid(

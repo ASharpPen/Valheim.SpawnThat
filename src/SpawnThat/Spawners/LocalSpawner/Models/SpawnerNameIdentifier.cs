@@ -7,7 +7,7 @@ internal record SpawnerNameIdentifier
 {
     public string SpawnerPrefabName { get; internal set; }
 
-    internal SpawnerNameIdentifier()
+    public SpawnerNameIdentifier()
     { }
 
     public SpawnerNameIdentifier(string spawnerPrefabName)

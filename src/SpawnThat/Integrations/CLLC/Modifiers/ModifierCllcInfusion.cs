@@ -12,7 +12,7 @@ public class ModifierCllcInfusion : ISpawnModifier
 {
     public CreatureInfusion? Infusion { get; set; }
 
-    internal ModifierCllcInfusion()
+    public ModifierCllcInfusion()
     { }
 
     public ModifierCllcInfusion(string infusionName)

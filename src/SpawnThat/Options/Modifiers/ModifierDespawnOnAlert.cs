@@ -14,7 +14,7 @@ public class ModifierDespawnOnAlert : ISpawnModifier
 
     public bool DespawnOnAlert { get; set; }
 
-    internal ModifierDespawnOnAlert()
+    public ModifierDespawnOnAlert()
     { }
 
     public ModifierDespawnOnAlert(bool despawnOnAlert)
