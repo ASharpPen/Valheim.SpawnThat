@@ -111,9 +111,11 @@ public class Plugin : BaseUnityPlugin
 
 If you feel like it
 
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="asharppen" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+<a href="https://www.buymeacoffee.com/asharppen"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=asharppen&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 # Changelog: 
+- v1.0.1:
+	- Fixed broken config sync.
 - v1.0.0:
 	- WorldSpawner config `Enabled` now toggles the actual spawn entry on/off.
 	- Added WorldSpawner option `TemplateEnabled` to replace `Enabled`.
