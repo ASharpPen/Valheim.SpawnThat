@@ -2,7 +2,7 @@
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Identifiers;
 
-internal interface ISpawnerIdentifier
+public interface ISpawnerIdentifier
 {
     /// <summary>
     /// When identifier is evaluated as a match, it will add this value to the match score.
@@ -13,11 +13,6 @@ internal interface ISpawnerIdentifier
     int GetMatchWeight();
 
     bool IsValid(IdentificationContext context);
-}
-
-internal interface ICacheableIdentifier
-{
-    long GetParameterHash();
 }
 
 public static class MatchWeight

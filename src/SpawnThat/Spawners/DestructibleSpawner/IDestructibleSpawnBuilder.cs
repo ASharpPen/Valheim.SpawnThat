@@ -1,4 +1,6 @@
-﻿
+﻿using SpawnThat.Options.Conditions;
+using SpawnThat.Options.Modifiers;
+
 namespace SpawnThat.Spawners.DestructibleSpawner;
 
 /// <summary>
@@ -16,4 +18,20 @@ public interface IDestructibleSpawnBuilder
     /// overridden by the assigned settings of this configuration.
     /// </summary>
     uint Id { get; }
+
+    IDestructibleSpawnBuilder SetCondition<TCondition>(TCondition condition)
+        where TCondition : class, ISpawnCondition;
+
+    IDestructibleSpawnBuilder SetModifier<TModifier>(TModifier modifier)
+        where TModifier : class, ISpawnModifier;
+
+    void SetPrefabName(string prefabName);
+
+    string? PrefabName { get; set; }
+
+    public float? SpawnWeight { get; set; }
+
+    public int? LevelMin { get; set; }
+
+    public int? LevelMax { get; set; }
 }

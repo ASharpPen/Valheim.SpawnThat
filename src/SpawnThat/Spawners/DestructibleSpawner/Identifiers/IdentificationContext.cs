@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Identifiers;
 
-internal class IdentificationContext
+public class IdentificationContext
 {
     /// <summary>
     /// Object being identified.
