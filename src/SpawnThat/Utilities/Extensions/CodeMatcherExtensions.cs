@@ -2,6 +2,7 @@
 using System;
 using System.Reflection.Emit;
 using SpawnThat.Core;
+using System.Reflection;
 
 namespace SpawnThat.Utilities.Extensions;
 
@@ -13,11 +14,21 @@ public static class CodeMatcherExtensions
         return codeMatcher;
     }
 
-    public static CodeMatcher AddLabel(this CodeMatcher codeMatcher, out Label label)
+    public static CodeMatcher InsertAndAdvance(this CodeMatcher codeMatcher, OpCode opcode)
     {
-        label = new Label();
-        codeMatcher.AddLabels(new[] { label });
+        codeMatcher.InsertAndAdvance(new CodeInstruction(opcode));
         return codeMatcher;
+    }
+
+    public static CodeMatcher InsertAndAdvance(this CodeMatcher codeMatcher, MethodInfo method)
+    {
+        codeMatcher.InsertAndAdvance(new CodeInstruction(OpCodes.Call, method));
+        return codeMatcher;
+    }
+
+    public static CodeMatcher InsertAndAdvance<T>(this CodeMatcher codeMatcher, string methodName)
+    {
+        return InsertAndAdvance(codeMatcher, AccessTools.Method(typeof(T), methodName));
     }
 
     public static CodeMatcher GetOpcode(this CodeMatcher codeMatcher, out OpCode opcode)
