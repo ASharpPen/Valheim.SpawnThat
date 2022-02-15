@@ -44,10 +44,25 @@ public static class UnityObjectExtensions
         string cleanedName = match
             .Value
             .Trim();
+        /*
+        if (obj.IsNull())
+        {
+            return null;
+        }
+
+        string cleanedName = obj.name
+            .Split(new char[] { '(' }, System.StringSplitOptions.RemoveEmptyEntries)
+            .FirstOrDefault()?
+            .Trim();
+
+        cleanedName = string.IsNullOrWhiteSpace(cleanedName)
+            ? obj.name
+            : cleanedName;
+        */
 
         if (toUpper)
         {
-            cleanedName = cleanedName.ToUpperInvariant();
+            cleanedName = cleanedName?.ToUpperInvariant();
         }
 
         return cleanedName;
