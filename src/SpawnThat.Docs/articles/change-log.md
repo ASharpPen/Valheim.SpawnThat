@@ -1,3 +1,7 @@
+# Change Log
+
+- v1.0.1:
+	- Fixed broken config sync.
 - v1.0.0:
 	- WorldSpawner config `Enabled` now toggles the actual spawn entry on/off.
 	- Added WorldSpawner option `TemplateEnabled` to replace `Enabled`.

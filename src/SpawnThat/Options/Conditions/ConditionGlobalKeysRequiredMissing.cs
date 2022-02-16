@@ -11,7 +11,7 @@ public class ConditionGlobalKeysRequiredMissing : ISpawnCondition
 {
     public List<string> RequiredMissing { get; set; }
 
-    internal ConditionGlobalKeysRequiredMissing()
+    public ConditionGlobalKeysRequiredMissing()
     { }
 
     public ConditionGlobalKeysRequiredMissing(params string[] requiredMissing)

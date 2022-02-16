@@ -25,7 +25,7 @@ public class ModifierDefaultRollLevel : ISpawnModifier
     public double MinDistanceForLevelups { get; set; }
     public double LevelupChance { get; set; }
 
-    internal ModifierDefaultRollLevel()
+    public ModifierDefaultRollLevel()
     { }
 
     public ModifierDefaultRollLevel(int minLevel, int maxLevel, double minDistanceForLevelups, double levelupChance)

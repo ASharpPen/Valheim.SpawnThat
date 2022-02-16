@@ -10,7 +10,7 @@ public class ConditionAreaIds : ISpawnCondition
 {
     public List<int> RequiredAreaIds { get; set; } = new();
 
-    internal ConditionAreaIds()
+    public ConditionAreaIds()
     { }
 
     public ConditionAreaIds(List<int> requiredAreaIds = null)

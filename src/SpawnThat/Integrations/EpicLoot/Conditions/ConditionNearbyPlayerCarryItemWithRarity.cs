@@ -20,7 +20,7 @@ public class ConditionNearbyPlayerCarryItemWithRarity : ISpawnCondition
     public int SearchDistance { get; set; }
     public List<EpicLootRarity> RaritiesRequired { get; set; }
 
-    internal ConditionNearbyPlayerCarryItemWithRarity()
+    public ConditionNearbyPlayerCarryItemWithRarity()
     { }
 
     public ConditionNearbyPlayerCarryItemWithRarity(int distanceToSearch, IEnumerable<EpicLootRarity> rarities)
