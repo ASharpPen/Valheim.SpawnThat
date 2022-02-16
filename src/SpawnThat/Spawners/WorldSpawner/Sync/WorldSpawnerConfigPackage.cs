@@ -32,8 +32,8 @@ internal class WorldSpawnerConfigPackage : CompressedPackage
         {
             Log.LogDebug("Received and deserialized world spawner config package");
 
-            WorldSpawnTemplateManager.TemplatesById = configPackage.TemplatesById;
-            SpawnSystemConfigurationManager.SimpleConfig = configPackage.SimpleConfig;
+            WorldSpawnTemplateManager.TemplatesById = configPackage.TemplatesById ?? new();
+            SpawnSystemConfigurationManager.SimpleConfig = configPackage.SimpleConfig ?? new();
 
             Log.LogDebug($"Unpacked world spawner configurations: {WorldSpawnTemplateManager.TemplatesById?.Count ?? 0}");
             Log.LogDebug($"Unpacked simple world spawner configurations: {SpawnSystemConfigurationManager.SimpleConfig?.Subsections?.Count ?? 0}");
