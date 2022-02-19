@@ -1,5 +1,9 @@
-﻿using SpawnThat.Core.Cache;
-using SpawnThat.Spawners.DestructibleSpawner.Identifiers;
+﻿using System.Collections.Generic;
+using System.Linq;
+using SpawnThat.Core.Cache;
+using SpawnThat.Lifecycle;
+using SpawnThat.Options.Identifiers;
+using SpawnThat.Spawners.Contexts;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Managers;
 
@@ -7,6 +11,29 @@ internal static class DestructibleSpawnerManager
 {
     private static ManagedCache<DestructibleSpawnerTemplate> TemplateBySpawner { get; } = new();
     private static ManagedCache<bool> SpawnerIsConfigured { get; } = new();
+
+    internal static ICollection<DestructibleSpawnerTemplate> Templates { get; set; } = new List<DestructibleSpawnerTemplate>();
+
+    internal static bool DelaySpawners { get; set; } = true;
+
+    static DestructibleSpawnerManager()
+    {
+        LifecycleManager.SubscribeToWorldInit(() =>
+        {
+            Templates = new List<DestructibleSpawnerTemplate>();
+            DelaySpawners = true;
+        });
+    }
+
+    public static void AddTemplate(DestructibleSpawnerTemplate template)
+    {
+        Templates.Add(template);
+    }
+
+    public static List<DestructibleSpawnerTemplate> GetTemplates()
+    {
+        return Templates.ToList();
+    }
 
     public static void ConfigureSpawner(SpawnArea spawner)
     {
@@ -46,7 +73,7 @@ internal static class DestructibleSpawnerManager
         context.Target = spawner.gameObject;
         context.Zdo = spawner.m_nview.GetZDO();
 
-        var templates = DestructibleSpawnerTemplateManager.GetTemplates();
+        var templates = GetTemplates();
 
         int maxMatchLevel = 0;
         double maxMatchScore = 0;

@@ -6,23 +6,32 @@ using SpawnThat.Options.PositionConditions;
 namespace SpawnThat.Spawners.DestructibleSpawner;
 
 /// <summary>
-/// Configurations for spawn in spawner.
+/// <para>
+///     Destructible spawn builder settings.
+///     Any property not set will be ignored.
+/// </para>
+/// <para>
+///     Any setting not set for a builder will mean Spawn That will use the existing setting
+///     when overriding a template, or set a default value if creating a new.
+/// </para>
+/// <para>
+///     Intended as an optional way to configure IDestructibleSpawnBuilder.
+/// </para>
 /// </summary>
-internal class DestructibleSpawnTemplate
-{
-    /// <summary>
-    /// Id of spawn entry.
-    /// 
-    /// If id matches the index of an existing entry, the existing entry will be
-    /// overridden by the assigned settings of this configuration.
-    /// </summary>
+public class DestructibleSpawnSettings
+{    /// <summary>
+     /// Id of spawn entry.
+     /// 
+     /// If id matches the index of an existing entry, the existing entry will be
+     /// overridden by the assigned settings of this configuration.
+     /// </summary>
     public uint Id { get; set; }
 
     public bool Enabled { get; set; }
 
     public bool TemplateEnabled { get; set; }
 
-    public string PrefabName { get; set; }
+    public string? PrefabName { get; set; }
 
     public float? SpawnWeight { get; set; }
 

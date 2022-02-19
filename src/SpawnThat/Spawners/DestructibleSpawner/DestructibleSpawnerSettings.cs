@@ -5,10 +5,31 @@ using SpawnThat.Options.Identifiers;
 namespace SpawnThat.Spawners.DestructibleSpawner;
 
 /// <summary>
-/// Configurations for spawner. Spawner can have multiple spawn templates.
+/// <para>
+///     Destructible spawner builder settings.
+///     Any property not set will be ignored.
+/// </para>
+/// <para>
+///     Any setting not set for a builder will mean Spawn That will use the existing setting
+///     when overriding a template, or set a default value if creating a new.
+/// </para>
+/// <para>
+///     Intended as an optional way to configure IDestructibleSpawnerBuilder.
+/// </para>
 /// </summary>
-internal class DestructibleSpawnerTemplate
+public class DestructibleSpawnerSettings
 {
+    /// <summary>
+    /// <para>
+    ///     Identifiers used to select which configuration to apply to spawner.
+    /// </para>
+    /// <para>
+    ///     To identify which spawner to modify, set <c>ISpawnerIdentifier</c>'s 
+    ///     on the builder.
+    ///     When multiple configurations exist for the same spawner, the identifiers
+    ///     and their weights will be used to select the most specific configuration.
+    /// </para>
+    /// </summary>
     public ICollection<ISpawnerIdentifier> Identifiers { get; set; } = new List<ISpawnerIdentifier>(0);
 
     /// <summary>
@@ -65,11 +86,22 @@ internal class DestructibleSpawnerTemplate
     public float? DistanceConsideredFar { get; set; }
 
     /// <summary>
-    /// <para>Only spawn spawn if spawn point is not blocked.</para>
-    /// <para>Default if new template: true</para>
+    /// <para>
+    ///     Only spawn if spawn point is on the ground (ie., not in a dungeon) 
+    ///     and open to the sky.
+    /// </para>
+    /// <para>
+    ///     For reference, greydwarf nests set this to true, while draugr piles in villages and dungeons do not.
+    /// </para>
     /// </summary>
     /// <remarks>Vanilla name: m_onGroundOnly</remarks>
     public bool? OnGroundOnly { get; set; }
 
-    public Dictionary<uint, DestructibleSpawnTemplate> Spawns { get; set; } = new();
+    /// <summary>
+    /// Spawns for spawner.
+    /// 
+    /// If id matches the index of an existing spawn, the existing spawn will be
+    /// overridden by the assigned settings.
+    /// </summary>
+    public Dictionary<uint, DestructibleSpawnSettings> Spawns { get; set; } = new();
 }
