@@ -23,9 +23,7 @@ internal record RoomIdentifier
             Log.LogWarning("LocalSpawner builder with empty prefabName for RoomIdentifier detected.");
         }
 #endif
-
-
-        Room = room.Trim();
-        PrefabName = prefabName.Trim();
+        Room = room.Trim().ToUpperInvariant();
+        PrefabName = prefabName.Trim().ToUpperInvariant();
     }
 }

@@ -77,6 +77,8 @@ internal class LocalSpawnerConfiguration : ISpawnerConfiguration
             return existing;
         }
 
+        Log.LogDebug($"Adding local spawner for spawner with name '{identifier.SpawnerPrefabName}'.");
+
         return spawnerBuilders[identifier] = new LocalSpawnBuilder();
     }
 
@@ -91,6 +93,8 @@ internal class LocalSpawnerConfiguration : ISpawnerConfiguration
             return existing;
         }
 
+        Log.LogDebug($"Adding local spawner for location '{identifier.Location}' with prefab '{identifier.PrefabName}'.");
+
         return locationBuilders[identifier] = new LocalSpawnBuilder();
     }
 
@@ -104,6 +108,8 @@ internal class LocalSpawnerConfiguration : ISpawnerConfiguration
 
             return existing;
         }
+
+        Log.LogDebug($"Adding local spawner for room '{identifier.Room}' with prefab '{identifier.PrefabName}'.");
 
         return roomBuilders[identifier] = new LocalSpawnBuilder();
     }
