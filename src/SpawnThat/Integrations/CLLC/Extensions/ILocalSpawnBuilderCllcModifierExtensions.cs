@@ -10,7 +10,7 @@ public static class ILocalSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetModifier(new ModifierCllcBossAffix(bossAffixName));
+            SetBossAffix(builder, bossAffixName);
         }
 
         return builder;
@@ -20,17 +20,20 @@ public static class ILocalSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetModifier(new ModifierCllcBossAffix(bossAffix));
+            SetBossAffix(builder, bossAffix);
         }
 
         return builder;
     }
 
+    private static void SetBossAffix(ILocalSpawnBuilder builder, string bossAffixName) => builder.SetModifier(new ModifierCllcBossAffix(bossAffixName));
+    private static void SetBossAffix(ILocalSpawnBuilder builder, CllcBossAffix bossAffix) => builder.SetModifier(new ModifierCllcBossAffix(bossAffix));
+
     public static ILocalSpawnBuilder SetCllcModifierExtraEffect(this ILocalSpawnBuilder builder, string extraEffectName)
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetModifier(new ModifierCllcExtraEffect(extraEffectName));
+            SetExtraEffect(builder, extraEffectName);
         }
 
         return builder;
@@ -40,17 +43,20 @@ public static class ILocalSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetModifier(new ModifierCllcExtraEffect(extraEffect));
+            SetExtraEffect(builder, extraEffect);
         }
 
         return builder;
     }
 
+    private static void SetExtraEffect(ILocalSpawnBuilder builder, string extraEffectName) => builder.SetModifier(new ModifierCllcExtraEffect(extraEffectName));
+    private static void SetExtraEffect(ILocalSpawnBuilder builder, CllcCreatureExtraEffect extraEffect) => builder.SetModifier(new ModifierCllcExtraEffect(extraEffect));
+
     public static ILocalSpawnBuilder SetCllcModifierInfusion(this ILocalSpawnBuilder builder, string infusionName)
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetModifier(new ModifierCllcInfusion(infusionName));
+            SetInfusion(builder, infusionName);
         }
 
         return builder;
@@ -60,19 +66,25 @@ public static class ILocalSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetModifier(new ModifierCllcInfusion(infusion));
+            SetInfusion(builder, infusion);
         }
 
         return builder;
     }
+
+    private static void SetInfusion(ILocalSpawnBuilder builder, string infusionName) => builder.SetModifier(new ModifierCllcInfusion(infusionName));
+    private static void SetInfusion(ILocalSpawnBuilder builder, CllcCreatureInfusion infusion) => builder.SetModifier(new ModifierCllcInfusion(infusion));
+
 
     public static ILocalSpawnBuilder SetCllcModifierRandomLevel(this ILocalSpawnBuilder builder)
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetModifier(new ModifierCllcRandomLevel());
+            SetRandomLevel(builder);
         }
 
         return builder;
     }
+
+    private static void SetRandomLevel(ILocalSpawnBuilder builder) => builder.SetModifier(new ModifierCllcRandomLevel());
 }
