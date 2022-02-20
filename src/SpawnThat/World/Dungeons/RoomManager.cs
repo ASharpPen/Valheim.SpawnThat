@@ -8,6 +8,7 @@ using System.Reflection;
 using SpawnThat.Lifecycle;
 using SpawnThat.Utilities.Spatial;
 using SpawnThat.Core;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.World.Dungeons;
 
@@ -122,16 +123,16 @@ public static class RoomManager
     [HarmonyPatch(typeof(DungeonGenerator))]
     private static class DungeonGeneratorPatch
     {
-        private static MethodInfo Anchor = AccessTools.Method(typeof(GameObject), nameof(GameObject.GetComponent), generics: new[] { typeof(Room) });
-
         [HarmonyPatch(nameof(DungeonGenerator.PlaceRoom), new[] { typeof(DungeonDB.RoomData), typeof(Vector3), typeof(Quaternion), typeof(RoomConnection), typeof(ZoneSystem.SpawnMode) })]
         [HarmonyTranspiler]
         private static IEnumerable<CodeInstruction> GetRoomObject(IEnumerable<CodeInstruction> instructions)
         {
             return new CodeMatcher(instructions)
-                .MatchForward(true, new CodeMatch(OpCodes.Callvirt, Anchor))
-                .Advance(2)
-                .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_1))
+                .MatchForward(true, new CodeMatch(OpCodes.Callvirt, AccessTools.Method(typeof(GameObject), nameof(GameObject.GetComponent), generics: new[] { typeof(Room) })))
+                .Advance(1)
+                .GetInstruction(out var storeInstruction)
+                .Advance(1)
+                .InsertAndAdvance(storeInstruction.GetLdlocFromStLoc())
                 .InsertAndAdvance(Transpilers.EmitDelegate(CacheRoom))
                 .InstructionEnumeration();
         }
@@ -145,6 +146,4 @@ public static class RoomManager
             RoomManager.AddRoom(component);
         }
     }
-
-
 }
