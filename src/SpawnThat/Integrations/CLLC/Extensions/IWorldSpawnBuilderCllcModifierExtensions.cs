@@ -10,7 +10,7 @@ public static class IWorldSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetModifier(new ModifierCllcBossAffix(bossAffixName));
+            SetBossAffix(builder, bossAffixName);
         }
 
         return builder;
@@ -20,39 +20,53 @@ public static class IWorldSpawnBuilderCllcModifierExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetModifier(new ModifierCllcBossAffix(bossAffix));
+            SetBossAffix(builder, bossAffix);
         }
 
         return builder;
     }
+
+    private static void SetBossAffix(IWorldSpawnBuilder builder, string bossAffixName) => builder.SetModifier(new ModifierCllcBossAffix(bossAffixName));
+    private static void SetBossAffix(IWorldSpawnBuilder builder, CllcBossAffix bossAffix) => builder.SetModifier(new ModifierCllcBossAffix(bossAffix));
+
 
     public static IWorldSpawnBuilder SetCllcModifierExtraEffect(this IWorldSpawnBuilder builder, CllcCreatureExtraEffect extraEffect)
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetModifier(new ModifierCllcExtraEffect(extraEffect));
+            SetExtraEffect(builder, extraEffect);
         }
 
         return builder;
     }
+
+
+    private static void SetExtraEffect(IWorldSpawnBuilder builder, string extraEffectName) => builder.SetModifier(new ModifierCllcExtraEffect(extraEffectName));
+    private static void SetExtraEffect(IWorldSpawnBuilder builder, CllcCreatureExtraEffect extraEffect) => builder.SetModifier(new ModifierCllcExtraEffect(extraEffect));
+
 
     public static IWorldSpawnBuilder SetCllcModifierInfusion(this IWorldSpawnBuilder builder, CllcCreatureInfusion infusion)
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetModifier(new ModifierCllcInfusion(infusion));
+            SetInfusion(builder, infusion);
         }
 
         return builder;
     }
+
+    private static void SetInfusion(IWorldSpawnBuilder builder, string infusionName) => builder.SetModifier(new ModifierCllcInfusion(infusionName));
+    private static void SetInfusion(IWorldSpawnBuilder builder, CllcCreatureInfusion infusion) => builder.SetModifier(new ModifierCllcInfusion(infusion));
 
     public static IWorldSpawnBuilder SetCllcModifierRandomLevel(this IWorldSpawnBuilder builder)
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetModifier(new ModifierCllcRandomLevel());
+            SetRandomLevel(builder);
         }
 
         return builder;
     }
+
+    private static void SetRandomLevel(IWorldSpawnBuilder builder) => builder.SetModifier(new ModifierCllcRandomLevel());
 }

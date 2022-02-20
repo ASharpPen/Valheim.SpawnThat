@@ -78,11 +78,11 @@ internal static class SpawnDataFileDumper
 
         try
         {
-            lines.Add($"{nameof(SpawnConfiguration.PrefabName)}={spawner.m_prefab.name}");
+            lines.Add($"{nameof(SpawnConfiguration.PrefabName)}={spawner.m_prefab.GetCleanedName()}");
         }
         catch (Exception e)
         {
-            Log.LogWarning($"Error while attempting to read name of prefab for spawner {spawner}", e);
+            Log.LogWarning($"Error while attempting to read name of prefab for world spawn {spawner?.m_name}, to print to debug file.", e);
         }
 
         lines.Add($"{nameof(SpawnConfiguration.HuntPlayer)}={spawner.m_huntPlayer}");
