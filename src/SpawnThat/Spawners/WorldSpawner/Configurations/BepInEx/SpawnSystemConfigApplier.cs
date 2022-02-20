@@ -6,6 +6,7 @@ using SpawnThat.Utilities;
 using SpawnThat.Options.Modifiers;
 using System.Collections.Generic;
 using SpawnThat.Integrations.CLLC.Models;
+using SpawnThat.Integrations;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
@@ -115,25 +116,31 @@ internal static class SpawnSystemConfigApplier
         Config cfg;
 
         {
-            if (config.TryGet(SpawnSystemConfigCLLC.ModName, out cfg) &&
-                cfg is SpawnSystemConfigCLLC cllcConfig)
+            if (IntegrationManager.InstalledCLLC)
             {
-                if (cllcConfig.ConditionWorldLevelMin.Value >= 0 || cllcConfig.ConditionWorldLevelMax.Value >= 0)
+                if (config.TryGet(SpawnSystemConfigCLLC.ModName, out cfg) &&
+                    cfg is SpawnSystemConfigCLLC cllcConfig)
                 {
-                    builder.SetCllcConditionWorldLevel(cllcConfig.ConditionWorldLevelMin.Value, cllcConfig.ConditionWorldLevelMax.Value);
+                    if (cllcConfig.ConditionWorldLevelMin.Value >= 0 || cllcConfig.ConditionWorldLevelMax.Value >= 0)
+                    {
+                        builder.SetCllcConditionWorldLevel(cllcConfig.ConditionWorldLevelMin.Value, cllcConfig.ConditionWorldLevelMax.Value);
+                    }
                 }
             }
 
-            if (config.TryGet(SpawnSystemConfigEpicLoot.ModName, out cfg) &&
-                cfg is SpawnSystemConfigEpicLoot elConfig)
+            if (IntegrationManager.InstalledEpicLoot)
             {
-                if (elConfig.ConditionNearbyPlayerCarryLegendaryItem.Value.IsNotEmpty())
+                if (config.TryGet(SpawnSystemConfigEpicLoot.ModName, out cfg) &&
+                    cfg is SpawnSystemConfigEpicLoot elConfig)
                 {
-                    builder.SetEpicLootConditionNearbyPlayerCarryLegendaryItem((int)config.DistanceToTriggerPlayerConditions.Value, elConfig.ConditionNearbyPlayerCarryLegendaryItem.Value.SplitByComma());
-                }
-                if (elConfig.ConditionNearbyPlayerCarryItemWithRarity.Value.IsNotEmpty())
-                {
-                    builder.SetEpicLootConditionNearbyPlayersCarryItemWithRarity((int)config.DistanceToTriggerPlayerConditions.Value, elConfig.ConditionNearbyPlayerCarryItemWithRarity.Value.SplitByComma());
+                    if (elConfig.ConditionNearbyPlayerCarryLegendaryItem.Value.IsNotEmpty())
+                    {
+                        builder.SetEpicLootConditionNearbyPlayerCarryLegendaryItem((int)config.DistanceToTriggerPlayerConditions.Value, elConfig.ConditionNearbyPlayerCarryLegendaryItem.Value.SplitByComma());
+                    }
+                    if (elConfig.ConditionNearbyPlayerCarryItemWithRarity.Value.IsNotEmpty())
+                    {
+                        builder.SetEpicLootConditionNearbyPlayersCarryItemWithRarity((int)config.DistanceToTriggerPlayerConditions.Value, elConfig.ConditionNearbyPlayerCarryItemWithRarity.Value.SplitByComma());
+                    }
                 }
             }
         }
@@ -158,39 +165,45 @@ internal static class SpawnSystemConfigApplier
 
         // Modifiers - Integrations
         {
-            if (config.TryGet(SpawnSystemConfigCLLC.ModName, out cfg) &&
-                cfg is SpawnSystemConfigCLLC cllcConfig)
+            if (IntegrationManager.InstalledCLLC)
             {
-                if (cllcConfig.SetBossAffix.Value.IsNotEmpty() &&
-                    Enum.TryParse(cllcConfig.SetBossAffix.Value, out CllcBossAffix bossAffix))
+                if (config.TryGet(SpawnSystemConfigCLLC.ModName, out cfg) &&
+                    cfg is SpawnSystemConfigCLLC cllcConfig)
                 {
-                    builder.SetCllcModifierBossAffix(bossAffix);
-                }
+                    if (cllcConfig.SetBossAffix.Value.IsNotEmpty() &&
+                        Enum.TryParse(cllcConfig.SetBossAffix.Value, out CllcBossAffix bossAffix))
+                    {
+                        builder.SetCllcModifierBossAffix(bossAffix);
+                    }
 
-                if (cllcConfig.SetExtraEffect.Value.IsNotEmpty() &&
-                    Enum.TryParse(cllcConfig.SetExtraEffect.Value, out CllcCreatureExtraEffect extraEffect))
-                {
-                    builder.SetCllcModifierExtraEffect(extraEffect);
-                }
+                    if (cllcConfig.SetExtraEffect.Value.IsNotEmpty() &&
+                        Enum.TryParse(cllcConfig.SetExtraEffect.Value, out CllcCreatureExtraEffect extraEffect))
+                    {
+                        builder.SetCllcModifierExtraEffect(extraEffect);
+                    }
 
-                if (cllcConfig.SetInfusion.Value.IsNotEmpty() &&
-                    Enum.TryParse(cllcConfig.SetInfusion.Value, out CllcCreatureInfusion infusion))
-                {
-                    builder.SetCllcModifierInfusion(infusion);
-                }
+                    if (cllcConfig.SetInfusion.Value.IsNotEmpty() &&
+                        Enum.TryParse(cllcConfig.SetInfusion.Value, out CllcCreatureInfusion infusion))
+                    {
+                        builder.SetCllcModifierInfusion(infusion);
+                    }
 
-                if (cllcConfig.UseDefaultLevels.Value)
-                {
-                    builder.SetModifier(new ModifierDefaultRollLevel(config.LevelMin.Value, config.LevelMax.Value, 0, 10f));
+                    if (cllcConfig.UseDefaultLevels.Value)
+                    {
+                        builder.SetModifier(new ModifierDefaultRollLevel(config.LevelMin.Value, config.LevelMax.Value, 0, 10f));
+                    }
                 }
             }
 
-            if (config.TryGet(SpawnSystemConfigMobAI.ModName, out cfg) &&
-                cfg is SpawnSystemConfigMobAI mobAIConfig)
+            if (IntegrationManager.InstalledMobAI)
             {
-                if (mobAIConfig.SetAI.Value.IsNotEmpty())
+                if (config.TryGet(SpawnSystemConfigMobAI.ModName, out cfg) &&
+                    cfg is SpawnSystemConfigMobAI mobAIConfig)
                 {
-                    builder.SetMobAiModifier(mobAIConfig.SetAI.Value, mobAIConfig.AIConfigFile.Value);
+                    if (mobAIConfig.SetAI.Value.IsNotEmpty())
+                    {
+                        builder.SetMobAiModifier(mobAIConfig.SetAI.Value, mobAIConfig.AIConfigFile.Value);
+                    }
                 }
             }
         }

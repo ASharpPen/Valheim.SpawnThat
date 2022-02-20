@@ -1,5 +1,7 @@
 ﻿using System;
+using SpawnThat.Core;
 using SpawnThat.Core.Configuration;
+using SpawnThat.Integrations;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Utilities;
 
@@ -70,34 +72,40 @@ internal static class CreatureSpawnerConfigApplier
         Config cfg;
 
         {
-            if (config.TryGet(CreatureSpawnerConfigCLLC.ModName, out cfg) &&
-                cfg is CreatureSpawnerConfigCLLC cllcConfig)
+            if (IntegrationManager.InstalledCLLC)
             {
-                if (cllcConfig.SetBossAffix.Value.IsNotEmpty())
+                if (config.TryGet(CreatureSpawnerConfigCLLC.ModName, out cfg) &&
+                    cfg is CreatureSpawnerConfigCLLC cllcConfig)
                 {
-                    builder.SetCllcModifierBossAffix(cllcConfig.SetBossAffix.Value);
-                }
-                if (cllcConfig.SetExtraEffect.Value.IsNotEmpty())
-                {
-                    builder.SetCllcModifierExtraEffect(cllcConfig.SetExtraEffect.Value);
-                }
-                if (cllcConfig.SetInfusion.Value.IsNotEmpty())
-                {
-                    builder.SetCllcModifierInfusion(cllcConfig.SetInfusion.Value);
-                }
+                    if (cllcConfig.SetBossAffix.Value.IsNotEmpty())
+                    {
+                        builder.SetCllcModifierBossAffix(cllcConfig.SetBossAffix.Value);
+                    }
+                    if (cllcConfig.SetExtraEffect.Value.IsNotEmpty())
+                    {
+                        builder.SetCllcModifierExtraEffect(cllcConfig.SetExtraEffect.Value);
+                    }
+                    if (cllcConfig.SetInfusion.Value.IsNotEmpty())
+                    {
+                        builder.SetCllcModifierInfusion(cllcConfig.SetInfusion.Value);
+                    }
 
-                if (cllcConfig.UseDefaultLevels.Value)
-                {
-                    builder.SetModifier(new ModifierDefaultRollLevel(config.LevelMin.Value, config.LevelMax.Value, 0, config.LevelUpChance.Value));
+                    if (cllcConfig.UseDefaultLevels.Value)
+                    {
+                        builder.SetModifier(new ModifierDefaultRollLevel(config.LevelMin.Value, config.LevelMax.Value, 0, config.LevelUpChance.Value));
+                    }
                 }
             }
 
-            if (config.TryGet(CreatureSpawnerConfigMobAI.ModName, out cfg) &&
-                cfg is CreatureSpawnerConfigMobAI mobAIConfig)
+            if (IntegrationManager.InstalledMobAI)
             {
-                if (mobAIConfig.SetAI.Value.IsNotEmpty())
+                if (config.TryGet(CreatureSpawnerConfigMobAI.ModName, out cfg) &&
+                    cfg is CreatureSpawnerConfigMobAI mobAIConfig)
                 {
-                    builder.SetMobAiModifier(mobAIConfig.SetAI.Value, mobAIConfig.AIConfigFile.Value);
+                    if (mobAIConfig.SetAI.Value.IsNotEmpty())
+                    {
+                        builder.SetMobAiModifier(mobAIConfig.SetAI.Value, mobAIConfig.AIConfigFile.Value);
+                    }
                 }
             }
         }
