@@ -1,5 +1,12 @@
 # Change Log
-
+- v1.0.3:
+	- Fixed local spawner file-configs not being properly matched with spawners.
+	- Fixed error when printing world spawners with missing prefab to debug file.
+	- Fixed error when having file-configurations with integrations not installed.
+	- Added robustness to API when setting up configurations for uninstalled integrations.
+	- Added robustness for v0.207.15
+- v1.0.2:
+	- Fixed error spawn from world spawners, when joining a server with no world spawner configurations.
 - v1.0.1:
 	- Fixed broken config sync.
 - v1.0.0:

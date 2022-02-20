@@ -23,7 +23,7 @@ internal record LocationIdentifier
         }
 #endif
 
-        Location = location.Trim();
-        PrefabName = prefabName.Trim();
+        Location = location.Trim().ToUpperInvariant();
+        PrefabName = prefabName.Trim().ToUpperInvariant();
     }
 }

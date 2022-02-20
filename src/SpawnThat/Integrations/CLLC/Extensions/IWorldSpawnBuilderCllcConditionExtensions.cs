@@ -9,9 +9,11 @@ public static class IWorldSpawnBuilderCllcConditionExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetCondition(new ConditionWorldLevel(minWorldLevel, maxWorldLevel));
+            SetConditionWorldLevel(builder, minWorldLevel, maxWorldLevel);
         }
 
         return builder;
     }
+
+    private static void SetConditionWorldLevel(IWorldSpawnBuilder builder, int? minWorldLevel, int? maxWorldLevel) => builder.SetCondition(new ConditionWorldLevel(minWorldLevel, maxWorldLevel));
 }
