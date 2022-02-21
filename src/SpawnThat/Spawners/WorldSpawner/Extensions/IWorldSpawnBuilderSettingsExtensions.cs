@@ -48,7 +48,7 @@ public static class IWorldSpawnBuilderSettingsExtensions
 
         foreach (var modifier in settings.Modifiers)
         {
-            builder = builder.SetModifier(modifier);
+            builder.SetModifier(modifier);
         }
 
         return builder;

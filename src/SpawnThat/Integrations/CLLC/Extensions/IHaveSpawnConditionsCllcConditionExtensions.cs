@@ -10,9 +10,11 @@ public static class IHaveSpawnConditionsCllcConditionExtensions
     {
         if (IntegrationManager.InstalledCLLC)
         {
-            builder.SetCondition(new ConditionWorldLevel(minWorldLevel, maxWorldLevel));
+            SetConditionWorldLevel(builder, minWorldLevel, maxWorldLevel);
         }
 
         return builder;
     }
+
+    private static void SetConditionWorldLevel(IHaveSpawnConditions builder, int? minWorldLevel, int? maxWorldLevel) => builder.SetCondition(new ConditionWorldLevel(minWorldLevel, maxWorldLevel));
 }

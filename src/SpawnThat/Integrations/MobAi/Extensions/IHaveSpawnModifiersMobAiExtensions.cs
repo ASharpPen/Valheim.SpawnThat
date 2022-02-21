@@ -10,9 +10,11 @@ public static class IHaveSpawnModifiersMobAiExtensions
     {
         if (IntegrationManager.InstalledMobAI)
         {
-            builder.SetModifier(new ModifierSetAI(aiName, mobAiConfig));
+            SetModifier(builder, aiName, mobAiConfig);
         }
 
         return builder;
     }
+
+    private static void SetModifier(IHaveSpawnModifiers builder, string aiName, string mobAiConfig) => builder.SetModifier(new ModifierSetAI(aiName, mobAiConfig));
 }
