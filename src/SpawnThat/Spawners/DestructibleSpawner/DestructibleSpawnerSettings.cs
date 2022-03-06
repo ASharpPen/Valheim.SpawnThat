@@ -79,7 +79,7 @@ public class DestructibleSpawnerSettings
     public float? DistanceConsideredClose { get; set; }
 
     /// <summary>
-    /// <para>Distance within which another entity is counted as being close to spawner.</para>
+    /// <para>Distance within which another entity is counted as being far to spawner.</para>
     /// <para>Default if new template: 1000</para>
     /// </summary>
     /// <remarks>Vanilla name: m_farRadius</remarks>

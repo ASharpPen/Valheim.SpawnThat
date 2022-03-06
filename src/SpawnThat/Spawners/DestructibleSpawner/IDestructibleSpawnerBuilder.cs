@@ -58,10 +58,10 @@ public interface IDestructibleSpawnerBuilder
     IDestructibleSpawnerBuilder SetConditionPlayerWithinDistance(float? withinDistance);
 
     /// <summary>
-    /// Sets maximum number of creatures currently loaded,
+    /// Sets maximum number of creatures within <c>DistanceIsClose</c>,
     /// for spawner to be active.
     /// </summary>
-    /// <remarks>Vanilla name: m_maxTotal</remarks>
+    /// <remarks>Vanilla name: m_maxNear</remarks>
     IDestructibleSpawnerBuilder SetConditionMaxCloseCreatures(int? maxCloseCreatures);
 
     /// <summary>
@@ -78,7 +78,7 @@ public interface IDestructibleSpawnerBuilder
     IDestructibleSpawnerBuilder SetDistanceConsideredClose(float? distance);
 
     /// <summary>
-    /// <para>Distance within which another entity is counted as being close to spawner.</para>
+    /// <para>Distance within which another entity is counted as being far to spawner.</para>
     /// </summary>
     /// <remarks>Vanilla name: m_farRadius</remarks>
     IDestructibleSpawnerBuilder SetDistanceConsideredFar(float? distance);

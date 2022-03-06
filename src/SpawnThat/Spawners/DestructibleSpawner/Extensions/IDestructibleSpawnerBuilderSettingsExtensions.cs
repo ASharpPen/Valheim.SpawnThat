@@ -21,6 +21,11 @@ public static class IDestructibleSpawnerBuilderSettingsExtensions
         {
             foreach (var identifier in settings.Identifiers)
             {
+                if (identifier is null)
+                {
+                    continue;
+                }
+
                 builder.SetIdentifier(identifier);
             }
         }
