@@ -114,6 +114,8 @@ If you feel like it
 <a href="https://www.buymeacoffee.com/asharppen"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=asharppen&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 # Changelog: 
+- v1.0.4:
+	- Fixed dungeon room names not being cleaned before registration, causing issues with local spawners matching.
 - v1.0.3:
 	- Fixed local spawner file-configs not being properly matched with spawners.
 	- Fixed error when printing world spawners with missing prefab to debug file.
