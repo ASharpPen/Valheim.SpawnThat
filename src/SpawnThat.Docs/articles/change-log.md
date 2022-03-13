@@ -1,4 +1,6 @@
 # Change Log
+- v1.0.4:
+	- Fixed dungeon room names not being cleaned before registration, causing issues with local spawners matching.
 - v1.0.3:
 	- Fixed local spawner file-configs not being properly matched with spawners.
 	- Fixed error when printing world spawners with missing prefab to debug file.

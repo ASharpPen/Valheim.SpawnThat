@@ -100,7 +100,7 @@ public static class RoomManager
 
         if (HasAdded.Add(roomPos))
         {
-            data.Name = room.name;
+            data.Name = room.GetCleanedName();
             data.Pos = roomPos;
 
             //Jesus, fix your shit IronGate!
@@ -140,7 +140,7 @@ public static class RoomManager
         private static void CacheRoom(Room component)
         {
 #if DEBUG
-            Log.LogDebug($"Registering room at {component.transform.position} with name {component.name}");
+            Log.LogDebug($"Registering room at {component.transform.position} with name {component.GetCleanedName()}");
 #endif
 
             RoomManager.AddRoom(component);

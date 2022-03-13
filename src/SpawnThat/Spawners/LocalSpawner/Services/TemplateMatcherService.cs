@@ -1,4 +1,5 @@
-﻿using SpawnThat.Spawners.LocalSpawner.Managers;
+﻿using SpawnThat.Core;
+using SpawnThat.Spawners.LocalSpawner.Managers;
 using SpawnThat.Spawners.LocalSpawner.Models;
 using SpawnThat.Utilities.Extensions;
 using SpawnThat.World.Dungeons;
@@ -23,6 +24,9 @@ internal static class TemplateMatcherService
 
         if (room is not null)
         {
+#if DEBUG && TRUE
+            Log.LogTrace($"Searching for local spawn template [{room.Name}.{creatureName}]");
+#endif
             var roomTemplate = LocalSpawnTemplateManager.GetTemplate(new RoomIdentifier(
                 room.Name,
                 creatureName));
@@ -31,6 +35,16 @@ internal static class TemplateMatcherService
             {
                 return roomTemplate;
             }
+#if DEBUG && TRUE
+            else
+            {
+                Log.LogTrace($"Did not find template in:");
+                foreach(var identifier in LocalSpawnTemplateManager.TemplatesByRoom.Keys)
+                {
+                    Log.LogTrace($"\t[{identifier.Room}.{identifier.PrefabName}]");
+                }
+            }
+#endif
         }
 
         // Check location match.
