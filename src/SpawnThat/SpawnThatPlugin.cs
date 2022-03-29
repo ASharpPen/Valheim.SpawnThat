@@ -1,4 +1,5 @@
-﻿using BepInEx;
+﻿using System;
+using BepInEx;
 using HarmonyLib;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
@@ -23,6 +24,13 @@ namespace SpawnThat
             ConfigurationManager.GeneralConfig = ConfigurationManager.LoadGeneral();
 
             Startup.SetupServices();
+
+            Type testType = Type.GetType("YamlDotNet.Serialization.SerializerBuilder, YamlDotNet");
+
+            if (testType is null)
+            {
+                Log.LogWarning("Unable to detect required YamlDotNet type. Verify that YamlDotNet.dll is installed.");
+            }
 
             new Harmony(ModId).PatchAll();
         }
