@@ -4,11 +4,11 @@ using System.Linq;
 using UnityEngine;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
-using SpawnThat.Debugging;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 using SpawnThat.Spawners.WorldSpawner.Managers;
 using SpawnThat.Utilities.Extensions;
+using SpawnThat.Spawners.WorldSpawner.Debug;
 
 namespace SpawnThat.Spawners.WorldSpawner.Services;
 
@@ -157,7 +157,6 @@ internal static class WorldSpawnerConfigurationService
         if (!template.Enabled)
         {
             entry.m_enabled = template.Enabled;
-            return;
         }
 
         GameObject prefab = entry.m_prefab;
@@ -210,7 +209,6 @@ internal static class WorldSpawnerConfigurationService
         if (!template.Enabled)
         {
             entry.m_enabled = template.Enabled;
-            return;
         }
 
         GameObject prefab = entry.m_prefab;
