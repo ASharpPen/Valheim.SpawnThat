@@ -171,19 +171,19 @@ internal static class SpawnSystemConfigApplier
                     cfg is SpawnSystemConfigCLLC cllcConfig)
                 {
                     if (cllcConfig.SetBossAffix.Value.IsNotEmpty() &&
-                        Enum.TryParse(cllcConfig.SetBossAffix.Value, out CllcBossAffix bossAffix))
+                        Enum.TryParse(cllcConfig.SetBossAffix.Value, true, out CllcBossAffix bossAffix))
                     {
                         builder.SetCllcModifierBossAffix(bossAffix);
                     }
 
                     if (cllcConfig.SetExtraEffect.Value.IsNotEmpty() &&
-                        Enum.TryParse(cllcConfig.SetExtraEffect.Value, out CllcCreatureExtraEffect extraEffect))
+                        Enum.TryParse(cllcConfig.SetExtraEffect.Value, true, out CllcCreatureExtraEffect extraEffect))
                     {
                         builder.SetCllcModifierExtraEffect(extraEffect);
                     }
 
                     if (cllcConfig.SetInfusion.Value.IsNotEmpty() &&
-                        Enum.TryParse(cllcConfig.SetInfusion.Value, out CllcCreatureInfusion infusion))
+                        Enum.TryParse(cllcConfig.SetInfusion.Value, true, out CllcCreatureInfusion infusion))
                     {
                         builder.SetCllcModifierInfusion(infusion);
                     }
