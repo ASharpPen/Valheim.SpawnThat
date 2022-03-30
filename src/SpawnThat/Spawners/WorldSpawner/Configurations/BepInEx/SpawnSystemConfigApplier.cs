@@ -155,7 +155,12 @@ internal static class SpawnSystemConfigApplier
         }
 
         builder.SetModifierRelentless(config.SetRelentless.Value);
-        builder.SetModifierDespawnOnConditionsInvalid(config.SpawnDuringDay.Value, config.SpawnDuringNight.Value, config.RequiredEnvironments.Value.SplitByComma());
+
+        if (config.SetTryDespawnOnConditionsInvalid.Value)
+        {
+            builder.SetModifierDespawnOnConditionsInvalid(config.SpawnDuringDay.Value, config.SpawnDuringNight.Value, config.RequiredEnvironments.Value.SplitByComma());
+        }
+
         builder.SetModifierDespawnOnAlert(config.SetTryDespawnOnAlert.Value);
 
         config.TemplateId.SetIfHasValue(builder.SetModifierTemplateId);
