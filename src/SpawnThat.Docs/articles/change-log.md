@@ -1,4 +1,10 @@
-# Change Log
+# Changelog:
+- v1.0.5:
+	- Improved world spawner debug file output. Now tries to output not just the default settings, but the custom too. Including integrations.
+	- Fixed world spawner post change debug file not showing the configuration ID's, but instead the internal index they were added at.
+	- Fixed world spawner cfg load adding unnecessary option.
+	- Fixed faction, biome and cllc setting parsing being case-sensitive. Eg., setting biome as Blackforest would fail to parse as biome BlackForest.
+ 	- Added installation check for YamlDotNet dll, to ensure it is present.
 - v1.0.4:
 	- Fixed dungeon room names not being cleaned before registration, causing issues with local spawners matching.
 - v1.0.3:

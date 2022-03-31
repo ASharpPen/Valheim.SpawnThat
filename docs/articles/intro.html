@@ -67,14 +67,14 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
 
-<p>Welcome to the Valheim.SpawnThat wiki!</p>
+<p>Welcome to the Spawn That documentation!</p>
 <p>Spawn That! is an advanced tool for configuring all world spawners.</p>
 <p>With this, it is possible to change almost all of the default settings for the way spawners work in Valheim.
 Want to have a world without trolls? Possible! (probably)
 Want to have a world with ONLY trolls? Possible! (almost)
 Want to have a world where greydwarves only spawn at night? Possible!
 Just want to have more/less of a mob type? Simple modifiers exist!</p>
-<h1 id="intro-features">Features</h1>
+<h2 id="intro-features">Features</h2>
 <ul>
 <li>Change spawning rates of specific mobs</li>
 <li>Replace existing spawn configurations throughout the world</li>
@@ -96,11 +96,13 @@ Just want to have more/less of a mob type? Simple modifiers exist!</p>
 </li>
 </ul>
 <h2 id="intro-explanation">How does it all work?</h2>
-<p>Valheim&#39;s main way of managing spawns work by having two types of spawners spread throughout the world.
-The world spawners, for which the world has them spread out in a grid fashion, each using the same list of templates to check if something should spawn. These are the general spawners and all currently use the same 44 templates.
-The local spawners, which are intended for fine-tuned spawning. Local spawners only spawn one specific mob type, and only has one alive at a time. These are bound to specific world locations, such as the surtling firehole.</p>
+<p>Valheim&#39;s main way of managing spawns work by having multiple types of spawners spread throughout the world.</p>
+<p>The world spawners, for which the world has them spread out in a grid fashion, each using the same list of templates to check if something should spawn. These are the general spawners and all currently use the same 44 templates.</p>
+<p>The local spawners, which are intended for fine-tuned spawning. Local spawners only spawn one specific mob type, and only has one alive at a time. These are bound to specific world locations, such as the surtling firehole.</p>
+<p>Destructible spawners, like greydwarf nests and draugr piles. These are generated based on locations, like local spawners, but do not keep track of their spawns, just a general idea of what is in the area. And they can be destroyed.</p>
 <p>For world spawners, you can either replace existing templates based on their index, or add to the list of possible templates to spawn from.</p>
 <p>For local spawners, since these are more custom, you describe a location and the prefab name of the mob you what you want to override.</p>
+<p>For destructible spawners, the configuration settings are still in development.</p>
 <p>The mod modification happens at run-time, once for each spawner. Reloading the world resets all changes.
 As the player moves through the world, the game loads in the various spawners, and the mod applies its own settings.</p>
 <h2 id="intro-client-server">Client / Server</h2>
@@ -113,8 +115,7 @@ For this to work, the mod needs to be installed on the server, and have configs 
 <li><p>I keep getting the warning &quot;Unable to find find prefab&quot;</p>
 <ul>
 <li>This happens when Spawn That is trying to retrieve a prefab that it has been told to find, but the prefab has either not been properly loaded by whatever mod was responsible for it, or it is mistyped.</li>
-<li>Generally this warning seem to occur with relation to the RRR-series of mods, but there is nothing Spawn That can do about it. The cause is still being investigated by a variety of modders.</li>
-<li>If you are only seeing the warning server-side, don&#39;t worry unless you have a mod that forces the server to be in charge of spawning. By default, the clients will be in charge of spawning.</li>
+<li>Generally this warning seem to occur with relation to the RRR-series of mods, but there is nothing Spawn That can do about it.</li>
 </ul>
 </li>
 <li><p>Where do I find the prefab names?</p>
@@ -126,10 +127,13 @@ For this to work, the mod needs to be installed on the server, and have configs 
 <ul>
 <li>All configs but <code>spawn_that.cfg</code> and <code>spawn_that.simple.cfg</code> are intended empty initially. You need to fill in the sections yourself.</li>
 <li>Enable any of the &quot;WriteX&quot; in spawn_that.cfg, and files containing the default values will be created in the plugins folder.</li>
-<li>If it just won&#39;t work for you for some reason, I have dumped the pre-change files <a href="https://gist.github.com/ASharpPen/fa142b8aed0205b4e4c059644c58c2cf">here</a> as well.</li>
+<li>If it just won&#39;t work for you for some reason, the files can be found on this site under <code>Data</code>.</li>
 </ul>
 </li>
 </ul>
+<h2 id="support">Support</h2>
+<p>If you feel like it</p>
+<p><a href="https://www.buymeacoffee.com/asharppen"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=asharppen&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"></a></p>
 </article>
           </div>
           
@@ -138,7 +142,7 @@ For this to work, the mod needs to be installed on the server, and have configs 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat.Docs/articles/intro.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/hotfix/src/SpawnThat.Docs/articles/intro.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

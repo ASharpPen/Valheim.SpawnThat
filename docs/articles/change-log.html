@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> </title>
+    <title>Changelog: </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" ">
+    <meta name="title" content="Changelog: ">
     <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -66,8 +66,37 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="changelog">Changelog:</h1>
 
 <ul>
+<li>v1.0.5:<ul>
+<li>Improved world spawner debug file output. Now tries to output not just the default settings, but the custom too. Including integrations.</li>
+<li>Fixed world spawner post change debug file not showing the configuration ID&#39;s, but instead the internal index they were added at.</li>
+<li>Fixed world spawner cfg load adding unnecessary option.</li>
+<li>Fixed faction, biome and cllc setting parsing being case-sensitive. Eg., setting biome as Blackforest would fail to parse as biome BlackForest.</li>
+<li>Added installation check for YamlDotNet dll, to ensure it is present.</li>
+</ul>
+</li>
+<li>v1.0.4:<ul>
+<li>Fixed dungeon room names not being cleaned before registration, causing issues with local spawners matching.</li>
+</ul>
+</li>
+<li>v1.0.3:<ul>
+<li>Fixed local spawner file-configs not being properly matched with spawners.</li>
+<li>Fixed error when printing world spawners with missing prefab to debug file.</li>
+<li>Fixed error when having file-configurations with integrations not installed.</li>
+<li>Added robustness to API when setting up configurations for uninstalled integrations.</li>
+<li>Added robustness for v0.207.15</li>
+</ul>
+</li>
+<li>v1.0.2:<ul>
+<li>Fixed error spawn from world spawners, when joining a server with no world spawner configurations.</li>
+</ul>
+</li>
+<li>v1.0.1:<ul>
+<li>Fixed broken config sync.</li>
+</ul>
+</li>
 <li>v1.0.0:<ul>
 <li>WorldSpawner config <code>Enabled</code> now toggles the actual spawn entry on/off.</li>
 <li>Added WorldSpawner option <code>TemplateEnabled</code> to replace <code>Enabled</code>.</li>
@@ -214,7 +243,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/feature/fix-namespaces-and-document/src/SpawnThat.Docs/articles/change-log.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/hotfix/src/SpawnThat.Docs/articles/change-log.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

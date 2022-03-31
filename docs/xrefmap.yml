@@ -13,6 +13,12 @@ references:
   commentId: T:SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel
   fullName: SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel
   nameWithType: ConditionWorldLevel
+- uid: SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel.#ctor
+  name: ConditionWorldLevel()
+  href: api/1.0.0/reference/SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel.html#SpawnThat_Integrations_CLLC_Conditions_ConditionWorldLevel__ctor
+  commentId: M:SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel.#ctor
+  fullName: SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel.ConditionWorldLevel()
+  nameWithType: ConditionWorldLevel.ConditionWorldLevel()
 - uid: SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel.#ctor(System.Nullable{System.Int32},System.Nullable{System.Int32})
   name: ConditionWorldLevel(Nullable<Int32>, Nullable<Int32>)
   href: api/1.0.0/reference/SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel.html#SpawnThat_Integrations_CLLC_Conditions_ConditionWorldLevel__ctor_System_Nullable_System_Int32__System_Nullable_System_Int32__
@@ -236,6 +242,12 @@ references:
   commentId: T:SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix
   fullName: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix
   nameWithType: ModifierCllcBossAffix
+- uid: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix.#ctor
+  name: ModifierCllcBossAffix()
+  href: api/1.0.0/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix.html#SpawnThat_Integrations_CLLC_Modifiers_ModifierCllcBossAffix__ctor
+  commentId: M:SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix.#ctor
+  fullName: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix.ModifierCllcBossAffix()
+  nameWithType: ModifierCllcBossAffix.ModifierCllcBossAffix()
 - uid: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix.#ctor(SpawnThat.Integrations.CLLC.Models.CllcBossAffix)
   name: ModifierCllcBossAffix(CllcBossAffix)
   href: api/1.0.0/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix.html#SpawnThat_Integrations_CLLC_Modifiers_ModifierCllcBossAffix__ctor_SpawnThat_Integrations_CLLC_Models_CllcBossAffix_
@@ -287,6 +299,12 @@ references:
   commentId: T:SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion
   fullName: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion
   nameWithType: ModifierCllcInfusion
+- uid: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion.#ctor
+  name: ModifierCllcInfusion()
+  href: api/1.0.0/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion.html#SpawnThat_Integrations_CLLC_Modifiers_ModifierCllcInfusion__ctor
+  commentId: M:SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion.#ctor
+  fullName: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion.ModifierCllcInfusion()
+  nameWithType: ModifierCllcInfusion.ModifierCllcInfusion()
 - uid: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion.#ctor(SpawnThat.Integrations.CLLC.Models.CllcCreatureInfusion)
   name: ModifierCllcInfusion(CllcCreatureInfusion)
   href: api/1.0.0/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion.html#SpawnThat_Integrations_CLLC_Modifiers_ModifierCllcInfusion__ctor_SpawnThat_Integrations_CLLC_Models_CllcCreatureInfusion_
@@ -338,6 +356,19 @@ references:
   commentId: T:SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel
   fullName: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel
   nameWithType: ModifierCllcRandomLevel
+- uid: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.#ctor
+  name: ModifierCllcRandomLevel()
+  href: api/1.0.0/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.html#SpawnThat_Integrations_CLLC_Modifiers_ModifierCllcRandomLevel__ctor
+  commentId: M:SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.#ctor
+  fullName: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.ModifierCllcRandomLevel()
+  nameWithType: ModifierCllcRandomLevel.ModifierCllcRandomLevel()
+- uid: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.#ctor*
+  name: ModifierCllcRandomLevel
+  href: api/1.0.0/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.html#SpawnThat_Integrations_CLLC_Modifiers_ModifierCllcRandomLevel__ctor_
+  commentId: Overload:SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.#ctor
+  isSpec: "True"
+  fullName: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.ModifierCllcRandomLevel
+  nameWithType: ModifierCllcRandomLevel.ModifierCllcRandomLevel
 - uid: SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.Modify(UnityEngine.GameObject,ZDO)
   name: Modify(GameObject, ZDO)
   href: api/1.0.0/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.html#SpawnThat_Integrations_CLLC_Modifiers_ModifierCllcRandomLevel_Modify_UnityEngine_GameObject_ZDO_
@@ -363,6 +394,12 @@ references:
   commentId: T:SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity
   fullName: SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity
   nameWithType: ConditionNearbyPlayerCarryItemWithRarity
+- uid: SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity.#ctor
+  name: ConditionNearbyPlayerCarryItemWithRarity()
+  href: api/1.0.0/reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity.html#SpawnThat_Integrations_EpicLoot_Conditions_ConditionNearbyPlayerCarryItemWithRarity__ctor
+  commentId: M:SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity.#ctor
+  fullName: SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity.ConditionNearbyPlayerCarryItemWithRarity()
+  nameWithType: ConditionNearbyPlayerCarryItemWithRarity.ConditionNearbyPlayerCarryItemWithRarity()
 - uid: SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity.#ctor(System.Int32,System.Collections.Generic.IEnumerable{SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity})
   name: ConditionNearbyPlayerCarryItemWithRarity(Int32, IEnumerable<EpicLootRarity>)
   href: api/1.0.0/reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity.html#SpawnThat_Integrations_EpicLoot_Conditions_ConditionNearbyPlayerCarryItemWithRarity__ctor_System_Int32_System_Collections_Generic_IEnumerable_SpawnThat_Integrations_EpicLoot_Models_EpicLootRarity__
@@ -433,6 +470,12 @@ references:
   commentId: T:SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem
   fullName: SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem
   nameWithType: ConditionNearbyPlayerCarryLegendaryItem
+- uid: SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem.#ctor
+  name: ConditionNearbyPlayerCarryLegendaryItem()
+  href: api/1.0.0/reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem.html#SpawnThat_Integrations_EpicLoot_Conditions_ConditionNearbyPlayerCarryLegendaryItem__ctor
+  commentId: M:SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem.#ctor
+  fullName: SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem.ConditionNearbyPlayerCarryLegendaryItem()
+  nameWithType: ConditionNearbyPlayerCarryLegendaryItem.ConditionNearbyPlayerCarryLegendaryItem()
 - uid: SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem.#ctor(System.Int32,System.Collections.Generic.IEnumerable{System.String})
   name: ConditionNearbyPlayerCarryLegendaryItem(Int32, IEnumerable<String>)
   href: api/1.0.0/reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem.html#SpawnThat_Integrations_EpicLoot_Conditions_ConditionNearbyPlayerCarryLegendaryItem__ctor_System_Int32_System_Collections_Generic_IEnumerable_System_String__
@@ -545,6 +588,12 @@ references:
   commentId: T:SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI
   fullName: SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI
   nameWithType: ModifierSetAI
+- uid: SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI.#ctor
+  name: ModifierSetAI()
+  href: api/1.0.0/reference/SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI.html#SpawnThat_Integrations_MobAi_Modifiers_ModifierSetAI__ctor
+  commentId: M:SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI.#ctor
+  fullName: SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI.ModifierSetAI()
+  nameWithType: ModifierSetAI.ModifierSetAI()
 - uid: SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI.#ctor(System.String,System.String)
   name: ModifierSetAI(String, String)
   href: api/1.0.0/reference/SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI.html#SpawnThat_Integrations_MobAi_Modifiers_ModifierSetAI__ctor_System_String_System_String_
@@ -713,6 +762,12 @@ references:
   commentId: T:SpawnThat.Options.Conditions.ConditionAreaIds
   fullName: SpawnThat.Options.Conditions.ConditionAreaIds
   nameWithType: ConditionAreaIds
+- uid: SpawnThat.Options.Conditions.ConditionAreaIds.#ctor
+  name: ConditionAreaIds()
+  href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionAreaIds.html#SpawnThat_Options_Conditions_ConditionAreaIds__ctor
+  commentId: M:SpawnThat.Options.Conditions.ConditionAreaIds.#ctor
+  fullName: SpawnThat.Options.Conditions.ConditionAreaIds.ConditionAreaIds()
+  nameWithType: ConditionAreaIds.ConditionAreaIds()
 - uid: SpawnThat.Options.Conditions.ConditionAreaIds.#ctor(System.Collections.Generic.List{System.Int32})
   name: ConditionAreaIds(List<Int32>)
   href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionAreaIds.html#SpawnThat_Options_Conditions_ConditionAreaIds__ctor_System_Collections_Generic_List_System_Int32__
@@ -773,6 +828,12 @@ references:
   commentId: T:SpawnThat.Options.Conditions.ConditionAreaSpawnChance
   fullName: SpawnThat.Options.Conditions.ConditionAreaSpawnChance
   nameWithType: ConditionAreaSpawnChance
+- uid: SpawnThat.Options.Conditions.ConditionAreaSpawnChance.#ctor
+  name: ConditionAreaSpawnChance()
+  href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionAreaSpawnChance.html#SpawnThat_Options_Conditions_ConditionAreaSpawnChance__ctor
+  commentId: M:SpawnThat.Options.Conditions.ConditionAreaSpawnChance.#ctor
+  fullName: SpawnThat.Options.Conditions.ConditionAreaSpawnChance.ConditionAreaSpawnChance()
+  nameWithType: ConditionAreaSpawnChance.ConditionAreaSpawnChance()
 - uid: SpawnThat.Options.Conditions.ConditionAreaSpawnChance.#ctor(System.Single,System.Int32)
   name: ConditionAreaSpawnChance(Single, Int32)
   href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionAreaSpawnChance.html#SpawnThat_Options_Conditions_ConditionAreaSpawnChance__ctor_System_Single_System_Int32_
@@ -831,6 +892,12 @@ references:
   commentId: T:SpawnThat.Options.Conditions.ConditionCloseToPlayer
   fullName: SpawnThat.Options.Conditions.ConditionCloseToPlayer
   nameWithType: ConditionCloseToPlayer
+- uid: SpawnThat.Options.Conditions.ConditionCloseToPlayer.#ctor
+  name: ConditionCloseToPlayer()
+  href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionCloseToPlayer.html#SpawnThat_Options_Conditions_ConditionCloseToPlayer__ctor
+  commentId: M:SpawnThat.Options.Conditions.ConditionCloseToPlayer.#ctor
+  fullName: SpawnThat.Options.Conditions.ConditionCloseToPlayer.ConditionCloseToPlayer()
+  nameWithType: ConditionCloseToPlayer.ConditionCloseToPlayer()
 - uid: SpawnThat.Options.Conditions.ConditionCloseToPlayer.#ctor(System.Single)
   name: ConditionCloseToPlayer(Single)
   href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionCloseToPlayer.html#SpawnThat_Options_Conditions_ConditionCloseToPlayer__ctor_System_Single_
@@ -876,6 +943,12 @@ references:
   commentId: T:SpawnThat.Options.Conditions.ConditionDistanceToCenter
   fullName: SpawnThat.Options.Conditions.ConditionDistanceToCenter
   nameWithType: ConditionDistanceToCenter
+- uid: SpawnThat.Options.Conditions.ConditionDistanceToCenter.#ctor
+  name: ConditionDistanceToCenter()
+  href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionDistanceToCenter.html#SpawnThat_Options_Conditions_ConditionDistanceToCenter__ctor
+  commentId: M:SpawnThat.Options.Conditions.ConditionDistanceToCenter.#ctor
+  fullName: SpawnThat.Options.Conditions.ConditionDistanceToCenter.ConditionDistanceToCenter()
+  nameWithType: ConditionDistanceToCenter.ConditionDistanceToCenter()
 - uid: SpawnThat.Options.Conditions.ConditionDistanceToCenter.#ctor(System.Nullable{System.Double},System.Nullable{System.Double})
   name: ConditionDistanceToCenter(Nullable<Double>, Nullable<Double>)
   href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionDistanceToCenter.html#SpawnThat_Options_Conditions_ConditionDistanceToCenter__ctor_System_Nullable_System_Double__System_Nullable_System_Double__
@@ -943,6 +1016,12 @@ references:
   commentId: T:SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing
   fullName: SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing
   nameWithType: ConditionGlobalKeysRequiredMissing
+- uid: SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing.#ctor
+  name: ConditionGlobalKeysRequiredMissing()
+  href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing.html#SpawnThat_Options_Conditions_ConditionGlobalKeysRequiredMissing__ctor
+  commentId: M:SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing.#ctor
+  fullName: SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing.ConditionGlobalKeysRequiredMissing()
+  nameWithType: ConditionGlobalKeysRequiredMissing.ConditionGlobalKeysRequiredMissing()
 - uid: SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing.#ctor(System.String[])
   name: ConditionGlobalKeysRequiredMissing(String[])
   href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing.html#SpawnThat_Options_Conditions_ConditionGlobalKeysRequiredMissing__ctor_System_String___
@@ -991,6 +1070,12 @@ references:
   commentId: T:SpawnThat.Options.Conditions.ConditionLocation
   fullName: SpawnThat.Options.Conditions.ConditionLocation
   nameWithType: ConditionLocation
+- uid: SpawnThat.Options.Conditions.ConditionLocation.#ctor
+  name: ConditionLocation()
+  href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionLocation.html#SpawnThat_Options_Conditions_ConditionLocation__ctor
+  commentId: M:SpawnThat.Options.Conditions.ConditionLocation.#ctor
+  fullName: SpawnThat.Options.Conditions.ConditionLocation.ConditionLocation()
+  nameWithType: ConditionLocation.ConditionLocation()
 - uid: SpawnThat.Options.Conditions.ConditionLocation.#ctor(System.String[])
   name: ConditionLocation(String[])
   href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionLocation.html#SpawnThat_Options_Conditions_ConditionLocation__ctor_System_String___
@@ -1045,6 +1130,12 @@ references:
   commentId: T:SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem
   fullName: SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem
   nameWithType: ConditionNearbyPlayersCarryItem
+- uid: SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem.#ctor
+  name: ConditionNearbyPlayersCarryItem()
+  href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem.html#SpawnThat_Options_Conditions_ConditionNearbyPlayersCarryItem__ctor
+  commentId: M:SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem.#ctor
+  fullName: SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem.ConditionNearbyPlayersCarryItem()
+  nameWithType: ConditionNearbyPlayersCarryItem.ConditionNearbyPlayersCarryItem()
 - uid: SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem.#ctor(System.Int32,System.String[])
   name: ConditionNearbyPlayersCarryItem(Int32, String[])
   href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem.html#SpawnThat_Options_Conditions_ConditionNearbyPlayersCarryItem__ctor_System_Int32_System_String___
@@ -1106,6 +1197,12 @@ references:
   commentId: T:SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue
   fullName: SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue
   nameWithType: ConditionNearbyPlayersCarryValue
+- uid: SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue.#ctor
+  name: ConditionNearbyPlayersCarryValue()
+  href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue.html#SpawnThat_Options_Conditions_ConditionNearbyPlayersCarryValue__ctor
+  commentId: M:SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue.#ctor
+  fullName: SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue.ConditionNearbyPlayersCarryValue()
+  nameWithType: ConditionNearbyPlayersCarryValue.ConditionNearbyPlayersCarryValue()
 - uid: SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue.#ctor(System.Int32,System.Int32)
   name: ConditionNearbyPlayersCarryValue(Int32, Int32)
   href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue.html#SpawnThat_Options_Conditions_ConditionNearbyPlayersCarryValue__ctor_System_Int32_System_Int32_
@@ -1164,6 +1261,12 @@ references:
   commentId: T:SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise
   fullName: SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise
   nameWithType: ConditionNearbyPlayersNoise
+- uid: SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise.#ctor
+  name: ConditionNearbyPlayersNoise()
+  href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise.html#SpawnThat_Options_Conditions_ConditionNearbyPlayersNoise__ctor
+  commentId: M:SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise.#ctor
+  fullName: SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise.ConditionNearbyPlayersNoise()
+  nameWithType: ConditionNearbyPlayersNoise.ConditionNearbyPlayersNoise()
 - uid: SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise.#ctor(System.Int32,System.Single)
   name: ConditionNearbyPlayersNoise(Int32, Single)
   href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise.html#SpawnThat_Options_Conditions_ConditionNearbyPlayersNoise__ctor_System_Int32_System_Single_
@@ -1222,6 +1325,12 @@ references:
   commentId: T:SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus
   fullName: SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus
   nameWithType: ConditionNearbyPlayersStatus
+- uid: SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus.#ctor
+  name: ConditionNearbyPlayersStatus()
+  href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus.html#SpawnThat_Options_Conditions_ConditionNearbyPlayersStatus__ctor
+  commentId: M:SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus.#ctor
+  fullName: SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus.ConditionNearbyPlayersStatus()
+  nameWithType: ConditionNearbyPlayersStatus.ConditionNearbyPlayersStatus()
 - uid: SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus.#ctor(System.Int32,System.String[])
   name: ConditionNearbyPlayersStatus(Int32, String[])
   href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus.html#SpawnThat_Options_Conditions_ConditionNearbyPlayersStatus__ctor_System_Int32_System_String___
@@ -1283,6 +1392,12 @@ references:
   commentId: T:SpawnThat.Options.Conditions.ConditionWorldAge
   fullName: SpawnThat.Options.Conditions.ConditionWorldAge
   nameWithType: ConditionWorldAge
+- uid: SpawnThat.Options.Conditions.ConditionWorldAge.#ctor
+  name: ConditionWorldAge()
+  href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionWorldAge.html#SpawnThat_Options_Conditions_ConditionWorldAge__ctor
+  commentId: M:SpawnThat.Options.Conditions.ConditionWorldAge.#ctor
+  fullName: SpawnThat.Options.Conditions.ConditionWorldAge.ConditionWorldAge()
+  nameWithType: ConditionWorldAge.ConditionWorldAge()
 - uid: SpawnThat.Options.Conditions.ConditionWorldAge.#ctor(System.Nullable{System.Int32},System.Nullable{System.Int32})
   name: ConditionWorldAge(Nullable<Int32>, Nullable<Int32>)
   href: api/1.0.0/reference/SpawnThat.Options.Conditions.ConditionWorldAge.html#SpawnThat_Options_Conditions_ConditionWorldAge__ctor_System_Nullable_System_Int32__System_Nullable_System_Int32__
@@ -1388,6 +1503,12 @@ references:
   commentId: T:SpawnThat.Options.Modifiers.ModifierDefaultRollLevel
   fullName: SpawnThat.Options.Modifiers.ModifierDefaultRollLevel
   nameWithType: ModifierDefaultRollLevel
+- uid: SpawnThat.Options.Modifiers.ModifierDefaultRollLevel.#ctor
+  name: ModifierDefaultRollLevel()
+  href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierDefaultRollLevel.html#SpawnThat_Options_Modifiers_ModifierDefaultRollLevel__ctor
+  commentId: M:SpawnThat.Options.Modifiers.ModifierDefaultRollLevel.#ctor
+  fullName: SpawnThat.Options.Modifiers.ModifierDefaultRollLevel.ModifierDefaultRollLevel()
+  nameWithType: ModifierDefaultRollLevel.ModifierDefaultRollLevel()
 - uid: SpawnThat.Options.Modifiers.ModifierDefaultRollLevel.#ctor(System.Int32,System.Int32,System.Double,System.Double)
   name: ModifierDefaultRollLevel(Int32, Int32, Double, Double)
   href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierDefaultRollLevel.html#SpawnThat_Options_Modifiers_ModifierDefaultRollLevel__ctor_System_Int32_System_Int32_System_Double_System_Double_
@@ -1472,6 +1593,12 @@ references:
   commentId: T:SpawnThat.Options.Modifiers.ModifierDespawnOnAlert
   fullName: SpawnThat.Options.Modifiers.ModifierDespawnOnAlert
   nameWithType: ModifierDespawnOnAlert
+- uid: SpawnThat.Options.Modifiers.ModifierDespawnOnAlert.#ctor
+  name: ModifierDespawnOnAlert()
+  href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnAlert.html#SpawnThat_Options_Modifiers_ModifierDespawnOnAlert__ctor
+  commentId: M:SpawnThat.Options.Modifiers.ModifierDespawnOnAlert.#ctor
+  fullName: SpawnThat.Options.Modifiers.ModifierDespawnOnAlert.ModifierDespawnOnAlert()
+  nameWithType: ModifierDespawnOnAlert.ModifierDespawnOnAlert()
 - uid: SpawnThat.Options.Modifiers.ModifierDespawnOnAlert.#ctor(System.Boolean)
   name: ModifierDespawnOnAlert(Boolean)
   href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnAlert.html#SpawnThat_Options_Modifiers_ModifierDespawnOnAlert__ctor_System_Boolean_
@@ -1536,6 +1663,12 @@ references:
   commentId: T:SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid
   fullName: SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid
   nameWithType: ModifierDespawnOnConditionsInvalid
+- uid: SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid.#ctor
+  name: ModifierDespawnOnConditionsInvalid()
+  href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid.html#SpawnThat_Options_Modifiers_ModifierDespawnOnConditionsInvalid__ctor
+  commentId: M:SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid.#ctor
+  fullName: SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid.ModifierDespawnOnConditionsInvalid()
+  nameWithType: ModifierDespawnOnConditionsInvalid.ModifierDespawnOnConditionsInvalid()
 - uid: SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid.#ctor(System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Collections.Generic.List{System.String})
   name: ModifierDespawnOnConditionsInvalid(Nullable<Boolean>, Nullable<Boolean>, List<String>)
   href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid.html#SpawnThat_Options_Modifiers_ModifierDespawnOnConditionsInvalid__ctor_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_List_System_String__
@@ -1692,6 +1825,12 @@ references:
   commentId: M:SpawnThat.Options.Modifiers.ModifierSetFaction.#ctor
   fullName: SpawnThat.Options.Modifiers.ModifierSetFaction.ModifierSetFaction()
   nameWithType: ModifierSetFaction.ModifierSetFaction()
+- uid: SpawnThat.Options.Modifiers.ModifierSetFaction.#ctor(Character.Faction)
+  name: ModifierSetFaction(Character.Faction)
+  href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierSetFaction.html#SpawnThat_Options_Modifiers_ModifierSetFaction__ctor_Character_Faction_
+  commentId: M:SpawnThat.Options.Modifiers.ModifierSetFaction.#ctor(Character.Faction)
+  fullName: SpawnThat.Options.Modifiers.ModifierSetFaction.ModifierSetFaction(Character.Faction)
+  nameWithType: ModifierSetFaction.ModifierSetFaction(Character.Faction)
 - uid: SpawnThat.Options.Modifiers.ModifierSetFaction.#ctor(System.String)
   name: ModifierSetFaction(String)
   href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierSetFaction.html#SpawnThat_Options_Modifiers_ModifierSetFaction__ctor_System_String_
@@ -1737,6 +1876,12 @@ references:
   commentId: T:SpawnThat.Options.Modifiers.ModifierSetRelentless
   fullName: SpawnThat.Options.Modifiers.ModifierSetRelentless
   nameWithType: ModifierSetRelentless
+- uid: SpawnThat.Options.Modifiers.ModifierSetRelentless.#ctor
+  name: ModifierSetRelentless()
+  href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierSetRelentless.html#SpawnThat_Options_Modifiers_ModifierSetRelentless__ctor
+  commentId: M:SpawnThat.Options.Modifiers.ModifierSetRelentless.#ctor
+  fullName: SpawnThat.Options.Modifiers.ModifierSetRelentless.ModifierSetRelentless()
+  nameWithType: ModifierSetRelentless.ModifierSetRelentless()
 - uid: SpawnThat.Options.Modifiers.ModifierSetRelentless.#ctor(System.Boolean)
   name: ModifierSetRelentless(Boolean)
   href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierSetRelentless.html#SpawnThat_Options_Modifiers_ModifierSetRelentless__ctor_System_Boolean_
@@ -1801,6 +1946,12 @@ references:
   commentId: T:SpawnThat.Options.Modifiers.ModifierSetTamed
   fullName: SpawnThat.Options.Modifiers.ModifierSetTamed
   nameWithType: ModifierSetTamed
+- uid: SpawnThat.Options.Modifiers.ModifierSetTamed.#ctor
+  name: ModifierSetTamed()
+  href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierSetTamed.html#SpawnThat_Options_Modifiers_ModifierSetTamed__ctor
+  commentId: M:SpawnThat.Options.Modifiers.ModifierSetTamed.#ctor
+  fullName: SpawnThat.Options.Modifiers.ModifierSetTamed.ModifierSetTamed()
+  nameWithType: ModifierSetTamed.ModifierSetTamed()
 - uid: SpawnThat.Options.Modifiers.ModifierSetTamed.#ctor(System.Boolean)
   name: ModifierSetTamed(Boolean)
   href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierSetTamed.html#SpawnThat_Options_Modifiers_ModifierSetTamed__ctor_System_Boolean_
@@ -1846,6 +1997,12 @@ references:
   commentId: T:SpawnThat.Options.Modifiers.ModifierSetTamedCommandable
   fullName: SpawnThat.Options.Modifiers.ModifierSetTamedCommandable
   nameWithType: ModifierSetTamedCommandable
+- uid: SpawnThat.Options.Modifiers.ModifierSetTamedCommandable.#ctor
+  name: ModifierSetTamedCommandable()
+  href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierSetTamedCommandable.html#SpawnThat_Options_Modifiers_ModifierSetTamedCommandable__ctor
+  commentId: M:SpawnThat.Options.Modifiers.ModifierSetTamedCommandable.#ctor
+  fullName: SpawnThat.Options.Modifiers.ModifierSetTamedCommandable.ModifierSetTamedCommandable()
+  nameWithType: ModifierSetTamedCommandable.ModifierSetTamedCommandable()
 - uid: SpawnThat.Options.Modifiers.ModifierSetTamedCommandable.#ctor(System.Boolean)
   name: ModifierSetTamedCommandable(Boolean)
   href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierSetTamedCommandable.html#SpawnThat_Options_Modifiers_ModifierSetTamedCommandable__ctor_System_Boolean_
@@ -1910,6 +2067,12 @@ references:
   commentId: T:SpawnThat.Options.Modifiers.ModifierSetTemplateId
   fullName: SpawnThat.Options.Modifiers.ModifierSetTemplateId
   nameWithType: ModifierSetTemplateId
+- uid: SpawnThat.Options.Modifiers.ModifierSetTemplateId.#ctor
+  name: ModifierSetTemplateId()
+  href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierSetTemplateId.html#SpawnThat_Options_Modifiers_ModifierSetTemplateId__ctor
+  commentId: M:SpawnThat.Options.Modifiers.ModifierSetTemplateId.#ctor
+  fullName: SpawnThat.Options.Modifiers.ModifierSetTemplateId.ModifierSetTemplateId()
+  nameWithType: ModifierSetTemplateId.ModifierSetTemplateId()
 - uid: SpawnThat.Options.Modifiers.ModifierSetTemplateId.#ctor(System.String)
   name: ModifierSetTemplateId(String)
   href: api/1.0.0/reference/SpawnThat.Options.Modifiers.ModifierSetTemplateId.html#SpawnThat_Options_Modifiers_ModifierSetTemplateId__ctor_System_String_
@@ -1999,6 +2162,12 @@ references:
   commentId: T:SpawnThat.Options.PositionConditions.PositionConditionLocation
   fullName: SpawnThat.Options.PositionConditions.PositionConditionLocation
   nameWithType: PositionConditionLocation
+- uid: SpawnThat.Options.PositionConditions.PositionConditionLocation.#ctor
+  name: PositionConditionLocation()
+  href: api/1.0.0/reference/SpawnThat.Options.PositionConditions.PositionConditionLocation.html#SpawnThat_Options_PositionConditions_PositionConditionLocation__ctor
+  commentId: M:SpawnThat.Options.PositionConditions.PositionConditionLocation.#ctor
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionLocation.PositionConditionLocation()
+  nameWithType: PositionConditionLocation.PositionConditionLocation()
 - uid: SpawnThat.Options.PositionConditions.PositionConditionLocation.#ctor(System.Collections.Generic.IEnumerable{System.String})
   name: PositionConditionLocation(IEnumerable<String>)
   href: api/1.0.0/reference/SpawnThat.Options.PositionConditions.PositionConditionLocation.html#SpawnThat_Options_PositionConditions_PositionConditionLocation__ctor_System_Collections_Generic_IEnumerable_System_String__
