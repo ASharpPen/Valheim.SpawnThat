@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using SpawnThat.Core;
 using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Options.Modifiers.Patches;
@@ -23,6 +24,8 @@ internal static class SetFactionPatch
 
         if (faction is not null)
         {
+            Log.LogTrace($"[{__instance.name}] Setting faction '{faction}'");
+
             __instance.m_faction = faction.Value;
         }
     }

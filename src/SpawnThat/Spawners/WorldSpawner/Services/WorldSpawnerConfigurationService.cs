@@ -4,11 +4,11 @@ using System.Linq;
 using UnityEngine;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
-using SpawnThat.Debugging;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 using SpawnThat.Spawners.WorldSpawner.Managers;
 using SpawnThat.Utilities.Extensions;
+using SpawnThat.Spawners.WorldSpawner.Debug;
 
 namespace SpawnThat.Spawners.WorldSpawner.Services;
 
@@ -16,6 +16,7 @@ internal static class WorldSpawnerConfigurationService
 {
     private static bool IsConfigured;
     private static bool FirstRun = true;
+    private static bool DetectedUnableToFindPrefab;
 
     static WorldSpawnerConfigurationService()
     {
@@ -23,6 +24,7 @@ internal static class WorldSpawnerConfigurationService
         {
             IsConfigured = false;
             FirstRun = true;
+            DetectedUnableToFindPrefab = false;
         });
     }
 
@@ -59,6 +61,15 @@ internal static class WorldSpawnerConfigurationService
         }
 
         IsConfigured = true;
+
+        if (DetectedUnableToFindPrefab)
+        {
+            Log.LogWarning(
+                "Issues with finding prefabs detected.\n" +
+                "The message \"Unable to find prefab\" means that Spawn That is loaded correctly, and is now trying to configure your spawns.\n" +
+                "However, the listed prefab was not registered in the game, and Spawn That is therefore unable to use it.\n" +
+                "Verify spelling of prefab name in Spawn That configurations, or that the creature/item is correctly loaded.");
+        }
     }
 
     private static void ApplyWorldSpawnerTemplates(List<SpawnSystemList> spawnLists)
@@ -157,7 +168,6 @@ internal static class WorldSpawnerConfigurationService
         if (!template.Enabled)
         {
             entry.m_enabled = template.Enabled;
-            return;
         }
 
         GameObject prefab = entry.m_prefab;
@@ -169,6 +179,7 @@ internal static class WorldSpawnerConfigurationService
             if (prefab.IsNull())
             {
                 Log.LogWarning($"Unable to find prefab '{template.PrefabName}' for {template.PrefabName}. Skipping world spawn template {template.TemplateName}");
+                DetectedUnableToFindPrefab = true;
                 return;
             }
         }
@@ -210,7 +221,6 @@ internal static class WorldSpawnerConfigurationService
         if (!template.Enabled)
         {
             entry.m_enabled = template.Enabled;
-            return;
         }
 
         GameObject prefab = entry.m_prefab;
@@ -222,6 +232,7 @@ internal static class WorldSpawnerConfigurationService
             if (prefab.IsNull())
             {
                 Log.LogWarning($"Unable to find prefab '{template.PrefabName}' for {template.PrefabName}. Skipping world spawn template {template.TemplateName}");
+                DetectedUnableToFindPrefab = true;
                 return;
             }
         }

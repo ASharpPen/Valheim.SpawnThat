@@ -4,6 +4,7 @@
 ## [How does it work?](intro.md#how-does-it-all-work)
 ## [Client / Server](intro.md#client--server)
 ## [FAQ](intro.md#faq)
+## [Support](intro.md#support)
 
 # [Console Commands](console-commands.md)
 

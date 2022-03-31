@@ -22,7 +22,7 @@ internal static class SpawnConfigurationExtensions
 
         foreach (var requiredBiome in biomeArray)
         {
-            if (Enum.TryParse(requiredBiome, out Heightmap.Biome reqBiome))
+            if (Enum.TryParse(requiredBiome, true, out Heightmap.Biome reqBiome))
             {
                 biome |= reqBiome;
             }

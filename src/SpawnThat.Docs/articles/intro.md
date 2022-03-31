@@ -1,4 +1,4 @@
-Welcome to the Valheim.SpawnThat wiki!
+Welcome to the Spawn That documentation!
 
 Spawn That! is an advanced tool for configuring all world spawners.
 
@@ -8,7 +8,7 @@ Want to have a world with ONLY trolls? Possible! (almost)
 Want to have a world where greydwarves only spawn at night? Possible!
 Just want to have more/less of a mob type? Simple modifiers exist!
 
-# <a id="intro-features"></a>Features
+## <a id="intro-features"></a>Features
 
 - Change spawning rates of specific mobs
 - Replace existing spawn configurations throughout the world
@@ -27,13 +27,19 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 
 ## <a id="intro-explanation"></a>How does it all work?
 
-Valheim's main way of managing spawns work by having two types of spawners spread throughout the world.
+Valheim's main way of managing spawns work by having multiple types of spawners spread throughout the world.
+
 The world spawners, for which the world has them spread out in a grid fashion, each using the same list of templates to check if something should spawn. These are the general spawners and all currently use the same 44 templates.
+
 The local spawners, which are intended for fine-tuned spawning. Local spawners only spawn one specific mob type, and only has one alive at a time. These are bound to specific world locations, such as the surtling firehole.
+
+Destructible spawners, like greydwarf nests and draugr piles. These are generated based on locations, like local spawners, but do not keep track of their spawns, just a general idea of what is in the area. And they can be destroyed.
 
 For world spawners, you can either replace existing templates based on their index, or add to the list of possible templates to spawn from.
 
 For local spawners, since these are more custom, you describe a location and the prefab name of the mob you what you want to override.
+
+For destructible spawners, the configuration settings are still in development.
 
 The mod modification happens at run-time, once for each spawner. Reloading the world resets all changes.
 As the player moves through the world, the game loads in the various spawners, and the mod applies its own settings.
@@ -49,8 +55,7 @@ For this to work, the mod needs to be installed on the server, and have configs 
 ## FAQ
 - I keep getting the warning "Unable to find find prefab"
 	- This happens when Spawn That is trying to retrieve a prefab that it has been told to find, but the prefab has either not been properly loaded by whatever mod was responsible for it, or it is mistyped.
-	- Generally this warning seem to occur with relation to the RRR-series of mods, but there is nothing Spawn That can do about it. The cause is still being investigated by a variety of modders.
-	- If you are only seeing the warning server-side, don't worry unless you have a mod that forces the server to be in charge of spawning. By default, the clients will be in charge of spawning.
+	- Generally this warning seem to occur with relation to the RRR-series of mods, but there is nothing Spawn That can do about it.
 
 - Where do I find the prefab names?
 	- Multiple pages have long lists, you can check out this one [here](https://gist.github.com/Sonata26/e2b85d53e125fb40081b18e2aee6d584), or the [valheim wiki](https://valheim.fandom.com/wiki/Creatures)
@@ -58,4 +63,10 @@ For this to work, the mod needs to be installed on the server, and have configs 
 - The config files are empty?
 	- All configs but `spawn_that.cfg` and `spawn_that.simple.cfg` are intended empty initially. You need to fill in the sections yourself.
 	- Enable any of the "WriteX" in spawn_that.cfg, and files containing the default values will be created in the plugins folder.
-	- If it just won't work for you for some reason, I have dumped the pre-change files [here](https://gist.github.com/ASharpPen/fa142b8aed0205b4e4c059644c58c2cf) as well.
+	- If it just won't work for you for some reason, the files can be found on this site under `Data`.
+
+## Support
+
+If you feel like it
+
+<a href="https://www.buymeacoffee.com/asharppen"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=asharppen&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>

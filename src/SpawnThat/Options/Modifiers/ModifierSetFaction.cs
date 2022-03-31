@@ -20,7 +20,7 @@ public class ModifierSetFaction : ISpawnModifier
 
     public ModifierSetFaction(string factionName)
     {
-        if (Enum.TryParse(factionName.Trim(), out Character.Faction faction))
+        if (Enum.TryParse(factionName.Trim(), true, out Character.Faction faction))
         {
             Faction = faction;
         }
