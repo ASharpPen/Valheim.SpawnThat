@@ -39,4 +39,19 @@ public class GeneralConfigurationPackageTests
             ConfigurationManager.GeneralConfig = null;
         }
     }
+
+    [TestMethod]
+    public void SyncShouldNotCrashIfConfigIsNull()
+    {
+        ConfigurationManager.GeneralConfig = null;
+
+        var package = new GeneralConfigPackage();
+
+        var serialized = package.Pack();
+
+        // Reset stream head, to simulate transfer
+        serialized.m_stream.Position = 0L;
+
+        CompressedPackage.Unpack<GeneralConfigPackage>(serialized);
+    }
 }
