@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using SpawnThat.Spawners.Contexts;
+using SpawnThat.Utilities;
 using SpawnThat.World.Zone;
 
 namespace SpawnThat.Options.Conditions;
@@ -16,6 +18,11 @@ public class ConditionBiome : ISpawnCondition
         {
             BiomeMask |= biome;
         }
+    }
+
+    public ConditionBiome(IEnumerable<string> biomeNames)
+    {
+        BiomeMask = HeightmapUtils.ParseBiomeMask(biomeNames);
     }
 
     public bool IsValid(SpawnSessionContext sessionContext)
