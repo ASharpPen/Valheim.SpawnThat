@@ -8,9 +8,9 @@ namespace SpawnThat.Options.Identifiers;
 internal class IdentifierLocation : ISpawnerIdentifier, ICacheableIdentifier
 {
     private long _hash;
-    private ICollection<string> _locations;
+    private List<string> _locations;
 
-    public ICollection<string> Locations
+    public List<string> Locations
     {
         get { return _locations; }
         set { SetHash(_locations = value); }
@@ -20,12 +20,12 @@ internal class IdentifierLocation : ISpawnerIdentifier, ICacheableIdentifier
     {
     }
 
-    public IdentifierLocation(params string[] requireOneOfLocations)
+    public IdentifierLocation(IEnumerable<string> requireOneOfLocations)
     {
         Locations = requireOneOfLocations
             .Where(x => !string.IsNullOrWhiteSpace(x))
             .Select(x => x.Trim().ToUpperInvariant())
-            .ToArray();
+            .ToList();
     }
 
     public bool IsValid(IdentificationContext context)

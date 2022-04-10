@@ -8,9 +8,9 @@ namespace SpawnThat.Options.Identifiers;
 internal class IdentifierRoom : ISpawnerIdentifier, ICacheableIdentifier
 {
     private long _hash;
-    private ICollection<string> _rooms;
+    private List<string> _rooms;
 
-    public ICollection<string> Rooms
+    public List<string> Rooms
     {
         get { return _rooms; }
         set { SetHash(_rooms = value); }
@@ -20,12 +20,12 @@ internal class IdentifierRoom : ISpawnerIdentifier, ICacheableIdentifier
     {
     }
 
-    public IdentifierRoom(params string[] roomNames)
+    public IdentifierRoom(IEnumerable<string> roomNames)
     {
         Rooms = roomNames
             .Where(x => !string.IsNullOrWhiteSpace(x))
             .Select(x => x.Trim())
-            .ToArray();
+            .ToList();
     }
 
     public bool IsValid(IdentificationContext context)

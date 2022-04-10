@@ -1,8 +1,8 @@
 ﻿using SpawnThat.Core.Configuration;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.Cfgs;
+namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
 
-internal class DestructibleSpawnerConfigurationFile 
+internal class DestructibleSpawnerConfigurationFile
     : ConfigWithSubsections<DestructibleSpawnerConfig>
     , IConfigFile
 {
@@ -49,6 +49,12 @@ internal class DestructibleSpawnerConfig
     public ConfigurationEntry<float> DistanceConsideredFar = new(1000, "Distance within which another entity is counted as being far to spawner.");
 
     public ConfigurationEntry<bool> OnGroundOnly = new(false, "Only spawn if spawn point is on the ground (ie., not in a dungeon) and open to the sky.");
+
+    #endregion
+
+    #region Custom Settings
+
+    //public ConfigurationEntry<bool> Enabled = new(true, "")
 
     #endregion
 }
@@ -116,9 +122,9 @@ internal class DestructibleSpawnConfig : ConfigWithSubsections<Config>
 
     public ConfigurationEntry<float> ConditionDistanceToCenterMax = new(0, "Maximum distance to center for configuration to apply. 0 means limitless.");
 
-    public ConfigurationEntry<float> ConditionWorldAgeDaysMin = new(0, "Minimum world age in in-game days for this configuration to apply.");
+    public ConfigurationEntry<int> ConditionWorldAgeDaysMin = new(0, "Minimum world age in in-game days for this configuration to apply.");
 
-    public ConfigurationEntry<float> ConditionWorldAgeDaysMax = new(0, "Maximum world age in in-game days for this configuration to apply. 0 means no max.");
+    public ConfigurationEntry<int> ConditionWorldAgeDaysMax = new(0, "Maximum world age in in-game days for this configuration to apply. 0 means no max.");
 
     public ConfigurationEntry<float> DistanceToTriggerPlayerConditions = new(100, "Distance of player to spawner, for player to be included in player based checks such as ConditionNearbyPlayersCarryValue.");
 
@@ -200,6 +206,10 @@ internal class DestructibleSpawnConfig : ConfigWithSubsections<Config>
 internal class DestructibleSpawnConfigCLLC : Config
 {
     public const string ModName = "CreatureLevelAndLootControl";
+
+    public ConfigurationEntry<int> ConditionWorldLevelMin = new(0, "Minimum CLLC world level for spawn to activate.");
+
+    public ConfigurationEntry<int> ConditionWorldLevelMax = new(0, "Maximum CLLC world level for spawn to active. 0 means no max.");
 
     public ConfigurationEntry<string> SetInfusion = new("", "Assigns the specified infusion to creature spawned. Ignored if empty.");
 
