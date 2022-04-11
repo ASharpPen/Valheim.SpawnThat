@@ -2,11 +2,33 @@
 using System.Linq;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Utilities.Enums;
+using static Heightmap;
 
 namespace SpawnThat.Spawners;
 
 public static class IHaveSpawnConditionsExtensions
 {
+    /// <summary>
+    /// <para> Set allowed altitude range in which spawner is active. </para>
+    /// <para> 
+    ///     Altitude is calculated as the spawners vertical distance to water-level.
+    ///     Meaning altitude 0 is at the water surface. 
+    ///     If negative, it means below water, positive means above.
+    /// </para>
+    /// <para> 
+    ///     Note: Depending on spawner type/settings, spawning can still be done at other altitudes. 
+    ///     Use <see cref="PositionConditionAltitude"/> to control the allowed spawn positions.
+    /// </para>
+    /// </summary>
+    /// <param name="min">Sets minimum altitude for spawner to be active. Ignored if null.</param>
+    /// <param name="max">Sets maximum altitude for spawner to be active. Ignored if null.</param>
+    public static T SetConditionAltitude<T>(this T builder, float? min = null, float? max = null)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionAltitude(min, max));
+        return builder;
+    }
+
     /// <summary>
     /// <para>Set area ids in which spawning is enabled.</para>
     /// <para>Should only be used when map is pre-determined.</para>
@@ -26,6 +48,46 @@ public static class IHaveSpawnConditionsExtensions
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionAreaIds(areaIds.ToList()));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set biomes in which spawning is enabled.</para>
+    /// </summary>
+    public static T SetConditionBiome<T>(this T builder, params Heightmap.Biome[] biomes)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionBiome(biomes));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set biomes in which spawning is enabled.</para>
+    /// </summary>
+    public static T SetConditionBiome<T>(this T builder, IEnumerable<Heightmap.Biome> biomes)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionBiome(biomes.ToArray()));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set biomes in which spawning is enabled.</para>
+    /// </summary>
+    public static T SetConditionBiome<T>(this T builder, params string[] biomeNames)
+        where T : IHaveSpawnConditions
+{
+        builder.SetCondition(new ConditionBiome(biomeNames));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set biomes in which spawning is enabled.</para>
+    /// </summary>
+    public static T SetConditionBiome<T>(this T builder, IEnumerable<string> biomeNames)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionBiome(biomeNames));
         return builder;
     }
 
@@ -58,6 +120,26 @@ public static class IHaveSpawnConditionsExtensions
     }
 
     /// <summary>
+    /// <para>Set time periods in which spawning is active.</para>
+    /// </summary>
+    public static T SetConditionDaytime<T>(this T builder, params Daytime[] daytimes)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionDaytime(daytimes));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set time periods in which spawning is active.</para>
+    /// </summary>
+    public static T SetConditionDaytime<T>(this T builder, IEnumerable<Daytime> daytimes)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionDaytime(daytimes));
+        return builder;
+    }
+
+    /// <summary>
     /// Sets range from center of world, in which spawning is allowed.
     /// </summary>
     /// <param name="minDistance">Required distance from center.</param>
@@ -66,6 +148,138 @@ public static class IHaveSpawnConditionsExtensions
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionDistanceToCenter(minDistance, maxDistance));
+        return builder;
+    }
+    /// <summary>
+    /// <para>Set names of environments in which spawning is active.</para>
+    /// <para>Eg. "Clear", "Misty", "Heath clear".</para>
+    /// </summary>
+    public static T SetConditionEnvironment<T>(this T builder, params string[] environmentNames)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionEnvironment(environmentNames));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set names of environments in which spawning is active.</para>
+    /// <para>Eg. "Clear", "Misty", "Heath clear".</para>
+    /// </summary>
+    public static T SetConditionEnvironment<T>(this T builder, IEnumerable<string> environmentNames)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionEnvironment(environmentNames));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set names of known vanilla environments in which spawning is active.</para>
+    /// </summary>
+    public static T SetConditionEnvironment<T>(this T builder, params EnvironmentName[] environmentNames)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionEnvironment(environmentNames.Select(x => x.GetName())));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set names of known vanilla environments in which spawning is active.</para>
+    /// </summary>
+    public static T SetConditionEnvironment<T>(this T builder, IEnumerable<EnvironmentName> environmentNames)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionEnvironment(environmentNames.Select(x => x.GetName())));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set forestation state for which spawning is active.</para>
+    /// <para>Note: This is based on worldgeneration, not on actual amount of vegetation present.</para>
+    /// </summary>
+    public static T SetConditionForest<T>(this T builder, ForestState requiredState)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionForest(requiredState));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set list of global keys, where spawning is active if any are present.</para>
+    /// </summary>
+    public static T SetGlobalKeysAny<T>(this T builder, params string[] globalKeys)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionGlobalKeysAny(globalKeys));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set list of global keys, where spawning is active if any are present.</para>
+    /// </summary>
+    public static T SetGlobalKeysAny<T>(this T builder, IEnumerable<string> globalKeys)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionGlobalKeysAny(globalKeys));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set list of known vanilla global keys, where spawning is active if any are present.</para>
+    /// </summary>
+    public static T SetGlobalKeysAny<T>(this T builder, params GlobalKey[] globalKeys)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionGlobalKeysAny(globalKeys.Select(x => x.GetName())));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set list of known vanilla global keys, where spawning is active if any are present.</para>
+    /// </summary>
+    public static T SetGlobalKeysAny<T>(this T builder, IEnumerable<GlobalKey> globalKeys)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionGlobalKeysAny(globalKeys.Select(x => x.GetName())));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Sets global keys which must all be present for spawning to be active.</para>
+    /// </summary>
+    public static T SetGlobalKeysRequired<T>(this T builder, params string[] globalKeys)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionGlobalKeysRequired(globalKeys));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Sets global keys which must all be present for spawning to be active.</para>
+    /// </summary>
+    public static T SetGlobalKeysRequired<T>(this T builder, IEnumerable<string> globalKeys)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionGlobalKeysRequired(globalKeys));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Sets known vanilla global keys which must all be present for spawning to be active.</para>
+    /// </summary>
+    public static T SetGlobalKeysRequired<T>(this T builder, params GlobalKey[] globalKeys)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionGlobalKeysRequired(globalKeys.Select(x => x.GetName())));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Sets known vanilla global keys which must all be present for spawning to be active.</para>
+    /// </summary>
+    public static T SetGlobalKeysRequired<T>(this T builder, IEnumerable<GlobalKey> globalKeys)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionGlobalKeysRequired(globalKeys.Select(x => x.GetName())));
         return builder;
     }
 
@@ -222,6 +436,42 @@ public static class IHaveSpawnConditionsExtensions
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffects.Select(x => x.ToString()).ToArray()));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set allowed ocean depth range in which spawning is active.</para>
+    /// <para>Ocean depth is defined as distance to water surface. And is calculated as:</para>
+    /// <para><c>Max(0, WaterLevel - Seafloor)</c></para>
+    /// <para>
+    ///     This means the water-surface and above will be ocean depth 0. 
+    ///     An ocean floor at 10 units below the surface will be 10.
+    /// </para>
+    /// </summary>
+    /// <param name="min">Minimum depth required. Ignored if null.</param>
+    /// <param name="max">Maximum depth allowed. Ignored if null.</param>
+    public static T SetConditionOceanDepth<T>(this T builder, float? min = null, float? max = null)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionOceanDepth(min, max));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set tilt range of terrain, for which spawning is active.</para>
+    /// <para>Tilt is calculated as 0 when perfectly flat, and 90 when completely vertical.</para>
+    /// <para>
+    ///     Note: Valheim calculates tilt extremely inconsistently throughout the codebase.
+    ///     Tilt above 45 needs to be tested before being relied upon, as there is at least one
+    ///     buggy calculation in vanilla.
+    /// </para>
+    /// </summary>
+    /// <param name="min">Minimum degrees of tilt required. Ignored if null.</param>
+    /// <param name="max">Maximum degrees of tilt allowed. Ignored if null.</param>
+    public static T SetConditionTilt<T>(this T builder, float? min = null, float? max = null)
+        where T : IHaveSpawnConditions
+    {
+        builder.SetCondition(new ConditionTilt(min, max));
         return builder;
     }
 

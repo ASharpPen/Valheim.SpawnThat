@@ -7,14 +7,14 @@ namespace SpawnThat.Options.PositionConditions;
 
 public class PositionConditionTilt : ISpawnPositionCondition
 {
-    public int? Min { get; set; }
+    public float? Min { get; set; }
 
-    public int? Max { get; set; }
+    public float? Max { get; set; }
 
     public PositionConditionTilt()
     { }
 
-    public PositionConditionTilt(int? min, int? max)
+    public PositionConditionTilt(float? min, float? max)
     {
         Min = min;
         Max = max;

@@ -6,14 +6,14 @@ namespace SpawnThat.Options.Conditions;
 
 public class ConditionTilt : ISpawnCondition
 {
-    public int? Min { get; set; }
+    public float? Min { get; set; }
 
-    public int? Max { get;  set; }
+    public float? Max { get;  set; }
 
     public ConditionTilt()
     { }
 
-    public ConditionTilt(int? min, int? max)
+    public ConditionTilt(float? min, float? max)
     {
         Min = min;
         Max = max;

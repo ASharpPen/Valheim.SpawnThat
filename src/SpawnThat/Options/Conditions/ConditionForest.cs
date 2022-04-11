@@ -1,4 +1,5 @@
 ﻿using SpawnThat.Spawners.Contexts;
+using SpawnThat.Utilities.Enums;
 
 namespace SpawnThat.Options.Conditions;
 
@@ -35,12 +36,4 @@ public class ConditionForest : ISpawnCondition
             _ => true
         };
     }
-}
-
-public enum ForestState
-{
-    Both,
-    None,
-    InForest,
-    OutsideForest,
 }

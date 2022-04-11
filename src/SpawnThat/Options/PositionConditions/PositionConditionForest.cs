@@ -1,4 +1,5 @@
 ﻿using SpawnThat.Spawners.Contexts;
+using SpawnThat.Utilities.Enums;
 using UnityEngine;
 
 namespace SpawnThat.Options.PositionConditions;
@@ -36,12 +37,4 @@ public class PositionConditionForest : ISpawnPositionCondition
             _ => true
         };
     }
-}
-
-public enum ForestState
-{
-    Both,
-    None,
-    InForest,
-    OutsideForest,
 }
