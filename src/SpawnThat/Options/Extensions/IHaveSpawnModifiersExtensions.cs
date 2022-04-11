@@ -42,9 +42,16 @@ public static class IHaveSpawnModifiersExtensions
     }
 
     public static T SetModifierFaction<T>(this T builder, string faction)
-    where T : IHaveSpawnModifiers
+        where T : IHaveSpawnModifiers
     {
         builder.SetModifier(new ModifierSetFaction(faction));
+        return builder;
+    }
+
+    public static T SetModifierHuntPlayer<T>(this T builder, bool huntPlayer)
+        where T : IHaveSpawnModifiers
+    {
+        builder.SetModifier(new ModifierSetHuntPlayer(huntPlayer));
         return builder;
     }
 
