@@ -206,7 +206,7 @@ public static class IHaveSpawnConditionsExtensions
     /// <summary>
     /// <para>Set list of global keys, where spawning is active if any are present.</para>
     /// </summary>
-    public static T SetGlobalKeysAny<T>(this T builder, params string[] globalKeys)
+    public static T SetConditionAnyOfGlobalKeys<T>(this T builder, params string[] globalKeys)
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionGlobalKeysAny(globalKeys));
@@ -216,7 +216,7 @@ public static class IHaveSpawnConditionsExtensions
     /// <summary>
     /// <para>Set list of global keys, where spawning is active if any are present.</para>
     /// </summary>
-    public static T SetGlobalKeysAny<T>(this T builder, IEnumerable<string> globalKeys)
+    public static T SetConditionAnyOfGlobalKeys<T>(this T builder, IEnumerable<string> globalKeys)
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionGlobalKeysAny(globalKeys));
@@ -226,7 +226,7 @@ public static class IHaveSpawnConditionsExtensions
     /// <summary>
     /// <para>Set list of known vanilla global keys, where spawning is active if any are present.</para>
     /// </summary>
-    public static T SetGlobalKeysAny<T>(this T builder, params GlobalKey[] globalKeys)
+    public static T SetConditionAnyOfGlobalKeys<T>(this T builder, params GlobalKey[] globalKeys)
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionGlobalKeysAny(globalKeys.Select(x => x.GetName())));
@@ -236,7 +236,7 @@ public static class IHaveSpawnConditionsExtensions
     /// <summary>
     /// <para>Set list of known vanilla global keys, where spawning is active if any are present.</para>
     /// </summary>
-    public static T SetGlobalKeysAny<T>(this T builder, IEnumerable<GlobalKey> globalKeys)
+    public static T SetConditionAnyOfGlobalKeys<T>(this T builder, IEnumerable<GlobalKey> globalKeys)
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionGlobalKeysAny(globalKeys.Select(x => x.GetName())));
@@ -246,7 +246,7 @@ public static class IHaveSpawnConditionsExtensions
     /// <summary>
     /// <para>Sets global keys which must all be present for spawning to be active.</para>
     /// </summary>
-    public static T SetGlobalKeysRequired<T>(this T builder, params string[] globalKeys)
+    public static T SetConditionAllOfGlobalKeys<T>(this T builder, params string[] globalKeys)
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionGlobalKeysRequired(globalKeys));
@@ -256,7 +256,7 @@ public static class IHaveSpawnConditionsExtensions
     /// <summary>
     /// <para>Sets global keys which must all be present for spawning to be active.</para>
     /// </summary>
-    public static T SetGlobalKeysRequired<T>(this T builder, IEnumerable<string> globalKeys)
+    public static T SetConditionAllOfGlobalKeys<T>(this T builder, IEnumerable<string> globalKeys)
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionGlobalKeysRequired(globalKeys));
@@ -266,7 +266,7 @@ public static class IHaveSpawnConditionsExtensions
     /// <summary>
     /// <para>Sets known vanilla global keys which must all be present for spawning to be active.</para>
     /// </summary>
-    public static T SetGlobalKeysRequired<T>(this T builder, params GlobalKey[] globalKeys)
+    public static T SetConditionAllOfGlobalKeys<T>(this T builder, params GlobalKey[] globalKeys)
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionGlobalKeysRequired(globalKeys.Select(x => x.GetName())));
@@ -276,7 +276,7 @@ public static class IHaveSpawnConditionsExtensions
     /// <summary>
     /// <para>Sets known vanilla global keys which must all be present for spawning to be active.</para>
     /// </summary>
-    public static T SetGlobalKeysRequired<T>(this T builder, IEnumerable<GlobalKey> globalKeys)
+    public static T SetConditionAllOfGlobalKeys<T>(this T builder, IEnumerable<GlobalKey> globalKeys)
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionGlobalKeysRequired(globalKeys.Select(x => x.GetName())));
@@ -290,7 +290,7 @@ public static class IHaveSpawnConditionsExtensions
     ///     then this template will be disabled.
     /// </para>
     /// </summary>
-    public static T SetGlobalKeysRequiredMissing<T>(this T builder, IEnumerable<string> globalKeys)
+    public static T SetConditionNoneOfGlobalkeys<T>(this T builder, IEnumerable<string> globalKeys)
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys.ToArray()));
@@ -304,7 +304,7 @@ public static class IHaveSpawnConditionsExtensions
     ///     then this template will be disabled.
     /// </para>
     /// </summary>
-    public static T SetGlobalKeysRequiredMissing<T>(this T builder, params string[] globalKeys)
+    public static T SetConditionNoneOfGlobalkeys<T>(this T builder, params string[] globalKeys)
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys));
@@ -318,7 +318,7 @@ public static class IHaveSpawnConditionsExtensions
     ///     then this template will be disabled.
     /// </para>
     /// </summary>
-    public static T SetGlobalKeysRequiredMissing<T>(this T builder, IEnumerable<GlobalKey> globalKeys)
+    public static T SetConditionNoneOfGlobalkeys<T>(this T builder, IEnumerable<GlobalKey> globalKeys)
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys.Select(x => x.GetName()).ToArray()));
@@ -332,7 +332,7 @@ public static class IHaveSpawnConditionsExtensions
     ///     then this template will be disabled.
     /// </para>
     /// </summary>
-    public static T SetGlobalKeysRequiredMissing<T>(this T builder, params GlobalKey[] globalKeys)
+    public static T SetConditionNoneOfGlobalkeys<T>(this T builder, params GlobalKey[] globalKeys)
         where T : IHaveSpawnConditions
     {
         builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys.Select(x => x.GetName()).ToArray()));

@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BepInEx;
-using SpawnThat.Core;
 using SpawnThat.Core.Configuration;
-using SpawnThat.Integrations.CLLC.Models;
 using SpawnThat.Integrations;
 using SpawnThat.Options.Modifiers;
-using SpawnThat.Spawners.WorldSpawner;
-using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 using SpawnThat.Utilities;
+using SpawnThat.Options.Conditions;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
 
@@ -126,7 +119,20 @@ internal static class DestructibleSpawnerConfigApplier
         config.ConditionLocation.SetIfHasValue(x => builder.SetConditionLocation(x.SplitByComma()));
         config.ConditionAreaIds.SetIfHasValue(x => builder.SetConditionAreaIds(x.SplitByComma().ConvertAll(x => int.Parse(x))));
 
-        // TODO: Missing default conditions. See config file.
+        config.ConditionBiome.SetIfHasValue(x => builder.SetConditionBiome(x.SplitByComma()));
+        config.ConditionAllOfGlobalKeys.SetIfHasValue(x => builder.SetConditionAllOfGlobalKeys(x.SplitByComma()));
+        config.ConditionAnyOfGlobalKeys.SetIfHasValue(x => builder.SetConditionAnyOfGlobalKeys(x.SplitByComma()));
+        config.ConditionNoneOfGlobalKeys.SetIfHasValue(x => builder.SetConditionNoneOfGlobalkeys(x.SplitByComma()));
+        config.ConditionEnvironment.SetIfHasValue(x => builder.SetConditionEnvironment(x.SplitByComma()));
+        config.ConditionDaytime.SetIfNotEqual(Utilities.Enums.Daytime.All, x => builder.SetConditionDaytime(x));
+
+        builder.SetConditionAltitude(config.ConditionAltitudeMin.Value, config.ConditionAltitudeMax.Value);
+        builder.SetCondition(new ConditionForest(config.ConditionInForest.Value, config.ConditionOutsideForest.Value));
+
+        if (config.ConditionOceanDepthMin.Value != config.ConditionOceanDepthMax.Value)
+        {
+            builder.SetConditionOceanDepth(config.ConditionOceanDepthMin.Value, config.ConditionOceanDepthMax.Value);
+        }
 
         // Conditions - Integrations
         Config cfg;
@@ -166,15 +172,10 @@ internal static class DestructibleSpawnerConfigApplier
         config.SetFaction.SetIfHasValue(x => builder.SetModifierFaction(x));
 
         builder.SetModifierRelentless(config.SetRelentless.Value);
-
-        // TODO: Add required environments to this.
-        config.SetTryDespawnOnConditionsInvalid.SetIfNotEqual(false, x => builder.SetModifierDespawnOnConditionsInvalid(config.ConditionSpawnDuringDay.Value, config.ConditionSpawnDuringNight.Value, null));
-
         builder.SetModifierDespawnOnAlert(config.SetTryDespawnOnAlert.Value);
         builder.SetModifierTamed(config.SetTamed.Value);
         builder.SetModifierTamedCommandable(config.SetTamedCommandable.Value);
-
-        // TODO: Missing HuntPlayer modifier
+        builder.SetModifierHuntPlayer(config.SetHuntPlayer.Value);
 
         // Modifiers - Integrations
         {

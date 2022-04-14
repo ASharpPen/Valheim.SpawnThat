@@ -1,4 +1,5 @@
 ﻿using SpawnThat.Core.Configuration;
+using SpawnThat.Utilities.Enums;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
 
@@ -142,29 +143,17 @@ internal class DestructibleSpawnConfig : ConfigWithSubsections<Config>
 
     public ConfigurationEntry<string> ConditionAreaIds = new("", "Advanced feature. List of area id's in which the template is valid. Note: If ConditionSpawnChanceInArea is not 100 or disabled, it will still roll area chance.\nEg. 1, 123, 543");
 
-    // TODO: Default conditions missing
-    // Biomes
-    // RequiredGlobalKey
-    // RequiredEnvironments
-    // SpawnDuringDay
-    // SpawnDuringNight
-    // SpawnInForest
-    // SpawnOutsideForest
-    // OceanDepth
-    // Altitude
-    // Tilt - Gonna skip this one.
-
     public ConfigurationEntry<string> ConditionBiome = new("", "Biomes in which entity can spawn. Leave empty for all.");
 
-    public ConfigurationEntry<string> ConditionGlobalKeys = new("", "Global keys required to allow spawning. All listed keys must be present. Ignored if empty.");
+    public ConfigurationEntry<string> ConditionAllOfGlobalKeys = new("", "Global keys required to allow spawning. All listed keys must be present. Ignored if empty.");
 
-    public ConfigurationEntry<string> ConditionAnyGlobalKey = new("", "Global keys allowing spawning. One of the listed keys must be present. Ignored if empty.");
+    public ConfigurationEntry<string> ConditionAnyOfGlobalKeys = new("", "Global keys allowing spawning. One of the listed keys must be present. Ignored if empty.");
+
+    public ConfigurationEntry<string> ConditionNoneOfGlobalKeys = new("", "Global keys disabling spawning. None of the listed keys must be present. Ignored if empty.");
 
     public ConfigurationEntry<string> ConditionEnvironment = new("", "List of environments required to allow spawning.\tEg. Misty, Thunderstorm. Leave empty to allow all.");
 
-    public ConfigurationEntry<bool> ConditionSpawnDuringDay = new(true, "Toggle spawning during day.");
-
-    public ConfigurationEntry<bool> ConditionSpawnDuringNight = new(true, "Toggle spawning during night.");
+    public ConfigurationEntry<Daytime> ConditionDaytime = new(Daytime.All, "Toggles period in which spawning is active.");
 
     public ConfigurationEntry<float> ConditionAltitudeMin = new(-1000, "Minimum altitude (distance to water surface) to spawn in.");
 
@@ -178,6 +167,8 @@ internal class DestructibleSpawnConfig : ConfigWithSubsections<Config>
 
     public ConfigurationEntry<float> ConditionOceanDepthMax = new(0, "Maximum ocean depth to spawn in. Ignored if min == max.");
 
+    // Tilt - Gonna skip this one.
+
     #endregion
     #region PositionConditions
 
@@ -187,16 +178,14 @@ internal class DestructibleSpawnConfig : ConfigWithSubsections<Config>
 
     public ConfigurationEntry<bool> SetRelentless = new(false, "When true, forces mob AI to always be alerted.");
 
-    public ConfigurationEntry<bool> SetTryDespawnOnConditionsInvalid = new(false, "When true, mob will try to run away and despawn when spawn conditions become invalid.\nEg. if spawning only during night, it will run away and despawn at night. Currently this only take into account conditions for daytime and environment.");
+    // This is getting way overcomplicated and clumsy to support. Lets stop adding it in and mark it for deprecation.
+    //public ConfigurationEntry<bool> SetTryDespawnOnConditionsInvalid = new(false, "When true, mob will try to run away and despawn when spawn conditions become invalid.\nEg. if spawning only during night, it will run away and despawn at night. Currently this only take into account conditions for daytime and environment.");
 
     public ConfigurationEntry<bool> SetTryDespawnOnAlert = new(false, "When true, mob will try to run away and despawn when alerted.");
 
     public ConfigurationEntry<bool> SetTamed = new(false, "When true, mob will be set to tamed status on spawn.");
 
     public ConfigurationEntry<bool> SetTamedCommandable = new(false, "Experimental. When true, will set mob as commandable when tamed. When false, whatever was default for the creature is used. Does not always seem to work for creatures not tameable in vanilla.");
-
-    // TODO: Missing default modifiers
-    // HuntPlayer
 
     public ConfigurationEntry<bool> SetHuntPlayer = new(false, "Sets AI to hunt a player target.");
 
