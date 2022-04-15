@@ -15,21 +15,30 @@ internal class DestructibleSpawnBuilder : IDestructibleSpawnBuilder
     /// <summary>
     /// Conditions required fullfilled for spawning.
     /// </summary>
-    public IList<ISpawnCondition> SpawnConditions { get; set; }
+    public IList<ISpawnCondition> SpawnConditions { get; set; } = new List<ISpawnCondition>();
 
     /// <summary>
     /// Positional conditions required fullfilled for spawning.
     /// </summary>
-    public IList<ISpawnPositionCondition> SpawnPositionConditions { get; set; }
+    public IList<ISpawnPositionCondition> SpawnPositionConditions { get; set; } = new List<ISpawnPositionCondition>();
 
     /// <summary>
     /// Modifications applied to entity after spawning.
     /// </summary>
-    public IList<ISpawnModifier> SpawnModifiers { get; set; }
+    public IList<ISpawnModifier> SpawnModifiers { get; set; } = new List<ISpawnModifier>();
 
     public DestructibleSpawnBuilder(uint id)
     {
         Id = id;
+    }
+
+    internal DestructibleSpawnTemplate Build()
+    {
+        Template.Conditions = SpawnConditions;
+        Template.PositionConditions = SpawnPositionConditions;
+        Template.Modifiers = SpawnModifiers;
+
+        return Template;
     }
 
     public IDestructibleSpawnBuilder SetPrefabName(string prefabName)

@@ -4,6 +4,7 @@ using SpawnThat.Core.Cache;
 using SpawnThat.Lifecycle;
 using SpawnThat.Options.Identifiers;
 using SpawnThat.Spawners.Contexts;
+using SpawnThat.Spawners.DestructibleSpawner.Services;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Managers;
 
@@ -51,6 +52,8 @@ internal static class DestructibleSpawnerManager
             if (spawnerTemplate is not null)
             {
                 TemplateBySpawner.Set(spawner, spawnerTemplate);
+
+                ConfigApplicationService.ConfigureSpawner(spawner, spawnerTemplate);
             }
 
             SpawnerIsConfigured.Set(spawner, true);

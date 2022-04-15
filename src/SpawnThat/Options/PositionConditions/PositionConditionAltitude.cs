@@ -37,13 +37,13 @@ public class PositionConditionAltitude : ISpawnPositionCondition
             - ZoneSystem.instance.m_waterLevel;
 
         if (Min is not null &&
-            Min < altitude)
+            Min > altitude)
         {
             return false;
         }
 
         if (Max is not null &&
-            Max > altitude)
+            Max < altitude)
         {
             return false;
         }

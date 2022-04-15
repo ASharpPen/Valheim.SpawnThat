@@ -1,4 +1,5 @@
-﻿using SpawnThat.Spawners.Contexts;
+﻿using SpawnThat.Core;
+using SpawnThat.Spawners.Contexts;
 using SpawnThat.World.Zone;
 
 namespace SpawnThat.Options.Conditions;
@@ -35,13 +36,13 @@ public class ConditionAltitude : ISpawnCondition
             - ZoneSystem.instance.m_waterLevel;
 
         if (Min is not null &&
-            Min < altitude)
+            Min > altitude)
         {
             return false;
         }
 
         if (Max is not null &&
-            Max > altitude)
+            Max < altitude)
         {
             return false;
         }

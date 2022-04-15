@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using SpawnThat.Options.Identifiers;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Configuration;
@@ -8,9 +9,21 @@ internal class DestructibleSpawnerBuilder : IDestructibleSpawnerBuilder
 {
     private DestructibleSpawnerTemplate Template { get; } = new();
 
-    private Dictionary<uint, IDestructibleSpawnBuilder> Spawns { get; } = new();
+    private Dictionary<uint, DestructibleSpawnBuilder> Spawns { get; } = new();
 
     private Dictionary<Type, ISpawnerIdentifier> Identifiers { get; } = new();
+
+    internal DestructibleSpawnerTemplate Build()
+    {
+        foreach (var spawnBuilder in Spawns)
+        {
+            Template.Spawns[spawnBuilder.Key] = spawnBuilder.Value.Build();
+        }
+
+        Template.Identifiers = Identifiers.Values.ToList();
+
+        return Template;
+    }
 
     public IDestructibleSpawnBuilder GetSpawnBuilder(uint id)
     {
@@ -20,6 +33,12 @@ internal class DestructibleSpawnerBuilder : IDestructibleSpawnerBuilder
         }
 
         return Spawns[id] = new DestructibleSpawnBuilder(id);
+    }
+
+    public IDestructibleSpawnerBuilder SetTemplateName(string templateName)
+    {
+        Template.TemplateName = templateName;
+        return this;
     }
 
     public IDestructibleSpawnerBuilder SetConditionMaxCloseCreatures(int? maxCloseCreatures)

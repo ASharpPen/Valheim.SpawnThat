@@ -26,6 +26,11 @@ public interface IDestructibleSpawnerBuilder
     IDestructibleSpawnBuilder GetSpawnBuilder(uint id);
 
     /// <summary>
+    /// Set a custom name for the config. This is only relevant for debugging.
+    /// </summary>
+    IDestructibleSpawnerBuilder SetTemplateName(string templateName);
+
+    /// <summary>
     /// <para>Chance to level up from MinLevel. Range 0 to 100.</para>
     /// <para>
     ///     Level is assigned by rolling levelup-chance for each

@@ -4,7 +4,7 @@ using SpawnThat.World.Zone;
 
 namespace SpawnThat.Options.Identifiers;
 
-internal class IdentifierBiome : ISpawnerIdentifier, ICacheableIdentifier
+public class IdentifierBiome : ISpawnerIdentifier, ICacheableIdentifier
 {
     public Heightmap.Biome BitmaskedBiome { get; set; }
 

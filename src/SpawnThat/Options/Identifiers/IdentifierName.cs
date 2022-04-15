@@ -5,7 +5,7 @@ using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Options.Identifiers;
 
-internal class IdentifierName : ISpawnerIdentifier, ICacheableIdentifier
+public class IdentifierName : ISpawnerIdentifier, ICacheableIdentifier
 {
     private int _hash;
     private ICollection<string> _names;

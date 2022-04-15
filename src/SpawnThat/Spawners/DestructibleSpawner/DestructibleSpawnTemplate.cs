@@ -18,9 +18,9 @@ internal class DestructibleSpawnTemplate
     /// </summary>
     public uint Id { get; set; }
 
-    public bool Enabled { get; set; }
+    public bool Enabled { get; set; } = true;
 
-    public bool TemplateEnabled { get; set; }
+    public bool TemplateEnabled { get; set; } = true;
 
     public string PrefabName { get; set; }
 

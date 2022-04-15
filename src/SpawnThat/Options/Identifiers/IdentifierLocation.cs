@@ -5,7 +5,7 @@ using SpawnThat.World.Locations;
 
 namespace SpawnThat.Options.Identifiers;
 
-internal class IdentifierLocation : ISpawnerIdentifier, ICacheableIdentifier
+public class IdentifierLocation : ISpawnerIdentifier, ICacheableIdentifier
 {
     private long _hash;
     private List<string> _locations;

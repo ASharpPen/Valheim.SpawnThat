@@ -5,6 +5,8 @@ using SpawnThat.Integrations;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Utilities;
 using SpawnThat.Options.Conditions;
+using SpawnThat.Core;
+using YamlDotNet.Serialization;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
 
@@ -27,6 +29,7 @@ internal static class DestructibleSpawnerConfigApplier
                 string.IsNullOrWhiteSpace(config.IdentifyByLocation?.Value) &&
                 string.IsNullOrWhiteSpace(config.IdentifyByRoom?.Value))
             {
+                Log.LogDebug($"[Destructible Spawner] Ignoring config '{config.SectionKey}' due to having no identifiers.");
                 continue;
             }
 
@@ -43,6 +46,8 @@ internal static class DestructibleSpawnerConfigApplier
 
     private static void ConfigureSpawner(DestructibleSpawnerConfig config, IDestructibleSpawnerBuilder builder)
     {
+        builder.SetTemplateName(config.SectionKey);
+
         // Set identifiers
         if (!string.IsNullOrWhiteSpace(config.IdentifyByName.Value))
         {

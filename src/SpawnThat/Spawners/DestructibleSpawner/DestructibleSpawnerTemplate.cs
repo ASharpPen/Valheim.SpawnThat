@@ -11,6 +11,8 @@ internal class DestructibleSpawnerTemplate
 {
     public ICollection<ISpawnerIdentifier> Identifiers { get; set; } = new List<ISpawnerIdentifier>(0);
 
+    public string TemplateName { get; set; }
+
     /// <summary>
     /// Chance for a spawned entity to level up.
     /// </summary>

@@ -69,7 +69,7 @@ internal static class SpawnArea_DestructibleSpawner_Workflow_Patch
         }
         catch (Exception e)
         {
-            Log.LogWarning($"Error while caching spawn '{__result?.m_prefab.GetCleanedName()}' of destructible spawner '{__instance.GetCleanedName()}'.", e);
+            Log.LogWarning($"Error while caching spawn '{__result?.m_prefab.name}' of destructible spawner '{__instance.GetCleanedName()}'.", e);
         }
     }
 
@@ -83,7 +83,6 @@ internal static class SpawnArea_DestructibleSpawner_Workflow_Patch
             .Advance(1)
             // Get position that original instructions move to if conditions fail.
             .GetOperand(out var falseTarget)
-            //.Print(20, 20)
             // Move back before original if's start
             .Start()
             .MatchForward(false, new CodeMatch(OpCodes.Call, AccessTools.PropertyGetter(typeof(ZoneSystem), nameof(ZoneSystem.instance))))
@@ -95,6 +94,7 @@ internal static class SpawnArea_DestructibleSpawner_Workflow_Patch
             .InsertAndAdvance(OpCodes.Ldarg_0)
             .InsertAndAdvance(spawnPoint.GetLdlocFromStLoc())
             .InsertAndAdvance(Transpilers.EmitDelegate(DestructibleSpawnSessionManager.CheckValidPosition))
+            .InsertAndAdvance(new CodeInstruction(OpCodes.Brfalse, falseTarget))
             .InstructionEnumeration();
     }
 
@@ -110,7 +110,6 @@ internal static class SpawnArea_DestructibleSpawner_Workflow_Patch
             .InsertAndAdvance(OpCodes.Dup)
             .InsertAndAdvance(OpCodes.Ldarg_0)
             .InsertAndAdvance(Transpilers.EmitDelegate(DestructibleSpawnSessionManager.ModifySpawn))
-            .Print(20, 20)
             .InstructionEnumeration();
     }
 

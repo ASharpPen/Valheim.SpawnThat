@@ -39,6 +39,11 @@ internal class DestructibleSpawnSessionManager
 
     public static void SetCurrentSpawn(SpawnArea spawner, SpawnData spawn)
     {
+        if (spawn is null)
+        {
+            return;
+        }
+
         if (SpawnSessions.TryGet(spawner, out var context))
         {
             context.CurrentSpawn = spawn;
@@ -67,8 +72,10 @@ internal class DestructibleSpawnSessionManager
 
         List<SpawnData> spawnData = new(spawner.m_prefabs.Count);
 
-        foreach (var spawn in spawner.m_prefabs)
+        for (int i = 0; i < spawner.m_prefabs.Count; ++i)
         {
+            var spawn = spawner.m_prefabs[i];
+
             if (DestructibleSpawnTemplateManager.TryGetTemplate(spawn, out var spawnTemplate))
             {
                 if (!spawnTemplate.Enabled)
@@ -80,7 +87,16 @@ internal class DestructibleSpawnSessionManager
                 {
                     try
                     {
+#if DEBUG
+                        var isValid = condition.IsValid(context);
+                        if (!isValid)
+                        {
+                            Log.LogTrace($"[Destructible Spawner] Invalid condition '{condition.GetType().Name}' for spawn '{i}'.");
+                        }
+                        return isValid;
+#else
                         return condition.IsValid(context);
+#endif
                     }
                     catch (Exception e)
                     {

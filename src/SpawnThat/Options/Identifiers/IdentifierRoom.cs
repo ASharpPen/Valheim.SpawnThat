@@ -5,7 +5,7 @@ using SpawnThat.World.Dungeons;
 
 namespace SpawnThat.Options.Identifiers;
 
-internal class IdentifierRoom : ISpawnerIdentifier, ICacheableIdentifier
+public class IdentifierRoom : ISpawnerIdentifier, ICacheableIdentifier
 {
     private long _hash;
     private List<string> _rooms;
