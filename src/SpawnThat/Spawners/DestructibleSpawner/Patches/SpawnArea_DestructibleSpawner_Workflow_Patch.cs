@@ -4,7 +4,6 @@ using System.Reflection.Emit;
 using HarmonyLib;
 using SpawnThat.Core;
 using SpawnThat.Spawners.DestructibleSpawner.Managers;
-using SpawnThat.Spawners.WorldSpawner.Managers;
 using SpawnThat.Utilities;
 using SpawnThat.Utilities.Extensions;
 using static SpawnArea;
@@ -116,7 +115,7 @@ internal static class SpawnArea_DestructibleSpawner_Workflow_Patch
     }
 
     [HarmonyPatch(nameof(SpawnArea.UpdateSpawn))]
-    [HarmonyPostfix]
+    [HarmonyFinalizer]
     private static void EndSession(SpawnArea __instance)
     {
         try
