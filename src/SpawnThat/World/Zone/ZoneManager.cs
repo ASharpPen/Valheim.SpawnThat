@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using HarmonyLib;
+using SpawnThat.Debugging.Gizmos;
 using SpawnThat.Lifecycle;
 using SpawnThat.Utilities.Extensions;
+using UnityEngine;
 
 namespace SpawnThat.World.Zone;
 
@@ -41,9 +43,20 @@ public static class ZoneManager
         [HarmonyPostfix]
         private static void Record(Heightmap __instance)
         {
+            // Sometimes distant heightmaps are generated, we need to skip those.
+            // Not sure whats going on here, but they get generated in inconsistent positions
+            // that do not fit on the zone grid.
+            if (!__instance.m_isDistantLod)
+            {
+                return;
+            }
+
             var zoneId = __instance.gameObject.transform.position.GetZoneId();
 
             HeightmapsLoaded[zoneId] = new ZoneHeightmap(__instance);
+#if DEBUG
+            LineGizmo.Create(__instance.transform.position, Color.green);
+#endif
         }
 
         [HarmonyPatch(typeof(Heightmap), nameof(Heightmap.OnDestroy))]

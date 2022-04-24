@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using SpawnThat.Core.Configuration;
 using SpawnThat.Core;
 using static Heightmap;
 using System.Linq;
@@ -55,5 +54,25 @@ internal static class HeightmapUtils
         }
 
         return results;
+    }
+
+    public static string GetNames(Heightmap.Biome biome)
+    {
+        List<string> biomes = new List<string>();
+
+        foreach (Heightmap.Biome potentialBiome in Enum.GetValues(typeof(Heightmap.Biome)))
+        {
+            if (potentialBiome == Heightmap.Biome.BiomesMax || potentialBiome == Heightmap.Biome.None)
+            {
+                continue;
+            }
+
+            if ((biome & potentialBiome) > 0)
+            {
+                biomes.Add(potentialBiome.ToString());
+            }
+        }
+
+        return string.Join(", ", biomes);
     }
 }

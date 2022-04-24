@@ -362,4 +362,9 @@ internal class ZoneSimulated : IZone
 
         return avgAngle;
     }
+
+    public Biome GetBiome(Vector3 pos)
+    {
+        throw new System.NotImplementedException();
+    }
 }
