@@ -17,6 +17,11 @@ public static class IDestructibleSpawnerBuilderSettingsExtensions
         settings.DistanceConsideredFar.Set(builder.SetDistanceConsideredFar);
         settings.OnGroundOnly.Set(builder.SetOnGroundOnly);
 
+        if (settings.RemoveNotConfiguredSpawns is not null)
+        {
+            builder.SetRemoveNotConfiguredSpawns(settings.RemoveNotConfiguredSpawns.Value);
+        }
+
         if (settings.Identifiers is not null)
         {
             foreach (var identifier in settings.Identifiers)

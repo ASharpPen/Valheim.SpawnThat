@@ -100,4 +100,10 @@ internal class DestructibleSpawnerBuilder : IDestructibleSpawnerBuilder
         Template.SpawnInterval = interval;
         return this;
     }
+
+    public IDestructibleSpawnerBuilder SetRemoveNotConfiguredSpawns(bool removeNotConfigured)
+    {
+        Template.RemoveNotConfiguredSpawns = removeNotConfigured;
+        return this;
+    }
 }

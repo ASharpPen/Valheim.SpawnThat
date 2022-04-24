@@ -73,5 +73,16 @@ internal class DestructibleSpawnerTemplate
     /// <remarks>Vanilla name: m_onGroundOnly</remarks>
     public bool? OnGroundOnly { get; set; }
 
+    /// <summary>
+    /// <para>
+    ///     Sets if spawns of spawner that were not configured should be removed.
+    /// </para>
+    /// <para>
+    ///     Intended to simplify disabling of undesired spawns. 
+    ///     Instead of disabling them index by index, this setting can be used.
+    /// </para>
+    /// </summary>
+    public bool RemoveNotConfiguredSpawns { get; set; }
+
     public Dictionary<uint, DestructibleSpawnTemplate> Spawns { get; set; } = new();
 }

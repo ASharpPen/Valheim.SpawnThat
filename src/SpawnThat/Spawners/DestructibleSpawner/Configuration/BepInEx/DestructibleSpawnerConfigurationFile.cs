@@ -57,6 +57,8 @@ internal class DestructibleSpawnerConfig
 
     //public ConfigurationEntry<bool> Enabled = new(true, "")
 
+    public ConfigurationEntry<bool> RemoveNotConfiguredSpawns = new(false, "Sets if spawns of spawner that were not configured should be removed.");
+
     #endregion
 }
 

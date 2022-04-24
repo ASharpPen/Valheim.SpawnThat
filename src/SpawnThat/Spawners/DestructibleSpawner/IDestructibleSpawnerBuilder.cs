@@ -95,4 +95,15 @@ public interface IDestructibleSpawnerBuilder
     /// </summary>
     /// <remarks>Vanilla name: m_onGroundOnly</remarks>
     IDestructibleSpawnerBuilder SetOnGroundOnly(bool? checkGround);
+
+    /// <summary>
+    /// <para>
+    ///     Sets if spawns of spawner that were not configured should be removed.
+    /// </para>
+    /// <para>
+    ///     Intended to simplify disabling of undesired spawns. 
+    ///     Instead of disabling them index by index, this setting can be used.
+    /// </para>
+    /// </summary>
+    IDestructibleSpawnerBuilder SetRemoveNotConfiguredSpawns(bool removeNotConfigured);
 }

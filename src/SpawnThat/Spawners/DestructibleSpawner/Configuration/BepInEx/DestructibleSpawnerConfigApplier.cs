@@ -82,6 +82,7 @@ internal static class DestructibleSpawnerConfigApplier
         builder.SetOnGroundOnly(config.OnGroundOnly.Value);
 
         // Set custom settings
+        builder.SetRemoveNotConfiguredSpawns(config.RemoveNotConfiguredSpawns.Value);
     }
 
     private static void ConfigureSpawn(DestructibleSpawnerConfig spawnerConfig, DestructibleSpawnConfig config, IDestructibleSpawnBuilder builder)

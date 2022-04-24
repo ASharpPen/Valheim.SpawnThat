@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using HarmonyLib;
 using SpawnThat.Core;
 using SpawnThat.Spawners.DestructibleSpawner.Managers;
 using SpawnThat.Utilities.Extensions;
@@ -23,45 +25,70 @@ internal static class ConfigApplicationService
         spawner.m_farRadius = spawnerTemplate.DistanceConsideredFar ?? spawner.m_farRadius;
         spawner.m_onGroundOnly = spawnerTemplate.OnGroundOnly ?? spawner.m_onGroundOnly;
 
+        int existingSpawns = spawner.m_prefabs?.Count ?? 0;
+
+        var unmodifiedIndexes = spawnerTemplate.RemoveNotConfiguredSpawns
+            ? Enumerable.Range(0, existingSpawns).ToList()
+            : null;
+
+        var pos = spawner.transform.position;
+
         foreach (var spawn in spawnerTemplate.Spawns)
         {
-            var template = spawn.Value;
+            var spawnTemplate = spawn.Value;
 
-            if (!template.Enabled)
+            if (!spawnTemplate.Enabled)
             {
                 continue;
             }
 
-            if (spawner.m_prefabs.Count < spawn.Key)
+            if (spawn.Key < existingSpawns)
             {
                 // Configure existing
                 var original = spawner.m_prefabs[(int)spawn.Key];
 
-                if (template.TemplateEnabled)
+                if (spawnTemplate.TemplateEnabled)
                 {
-                    Log.LogTrace($"Modifying spawn '{template.Id}' of destructible spawner '{spawner.GetCleanedName()}'");
+                    Log.LogTrace($"[Destructible Spawner] Modifying spawn '{spawnTemplate.Id}' of '{spawner.GetCleanedName()}:{pos}'");
 
-                    Modify(original, template);
-                    DestructibleSpawnTemplateManager.SetTemplate(original, template);
+                    Modify(original, spawnTemplate);
+                    DestructibleSpawnTemplateManager.SetTemplate(original, spawnTemplate);
+
+                    if (spawnerTemplate.RemoveNotConfiguredSpawns)
+                    {
+                        unmodifiedIndexes.RemoveAt((int)spawn.Key);
+                    }
                 }
 
                 spawns.Add(original);
             }
-            else if (template.TemplateEnabled)
+            else if (spawnTemplate.TemplateEnabled)
             {
                 // Create new
-                var newSpawn = Create(template);
+                var newSpawn = Create(spawnTemplate);
 
                 if (newSpawn is null)
                 {
                     continue;
                 }
 
-                Log.LogTrace($"Creating spawn '{template.Id}' for destructible spawner '{spawner.GetCleanedName()}'");
+                Log.LogTrace($"[Destructible Spawner] Creating spawn '{spawnTemplate.Id}' for '{spawner.GetCleanedName()}:{pos}'");
 
-                DestructibleSpawnTemplateManager.SetTemplate(newSpawn, template);
+                DestructibleSpawnTemplateManager.SetTemplate(newSpawn, spawnTemplate);
 
                 spawns.Add(newSpawn);
+            }
+        }
+
+        if (spawnerTemplate.RemoveNotConfiguredSpawns)
+        {
+#if DEBUG
+            Log.LogTrace("Remove not configured from spawns: " + spawns.Join(x => x.m_prefab.name));
+            Log.LogTrace("Removing unmodified indexes: " + unmodifiedIndexes?.Join() ?? "");
+#endif
+            foreach (var index in unmodifiedIndexes)
+            {
+                spawns.RemoveAt(index);
             }
         }
 
@@ -81,7 +108,7 @@ internal static class ConfigApplicationService
 
         if (prefab.IsNull())
         {
-            Log.LogWarning($"Unable to find prefab '{template.PrefabName}' for destructible spawner. Skipping adding spawn.");
+            Log.LogWarning($"[Destructible Spawner] Unable to find prefab '{template.PrefabName}'. Skipping adding spawn.");
             return null;
         }
 
@@ -104,9 +131,11 @@ internal static class ConfigApplicationService
             
             if (prefab.IsNull())
             {
-                Log.LogWarning($"Unable to find prefab '{template.PrefabName}' for destructible spawner. Skipping adding spawn.");
+                Log.LogWarning($"[Destructible Spawner] Unable to find prefab '{template.PrefabName}'. Skipping modifying spawn.");
                 return;
             }
+
+            original.m_prefab = prefab;
         }
 
         original.m_weight = template.SpawnWeight ?? original.m_weight;

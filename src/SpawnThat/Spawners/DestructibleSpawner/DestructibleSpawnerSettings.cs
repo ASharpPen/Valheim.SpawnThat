@@ -98,6 +98,17 @@ public class DestructibleSpawnerSettings
     public bool? OnGroundOnly { get; set; }
 
     /// <summary>
+    /// <para>
+    ///     Sets if spawns of spawner that were not configured should be removed.
+    /// </para>
+    /// <para>
+    ///     Intended to simplify disabling of undesired spawns. 
+    ///     Instead of disabling them index by index, this setting can be used.
+    /// </para>
+    /// </summary>
+    public bool? RemoveNotConfiguredSpawns { get; set; }
+
+    /// <summary>
     /// Spawns for spawner.
     /// 
     /// If id matches the index of an existing spawn, the existing spawn will be
