@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using HarmonyLib;
 using SpawnThat.Core;
 using SpawnThat.Spawners.Contexts;
 using SpawnThat.Utilities.Extensions;
@@ -45,7 +46,7 @@ public class IdentifierName : ISpawnerIdentifier, ICacheableIdentifier
         var cleanedName = context.Target.GetCleanedName();
 
 #if DEBUG
-        Log.LogTrace($"Is name '{cleanedName}' in '{Names}': {Names.Any(x => x == cleanedName)}");
+        Log.LogTrace($"Is name '{cleanedName}' in '{Names.Join()}': {Names.Any(x => x == cleanedName)}");
 #endif
 
         var match = Names.Any(x => x == cleanedName);

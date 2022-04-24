@@ -12,8 +12,6 @@ internal static class ConfigApplicationService
 {
     public static void ConfigureSpawner(SpawnArea spawner, DestructibleSpawnerTemplate spawnerTemplate)
     {
-        List<SpawnData> spawns = new();
-
         spawner.m_levelupChance = spawnerTemplate.LevelUpChance ?? spawner.m_levelupChance;
         spawner.m_spawnIntervalSec = spawnerTemplate.SpawnInterval?.Seconds ?? spawner.m_spawnIntervalSec;
         spawner.m_triggerDistance = spawnerTemplate.ConditionPlayerWithinDistance ?? spawner.m_triggerDistance;
@@ -33,7 +31,9 @@ internal static class ConfigApplicationService
 
         var pos = spawner.transform.position;
 
-        foreach (var spawn in spawnerTemplate.Spawns)
+        var spawns = spawner.m_prefabs?.ToList() ?? new();
+
+        foreach (var spawn in spawnerTemplate.Spawns.OrderBy(x => x.Key))
         {
             var spawnTemplate = spawn.Value;
 
@@ -45,22 +45,20 @@ internal static class ConfigApplicationService
             if (spawn.Key < existingSpawns)
             {
                 // Configure existing
-                var original = spawner.m_prefabs[(int)spawn.Key];
+                var existingSpawn = spawns[(int)spawn.Key];
 
                 if (spawnTemplate.TemplateEnabled)
                 {
                     Log.LogTrace($"[Destructible Spawner] Modifying spawn '{spawnTemplate.Id}' of '{spawner.GetCleanedName()}:{pos}'");
 
-                    Modify(original, spawnTemplate);
-                    DestructibleSpawnTemplateManager.SetTemplate(original, spawnTemplate);
+                    Modify(existingSpawn, spawnTemplate);
+                    DestructibleSpawnTemplateManager.SetTemplate(existingSpawn, spawnTemplate);
 
                     if (spawnerTemplate.RemoveNotConfiguredSpawns)
                     {
                         unmodifiedIndexes.RemoveAt((int)spawn.Key);
                     }
                 }
-
-                spawns.Add(original);
             }
             else if (spawnTemplate.TemplateEnabled)
             {
@@ -82,13 +80,14 @@ internal static class ConfigApplicationService
 
         if (spawnerTemplate.RemoveNotConfiguredSpawns)
         {
+            unmodifiedIndexes.Reverse();
 #if DEBUG
             Log.LogTrace("Remove not configured from spawns: " + spawns.Join(x => x.m_prefab.name));
             Log.LogTrace("Removing unmodified indexes: " + unmodifiedIndexes?.Join() ?? "");
 #endif
             foreach (var index in unmodifiedIndexes)
             {
-                spawns.RemoveAt(index);
+                    spawns.RemoveAt(index);
             }
         }
 

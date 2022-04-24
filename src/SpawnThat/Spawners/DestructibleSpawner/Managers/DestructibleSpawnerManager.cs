@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using SpawnThat.Core;
 using SpawnThat.Core.Cache;
 using SpawnThat.Lifecycle;
 using SpawnThat.Options.Identifiers;
 using SpawnThat.Spawners.Contexts;
 using SpawnThat.Spawners.DestructibleSpawner.Services;
+using SpawnThat.Utilities.Extensions;
+using YamlDotNet.Serialization;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Managers;
 
@@ -47,10 +50,18 @@ internal static class DestructibleSpawnerManager
 
         if (configureSpawner)
         {
+#if DEBUG
+            Log.LogTrace($"Attempting to configure destructible spawner '{spawner.name}:{spawner.transform.position}'");
+#endif
+
             var spawnerTemplate = FindTemplateMatch(spawner);
 
             if (spawnerTemplate is not null)
             {
+#if DEBUG
+                Log.LogTrace($"Found template '{spawnerTemplate.TemplateName}'");
+#endif
+
                 TemplateBySpawner.Set(spawner, spawnerTemplate);
 
                 ConfigApplicationService.ConfigureSpawner(spawner, spawnerTemplate);
@@ -84,16 +95,33 @@ internal static class DestructibleSpawnerManager
 
         foreach (var template in templates)
         {
+#if DEBUG
+            Log.LogTrace($"Checking template '{template.TemplateName}:{spawner.GetName()}:{spawner.transform.position}'");
+
+#endif
             int matchLevel = 0;
             double matchScore = 0;
 
             foreach (var identifier in template.Identifiers)
             {
+#if DEBUG
+                Log.LogTrace($"[Destructible Spawner] Identifier '{identifier.GetType().Name}'");
+#endif
                 if (IsMatch(context, identifier))
                 {
                     ++matchLevel;
                     matchScore += identifier.GetMatchWeight();
                 }
+                else
+                {
+                    matchLevel = 0;
+                    break;
+                }
+            }
+
+            if (matchLevel == 0)
+            {
+                continue;
             }
 
             if (matchLevel > maxMatchLevel)
