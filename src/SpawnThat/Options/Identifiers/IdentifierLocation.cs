@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using HarmonyLib;
+using SpawnThat.Core;
 using SpawnThat.Spawners.Contexts;
 using SpawnThat.World.Locations;
 
@@ -13,7 +15,15 @@ public class IdentifierLocation : ISpawnerIdentifier, ICacheableIdentifier
     public List<string> Locations
     {
         get { return _locations; }
-        set { SetHash(_locations = value); }
+        set 
+        { 
+            _locations = value
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Select(x => x.Trim().ToUpperInvariant())
+                .ToList();
+
+            SetHash(_locations); 
+        }
     }
 
     internal IdentifierLocation()
@@ -22,10 +32,7 @@ public class IdentifierLocation : ISpawnerIdentifier, ICacheableIdentifier
 
     public IdentifierLocation(IEnumerable<string> requireOneOfLocations)
     {
-        Locations = requireOneOfLocations
-            .Where(x => !string.IsNullOrWhiteSpace(x))
-            .Select(x => x.Trim().ToUpperInvariant())
-            .ToList();
+        Locations = requireOneOfLocations.ToList();
     }
 
     public bool IsValid(IdentificationContext context)
@@ -40,6 +47,10 @@ public class IdentifierLocation : ISpawnerIdentifier, ICacheableIdentifier
             .LocationName?
             .Trim()?
             .ToUpperInvariant();
+
+#if DEBUG
+        Log.LogTrace($"Is location '{location}' in '{_locations.Join()}': {Locations.Any(x => x == location)}");
+#endif
 
         if (location is null)
         {

@@ -34,6 +34,8 @@ internal class DestructibleSpawnBuilder : IDestructibleSpawnBuilder
 
     internal DestructibleSpawnTemplate Build()
     {
+        Template.Id = Id;
+
         Template.Conditions = SpawnConditions;
         Template.PositionConditions = SpawnPositionConditions;
         Template.Modifiers = SpawnModifiers;

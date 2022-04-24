@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using SpawnThat.Core;
 using SpawnThat.Spawners.Contexts;
 using SpawnThat.Utilities.Extensions;
 
@@ -13,7 +14,15 @@ public class IdentifierName : ISpawnerIdentifier, ICacheableIdentifier
     public ICollection<string> Names
     {
         get { return _names; }
-        set { SetHash(_names = value); }
+        set 
+        {
+            _names = value
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Select(x => x.Trim())
+                .ToList();
+
+            SetHash(_names);
+        }
     }
 
     internal IdentifierName()
@@ -22,10 +31,7 @@ public class IdentifierName : ISpawnerIdentifier, ICacheableIdentifier
 
     public IdentifierName(params string[] names)
     {
-        Names = names
-            .Where(x => !string.IsNullOrWhiteSpace(x))
-            .Select(x => x.Trim())
-            .ToArray();
+        Names = names;
     }
 
     public bool IsValid(IdentificationContext context)
@@ -37,6 +43,11 @@ public class IdentifierName : ISpawnerIdentifier, ICacheableIdentifier
         }
 
         var cleanedName = context.Target.GetCleanedName();
+
+#if DEBUG
+        Log.LogTrace($"Is name '{cleanedName}' in '{Names}': {Names.Any(x => x == cleanedName)}");
+#endif
+
         var match = Names.Any(x => x == cleanedName);
 
         return match;

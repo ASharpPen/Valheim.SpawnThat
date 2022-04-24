@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using HarmonyLib;
+using SpawnThat.Core;
 using SpawnThat.Spawners.Contexts;
 using SpawnThat.World.Dungeons;
 
@@ -8,12 +10,20 @@ namespace SpawnThat.Options.Identifiers;
 public class IdentifierRoom : ISpawnerIdentifier, ICacheableIdentifier
 {
     private long _hash;
-    private List<string> _rooms;
+    private ICollection<string> _rooms;
 
-    public List<string> Rooms
+    public ICollection<string> Rooms
     {
         get { return _rooms; }
-        set { SetHash(_rooms = value); }
+        set 
+        { 
+            _rooms = value
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Select(x => x.Trim())
+                .ToList();
+
+            SetHash(_rooms); 
+        }
     }
 
     internal IdentifierRoom()
@@ -22,10 +32,7 @@ public class IdentifierRoom : ISpawnerIdentifier, ICacheableIdentifier
 
     public IdentifierRoom(IEnumerable<string> roomNames)
     {
-        Rooms = roomNames
-            .Where(x => !string.IsNullOrWhiteSpace(x))
-            .Select(x => x.Trim())
-            .ToList();
+        Rooms = roomNames.ToArray();
     }
 
     public bool IsValid(IdentificationContext context)
@@ -38,6 +45,10 @@ public class IdentifierRoom : ISpawnerIdentifier, ICacheableIdentifier
 
 
         var room = RoomManager.GetContainingRoom(context.Zdo.GetPosition());
+
+#if DEBUG
+        Log.LogTrace($"Is room '{room?.Name}' in '{Rooms.Join()}': {Rooms.Any(x => x == room?.Name)}");
+#endif
 
         if (room is null)
         {

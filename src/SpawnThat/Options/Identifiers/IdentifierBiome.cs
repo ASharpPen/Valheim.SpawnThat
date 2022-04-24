@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using HarmonyLib;
+using SpawnThat.Core;
 using SpawnThat.Spawners.Contexts;
+using SpawnThat.Utilities;
 using SpawnThat.World.Zone;
 
 namespace SpawnThat.Options.Identifiers;
@@ -29,9 +32,14 @@ public class IdentifierBiome : ISpawnerIdentifier, ICacheableIdentifier
             return true;
         }
 
-        var zone = ZoneManager.GetZone(context.Zdo.m_sector);
+        var zone = ZoneManager.GetZone(context.Zdo.GetSector());
+        var biome = zone.GetBiome(context.Zdo.GetPosition());
 
-        return zone.HasBiome(BitmaskedBiome);
+#if DEBUG
+        Log.LogTrace($"Is '{HeightmapUtils.GetNames(biome)}' in '{HeightmapUtils.GetNames(BitmaskedBiome)}': {(BitmaskedBiome & zone.Biome) > 0}");
+#endif
+
+        return (BitmaskedBiome & biome) > 0;
     }
 
     public long GetParameterHash()
