@@ -76,7 +76,7 @@ internal static class WorldSpawnSessionManager
             try
             {
                 var isValid = x?.IsValid(Context) ?? true;
-#if DEBUG
+#if DEBUG && VERBOSE
                 if (!isValid)
                 {
                     Log.LogDebug($"[{SpawnTemplate.Index}:{SpawnTemplate.PrefabName}] condition {x.GetType().Name} is invalid.");

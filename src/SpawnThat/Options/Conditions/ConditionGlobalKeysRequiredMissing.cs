@@ -9,14 +9,14 @@ namespace SpawnThat.Options.Conditions;
 /// </summary>
 public class ConditionGlobalKeysRequiredMissing : ISpawnCondition
 {
-    public List<string> RequiredMissing { get; set; }
+    public HashSet<string> RequiredMissing { get; set; }
 
     public ConditionGlobalKeysRequiredMissing()
     { }
 
     public ConditionGlobalKeysRequiredMissing(params string[] requiredMissing)
     {
-        RequiredMissing = requiredMissing.ToList();
+        RequiredMissing = requiredMissing.ToHashSet();
     }
 
     public bool IsValid(SpawnSessionContext context)

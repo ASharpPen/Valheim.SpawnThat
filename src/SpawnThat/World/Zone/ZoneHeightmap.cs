@@ -36,6 +36,11 @@ internal class ZoneHeightmap : IZone
 
     public bool HasBiome(Biome biome) => Heightmap.HaveBiome(biome);
 
+    public Biome GetBiome(Vector3 pos)
+    {
+        return Heightmap.GetBiome(pos);
+    }
+
     public float Height(Vector3 worldCoordinate)
     {
         Heightmap.GetHeight(worldCoordinate, out var height);

@@ -4,9 +4,12 @@ using BepInEx.Logging;
 using SpawnThat.Integrations.CLLC.Models;
 using SpawnThat.Integrations.EpicLoot.Models;
 using SpawnThat.Options.Conditions;
+using SpawnThat.Options.Modifiers;
 using SpawnThat.Spawners;
+using SpawnThat.Spawners.DestructibleSpawner;
 using SpawnThat.Spawners.LocalSpawner;
 using SpawnThat.Spawners.WorldSpawner;
+using SpawnThat.Utilities.Enums;
 
 namespace SpawnThatTestMod
 {
@@ -40,6 +43,9 @@ namespace SpawnThatTestMod
                 ConfigureWorldSpawner(config);
                 ConfigureWorldSpawnerBySettings(config);
                 ConfigureWorldSpawnerOverrideDefault(config);
+
+                ConfigureDestructibleSpawner(config);
+                ConfigureDestructibleSpawnerBySettings(config);
             }
             catch(Exception e)
             {
@@ -158,6 +164,64 @@ namespace SpawnThatTestMod
             {
                 Log.LogError(e);
             }
+        }
+
+        private static void ConfigureDestructibleSpawner(ISpawnerConfigurationCollection config)
+        {
+            var spawner = config.ConfigureDestructibleSpawner()
+                .SetTemplateName("Meadow Spawners")
+                .SetIdentifierBiome(Heightmap.Biome.Meadows)
+                .SetSpawnInterval(TimeSpan.FromSeconds(5))
+                ;
+
+            spawner.GetSpawnBuilder(0)
+                .SetPrefabName("Troll")
+                .SetSpawnWeight(5)
+                .SetConditionAllOfGlobalKeys(GlobalKey.Bat, GlobalKey.Troll)
+                ;
+
+            spawner.GetSpawnBuilder(1)
+                .SetPrefabName("Wolf")
+                .SetSpawnWeight(1)
+                ;
+        }
+
+        private static void ConfigureDestructibleSpawnerBySettings(ISpawnerConfigurationCollection config)
+        {
+            var spawnerSettings = new DestructibleSpawnerSettings()
+            {
+                SpawnInterval = TimeSpan.FromSeconds(5),
+                SetPatrol = true,
+                
+            };
+
+            var spawnSettings = new DestructibleSpawnSettings
+            {
+                PrefabName = "Boar",
+                Modifiers = new[]
+                {
+                    new ModifierSetTamed(true)
+                },
+            };
+
+            var spawner = config.ConfigureDestructibleSpawner()
+                .WithSettings(spawnerSettings)
+                .SetIdentifierName("Spawner_GreydwarfNest")
+                ;
+
+            spawner.GetSpawnBuilder(0)
+                .WithSettings(spawnSettings)
+                .SetLevelMin(1)
+                .SetLevelMax(1)
+                .SetSpawnWeight(5)
+                ;
+
+            spawner.GetSpawnBuilder(1)
+                .WithSettings(spawnSettings)
+                .SetLevelMin(3)
+                .SetLevelMax(3)
+                .SetSpawnWeight(1)
+                ;
         }
     }
 }

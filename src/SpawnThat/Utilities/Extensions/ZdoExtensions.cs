@@ -5,6 +5,7 @@ public static class ZdoExtensions
     private static int NoiseHash = "noise".GetStableHashCode();
     private static int TamedHash = "tamed".GetStableHashCode();
     private static int EventCreatureHash = "EventCreature".GetStableHashCode();
+    private static int HuntPlayerHash = "huntplayer".GetStableHashCode();
 
     // Custom ZDO entries
     private static int FactionHash = "faction".GetStableHashCode();
@@ -47,5 +48,15 @@ public static class ZdoExtensions
     public static void SetFaction(this ZDO zdo, Character.Faction faction)
     {
         zdo.Set(FactionHash, (int)faction);
+    }
+
+    public static bool GetHuntPlayer(this ZDO zdo)
+    {
+        return zdo.GetBool(HuntPlayerHash);
+    }
+
+    public static void SetHuntPlayer(this ZDO zdo, bool huntPlayer)
+    {
+        zdo.Set(HuntPlayerHash, huntPlayer);
     }
 }

@@ -121,7 +121,7 @@ internal static class WorldSpawnerConfigurationService
             }
             else
             {
-                Log.LogTrace($"Overriding spawner entry [{id}:{spawners[id].m_prefab.name}] with template '{template.TemplateName}'");
+                Log.LogTrace($"Overriding spawner entry [{id}:{spawners[id].m_prefab.GetName()}] with template '{template.TemplateName}'");
                 entry = spawners[id];
 
                 ConfigureExistingEntry(entry, template);
@@ -141,12 +141,12 @@ internal static class WorldSpawnerConfigurationService
             {
                 foreach (var spawner in spawnList.m_spawners)
                 {
-                    if (spawner.m_prefab.IsNull() || string.IsNullOrWhiteSpace(spawner.m_prefab.name))
+                    if (spawner.m_prefab.IsNull() || string.IsNullOrWhiteSpace(spawner.m_prefab.GetName()))
                     {
                         continue;
                     }
 
-                    var name = spawner.m_prefab.name;
+                    var name = spawner.m_prefab.GetName();
                     var cleanedName = name.Trim().ToUpper();
 
                     if (simpleConfigs.TryGetValue(cleanedName, out SimpleConfig simpleConfig))

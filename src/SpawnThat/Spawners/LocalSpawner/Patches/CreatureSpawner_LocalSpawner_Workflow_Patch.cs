@@ -4,6 +4,7 @@ using System.Reflection;
 using HarmonyLib;
 using SpawnThat.Utilities.Extensions;
 using SpawnThat.Spawners.LocalSpawner.Managers;
+using System;
 
 namespace SpawnThat.Spawners.LocalSpawner.Patches;
 
@@ -27,15 +28,15 @@ internal static class CreatureSpawner_LocalSpawner_Workflow_Patch
 
     [HarmonyPatch(nameof(CreatureSpawner.UpdateSpawner))]
     [HarmonyTranspiler]
-    private static IEnumerable<CodeInstruction> CheckSpawnConditions(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> CheckSpawnConditions(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
     {
         var spawn = AccessTools.Method(typeof(CreatureSpawner), nameof(CreatureSpawner.Spawn));
 
-        return new CodeMatcher(instructions)
+        return new CodeMatcher(instructions, generator)
             // Move to Spawn call
             .MatchForward(false, new CodeMatch(OpCodes.Call, spawn))
             // Add label so we can continue flow.
-            .AddLabel(out var callSpawnLabel)
+            .CreateLabel(out var callSpawnLabel)
             // Insert check for valid template conditions, and return if not valid.
             .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
             .InsertAndAdvance(Transpilers.EmitDelegate(LocalSpawnSessionManager.CheckConditionsValid))

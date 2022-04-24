@@ -4,7 +4,7 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <AssemblyVersion></AssemblyVersion>
     <FileVersion></FileVersion>
-    <Version>1.0.5</Version>
+    <Version>1.1.0</Version>
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
     <AssemblyName>Valheim.SpawnThat</AssemblyName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -12,7 +12,7 @@
     <PackageProjectUrl></PackageProjectUrl>
     <RepositoryUrl>https://github.com/ASharpPen/Valheim.SpawnThat</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>Valheim;Mod;Spawn</PackageTags>
+    <PackageTags>Valheim;Mod;Spawn;BepInEx</PackageTags>
     <Description>Valheim mod and tool for configuring spawners.</Description>
     <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
   </PropertyGroup>

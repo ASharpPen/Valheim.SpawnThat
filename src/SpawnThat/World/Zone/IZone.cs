@@ -6,6 +6,11 @@ namespace SpawnThat.World.Zone;
 public interface IZone
 {
     int Width { get; }
+
+    /// <summary>
+    /// Main biome of zone. Calculated using <c>GetBiome(ZonePos)</c>
+    /// Note that this means that edge zones may display other biomes.
+    /// </summary>
     Biome Biome { get; }
     Vector2i ZoneId { get; }
     Vector3 ZonePos { get; }
@@ -13,6 +18,16 @@ public interface IZone
     BiomeArea BiomeArea { get; }
 
     bool HasBiome(Biome biome);
+
+    /// <summary>
+    /// <para> Get biome at position. </para>
+    /// <para> This is the general biome understanding in valheim, but not the only one.</para>
+    /// </summary>
+    /// <remarks>
+    ///     Valheim is weird... Biome is calculated in a multitude of ways, depending on position. 
+    ///     This is the main one, also used by minimap to get current biome name.
+    /// </remarks>
+    Biome GetBiome(Vector3 pos);
 
     /// <summary>
     /// <para>Transform world coordinate to coordinate relative to the zone.</para>
