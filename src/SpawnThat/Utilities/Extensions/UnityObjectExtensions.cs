@@ -27,6 +27,15 @@ public static class UnityObjectExtensions
         return false;
     }
 
+    /// <summary>
+    /// Unity object null safe ".name".
+    /// </summary>
+    /// <returns><c>obj</c>.name or empty string if obj is null.</returns>
+    public static string GetName(this UnityEngine.Object obj)
+        => obj.IsNotNull()
+        ? obj.name
+        : string.Empty;
+
     public static string GetCleanedName(this UnityEngine.Object obj, bool toUpper = false)
     {
         if (obj.IsNull())
