@@ -44,19 +44,25 @@ internal class GeneralConfiguration
 
     public ConfigurationEntry<bool> AlwaysAppend = new ConfigurationEntry<bool>(false, "If true, will never override existing spawners, but add all custom configurations to the list.");
 
-    public ConfigurationEntry<bool> WriteSpawnTablesToFileBeforeChanges = new ConfigurationEntry<bool>(false, "Dumps world spawner templates to a file, before applying custom changes.");
+    public ConfigurationEntry<bool> WriteSpawnTablesToFileBeforeChanges = new ConfigurationEntry<bool>(false, "Writes world spawner templates to a file, before applying custom changes.");
 
-    public ConfigurationEntry<bool> WriteSpawnTablesToFileAfterChanges = new ConfigurationEntry<bool>(false, "Dumps world spawner templates to a file after applying configuration changes.");
+    public ConfigurationEntry<bool> WriteSpawnTablesToFileAfterChanges = new ConfigurationEntry<bool>(false, "Writes world spawner templates to a file after applying configuration changes.");
 
     #endregion
 
     #region LocalSpawner
 
-    public ConfigurationEntry<bool> WriteCreatureSpawnersToFile = new ConfigurationEntry<bool>(false, "Dumps local spawners to a file before applying configuration changes.");
+    public ConfigurationEntry<bool> WriteCreatureSpawnersToFile = new ConfigurationEntry<bool>(false, "Writes local spawners to a file before applying configuration changes.");
 
     public ConfigurationEntry<bool> DontCollapseFile = new ConfigurationEntry<bool>(false, "If true, locations with multiple spawners with duplicate creatures will be listed individually, instead of being only one of each creature.");
 
     public ConfigurationEntry<bool> EnableLocalSpawner = new ConfigurationEntry<bool>(true, "Toggles if Spawn That changes to local spawners will be run or not.");
+
+    #endregion
+
+    #region DestructibleSpawner
+
+    public ConfigurationEntry<bool> WriteDestructibleSpawnersToFile = new ConfigurationEntry<bool>(false, "Writes destructible spawners to a file before applying configuration changes.");
 
     #endregion
 
@@ -81,6 +87,8 @@ internal class GeneralConfiguration
         WriteSpawnTablesToFileAfterChanges.Bind(Config, "WorldSpawner", "WriteSpawnTablesToFileAfterChanges");
 
         InitializeWithCreatures.Bind(Config, "Simple", "InitializeWithCreatures");
+
+        WriteDestructibleSpawnersToFile.Bind(Config, "DestructibleSpawner", "WriteSpawnTablesToFileBeforeChanges");
 
         StopTouchingMyConfigs.Bind(Config, "General", nameof(StopTouchingMyConfigs));
     }
