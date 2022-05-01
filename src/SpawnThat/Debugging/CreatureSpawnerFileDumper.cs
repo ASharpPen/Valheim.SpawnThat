@@ -6,6 +6,7 @@ using System.Text;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Debugging;
 
@@ -45,13 +46,13 @@ internal static class CreatureSpawnerFileDumper
 
                     if (rooms.Count == 0)
                     {
-                        Log.LogDebug($"No rooms for {locPrefab.name}:{dungeon.name}");
+                        //Log.LogDebug($"No rooms for {locPrefab.name}:{dungeon.name}");
                     }
 
 
                     var roomSpawners = rooms
                         .SelectMany(x => x.m_room.GetComponentsInChildren<CreatureSpawner>())
-                        .Where(x => x is not null)
+                        .Where(x => x.IsNotNull())
                         .ToList();
 
                     if (roomSpawners.Count > 0)
@@ -67,7 +68,7 @@ internal static class CreatureSpawnerFileDumper
                     }
                     else
                     {
-                        Log.LogDebug($"No room spawners for {locPrefab.name}:{dungeon.name}");
+                        //Log.LogDebug($"No room spawners for {locPrefab.name}:{dungeon.name}");
                     }
                 }
             }

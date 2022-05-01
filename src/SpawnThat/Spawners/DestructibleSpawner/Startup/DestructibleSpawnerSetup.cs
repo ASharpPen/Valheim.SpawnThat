@@ -1,6 +1,7 @@
 using System.Collections;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
+using SpawnThat.Spawners.DestructibleSpawner.Debug;
 using SpawnThat.Spawners.DestructibleSpawner.Managers;
 using SpawnThat.Spawners.DestructibleSpawner.Sync;
 using UnityEngine;
@@ -16,6 +17,8 @@ internal static class DestructibleSpawnerSetup
         LifecycleManager.OnFindSpawnPointFirstTime += DelayedConfigRelease;
 
         SpawnerConfigurationManager.OnLateConfigure += ApplyFileConfigs;
+
+        LifecycleManager.OnFindSpawnPointFirstTime += SpawnAreaDataGatherer.ScanAndPrint;
 
         DestructibleSpawnerSyncSetup.Configure();
     }
