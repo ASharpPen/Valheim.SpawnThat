@@ -4,10 +4,31 @@ using System.Linq;
 
 namespace SpawnThat.Utilities;
 
+internal enum Separator
+{
+    Comma,
+    Slash,
+    Dot,
+}
+
 public static class StringExtensions
 {
     private static readonly char[] Comma = new[] { ',' };
     private static readonly char[] Slash = new[] { '/', '\\' };
+    private static readonly char[] Dot = new[] { '.' };
+
+    internal static List<string> SplitBy(this string value, Separator separator, bool toUpper = false)
+    {
+        var sep = separator switch
+        {
+            Separator.Comma => Comma,
+            Separator.Slash => Slash,
+            Separator.Dot => Dot,
+            _ => throw new NotSupportedException(nameof(Separator))
+        };
+
+        return SplitBy(value, sep, toUpper).ToList();
+    }
 
     public static List<string> SplitByComma(this string value, bool toUpper = false)
         => SplitBy(value, Comma, toUpper).ToList();
@@ -17,6 +38,11 @@ public static class StringExtensions
 
     public static IEnumerable<string> SplitBy(this string value, char[] chars, bool toUpper = false)
     {
+        if (value is null)
+        {
+            return Enumerable.Empty<string>();
+        }
+
         var split = value.Split(chars, StringSplitOptions.RemoveEmptyEntries);
 
         if ((split?.Length ?? 0) == 0)
