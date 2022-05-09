@@ -1,5 +1,4 @@
 ﻿using BepInEx;
-using SpawnThat.Core.Configuration;
 using System;
 using System.IO;
 
@@ -12,42 +11,50 @@ namespace SpawnThat.Core.Toml;
 /// </summary>
 internal class TomlConfigFileEntry : TomlConfigEntry<string>
 {
-    public TomlConfigFileEntry()
+    internal TomlConfigFileEntry()
+    { }
+
+    public TomlConfigFileEntry(string name, string defaultValue, string description = null)
     {
+        Name = name;
+        DefaultValue = defaultValue;
+        Description = description;
     }
 
-    /*
-    public TomlConfigFileEntry(string defaultValue, string description = null) : base(defaultValue, description)
-    {
-    }
-    */
+    public new string Name { get; set; }
 
-    protected void PostBind()
-    {
-        if (!string.IsNullOrWhiteSpace(Value))
+    public new Type SettingType { get; } = typeof(string);
+
+    private string _value;
+
+    public new string Value { 
+        get { return _value; }
+        set
         {
-            try
+            if (!string.IsNullOrWhiteSpace(value))
             {
-                var filePath = Path.Combine(Paths.ConfigPath, Value);
-
-                if (File.Exists(filePath))
+                try
                 {
+                    var filePath = Path.Combine(Paths.ConfigPath, Value);
 
-                    DefaultValue = File.ReadAllText(filePath);
-                    //Config = null;
+                    if (File.Exists(filePath))
+                    {
+
+                        _value = File.ReadAllText(filePath);
 #if DEBUG
-                    Log.LogDebug("File content: " + DefaultValue);
+                        Log.LogDebug("File content: " + DefaultValue);
 #endif
+                    }
+                    else
+                    {
+                        Log.LogWarning($"Unable to find MobAI json config file at '{filePath}'");
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    Log.LogWarning($"Unable to find MobAI json config file at '{filePath}'");
+                    Log.LogError("Error while attempting to read MobAI config.", e);
                 }
             }
-            catch (Exception e)
-            {
-                Log.LogError("Error while attempting to read MobAI config.", e);
-            }
-        }
+        } 
     }
 }

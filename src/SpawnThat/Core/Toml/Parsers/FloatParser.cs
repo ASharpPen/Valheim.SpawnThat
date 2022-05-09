@@ -4,14 +4,17 @@ namespace SpawnThat.Core.Toml.Parsers;
 
 internal class FloatParser : ValueParser<float?>
 {
-    protected override void ParseInternal(ITomlConfigEntry<float?> entry, string value)
+    protected override void ParseInternal(ITomlConfigEntry<float?> entry, TomlLine line)
     {
-        if (float.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var result))
+        if (float.TryParse(line.Value, NumberStyles.Any, CultureInfo.InvariantCulture, out var result))
         {
             entry.Value = result;
             entry.IsSet = true;
         }
-
-        entry.IsSet = false;
+        else
+        {
+            Log.LogWarning($"[Line {line.LineNr}]: Unable to parse '{line.Value}'. Expected decimal number. Eg., 0.5 or 3.");
+            entry.IsSet = false;
+        }
     }
 }

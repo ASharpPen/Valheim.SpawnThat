@@ -4,14 +4,17 @@ namespace SpawnThat.Core.Toml.Parsers;
 
 internal class DoubleParser : ValueParser<double?>
 {
-    protected override void ParseInternal(ITomlConfigEntry<double?> entry, string value)
+    protected override void ParseInternal(ITomlConfigEntry<double?> entry, TomlLine line)
     {
-        if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var result))
+        if (double.TryParse(line.Value, NumberStyles.Any, CultureInfo.InvariantCulture, out var result))
         {
             entry.Value = result;
             entry.IsSet = true;
         }
-
-        entry.IsSet = false;
+        else
+        {
+            Log.LogWarning($"[Line {line.LineNr}]: Unable to parse '{line.Value}' as a double. Verify spelling. Valid example values are \"0.5\" and \"123\".");
+            entry.IsSet = false;
+        }
     }
 }

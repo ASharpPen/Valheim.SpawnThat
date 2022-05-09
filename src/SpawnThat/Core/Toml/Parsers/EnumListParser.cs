@@ -7,21 +7,29 @@ namespace SpawnThat.Core.Toml.Parsers;
 internal class EnumListParser<T> : ValueParser<List<T>>
     where T : struct, Enum
 {
-    protected override void ParseInternal(ITomlConfigEntry<List<T>> entry, string value)
+    protected override void ParseInternal(ITomlConfigEntry<List<T>> entry, TomlLine line)
     {
-        var items = value.SplitByComma();
+        var items = line.Value.SplitByComma();
         var results = new List<T>(items.Count);
 
-        foreach (var itemValue in value.SplitByComma())
+        foreach (var itemValue in items)
         {
-            if (Enum.TryParse<T>(value, true, out var result))
+            if (Enum.TryParse<T>(itemValue, true, out var result))
             {
                 results.Add(result);
             }
             else
             {
-                entry.IsSet = false;
+                Log.LogWarning($"[Line {line.LineNr}]: Unable to parse '{itemValue}'. Verify spelling.");
             }
+        }
+
+        if (items.Count > 0 && 
+            results.Count == 0)
+        {
+            // Everything failed. Skip this one.
+            entry.IsSet = false;
+            return;
         }
 
         entry.Value = results;

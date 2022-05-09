@@ -102,7 +102,12 @@ internal static class TomlLoader
                 // Find matching entry in config
                 if (currentSectionConfig.TryGet(settingName, out var configEntry))
                 {
-                    configEntry.Read(settingValue);
+                    configEntry.Read(
+                        new() 
+                        { 
+                            LineNr = currentLine,
+                            Value = settingValue
+                        });
                 }
                 else
                 {

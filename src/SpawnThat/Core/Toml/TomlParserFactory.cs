@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using SpawnThat.Core.Toml.Parsers;
-using System.Linq;
 
 namespace SpawnThat.Core.Toml;
 
@@ -22,12 +21,12 @@ internal static class TomlParserFactory
         };
     }
 
-    public static void Read<T>(this T entry, string value)
+    public static void Read<T>(this T entry, TomlLine line)
         where T : ITomlConfigEntry
     {
         if (parsers.TryGetValue(entry.SettingType, out var parser))
         {
-            parser.Parse(value, entry);
+            parser.Parse(entry, line);
         }
         else
         {

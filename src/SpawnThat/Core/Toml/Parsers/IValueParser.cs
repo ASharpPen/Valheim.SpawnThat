@@ -1,25 +1,26 @@
 ﻿using System;
+using BepInEx;
 
 namespace SpawnThat.Core.Toml.Parsers;
 
 internal interface IValueParser
 {
-    void Parse(string value, ITomlConfigEntry entry);
+    void Parse(ITomlConfigEntry entry, TomlLine line);
 }
 
 internal abstract class ValueParser<T> : IValueParser
 {
-    public void Parse(string value, ITomlConfigEntry entry)
+    public void Parse(ITomlConfigEntry entry, TomlLine line)
     {
         if (entry is ITomlConfigEntry<T> supportedEntry)
         {
-            if (string.IsNullOrWhiteSpace(value))
+            if (string.IsNullOrWhiteSpace(line.Value))
             {
                 supportedEntry.IsSet = true;
             }
             else
             {
-                ParseInternal(supportedEntry, value);
+                ParseInternal(supportedEntry, line);
             }
         }
         else
@@ -28,5 +29,5 @@ internal abstract class ValueParser<T> : IValueParser
         }
     }
 
-    protected abstract void ParseInternal(ITomlConfigEntry<T> entry, string value);
+    protected abstract void ParseInternal(ITomlConfigEntry<T> entry, TomlLine line);
 }
