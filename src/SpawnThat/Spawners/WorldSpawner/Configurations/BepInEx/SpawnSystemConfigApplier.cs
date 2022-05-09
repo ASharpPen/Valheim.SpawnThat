@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Linq;
-using SpawnThat.Core.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Utilities;
 using SpawnThat.Options.Modifiers;
-using System.Collections.Generic;
-using SpawnThat.Integrations.CLLC.Models;
 using SpawnThat.Integrations;
+using SpawnThat.Core.Toml;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
@@ -36,19 +34,21 @@ internal static class SpawnSystemConfigApplier
 
         foreach (var spawnConfig in configs)
         {
-            if (string.IsNullOrWhiteSpace(spawnConfig.PrefabName?.Value))
+            if (spawnConfig.PrefabName.IsSet &&
+                string.IsNullOrWhiteSpace(spawnConfig.PrefabName?.Value))
             {
-                Log.LogWarning($"PrefabName of world spawner config {spawnConfig.SectionKey} is empty. Skipping config.");
+                Log.LogWarning($"PrefabName of world spawner config {spawnConfig.SectionPath} is empty. Skipping config.");
                 continue;
             }
 
             if (spawnConfig.Index < 0)
             {
-                Log.LogWarning($"Index of world spawner config {spawnConfig.SectionKey} is less than 0. Skipping config.");
+                Log.LogWarning($"ID of world spawner config {spawnConfig.SectionPath} is less than 0. Skipping config.");
                 continue;
             }
 
             var builder = spawnerConfigs.ConfigureWorldSpawner((uint)spawnConfig.Index);
+
 
             ApplyConfigToBuilder(spawnConfig, builder);
         }
@@ -57,63 +57,64 @@ internal static class SpawnSystemConfigApplier
     private static void ApplyConfigToBuilder(SpawnConfiguration config, IWorldSpawnBuilder builder)
     {
         // Default
-        config.Name.SetIfHasValue(builder.SetTemplateName);
         config.PrefabName.SetIfHasValue(builder.SetPrefabName);
-        config.RequiredGlobalKey.SetIfHasValue(builder.SetConditionRequiredGlobalKey);
-        config.RequiredEnvironments.SetIfHasValue(builder.SetConditionEnvironments);
-
-        builder.SetEnabled(config.Enabled.Value);
-        builder.SetTemplateEnabled(config.TemplateEnabled.Value);
-        builder.SetConditionBiomes(config.ExtractBiomeMask());
-        builder.SetModifierHuntPlayer(config.HuntPlayer.Value);
-        builder.SetMaxSpawned((uint)config.MaxSpawned.Value);
-        builder.SetSpawnInterval(TimeSpan.FromSeconds(config.SpawnInterval.Value));
-        builder.SetSpawnChance(config.SpawnChance.Value);
-        builder.SetMinLevel((uint)config.LevelMin.Value);
-        builder.SetMaxLevel((uint)config.LevelMax.Value);
-        builder.SetDistanceToCenterForLevelUp(config.LevelUpMinCenterDistance.Value);
-        builder.SetMinDistanceToOther(config.SpawnDistance.Value);
-        builder.SetSpawnAtDistanceToPlayerMin(config.SpawnRadiusMin.Value);
-        builder.SetSpawnAtDistanceToPlayerMax(config.SpawnRadiusMax.Value);
-        builder.SetPackSizeMin((uint)config.GroupSizeMin.Value);
-        builder.SetPackSizeMax((uint)config.GroupSizeMax.Value);
-        builder.SetPackSpawnCircleRadius(config.GroupRadius.Value);
-        builder.SetSpawnAtDistanceToGround(config.GroundOffset.Value);
-        builder.SetSpawnDuringDay(config.SpawnDuringDay.Value);
-        builder.SetSpawnDuringNight(config.SpawnDuringNight.Value);
-        builder.SetConditionAltitude(config.ConditionAltitudeMin.Value, config.ConditionAltitudeMax.Value);
-        builder.SetConditionTilt(config.ConditionTiltMin.Value, config.ConditionTiltMax.Value);
-        builder.SetSpawnInForest(config.SpawnInForest.Value);
-        builder.SetSpawnOutsideForest(config.SpawnOutsideForest.Value);
-        builder.SetConditionOceanDepth(config.OceanDepthMin.Value, config.OceanDepthMax.Value);
+        config.Name.SetIfLoaded(builder.SetTemplateName);
+        config.RequiredGlobalKey.SetIfLoaded(builder.SetConditionRequiredGlobalKey);
+        config.RequiredEnvironments.SetIfLoaded(builder.SetConditionEnvironments);
+        config.Enabled.SetIfLoaded(builder.SetEnabled);
+        config.TemplateEnabled.SetIfLoaded(builder.SetTemplateEnabled);
+        config.Biomes.SetIfLoaded(builder.SetConditionBiomes);
+        config.HuntPlayer.SetIfLoaded(builder.SetModifierHuntPlayer);
+        config.MaxSpawned.SetIfLoaded(x => builder.SetMaxSpawned((uint)x));
+        config.SpawnInterval.SetIfLoaded(x => builder.SetSpawnInterval(TimeSpan.FromSeconds(x)));
+        config.SpawnChance.SetIfLoaded(builder.SetSpawnChance);
+        config.LevelMin.SetIfLoaded(x => builder.SetMinLevel((uint)x));
+        config.LevelMax.SetIfLoaded(x => builder.SetMaxLevel((uint)x));
+        config.SpawnDistance.SetIfLoaded(builder.SetMinDistanceToOther);
+        config.SpawnRadiusMin.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMin(x));
+        config.SpawnRadiusMax.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMax(x));
+        config.GroupSizeMin.SetIfLoaded(x => builder.SetPackSizeMin((uint)x));
+        config.GroupSizeMax.SetIfLoaded(x => builder.SetPackSizeMax((uint)x));
+        config.GroupRadius.SetIfLoaded(builder.SetPackSpawnCircleRadius);
+        config.SpawnDuringDay.SetIfLoaded(builder.SetSpawnDuringDay);
+        config.SpawnDuringNight.SetIfLoaded(builder.SetSpawnDuringNight);
+        config.ConditionAltitudeMin.SetIfLoaded(x => builder.SetConditionAltitudeMin(x));
+        config.ConditionAltitudeMax.SetIfLoaded(x => builder.SetConditionAltitudeMax(x));
+        config.ConditionTiltMin.SetIfLoaded(x => builder.SetConditionTiltMin(x));
+        config.ConditionTiltMax.SetIfLoaded(x => builder.SetConditionTiltMax(x));
+        config.SpawnInForest.SetIfLoaded(builder.SetSpawnInForest);
+        config.SpawnOutsideForest.SetIfLoaded(builder.SetSpawnOutsideForest);
+        config.OceanDepthMin.SetIfLoaded(x => builder.SetConditionOceanDepthMin(x));
+        config.OceanDepthMax.SetIfLoaded(x => builder.SetConditionOceanDepthMax(x));
+        config.LevelUpMinCenterDistance.SetIfLoaded(builder.SetDistanceToCenterForLevelUp);
 
         // Conditions
-        var playerConditionsDistance = (int)config.DistanceToTriggerPlayerConditions.Value;
+        var playerConditionsDistance = config.DistanceToTriggerPlayerConditions.IsSet 
+            ? (int)config.DistanceToTriggerPlayerConditions.Value 
+            : (int)config.DistanceToTriggerPlayerConditions.DefaultValue;
 
-        config.ConditionLocation.SetIfHasValue(builder.SetConditionLocation);
-        config.RequiredNotGlobalKey.SetIfHasValue(builder.SetGlobalKeysRequiredMissing);
-        config.ConditionNearbyPlayersCarryValue.SetIfGreaterThanZero(x => builder.SetConditionNearbyPlayersCarryValue(playerConditionsDistance, x));
-        config.ConditionNearbyPlayersNoiseThreshold.SetIfGreaterThanZero(x => builder.SetConditionNearbyPlayersNoise(playerConditionsDistance, x));
-        config.ConditionAreaSpawnChance.SetIfNotEqual(100, builder.SetConditionAreaSpawnChance);
+        config.ConditionLocation.SetIfLoaded(builder.SetConditionLocation);
+        config.RequiredNotGlobalKey.SetIfLoaded(builder.SetGlobalKeysRequiredMissing);
+        config.ConditionNearbyPlayersCarryValue.SetIfLoaded(x => builder.SetConditionNearbyPlayersCarryValue(playerConditionsDistance, x));
+        config.ConditionNearbyPlayersNoiseThreshold.SetIfLoaded(x => builder.SetConditionNearbyPlayersNoise(playerConditionsDistance, x));
+        config.ConditionAreaSpawnChance.SetIfLoaded(builder.SetConditionAreaSpawnChance);
+        config.ConditionDistanceToCenterMin.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMin(x));
+        config.ConditionDistanceToCenterMax.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMax(x));
 
-        builder.SetConditionDistanceToCenter(config.ConditionDistanceToCenterMin.Value, config.ConditionDistanceToCenterMax.Value);
-        builder.SetConditionWorldAge((int)config.ConditionWorldAgeDaysMin.Value, (int)config.ConditionWorldAgeDaysMax.Value);
+        int? worldAgeMin = config.ConditionWorldAgeDaysMin.IsSet ? (int)config.ConditionWorldAgeDaysMin.Value : null;
+        int? worldAgeMax = config.ConditionWorldAgeDaysMax.IsSet ? (int)config.ConditionWorldAgeDaysMin.Value : null;
 
-        if (config.ConditionNearbyPlayerCarriesItem.Value.IsNotEmpty())
+        if (config.ConditionWorldAgeDaysMin.IsSet || config.ConditionWorldAgeDaysMax.IsSet)
         {
-            builder.SetConditionNearbyPlayersCarryItem((int)config.DistanceToTriggerPlayerConditions.Value, config.ConditionNearbyPlayerCarriesItem.Value.SplitByComma());
+            builder.SetConditionWorldAge(worldAgeMin, worldAgeMax);
         }
-        if (config.ConditionNearbyPlayersStatus.Value.IsNotEmpty())
-        {
-            builder.SetConditionNearbyPlayersStatus((int)config.DistanceToTriggerPlayerConditions.Value, config.ConditionNearbyPlayersStatus.Value.SplitByComma().ToArray());
-        }
-        if (config.ConditionAreaIds.Value.IsNotEmpty())
-        {
-            builder.SetConditionAreaIds(config.ConditionAreaIds.Value.SplitByComma().ConvertAll(x => int.Parse(x)));
-        }
+
+        config.ConditionNearbyPlayerCarriesItem.SetIfLoaded(x => builder.SetConditionNearbyPlayersCarryItem(playerConditionsDistance, x));
+        config.ConditionNearbyPlayersStatus.SetIfLoaded(x => builder.SetConditionNearbyPlayersStatus(playerConditionsDistance, x));
+        config.ConditionAreaIds.SetIfLoaded(builder.SetConditionAreaIds);
 
         // Conditions - Integrations
-        Config cfg;
+        TomlConfig cfg;
 
         {
             if (IntegrationManager.InstalledCLLC)
@@ -121,9 +122,12 @@ internal static class SpawnSystemConfigApplier
                 if (config.TryGet(SpawnSystemConfigCLLC.ModName, out cfg) &&
                     cfg is SpawnSystemConfigCLLC cllcConfig)
                 {
-                    if (cllcConfig.ConditionWorldLevelMin.Value >= 0 || cllcConfig.ConditionWorldLevelMax.Value >= 0)
+                    if (cllcConfig.ConditionWorldLevelMin.IsSet || cllcConfig.ConditionWorldLevelMax.IsSet)
                     {
-                        builder.SetCllcConditionWorldLevel(cllcConfig.ConditionWorldLevelMin.Value, cllcConfig.ConditionWorldLevelMax.Value);
+                        builder.SetCllcConditionWorldLevel(
+                            cllcConfig.ConditionWorldLevelMin.IsSet ? cllcConfig.ConditionWorldLevelMin.Value : null,
+                            cllcConfig.ConditionWorldLevelMax.IsSet ? cllcConfig.ConditionWorldLevelMax.Value : null
+                        );
                     }
                 }
             }
@@ -133,40 +137,35 @@ internal static class SpawnSystemConfigApplier
                 if (config.TryGet(SpawnSystemConfigEpicLoot.ModName, out cfg) &&
                     cfg is SpawnSystemConfigEpicLoot elConfig)
                 {
-                    if (elConfig.ConditionNearbyPlayerCarryLegendaryItem.Value.IsNotEmpty())
-                    {
-                        builder.SetEpicLootConditionNearbyPlayerCarryLegendaryItem((int)config.DistanceToTriggerPlayerConditions.Value, elConfig.ConditionNearbyPlayerCarryLegendaryItem.Value.SplitByComma());
-                    }
-                    if (elConfig.ConditionNearbyPlayerCarryItemWithRarity.Value.IsNotEmpty())
-                    {
-                        builder.SetEpicLootConditionNearbyPlayersCarryItemWithRarity((int)config.DistanceToTriggerPlayerConditions.Value, elConfig.ConditionNearbyPlayerCarryItemWithRarity.Value.SplitByComma());
-                    }
+                    int distance = config.DistanceToTriggerPlayerConditions.IsSet
+                        ? (int)config.DistanceToTriggerPlayerConditions.Value
+                        : (int)config.DistanceToTriggerPlayerConditions.DefaultValue;
+
+                    elConfig.ConditionNearbyPlayerCarryLegendaryItem.SetIfLoaded(x => builder.SetEpicLootConditionNearbyPlayerCarryLegendaryItem(distance, x));
+                    elConfig.ConditionNearbyPlayerCarryItemWithRarity.SetIfLoaded(x => builder.SetEpicLootConditionNearbyPlayersCarryItemWithRarity(distance, x));
                 }
             }
         }
 
         // Position conditions
-        config.ConditionLocation.SetIfHasValue(builder.SetPositionConditionLocation);
+        config.ConditionLocation.SetIfLoaded(builder.SetPositionConditionLocation);
 
         // Modifiers
-        if (config.SetFaction.Value.IsNotEmpty())
-        {
-            builder.SetModifier(new ModifierSetFaction(config.SetFaction.Value));
-        }
+        config.SetFaction.SetIfHasValue(x => builder.SetModifier(new ModifierSetFaction(x)));
+        config.SetRelentless.SetIfLoaded(builder.SetModifierRelentless);
+        config.SetTryDespawnOnConditionsInvalid.SetIfLoaded(
+            x => x
+            ? builder.SetModifierDespawnOnConditionsInvalid(
+                config.SpawnDuringDay.IsSet ? config.SpawnDuringDay.Value : null,
+                config.SpawnDuringNight.IsSet ? config.SpawnDuringNight.Value : null,
+                config.RequiredEnvironments.IsSet ? config.RequiredEnvironments.Value : null)
+            : builder.SetModifierDespawnOnConditionsInvalid(null, null, null)
+        );
 
-        builder.SetModifierRelentless(config.SetRelentless.Value);
-
-        if (config.SetTryDespawnOnConditionsInvalid.Value)
-        {
-            builder.SetModifierDespawnOnConditionsInvalid(config.SpawnDuringDay.Value, config.SpawnDuringNight.Value, config.RequiredEnvironments.Value.SplitByComma());
-        }
-
-        builder.SetModifierDespawnOnAlert(config.SetTryDespawnOnAlert.Value);
-
-        config.TemplateId.SetIfHasValue(builder.SetModifierTemplateId);
-
-        builder.SetModifierTamed(config.SetTamed.Value);
-        builder.SetModifierTamedCommandable(config.SetTamedCommandable.Value);
+        config.SetTryDespawnOnAlert.SetIfLoaded(builder.SetModifierDespawnOnAlert);
+        config.TemplateId.SetIfLoaded(builder.SetModifierTemplateId);
+        config.SetTamed.SetIfLoaded(builder.SetModifierTamed);
+        config.SetTamedCommandable.SetIfLoaded(builder.SetModifierTamedCommandable);
 
         // Modifiers - Integrations
         {
@@ -175,28 +174,20 @@ internal static class SpawnSystemConfigApplier
                 if (config.TryGet(SpawnSystemConfigCLLC.ModName, out cfg) &&
                     cfg is SpawnSystemConfigCLLC cllcConfig)
                 {
-                    if (cllcConfig.SetBossAffix.Value.IsNotEmpty() &&
-                        Enum.TryParse(cllcConfig.SetBossAffix.Value, true, out CllcBossAffix bossAffix))
-                    {
-                        builder.SetCllcModifierBossAffix(bossAffix);
-                    }
-
-                    if (cllcConfig.SetExtraEffect.Value.IsNotEmpty() &&
-                        Enum.TryParse(cllcConfig.SetExtraEffect.Value, true, out CllcCreatureExtraEffect extraEffect))
-                    {
-                        builder.SetCllcModifierExtraEffect(extraEffect);
-                    }
-
-                    if (cllcConfig.SetInfusion.Value.IsNotEmpty() &&
-                        Enum.TryParse(cllcConfig.SetInfusion.Value, true, out CllcCreatureInfusion infusion))
-                    {
-                        builder.SetCllcModifierInfusion(infusion);
-                    }
-
-                    if (cllcConfig.UseDefaultLevels.Value)
-                    {
-                        builder.SetModifier(new ModifierDefaultRollLevel(config.LevelMin.Value, config.LevelMax.Value, 0, 10f));
-                    }
+                    cllcConfig.SetBossAffix.SetIfLoaded(builder.SetCllcModifierBossAffix);
+                    cllcConfig.SetExtraEffect.SetIfLoaded(builder.SetCllcModifierExtraEffect);
+                    cllcConfig.SetInfusion.SetIfLoaded(builder.SetCllcModifierInfusion);
+                    cllcConfig.UseDefaultLevels.SetIfLoaded(
+                        x => x
+                        ? builder.SetModifier(
+                            new ModifierDefaultRollLevel(
+                                config.LevelMin.IsSet ? config.LevelMin.Value : config.LevelMin.DefaultValue,
+                                config.LevelMax.IsSet ? config.LevelMax.Value : config.LevelMax.DefaultValue,
+                                0,
+                                10f
+                                ))
+                        : builder.SetModifier(new ModifierDefaultRollLevel(-1, -1, 0, 0))
+                    );
                 }
             }
 
@@ -205,55 +196,26 @@ internal static class SpawnSystemConfigApplier
                 if (config.TryGet(SpawnSystemConfigMobAI.ModName, out cfg) &&
                     cfg is SpawnSystemConfigMobAI mobAIConfig)
                 {
-                    if (mobAIConfig.SetAI.Value.IsNotEmpty())
-                    {
-                        builder.SetMobAiModifier(mobAIConfig.SetAI.Value, mobAIConfig.AIConfigFile.Value);
-                    }
+                    mobAIConfig.SetAI.SetIfLoaded(x => builder.SetMobAiModifier(x, mobAIConfig.AIConfigFile.Value));
                 }
             }
         }
     }
 
-    private static void SetIfHasValue(this ConfigurationEntry<string> value, Func<string, IWorldSpawnBuilder> apply)
+    private static void SetIfLoaded<T>(this TomlConfigEntry<T> value, Func<T, IWorldSpawnBuilder> apply)
     {
-        if (value is not null && 
+        if (value is not null &&
+            value.IsSet)
+        {
+            apply(value.Value);
+        }
+    }
+
+    private static void SetIfHasValue(this TomlConfigEntry<string> value, Func<string, IWorldSpawnBuilder> apply)
+    {
+        if (value is not null &&
+            value.IsSet && 
             value.Value.IsNotEmpty())
-        {
-            apply(value.Value);
-        }
-    }
-
-    private static void SetIfHasValue(this ConfigurationEntry<string> value, Func<List<string>, IWorldSpawnBuilder> apply)
-    {
-        if (value is not null &&
-            value.Value.IsNotEmpty())
-        {
-            apply(value.Value.SplitByComma());
-        }
-    }
-
-    private static void SetIfGreaterThanZero(this ConfigurationEntry<int> value, Func<int, IWorldSpawnBuilder> apply)
-    {
-        if (value is not null &&
-            value.Value > 0)
-        {
-            apply(value.Value);
-        }
-    }
-
-    private static void SetIfNotEqual<T>(this ConfigurationEntry<T> value, T compare, Func<T, IWorldSpawnBuilder> apply)
-    {
-        if (value is not null &&
-            value.Value.Equals(compare))
-        {
-            apply(value.Value);
-        }
-    }
-
-    private static void SetIfGreaterThanZero(this ConfigurationEntry<float> value, Func<float, IWorldSpawnBuilder> apply)
-    {
-        if (value is not null &&
-            value.Value > 0)
         {
             apply(value.Value);
         }

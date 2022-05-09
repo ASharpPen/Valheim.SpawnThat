@@ -33,7 +33,7 @@ internal static class SpawnSystemConfigurationMerger
             {
                 if (targetConfig.TemplateEnabled.Value)
                 {
-                    Log.LogWarning($"Overlapping world spawner configs for {sourceTemplate.Value.SectionKey}, overriding existing.");
+                    Log.LogWarning($"Overlapping world spawner configs for {sourceTemplate.Value.SectionPath}, overriding existing.");
                 }
             }
 

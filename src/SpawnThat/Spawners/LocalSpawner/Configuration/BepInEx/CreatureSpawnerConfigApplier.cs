@@ -1,6 +1,5 @@
 ﻿using System;
-using SpawnThat.Core;
-using SpawnThat.Core.Configuration;
+using SpawnThat.Core.Toml;
 using SpawnThat.Integrations;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Utilities;
@@ -42,34 +41,26 @@ internal static class CreatureSpawnerConfigApplier
     private static void ApplyConfigToBuilder(CreatureSpawnerConfig config, ILocalSpawnBuilder builder)
     {
         // Default
-        if (config.PrefabName.Value.IsNotEmpty())
-        {
-            builder.SetPrefabName(config.PrefabName.Value);
-        }
-
-        builder.SetEnabled(config.Enabled.Value);
-        builder.SetMaxLevel(config.LevelMax.Value);
-        builder.SetMinLevel(config.LevelMin.Value);
-        builder.SetLevelUpChance(config.LevelUpChance.Value);
-        builder.SetSpawnInterval(TimeSpan.FromMinutes(config.RespawnTime.Value));
-        builder.SetPatrolSpawn(config.SetPatrolPoint.Value);
-        builder.SetSpawnDuringNight(config.SpawnAtDay.Value);
-        builder.SetSpawnDuringDay(config.SpawnAtNight.Value);
-        builder.SetConditionPlayerWithinDistance(config.TriggerDistance.Value);
-        builder.SetConditionPlayerNoise(config.TriggerNoise.Value);
-        builder.SetSpawnInPlayerBase(config.SpawnInPlayerBase.Value);
+        config.PrefabName.SetIfHasValue(builder.SetPrefabName);
+        config.Enabled.SetIfLoaded(builder.SetEnabled);
+        config.LevelMin.SetIfLoaded(builder.SetMinLevel);
+        config.LevelMax.SetIfLoaded(builder.SetMaxLevel);
+        config.LevelUpChance.SetIfLoaded(builder.SetLevelUpChance);
+        config.RespawnTime.SetIfLoaded(x => builder.SetSpawnInterval(TimeSpan.FromMinutes(x)));
+        config.SetPatrolPoint.SetIfLoaded(builder.SetPatrolSpawn);
+        config.SpawnAtDay.SetIfLoaded(builder.SetSpawnDuringDay);
+        config.SpawnAtNight.SetIfLoaded(builder.SetSpawnDuringNight);
+        config.TriggerDistance.SetIfLoaded(builder.SetConditionPlayerWithinDistance);
+        config.TriggerNoise.SetIfLoaded(builder.SetConditionPlayerNoise);
+        config.SpawnInPlayerBase.SetIfLoaded(builder.SetSpawnInPlayerBase);
 
         // Modifiers
-        if (config.SetFaction.Value.IsNotEmpty())
-        {
-            builder.SetModifier(new ModifierSetFaction(config.SetFaction.Value));
-        }
-
-        builder.SetModifierTamed(config.SetTamed.Value);
-        builder.SetModifierTamedCommandable(config.SetTamedCommandable.Value);
+        config.SetFaction.SetIfHasValue(x => builder.SetModifier(new ModifierSetFaction(x)));
+        config.SetTamed.SetIfLoaded(builder.SetModifierTamed);
+        config.SetTamedCommandable.SetIfLoaded(builder.SetModifierTamedCommandable);
 
         // Modifiers - Integrations
-        Config cfg;
+        TomlConfig cfg;
 
         {
             if (IntegrationManager.InstalledCLLC)
@@ -77,23 +68,21 @@ internal static class CreatureSpawnerConfigApplier
                 if (config.TryGet(CreatureSpawnerConfigCLLC.ModName, out cfg) &&
                     cfg is CreatureSpawnerConfigCLLC cllcConfig)
                 {
-                    if (cllcConfig.SetBossAffix.Value.IsNotEmpty())
-                    {
-                        builder.SetCllcModifierBossAffix(cllcConfig.SetBossAffix.Value);
-                    }
-                    if (cllcConfig.SetExtraEffect.Value.IsNotEmpty())
-                    {
-                        builder.SetCllcModifierExtraEffect(cllcConfig.SetExtraEffect.Value);
-                    }
-                    if (cllcConfig.SetInfusion.Value.IsNotEmpty())
-                    {
-                        builder.SetCllcModifierInfusion(cllcConfig.SetInfusion.Value);
-                    }
-
-                    if (cllcConfig.UseDefaultLevels.Value)
-                    {
-                        builder.SetModifier(new ModifierDefaultRollLevel(config.LevelMin.Value, config.LevelMax.Value, 0, config.LevelUpChance.Value));
-                    }
+                    cllcConfig.SetBossAffix.SetIfLoaded(builder.SetCllcModifierBossAffix);
+                    cllcConfig.SetExtraEffect.SetIfLoaded(builder.SetCllcModifierExtraEffect);
+                    cllcConfig.SetInfusion.SetIfLoaded(builder.SetCllcModifierInfusion);
+                    cllcConfig.UseDefaultLevels.SetIfLoaded(
+                        x => x
+                        ? builder.SetModifier(
+                            new ModifierDefaultRollLevel(
+                                config.LevelMin.IsSet ? config.LevelMin.Value : config.LevelMin.DefaultValue,
+                                config.LevelMax.IsSet ? config.LevelMax.Value : config.LevelMax.DefaultValue,
+                                0,
+                                config.LevelUpChance.IsSet ? config.LevelUpChance.Value : config.LevelUpChance.DefaultValue
+                                )
+                            )
+                        : builder.SetModifier(new ModifierDefaultRollLevel(-1, -1, 0, -1))
+                        );
                 }
             }
 
@@ -102,12 +91,32 @@ internal static class CreatureSpawnerConfigApplier
                 if (config.TryGet(CreatureSpawnerConfigMobAI.ModName, out cfg) &&
                     cfg is CreatureSpawnerConfigMobAI mobAIConfig)
                 {
-                    if (mobAIConfig.SetAI.Value.IsNotEmpty())
-                    {
-                        builder.SetMobAiModifier(mobAIConfig.SetAI.Value, mobAIConfig.AIConfigFile.Value);
-                    }
+                    mobAIConfig.AIConfigFile.SetIfLoaded(
+                        x => builder.SetMobAiModifier(
+                            mobAIConfig.SetAI.IsSet ? mobAIConfig.SetAI.Value ?? mobAIConfig.SetAI.DefaultValue,
+                            x
+                        ));
                 }
             }
+        }
+    }
+
+    private static void SetIfHasValue(this TomlConfigEntry<string> value, Func<string, ILocalSpawnBuilder> apply)
+    {
+        if (value is not null &&
+            value.IsSet &&
+            value.Value.IsNotEmpty())
+        {
+            apply(value.Value);
+        }
+    }
+
+    private static void SetIfLoaded<T>(this TomlConfigEntry<T> value, Func<T, ILocalSpawnBuilder> apply)
+    {
+        if (value is not null &&
+            value.IsSet)
+        {
+            apply(value.Value);
         }
     }
 }

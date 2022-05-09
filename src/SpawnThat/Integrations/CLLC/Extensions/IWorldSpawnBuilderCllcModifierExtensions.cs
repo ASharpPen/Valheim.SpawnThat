@@ -29,6 +29,15 @@ public static class IWorldSpawnBuilderCllcModifierExtensions
     private static void SetBossAffix(IWorldSpawnBuilder builder, string bossAffixName) => builder.SetModifier(new ModifierCllcBossAffix(bossAffixName));
     private static void SetBossAffix(IWorldSpawnBuilder builder, CllcBossAffix bossAffix) => builder.SetModifier(new ModifierCllcBossAffix(bossAffix));
 
+    public static IWorldSpawnBuilder SetCllcModifierExtraEffect(this IWorldSpawnBuilder builder, string extraEffect)
+    {
+        if (IntegrationManager.InstalledCLLC)
+        {
+            SetExtraEffect(builder, extraEffect);
+        }
+
+        return builder;
+    }
 
     public static IWorldSpawnBuilder SetCllcModifierExtraEffect(this IWorldSpawnBuilder builder, CllcCreatureExtraEffect extraEffect)
     {
@@ -40,10 +49,18 @@ public static class IWorldSpawnBuilderCllcModifierExtensions
         return builder;
     }
 
-
     private static void SetExtraEffect(IWorldSpawnBuilder builder, string extraEffectName) => builder.SetModifier(new ModifierCllcExtraEffect(extraEffectName));
     private static void SetExtraEffect(IWorldSpawnBuilder builder, CllcCreatureExtraEffect extraEffect) => builder.SetModifier(new ModifierCllcExtraEffect(extraEffect));
 
+    public static IWorldSpawnBuilder SetCllcModifierInfusion(this IWorldSpawnBuilder builder, string infusion)
+    {
+        if (IntegrationManager.InstalledCLLC)
+        {
+            SetInfusion(builder, infusion);
+        }
+
+        return builder;
+    }
 
     public static IWorldSpawnBuilder SetCllcModifierInfusion(this IWorldSpawnBuilder builder, CllcCreatureInfusion infusion)
     {

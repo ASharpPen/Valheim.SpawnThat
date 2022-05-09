@@ -6,7 +6,8 @@ using SpawnThat.Options.Modifiers;
 using SpawnThat.Utilities;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Core;
-using YamlDotNet.Serialization;
+using SpawnThat.Core.Toml;
+using SpawnThat.Spawners.WorldSpawner;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
 
@@ -29,7 +30,7 @@ internal static class DestructibleSpawnerConfigApplier
                 string.IsNullOrWhiteSpace(config.IdentifyByLocation?.Value) &&
                 string.IsNullOrWhiteSpace(config.IdentifyByRoom?.Value))
             {
-                Log.LogDebug($"[Destructible Spawner] Ignoring config '{config.SectionKey}' due to having no identifiers.");
+                Log.LogDebug($"[Destructible Spawner] Ignoring config '{config.SectionPath}' due to having no identifiers.");
                 continue;
             }
 
@@ -46,7 +47,7 @@ internal static class DestructibleSpawnerConfigApplier
 
     private static void ConfigureSpawner(DestructibleSpawnerConfig config, IDestructibleSpawnerBuilder builder)
     {
-        builder.SetTemplateName(config.SectionKey);
+        builder.SetTemplateName(config.SectionPath);
 
         // Set identifiers
         if (!string.IsNullOrWhiteSpace(config.IdentifyByName.Value))
@@ -211,6 +212,16 @@ internal static class DestructibleSpawnerConfigApplier
             }
         }
     }
+
+    private static void SetIfLoaded<T>(this TomlConfigEntry<T> value, Func<T, IDestructibleSpawnBuilder> apply)
+    {
+        if (value is not null &&
+            value.IsSet)
+        {
+            apply(value.Value);
+        }
+    }
+
 
     private static void SetIfHasValue(this ConfigurationEntry<string> value, Func<string, IDestructibleSpawnBuilder> apply)
     {

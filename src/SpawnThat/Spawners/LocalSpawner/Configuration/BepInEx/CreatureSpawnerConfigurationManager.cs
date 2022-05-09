@@ -7,6 +7,7 @@ using SpawnThat.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Core.Configuration;
 using System.Linq;
+using SpawnThat.Core.Toml;
 
 namespace SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
 
@@ -68,14 +69,6 @@ internal static class CreatureSpawnerConfigurationManager
     {
         Log.LogDebug($"Loading local spawner configurations from {configPath}.");
 
-        ConfigurationLoader.SanitizeSectionHeaders(configPath);
-        var configFile = new ConfigFile(configPath, true);
-
-        if (ConfigurationManager.GeneralConfig?.StopTouchingMyConfigs?.Value == true)
-        {
-            configFile.SaveOnConfigSet = !ConfigurationManager.GeneralConfig.StopTouchingMyConfigs.Value;
-        }
-
-        return ConfigurationLoader.LoadConfiguration<CreatureSpawnerConfigurationFile>(configFile);
+        return TomlLoader.LoadFile<CreatureSpawnerConfigurationFile>(configPath);
     }
 }

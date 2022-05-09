@@ -6,6 +6,7 @@ using BepInEx.Configuration;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Core.Configuration;
+using SpawnThat.Core.Toml;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
 
@@ -65,15 +66,7 @@ internal static class DestructibleSpawnerBepInExCfgManager
         {
             Log.LogDebug($"Loading destructible spawner configurations from {configPath}.");
 
-            ConfigurationLoader.SanitizeSectionHeaders(configPath);
-            var configFile = new ConfigFile(configPath, true);
-
-            if (ConfigurationManager.GeneralConfig?.StopTouchingMyConfigs?.Value == true)
-            {
-                configFile.SaveOnConfigSet = !ConfigurationManager.GeneralConfig.StopTouchingMyConfigs.Value;
-            }
-
-            return ConfigurationLoader.LoadConfiguration<DestructibleSpawnerConfigurationFile>(configFile);
+            return TomlLoader.LoadFile<DestructibleSpawnerConfigurationFile>(configPath);
         }
     }
 }

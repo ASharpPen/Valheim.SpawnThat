@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using SpawnThat.Core;
-using SpawnThat.Utilities;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
@@ -12,7 +11,7 @@ internal static class SpawnConfigurationExtensions
         //Well, since you bastards were packing enums before, lets return the gesture (not really, <3 you devs!)
         Heightmap.Biome biome = Heightmap.Biome.None;
 
-        var biomeArray = config.Biomes?.Value?.SplitByComma() ?? new List<string>(0);
+        var biomeArray = config.Biomes?.Value ?? new List<string>(0);
 
         if (biomeArray.Count == 0)
         {
