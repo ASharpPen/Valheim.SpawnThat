@@ -27,12 +27,7 @@ internal static class CreatureSpawnerConfigurationManager
 
         stopwatch.Stop();
 
-        Log.LogInfo("Config loading took: " + stopwatch.Elapsed);
-        if (stopwatch.Elapsed > TimeSpan.FromSeconds(5)
-            && !ConfigurationManager.GeneralConfig.StopTouchingMyConfigs.Value)
-        {
-            Log.LogInfo("Long loading time detected. Consider setting \"StopTouchingMyConfigs=true\" in spawn_that.cfg to improve loading speed.");
-        }
+        Log.LogDebug("Config loading took: " + stopwatch.Elapsed);
     }
 
     public static CreatureSpawnerConfigurationFile LoadCreatureSpawnerConfiguration()

@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using BepInEx;
-using SpawnThat.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Core.Toml;
 
@@ -51,12 +50,7 @@ internal static class DestructibleSpawnerBepInExCfgManager
 
             stopwatch.Stop();
 
-            Log.LogInfo("Config loading took: " + stopwatch.Elapsed);
-            if (stopwatch.Elapsed > TimeSpan.FromSeconds(5) &&
-                ConfigurationManager.GeneralConfig?.StopTouchingMyConfigs?.Value == false)
-            {
-                Log.LogInfo("Long loading time detected. Consider setting \"StopTouchingMyConfigs=true\" in spawn_that.cfg to improve loading speed.");
-            }
+            Log.LogDebug("Config loading took: " + stopwatch.Elapsed);
 
             Config = configs;
         }
