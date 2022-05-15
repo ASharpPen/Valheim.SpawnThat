@@ -8,11 +8,14 @@
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
     <PackageReference Include="Pfhoenix.Valheim.ModProjectReferences" Version="1.0.11" />
+    <PackageReference Include="Valheim.SpawnThat" Version="1.0.5" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Networking\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SpawnThat\SpawnThat.csproj" />
+    <None Update="Resources\mobAIConfig.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
