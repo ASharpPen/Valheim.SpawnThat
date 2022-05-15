@@ -2,18 +2,16 @@
 using System.Diagnostics;
 using System.IO;
 using BepInEx;
-using BepInEx.Configuration;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
-using SpawnThat.Core.Configuration;
 using SpawnThat.Core.Toml;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
 
 internal static class DestructibleSpawnerBepInExCfgManager
 {
-    private const string ConfigFile = "spawn_that.destructible.cfg";
-    private const string ConfigFileSupplemental = "spawn_that.destructible.*.cfg";
+    private const string ConfigFile = "spawn_that.destructible_spawners.cfg";
+    private const string ConfigFileSupplemental = "spawn_that.destructible_spawners.*.cfg";
 
     internal static DestructibleSpawnerConfigurationFile Config { get; private set; }
 
@@ -26,6 +24,11 @@ internal static class DestructibleSpawnerBepInExCfgManager
             Log.LogInfo($"Loading destructible spawner configurations.");
 
             string configPath = Path.Combine(Paths.ConfigPath, ConfigFile);
+
+            if (!File.Exists(configPath))
+            {
+                File.Create(configPath).Close();
+            }
 
             var configs = LoadConfig(configPath);
 

@@ -11,13 +11,13 @@ internal abstract class TomlConfig
     /// <summary>
     /// Full path of config section.
     /// </summary>
-    public string SectionPath;
+    public string SectionPath { get; set; }
 
     /// <summary>
     /// Config section name.
     /// Last part of section path.
     /// </summary>
-    public string SectionName;
+    public string SectionName { get; set; }
 
     public TomlConfig()
     {

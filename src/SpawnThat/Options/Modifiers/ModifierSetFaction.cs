@@ -13,13 +13,18 @@ public class ModifierSetFaction : ISpawnModifier
     public ModifierSetFaction()
     { }
 
-    public ModifierSetFaction(Character.Faction faction)
+    public ModifierSetFaction(Character.Faction? faction)
     {
         Faction = faction;
     }
 
     public ModifierSetFaction(string factionName)
     {
+        if (string.IsNullOrWhiteSpace(factionName))
+        {
+            Faction = null;
+        }
+
         if (Enum.TryParse(factionName.Trim(), true, out Character.Faction faction))
         {
             Faction = faction;

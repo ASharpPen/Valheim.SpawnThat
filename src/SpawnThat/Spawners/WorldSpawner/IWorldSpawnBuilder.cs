@@ -125,6 +125,8 @@ public interface IWorldSpawnBuilder
     /// <remarks>Vanilla name: m_huntPlayer</remarks>
     IWorldSpawnBuilder SetModifierHuntPlayer(bool huntPlayer);
 
+    IWorldSpawnBuilder SetModifierHuntPlayer(bool? huntPlayer);
+
     /// <summary>
     /// <para>Maxium number of same entity in area for template to be active.</para>
     /// <para>For creatures, area is defined by currently loaded. For non-creatures, it is defined by distance.</para>
@@ -134,6 +136,8 @@ public interface IWorldSpawnBuilder
     /// <remarks>Vanilla name: m_maxSpawned</remarks>
     IWorldSpawnBuilder SetMaxSpawned(uint maxSpawned);
 
+    IWorldSpawnBuilder SetMaxSpawned(uint? maxSpawned);
+
     /// <summary>
     /// <para>Time between new spawn checks.</para>
     /// <para>If not set, uses existing when overriding.</para>
@@ -141,6 +145,8 @@ public interface IWorldSpawnBuilder
     /// </summary>
     /// <remarks>Vanilla name: m_spawnInterval</remarks>
     IWorldSpawnBuilder SetSpawnInterval(TimeSpan interval);
+
+    IWorldSpawnBuilder SetSpawnInterval(TimeSpan? interval);
 
     /// <summary>
     /// <para>Minimum number of entities to attempt to spawn at a time.</para>
@@ -150,6 +156,8 @@ public interface IWorldSpawnBuilder
     /// <remarks>Vanilla name: m_groupSizeMin</remarks>
     IWorldSpawnBuilder SetPackSizeMin(uint packSizeMin);
 
+    IWorldSpawnBuilder SetPackSizeMin(uint? packSizeMin);
+
     /// <summary>
     /// <para>Maximum number of entities to attempt to spawn at a time.</para>
     /// <para>If not set, uses existing when overriding.</para>
@@ -157,6 +165,8 @@ public interface IWorldSpawnBuilder
     /// </summary>
     /// <remarks>Vanilla name: m_groupSizeMax</remarks>
     IWorldSpawnBuilder SetPackSizeMax(uint packSizeMax);
+
+    IWorldSpawnBuilder SetPackSizeMax(uint? packSizeMax);
 
     /// <summary>
     /// <para>Radius of circle, in which to spawn a pack of entities.</para>
@@ -167,6 +177,8 @@ public interface IWorldSpawnBuilder
     /// <remarks>Vanilla name: m_groupRadius</remarks>
     IWorldSpawnBuilder SetPackSpawnCircleRadius(float radius);
 
+    IWorldSpawnBuilder SetPackSpawnCircleRadius(float? radius);
+
     /// <summary>
     /// <para>If true, allows spawning inside forested areas.</para>
     /// <para>If not set, uses existing when overriding.</para>
@@ -175,6 +187,8 @@ public interface IWorldSpawnBuilder
     /// <remarks>Vanilla name: m_inForest</remarks>
     IWorldSpawnBuilder SetSpawnInForest(bool allowSpawnInForest);
 
+    IWorldSpawnBuilder SetSpawnInForest(bool? allowSpawnInForest);
+
     /// <summary>
     /// <para>If true, allows pawning outside forested areas.</para>
     /// <para>If not set, uses existing when overriding.</para>
@@ -182,6 +196,8 @@ public interface IWorldSpawnBuilder
     /// </summary>
     /// <remarks>Vanilla name: m_outsideForest</remarks>
     IWorldSpawnBuilder SetSpawnOutsideForest(bool allowSpawnOutsideForest);
+
+    IWorldSpawnBuilder SetSpawnOutsideForest(bool? allowSpawnOutsideForest);
 
     /// <summary>
     /// <para>Minimum level to spawn at.</para>
@@ -199,6 +215,8 @@ public interface IWorldSpawnBuilder
     /// <remarks>Vanilla name: m_minLevel</remarks>
     IWorldSpawnBuilder SetMinLevel(uint minLevel);
 
+    IWorldSpawnBuilder SetMinLevel(uint? minLevel);
+
     /// <summary>
     /// <para>Maximum level to spawn at.</para>
     /// <para>
@@ -215,6 +233,8 @@ public interface IWorldSpawnBuilder
     /// <remarks>Vanilla name: m_maxLevel</remarks>
     IWorldSpawnBuilder SetMaxLevel(uint maxLevel);
 
+    IWorldSpawnBuilder SetMaxLevel(uint? maxLevel);
+
     /// <summary>
     /// <para>Minimum distance for creature to increase level beyond MinLevel.</para>
     /// <para>If not set, uses existing when overriding.</para>
@@ -222,6 +242,8 @@ public interface IWorldSpawnBuilder
     /// </summary>
     /// <remarks>Vanilla name: m_levelUpMinCenterDistance</remarks>
     IWorldSpawnBuilder SetDistanceToCenterForLevelUp(float distance);
+
+    IWorldSpawnBuilder SetDistanceToCenterForLevelUp(float? distance);
 
     /// <summary>
     /// <para>Set altitude (distance to water surface) range enabling spawn.</para>
@@ -238,6 +260,8 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: -1000</para>
     /// </summary>
     /// <remarks>Vanilla name: m_minAltitude</remarks>
+    IWorldSpawnBuilder SetConditionAltitudeMin(float minAltitude);
+
     IWorldSpawnBuilder SetConditionAltitudeMin(float? minAltitude);
 
     /// <summary>
@@ -246,6 +270,8 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: 1000</para>
     /// </summary>
     /// <remarks>Vanilla name: m_maxAltitude</remarks>
+    IWorldSpawnBuilder SetConditionAltitudeMax(float maxAltitude);
+
     IWorldSpawnBuilder SetConditionAltitudeMax(float? maxAltitude);
 
     /// <summary>
@@ -263,6 +289,8 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: 0</para>
     /// </summary>
     /// <remarks>Vanilla name: m_minOceanDepth</remarks>
+    IWorldSpawnBuilder SetConditionOceanDepthMin(float minOceanDepth);
+
     IWorldSpawnBuilder SetConditionOceanDepthMin(float? minOceanDepth);
 
     /// <summary>
@@ -271,6 +299,8 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: 0</para>
     /// </summary>
     /// <remarks>Vanilla name: m_maxOceanDepth</remarks>
+    IWorldSpawnBuilder SetConditionOceanDepthMax(float maxOceanDepth);
+
     IWorldSpawnBuilder SetConditionOceanDepthMax(float? maxOceanDepth);
 
     /// <summary>
@@ -292,6 +322,8 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: 0</para>
     /// </summary>
     /// <remarks>Vanilla name: m_minTilt</remarks>
+    IWorldSpawnBuilder SetConditionTiltMin(float minTilt);
+
     IWorldSpawnBuilder SetConditionTiltMin(float? minTilt);
 
     /// <summary>
@@ -302,6 +334,8 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: 35</para>
     /// </summary>
     /// <remarks>Vanilla name: m_maxTilt</remarks>
+    IWorldSpawnBuilder SetConditionTiltMax(float maxTilt);
+
     IWorldSpawnBuilder SetConditionTiltMax(float? maxTilt);
 
     /// <summary>
@@ -347,6 +381,8 @@ public interface IWorldSpawnBuilder
     /// <remarks>Vanilla name: m_requiredGlobalKey</remarks>
     IWorldSpawnBuilder SetConditionRequiredGlobalKey(GlobalKey globalKey);
 
+    IWorldSpawnBuilder SetConditionRequiredGlobalKey(GlobalKey? globalKey);
+
     /// <summary>
     /// <para>Can spawn during day.</para>
     /// <para>Note: If not true, creatures with MonsterAI will attempt to despawn at day.</para>
@@ -356,6 +392,8 @@ public interface IWorldSpawnBuilder
     /// <remarks>Vanilla name: m_spawnAtDay</remarks>
     IWorldSpawnBuilder SetSpawnDuringDay(bool allowSpawnDuringDay);
 
+    IWorldSpawnBuilder SetSpawnDuringDay(bool? allowSpawnDuringDay);
+
     /// <summary>
     /// <para>Can spawn during night.</para>
     /// <para>If not set, uses existing when overriding.</para>
@@ -363,6 +401,8 @@ public interface IWorldSpawnBuilder
     /// </summary>
     /// <remarks>Vanilla name: m_spawnAtNight</remarks>
     IWorldSpawnBuilder SetSpawnDuringNight(bool allowSpawnDuringNight);
+
+    IWorldSpawnBuilder SetSpawnDuringNight(bool? allowSpawnDuringNight);
 
     /// <summary>
     /// <para>Chance to spawn per check. Range 0 to 100.</para>
@@ -372,6 +412,8 @@ public interface IWorldSpawnBuilder
     /// <remarks>Vanilla name: m_spawnChance</remarks>
     IWorldSpawnBuilder SetSpawnChance(float spawnChance);
 
+    IWorldSpawnBuilder SetSpawnChance(float? spawnChance);
+
     /// <summary>
     /// <para>Minimum required distance to another entity of same type.</para>
     /// <para>Positional condition. Tested multiple times to decide where to spawn entity.</para>
@@ -380,6 +422,8 @@ public interface IWorldSpawnBuilder
     /// </summary>
     /// <remarks>Vanilla name: m_spawnDistance</remarks>
     IWorldSpawnBuilder SetMinDistanceToOther(float distance);
+
+    IWorldSpawnBuilder SetMinDistanceToOther(float? distance);
 
     /// <summary>
     /// <para>Minimum distance from player to spawn at.</para>
@@ -392,6 +436,8 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: 0</para>
     /// </summary>
     /// <remarks>Vanilla name: m_spawnRadiusMin</remarks>
+    IWorldSpawnBuilder SetSpawnAtDistanceToPlayerMin(float distance);
+
     IWorldSpawnBuilder SetSpawnAtDistanceToPlayerMin(float? distance);
 
     /// <summary>
@@ -405,6 +451,8 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: 0</para>
     /// </summary>
     /// <remarks>Vanilla name: m_spawnRadiusMax</remarks>
+    IWorldSpawnBuilder SetSpawnAtDistanceToPlayerMax(float distance);
+
     IWorldSpawnBuilder SetSpawnAtDistanceToPlayerMax(float? distance);
 
 
@@ -414,5 +462,7 @@ public interface IWorldSpawnBuilder
     /// <para>Default if new template: 0.5</para>
     /// </summary>
     /// <remarks>Vanilla name: m_groundOffset</remarks>
+    IWorldSpawnBuilder SetSpawnAtDistanceToGround(float offset);
+
     IWorldSpawnBuilder SetSpawnAtDistanceToGround(float? offset);
 }

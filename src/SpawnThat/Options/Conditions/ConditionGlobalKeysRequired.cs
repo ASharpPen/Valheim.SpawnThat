@@ -17,21 +17,21 @@ public class ConditionGlobalKeysRequired : ISpawnCondition
 
     public ConditionGlobalKeysRequired(params string[] requiredKeys)
     {
-        Required = requiredKeys
+        Required = requiredKeys?
             .Distinct()
             .ToArray();
     }
 
     public ConditionGlobalKeysRequired(IEnumerable<string> requiredKeys)
     {
-        Required = requiredKeys
+        Required = requiredKeys?
             .Distinct()
             .ToArray();
     }
 
     public bool IsValid(SpawnSessionContext context)
     {
-        if (Required.Length == 0)
+        if ((Required?.Length ?? 0) == 0)
         {
             return true;
         }

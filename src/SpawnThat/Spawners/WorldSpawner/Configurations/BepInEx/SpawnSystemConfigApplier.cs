@@ -5,6 +5,9 @@ using SpawnThat.Utilities;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Integrations;
 using SpawnThat.Core.Toml;
+using SpawnThat.Spawners.LocalSpawner;
+using BepInEx;
+using System.IO;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
@@ -30,7 +33,7 @@ internal static class SpawnSystemConfigApplier
 
         var configs = spawnSystemConfigs
             .OrderBy(x => x.Index)
-            .Where(x => x.TemplateEnabled.Value);
+            .Where(x => x.TemplateEnabled?.Value ?? x.TemplateEnabled.DefaultValue.Value);
 
         foreach (var spawnConfig in configs)
         {
@@ -61,12 +64,14 @@ internal static class SpawnSystemConfigApplier
         config.Name.SetIfLoaded(builder.SetTemplateName);
         config.RequiredGlobalKey.SetIfLoaded(builder.SetConditionRequiredGlobalKey);
         config.RequiredEnvironments.SetIfLoaded(builder.SetConditionEnvironments);
-        config.Enabled.SetIfLoaded(builder.SetEnabled);
-        config.TemplateEnabled.SetIfLoaded(builder.SetTemplateEnabled);
+        config.Enabled.SetValueOrDefaultIfLoaded(builder.SetEnabled);
+        config.TemplateEnabled.SetValueOrDefaultIfLoaded(builder.SetTemplateEnabled);
         config.Biomes.SetIfLoaded(builder.SetConditionBiomes);
         config.HuntPlayer.SetIfLoaded(builder.SetModifierHuntPlayer);
         config.MaxSpawned.SetIfLoaded(x => builder.SetMaxSpawned((uint)x));
-        config.SpawnInterval.SetIfLoaded(x => builder.SetSpawnInterval(TimeSpan.FromSeconds(x)));
+        config.SpawnInterval.SetIfLoaded(x => x is null
+            ? builder.SetSpawnInterval(null)
+            : builder.SetSpawnInterval(TimeSpan.FromSeconds(x.Value)));
         config.SpawnChance.SetIfLoaded(builder.SetSpawnChance);
         config.LevelMin.SetIfLoaded(x => builder.SetMinLevel((uint)x));
         config.LevelMax.SetIfLoaded(x => builder.SetMaxLevel((uint)x));
@@ -95,9 +100,9 @@ internal static class SpawnSystemConfigApplier
 
         config.ConditionLocation.SetIfLoaded(builder.SetConditionLocation);
         config.RequiredNotGlobalKey.SetIfLoaded(builder.SetGlobalKeysRequiredMissing);
-        config.ConditionNearbyPlayersCarryValue.SetIfLoaded(x => builder.SetConditionNearbyPlayersCarryValue(playerConditionsDistance, x));
-        config.ConditionNearbyPlayersNoiseThreshold.SetIfLoaded(x => builder.SetConditionNearbyPlayersNoise(playerConditionsDistance, x));
-        config.ConditionAreaSpawnChance.SetIfLoaded(builder.SetConditionAreaSpawnChance);
+        config.ConditionNearbyPlayersCarryValue.SetValueOrDefaultIfLoaded(x => builder.SetConditionNearbyPlayersCarryValue(playerConditionsDistance, x));
+        config.ConditionNearbyPlayersNoiseThreshold.SetValueOrDefaultIfLoaded(x => builder.SetConditionNearbyPlayersNoise(playerConditionsDistance, x));
+        config.ConditionAreaSpawnChance.SetValueOrDefaultIfLoaded(builder.SetConditionAreaSpawnChance);
         config.ConditionDistanceToCenterMin.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMin(x));
         config.ConditionDistanceToCenterMax.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMax(x));
 
@@ -151,9 +156,9 @@ internal static class SpawnSystemConfigApplier
         config.ConditionLocation.SetIfLoaded(builder.SetPositionConditionLocation);
 
         // Modifiers
-        config.SetFaction.SetIfHasValue(x => builder.SetModifier(new ModifierSetFaction(x)));
-        config.SetRelentless.SetIfLoaded(builder.SetModifierRelentless);
-        config.SetTryDespawnOnConditionsInvalid.SetIfLoaded(
+        config.SetFaction.SetIfLoaded(builder.SetModifierFaction);
+        config.SetRelentless.SetValueOrDefaultIfLoaded(builder.SetModifierRelentless);
+        config.SetTryDespawnOnConditionsInvalid.SetValueOrDefaultIfLoaded(
             x => x
             ? builder.SetModifierDespawnOnConditionsInvalid(
                 config.SpawnDuringDay.IsSet ? config.SpawnDuringDay.Value : null,
@@ -162,10 +167,10 @@ internal static class SpawnSystemConfigApplier
             : builder.SetModifierDespawnOnConditionsInvalid(null, null, null)
         );
 
-        config.SetTryDespawnOnAlert.SetIfLoaded(builder.SetModifierDespawnOnAlert);
+        config.SetTryDespawnOnAlert.SetValueOrDefaultIfLoaded(builder.SetModifierDespawnOnAlert);
         config.TemplateId.SetIfLoaded(builder.SetModifierTemplateId);
-        config.SetTamed.SetIfLoaded(builder.SetModifierTamed);
-        config.SetTamedCommandable.SetIfLoaded(builder.SetModifierTamedCommandable);
+        config.SetTamed.SetValueOrDefaultIfLoaded(builder.SetModifierTamed);
+        config.SetTamedCommandable.SetValueOrDefaultIfLoaded(builder.SetModifierTamedCommandable);
 
         // Modifiers - Integrations
         {
@@ -178,16 +183,20 @@ internal static class SpawnSystemConfigApplier
                     cllcConfig.SetExtraEffect.SetIfLoaded(builder.SetCllcModifierExtraEffect);
                     cllcConfig.SetInfusion.SetIfLoaded(builder.SetCllcModifierInfusion);
                     cllcConfig.UseDefaultLevels.SetIfLoaded(
-                        x => x
+                        x => x ?? cllcConfig.UseDefaultLevels.DefaultValue.Value
                         ? builder.SetModifier(
                             new ModifierDefaultRollLevel(
-                                config.LevelMin.IsSet ? config.LevelMin.Value : config.LevelMin.DefaultValue,
-                                config.LevelMax.IsSet ? config.LevelMax.Value : config.LevelMax.DefaultValue,
+                                config.LevelMin.IsSet
+                                    ? config.LevelMin.Value ?? config.LevelMin.DefaultValue.Value
+                                    : config.LevelMin.DefaultValue.Value,
+                                config.LevelMax.IsSet
+                                    ? config.LevelMax.Value ?? config.LevelMax.DefaultValue.Value
+                                    : config.LevelMax.DefaultValue.Value,
                                 0,
                                 10f
-                                ))
-                        : builder.SetModifier(new ModifierDefaultRollLevel(-1, -1, 0, 0))
-                    );
+                            ))
+                        : builder.SetModifier(new ModifierDefaultRollLevel(-1, -1, 0, -1))
+                        );
                 }
             }
 
@@ -196,7 +205,35 @@ internal static class SpawnSystemConfigApplier
                 if (config.TryGet(SpawnSystemConfigMobAI.ModName, out cfg) &&
                     cfg is SpawnSystemConfigMobAI mobAIConfig)
                 {
-                    mobAIConfig.SetAI.SetIfLoaded(x => builder.SetMobAiModifier(x, mobAIConfig.AIConfigFile.Value));
+                    if (mobAIConfig.SetAI.IsSet)
+                    {
+                        var ai = mobAIConfig.SetAI.Value;
+
+                        if (string.IsNullOrWhiteSpace(ai))
+                        {
+                            builder.SetMobAiModifier(null, null);
+                        }
+
+                        try
+                        {
+                            string filePath = Path.Combine(Paths.ConfigPath, mobAIConfig.AIConfigFile.Value);
+
+                            if (File.Exists(filePath))
+                            {
+                                string content = File.ReadAllText(filePath);
+
+                                builder.SetMobAiModifier(ai, content);
+                            }
+                            else
+                            {
+                                Log.LogWarning($"Unable to find MobAI json config file at '{filePath}'");
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Log.LogError("Error while attempting to read MobAI config.", e);
+                        }
+                    }
                 }
             }
         }
@@ -218,6 +255,16 @@ internal static class SpawnSystemConfigApplier
             value.Value.IsNotEmpty())
         {
             apply(value.Value);
+        }
+    }
+
+    private static void SetValueOrDefaultIfLoaded<T>(this ITomlConfigEntry<T?> value, Func<T, IWorldSpawnBuilder> apply)
+    where T : struct
+    {
+        if (value is not null &&
+            value.IsSet)
+        {
+            apply(value.Value ?? value.DefaultValue.Value);
         }
     }
 }

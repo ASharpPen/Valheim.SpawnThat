@@ -16,12 +16,21 @@ public class ConditionGlobalKeysRequiredMissing : ISpawnCondition
 
     public ConditionGlobalKeysRequiredMissing(params string[] requiredMissing)
     {
-        RequiredMissing = requiredMissing.ToHashSet();
+        RequiredMissing = requiredMissing?
+            .Where(x => !string.IsNullOrWhiteSpace(x))
+            .ToHashSet();
+    }
+
+    public ConditionGlobalKeysRequiredMissing(IEnumerable<string> requiredMissing)
+    {
+        RequiredMissing = requiredMissing?
+            .Where(x => !string.IsNullOrWhiteSpace(x))
+            .ToHashSet();
     }
 
     public bool IsValid(SpawnSessionContext context)
     {
-        if (RequiredMissing.Count == 0)
+        if ((RequiredMissing?.Count ?? 0) == 0)
         {
             return true;
         }

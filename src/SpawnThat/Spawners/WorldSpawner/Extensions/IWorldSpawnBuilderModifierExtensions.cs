@@ -37,6 +37,12 @@ public static class IWorldSpawnBuilderModifierExtensions
         return builder;
     }
 
+    public static IWorldSpawnBuilder SetModifierFaction(this IWorldSpawnBuilder builder, Character.Faction? faction)
+    {
+        builder.SetModifier(new ModifierSetFaction(faction));
+        return builder;
+    }
+
     public static IWorldSpawnBuilder SetModifierTamed(this IWorldSpawnBuilder builder, bool tamed = true)
     {
         builder.SetModifier(new ModifierSetTamed(tamed));

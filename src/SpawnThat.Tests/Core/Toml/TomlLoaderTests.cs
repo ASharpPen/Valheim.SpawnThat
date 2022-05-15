@@ -7,7 +7,7 @@ using static SpawnThat.Core.Toml.TomlLoaderTests.TestTypesConfigFile;
 namespace SpawnThat.Core.Toml;
 
 [TestClass]
-public class TomlLoaderTests
+public partial class TomlLoaderTests
 {
     [TestMethod]
     public void CanParseTomlFile()
@@ -24,7 +24,7 @@ LowerSetting=LowerValue
 ";
 
         // Act
-        var config = TomlLoader.Load<TestConfig>(configFile.Split('\n'));
+        var config = TomlLoader.Load<TestConfig>(configFile.Split('\n'), "test.txt");
 
         // Assert
         Assert.IsNotNull(config);
@@ -55,10 +55,11 @@ Float=0.3
 Int=2
 String=TestTest
 ListString=Test,Test
+ListInt=123,321
 ";
 
         // Act
-        var configFile = TomlLoader.Load<TestTypesConfigFile>(file.Split('\n'));
+        var configFile = TomlLoader.Load<TestTypesConfigFile>(file.Split('\n'), "test.txt");
 
         // Assert
         Assert.IsNotNull(configFile);
@@ -75,9 +76,46 @@ ListString=Test,Test
         Assert.AreEqual(2, config.ListStringSetting.Value.Count);
         Assert.AreEqual("Test", config.ListStringSetting.Value[0]);
         Assert.AreEqual("Test", config.ListStringSetting.Value[1]);
+
+        Assert.AreEqual(2, config.ListIntSetting.Value.Count);
+        Assert.AreEqual(123, config.ListIntSetting.Value[0]);
+        Assert.AreEqual(321, config.ListIntSetting.Value[1]);
     }
 
-    internal class TestTypesConfigFile : TomlConfigWithSubsections<TestTypesConfig>, ITomlConfigFile
+    [TestMethod]
+    public void CanParseAllNullableTypes()
+    {
+        // Arrange
+        string file = @"
+# Test file for toml parsing of TomlConfig.
+
+[SomeHeader]
+Bool=
+Double=
+Float=
+Int=
+String=
+ListString=
+";
+
+        // Act
+        var configFile = TomlLoader.Load<TestNullableTypesConfigFile>(file.Split('\n'), "test.txt");
+
+        // Assert
+        Assert.IsNotNull(configFile);
+
+        var config = configFile
+            .Subsections.First(x => x.Key.Equals("SomeHeader", StringComparison.OrdinalIgnoreCase)).Value;
+
+        Assert.IsNull(config.BoolSetting.Value);
+        Assert.IsNull(config.DoubleSetting.Value);
+        Assert.IsNull(config.FloatSetting.Value);
+        Assert.IsNull(config.IntSetting.Value);
+        Assert.IsNull(config.StringSetting.Value);
+        Assert.IsNull(config.ListStringSetting.Value);
+    }
+
+    internal class TestNullableTypesConfigFile : TomlConfigWithSubsections<TestNullableTypesConfigFile.TestTypesConfig>, ITomlConfigFile
     {
         protected override TestTypesConfig InstantiateSubsection(string subsectionName)
         {
@@ -92,6 +130,26 @@ ListString=Test,Test
             public TomlConfigEntry<int?> IntSetting = new("Int", 1);
             public TomlConfigEntry<string> StringSetting = new("String", "Test");
             public TomlConfigEntry<List<string>> ListStringSetting = new("ListString", new List<string>());
+        }
+    }
+
+
+    internal class TestTypesConfigFile : TomlConfigWithSubsections<TestTypesConfig>, ITomlConfigFile
+    {
+        protected override TestTypesConfig InstantiateSubsection(string subsectionName)
+        {
+            return new();
+        }
+
+        public class TestTypesConfig : TomlConfig
+        {
+            public TomlConfigEntry<bool> BoolSetting = new("Bool", true);
+            public TomlConfigEntry<double> DoubleSetting = new("Double", 0.1);
+            public TomlConfigEntry<float> FloatSetting = new("Float", 0.1f);
+            public TomlConfigEntry<int> IntSetting = new("Int", 1);
+            public TomlConfigEntry<string> StringSetting = new("String", "Test");
+            public TomlConfigEntry<List<string>> ListStringSetting = new("ListString", new List<string>());
+            public TomlConfigEntry<List<int>> ListIntSetting = new("ListInt", new List<int>());
         }
     }
 

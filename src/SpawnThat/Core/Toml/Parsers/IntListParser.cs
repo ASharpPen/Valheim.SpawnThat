@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SpawnThat.Utilities;
 
 namespace SpawnThat.Core.Toml.Parsers;
@@ -22,7 +19,7 @@ internal class IntListParser : ValueParser<List<int>>
                 }
                 else
                 {
-                    Log.LogWarning($"[Line {line.LineNr}]: Unable to parse '{x}'. Expected integer number. Eg., 0, 1 or 3.");
+                    Log.LogWarning($"{line.FileName}, Line {line.LineNr}: Unable to parse '{x}'. Expected integer number. Eg., 0, 1 or 3.");
                     return null;
                 }
             })

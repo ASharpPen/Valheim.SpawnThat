@@ -19,14 +19,14 @@ public class ConditionNearbyPlayersStatus : ISpawnCondition
     public ConditionNearbyPlayersStatus(int distanceToSearch, params string[] requireOneOfStatusEffects)
     {
         SearchDistance = distanceToSearch;
-        RequiredStatusEffects = requireOneOfStatusEffects
+        RequiredStatusEffects = requireOneOfStatusEffects?
             .Select(x => x.Trim())
             .ToHashSet();
     }
 
     public bool IsValid(SpawnSessionContext context)
     {
-        if (RequiredStatusEffects.Count == 0)
+        if ((RequiredStatusEffects?.Count ?? 0) == 0)
         {
             return true;
         }

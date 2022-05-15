@@ -38,6 +38,8 @@ internal class LocalSpawnBuilder : ILocalSpawnBuilder
     }
 
     /*
+    public ILocalSpawnBuilder AddPostConfiguration(Action ocalSpawnTemplate> configure) => AddPostConfiguration(ocalSpawnTemplate);
+
     public ILocalSpawnBuilder AddPostConfiguration(Action<LocalSpawnTemplate> configure)
     {
         PostConfigurations.Add(configure);
@@ -63,13 +65,31 @@ internal class LocalSpawnBuilder : ILocalSpawnBuilder
         return this;
     }
 
+    public ILocalSpawnBuilder SetMaxLevel(int? maxLevel = 1)
+    {
+        Template.MaxLevel = maxLevel;
+        return this;
+    }
+
     public ILocalSpawnBuilder SetMinLevel(int minLevel = 1)
     {
         Template.MinLevel = minLevel;
         return this;
     }
 
+    public ILocalSpawnBuilder SetMinLevel(int? minLevel = 1)
+    {
+        Template.MinLevel = minLevel;
+        return this;
+    }
+
     public ILocalSpawnBuilder SetPatrolSpawn(bool patrolSpawn = false)
+    {
+        Template.SetPatrolSpawn = patrolSpawn;
+        return this;
+    }
+    
+    public ILocalSpawnBuilder SetPatrolSpawn(bool? patrolSpawn = false)
     {
         Template.SetPatrolSpawn = patrolSpawn;
         return this;
@@ -87,13 +107,31 @@ internal class LocalSpawnBuilder : ILocalSpawnBuilder
         return this;
     }
 
+    public ILocalSpawnBuilder SetSpawnDuringNight(bool? spawnAtDay = true)
+    {
+        Template.SpawnAtDay = spawnAtDay;
+        return this;
+    }
+
     public ILocalSpawnBuilder SetSpawnDuringDay(bool spawnAtNight = true)
     {
         Template.SpawnAtNight = spawnAtNight;
         return this;
     }
 
+    public ILocalSpawnBuilder SetSpawnDuringDay(bool? spawnAtNight = true)
+    {
+        Template.SpawnAtNight = spawnAtNight;
+        return this;
+    }
+
     public ILocalSpawnBuilder SetSpawnInPlayerBase(bool spawnInPlayerBase = false)
+    {
+        Template.AllowSpawnInPlayerBase = spawnInPlayerBase;
+        return this;
+    }
+
+    public ILocalSpawnBuilder SetSpawnInPlayerBase(bool? spawnInPlayerBase = false)
     {
         Template.AllowSpawnInPlayerBase = spawnInPlayerBase;
         return this;
@@ -111,13 +149,31 @@ internal class LocalSpawnBuilder : ILocalSpawnBuilder
         return this;
     }
 
+    public ILocalSpawnBuilder SetLevelUpChance(float? chance)
+    {
+        Template.LevelUpChance = chance;
+        return this;
+    }
+
     public ILocalSpawnBuilder SetConditionPlayerWithinDistance(float withinDistance)
     {
         Template.ConditionPlayerDistance = withinDistance;
         return this;
     }
 
+    public ILocalSpawnBuilder SetConditionPlayerWithinDistance(float? withinDistance)
+    {
+        Template.ConditionPlayerDistance = withinDistance;
+        return this;
+    }
+
     public ILocalSpawnBuilder SetConditionPlayerNoise(float noise)
+    {
+        Template.ConditionPlayerNoise = noise;
+        return this;
+    }
+
+    public ILocalSpawnBuilder SetConditionPlayerNoise(float? noise)
     {
         Template.ConditionPlayerNoise = noise;
         return this;

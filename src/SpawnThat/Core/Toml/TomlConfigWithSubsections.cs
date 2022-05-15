@@ -18,6 +18,8 @@ internal abstract class TomlConfigWithSubsections<T> : TomlConfig, IHaveSubsecti
         else
         {
             var newItem = InstantiateSubsection(cleanedName);
+            newItem.SectionName = cleanedName;
+
             Subsections[cleanedName] = newItem;
 
             return newItem;

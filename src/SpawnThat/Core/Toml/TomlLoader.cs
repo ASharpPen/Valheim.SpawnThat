@@ -17,12 +17,12 @@ internal static class TomlLoader
     public static TConfig LoadFile<TConfig>(string path)
         where TConfig : TomlConfig, ITomlConfigFile
     {
-        var lines = File.ReadAllLines(path);
-
-        return Load<TConfig>(lines);
+       var lines = File.ReadAllLines(path);
+        
+        return Load<TConfig>(lines, Path.GetFileName(path));
     }
 
-    public static TConfig Load<TConfig>(string[] lines)
+    public static TConfig Load<TConfig>(string[] lines, string fileName)
         where TConfig : TomlConfig, ITomlConfigFile
     {
         var mainConfig = Activator.CreateInstance<TConfig>();
@@ -60,20 +60,24 @@ internal static class TomlLoader
                 // Warn about potential issues in header
                 if (string.IsNullOrWhiteSpace(sanitized))
                 {
-                    Log.LogWarning($"Line {currentLine}]: Section name '{section}' empty after sanitizing. Unable to load section.");
+                    Log.LogWarning($"{fileName}, Line {currentLine}: Section name '{section}' empty after sanitizing. Unable to load section.");
                     currentSection = null;
                     continue;
                 }
 
                 // Grab section and parts
                 currentSection = sanitized;
-                currentSectionParts = section.SplitBy(Separator.Dot);
+                currentSectionParts = sanitized.SplitBy(Separator.Dot);
                 currentSectionConfig = FindSection(mainConfig, currentSectionParts);
+                if (currentSectionConfig.SectionPath is null)
+                {
+                    currentSectionConfig.SectionPath = sanitized;
+                }
 
                 if (currentSectionConfig is null)
                 {
                     // Warn about unknown section
-                    Log.LogWarning($"Line {currentLine}]: Unable to find valid config for section '{sanitized}'.");
+                    Log.LogWarning($"{fileName}, Line {currentLine}: Unable to find valid config for section '{sanitized}'.");
                 }
 
                 continue;
@@ -89,35 +93,45 @@ internal static class TomlLoader
                 if (string.IsNullOrWhiteSpace(currentSection))
                 {
                     // Log warning about settings outside section scope.
-                    Log.LogWarning($"Line {currentLine}]: Setting '{settingName}' was not inside any section. Ignoring setting.");
-
+                    Log.LogWarning($"{fileName}, Line {currentLine}: Setting '{settingName}' was not inside any section. Ignoring setting.");
                     continue;
                 }
                 else if (currentSectionConfig is null)
                 {
-                    Log.LogWarning($"Line {currentLine}]: Skipping setting '{settingName}' due to not finding valid config for section.");
+                    Log.LogWarning($"{fileName}, Line {currentLine}: Skipping setting '{settingName}' due to not finding valid config for section.");
+                    continue;
                 }
 
                 // Look up config using section path.
                 // Find matching entry in config
                 if (currentSectionConfig.TryGet(settingName, out var configEntry))
                 {
-                    configEntry.Read(
-                        new() 
-                        { 
-                            LineNr = currentLine,
-                            Value = settingValue
-                        });
+                    try
+                    {
+                        configEntry.Read(
+                            new()
+                            {
+                                FileName = fileName,
+                                LineNr = currentLine,
+                                Value = settingValue
+                            });
+                    }
+                    catch (Exception e)
+                    {
+                        Log.LogError($"{fileName}, Line {currentLine}: Unexpected error during parsing.", e);
+                    }
                 }
                 else
                 {
                     // Log warning about unknown entry if no entry matches.
-                    Log.LogWarning($"Line {currentLine}]: Setting '{settingName}' did not match any known setting for section '{currentSectionConfig.SectionPath}'. Ignoring setting.");
+                    Log.LogWarning($"{fileName}, Line {currentLine}: Setting '{settingName}' did not match any known setting for section '{currentSectionConfig.SectionPath}'. Ignoring setting.");
                 }
+
+                continue;
             }
 
             // Log warning about unknown text line if we reached this far.
-            Log.LogWarning($"Line {currentLine}]: Unknown text '{line}' did not match any known format. Ignoring setting.");
+            Log.LogWarning($"{fileName}, Line {currentLine}: Unknown text '{line}' did not match any known format. Ignoring setting.");
         }
 
         return mainConfig;

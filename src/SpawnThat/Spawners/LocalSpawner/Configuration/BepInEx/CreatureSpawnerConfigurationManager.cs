@@ -41,6 +41,11 @@ internal static class CreatureSpawnerConfigurationManager
 
         string configPath = Path.Combine(Paths.ConfigPath, CreatureSpawnerConfigFile);
 
+        if (!File.Exists(configPath))
+        {
+            File.Create(configPath).Close();
+        }
+
         var configs = LoadCreatureSpawnConfig(configPath);
 
         var supplementalFiles = Directory.GetFiles(Paths.ConfigPath, CreatureSpawnerSupplemental, SearchOption.AllDirectories);

@@ -57,6 +57,11 @@ internal static class SpawnSystemConfigurationManager
 
         string configPath = Path.Combine(Paths.ConfigPath, SpawnSystemConfigFile);
 
+        if (!File.Exists(configPath))
+        {
+            File.Create(configPath).Close();
+        }
+
         var configs = LoadSpawnSystemConfig(configPath);
 
         var supplementalFiles = Directory.GetFiles(Paths.ConfigPath, SpawnSystemSupplemental, SearchOption.AllDirectories);

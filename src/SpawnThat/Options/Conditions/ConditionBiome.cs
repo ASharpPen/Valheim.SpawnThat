@@ -14,14 +14,23 @@ public class ConditionBiome : ISpawnCondition
     {
         BiomeMask = Heightmap.Biome.None;
 
-        foreach (var biome in biomes)
+        if (biomes is not null)
         {
-            BiomeMask |= biome;
+            foreach (var biome in biomes)
+            {
+                BiomeMask |= biome;
+            }
         }
     }
 
     public ConditionBiome(IEnumerable<string> biomeNames)
     {
+        if (biomeNames is null)
+        {
+            BiomeMask = Heightmap.Biome.None;
+            return;
+        }
+
         BiomeMask = HeightmapUtils.ParseBiomeMask(biomeNames);
     }
 

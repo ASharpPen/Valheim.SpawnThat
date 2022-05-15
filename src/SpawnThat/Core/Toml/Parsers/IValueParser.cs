@@ -1,5 +1,4 @@
 ﻿using System;
-using BepInEx;
 
 namespace SpawnThat.Core.Toml.Parsers;
 
@@ -10,6 +9,18 @@ internal interface IValueParser
 
 internal abstract class ValueParser<T> : IValueParser
 {
+    protected Type ParserType { get; }
+    private Type ConfigEntryParserType { get; } 
+
+    protected ValueParser()
+    {
+        ParserType = typeof(T);
+
+        ConfigEntryParserType = typeof(ITomlConfigEntry<>)
+            .GetGenericTypeDefinition()
+            .MakeGenericType(ParserType);
+    }
+
     public void Parse(ITomlConfigEntry entry, TomlLine line)
     {
         if (entry is ITomlConfigEntry<T> supportedEntry)
@@ -23,6 +34,21 @@ internal abstract class ValueParser<T> : IValueParser
                 ParseInternal(supportedEntry, line);
             }
         }
+        /*
+        else if (Nullable.GetUnderlyingType(entry.SettingType) == ParserType)
+        {
+            if (string.IsNullOrWhiteSpace(line.Value))
+            {
+                entry.IsSet = true;
+            }
+            else
+            {
+                var convertedEntry = (ITomlConfigEntry<T>)Convert.ChangeType(entry, ConfigEntryParserType);
+
+                ParseInternal(convertedEntry, line);
+            }
+        }
+        */
         else
         {
             throw new InvalidOperationException($"Unable to parse config entry with type {typeof(T).Name} using parser {GetType().Name}.");

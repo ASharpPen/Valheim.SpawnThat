@@ -20,7 +20,7 @@ internal class EnumListParser<T> : ValueParser<List<T>>
             }
             else
             {
-                Log.LogWarning($"[Line {line.LineNr}]: Unable to parse '{itemValue}'. Verify spelling.");
+                Log.LogWarning($"{line.FileName}, Line {line.LineNr}: Unable to parse '{itemValue}'. Verify spelling.");
             }
         }
 

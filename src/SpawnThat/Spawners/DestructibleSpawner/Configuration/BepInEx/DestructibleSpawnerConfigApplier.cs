@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using SpawnThat.Core.Configuration;
 using SpawnThat.Integrations;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Utilities;
-using SpawnThat.Options.Conditions;
 using SpawnThat.Core;
 using SpawnThat.Core.Toml;
 using SpawnThat.Spawners.WorldSpawner;
+using BepInEx;
+using System.IO;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
 
@@ -25,13 +25,20 @@ internal static class DestructibleSpawnerConfigApplier
             var config = spawnerConfig.Value;
             
             // Skip if all identifiers are empty.
-            if (string.IsNullOrWhiteSpace(config.IdentifyByName?.Value) &&
-                string.IsNullOrWhiteSpace(config.IdentifyByBiome?.Value) &&
-                string.IsNullOrWhiteSpace(config.IdentifyByLocation?.Value) &&
-                string.IsNullOrWhiteSpace(config.IdentifyByRoom?.Value))
+            if (!config.IdentifyByName.IsSet &&
+                !config.IdentifyByBiome.IsSet &&
+                !config.IdentifyByLocation.IsSet &&
+                !config.IdentifyByRoom.IsSet)
             {
-                Log.LogDebug($"[Destructible Spawner] Ignoring config '{config.SectionPath}' due to having no identifiers.");
+                Log.LogWarning($"[Destructible Spawner] Ignoring config '{config.SectionPath}' due to having no identifiers listed. At least one identifier must be specified, for config to be valid.");
                 continue;
+            }
+            if (config.IdentifyByName.Value.Count == 0 &&
+                config.IdentifyByBiome.Value.Count == 0 &&
+                config.IdentifyByLocation.Value.Count == 0 &&
+                config.IdentifyByRoom.Value.Count == 0)
+            {
+                Log.LogWarning($"[Destructible Spawner] Ignoring config '{config.SectionPath}' due to all identifiers being empty. At least one identifier must have a value, for config to be valid.");
             }
 
             var builder = configs.ConfigureDestructibleSpawner();
@@ -50,40 +57,26 @@ internal static class DestructibleSpawnerConfigApplier
         builder.SetTemplateName(config.SectionPath);
 
         // Set identifiers
-        if (!string.IsNullOrWhiteSpace(config.IdentifyByName.Value))
-        {
-            builder.SetIdentifierName(config.IdentifyByName.Value);
-        }
-
-        if (!string.IsNullOrWhiteSpace(config.IdentifyByBiome.Value))
-        {
-            var biomes = HeightmapUtils.ParseBiomes(config.IdentifyByBiome.Value.SplitByComma());
-            builder.SetIdentifierBiome(biomes);
-        }
-
-        if (!string.IsNullOrWhiteSpace(config.IdentifyByLocation.Value))
-        {
-            builder.SetIdentifierLocation(config.IdentifyByLocation.Value.SplitByComma());
-        }
-
-        if (!string.IsNullOrWhiteSpace(config.IdentifyByRoom.Value))
-        {
-            builder.SetIdentifierRoom(config.IdentifyByRoom.Value.SplitByComma());
-        }
+        config.IdentifyByName.SetIfHasValue(builder.SetIdentifierName);
+        config.IdentifyByBiome.SetIfHasValue(builder.SetIdentifierBiome);
+        config.IdentifyByLocation.SetIfHasValue(builder.SetIdentifierLocation);
+        config.IdentifyByRoom.SetIfHasValue(builder.SetIdentifierRoom);
 
         // Set default settings
-        builder.SetLevelUpChance(config.LevelUpChance.Value);
-        builder.SetSpawnInterval(TimeSpan.FromSeconds(config.SpawnInterval.Value));
-        builder.SetPatrol(config.SetPatrol.Value);
-        builder.SetConditionPlayerWithinDistance(config.ConditionPlayerWithinDistance.Value);
-        builder.SetConditionMaxCloseCreatures(config.ConditionMaxCloseCreatures.Value);
-        builder.SetConditionMaxCreatures(config.ConditionMaxCreatures.Value);
-        builder.SetDistanceConsideredClose(config.DistanceConsideredClose.Value);
-        builder.SetDistanceConsideredFar(config.DistanceConsideredFar.Value);
-        builder.SetOnGroundOnly(config.OnGroundOnly.Value);
+        config.LevelUpChance.SetIfLoaded(x => builder.SetLevelUpChance(x));
+        config.SpawnInterval.SetIfLoaded(x => x is null 
+            ? builder.SetSpawnInterval(null)
+            : builder.SetSpawnInterval(TimeSpan.FromSeconds(x.Value)));
+        config.SetPatrol.SetIfLoaded(x => builder.SetPatrol(x));
+        config.ConditionPlayerWithinDistance.SetIfLoaded(x => builder.SetConditionPlayerWithinDistance(x));
+        config.ConditionMaxCloseCreatures.SetIfLoaded(x => builder.SetConditionMaxCloseCreatures(x));
+        config.ConditionMaxCreatures.SetIfLoaded(x => builder.SetConditionMaxCreatures(x));
+        config.DistanceConsideredClose.SetIfLoaded(x => builder.SetDistanceConsideredClose(x));
+        config.DistanceConsideredFar.SetIfLoaded(x => builder.SetDistanceConsideredFar(x));
+        config.OnGroundOnly.SetIfLoaded(x => builder.SetOnGroundOnly(x));
 
         // Set custom settings
-        builder.SetRemoveNotConfiguredSpawns(config.RemoveNotConfiguredSpawns.Value);
+        config.RemoveNotConfiguredSpawns.SetValueOrDefaultIfLoaded(x => builder.SetRemoveNotConfiguredSpawns(x.Value));
     }
 
     private static void ConfigureSpawn(DestructibleSpawnerConfig spawnerConfig, DestructibleSpawnConfig config, IDestructibleSpawnBuilder builder)
@@ -93,66 +86,79 @@ internal static class DestructibleSpawnerConfigApplier
             return;
         }
 
-        builder.SetEnabled(config.Enabled.Value);
-        builder.SetPrefabName(config.PrefabName.Value);
-        builder.SetSpawnWeight(config.SpawnWeight.Value);
-        builder.SetLevelMin(config.LevelMin.Value);
-        builder.SetLevelMax(config.LevelMax.Value);
+        config.Enabled.SetValueOrDefaultIfLoaded(x => builder.SetEnabled(x.Value));
+        config.PrefabName.SetIfHasValue(builder.SetPrefabName);
+        config.SpawnWeight.SetIfLoaded(x => builder.SetSpawnWeight(x));
+        config.LevelMin.SetIfLoaded(x => builder.SetLevelMin(x));
+        config.LevelMax.SetIfLoaded(x => builder.SetLevelMax(x));
 
         // Conditions
-        if (config.ConditionDistanceToCenterMin.Value > 0 || 
-            config.ConditionDistanceToCenterMax.Value > 0)
+        if (config.ConditionDistanceToCenterMin.IsSet ||
+            config.ConditionDistanceToCenterMax.IsSet)
         {
-            builder.SetConditionDistanceToCenter(config.ConditionDistanceToCenterMin.Value, config.ConditionDistanceToCenterMax.Value);
+            builder.SetConditionDistanceToCenter(
+                config.ConditionDistanceToCenterMin.IsSet ? config.ConditionDistanceToCenterMin.Value : null,
+                config.ConditionDistanceToCenterMax.IsSet ? config.ConditionDistanceToCenterMax.Value : null);
         }
 
-        if (config.ConditionWorldAgeDaysMin.Value > 0 ||
-            config.ConditionWorldAgeDaysMax.Value > 0)
+        if (config.ConditionWorldAgeDaysMin.IsSet ||
+            config.ConditionWorldAgeDaysMax.IsSet)
         {
-            builder.SetConditionWorldAge(config.ConditionWorldAgeDaysMin.Value, config.ConditionWorldAgeDaysMax.Value);
+            builder.SetConditionWorldAge(
+                config.ConditionWorldAgeDaysMin.IsSet ? config.ConditionWorldAgeDaysMin.Value : null,
+                config.ConditionWorldAgeDaysMax.IsSet ? config.ConditionWorldAgeDaysMax.Value : null);
         }
 
-        if (config.DistanceToTriggerPlayerConditions.Value > 0)
-        {
-            var dist = (int)config.DistanceToTriggerPlayerConditions.Value;
+        int playerConditionsDistance = config.DistanceToTriggerPlayerConditions.IsSet
+            ? (int)config.DistanceToTriggerPlayerConditions.Value
+            : (int)config.DistanceToTriggerPlayerConditions.DefaultValue;
 
-            config.ConditionNearbyPlayersCarryValue.SetIfGreaterThanZero(x => builder.SetConditionNearbyPlayersCarryValue(dist, x));
-            config.ConditionNearbyPlayerCarriesItem.SetIfHasValue(x => builder.SetConditionNearbyPlayersCarryItem(dist, x.SplitByComma()));
-            config.ConditionNearbyPlayersNoiseThreshold.SetIfGreaterThanZero(x => builder.SetConditionNearbyPlayersNoise(dist, x));
-            config.ConditionNearbyPlayersStatus.SetIfHasValue(x => builder.SetConditionNearbyPlayersStatus(dist, x.SplitByComma()));
+        config.ConditionNearbyPlayersCarryValue.SetValueOrDefaultIfLoaded(x => builder.SetConditionNearbyPlayersCarryValue(playerConditionsDistance, x.Value));
+        config.ConditionNearbyPlayerCarriesItem.SetIfLoaded(x => builder.SetConditionNearbyPlayersCarryItem(playerConditionsDistance, x));
+        config.ConditionNearbyPlayersNoiseThreshold.SetValueOrDefaultIfLoaded(x => builder.SetConditionNearbyPlayersNoise(playerConditionsDistance, x.Value));
+        config.ConditionNearbyPlayersStatus.SetIfLoaded(x => builder.SetConditionNearbyPlayersStatus(playerConditionsDistance, x));
+
+        config.ConditionAreaSpawnChance.SetIfLoaded(x => builder.SetConditionAreaSpawnChance(x ?? config.ConditionAreaSpawnChance.DefaultValue.Value));
+        config.ConditionLocation.SetIfLoaded(builder.SetConditionLocation);
+        config.ConditionAreaIds.SetIfLoaded(builder.SetConditionAreaIds);
+        config.ConditionBiome.SetIfLoaded(builder.SetConditionBiome);
+        config.ConditionAllOfGlobalKeys.SetIfLoaded(builder.SetConditionAllOfGlobalKeys);
+        config.ConditionAnyOfGlobalKeys.SetIfLoaded(builder.SetConditionAnyOfGlobalKeys);
+        config.ConditionNoneOfGlobalKeys.SetIfLoaded(builder.SetConditionNoneOfGlobalkeys);
+        config.ConditionEnvironment.SetIfLoaded(x => builder.SetConditionEnvironment(x));
+        config.ConditionDaytime.SetIfLoaded(builder.SetConditionDaytime);
+        config.ConditionForestState.SetValueOrDefaultIfLoaded(x => builder.SetConditionForest(x.Value));
+
+        if (config.ConditionAltitudeMin.IsSet ||
+            config.ConditionAltitudeMax.IsSet)
+        {
+            builder.SetConditionAltitude(
+                config.ConditionAltitudeMin.IsSet ? config.ConditionAltitudeMin.Value : null,
+                config.ConditionAltitudeMax.IsSet ? config.ConditionAltitudeMax.Value : null);
         }
 
-        config.ConditionAreaSpawnChance.SetIfNotEqual(100, x => builder.SetConditionAreaSpawnChance(x));
-        config.ConditionLocation.SetIfHasValue(x => builder.SetConditionLocation(x.SplitByComma()));
-        config.ConditionAreaIds.SetIfHasValue(x => builder.SetConditionAreaIds(x.SplitByComma().ConvertAll(x => int.Parse(x))));
-
-        config.ConditionBiome.SetIfHasValue(x => builder.SetConditionBiome(x.SplitByComma()));
-        config.ConditionAllOfGlobalKeys.SetIfHasValue(x => builder.SetConditionAllOfGlobalKeys(x.SplitByComma()));
-        config.ConditionAnyOfGlobalKeys.SetIfHasValue(x => builder.SetConditionAnyOfGlobalKeys(x.SplitByComma()));
-        config.ConditionNoneOfGlobalKeys.SetIfHasValue(x => builder.SetConditionNoneOfGlobalkeys(x.SplitByComma()));
-        config.ConditionEnvironment.SetIfHasValue(x => builder.SetConditionEnvironment(x.SplitByComma()));
-        config.ConditionDaytime.SetIfNotEqual(Utilities.Enums.Daytime.All, x => builder.SetConditionDaytime(x));
-
-        builder.SetConditionAltitude(config.ConditionAltitudeMin.Value, config.ConditionAltitudeMax.Value);
-        builder.SetCondition(new ConditionForest(config.ConditionInForest.Value, config.ConditionOutsideForest.Value));
-
-        if (config.ConditionOceanDepthMin.Value != config.ConditionOceanDepthMax.Value)
+        if (config.ConditionOceanDepthMin.IsSet ||
+            config.ConditionOceanDepthMax.IsSet)
         {
-            builder.SetConditionOceanDepth(config.ConditionOceanDepthMin.Value, config.ConditionOceanDepthMax.Value);
+            builder.SetConditionOceanDepth(
+                config.ConditionOceanDepthMin.IsSet ? config.ConditionOceanDepthMin.Value : null,
+                config.ConditionOceanDepthMax.IsSet ? config.ConditionOceanDepthMax.Value : null);
         }
 
         // Conditions - Integrations
-        Config cfg;
+        TomlConfig cfg;
         {
             if (IntegrationManager.InstalledCLLC)
             {
                 if (config.TryGet(DestructibleSpawnConfigCLLC.ModName, out cfg) &&
                     cfg is DestructibleSpawnConfigCLLC cllcConfig)
                 {
-                    if (cllcConfig.ConditionWorldLevelMin.Value > 0 || 
-                        cllcConfig.ConditionWorldLevelMax.Value > 0)
+                    if (cllcConfig.ConditionWorldLevelMin.IsSet || 
+                        cllcConfig.ConditionWorldLevelMax.IsSet)
                     {
-                        builder.SetCllcConditionWorldLevel(cllcConfig.ConditionWorldLevelMin.Value, cllcConfig.ConditionWorldLevelMax.Value);
+                        builder.SetCllcConditionWorldLevel(
+                            cllcConfig.ConditionWorldLevelMin.IsSet ? cllcConfig.ConditionWorldLevelMin.Value : null,
+                            cllcConfig.ConditionWorldLevelMax.IsSet ? cllcConfig.ConditionWorldLevelMax.Value : null);
                     }
                 }
             }
@@ -162,13 +168,12 @@ internal static class DestructibleSpawnerConfigApplier
                 if (config.TryGet(DestructibleSpawnConfigEpicLoot.ModName, out cfg) &&
                     cfg is DestructibleSpawnConfigEpicLoot elConfig)
                 {
-                    var dist = (int)config.DistanceToTriggerPlayerConditions.Value;
+                    var dist = config.DistanceToTriggerPlayerConditions.IsSet
+                        ? (int)config.DistanceToTriggerPlayerConditions.Value
+                        : (int)config.DistanceToTriggerPlayerConditions.DefaultValue;
 
-                    if (dist > 0)
-                    {
-                        elConfig.ConditionNearbyPlayerCarryItemWithRarity.SetIfHasValue(x => builder.SetEpicLootConditionNearbyPlayersCarryItemWithRarity(dist, x.SplitByComma()));
-                        elConfig.ConditionNearbyPlayerCarryLegendaryItem.SetIfHasValue(x => builder.SetEpicLootConditionNearbyPlayerCarryLegendaryItem(dist, x.SplitByComma()));
-                    }
+                    elConfig.ConditionNearbyPlayerCarryItemWithRarity.SetIfLoaded(x => builder.SetEpicLootConditionNearbyPlayersCarryItemWithRarity(dist, x));
+                    elConfig.ConditionNearbyPlayerCarryLegendaryItem.SetIfHasValue(x => builder.SetEpicLootConditionNearbyPlayerCarryLegendaryItem(dist, x));
                 }
             }
         }
@@ -176,13 +181,12 @@ internal static class DestructibleSpawnerConfigApplier
         // Position conditions
 
         // Modifiers
-        config.SetFaction.SetIfHasValue(x => builder.SetModifierFaction(x));
-
-        builder.SetModifierRelentless(config.SetRelentless.Value);
-        builder.SetModifierDespawnOnAlert(config.SetTryDespawnOnAlert.Value);
-        builder.SetModifierTamed(config.SetTamed.Value);
-        builder.SetModifierTamedCommandable(config.SetTamedCommandable.Value);
-        builder.SetModifierHuntPlayer(config.SetHuntPlayer.Value);
+        config.SetFaction.SetIfLoaded(builder.SetModifierFaction);
+        config.SetRelentless.SetValueOrDefaultIfLoaded(x => builder.SetModifierRelentless(x.Value));
+        config.SetTryDespawnOnAlert.SetValueOrDefaultIfLoaded(x => builder.SetModifierDespawnOnAlert(x.Value));
+        config.SetTamed.SetValueOrDefaultIfLoaded(x => builder.SetModifierTamed(x.Value));
+        config.SetTamedCommandable.SetValueOrDefaultIfLoaded(x => builder.SetModifierTamedCommandable(x.Value));
+        config.SetHuntPlayer.SetValueOrDefaultIfLoaded(x => builder.SetModifierHuntPlayer(x.Value));
 
         // Modifiers - Integrations
         {
@@ -191,13 +195,28 @@ internal static class DestructibleSpawnerConfigApplier
                 if (config.TryGet(DestructibleSpawnConfigCLLC.ModName, out cfg) &&
                     cfg is DestructibleSpawnConfigCLLC cllcConfig)
                 {
-                    cllcConfig.SetBossAffix.SetIfHasValue(x => builder.SetCllcModifierBossAffix(x));
-                    cllcConfig.SetExtraEffect.SetIfHasValue(x => builder.SetCllcModifierExtraEffect(x));
-                    cllcConfig.SetInfusion.SetIfHasValue(x => builder.SetCllcModifierInfusion(x));
+                    cllcConfig.SetBossAffix.SetIfLoaded(builder.SetCllcModifierBossAffix);
+                    cllcConfig.SetExtraEffect.SetIfLoaded(builder.SetCllcModifierExtraEffect);
+                    cllcConfig.SetInfusion.SetIfLoaded(builder.SetCllcModifierInfusion);
 
-                    if (cllcConfig.UseDefaultLevels.Value)
+                    if (cllcConfig.UseDefaultLevels.IsSet &&
+                        (cllcConfig.UseDefaultLevels.Value ?? cllcConfig.UseDefaultLevels.DefaultValue.Value))
                     {
-                        builder.SetModifier(new ModifierDefaultRollLevel(config.LevelMin.Value, config.LevelMax.Value, 0, spawnerConfig.LevelUpChance.Value));
+                        builder.SetModifier(
+                            new ModifierDefaultRollLevel(
+                                config.LevelMin.IsSet 
+                                    ? config.LevelMin.Value ?? config.LevelMin.DefaultValue.Value
+                                    : config.LevelMin.DefaultValue.Value,
+                                config.LevelMax.IsSet 
+                                    ? config.LevelMax.Value ?? config.LevelMax.DefaultValue.Value
+                                    : config.LevelMax.DefaultValue.Value,
+                                0,
+                                10f
+                                ));
+                    }
+                    else if (cllcConfig.UseDefaultLevels.IsSet)
+                    {
+                        builder.SetModifier(new ModifierDefaultRollLevel(-1, -1, 0, 0));
                     }
                 }
             }
@@ -207,7 +226,35 @@ internal static class DestructibleSpawnerConfigApplier
                 if (config.TryGet(DestructibleSpawnConfigMobAI.ModName, out cfg) &&
                     cfg is DestructibleSpawnConfigMobAI mobAIConfig)
                 {
-                    mobAIConfig.SetAI.SetIfHasValue(x => builder.SetMobAiModifier(x, mobAIConfig.AIConfigFile.Value));
+                    if (mobAIConfig.SetAI.IsSet)
+                    {
+                        var ai = mobAIConfig.SetAI.Value;
+
+                        if (string.IsNullOrWhiteSpace(ai))
+                        {
+                            builder.SetMobAiModifier(null, null);
+                        }
+
+                        try
+                        {
+                            string filePath = Path.Combine(Paths.ConfigPath, mobAIConfig.AIConfigFile.Value);
+
+                            if (File.Exists(filePath))
+                            {
+                                string content = File.ReadAllText(filePath);
+
+                                builder.SetMobAiModifier(ai, content);
+                            }
+                            else
+                            {
+                                Log.LogWarning($"Unable to find MobAI json config file at '{filePath}'");
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Log.LogError("Error while attempting to read MobAI config.", e);
+                        }
+                    }
                 }
             }
         }
@@ -222,47 +269,58 @@ internal static class DestructibleSpawnerConfigApplier
         }
     }
 
-
-    private static void SetIfHasValue(this ConfigurationEntry<string> value, Func<string, IDestructibleSpawnBuilder> apply)
+    private static void SetIfLoaded<T>(this TomlConfigEntry<T> value, Func<T, IDestructibleSpawnerBuilder> apply)
     {
         if (value is not null &&
+            value.IsSet)
+        {
+            apply(value.Value);
+        }
+    }
+
+    private static void SetValueOrDefaultIfLoaded<T>(this ITomlConfigEntry<T> value, Func<T, IDestructibleSpawnBuilder> apply)
+    {
+        if (value is not null &&
+            value.IsSet)
+        {
+            apply(value.Value ?? value.DefaultValue);
+        }
+    }
+
+    private static void SetValueOrDefaultIfLoaded<T>(this ITomlConfigEntry<T> value, Func<T, IDestructibleSpawnerBuilder> apply)
+    {
+        if (value is not null &&
+            value.IsSet)
+        {
+            apply(value.Value ?? value.DefaultValue);
+        }
+    }
+
+    private static void SetIfHasValue<T>(this TomlConfigEntry<List<T>> value, Func<List<T>, IDestructibleSpawnerBuilder> apply)
+    {
+        if (value is not null &&
+            value.IsSet &&
+            value.Value.Count > 0)
+        {
+            apply(value.Value);
+        }
+    }
+
+    private static void SetIfHasValue<T>(this TomlConfigEntry<List<T>> value, Func<List<T>, IDestructibleSpawnBuilder> apply)
+    {
+        if (value is not null &&
+            value.IsSet &&
+            value.Value.Count > 0)
+        {
+            apply(value.Value);
+        }
+    }
+
+    private static void SetIfHasValue(this TomlConfigEntry<string> value, Func<string, IDestructibleSpawnBuilder> apply)
+    {
+        if (value is not null &&
+            value.IsSet &&
             value.Value.IsNotEmpty())
-        {
-            apply(value.Value);
-        }
-    }
-
-    private static void SetIfHasValue(this ConfigurationEntry<string> value, Func<List<string>, IDestructibleSpawnBuilder> apply)
-    {
-        if (value is not null &&
-            value.Value.IsNotEmpty())
-        {
-            apply(value.Value.SplitByComma());
-        }
-    }
-
-    private static void SetIfGreaterThanZero(this ConfigurationEntry<int> value, Func<int, IDestructibleSpawnBuilder> apply)
-    {
-        if (value is not null &&
-            value.Value > 0)
-        {
-            apply(value.Value);
-        }
-    }
-
-    private static void SetIfNotEqual<T>(this ConfigurationEntry<T> value, T compare, Func<T, IDestructibleSpawnBuilder> apply)
-    {
-        if (value is not null &&
-            value.Value.Equals(compare))
-        {
-            apply(value.Value);
-        }
-    }
-
-    private static void SetIfGreaterThanZero(this ConfigurationEntry<float> value, Func<float, IDestructibleSpawnBuilder> apply)
-    {
-        if (value is not null &&
-            value.Value > 0)
         {
             apply(value.Value);
         }

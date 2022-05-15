@@ -1,5 +1,4 @@
-﻿using SpawnThat.Core.Configuration;
-using SpawnThat.Core.Toml;
+﻿using SpawnThat.Core.Toml;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 

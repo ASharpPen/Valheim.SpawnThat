@@ -2,7 +2,7 @@
 
 namespace SpawnThat.Core.Toml;
 
-public class TomlConfigEntry<T> : ITomlConfigEntry<T>
+internal class TomlConfigEntry<T> : ITomlConfigEntry<T>
 {
     internal TomlConfigEntry()
     { }

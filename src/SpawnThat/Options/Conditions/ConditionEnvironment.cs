@@ -15,14 +15,14 @@ public class ConditionEnvironment : ISpawnCondition
 
     public ConditionEnvironment(params string[] requiredEnvironments)
     {
-        Environments = requiredEnvironments
+        Environments = requiredEnvironments?
             .Select(x => x.Trim())
             .ToArray();
     }
 
     public ConditionEnvironment(IEnumerable<string> requiredEnvironments)
     {
-        Environments = requiredEnvironments
+        Environments = requiredEnvironments?
             .Select(x => x.Trim())
             .ToArray();
     }

@@ -2,7 +2,7 @@
 
 namespace SpawnThat.Core.Toml;
 
-public interface ITomlConfigEntry
+internal interface ITomlConfigEntry
 {
     string Name { get; }
 
@@ -13,14 +13,14 @@ public interface ITomlConfigEntry
     public bool IsSet { get; set; }
 }
 
-public interface ITomlConfigEntry<T> : ITomlConfigEntry
+internal interface ITomlConfigEntry<T> : ITomlConfigEntry
 {
     T Value { get; set; }
 
     T DefaultValue { get; set; }
 }
 
-public interface ITomlValueConfigEntry<T> : ITomlConfigEntry
+internal interface ITomlValueConfigEntry<T> : ITomlConfigEntry
     where T : struct
 {
     T? Value { get; set; }

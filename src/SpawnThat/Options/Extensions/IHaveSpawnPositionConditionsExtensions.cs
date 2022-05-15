@@ -27,7 +27,7 @@ public static class IHaveSpawnPositionConditionsExtensions
     /// <para>Set forestation state for which spawning is active.</para>
     /// <para>Note: This is based on worldgeneration, not on actual amount of vegetation present.</para>
     /// </summary>
-    public static T SetConditionForest<T>(this T builder, ForestState requiredState)
+    public static T SetPositionConditionForest<T>(this T builder, ForestState requiredState)
         where T : IHaveSpawnPositionConditions
     {
         builder.SetPositionCondition(new PositionConditionForest(requiredState));

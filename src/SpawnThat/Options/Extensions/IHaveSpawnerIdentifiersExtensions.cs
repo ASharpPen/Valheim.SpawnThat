@@ -13,6 +13,13 @@ public static class IHaveSpawnerIdentifiersExtensions
         return builder;
     }
 
+    public static T SetIdentifierName<T>(this T builder, ICollection<string> spawnerPrefabNames)
+    where T : IHaveSpawnerIdentifiers
+    {
+        builder.SetIdentifier(new IdentifierName(spawnerPrefabNames));
+        return builder;
+    }
+
     public static T SetIdentifierBiome<T>(this T builder, params Biome[] biomes)
         where T : IHaveSpawnerIdentifiers
     {

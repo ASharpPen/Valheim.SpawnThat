@@ -36,6 +36,10 @@ public static class IHaveSpawnModifiersExtensions
 
     public static T SetModifierFaction<T>(this T builder, Character.Faction faction)
         where T : IHaveSpawnModifiers
+        => SetModifierFaction(builder, faction);
+
+    public static T SetModifierFaction<T>(this T builder, Character.Faction? faction)
+        where T : IHaveSpawnModifiers
     {
         builder.SetModifier(new ModifierSetFaction(faction));
         return builder;

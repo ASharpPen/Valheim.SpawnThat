@@ -18,6 +18,18 @@ public static class IHaveSpawnModifiersCllcModifierExtensions
     }
 
     public static T SetCllcModifierBossAffix<T>(this T builder, CllcBossAffix bossAffix)
+    where T : IHaveSpawnModifiers
+    {
+        if (IntegrationManager.InstalledCLLC)
+        {
+            SetBossAffix(builder, bossAffix);
+        }
+
+        return builder;
+    }
+
+
+    public static T SetCllcModifierBossAffix<T>(this T builder, CllcBossAffix? bossAffix)
         where T : IHaveSpawnModifiers
     {
         if (IntegrationManager.InstalledCLLC)
@@ -29,7 +41,7 @@ public static class IHaveSpawnModifiersCllcModifierExtensions
     }
 
     private static void SetBossAffix(IHaveSpawnModifiers builder, string bossAffixName) => builder.SetModifier(new ModifierCllcBossAffix(bossAffixName));
-    private static void SetBossAffix(IHaveSpawnModifiers builder, CllcBossAffix bossAffix) => builder.SetModifier(new ModifierCllcBossAffix(bossAffix));
+    private static void SetBossAffix(IHaveSpawnModifiers builder, CllcBossAffix? bossAffix) => builder.SetModifier(new ModifierCllcBossAffix(bossAffix));
 
     public static T SetCllcModifierExtraEffect<T>(this T builder, string extraEffectName)
         where T : IHaveSpawnModifiers
@@ -43,6 +55,17 @@ public static class IHaveSpawnModifiersCllcModifierExtensions
     }
 
     public static T SetCllcModifierExtraEffect<T>(this T builder, CllcCreatureExtraEffect extraEffect)
+    where T : IHaveSpawnModifiers
+    {
+        if (IntegrationManager.InstalledCLLC)
+        {
+            SetExtraEffect(builder, extraEffect);
+        }
+
+        return builder;
+    }
+
+    public static T SetCllcModifierExtraEffect<T>(this T builder, CllcCreatureExtraEffect? extraEffect)
         where T : IHaveSpawnModifiers
     {
         if (IntegrationManager.InstalledCLLC)
@@ -54,7 +77,7 @@ public static class IHaveSpawnModifiersCllcModifierExtensions
     }
 
     private static void SetExtraEffect(IHaveSpawnModifiers builder, string extraEffectName) => builder.SetModifier(new ModifierCllcExtraEffect(extraEffectName));
-    private static void SetExtraEffect(IHaveSpawnModifiers builder, CllcCreatureExtraEffect extraEffect) => builder.SetModifier(new ModifierCllcExtraEffect(extraEffect));
+    private static void SetExtraEffect(IHaveSpawnModifiers builder, CllcCreatureExtraEffect? extraEffect) => builder.SetModifier(new ModifierCllcExtraEffect(extraEffect));
     
     public static T SetCllcModifierInfusion<T>(this T builder, string infusionName)
         where T : IHaveSpawnModifiers
@@ -68,6 +91,17 @@ public static class IHaveSpawnModifiersCllcModifierExtensions
     }
 
     public static T SetCllcModifierInfusion<T>(this T builder, CllcCreatureInfusion infusion)
+    where T : IHaveSpawnModifiers
+    {
+        if (IntegrationManager.InstalledCLLC)
+        {
+            SetInfusion(builder, infusion);
+        }
+
+        return builder;
+    }
+
+    public static T SetCllcModifierInfusion<T>(this T builder, CllcCreatureInfusion? infusion)
         where T : IHaveSpawnModifiers
     {
         if (IntegrationManager.InstalledCLLC)
@@ -79,7 +113,7 @@ public static class IHaveSpawnModifiersCllcModifierExtensions
     }
 
     private static void SetInfusion(IHaveSpawnModifiers builder, string infusionName) => builder.SetModifier(new ModifierCllcInfusion(infusionName));
-    private static void SetInfusion(IHaveSpawnModifiers builder, CllcCreatureInfusion infusion) => builder.SetModifier(new ModifierCllcInfusion(infusion));
+    private static void SetInfusion(IHaveSpawnModifiers builder, CllcCreatureInfusion? infusion) => builder.SetModifier(new ModifierCllcInfusion(infusion));
 
     public static T SetCllcModifierRandomLevel<T>(this T builder)
         where T : IHaveSpawnModifiers

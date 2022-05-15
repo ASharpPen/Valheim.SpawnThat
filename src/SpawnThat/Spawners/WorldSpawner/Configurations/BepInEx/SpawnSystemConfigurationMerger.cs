@@ -24,14 +24,15 @@ internal static class SpawnSystemConfigurationMerger
 
         foreach (var sourceTemplate in sourceTemplates.Subsections)
         {
-            if (!sourceTemplate.Value.Enabled.Value)
+            if (sourceTemplate.Value.Enabled.IsSet &&
+                (sourceTemplate.Value.Enabled.Value ?? sourceTemplate.Value.Enabled.DefaultValue.Value) == false)
             {
                 continue;
             }
 
             if (targetTemplates.Subsections.TryGetValue(sourceTemplate.Key, out var targetConfig))
             {
-                if (targetConfig.TemplateEnabled.Value)
+                if (targetConfig.TemplateEnabled.Value ?? targetConfig.TemplateEnabled.DefaultValue.Value)
                 {
                     Log.LogWarning($"Overlapping world spawner configs for {sourceTemplate.Value.SectionPath}, overriding existing.");
                 }
