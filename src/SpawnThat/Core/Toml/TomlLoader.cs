@@ -60,7 +60,7 @@ internal static class TomlLoader
                 // Warn about potential issues in header
                 if (string.IsNullOrWhiteSpace(sanitized))
                 {
-                    Log.LogWarning($"{fileName}, Line {currentLine}: Section name '{section}' empty after sanitizing. Unable to load section.");
+                    Log.LogWarning($"{fileName}, Line {currentLine + 1}: Section name '{section}' empty after sanitizing. Unable to load section.");
                     currentSection = null;
                     continue;
                 }
@@ -77,7 +77,7 @@ internal static class TomlLoader
                 if (currentSectionConfig is null)
                 {
                     // Warn about unknown section
-                    Log.LogWarning($"{fileName}, Line {currentLine}: Unable to find valid config for section '{sanitized}'.");
+                    Log.LogWarning($"{fileName}, Line {currentLine + 1}: Unable to find valid config for section '{sanitized}'.");
                 }
 
                 continue;
@@ -93,12 +93,12 @@ internal static class TomlLoader
                 if (string.IsNullOrWhiteSpace(currentSection))
                 {
                     // Log warning about settings outside section scope.
-                    Log.LogWarning($"{fileName}, Line {currentLine}: Setting '{settingName}' was not inside any section. Ignoring setting.");
+                    Log.LogWarning($"{fileName}, Line {currentLine + 1}: Setting '{settingName}' was not inside any section. Ignoring setting.");
                     continue;
                 }
                 else if (currentSectionConfig is null)
                 {
-                    Log.LogWarning($"{fileName}, Line {currentLine}: Skipping setting '{settingName}' due to not finding valid config for section.");
+                    Log.LogWarning($"{fileName}, Line {currentLine + 1}: Skipping setting '{settingName}' due to not finding valid config for section.");
                     continue;
                 }
 
@@ -112,26 +112,26 @@ internal static class TomlLoader
                             new()
                             {
                                 FileName = fileName,
-                                LineNr = currentLine,
+                                LineNr = currentLine + 1,
                                 Value = settingValue
                             });
                     }
                     catch (Exception e)
                     {
-                        Log.LogError($"{fileName}, Line {currentLine}: Unexpected error during parsing.", e);
+                        Log.LogError($"{fileName}, Line {currentLine + 1}: Unexpected error during parsing.", e);
                     }
                 }
                 else
                 {
                     // Log warning about unknown entry if no entry matches.
-                    Log.LogWarning($"{fileName}, Line {currentLine}: Setting '{settingName}' did not match any known setting for section '{currentSectionConfig.SectionPath}'. Ignoring setting.");
+                    Log.LogWarning($"{fileName}, Line {currentLine + 1}: Setting '{settingName}' did not match any known setting for section '{currentSectionConfig.SectionPath}'. Ignoring setting.");
                 }
 
                 continue;
             }
 
             // Log warning about unknown text line if we reached this far.
-            Log.LogWarning($"{fileName}, Line {currentLine}: Unknown text '{line}' did not match any known format. Ignoring setting.");
+            Log.LogWarning($"{fileName}, Line {currentLine + 1}: Unknown text '{line}' did not match any known format. Ignoring setting.");
         }
 
         return mainConfig;
