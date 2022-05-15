@@ -7,9 +7,9 @@ using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Options.Identifiers;
 
-public class IdentifierName : ISpawnerIdentifier, ICacheableIdentifier
+public class IdentifierName : ISpawnerIdentifier
 {
-    private int _hash;
+    private long _hash;
     private ICollection<string> _names;
 
     public ICollection<string> Names
@@ -61,15 +61,7 @@ public class IdentifierName : ISpawnerIdentifier, ICacheableIdentifier
 
     private void SetHash(ICollection<string> names)
     {
-        _hash = 0;
-
-        foreach (var name in names)
-        {
-            unchecked
-            {
-                _hash += name.GetStableHashCode();
-            }
-        }
+        _hash = names.Hash();
     }
 
     public long GetParameterHash()
@@ -78,4 +70,15 @@ public class IdentifierName : ISpawnerIdentifier, ICacheableIdentifier
     }
 
     public int GetMatchWeight() => MatchWeight.Normal;
+
+    public bool Equals(ISpawnerIdentifier other)
+    {
+        if (ReferenceEquals(this, other))
+        {
+            return true;
+        }
+
+        return other is IdentifierName otherIdentifier &&
+            _hash == otherIdentifier.GetParameterHash();
+    }
 }

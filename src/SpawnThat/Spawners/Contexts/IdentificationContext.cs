@@ -19,7 +19,7 @@ public class IdentificationContext
 
     private Dictionary<Type, Dictionary<long, bool>> IdentifierResultCache = new();
 
-    internal bool TryGetCached(ICacheableIdentifier identifier, out bool cached)
+    internal bool TryGetCached(ISpawnerIdentifier identifier, out bool cached)
     {
         if (IdentifierResultCache.TryGetValue(identifier.GetType(), out var identifierCache))
         {
@@ -35,7 +35,7 @@ public class IdentificationContext
         return false;
     }
 
-    internal void CacheIdentifierResult(ICacheableIdentifier identifier, bool result)
+    internal void CacheIdentifierResult(ISpawnerIdentifier identifier, bool result)
     {
         Type identifierType = identifier.GetType();
         long identifierHash = identifier.GetParameterHash();

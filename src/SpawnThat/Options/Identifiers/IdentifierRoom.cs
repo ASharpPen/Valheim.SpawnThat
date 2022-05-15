@@ -3,11 +3,12 @@ using System.Linq;
 using HarmonyLib;
 using SpawnThat.Core;
 using SpawnThat.Spawners.Contexts;
+using SpawnThat.Utilities.Extensions;
 using SpawnThat.World.Dungeons;
 
 namespace SpawnThat.Options.Identifiers;
 
-public class IdentifierRoom : ISpawnerIdentifier, ICacheableIdentifier
+public class IdentifierRoom : ISpawnerIdentifier
 {
     private long _hash;
     private ICollection<string> _rooms;
@@ -62,15 +63,7 @@ public class IdentifierRoom : ISpawnerIdentifier, ICacheableIdentifier
 
     private void SetHash(ICollection<string> names)
     {
-        _hash = 0;
-
-        foreach (var name in names)
-        {
-            unchecked
-            {
-                _hash += name.GetStableHashCode();
-            }
-        }
+        _hash = names.Hash();
     }
 
     public long GetParameterHash()
@@ -79,4 +72,16 @@ public class IdentifierRoom : ISpawnerIdentifier, ICacheableIdentifier
     }
 
     public int GetMatchWeight() => MatchWeight.High;
+
+    public bool Equals(ISpawnerIdentifier other)
+    {
+        if (ReferenceEquals(this, other))
+        {
+            return true;
+        }
+
+        return
+            other is IdentifierLocation otherIdentifier &&
+            otherIdentifier.GetParameterHash() == _hash;
+    }
 }
