@@ -13,21 +13,21 @@ public class ConditionGlobalKeysAny : ISpawnCondition
 
     public ConditionGlobalKeysAny(params string[] globalKeys)
     {
-        Keys = globalKeys
+        Keys = globalKeys?
             .Distinct()
             .ToArray();
     }
 
     public ConditionGlobalKeysAny(IEnumerable<string> globalKeys)
     {
-        Keys = globalKeys
+        Keys = globalKeys?
             .Distinct()
             .ToArray();
     }
 
     public bool IsValid(SpawnSessionContext context)
     {
-        if (Keys.Length == 0)
+        if ((Keys?.Length ?? 0) == 0)
         {
             return true;
         }

@@ -32,7 +32,7 @@ public class IdentifierLocation : ISpawnerIdentifier, ICacheableIdentifier
 
     public IdentifierLocation(IEnumerable<string> requireOneOfLocations)
     {
-        Locations = requireOneOfLocations.ToList();
+        Locations = requireOneOfLocations?.ToList() ?? new();
     }
 
     public bool IsValid(IdentificationContext context)

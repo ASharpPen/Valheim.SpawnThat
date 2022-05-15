@@ -27,9 +27,9 @@ public class ModifierCllcBossAffix : ISpawnModifier
         }
     }
 
-    public ModifierCllcBossAffix(CllcBossAffix bossAffix)
+    public ModifierCllcBossAffix(CllcBossAffix? bossAffix)
     {
-        Affix = bossAffix.Convert();
+        Affix = bossAffix?.Convert();
     }
 
     public void Modify(GameObject entity, ZDO entityZdo)

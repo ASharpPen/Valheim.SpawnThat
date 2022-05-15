@@ -25,7 +25,7 @@ public class ConditionDaytime : ISpawnCondition
 
     public ConditionDaytime(params Daytime[] daytimes)
     {
-        Required = daytimes
+        Required = daytimes?
             .OrderBy(x => x)
             .Distinct()
             .ToArray();
@@ -33,7 +33,7 @@ public class ConditionDaytime : ISpawnCondition
 
     public ConditionDaytime(IEnumerable<Daytime> daytimes)
     {
-        Required = daytimes
+        Required = daytimes?
             .OrderBy(x => x)
             .Distinct()
             .ToArray();

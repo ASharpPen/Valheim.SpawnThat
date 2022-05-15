@@ -27,9 +27,9 @@ public class ModifierCllcInfusion : ISpawnModifier
         }
     }
 
-    public ModifierCllcInfusion(CllcCreatureInfusion infusion)
+    public ModifierCllcInfusion(CllcCreatureInfusion? infusion)
     {
-        Infusion = infusion.Convert();
+        Infusion = infusion?.Convert();
     }
 
     public void Modify(GameObject entity, ZDO entityZdo)

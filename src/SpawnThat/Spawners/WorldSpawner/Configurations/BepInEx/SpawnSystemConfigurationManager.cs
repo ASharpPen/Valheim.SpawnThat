@@ -6,6 +6,7 @@ using System.IO;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Core.Configuration;
+using SpawnThat.Core.Toml;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
@@ -28,12 +29,7 @@ internal static class SpawnSystemConfigurationManager
 
         stopwatch.Stop();
 
-        Log.LogInfo("Config loading took: " + stopwatch.Elapsed);
-        if (stopwatch.Elapsed > TimeSpan.FromSeconds(5) &&
-            ConfigurationManager.GeneralConfig?.StopTouchingMyConfigs?.Value == false)
-        {
-            Log.LogInfo("Long loading time detected. Consider setting \"StopTouchingMyConfigs=true\" in spawn_that.cfg to improve loading speed.");
-        }
+        Log.LogDebug("Config loading took: " + stopwatch.Elapsed);
     }
 
     public static SimpleConfigurationFile LoadSimpleConfig()
@@ -47,18 +43,7 @@ internal static class SpawnSystemConfigurationManager
             SimpleConfigPreconfiguration.Initialize();
         }
 
-        ConfigurationLoader.SanitizeSectionHeaders(configPath);
-        ConfigFile configFile = new ConfigFile(configPath, true);
-
-        if (ConfigurationManager.GeneralConfig?.StopTouchingMyConfigs?.Value == true)
-        {
-            configFile.SaveOnConfigSet = !ConfigurationManager.GeneralConfig.StopTouchingMyConfigs.Value;
-        }
-
-        var config = ConfigurationLoader.LoadConfiguration<SimpleConfigurationFile>(configFile);
-        Log.LogDebug("Finished loading simple configurations");
-
-        return config;
+        return TomlLoader.LoadFile<SimpleConfigurationFile>(configPath);
     }
 
     public static SpawnSystemConfigurationFile LoadSpawnSystemConfiguration()
@@ -66,6 +51,11 @@ internal static class SpawnSystemConfigurationManager
         Log.LogInfo($"Loading world spawner configurations.");
 
         string configPath = Path.Combine(Paths.ConfigPath, SpawnSystemConfigFile);
+
+        if (!File.Exists(configPath))
+        {
+            File.Create(configPath).Close();
+        }
 
         var configs = LoadSpawnSystemConfig(configPath);
 
@@ -95,14 +85,6 @@ internal static class SpawnSystemConfigurationManager
     {
         Log.LogDebug($"Loading world spawner configurations from {configPath}.");
 
-        ConfigurationLoader.SanitizeSectionHeaders(configPath);
-        var configFile = new ConfigFile(configPath, true);
-
-        if (ConfigurationManager.GeneralConfig?.StopTouchingMyConfigs?.Value == true)
-        {
-            configFile.SaveOnConfigSet = !ConfigurationManager.GeneralConfig.StopTouchingMyConfigs.Value;
-        }
-
-        return ConfigurationLoader.LoadConfiguration<SpawnSystemConfigurationFile>(configFile);
+        return TomlLoader.LoadFile<SpawnSystemConfigurationFile>(configPath);
     }
 }

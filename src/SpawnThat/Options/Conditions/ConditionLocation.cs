@@ -15,7 +15,7 @@ public class ConditionLocation : ISpawnCondition
 
     public ConditionLocation(params string[] requireOneOfLocations)
     {
-        Locations = requireOneOfLocations
+        Locations = requireOneOfLocations?
             .Select(x => x.Trim().ToUpperInvariant())
             .ToList();
     }

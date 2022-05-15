@@ -22,7 +22,7 @@ public class ConditionNearbyPlayerCarryLegendaryItem : ISpawnCondition
     {
         SearchDistance = distanceToSearch;
 
-        LegendaryIds = legendaryIdsToSearch
+        LegendaryIds = legendaryIdsToSearch?
             .Select(x => x.Trim().ToUpperInvariant())
             .ToHashSet();
     }
@@ -31,14 +31,14 @@ public class ConditionNearbyPlayerCarryLegendaryItem : ISpawnCondition
     {
         SearchDistance = distanceToSearch;
 
-        LegendaryIds = legendaryIdsToSearch
+        LegendaryIds = legendaryIdsToSearch?
             .Select(x => x.Trim().ToUpperInvariant())
             .ToHashSet();
     }
 
     public bool IsValid(SpawnSessionContext context)
     {
-        if (LegendaryIds.Count == 0)
+        if ((LegendaryIds?.Count ?? 0) == 0)
         {
             return true;
         }

@@ -27,9 +27,9 @@ internal class ModifierCllcExtraEffect : ISpawnModifier
         }
     }
 
-    public ModifierCllcExtraEffect(CllcCreatureExtraEffect extraEffect)
+    public ModifierCllcExtraEffect(CllcCreatureExtraEffect? extraEffect)
     {
-        ExtraEffect = extraEffect.Convert();
+        ExtraEffect = extraEffect?.Convert();
     }
 
     public void Modify(GameObject entity, ZDO entityZdo)

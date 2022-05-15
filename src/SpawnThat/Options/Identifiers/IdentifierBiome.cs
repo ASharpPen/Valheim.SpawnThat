@@ -19,9 +19,12 @@ public class IdentifierBiome : ISpawnerIdentifier, ICacheableIdentifier
     {
         BitmaskedBiome = 0;
 
-        foreach (var biome in biomes)
+        if (biomes is not null)
         {
-            BitmaskedBiome |= biome;
+            foreach (var biome in biomes)
+            {
+                BitmaskedBiome |= biome;
+            }
         }
     }
 

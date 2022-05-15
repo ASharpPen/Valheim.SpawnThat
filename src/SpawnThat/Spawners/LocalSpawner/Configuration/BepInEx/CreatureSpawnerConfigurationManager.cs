@@ -7,6 +7,7 @@ using SpawnThat.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Core.Configuration;
 using System.Linq;
+using SpawnThat.Core.Toml;
 
 namespace SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
 
@@ -26,12 +27,7 @@ internal static class CreatureSpawnerConfigurationManager
 
         stopwatch.Stop();
 
-        Log.LogInfo("Config loading took: " + stopwatch.Elapsed);
-        if (stopwatch.Elapsed > TimeSpan.FromSeconds(5)
-            && !ConfigurationManager.GeneralConfig.StopTouchingMyConfigs.Value)
-        {
-            Log.LogInfo("Long loading time detected. Consider setting \"StopTouchingMyConfigs=true\" in spawn_that.cfg to improve loading speed.");
-        }
+        Log.LogDebug("Config loading took: " + stopwatch.Elapsed);
     }
 
     public static CreatureSpawnerConfigurationFile LoadCreatureSpawnerConfiguration()
@@ -39,6 +35,11 @@ internal static class CreatureSpawnerConfigurationManager
         Log.LogInfo($"Loading local spawner configurations.");
 
         string configPath = Path.Combine(Paths.ConfigPath, CreatureSpawnerConfigFile);
+
+        if (!File.Exists(configPath))
+        {
+            File.Create(configPath).Close();
+        }
 
         var configs = LoadCreatureSpawnConfig(configPath);
 
@@ -68,14 +69,6 @@ internal static class CreatureSpawnerConfigurationManager
     {
         Log.LogDebug($"Loading local spawner configurations from {configPath}.");
 
-        ConfigurationLoader.SanitizeSectionHeaders(configPath);
-        var configFile = new ConfigFile(configPath, true);
-
-        if (ConfigurationManager.GeneralConfig?.StopTouchingMyConfigs?.Value == true)
-        {
-            configFile.SaveOnConfigSet = !ConfigurationManager.GeneralConfig.StopTouchingMyConfigs.Value;
-        }
-
-        return ConfigurationLoader.LoadConfiguration<CreatureSpawnerConfigurationFile>(configFile);
+        return TomlLoader.LoadFile<CreatureSpawnerConfigurationFile>(configPath);
     }
 }

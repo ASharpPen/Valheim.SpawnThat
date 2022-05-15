@@ -37,7 +37,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionAreaIds<T>(this T builder, IEnumerable<int> areaIds)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionAreaIds(areaIds.ToList()));
+        builder.SetCondition(new ConditionAreaIds(areaIds?.ToList()));
         return builder;
     }
 
@@ -48,7 +48,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionAreaIds<T>(this T builder, params int[] areaIds)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionAreaIds(areaIds.ToList()));
+        builder.SetCondition(new ConditionAreaIds(areaIds?.ToList()));
         return builder;
     }
 
@@ -85,7 +85,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionBiome<T>(this T builder, IEnumerable<Heightmap.Biome> biomes)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionBiome(biomes.ToArray()));
+        builder.SetCondition(new ConditionBiome(biomes?.ToArray()));
         return builder;
     }
 
@@ -196,7 +196,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionEnvironment<T>(this T builder, params EnvironmentName[] environmentNames)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionEnvironment(environmentNames.Select(x => x.GetName())));
+        builder.SetCondition(new ConditionEnvironment(environmentNames?.Select(x => x.GetName())));
         return builder;
     }
 
@@ -206,7 +206,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionEnvironment<T>(this T builder, IEnumerable<EnvironmentName> environmentNames)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionEnvironment(environmentNames.Select(x => x.GetName())));
+        builder.SetCondition(new ConditionEnvironment(environmentNames?.Select(x => x.GetName())));
         return builder;
     }
 
@@ -247,7 +247,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionAnyOfGlobalKeys<T>(this T builder, params GlobalKey[] globalKeys)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionGlobalKeysAny(globalKeys.Select(x => x.GetName())));
+        builder.SetCondition(new ConditionGlobalKeysAny(globalKeys?.Select(x => x.GetName())));
         return builder;
     }
 
@@ -257,7 +257,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionAnyOfGlobalKeys<T>(this T builder, IEnumerable<GlobalKey> globalKeys)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionGlobalKeysAny(globalKeys.Select(x => x.GetName())));
+        builder.SetCondition(new ConditionGlobalKeysAny(globalKeys?.Select(x => x.GetName())));
         return builder;
     }
 
@@ -287,7 +287,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionAllOfGlobalKeys<T>(this T builder, params GlobalKey[] globalKeys)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionGlobalKeysRequired(globalKeys.Select(x => x.GetName())));
+        builder.SetCondition(new ConditionGlobalKeysRequired(globalKeys?.Select(x => x.GetName())));
         return builder;
     }
 
@@ -297,7 +297,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionAllOfGlobalKeys<T>(this T builder, IEnumerable<GlobalKey> globalKeys)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionGlobalKeysRequired(globalKeys.Select(x => x.GetName())));
+        builder.SetCondition(new ConditionGlobalKeysRequired(globalKeys?.Select(x => x.GetName())));
         return builder;
     }
 
@@ -311,7 +311,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionNoneOfGlobalkeys<T>(this T builder, IEnumerable<string> globalKeys)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys.ToArray()));
+        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys?.ToArray()));
         return builder;
     }
 
@@ -339,7 +339,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionNoneOfGlobalkeys<T>(this T builder, IEnumerable<GlobalKey> globalKeys)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys.Select(x => x.GetName()).ToArray()));
+        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys?.Select(x => x.GetName()).ToArray()));
         return builder;
     }
 
@@ -353,7 +353,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionNoneOfGlobalkeys<T>(this T builder, params GlobalKey[] globalKeys)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys.Select(x => x.GetName()).ToArray()));
+        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys?.Select(x => x.GetName()).ToArray()));
         return builder;
     }
 
@@ -363,7 +363,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionLocation<T>(this T builder, IEnumerable<string> locationNames)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionLocation(locationNames.ToArray()));
+        builder.SetCondition(new ConditionLocation(locationNames?.ToArray()));
         return builder;
     }
 
@@ -383,7 +383,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionNearbyPlayersCarryItem<T>(this T builder, int distance, IEnumerable<string> itemPrefabNames)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionNearbyPlayersCarryItem(distance, itemPrefabNames.ToArray()));
+        builder.SetCondition(new ConditionNearbyPlayersCarryItem(distance, itemPrefabNames?.ToArray()));
         return builder;
     }
 
@@ -423,7 +423,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionNearbyPlayersStatus<T>(this T builder, int distance, IEnumerable<string> statusEffectNames)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffectNames.ToArray()));
+        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffectNames?.ToArray()));
         return builder;
     }
 
@@ -443,7 +443,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionNearbyPlayersStatus<T>(this T builder, int distance, IEnumerable<StatusEffect> statusEffects)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffects.Select(x => x.ToString()).ToArray()));
+        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffects?.Select(x => x.ToString()).ToArray()));
         return builder;
     }
 
@@ -453,7 +453,7 @@ public static class IHaveSpawnConditionsExtensions
     public static T SetConditionNearbyPlayersStatus<T>(this T builder, int distance, params StatusEffect[] statusEffects)
         where T : IHaveSpawnConditions
     {
-        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffects.Select(x => x.ToString()).ToArray()));
+        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffects?.Select(x => x.ToString()).ToArray()));
         return builder;
     }
 

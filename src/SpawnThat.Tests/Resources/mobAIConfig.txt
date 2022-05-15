@@ -1,0 +1,9 @@
+﻿{
+  "PostTameFeedDuration" : 1000,
+  "AssignmentSearchRadius" : 10,  
+  "ItemSearchRadius" : 10,
+  "ContainerSearchRadius" : 10,
+  "MaxContainersInMemory" : 5, 
+  "TimeLimitOnAssignment" : 30,  
+  "IncludedContainers" : ["piece_chest_wood"]
+}

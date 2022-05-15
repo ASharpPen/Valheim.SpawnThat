@@ -15,7 +15,7 @@ internal static class DestructibleSpawnerConfigurationMerger
         {
             if (target.Subsections.ContainsKey(sourceSpawner.Key))
             {
-                Log.LogWarning($"Overlapping destructible spawner configs for {sourceSpawner.Value.SectionKey}, overriding existing.");
+                Log.LogWarning($"Overlapping destructible spawner configs for {sourceSpawner.Value.SectionPath}, overriding existing.");
             }
 
             target.Subsections[sourceSpawner.Key] = sourceSpawner.Value;

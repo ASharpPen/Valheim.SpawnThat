@@ -32,7 +32,7 @@ public class IdentifierRoom : ISpawnerIdentifier, ICacheableIdentifier
 
     public IdentifierRoom(IEnumerable<string> roomNames)
     {
-        Rooms = roomNames.ToArray();
+        Rooms = roomNames?.ToArray() ?? new string[0];
     }
 
     public bool IsValid(IdentificationContext context)

@@ -32,7 +32,12 @@ public class IdentifierName : ISpawnerIdentifier, ICacheableIdentifier
 
     public IdentifierName(params string[] names)
     {
-        Names = names;
+        Names = names ?? new string[0];
+    }
+
+    public IdentifierName(ICollection<string> names)
+    {
+        Names = names ?? new List<string>(0);
     }
 
     public bool IsValid(IdentificationContext context)

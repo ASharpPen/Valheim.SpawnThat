@@ -23,6 +23,11 @@ public class ModifierSetAI : ISpawnModifier
 
     public void Modify(GameObject entity, ZDO entityZdo)
     {
+        if (string.IsNullOrWhiteSpace(AiName))
+        {
+            return;
+        }
+
         var character = ComponentCache.Get<Character>(entity);
 
         if (character is null)

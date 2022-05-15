@@ -43,6 +43,7 @@ namespace SpawnThatTestMod
                 ConfigureWorldSpawner(config);
                 ConfigureWorldSpawnerBySettings(config);
                 ConfigureWorldSpawnerOverrideDefault(config);
+                ConfigureWorldSpawnerOverriddenByFile(config);
 
                 ConfigureDestructibleSpawner(config);
                 ConfigureDestructibleSpawnerBySettings(config);
@@ -159,6 +160,20 @@ namespace SpawnThatTestMod
                         MaxSpawned = 10
                     })
                     .SetTemplateName("Trolling meadows");
+            }
+            catch (Exception e)
+            {
+                Log.LogError(e);
+            }
+        }
+
+        private static void ConfigureWorldSpawnerOverriddenByFile(ISpawnerConfigurationCollection config)
+        {
+            try
+            {
+                config.ConfigureWorldSpawner(666)
+                    .SetTemplateName("Dropping Trolls")
+                    .SetPrefabName("Troll");
             }
             catch (Exception e)
             {

@@ -66,6 +66,8 @@ public interface ILocalSpawnBuilder
     /// <remarks>Vanilla name: m_minLevel</remarks>
     ILocalSpawnBuilder SetMinLevel(int minLevel = 1);
 
+    ILocalSpawnBuilder SetMinLevel(int? minLevel = 1);
+
     /// <summary>
     /// <para>Maximum level to spawn at.</para>
     /// <para>
@@ -82,6 +84,8 @@ public interface ILocalSpawnBuilder
     /// <remarks>Vanilla name: m_maxLevel</remarks>
     ILocalSpawnBuilder SetMaxLevel(int maxLevel = 1);
 
+    ILocalSpawnBuilder SetMaxLevel(int? maxLevel = 1);
+
     /// <summary>
     /// <para>Chance to level up from MinLevel. Range 0 to 100.</para>
     /// <para>
@@ -97,6 +101,8 @@ public interface ILocalSpawnBuilder
     /// </summary>
     ILocalSpawnBuilder SetLevelUpChance(float chance);
 
+    ILocalSpawnBuilder SetLevelUpChance(float? chance);
+
     /// <summary>
     /// <para>Can spawn during day.</para>
     /// <para>If not set, uses existing when overriding.</para>
@@ -104,6 +110,8 @@ public interface ILocalSpawnBuilder
     /// </summary>
     /// <remarks>Vanilla name: m_spawnAtDay</remarks>
     ILocalSpawnBuilder SetSpawnDuringDay(bool allowSpawnDuringDay = true);
+
+    ILocalSpawnBuilder SetSpawnDuringDay(bool? allowSpawnDuringDay = true);
 
     /// <summary>
     /// <para>Can spawn during night.</para>
@@ -113,12 +121,16 @@ public interface ILocalSpawnBuilder
     /// <remarks>Vanilla name: m_spawnAtNight</remarks>
     ILocalSpawnBuilder SetSpawnDuringNight(bool allowSpawnDuringNight = true);
 
+    ILocalSpawnBuilder SetSpawnDuringNight(bool? allowSpawnDuringNight = true);
+
     /// <para>Allows spawning if within usual player base protected areas, such as workbench.</para>
     /// <para>If not set, uses existing when overriding.</para>
     /// <para>Default if new template: false</para>
     /// </summary>
     /// <remarks>Vanilla name: m_spawnInPlayerBase</remarks>
     ILocalSpawnBuilder SetSpawnInPlayerBase(bool spawnInPlayerBase = false);
+
+    ILocalSpawnBuilder SetSpawnInPlayerBase(bool? spawnInPlayerBase = false);
 
     /// <summary>
     /// <para>Sets patrol point at spawn position. Creatures will run back to this point.</para>
@@ -128,6 +140,8 @@ public interface ILocalSpawnBuilder
     /// <remarks>Vanilla name: m_setPatrolSpawnPoint</remarks>
     ILocalSpawnBuilder SetPatrolSpawn(bool patrolSpawn = false);
 
+    ILocalSpawnBuilder SetPatrolSpawn(bool? patrolSpawn = false);
+
     /// <summary>
     /// <para>Minimum distance to player for enabling spawn.</para>
     /// <para>If not set, uses existing when overriding.</para>
@@ -135,6 +149,8 @@ public interface ILocalSpawnBuilder
     /// </summary>
     /// <remarks>Vanilla name: m_triggerDistance</remarks>
     ILocalSpawnBuilder SetConditionPlayerWithinDistance(float distance);
+
+    ILocalSpawnBuilder SetConditionPlayerWithinDistance(float? distance);
 
     /// <summary>
     /// <para>Set spawners "hearing". Only spawn if a player is generating more noise than indicated 
@@ -148,6 +164,8 @@ public interface ILocalSpawnBuilder
     /// </summary>
     /// <remarks>Vanilla name: m_triggerNoise</remarks>
     ILocalSpawnBuilder SetConditionPlayerNoise(float noise);
+
+    ILocalSpawnBuilder SetConditionPlayerNoise(float? noise);
 
     //ILocalSpawnBuilder AddPostConfiguration(Action<LocalSpawnTemplate> configure);
 }
