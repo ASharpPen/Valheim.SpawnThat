@@ -25,4 +25,6 @@ internal class TomlConfigEntry<T> : ITomlConfigEntry<T>
     public string Description { get; set; }
 
     public bool IsSet { get; set; }
+
+    public object GetValue() => Value;
 }

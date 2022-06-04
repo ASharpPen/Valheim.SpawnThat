@@ -39,4 +39,6 @@ internal abstract class TomlConfig
 
     public bool TryGet(string entryName, out ITomlConfigEntry entry) 
         => EntryFields.TryGetValue(entryName, out entry);
+
+    public List<KeyValuePair<string, ITomlConfigEntry>> GetEntries() => EntryFields.ToList();
 }
