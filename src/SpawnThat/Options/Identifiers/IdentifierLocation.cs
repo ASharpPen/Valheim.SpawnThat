@@ -8,7 +8,7 @@ using SpawnThat.World.Locations;
 
 namespace SpawnThat.Options.Identifiers;
 
-public class IdentifierLocation : ISpawnerIdentifier, ICacheableIdentifier
+public class IdentifierLocation : ISpawnerIdentifier
 {
     private long _hash;
     private List<string> _locations;

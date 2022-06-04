@@ -7,7 +7,7 @@ using SpawnThat.Core.Toml;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
 
-internal static class DestructibleSpawnerBepInExCfgManager
+internal static class DestructibleSpawnerTomlCfgManager
 {
     private const string ConfigFile = "spawn_that.destructible_spawners.cfg";
     private const string ConfigFileSupplemental = "spawn_that.destructible_spawners.*.cfg";
@@ -50,7 +50,7 @@ internal static class DestructibleSpawnerBepInExCfgManager
 
             stopwatch.Stop();
 
-            Log.LogDebug("Config loading took: " + stopwatch.Elapsed);
+            Log.LogInfo("Config loading took: " + stopwatch.Elapsed);
 
             Config = configs;
         }

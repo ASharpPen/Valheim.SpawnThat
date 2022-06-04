@@ -142,21 +142,14 @@ internal static class DestructibleSpawnerManager
 
     private static bool IsMatch(IdentificationContext context, ISpawnerIdentifier identifier)
     {
-        if (identifier is ICacheableIdentifier cacheable)
+        if (context.TryGetCached(identifier, out bool cached))
         {
-            if (context.TryGetCached(cacheable, out bool cached))
-            {
-                return cached;
-            }
-            else
-            {
-                var match = identifier.IsValid(context);
-                context.CacheIdentifierResult(cacheable, match);
-
-                return match;
-            }
+            return cached;
         }
 
-        return identifier.IsValid(context);
+        var match = identifier.IsValid(context);
+        context.CacheIdentifierResult(identifier, match);
+
+        return match;
     }
 }

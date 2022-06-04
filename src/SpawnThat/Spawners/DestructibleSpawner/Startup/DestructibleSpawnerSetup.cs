@@ -1,4 +1,5 @@
 using System.Collections;
+using SpawnThat.Configuration;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
 using SpawnThat.Spawners.DestructibleSpawner.Debug;
@@ -18,6 +19,8 @@ internal static class DestructibleSpawnerSetup
 
         SpawnerConfigurationManager.OnLateConfigure += ApplyFileConfigs;
 
+        SpawnerConfigurationManager.OnConfigureFinished += WriteConfigsToDisk;
+
         LifecycleManager.OnFindSpawnPointFirstTime += SpawnAreaDataGatherer.ScanAndPrint;
 
         DestructibleSpawnerSyncSetup.Configure();
@@ -25,12 +28,20 @@ internal static class DestructibleSpawnerSetup
 
     internal static void LoadFileConfigs()
     {
-        DestructibleSpawnerBepInExCfgManager.Load();
+        DestructibleSpawnerTomlCfgManager.Load();
     }
 
     internal static void ApplyFileConfigs(ISpawnerConfigurationCollection spawnerConfigs)
     {
         DestructibleSpawnerConfigApplier.ApplyBepInExConfigs(spawnerConfigs);
+    }
+
+    internal static void WriteConfigsToDisk()
+    {
+        if (ConfigurationManager.GeneralConfig?.WriteDestructibleSpawnersToFile.Value == true)
+        {
+            TemplateWriter.WriteToDiskAsToml();
+        }
     }
 
     internal static void DelayedConfigRelease()

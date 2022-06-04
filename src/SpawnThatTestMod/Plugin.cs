@@ -236,6 +236,7 @@ namespace SpawnThatTestMod
                 .SetLevelMin(3)
                 .SetLevelMax(3)
                 .SetSpawnWeight(1)
+                .SetCllcModifierInfusion(CllcCreatureInfusion.Poison)
                 ;
         }
     }

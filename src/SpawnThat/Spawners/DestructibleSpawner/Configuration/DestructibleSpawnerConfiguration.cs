@@ -99,6 +99,8 @@ internal class DestructibleSpawnerConfiguration : ISpawnerConfiguration
 
         public BuilderIdentifier(DestructibleSpawnerBuilder builder)
         {
+            Builder = builder;
+
             var orderedIdentifiers = builder
                 .Identifiers
                 .OrderBy(x => x.GetType());

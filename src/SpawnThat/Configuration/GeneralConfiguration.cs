@@ -62,6 +62,10 @@ internal class GeneralConfiguration
 
     public ConfigurationEntry<bool> WriteDestructibleSpawnersToFile = new(false, "Writes destructible spawners to a file before applying configuration changes.");
 
+    public ConfigurationEntry<bool> WriteDestructibleConfigsToFile = new(false, "Writes destructible spawner configs loaded in Spawn That to file, before applying to spawners in game.\nThese are the configs loaded from files and set by other mods, after being merged and prepared.");
+
+    public ConfigurationEntry<bool> DestructibleAddCommentsToFile = new(false, "Add comments to settings in debug files.");
+
     #endregion
 
     public void Load(ConfigFile configFile)
@@ -87,5 +91,7 @@ internal class GeneralConfiguration
         InitializeWithCreatures.Bind(Config, "Simple", "InitializeWithCreatures");
 
         WriteDestructibleSpawnersToFile.Bind(Config, "DestructibleSpawner", "WriteSpawnTablesToFileBeforeChanges");
+        WriteDestructibleSpawnersToFile.Bind(Config, "DestructibleSpawner", "WriteConfigsToFile");
+        //DestructibleAddCommentsToFile.Bind(Config, "DestructibleSpawner", "AddCommentsToFile"); // TODO: Hm... Not sure about this one.
     }
 }

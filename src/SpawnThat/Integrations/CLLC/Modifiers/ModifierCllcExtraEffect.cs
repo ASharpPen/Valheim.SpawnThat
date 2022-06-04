@@ -10,14 +10,14 @@ namespace SpawnThat.Integrations.CLLC.Modifiers;
 
 internal class ModifierCllcExtraEffect : ISpawnModifier
 {
-    public CreatureExtraEffect? ExtraEffect { get; set; }
+    public CllcCreatureExtraEffect? ExtraEffect { get; set; }
 
     public ModifierCllcExtraEffect()
     { }
 
     public ModifierCllcExtraEffect(string extraEffectName)
     {
-        if (Enum.TryParse(extraEffectName, true, out CreatureExtraEffect extraEffect))
+        if (Enum.TryParse(extraEffectName, true, out CllcCreatureExtraEffect extraEffect))
         {
             ExtraEffect = extraEffect;
         }
@@ -29,7 +29,7 @@ internal class ModifierCllcExtraEffect : ISpawnModifier
 
     public ModifierCllcExtraEffect(CllcCreatureExtraEffect? extraEffect)
     {
-        ExtraEffect = extraEffect?.Convert();
+        ExtraEffect = extraEffect;
     }
 
     public void Modify(GameObject entity, ZDO entityZdo)
@@ -47,6 +47,6 @@ internal class ModifierCllcExtraEffect : ISpawnModifier
         }
 
         Log.LogTrace($"Setting extra effect '{ExtraEffect}' for '{entity.name}'.");
-        API.SetExtraEffectCreature(character, ExtraEffect.Value);
+        API.SetExtraEffectCreature(character, ExtraEffect.Value.Convert());
     }
 }

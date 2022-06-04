@@ -14,7 +14,6 @@ using SpawnThat.Integrations.CLLC.Conditions;
 using SpawnThat.Integrations.CLLC.Modifiers;
 using SpawnThat.Integrations.EpicLoot.Conditions;
 using SpawnThat.Integrations.MobAi.Modifiers;
-using System.Drawing;
 
 namespace SpawnThat.Spawners.WorldSpawner.Debug;
 
