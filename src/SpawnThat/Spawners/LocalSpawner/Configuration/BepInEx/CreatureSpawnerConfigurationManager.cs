@@ -37,7 +37,7 @@ internal static class CreatureSpawnerConfigurationManager
             CreateDefaultLocalSpawnerFile(configPath);
         }
 
-        var configs = LoadCreatureSpawnConfig(configPath);
+        CreatureSpawnerConfigurationFile configs = new();
 
         var supplementalFiles = Directory.GetFiles(Paths.ConfigPath, CreatureSpawnerSupplemental, SearchOption.AllDirectories);
         Log.LogDebug($"Found {supplementalFiles.Length} supplemental local spawner config files");
@@ -55,6 +55,9 @@ internal static class CreatureSpawnerConfigurationManager
                 Log.LogError($"Failed to load supplemental config '{file}'.", e);
             }
         }
+
+        var mainConfig = LoadCreatureSpawnConfig(configPath);
+        mainConfig.MergeInto(configs);
 
         return configs;
     }

@@ -30,7 +30,7 @@ internal static class DestructibleSpawnerTomlCfgManager
                 CreateDestructibleSpawnerFile(configPath);
             }
 
-            var configs = LoadConfig(configPath);
+            DestructibleSpawnerConfigurationFile configs = new();
 
             var supplementalFiles = Directory.GetFiles(Paths.ConfigPath, ConfigFileSupplemental, SearchOption.AllDirectories);
             Log.LogDebug($"Found {supplementalFiles.Length} supplemental destructible spawner config files");
@@ -48,6 +48,9 @@ internal static class DestructibleSpawnerTomlCfgManager
                     Log.LogError($"Failed to load supplemental config '{file}'.", e);
                 }
             }
+
+            var mainConfig = LoadConfig(configPath);
+            mainConfig.MergeInto(configs);
 
             stopwatch.Stop();
 
