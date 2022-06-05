@@ -1,12 +1,8 @@
 ﻿using BepInEx;
-using BepInEx.Configuration;
 using System;
 using System.Diagnostics;
 using System.IO;
-using SpawnThat.Configuration;
 using SpawnThat.Core;
-using SpawnThat.Core.Configuration;
-using System.Linq;
 using SpawnThat.Core.Toml;
 
 namespace SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
@@ -17,7 +13,7 @@ internal static class CreatureSpawnerConfigurationManager
 
     internal const string CreatureSpawnerConfigFile = "spawn_that.local_spawners_advanced.cfg";
 
-    internal const string CreatureSpawnerSupplemental = "spawn_that.local_spawners.*";
+    internal const string CreatureSpawnerSupplemental = "spawn_that.local_spawners.*.cfg";
 
     public static void LoadAllConfigurations()
     {
@@ -27,10 +23,10 @@ internal static class CreatureSpawnerConfigurationManager
 
         stopwatch.Stop();
 
-        Log.LogDebug("Config loading took: " + stopwatch.Elapsed);
+        Log.LogInfo("Loading local spawner configs took: " + stopwatch.Elapsed);
     }
 
-    public static CreatureSpawnerConfigurationFile LoadCreatureSpawnerConfiguration()
+    private static CreatureSpawnerConfigurationFile LoadCreatureSpawnerConfiguration()
     {
         Log.LogInfo($"Loading local spawner configurations.");
 
@@ -59,8 +55,6 @@ internal static class CreatureSpawnerConfigurationManager
                 Log.LogError($"Failed to load supplemental config '{file}'.", e);
             }
         }
-
-        Log.LogDebug("Finished loading local spawner configurations");
 
         return configs;
     }

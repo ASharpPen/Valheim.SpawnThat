@@ -51,7 +51,7 @@ internal static class DestructibleSpawnerTomlCfgManager
 
             stopwatch.Stop();
 
-            Log.LogInfo("Config loading took: " + stopwatch.Elapsed);
+            Log.LogInfo("Loading destructible spawner configs took: " + stopwatch.Elapsed);
 
             Config = configs;
         }

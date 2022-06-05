@@ -18,7 +18,7 @@ internal static class SpawnSystemConfigurationManager
     internal const string SimpleConfigFile = "spawn_that.simple.cfg";
     internal const string SpawnSystemConfigFile = "spawn_that.world_spawners_advanced.cfg";
 
-    internal const string SpawnSystemSupplemental = "spawn_that.world_spawners.*";
+    internal const string SpawnSystemSupplemental = "spawn_that.world_spawners.*.cfg";
 
     public static void LoadAllConfigurations()
     {
@@ -29,12 +29,12 @@ internal static class SpawnSystemConfigurationManager
 
         stopwatch.Stop();
 
-        Log.LogDebug("Config loading took: " + stopwatch.Elapsed);
+        Log.LogInfo("Loading world spawner configs took: " + stopwatch.Elapsed);
     }
 
     public static SimpleConfigurationFile LoadSimpleConfig()
     {
-        Log.LogInfo("Loading simple configurations");
+        Log.LogInfo("Loading world spawner simple configurations");
 
         string configPath = Path.Combine(Paths.ConfigPath, SimpleConfigFile);
 
