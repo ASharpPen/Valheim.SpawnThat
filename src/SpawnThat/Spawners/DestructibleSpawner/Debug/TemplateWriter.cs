@@ -47,7 +47,7 @@ internal static class TemplateWriter
 
         foreach (var spawnerTemplate in spawnerTemplates)
         {
-            string templateName = spawnerTemplate.TemplateName ?? "Unnamed";
+            string templateName = spawnerTemplate.TemplateName ?? "DestructibleSpawner";
 
             if (templateNamesUsed.TryGetValue(templateName, out var usageCounter))
             {

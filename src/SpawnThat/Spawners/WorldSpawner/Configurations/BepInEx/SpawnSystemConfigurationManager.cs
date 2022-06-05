@@ -18,7 +18,7 @@ internal static class SpawnSystemConfigurationManager
     internal const string SimpleConfigFile = "spawn_that.simple.cfg";
     internal const string SpawnSystemConfigFile = "spawn_that.world_spawners_advanced.cfg";
 
-    internal const string SpawnSystemSupplemental = "spawn_that.world_spawners.*";
+    internal const string SpawnSystemSupplemental = "spawn_that.world_spawners.*.cfg";
 
     public static void LoadAllConfigurations()
     {
@@ -29,12 +29,12 @@ internal static class SpawnSystemConfigurationManager
 
         stopwatch.Stop();
 
-        Log.LogDebug("Config loading took: " + stopwatch.Elapsed);
+        Log.LogInfo("Loading world spawner configs took: " + stopwatch.Elapsed);
     }
 
     public static SimpleConfigurationFile LoadSimpleConfig()
     {
-        Log.LogInfo("Loading simple configurations");
+        Log.LogInfo("Loading world spawner simple configurations");
 
         string configPath = Path.Combine(Paths.ConfigPath, SimpleConfigFile);
 
@@ -57,7 +57,7 @@ internal static class SpawnSystemConfigurationManager
             CreateDefaultWorldSpawnerFile(configPath);
         }
 
-        var configs = LoadSpawnSystemConfig(configPath);
+        SpawnSystemConfigurationFile configs = new();
 
         var supplementalFiles = Directory.GetFiles(Paths.ConfigPath, SpawnSystemSupplemental, SearchOption.AllDirectories);
         Log.LogDebug($"Found {supplementalFiles.Length} supplemental world spawner config files");
@@ -75,6 +75,9 @@ internal static class SpawnSystemConfigurationManager
                 Log.LogError($"Failed to load supplemental config '{file}'.", e);
             }
         }
+        
+        var mainConfig = LoadSpawnSystemConfig(configPath);
+        mainConfig.MergeInto(configs);
 
         Log.LogDebug("Finished loading world spawner configurations");
 

@@ -17,7 +17,7 @@ using SpawnThat.Integrations.MobAi.Modifiers;
 
 namespace SpawnThat.Spawners.WorldSpawner.Debug;
 
-internal static class SpawnDataFileDumper
+internal static class SpawnDataFileGenerator
 {
     public static void WriteToFile(List<SpawnSystem.SpawnData> spawners, string fileName, bool postChange = false)
     {
