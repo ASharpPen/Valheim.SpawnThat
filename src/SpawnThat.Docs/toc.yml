@@ -5,6 +5,8 @@
 - name: File Configs
   dropdown: true
   items:
+    - name: 1.1.0
+      href: file-configs/1.1.0/
     - name: 1.0.0
       href: file-configs/1.0.0/
     - name: 0.11.6
@@ -13,6 +15,8 @@
 - name: API Documentation
   dropdown: true
   items:
+    - name: 1.1.0
+      href: api/1.1.0/
     - name: 1.0.0
       href: api/1.0.0/
 

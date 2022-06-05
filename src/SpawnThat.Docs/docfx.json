@@ -7,15 +7,30 @@
           "src": "../SpawnThat"
         }
       ],
-      "dest": "obj/api/reference",
-      "filter": "api/filterConfig.yml"
+      "dest": "obj/api/1.1.0/reference",
+      "filter": "api/1.1.0/filterConfig.yml"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**.csproj" ],
+          "src": "./obj/oldcode/1.0.0/src/SpawnThat"
+        }
+      ],
+      "dest": "obj/api/1.0.0/reference",
+      "filter": "api/1.0.0/filterConfig.yml"
     }
   ],
   "build": {
     "content": [
       {
         "files": [ "**.yml" ],
-        "src": "obj/api/reference",
+        "src": "obj/api/1.1.0/reference",
+        "dest": "api/1.1.0/reference"
+      },
+      {
+        "files": [ "**.yml" ],
+        "src": "obj/api/1.0.0/reference",
         "dest": "api/1.0.0/reference"
       },
       {
