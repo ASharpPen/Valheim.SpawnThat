@@ -24,8 +24,8 @@ internal static class SpawnSystemConfigurationMerger
 
         foreach (var sourceTemplate in sourceTemplates.Subsections)
         {
-            if (sourceTemplate.Value.Enabled.IsSet &&
-                (sourceTemplate.Value.Enabled.Value ?? sourceTemplate.Value.Enabled.DefaultValue.Value) == false)
+            if (sourceTemplate.Value.TemplateEnabled.IsSet &&
+                (sourceTemplate.Value.TemplateEnabled.Value ?? sourceTemplate.Value.TemplateEnabled.DefaultValue.Value) == false)
             {
                 continue;
             }
