@@ -24,7 +24,7 @@ internal static class TemplateWriter
 
         TomlWriter.WriteToDisk(tomlFile, new()
         {
-            FileName = "destructiblespawner_loaded_configs.cfg",
+            FileName = "destructible_spawners_loaded_configs.cfg",
             FileDescription = "loaded destructible spawner configs",
             AddComments = ConfigurationManager.GeneralConfig?.DestructibleAddCommentsToFile.Value ?? false,
             Header =

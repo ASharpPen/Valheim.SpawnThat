@@ -39,9 +39,13 @@ internal static class TomlWriter
     {
         foreach (var subsection in config.GetSubsections())
         {
-            builder.AppendLine($"[{subsection.Value.SectionPath}]");
-            WriteOptions(builder, subsection.Value, settings);
-            builder.AppendLine();
+            // Only print sections when they have options associated.
+            if (subsection.Value.GetEntries().Count > 0)
+            {
+                builder.AppendLine($"[{subsection.Value.SectionPath}]");
+                WriteOptions(builder, subsection.Value, settings);
+                builder.AppendLine();
+            }
 
             if (subsection.Value is IHaveSubsections configWithSubsections)
             {

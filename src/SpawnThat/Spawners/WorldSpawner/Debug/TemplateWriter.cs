@@ -22,7 +22,7 @@ internal static class TemplateWriter
 
         TomlWriter.WriteToDisk(tomlFile, new()
         {
-            FileName = "worldspawner_loaded_configs.cfg",
+            FileName = "world_spawners_loaded_configs.cfg",
             FileDescription = "loaded world spawner configs",
             AddComments = ConfigurationManager.GeneralConfig?.WorldSpawnerAddCommentsToFile.Value ?? false,
             Header =
@@ -53,7 +53,6 @@ internal static class TemplateWriter
 
         static void ConfigureSpawnerConfig(SpawnConfiguration config, WorldSpawnTemplate template)
         {
-            config.TemplateId.Set(template.Index.ToString());
             config.Name.SetConditionally(template.TemplateName);
             config.Enabled.SetConditionally(template.Enabled);
             config.TemplateEnabled.SetConditionally(template.TemplateEnabled);
@@ -177,6 +176,9 @@ internal static class TemplateWriter
                         break;
                     case ModifierSetTamedCommandable tamedCommandable:
                         config.SetTamedCommandable.Set(tamedCommandable.Commandable);
+                        break;
+                    case ModifierSetTemplateId templateId:
+                        config.TemplateId.Set(templateId.TemplateId);
                         break;
 
                     // Integrations - CLLC
