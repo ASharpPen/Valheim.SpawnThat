@@ -46,6 +46,10 @@ internal class GeneralConfiguration
 
     public ConfigurationEntry<bool> WriteSpawnTablesToFileAfterChanges = new(false, "Writes world spawner templates to a file after applying configuration changes.");
 
+    public ConfigurationEntry<bool> WriteWorldSpawnerConfigsToFile = new(false, "Writes world spawner configs loaded in Spawn That to file, before applying to spawners in game.\nThese are the configs loaded from files and set by other mods, after being merged and prepared.");
+
+    public ConfigurationEntry<bool> WorldSpawnerAddCommentsToFile = new(false, "Add comments to settings in debug files.");
+
     #endregion
 
     #region LocalSpawner
@@ -87,11 +91,12 @@ internal class GeneralConfiguration
         AlwaysAppend.Bind(Config, "WorldSpawner", "AlwaysAppend");
         WriteSpawnTablesToFileBeforeChanges.Bind(Config, "WorldSpawner", "WriteSpawnTablesToFileBeforeChanges");
         WriteSpawnTablesToFileAfterChanges.Bind(Config, "WorldSpawner", "WriteSpawnTablesToFileAfterChanges");
+        WriteWorldSpawnerConfigsToFile.Bind(Config, "WorldSpawner", "WriteConfigsToFile");
 
         InitializeWithCreatures.Bind(Config, "Simple", "InitializeWithCreatures");
 
         WriteDestructibleSpawnersToFile.Bind(Config, "DestructibleSpawner", "WriteSpawnTablesToFileBeforeChanges");
-        WriteDestructibleSpawnersToFile.Bind(Config, "DestructibleSpawner", "WriteConfigsToFile");
+        WriteDestructibleConfigsToFile.Bind(Config, "DestructibleSpawner", "WriteConfigsToFile");
         //DestructibleAddCommentsToFile.Bind(Config, "DestructibleSpawner", "AddCommentsToFile"); // TODO: Hm... Not sure about this one.
     }
 }

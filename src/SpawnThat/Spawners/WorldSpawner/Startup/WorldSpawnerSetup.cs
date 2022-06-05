@@ -4,6 +4,8 @@ using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 using SpawnThat.Spawners.WorldSpawner.Sync;
 using SpawnThat.Spawners.WorldSpawner.Managers;
+using SpawnThat.Configuration;
+using SpawnThat.Spawners.WorldSpawner.Debug;
 
 namespace SpawnThat.Spawners.WorldSpawner.Startup;
 
@@ -17,6 +19,8 @@ internal static class WorldSpawnerSetup
 
         SpawnerConfigurationManager.OnLateConfigure += ApplyBepInExConfigs;
 
+        SpawnerConfigurationManager.OnConfigureFinished += WriteConfigsToDisk;
+
         WorldSpawnerSyncSetup.Configure();
     }
 
@@ -29,6 +33,14 @@ internal static class WorldSpawnerSetup
     internal static void ApplyBepInExConfigs(ISpawnerConfigurationCollection spawnerConfigs)
     {
         SpawnSystemConfigApplier.ApplyBepInExConfigs(spawnerConfigs);
+    }
+
+    internal static void WriteConfigsToDisk()
+    {
+        if (ConfigurationManager.GeneralConfig?.WriteWorldSpawnerConfigsToFile.Value == true)
+        {
+            TemplateWriter.WriteToDiskAsToml();
+        }
     }
 
     internal static void DelayedConfigRelease()
