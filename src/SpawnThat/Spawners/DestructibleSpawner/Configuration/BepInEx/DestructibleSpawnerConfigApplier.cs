@@ -15,12 +15,12 @@ internal static class DestructibleSpawnerConfigApplier
 {
     public static void ApplyBepInExConfigs(ISpawnerConfigurationCollection configs)
     {
-        if (DestructibleSpawnerBepInExCfgManager.Config is null)
+        if (DestructibleSpawnerTomlCfgManager.Config is null)
         {
             return;
         }
 
-        foreach (var spawnerConfig in DestructibleSpawnerBepInExCfgManager.Config.Subsections)
+        foreach (var spawnerConfig in DestructibleSpawnerTomlCfgManager.Config.Subsections)
         {
             var config = spawnerConfig.Value;
             
@@ -33,10 +33,10 @@ internal static class DestructibleSpawnerConfigApplier
                 Log.LogWarning($"[Destructible Spawner] Ignoring config '{config.SectionPath}' due to having no identifiers listed. At least one identifier must be specified, for config to be valid.");
                 continue;
             }
-            if (config.IdentifyByName.Value.Count == 0 &&
-                config.IdentifyByBiome.Value.Count == 0 &&
-                config.IdentifyByLocation.Value.Count == 0 &&
-                config.IdentifyByRoom.Value.Count == 0)
+            if ((config.IdentifyByName.Value?.Count ?? 0) == 0 &&
+                (config.IdentifyByBiome.Value?.Count ?? 0) == 0 &&
+                (config.IdentifyByLocation.Value?.Count ?? 0) == 0 &&
+                (config.IdentifyByRoom.Value?.Count ?? 0) == 0)
             {
                 Log.LogWarning($"[Destructible Spawner] Ignoring config '{config.SectionPath}' due to all identifiers being empty. At least one identifier must have a value, for config to be valid.");
             }

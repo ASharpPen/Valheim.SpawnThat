@@ -66,21 +66,31 @@ internal class DestructibleSpawnerConfig
 
 internal class DestructibleSpawnConfig : TomlConfigWithSubsections<TomlConfig>
 {
+    private DestructibleSpawnConfigMobAI _mobAIConfig = null;
+    private DestructibleSpawnConfigCLLC _cllcConfig = null;
+    private DestructibleSpawnConfigEpicLoot _epicLootConfig = null;
+
+    public DestructibleSpawnConfigEpicLoot EpicLootConfig => _epicLootConfig ??= GetSubsection(DestructibleSpawnConfigEpicLoot.ModName) as DestructibleSpawnConfigEpicLoot;
+
+    public DestructibleSpawnConfigCLLC CllcConfig => _cllcConfig ??= GetSubsection(DestructibleSpawnConfigCLLC.ModName) as DestructibleSpawnConfigCLLC;
+
+    public DestructibleSpawnConfigMobAI MobAIConfig => _mobAIConfig ??= GetSubsection(DestructibleSpawnConfigMobAI.ModName) as DestructibleSpawnConfigMobAI;
+
     protected override TomlConfig InstantiateSubsection(string subsectionName)
     {
         TomlConfig newModConfig = null;
 
         if (subsectionName == DestructibleSpawnConfigCLLC.ModName.Trim().ToUpperInvariant())
         {
-            newModConfig = new DestructibleSpawnConfigCLLC();
+            newModConfig = _cllcConfig = new();
         }
         else if (subsectionName == DestructibleSpawnConfigMobAI.ModName.Trim().ToUpperInvariant())
         {
-            newModConfig = new DestructibleSpawnConfigMobAI();
+            newModConfig = _mobAIConfig = new();
         }
         else if (subsectionName == DestructibleSpawnConfigEpicLoot.ModName.Trim().ToUpperInvariant())
         {
-            newModConfig = new DestructibleSpawnConfigEpicLoot();
+            newModConfig = _epicLootConfig = new();
         }
 
         return newModConfig;
@@ -116,7 +126,7 @@ internal class DestructibleSpawnConfig : TomlConfigWithSubsections<TomlConfig>
 
     public TomlConfigEntry<string> PrefabName = new("PrefabName", "", "Prefab name of entity to spawn.");
 
-    public TomlConfigEntry<float?> SpawnWeight = new("SpawnWeight", 1, "Sets spawn weight. Destructible spawners choose their next spawn by a weighted random of all their possible spawns.\nIncreasing weight, means an increased chance that this particular spawn will be selected for spawning.");
+    public TomlConfigEntry<float?> SpawnWeight = new("SpawnWeight", 1, "Sets spawn weight. Destructible spawners choose their next spawn by a weighted random of all their possible spawns.\nIncreasing weight means an increased chance that this particular spawn will be selected for spawning.");
 
     public TomlConfigEntry<int?> LevelMin = new("LevelMin", 1, "Minimum level to spawn at.");
 

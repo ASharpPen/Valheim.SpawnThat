@@ -38,7 +38,7 @@ internal static class CreatureSpawnerConfigurationManager
 
         if (!File.Exists(configPath))
         {
-            File.Create(configPath).Close();
+            CreateDefaultLocalSpawnerFile(configPath);
         }
 
         var configs = LoadCreatureSpawnConfig(configPath);
@@ -70,5 +70,21 @@ internal static class CreatureSpawnerConfigurationManager
         Log.LogDebug($"Loading local spawner configurations from {configPath}.");
 
         return TomlLoader.LoadFile<CreatureSpawnerConfigurationFile>(configPath);
+    }
+
+    private static void CreateDefaultLocalSpawnerFile(string configPath)
+    {
+        using var file = File.Create(configPath);
+        using var writer = new StreamWriter(file);
+
+        writer.WriteLine("# Auto-generated file for adding Local Spawner configurations.");
+        writer.WriteLine("# This file is empty by default. It is intended to contains changes only, to avoid unintentional modifications as well as to reduce unnecessary performance cost.");
+        writer.WriteLine("# Full documentation can be found at https://asharppen.github.io/Valheim.SpawnThat.");
+        writer.WriteLine("# To get started: ");
+        writer.WriteLine($"#     1. Generate default configs in BepInEx/Debug folder, by enabling WriteSpawnTablesToFileBeforeChanges in 'spawn_that.cfg'.");
+        writer.WriteLine($"#     2. Start game and enter a world, and wait a short moment (ca. 10 seconds) for files to generate.");
+        writer.WriteLine("#     3. Go to generated file, and copy the creatures you want to modify into this file. Multiple local spawner files will have been generated, use either the one for locations or dungeons, depending on what you want to modify.");
+        writer.WriteLine("#     4. Make your changes.");
+        writer.WriteLine();
     }
 }

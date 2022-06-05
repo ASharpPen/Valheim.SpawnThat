@@ -25,7 +25,7 @@ internal static class ConfigApplicationService
 
         int existingSpawns = spawner.m_prefabs?.Count ?? 0;
 
-        var unmodifiedIndexes = spawnerTemplate.RemoveNotConfiguredSpawns
+        var unmodifiedIndexes = (spawnerTemplate.RemoveNotConfiguredSpawns ?? false)
             ? Enumerable.Range(0, existingSpawns).ToList()
             : null;
 
@@ -54,7 +54,7 @@ internal static class ConfigApplicationService
                     Modify(existingSpawn, spawnTemplate);
                     DestructibleSpawnTemplateManager.SetTemplate(existingSpawn, spawnTemplate);
 
-                    if (spawnerTemplate.RemoveNotConfiguredSpawns)
+                    if (spawnerTemplate.RemoveNotConfiguredSpawns ?? false)
                     {
                         unmodifiedIndexes.RemoveAt((int)spawn.Key);
                     }
@@ -78,7 +78,7 @@ internal static class ConfigApplicationService
             }
         }
 
-        if (spawnerTemplate.RemoveNotConfiguredSpawns)
+        if (spawnerTemplate.RemoveNotConfiguredSpawns ?? false)
         {
             unmodifiedIndexes.Reverse();
 #if DEBUG

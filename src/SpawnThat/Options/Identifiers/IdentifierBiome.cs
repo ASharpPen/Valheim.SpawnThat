@@ -7,7 +7,7 @@ using SpawnThat.World.Zone;
 
 namespace SpawnThat.Options.Identifiers;
 
-public class IdentifierBiome : ISpawnerIdentifier, ICacheableIdentifier
+public class IdentifierBiome : ISpawnerIdentifier
 {
     public Heightmap.Biome BitmaskedBiome { get; set; }
 
@@ -51,4 +51,16 @@ public class IdentifierBiome : ISpawnerIdentifier, ICacheableIdentifier
     }
 
     public int GetMatchWeight() => MatchWeight.Low;
+
+    public bool Equals(ISpawnerIdentifier other)
+    {
+        if (ReferenceEquals(other, this))
+        {
+            return true;
+        }
+
+        return
+            other is IdentifierBiome otherIdentifier &&
+            otherIdentifier.BitmaskedBiome == BitmaskedBiome;
+    }
 }

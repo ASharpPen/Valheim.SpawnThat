@@ -1,8 +1,9 @@
-﻿using SpawnThat.Spawners.Contexts;
+﻿using System;
+using SpawnThat.Spawners.Contexts;
 
 namespace SpawnThat.Options.Identifiers;
 
-public interface ISpawnerIdentifier
+public interface ISpawnerIdentifier : IEquatable<ISpawnerIdentifier>
 {
     /// <summary>
     /// When identifier is evaluated as a match, it will add this value to the match score.
@@ -13,4 +14,11 @@ public interface ISpawnerIdentifier
     int GetMatchWeight();
 
     bool IsValid(IdentificationContext context);
+
+    /// <summary>
+    /// Code for caching or quickly comparing the parameters of identifiers with same type.
+    /// 
+    /// Is not expected to be unique across identifiers with different concrete types.
+    /// </summary>
+    long GetParameterHash();
 }

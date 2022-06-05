@@ -11,6 +11,8 @@ internal interface ITomlConfigEntry
     public Type SettingType { get; }
 
     public bool IsSet { get; set; }
+
+    public object GetValue();
 }
 
 internal interface ITomlConfigEntry<T> : ITomlConfigEntry

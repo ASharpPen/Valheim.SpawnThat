@@ -26,4 +26,26 @@ internal static class EnumExtensions
 
         return result;
     }
+
+    public static List<Heightmap.Biome> Split(this Heightmap.Biome biomeMask)
+    {
+        List<Heightmap.Biome> result = new List<Heightmap.Biome>();
+
+        foreach (Heightmap.Biome value in Enum.GetValues(typeof(Heightmap.Biome)))
+        {
+            if (value == Heightmap.Biome.BiomesMax)
+            {
+                if (biomeMask == value)
+                {
+                    result.Add(value);
+                }
+            }
+            else if ((biomeMask & value) > 0)
+            {
+                result.Add(value);
+            }
+        }
+
+        return result;
+    }
 }

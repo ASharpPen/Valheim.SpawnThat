@@ -10,14 +10,14 @@ namespace SpawnThat.Integrations.CLLC.Modifiers;
 
 public class ModifierCllcBossAffix : ISpawnModifier
 {
-    public BossAffix? Affix { get; set; }
+    public CllcBossAffix? Affix { get; set; }
 
     public ModifierCllcBossAffix()
     { }
 
     public ModifierCllcBossAffix(string bossAffixName)
     {
-        if (Enum.TryParse(bossAffixName, true, out BossAffix bossAffix))
+        if (Enum.TryParse(bossAffixName, true, out CllcBossAffix bossAffix))
         {
             Affix = bossAffix;
         }
@@ -29,7 +29,7 @@ public class ModifierCllcBossAffix : ISpawnModifier
 
     public ModifierCllcBossAffix(CllcBossAffix? bossAffix)
     {
-        Affix = bossAffix?.Convert();
+        Affix = bossAffix;
     }
 
     public void Modify(GameObject entity, ZDO entityZdo)
@@ -52,7 +52,7 @@ public class ModifierCllcBossAffix : ISpawnModifier
         }
 
         Log.LogTrace($"Setting boss affix '{Affix}' for '{entity.name}'.");
-        API.SetAffixBoss(character, Affix.Value);
+        API.SetAffixBoss(character, Affix.Value.Convert());
     }
 }
 

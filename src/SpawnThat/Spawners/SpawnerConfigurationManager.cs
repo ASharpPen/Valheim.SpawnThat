@@ -36,6 +36,12 @@ public static class SpawnerConfigurationManager
     internal static event Action<ISpawnerConfigurationCollection> OnLateConfigure;
 
     /// <summary>
+    /// <see cref="OnConfigureFinished"/> is called after the <see cref="ISpawnerConfigurationCollection"/> is finished gathering 
+    /// and building configurations.
+    /// </summary>
+    internal static event Action OnConfigureFinished;
+
+    /// <summary>
     /// Subscribe configuration action.
     /// 
     /// Actions are run after <c>OnConfigure</c>.
@@ -110,5 +116,7 @@ public static class SpawnerConfigurationManager
                 Log.LogError($"Error during build of spawner config {spawnerConfig?.GetType()?.Name}", e);
             }
         }
+
+        OnConfigureFinished.RaiseSafely("Error during configuration finished event");
     }
 }

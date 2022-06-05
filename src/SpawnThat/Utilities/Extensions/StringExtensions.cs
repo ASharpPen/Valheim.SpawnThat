@@ -9,6 +9,7 @@ internal enum Separator
     Comma,
     Slash,
     Dot,
+    Newline,
 }
 
 public static class StringExtensions
@@ -16,6 +17,7 @@ public static class StringExtensions
     private static readonly char[] Comma = new[] { ',' };
     private static readonly char[] Slash = new[] { '/', '\\' };
     private static readonly char[] Dot = new[] { '.' };
+    private static readonly char[] Newline = new[] { '\n' };
 
     internal static List<string> SplitBy(this string value, Separator separator, bool toUpper = false)
     {
@@ -24,6 +26,7 @@ public static class StringExtensions
             Separator.Comma => Comma,
             Separator.Slash => Slash,
             Separator.Dot => Dot,
+            Separator.Newline => Newline,
             _ => throw new NotSupportedException(nameof(Separator))
         };
 

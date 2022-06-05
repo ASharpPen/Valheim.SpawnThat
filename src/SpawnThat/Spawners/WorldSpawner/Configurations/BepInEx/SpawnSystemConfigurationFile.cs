@@ -23,21 +23,29 @@ internal class SpawnSystemConfiguration : TomlConfigWithSubsections<SpawnConfigu
 
 internal class SpawnConfiguration : TomlConfigWithSubsections<TomlConfig>
 {
+    private SpawnSystemConfigCLLC _cllcConfig;
+    private SpawnSystemConfigMobAI _mobAIConfig;
+    private SpawnSystemConfigEpicLoot _epicLootConfig;
+
+    public SpawnSystemConfigCLLC CllcConfig => _cllcConfig ??= GetSubsection(SpawnSystemConfigCLLC.ModName) as SpawnSystemConfigCLLC;
+    public SpawnSystemConfigMobAI MobAIConfig => _mobAIConfig ??= GetSubsection(SpawnSystemConfigMobAI.ModName) as SpawnSystemConfigMobAI;
+    public SpawnSystemConfigEpicLoot EpicLootConfig => _epicLootConfig ??= GetSubsection(SpawnSystemConfigEpicLoot.ModName) as SpawnSystemConfigEpicLoot;
+
     protected override TomlConfig InstantiateSubsection(string subsectionName)
     {
         TomlConfig newModConfig = null;
 
         if (subsectionName == SpawnSystemConfigCLLC.ModName.Trim().ToUpperInvariant())
         {
-            newModConfig = new SpawnSystemConfigCLLC();
+            newModConfig = _cllcConfig = new SpawnSystemConfigCLLC();
         }
         else if (subsectionName == SpawnSystemConfigMobAI.ModName.Trim().ToUpperInvariant())
         {
-            newModConfig = new SpawnSystemConfigMobAI();
+            newModConfig = _mobAIConfig = new SpawnSystemConfigMobAI();
         }
         else if (subsectionName == SpawnSystemConfigEpicLoot.ModName.Trim().ToUpperInvariant())
         {
-            newModConfig = new SpawnSystemConfigEpicLoot();
+            newModConfig = _epicLootConfig = new SpawnSystemConfigEpicLoot();
         }
 
         return newModConfig;

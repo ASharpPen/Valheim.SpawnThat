@@ -82,7 +82,7 @@ internal class DestructibleSpawnerTemplate
     ///     Instead of disabling them index by index, this setting can be used.
     /// </para>
     /// </summary>
-    public bool RemoveNotConfiguredSpawns { get; set; }
+    public bool? RemoveNotConfiguredSpawns { get; set; }
 
     public Dictionary<uint, DestructibleSpawnTemplate> Spawns { get; set; } = new();
 }

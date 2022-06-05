@@ -2,12 +2,13 @@
 using System.Diagnostics;
 using System.IO;
 using BepInEx;
+using SpawnThat.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Core.Toml;
 
 namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
 
-internal static class DestructibleSpawnerBepInExCfgManager
+internal static class DestructibleSpawnerTomlCfgManager
 {
     private const string ConfigFile = "spawn_that.destructible_spawners.cfg";
     private const string ConfigFileSupplemental = "spawn_that.destructible_spawners.*.cfg";
@@ -26,7 +27,7 @@ internal static class DestructibleSpawnerBepInExCfgManager
 
             if (!File.Exists(configPath))
             {
-                File.Create(configPath).Close();
+                CreateDestructibleSpawnerFile(configPath);
             }
 
             var configs = LoadConfig(configPath);
@@ -50,7 +51,7 @@ internal static class DestructibleSpawnerBepInExCfgManager
 
             stopwatch.Stop();
 
-            Log.LogDebug("Config loading took: " + stopwatch.Elapsed);
+            Log.LogInfo("Config loading took: " + stopwatch.Elapsed);
 
             Config = configs;
         }
@@ -65,5 +66,21 @@ internal static class DestructibleSpawnerBepInExCfgManager
 
             return TomlLoader.LoadFile<DestructibleSpawnerConfigurationFile>(configPath);
         }
+    }
+
+    private static void CreateDestructibleSpawnerFile(string configPath)
+    {
+        using var file = File.Create(configPath);
+        using var writer = new StreamWriter(file);
+
+        writer.WriteLine("# Auto-generated file for adding Destructible Spawner configurations.");
+        writer.WriteLine("# This file is empty by default. It is intended to contains changes only, to avoid unintentional modifications as well as to reduce unnecessary performance cost.");
+        writer.WriteLine("# Full documentation can be found at https://asharppen.github.io/Valheim.SpawnThat.");
+        writer.WriteLine("# To get started: ");
+        writer.WriteLine($"#     1. Generate default configs in BepInEx/Debug folder, by enabling WriteSpawnTablesToFileBeforeChanges in 'spawn_that.cfg'.");
+        writer.WriteLine($"#     2. Start game and enter a world, and wait a short moment (ca. 10 seconds) for files to generate.");
+        writer.WriteLine("#     3. Go to generated file, and copy the spawners you want to modify into this file");
+        writer.WriteLine("#     4. Make your changes.");
+        writer.WriteLine($"# To find modded configs and change those, enable WriteConfigsToFile in 'spawn_that.cfg', and do as described above."); writer.WriteLine();
     }
 }

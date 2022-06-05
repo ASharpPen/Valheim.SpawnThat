@@ -27,6 +27,13 @@ internal class DestructibleSpawnBuilder : IDestructibleSpawnBuilder
     /// </summary>
     public IList<ISpawnModifier> SpawnModifiers { get; set; } = new List<ISpawnModifier>();
 
+    public BuilderOption<string> PrefabName;
+    public BuilderOption<bool> Enabled;
+    public BuilderOption<bool> TemplateEnabled;
+    public BuilderOption<float?> SpawnWeight;
+    public BuilderOption<int?> LevelMin;
+    public BuilderOption<int?> LevelMax;
+
     public DestructibleSpawnBuilder(uint id)
     {
         Id = id;
@@ -40,12 +47,44 @@ internal class DestructibleSpawnBuilder : IDestructibleSpawnBuilder
         Template.PositionConditions = SpawnPositionConditions;
         Template.Modifiers = SpawnModifiers;
 
+        PrefabName.DoIfSet(x => Template.PrefabName = x);
+        Enabled.DoIfSet(x => Template.Enabled = x);
+        TemplateEnabled.DoIfSet(x => Template.TemplateEnabled = x);
+        SpawnWeight.DoIfSet(x => Template.SpawnWeight = x);
+        LevelMin.DoIfSet(x => Template.LevelMin = x);
+        LevelMax.DoIfSet(x => Template.LevelMax = x);
+
         return Template;
+    }
+
+    internal void Merge(DestructibleSpawnBuilder builder)
+    {
+        builder.PrefabName.AssignIfSet(ref PrefabName);
+        builder.Enabled.AssignIfSet(ref Enabled);
+        builder.TemplateEnabled.AssignIfSet(ref TemplateEnabled);
+        builder.SpawnWeight.AssignIfSet(ref SpawnWeight);
+        builder.LevelMin.AssignIfSet(ref LevelMin);
+        builder.LevelMax.AssignIfSet(ref LevelMax);
+
+        foreach (var condition in builder.SpawnConditions)
+        {
+            SpawnConditions.AddOrReplaceByType(condition);
+        }
+
+        foreach (var positionCondition in builder.SpawnPositionConditions)
+        {
+            SpawnPositionConditions.AddOrReplaceByType(positionCondition);
+        }
+
+        foreach (var modifier in builder.SpawnModifiers)
+        {
+            SpawnModifiers.AddOrReplaceByType(modifier);
+        }
     }
 
     public IDestructibleSpawnBuilder SetPrefabName(string prefabName)
     {
-        Template.PrefabName = prefabName;
+        PrefabName = new(prefabName);
         return this;
     }
 
@@ -69,31 +108,31 @@ internal class DestructibleSpawnBuilder : IDestructibleSpawnBuilder
 
     public IDestructibleSpawnBuilder SetEnabled(bool enabled)
     {
-        Template.Enabled = enabled;
+        Enabled = new(enabled);
         return this;
     }
 
     public IDestructibleSpawnBuilder SetTemplateEnabled(bool enabled)
     {
-        Template.TemplateEnabled = enabled;
+        TemplateEnabled = new(enabled);
         return this;
     }
 
     public IDestructibleSpawnBuilder SetSpawnWeight(float? spawnWeight)
     {
-        Template.SpawnWeight = spawnWeight;
+        SpawnWeight = new(spawnWeight);
         return this;
     }
 
     public IDestructibleSpawnBuilder SetLevelMin(int? minLevel)
     {
-        Template.LevelMin = minLevel;
+        LevelMin = new(minLevel);
         return this;
     }
 
     public IDestructibleSpawnBuilder SetLevelMax(int? maxLevel)
     {
-        Template.LevelMax = maxLevel;
+        LevelMax = new(maxLevel);
         return this;
     }
 }
