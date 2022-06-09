@@ -4,24 +4,24 @@ using SpawnThat.Integrations.CLLC.Models;
 using SpawnThat.Integrations.EpicLoot.Models;
 using SpawnThat.Utilities.Enums;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Configuration.BepInEx;
 
-internal class DestructibleSpawnerConfigurationFile
-    : TomlConfigWithSubsections<DestructibleSpawnerConfig>
+internal class SpawnAreaSpawnerConfigurationFile
+    : TomlConfigWithSubsections<SpawnAreaSpawnerConfig>
     , ITomlConfigFile
 {
-    protected override DestructibleSpawnerConfig InstantiateSubsection(string subsectionName)
+    protected override SpawnAreaSpawnerConfig InstantiateSubsection(string subsectionName)
     {
-        return new DestructibleSpawnerConfig();
+        return new SpawnAreaSpawnerConfig();
     }
 }
 
-internal class DestructibleSpawnerConfig
-    : TomlConfigWithSubsections<DestructibleSpawnConfig>
+internal class SpawnAreaSpawnerConfig
+    : TomlConfigWithSubsections<SpawnAreaSpawnConfig>
 {
-    protected override DestructibleSpawnConfig InstantiateSubsection(string subsectionName)
+    protected override SpawnAreaSpawnConfig InstantiateSubsection(string subsectionName)
     {
-        return new DestructibleSpawnConfig();
+        return new SpawnAreaSpawnConfig();
     }
 
     #region Identifiers
@@ -64,31 +64,31 @@ internal class DestructibleSpawnerConfig
     #endregion
 }
 
-internal class DestructibleSpawnConfig : TomlConfigWithSubsections<TomlConfig>
+internal class SpawnAreaSpawnConfig : TomlConfigWithSubsections<TomlConfig>
 {
-    private DestructibleSpawnConfigMobAI _mobAIConfig = null;
-    private DestructibleSpawnConfigCLLC _cllcConfig = null;
-    private DestructibleSpawnConfigEpicLoot _epicLootConfig = null;
+    private SpawnAreaSpawnConfigMobAI _mobAIConfig = null;
+    private SpawnAreaSpawnConfigCLLC _cllcConfig = null;
+    private SpawnAreaSpawnConfigEpicLoot _epicLootConfig = null;
 
-    public DestructibleSpawnConfigEpicLoot EpicLootConfig => _epicLootConfig ??= GetSubsection(DestructibleSpawnConfigEpicLoot.ModName) as DestructibleSpawnConfigEpicLoot;
+    public SpawnAreaSpawnConfigEpicLoot EpicLootConfig => _epicLootConfig ??= GetSubsection(SpawnAreaSpawnConfigEpicLoot.ModName) as SpawnAreaSpawnConfigEpicLoot;
 
-    public DestructibleSpawnConfigCLLC CllcConfig => _cllcConfig ??= GetSubsection(DestructibleSpawnConfigCLLC.ModName) as DestructibleSpawnConfigCLLC;
+    public SpawnAreaSpawnConfigCLLC CllcConfig => _cllcConfig ??= GetSubsection(SpawnAreaSpawnConfigCLLC.ModName) as SpawnAreaSpawnConfigCLLC;
 
-    public DestructibleSpawnConfigMobAI MobAIConfig => _mobAIConfig ??= GetSubsection(DestructibleSpawnConfigMobAI.ModName) as DestructibleSpawnConfigMobAI;
+    public SpawnAreaSpawnConfigMobAI MobAIConfig => _mobAIConfig ??= GetSubsection(SpawnAreaSpawnConfigMobAI.ModName) as SpawnAreaSpawnConfigMobAI;
 
     protected override TomlConfig InstantiateSubsection(string subsectionName)
     {
         TomlConfig newModConfig = null;
 
-        if (subsectionName == DestructibleSpawnConfigCLLC.ModName.Trim().ToUpperInvariant())
+        if (subsectionName == SpawnAreaSpawnConfigCLLC.ModName.Trim().ToUpperInvariant())
         {
             newModConfig = _cllcConfig = new();
         }
-        else if (subsectionName == DestructibleSpawnConfigMobAI.ModName.Trim().ToUpperInvariant())
+        else if (subsectionName == SpawnAreaSpawnConfigMobAI.ModName.Trim().ToUpperInvariant())
         {
             newModConfig = _mobAIConfig = new();
         }
-        else if (subsectionName == DestructibleSpawnConfigEpicLoot.ModName.Trim().ToUpperInvariant())
+        else if (subsectionName == SpawnAreaSpawnConfigEpicLoot.ModName.Trim().ToUpperInvariant())
         {
             newModConfig = _epicLootConfig = new();
         }
@@ -126,7 +126,7 @@ internal class DestructibleSpawnConfig : TomlConfigWithSubsections<TomlConfig>
 
     public TomlConfigEntry<string> PrefabName = new("PrefabName", "", "Prefab name of entity to spawn.");
 
-    public TomlConfigEntry<float?> SpawnWeight = new("SpawnWeight", 1, "Sets spawn weight. Destructible spawners choose their next spawn by a weighted random of all their possible spawns.\nIncreasing weight means an increased chance that this particular spawn will be selected for spawning.");
+    public TomlConfigEntry<float?> SpawnWeight = new("SpawnWeight", 1, "Sets spawn weight. SpawnArea spawners choose their next spawn by a weighted random of all their possible spawns.\nIncreasing weight means an increased chance that this particular spawn will be selected for spawning.");
 
     public TomlConfigEntry<int?> LevelMin = new("LevelMin", 1, "Minimum level to spawn at.");
 
@@ -204,7 +204,7 @@ internal class DestructibleSpawnConfig : TomlConfigWithSubsections<TomlConfig>
     #endregion
 }
 
-internal class DestructibleSpawnConfigCLLC : TomlConfig
+internal class SpawnAreaSpawnConfigCLLC : TomlConfig
 {
     public const string ModName = "CreatureLevelAndLootControl";
 
@@ -221,7 +221,7 @@ internal class DestructibleSpawnConfigCLLC : TomlConfig
     public TomlConfigEntry<bool?> UseDefaultLevels = new("UseDefaultLevels", false, "Use the default LevelMin and LevelMax for level assignment, ignoring the usual CLLC level control.");
 }
 
-internal class DestructibleSpawnConfigMobAI : TomlConfig
+internal class SpawnAreaSpawnConfigMobAI : TomlConfig
 {
     public const string ModName = "MobAI";
 
@@ -230,7 +230,7 @@ internal class DestructibleSpawnConfigMobAI : TomlConfig
     public TomlConfigEntry<string> AIConfigFile = new("AIConfigFile", "", "Configuration file to use for the SetAI. Eg. 'MyFixerConfig.json', can include path, but will always start searching from config folder. See MobAI documentation for file setup.");
 }
 
-internal class DestructibleSpawnConfigEpicLoot : TomlConfig
+internal class SpawnAreaSpawnConfigEpicLoot : TomlConfig
 {
     public const string ModName = "EpicLoot";
 

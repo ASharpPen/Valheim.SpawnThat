@@ -1,15 +1,15 @@
-﻿using SpawnThat.Spawners.DestructibleSpawner;
-using SpawnThat.Spawners.DestructibleSpawner.Configuration;
+﻿using SpawnThat.Spawners.SpawnAreaSpawner;
+using SpawnThat.Spawners.SpawnAreaSpawner.Configuration;
 
 namespace SpawnThat.Spawners;
 
-public static class ISpawnerConfigurationCollectionDestructibleSpawnerExtensions
+public static class ISpawnerConfigurationCollectionSpawnAreaSpawnerExtensions
 {
     /// <summary>
-    /// Create a new destructible spawner builder to configure.
+    /// Create a new SpawnArea spawner builder to configure.
     /// </summary>
-    public static IDestructibleSpawnerBuilder ConfigureDestructibleSpawner(this ISpawnerConfigurationCollection configCollection)
+    public static ISpawnAreaSpawnerBuilder ConfigureSpawnAreaSpawner(this ISpawnerConfigurationCollection configCollection)
         => configCollection
-        .GetOrAddSpawnerConfiguration(new DestructibleSpawnerConfiguration())
+        .GetOrAddSpawnerConfiguration(new SpawnAreaSpawnerConfiguration())
         .CreateBuilder();
 }

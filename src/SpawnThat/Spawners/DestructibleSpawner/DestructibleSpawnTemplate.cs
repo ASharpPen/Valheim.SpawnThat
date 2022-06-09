@@ -3,12 +3,12 @@ using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Options.PositionConditions;
 
-namespace SpawnThat.Spawners.DestructibleSpawner;
+namespace SpawnThat.Spawners.SpawnAreaSpawner;
 
 /// <summary>
 /// Configurations for spawn in spawner.
 /// </summary>
-internal class DestructibleSpawnTemplate
+internal class SpawnAreaSpawnTemplate
 {
     /// <summary>
     /// Id of spawn entry.

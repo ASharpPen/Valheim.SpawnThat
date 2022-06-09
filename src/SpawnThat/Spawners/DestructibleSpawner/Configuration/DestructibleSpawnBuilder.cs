@@ -4,11 +4,11 @@ using SpawnThat.Options.Modifiers;
 using SpawnThat.Options.PositionConditions;
 using SpawnThat.Utilities.Extensions;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Configuration;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Configuration;
 
-internal class DestructibleSpawnBuilder : IDestructibleSpawnBuilder
+internal class SpawnAreaSpawnBuilder : ISpawnAreaSpawnBuilder
 {
-    private DestructibleSpawnTemplate Template { get; } = new();
+    private SpawnAreaSpawnTemplate Template { get; } = new();
 
     public uint Id { get; }
 
@@ -34,12 +34,12 @@ internal class DestructibleSpawnBuilder : IDestructibleSpawnBuilder
     public BuilderOption<int?> LevelMin;
     public BuilderOption<int?> LevelMax;
 
-    public DestructibleSpawnBuilder(uint id)
+    public SpawnAreaSpawnBuilder(uint id)
     {
         Id = id;
     }
 
-    internal DestructibleSpawnTemplate Build()
+    internal SpawnAreaSpawnTemplate Build()
     {
         Template.Id = Id;
 
@@ -57,7 +57,7 @@ internal class DestructibleSpawnBuilder : IDestructibleSpawnBuilder
         return Template;
     }
 
-    internal void Merge(DestructibleSpawnBuilder builder)
+    internal void Merge(SpawnAreaSpawnBuilder builder)
     {
         builder.PrefabName.AssignIfSet(ref PrefabName);
         builder.Enabled.AssignIfSet(ref Enabled);
@@ -82,7 +82,7 @@ internal class DestructibleSpawnBuilder : IDestructibleSpawnBuilder
         }
     }
 
-    public IDestructibleSpawnBuilder SetPrefabName(string prefabName)
+    public ISpawnAreaSpawnBuilder SetPrefabName(string prefabName)
     {
         PrefabName = new(prefabName);
         return this;
@@ -106,31 +106,31 @@ internal class DestructibleSpawnBuilder : IDestructibleSpawnBuilder
         SpawnModifiers.AddOrReplaceByType(modifier);
     }
 
-    public IDestructibleSpawnBuilder SetEnabled(bool enabled)
+    public ISpawnAreaSpawnBuilder SetEnabled(bool enabled)
     {
         Enabled = new(enabled);
         return this;
     }
 
-    public IDestructibleSpawnBuilder SetTemplateEnabled(bool enabled)
+    public ISpawnAreaSpawnBuilder SetTemplateEnabled(bool enabled)
     {
         TemplateEnabled = new(enabled);
         return this;
     }
 
-    public IDestructibleSpawnBuilder SetSpawnWeight(float? spawnWeight)
+    public ISpawnAreaSpawnBuilder SetSpawnWeight(float? spawnWeight)
     {
         SpawnWeight = new(spawnWeight);
         return this;
     }
 
-    public IDestructibleSpawnBuilder SetLevelMin(int? minLevel)
+    public ISpawnAreaSpawnBuilder SetLevelMin(int? minLevel)
     {
         LevelMin = new(minLevel);
         return this;
     }
 
-    public IDestructibleSpawnBuilder SetLevelMax(int? maxLevel)
+    public ISpawnAreaSpawnBuilder SetLevelMax(int? maxLevel)
     {
         LevelMax = new(maxLevel);
         return this;

@@ -1,13 +1,13 @@
 ﻿using System.Runtime.CompilerServices;
 using static SpawnArea;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Managers;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Managers;
 
-internal static class DestructibleSpawnTemplateManager
+internal static class SpawnAreaSpawnTemplateManager
 {
-    private static ConditionalWeakTable<SpawnData, DestructibleSpawnTemplate> SpawnTemplates { get; } = new();
+    private static ConditionalWeakTable<SpawnData, SpawnAreaSpawnTemplate> SpawnTemplates { get; } = new();
 
-    public static void SetTemplate(SpawnData key, DestructibleSpawnTemplate template)
+    public static void SetTemplate(SpawnData key, SpawnAreaSpawnTemplate template)
     {
         if (SpawnTemplates.TryGetValue(key, out _))
         {
@@ -17,7 +17,7 @@ internal static class DestructibleSpawnTemplateManager
         SpawnTemplates.Add(key, template);
     }
 
-    public static DestructibleSpawnTemplate GetTemplate(SpawnData key)
+    public static SpawnAreaSpawnTemplate GetTemplate(SpawnData key)
     {
         if (SpawnTemplates.TryGetValue(key, out var cached))
         {
@@ -27,7 +27,7 @@ internal static class DestructibleSpawnTemplateManager
         return null;
     }
 
-    public static bool TryGetTemplate(SpawnData key, out DestructibleSpawnTemplate template)
+    public static bool TryGetTemplate(SpawnData key, out SpawnAreaSpawnTemplate template)
     {
         return SpawnTemplates.TryGetValue(key, out template);
     }

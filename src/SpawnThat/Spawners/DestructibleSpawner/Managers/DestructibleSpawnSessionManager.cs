@@ -4,14 +4,14 @@ using System.Linq;
 using SpawnThat.Caches;
 using SpawnThat.Core;
 using SpawnThat.Core.Cache;
-using SpawnThat.Spawners.DestructibleSpawner.Models;
+using SpawnThat.Spawners.SpawnAreaSpawner.Models;
 using SpawnThat.Utilities.Extensions;
 using UnityEngine;
 using static SpawnArea;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Managers;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Managers;
 
-internal class DestructibleSpawnSessionManager
+internal class SpawnAreaSpawnSessionManager
 {
     private static ManagedCache<SpawnSession> SpawnSessions { get; } = new();
 
@@ -48,7 +48,7 @@ internal class DestructibleSpawnSessionManager
         {
             context.CurrentSpawn = spawn;
 
-            if (DestructibleSpawnTemplateManager.TryGetTemplate(spawn, out var spawnTemplate))
+            if (SpawnAreaSpawnTemplateManager.TryGetTemplate(spawn, out var spawnTemplate))
             {
                 context.CurrentTemplate = spawnTemplate;
             }
@@ -57,7 +57,7 @@ internal class DestructibleSpawnSessionManager
 
     public static void FilterSpawnData(SpawnArea spawner)
     {
-        var template = DestructibleSpawnerManager.GetTemplate(spawner);
+        var template = SpawnAreaSpawnerManager.GetTemplate(spawner);
 
         if (template is null)
         {
@@ -76,7 +76,7 @@ internal class DestructibleSpawnSessionManager
         {
             var spawn = spawner.m_prefabs[i];
 
-            if (DestructibleSpawnTemplateManager.TryGetTemplate(spawn, out var spawnTemplate))
+            if (SpawnAreaSpawnTemplateManager.TryGetTemplate(spawn, out var spawnTemplate))
             {
                 if (!spawnTemplate.Enabled)
                 {
@@ -91,7 +91,7 @@ internal class DestructibleSpawnSessionManager
                         var isValid = condition.IsValid(context);
                         if (!isValid)
                         {
-                            Log.LogTrace($"[Destructible Spawner] Invalid condition '{condition.GetType().Name}' for spawn '{i}'.");
+                            Log.LogTrace($"[SpawnArea Spawner] Invalid condition '{condition.GetType().Name}' for spawn '{i}'.");
                         }
                         return isValid;
 #else
@@ -100,7 +100,7 @@ internal class DestructibleSpawnSessionManager
                     }
                     catch (Exception e)
                     {
-                        Log.LogWarning($"Error while evaluating condition '{condition.GetType().Name}' for spawn '{spawnTemplate.Id}' of destructible spawner '{spawner.GetCleanedName()}'. Ignoring condition.", e);
+                        Log.LogWarning($"Error while evaluating condition '{condition.GetType().Name}' for spawn '{spawnTemplate.Id}' of SpawnArea spawner '{spawner.GetCleanedName()}'. Ignoring condition.", e);
                         return true;
                     }
                 });
@@ -142,14 +142,14 @@ internal class DestructibleSpawnSessionManager
                 }
                 catch (Exception e)
                 {
-                    Log.LogWarning($"Error while evaluating position condition '{condition.GetType().Name}' for spawn '{context.CurrentTemplate.Id}' of destructible spawner '{spawner.GetCleanedName()}'. Ignoring condition.", e);
+                    Log.LogWarning($"Error while evaluating position condition '{condition.GetType().Name}' for spawn '{context.CurrentTemplate.Id}' of SpawnArea spawner '{spawner.GetCleanedName()}'. Ignoring condition.", e);
                     return true;
                 }
             });
         }
         catch(Exception e)
         {
-            Log.LogError($"Error while attempting to evaluate valid position '{position}' of spawn for destructible spawner '{spawner.GetCleanedName()}'.", e);
+            Log.LogError($"Error while attempting to evaluate valid position '{position}' of spawn for SpawnArea spawner '{spawner.GetCleanedName()}'.", e);
             return true;
         }
     }
@@ -179,13 +179,13 @@ internal class DestructibleSpawnSessionManager
                 }
                 catch (Exception e)
                 {
-                    Log.LogWarning("Error while attempting to apply modifier '{}' to spawn '{}' of destructible spawner '{}'.", e);
+                    Log.LogWarning("Error while attempting to apply modifier '{}' to spawn '{}' of SpawnArea spawner '{}'.", e);
                 }
             }
         }
         catch (Exception e)
         {
-            Log.LogError($"Error while modifying spawn '{spawn.GetCleanedName()}' of destructible spawner '{spawner.GetCleanedName()}'.", e);
+            Log.LogError($"Error while modifying spawn '{spawn.GetCleanedName()}' of SpawnArea spawner '{spawner.GetCleanedName()}'.", e);
         }
     }
 }

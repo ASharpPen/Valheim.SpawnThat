@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using SpawnThat.Options.Identifiers;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Configuration;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Configuration;
 
-internal class DestructibleSpawnerBuilder : IDestructibleSpawnerBuilder
+internal class SpawnAreaSpawnerBuilder : ISpawnAreaSpawnerBuilder
 {
-    private DestructibleSpawnerTemplate Template { get; } = new();
+    private SpawnAreaSpawnerTemplate Template { get; } = new();
 
-    internal Dictionary<uint, DestructibleSpawnBuilder> Spawns { get; } = new();
+    internal Dictionary<uint, SpawnAreaSpawnBuilder> Spawns { get; } = new();
 
     internal Dictionary<Type, ISpawnerIdentifier> Identifiers { get; } = new();
 
@@ -25,17 +25,17 @@ internal class DestructibleSpawnerBuilder : IDestructibleSpawnerBuilder
     private BuilderOption<TimeSpan?> SpawnInterval;
     private BuilderOption<bool> RemoveNotConfiguredSpawns;
 
-    public IDestructibleSpawnBuilder GetSpawnBuilder(uint id)
+    public ISpawnAreaSpawnBuilder GetSpawnBuilder(uint id)
     {
         if (Spawns.TryGetValue(id, out var cached))
         {
             return cached;
         }
 
-        return Spawns[id] = new DestructibleSpawnBuilder(id);
+        return Spawns[id] = new SpawnAreaSpawnBuilder(id);
     }
 
-    internal DestructibleSpawnerTemplate Build()
+    internal SpawnAreaSpawnerTemplate Build()
     {
         TemplateName.DoIfSet(x => Template.TemplateName = x);
         ConditionMaxCloseCreatures.DoIfSet(x => Template.ConditionMaxCloseCreatures = x);
@@ -59,7 +59,7 @@ internal class DestructibleSpawnerBuilder : IDestructibleSpawnerBuilder
         return Template;
     }
 
-    internal void Merge(DestructibleSpawnerBuilder builder)
+    internal void Merge(SpawnAreaSpawnerBuilder builder)
     {
         builder.TemplateName.AssignIfSet(ref TemplateName);
         builder.ConditionMaxCloseCreatures.AssignIfSet(ref ConditionMaxCloseCreatures);
@@ -86,37 +86,37 @@ internal class DestructibleSpawnerBuilder : IDestructibleSpawnerBuilder
         }
     }
 
-    public IDestructibleSpawnerBuilder SetTemplateName(string templateName)
+    public ISpawnAreaSpawnerBuilder SetTemplateName(string templateName)
     {
         TemplateName = new(templateName);
         return this;
     }
 
-    public IDestructibleSpawnerBuilder SetConditionMaxCloseCreatures(int? maxCloseCreatures)
+    public ISpawnAreaSpawnerBuilder SetConditionMaxCloseCreatures(int? maxCloseCreatures)
     {
         ConditionMaxCloseCreatures = new(maxCloseCreatures);
         return this;
     }
 
-    public IDestructibleSpawnerBuilder SetConditionMaxCreatures(int? maxCreatures)
+    public ISpawnAreaSpawnerBuilder SetConditionMaxCreatures(int? maxCreatures)
     {
         ConditionMaxCreatures = new(maxCreatures);
         return this;
     }
 
-    public IDestructibleSpawnerBuilder SetConditionPlayerWithinDistance(float? withinDistance)
+    public ISpawnAreaSpawnerBuilder SetConditionPlayerWithinDistance(float? withinDistance)
     {
         ConditionPlayerWithinDistance = new(withinDistance);
         return this;
     }
 
-    public IDestructibleSpawnerBuilder SetDistanceConsideredClose(float? distance)
+    public ISpawnAreaSpawnerBuilder SetDistanceConsideredClose(float? distance)
     {
         DistanceConsideredClose= new(distance);
         return this;
     }
 
-    public IDestructibleSpawnerBuilder SetDistanceConsideredFar(float? distance)
+    public ISpawnAreaSpawnerBuilder SetDistanceConsideredFar(float? distance)
     {
         DistanceConsideredFar = new(distance);
         return this;
@@ -128,31 +128,31 @@ internal class DestructibleSpawnerBuilder : IDestructibleSpawnerBuilder
         Identifiers[identifier.GetType()] = identifier;
     }
 
-    public IDestructibleSpawnerBuilder SetLevelUpChance(float? levelUpChance)
+    public ISpawnAreaSpawnerBuilder SetLevelUpChance(float? levelUpChance)
     {
         LevelUpChance = new(levelUpChance);
         return this;
     }
 
-    public IDestructibleSpawnerBuilder SetOnGroundOnly(bool? checkGround)
+    public ISpawnAreaSpawnerBuilder SetOnGroundOnly(bool? checkGround)
     {
         OnGroundOnly = new(checkGround);
         return this;
     }
 
-    public IDestructibleSpawnerBuilder SetPatrol(bool? patrolSpawn)
+    public ISpawnAreaSpawnerBuilder SetPatrol(bool? patrolSpawn)
     {
         Patrol = new(patrolSpawn);
         return this;
     }
 
-    public IDestructibleSpawnerBuilder SetSpawnInterval(TimeSpan? interval)
+    public ISpawnAreaSpawnerBuilder SetSpawnInterval(TimeSpan? interval)
     {
         SpawnInterval = new(interval);
         return this;
     }
 
-    public IDestructibleSpawnerBuilder SetRemoveNotConfiguredSpawns(bool removeNotConfigured)
+    public ISpawnAreaSpawnerBuilder SetRemoveNotConfiguredSpawns(bool removeNotConfigured)
     {
         RemoveNotConfiguredSpawns = new(removeNotConfigured);
         return this;

@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
 using SpawnThat.Core;
-using SpawnThat.Spawners.DestructibleSpawner.Managers;
+using SpawnThat.Spawners.SpawnAreaSpawner.Managers;
 using SpawnThat.Utilities.Extensions;
 using static SpawnArea;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Services;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Services;
 
 internal static class ConfigApplicationService
 {
-    public static void ConfigureSpawner(SpawnArea spawner, DestructibleSpawnerTemplate spawnerTemplate)
+    public static void ConfigureSpawner(SpawnArea spawner, SpawnAreaSpawnerTemplate spawnerTemplate)
     {
         spawner.m_levelupChance = spawnerTemplate.LevelUpChance ?? spawner.m_levelupChance;
         spawner.m_spawnIntervalSec = spawnerTemplate.SpawnInterval?.Seconds ?? spawner.m_spawnIntervalSec;
@@ -49,10 +49,10 @@ internal static class ConfigApplicationService
 
                 if (spawnTemplate.TemplateEnabled)
                 {
-                    Log.LogTrace($"[Destructible Spawner] Modifying spawn '{spawnTemplate.Id}' of '{spawner.GetCleanedName()}:{pos}'");
+                    Log.LogTrace($"[SpawnArea Spawner] Modifying spawn '{spawnTemplate.Id}' of '{spawner.GetCleanedName()}:{pos}'");
 
                     Modify(existingSpawn, spawnTemplate);
-                    DestructibleSpawnTemplateManager.SetTemplate(existingSpawn, spawnTemplate);
+                    SpawnAreaSpawnTemplateManager.SetTemplate(existingSpawn, spawnTemplate);
 
                     if (spawnerTemplate.RemoveNotConfiguredSpawns ?? false)
                     {
@@ -70,9 +70,9 @@ internal static class ConfigApplicationService
                     continue;
                 }
 
-                Log.LogTrace($"[Destructible Spawner] Creating spawn '{spawnTemplate.Id}' for '{spawner.GetCleanedName()}:{pos}'");
+                Log.LogTrace($"[SpawnArea Spawner] Creating spawn '{spawnTemplate.Id}' for '{spawner.GetCleanedName()}:{pos}'");
 
-                DestructibleSpawnTemplateManager.SetTemplate(newSpawn, spawnTemplate);
+                SpawnAreaSpawnTemplateManager.SetTemplate(newSpawn, spawnTemplate);
 
                 spawns.Add(newSpawn);
             }
@@ -94,7 +94,7 @@ internal static class ConfigApplicationService
         spawner.m_prefabs = spawns;
     }
 
-    private static SpawnData Create(DestructibleSpawnTemplate template)
+    private static SpawnData Create(SpawnAreaSpawnTemplate template)
     {
         if (string.IsNullOrWhiteSpace(template.PrefabName))
         {
@@ -107,7 +107,7 @@ internal static class ConfigApplicationService
 
         if (prefab.IsNull())
         {
-            Log.LogWarning($"[Destructible Spawner] Unable to find prefab '{template.PrefabName}'. Skipping adding spawn.");
+            Log.LogWarning($"[SpawnArea Spawner] Unable to find prefab '{template.PrefabName}'. Skipping adding spawn.");
             return null;
         }
 
@@ -120,7 +120,7 @@ internal static class ConfigApplicationService
         };
     }
 
-    private static void Modify(SpawnData original, DestructibleSpawnTemplate template)
+    private static void Modify(SpawnData original, SpawnAreaSpawnTemplate template)
     {
         if (!string.IsNullOrWhiteSpace(template.PrefabName))
         {
@@ -130,7 +130,7 @@ internal static class ConfigApplicationService
             
             if (prefab.IsNull())
             {
-                Log.LogWarning($"[Destructible Spawner] Unable to find prefab '{template.PrefabName}'. Skipping modifying spawn.");
+                Log.LogWarning($"[SpawnArea Spawner] Unable to find prefab '{template.PrefabName}'. Skipping modifying spawn.");
                 return;
             }
 

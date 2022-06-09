@@ -3,11 +3,11 @@ using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Options.PositionConditions;
 
-namespace SpawnThat.Spawners.DestructibleSpawner;
+namespace SpawnThat.Spawners.SpawnAreaSpawner;
 
 /// <summary>
 /// <para>
-///     Destructible spawn builder settings.
+///     SpawnArea spawn builder settings.
 ///     Any property not set will be ignored.
 /// </para>
 /// <para>
@@ -15,10 +15,10 @@ namespace SpawnThat.Spawners.DestructibleSpawner;
 ///     when overriding a template, or set a default value if creating a new.
 /// </para>
 /// <para>
-///     Intended as an optional way to configure IDestructibleSpawnBuilder.
+///     Intended as an optional way to configure ISpawnAreaSpawnBuilder.
 /// </para>
 /// </summary>
-public class DestructibleSpawnSettings
+public class SpawnAreaSpawnSettings
 {    
     /// <summary>
     /// Id of spawn entry.
@@ -54,7 +54,7 @@ public class DestructibleSpawnSettings
 
     /// <summary>
     /// <para>
-    ///     Sets spawn weight. Destructible spawners choose their next
+    ///     Sets spawn weight. SpawnArea spawners choose their next
     ///     spawn by a weighted random of all their possible spawns.
     ///     Increasing weight, means an increased chance that this particular
     ///     spawn will be selected for spawning.

@@ -6,17 +6,17 @@ using System.Text;
 using HarmonyLib;
 using SpawnThat.Configuration;
 using SpawnThat.Debugging;
-using SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
+using SpawnThat.Spawners.SpawnAreaSpawner.Configuration.BepInEx;
 using SpawnThat.Utilities.Extensions;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Debug;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Debug;
 
 internal static class SpawnAreaDataGatherer
 {
     public static void ScanAndPrint()
     {
         if (ConfigurationManager.GeneralConfig is null ||
-            !ConfigurationManager.GeneralConfig.WriteDestructibleSpawnersToFile.Value)
+            !ConfigurationManager.GeneralConfig.WriteSpawnAreaSpawnersToFile.Value)
         {
             return;
         }
@@ -31,7 +31,7 @@ internal static class SpawnAreaDataGatherer
 
             var serialized = strBuilder.ToString();
 
-            DebugFileWriter.WriteFile(serialized, "destructible_spawners_pre_changes.txt", "destructible spawners and where they exist");
+            DebugFileWriter.WriteFile(serialized, "spawnarea_spawners_pre_changes.txt", "SpawnArea spawners and where they exist");
         }
     }
 
@@ -48,7 +48,7 @@ internal static class SpawnAreaDataGatherer
     {
         var prefabs = ZNetScene.instance.m_prefabs.ToList();
 
-        Dictionary<string, Data> destructibleSpawners = new();
+        Dictionary<string, Data> spawnAreaSpawners = new();
 
         // Gather prefabs
         foreach (var prefab in prefabs)
@@ -60,7 +60,7 @@ internal static class SpawnAreaDataGatherer
                 continue;
             }
 
-            destructibleSpawners[spawnArea.GetCleanedName()] = new() { Spawner = spawnArea };
+            spawnAreaSpawners[spawnArea.GetCleanedName()] = new() { Spawner = spawnArea };
         }
 
         // Gather locations and biomes
@@ -81,7 +81,7 @@ internal static class SpawnAreaDataGatherer
             {
                 var key = spawner.GetCleanedName();
 
-                if (destructibleSpawners.TryGetValue(key, out var data))
+                if (spawnAreaSpawners.TryGetValue(key, out var data))
                 {
                     data.Locations.Add(location.m_prefabName);
 
@@ -154,7 +154,7 @@ internal static class SpawnAreaDataGatherer
                 {
                     var key = spawner.GetCleanedName();
 
-                    if (destructibleSpawners.TryGetValue(key, out var data))
+                    if (spawnAreaSpawners.TryGetValue(key, out var data))
                     {
                         data.Rooms.Add(room.m_room.name);
 
@@ -180,7 +180,7 @@ internal static class SpawnAreaDataGatherer
 
         // Serialize!
         
-        foreach (var entry in destructibleSpawners.Values)
+        foreach (var entry in spawnAreaSpawners.Values)
         {
             entry.Serialize(strBuilder);
             strBuilder.AppendLine();
@@ -204,16 +204,16 @@ internal static class SpawnAreaDataGatherer
             str.AppendLine($"# Appears in Rooms: {Rooms.Join()}");
 
             str.AppendLine($"[{Spawner.name}]");
-            str.AppendLine($"{nameof(DestructibleSpawnerConfig.IdentifyByName)}={Spawner.GetCleanedName()}");
-            str.AppendLine($"{nameof(DestructibleSpawnerConfig.LevelUpChance)}={Spawner.m_levelupChance.ToString(CultureInfo.InvariantCulture)}");
-            str.AppendLine($"{nameof(DestructibleSpawnerConfig.SpawnInterval)}={Spawner.m_spawnIntervalSec.ToString(CultureInfo.InvariantCulture)}");
-            str.AppendLine($"{nameof(DestructibleSpawnerConfig.SetPatrol)}={Spawner.m_setPatrolSpawnPoint}");
-            str.AppendLine($"{nameof(DestructibleSpawnerConfig.ConditionPlayerWithinDistance)}={Spawner.m_triggerDistance.ToString(CultureInfo.InvariantCulture)}");
-            str.AppendLine($"{nameof(DestructibleSpawnerConfig.ConditionMaxCloseCreatures)}={Spawner.m_maxNear.ToString(CultureInfo.InvariantCulture)}");
-            str.AppendLine($"{nameof(DestructibleSpawnerConfig.ConditionMaxCreatures)}={Spawner.m_maxTotal.ToString(CultureInfo.InvariantCulture)}");
-            str.AppendLine($"{nameof(DestructibleSpawnerConfig.DistanceConsideredClose)}={Spawner.m_nearRadius.ToString(CultureInfo.InvariantCulture)}");
-            str.AppendLine($"{nameof(DestructibleSpawnerConfig.DistanceConsideredFar)}={Spawner.m_farRadius.ToString(CultureInfo.InvariantCulture)}");
-            str.AppendLine($"{nameof(DestructibleSpawnerConfig.OnGroundOnly)}={Spawner.m_onGroundOnly}");
+            str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.IdentifyByName)}={Spawner.GetCleanedName()}");
+            str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.LevelUpChance)}={Spawner.m_levelupChance.ToString(CultureInfo.InvariantCulture)}");
+            str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.SpawnInterval)}={Spawner.m_spawnIntervalSec.ToString(CultureInfo.InvariantCulture)}");
+            str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.SetPatrol)}={Spawner.m_setPatrolSpawnPoint}");
+            str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.ConditionPlayerWithinDistance)}={Spawner.m_triggerDistance.ToString(CultureInfo.InvariantCulture)}");
+            str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.ConditionMaxCloseCreatures)}={Spawner.m_maxNear.ToString(CultureInfo.InvariantCulture)}");
+            str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.ConditionMaxCreatures)}={Spawner.m_maxTotal.ToString(CultureInfo.InvariantCulture)}");
+            str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.DistanceConsideredClose)}={Spawner.m_nearRadius.ToString(CultureInfo.InvariantCulture)}");
+            str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.DistanceConsideredFar)}={Spawner.m_farRadius.ToString(CultureInfo.InvariantCulture)}");
+            str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.OnGroundOnly)}={Spawner.m_onGroundOnly}");
 
             for (int i = 0; i < Spawner.m_prefabs.Count; ++i)
             {
@@ -221,12 +221,12 @@ internal static class SpawnAreaDataGatherer
 
                 str.AppendLine();
                 str.AppendLine($"[{Spawner.name}.{i}]");
-                str.AppendLine($"{nameof(DestructibleSpawnConfig.Enabled)}={true}");
-                str.AppendLine($"{nameof(DestructibleSpawnConfig.TemplateEnabled)}={true}");
-                str.AppendLine($"{nameof(DestructibleSpawnConfig.PrefabName)}={spawn.m_prefab.GetCleanedName() ?? ""}");
-                str.AppendLine($"{nameof(DestructibleSpawnConfig.SpawnWeight)}={spawn.m_weight.ToString(CultureInfo.InvariantCulture)}");
-                str.AppendLine($"{nameof(DestructibleSpawnConfig.LevelMin)}={spawn.m_minLevel}");
-                str.AppendLine($"{nameof(DestructibleSpawnConfig.LevelMax)}={spawn.m_maxLevel}");
+                str.AppendLine($"{nameof(SpawnAreaSpawnConfig.Enabled)}={true}");
+                str.AppendLine($"{nameof(SpawnAreaSpawnConfig.TemplateEnabled)}={true}");
+                str.AppendLine($"{nameof(SpawnAreaSpawnConfig.PrefabName)}={spawn.m_prefab.GetCleanedName() ?? ""}");
+                str.AppendLine($"{nameof(SpawnAreaSpawnConfig.SpawnWeight)}={spawn.m_weight.ToString(CultureInfo.InvariantCulture)}");
+                str.AppendLine($"{nameof(SpawnAreaSpawnConfig.LevelMin)}={spawn.m_minLevel}");
+                str.AppendLine($"{nameof(SpawnAreaSpawnConfig.LevelMax)}={spawn.m_maxLevel}");
             }
         }
     }

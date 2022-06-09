@@ -33,13 +33,13 @@ The world spawners, for which the world has them spread out in a grid fashion, e
 
 The local spawners, which are intended for fine-tuned spawning. Local spawners only spawn one specific mob type, and only has one alive at a time. These are bound to specific world locations, such as the surtling firehole.
 
-Destructible spawners, like greydwarf nests and draugr piles. These are generated based on locations, like local spawners, but do not keep track of their spawns, just a general idea of what is in the area. And they can be destroyed.
+SpawnArea spawners, like greydwarf nests and draugr piles. These are generated based on locations, like local spawners, but do not keep track of their spawns, just a general idea of what is in the area. And they can be destroyed.
 
 For world spawners, you can either replace existing templates based on their index, or add to the list of possible templates to spawn from.
 
 For local spawners, since these are more custom, you describe a location and the prefab name of the mob you what you want to override.
 
-For destructible spawners, the configuration settings are still in development.
+For SpawnArea spawners, the configuration settings are still in development.
 
 The mod modification happens at run-time, once for each spawner. Reloading the world resets all changes.
 As the player moves through the world, the game loads in the various spawners, and the mod applies its own settings.

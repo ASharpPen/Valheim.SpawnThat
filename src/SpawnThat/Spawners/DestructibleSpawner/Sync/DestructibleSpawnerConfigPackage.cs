@@ -2,17 +2,17 @@ using System.Collections.Generic;
 using System.Linq;
 using SpawnThat.Core;
 using SpawnThat.Core.Network;
-using SpawnThat.Spawners.DestructibleSpawner.Managers;
+using SpawnThat.Spawners.SpawnAreaSpawner.Managers;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Sync;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Sync;
 
-internal class DestructibleSpawnerConfigPackage : CompressedPackage
+internal class SpawnAreaSpawnerConfigPackage : CompressedPackage
 {
-    public List<DestructibleSpawnerTemplate> Templates;
+    public List<SpawnAreaSpawnerTemplate> Templates;
 
     protected override void BeforePack()
     {
-        Templates = DestructibleSpawnerManager.GetTemplates();
+        Templates = SpawnAreaSpawnerManager.GetTemplates();
 
         Log.LogDebug($"Packaged world spawner configurations: {Templates?.Count ?? 0}");
 
@@ -25,13 +25,13 @@ internal class DestructibleSpawnerConfigPackage : CompressedPackage
 
     protected override void AfterUnpack(object obj)
     {
-        if (obj is DestructibleSpawnerConfigPackage configPackage)
+        if (obj is SpawnAreaSpawnerConfigPackage configPackage)
         {
-            Log.LogDebug("Received and deserialized destructible spawner config package");
+            Log.LogDebug("Received and deserialized SpawnArea spawner config package");
 
-            DestructibleSpawnerManager.Templates = configPackage.Templates ?? new();
+            SpawnAreaSpawnerManager.Templates = configPackage.Templates ?? new();
 
-            Log.LogInfo($"Successfully unpacked destructible spawner configurations: {DestructibleSpawnerManager.Templates?.Count ?? 0}");
+            Log.LogInfo($"Successfully unpacked SpawnArea spawner configurations: {SpawnAreaSpawnerManager.Templates?.Count ?? 0}");
         }
         else
         {

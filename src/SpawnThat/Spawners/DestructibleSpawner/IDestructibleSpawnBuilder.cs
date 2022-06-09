@@ -1,12 +1,12 @@
-﻿namespace SpawnThat.Spawners.DestructibleSpawner;
+﻿namespace SpawnThat.Spawners.SpawnAreaSpawner;
 
 /// <summary>
-/// Builder for the individual spawn entries of a destructible spawner.
+/// Builder for the individual spawn entries of a SpawnArea spawner.
 /// 
 /// Multiple entries can exist pr spawner, and will be selected based on weight,
 /// after filtering for conditions.
 /// </summary>
-public interface IDestructibleSpawnBuilder
+public interface ISpawnAreaSpawnBuilder
     : IHaveSpawnConditions
     , IHaveSpawnPositionConditions
     , IHaveSpawnModifiers
@@ -25,7 +25,7 @@ public interface IDestructibleSpawnBuilder
     /// Can be used to disable existing spawn entries.
     /// <para>Default if new template: true</para>
     /// </summary>
-    IDestructibleSpawnBuilder SetEnabled(bool enabled);
+    ISpawnAreaSpawnBuilder SetEnabled(bool enabled);
 
     /// <summary>
     /// <para>
@@ -35,17 +35,17 @@ public interface IDestructibleSpawnBuilder
     /// </para>
     /// <para>Default if new template: true</para>
     /// </summary>
-    IDestructibleSpawnBuilder SetTemplateEnabled(bool enabled);
+    ISpawnAreaSpawnBuilder SetTemplateEnabled(bool enabled);
 
     /// <summary>   
     /// <para>Prefab name of entity to spawn.</para>
     /// <para>If null, uses existing when overriding.</para>
     /// </summary>
-    IDestructibleSpawnBuilder SetPrefabName(string prefabName);
+    ISpawnAreaSpawnBuilder SetPrefabName(string prefabName);
 
     /// <summary>
     /// <para>
-    ///     Sets spawn weight. Destructible spawners choose their next
+    ///     Sets spawn weight. SpawnArea spawners choose their next
     ///     spawn by a weighted random of all their possible spawns.
     ///     Increasing weight, means an increased chance that this particular
     ///     spawn will be selected for spawning.
@@ -54,7 +54,7 @@ public interface IDestructibleSpawnBuilder
     /// <para>Default if new template: 1</para>
     /// </summary>
     /// <remarks>Vanilla name: m_weight</remarks>
-    IDestructibleSpawnBuilder SetSpawnWeight(float? SpawnWeight);
+    ISpawnAreaSpawnBuilder SetSpawnWeight(float? SpawnWeight);
 
     /// <summary>
     /// <para>Minimum level to spawn at.</para>
@@ -70,7 +70,7 @@ public interface IDestructibleSpawnBuilder
     /// <para>Default if new template: 1</para>
     /// </summary>
     /// <remarks>Vanilla name: m_minLevel</remarks>
-    IDestructibleSpawnBuilder SetLevelMin(int? minLevel);
+    ISpawnAreaSpawnBuilder SetLevelMin(int? minLevel);
 
     /// <summary>
     /// <para>Maximum level to spawn at.</para>
@@ -86,5 +86,5 @@ public interface IDestructibleSpawnBuilder
     /// <para>Default if new template: 1</para>
     /// </summary>
     /// <remarks>Vanilla name: m_maxLevel</remarks>
-    IDestructibleSpawnBuilder SetLevelMax(int? maxLevel);
+    ISpawnAreaSpawnBuilder SetLevelMax(int? maxLevel);
 }

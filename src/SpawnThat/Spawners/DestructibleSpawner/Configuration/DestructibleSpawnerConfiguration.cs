@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using SpawnThat.Core;
-using SpawnThat.Spawners.DestructibleSpawner.Managers;
+using SpawnThat.Spawners.SpawnAreaSpawner.Managers;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Configuration;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Configuration;
 
-internal class DestructibleSpawnerConfiguration : ISpawnerConfiguration
+internal class SpawnAreaSpawnerConfiguration : ISpawnerConfiguration
 {
-    private List<DestructibleSpawnerBuilder> Builders { get; } = new();
+    private List<SpawnAreaSpawnerBuilder> Builders { get; } = new();
 
     private bool finalized = false;
 
@@ -27,27 +27,27 @@ internal class DestructibleSpawnerConfiguration : ISpawnerConfiguration
 
         foreach (var builder in mergedBuilders)
         {
-            DestructibleSpawnerManager.AddTemplate(builder.Build());
+            SpawnAreaSpawnerManager.AddTemplate(builder.Build());
         }
     }
 
-    public IDestructibleSpawnerBuilder CreateBuilder()
+    public ISpawnAreaSpawnerBuilder CreateBuilder()
     {
         if (finalized)
         {
             throw new InvalidOperationException("Collection is finalized. Builders cannot be retrieved or modified after build.");
         }
 
-        DestructibleSpawnerBuilder builder = new();
+        SpawnAreaSpawnerBuilder builder = new();
 
         Builders.Add(builder);
 
         return builder;
     }
 
-    private static List<DestructibleSpawnerBuilder> MergeMatchingBuilders(List<BuilderIdentifier> builderIdentifiers)
+    private static List<SpawnAreaSpawnerBuilder> MergeMatchingBuilders(List<BuilderIdentifier> builderIdentifiers)
     {
-        List<DestructibleSpawnerBuilder> mergedBuilders = new(builderIdentifiers.Count);
+        List<SpawnAreaSpawnerBuilder> mergedBuilders = new(builderIdentifiers.Count);
 
         foreach (var builderIdentifier in builderIdentifiers)
         {
@@ -62,7 +62,7 @@ internal class DestructibleSpawnerConfiguration : ISpawnerConfiguration
         return mergedBuilders;
     }
 
-    private static List<BuilderIdentifier> GroupByIdentifiers(List<DestructibleSpawnerBuilder> builders)
+    private static List<BuilderIdentifier> GroupByIdentifiers(List<SpawnAreaSpawnerBuilder> builders)
     {
         List<BuilderIdentifier> uniqueBuilders = new(builders.Count);
 
@@ -93,11 +93,11 @@ internal class DestructibleSpawnerConfiguration : ISpawnerConfiguration
 
         public List<long> ParameterHashes { get; }
 
-        public DestructibleSpawnerBuilder Builder { get; }
+        public SpawnAreaSpawnerBuilder Builder { get; }
 
-        public List<DestructibleSpawnerBuilder> ToMerge { get; } = new();
+        public List<SpawnAreaSpawnerBuilder> ToMerge { get; } = new();
 
-        public BuilderIdentifier(DestructibleSpawnerBuilder builder)
+        public BuilderIdentifier(SpawnAreaSpawnerBuilder builder)
         {
             Builder = builder;
 

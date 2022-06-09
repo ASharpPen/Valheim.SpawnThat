@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Configuration;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Configuration;
 
 /// <summary>
 /// Simple wrapper to detect if an option has been assigned or not.

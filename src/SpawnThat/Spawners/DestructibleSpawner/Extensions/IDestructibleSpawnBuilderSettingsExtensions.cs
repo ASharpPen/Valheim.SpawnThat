@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SpawnThat.Spawners.DestructibleSpawner;
+namespace SpawnThat.Spawners.SpawnAreaSpawner;
 
-public static class IDestructibleSpawnBuilderSettingsExtensions
+public static class ISpawnAreaSpawnBuilderSettingsExtensions
 {
-    public static IDestructibleSpawnBuilder WithSettings(this IDestructibleSpawnBuilder builder, DestructibleSpawnSettings settings)
+    public static ISpawnAreaSpawnBuilder WithSettings(this ISpawnAreaSpawnBuilder builder, SpawnAreaSpawnSettings settings)
     {
         settings.Enabled.Set(builder.SetEnabled);
         settings.TemplateEnabled.Set(builder.SetTemplateEnabled);
@@ -32,7 +32,7 @@ public static class IDestructibleSpawnBuilderSettingsExtensions
         return builder;
     }
 
-    private static void Set(this bool? value, Func<bool, IDestructibleSpawnBuilder> apply)
+    private static void Set(this bool? value, Func<bool, ISpawnAreaSpawnBuilder> apply)
     {
         if (value is not null)
         {
@@ -40,7 +40,7 @@ public static class IDestructibleSpawnBuilderSettingsExtensions
         }
     }
 
-    private static void Set(this string value, Func<string, IDestructibleSpawnBuilder> apply)
+    private static void Set(this string value, Func<string, ISpawnAreaSpawnBuilder> apply)
     {
         if (!string.IsNullOrWhiteSpace(value))
         {
@@ -48,7 +48,7 @@ public static class IDestructibleSpawnBuilderSettingsExtensions
         }
     }
 
-    private static void Set(this float? value, Func<float?, IDestructibleSpawnBuilder> apply)
+    private static void Set(this float? value, Func<float?, ISpawnAreaSpawnBuilder> apply)
     {
         if (value is not null)
         {
@@ -56,7 +56,7 @@ public static class IDestructibleSpawnBuilderSettingsExtensions
         }
     }
 
-    private static void Set(this int? value, Func<int?, IDestructibleSpawnBuilder> apply)
+    private static void Set(this int? value, Func<int?, ISpawnAreaSpawnBuilder> apply)
     {
         if (value is not null)
         {
@@ -64,7 +64,7 @@ public static class IDestructibleSpawnBuilderSettingsExtensions
         }
     }
 
-    private static void Set<T>(this List<T> value, Func<List<T>, IDestructibleSpawnBuilder> apply)
+    private static void Set<T>(this List<T> value, Func<List<T>, ISpawnAreaSpawnBuilder> apply)
     {
         if (value is not null &&
             value.Count > 0)

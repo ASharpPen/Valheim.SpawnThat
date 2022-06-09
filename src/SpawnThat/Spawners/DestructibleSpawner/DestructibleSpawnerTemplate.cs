@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using SpawnThat.Options.Identifiers;
 
-namespace SpawnThat.Spawners.DestructibleSpawner;
+namespace SpawnThat.Spawners.SpawnAreaSpawner;
 
 /// <summary>
 /// Configurations for spawner. Spawner can have multiple spawn templates.
 /// </summary>
-internal class DestructibleSpawnerTemplate
+internal class SpawnAreaSpawnerTemplate
 {
     public ICollection<ISpawnerIdentifier> Identifiers { get; set; } = new List<ISpawnerIdentifier>(0);
 
@@ -84,5 +84,5 @@ internal class DestructibleSpawnerTemplate
     /// </summary>
     public bool? RemoveNotConfiguredSpawns { get; set; }
 
-    public Dictionary<uint, DestructibleSpawnTemplate> Spawns { get; set; } = new();
+    public Dictionary<uint, SpawnAreaSpawnTemplate> Spawns { get; set; } = new();
 }

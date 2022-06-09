@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using SpawnThat.Options.Identifiers;
 
-namespace SpawnThat.Spawners.DestructibleSpawner;
+namespace SpawnThat.Spawners.SpawnAreaSpawner;
 
 /// <summary>
 /// <para>
-///     Destructible spawner builder settings.
+///     SpawnArea spawner builder settings.
 ///     Any property not set will be ignored.
 /// </para>
 /// <para>
@@ -14,10 +14,10 @@ namespace SpawnThat.Spawners.DestructibleSpawner;
 ///     when overriding a template, or set a default value if creating a new.
 /// </para>
 /// <para>
-///     Intended as an optional way to configure IDestructibleSpawnerBuilder.
+///     Intended as an optional way to configure ISpawnAreaSpawnerBuilder.
 /// </para>
 /// </summary>
-public class DestructibleSpawnerSettings
+public class SpawnAreaSpawnerSettings
 {
     /// <summary>
     /// <para>
@@ -114,5 +114,5 @@ public class DestructibleSpawnerSettings
     /// If id matches the index of an existing spawn, the existing spawn will be
     /// overridden by the assigned settings.
     /// </summary>
-    public Dictionary<uint, DestructibleSpawnSettings> Spawns { get; set; } = new();
+    public Dictionary<uint, SpawnAreaSpawnSettings> Spawns { get; set; } = new();
 }

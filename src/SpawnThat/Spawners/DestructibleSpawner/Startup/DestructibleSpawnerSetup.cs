@@ -1,17 +1,17 @@
 using System.Collections;
 using SpawnThat.Configuration;
 using SpawnThat.Lifecycle;
-using SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
-using SpawnThat.Spawners.DestructibleSpawner.Debug;
-using SpawnThat.Spawners.DestructibleSpawner.Managers;
-using SpawnThat.Spawners.DestructibleSpawner.Sync;
+using SpawnThat.Spawners.SpawnAreaSpawner.Configuration.BepInEx;
+using SpawnThat.Spawners.SpawnAreaSpawner.Debug;
+using SpawnThat.Spawners.SpawnAreaSpawner.Managers;
+using SpawnThat.Spawners.SpawnAreaSpawner.Sync;
 using UnityEngine;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Startup;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Startup;
 
-internal static class DestructibleSpawnerSetup
+internal static class SpawnAreaSpawnerSetup
 {
-    public static void SetupDestructibleSpawners()
+    public static void SetupSpawnAreaSpawners()
     {
         LifecycleManager.OnSinglePlayerInit += LoadFileConfigs;
         LifecycleManager.OnDedicatedServerInit += LoadFileConfigs;
@@ -23,22 +23,22 @@ internal static class DestructibleSpawnerSetup
 
         LifecycleManager.OnFindSpawnPointFirstTime += SpawnAreaDataGatherer.ScanAndPrint;
 
-        DestructibleSpawnerSyncSetup.Configure();
+        SpawnAreaSpawnerSyncSetup.Configure();
     }
 
     internal static void LoadFileConfigs()
     {
-        DestructibleSpawnerTomlCfgManager.Load();
+        SpawnAreaSpawnerTomlCfgManager.Load();
     }
 
     internal static void ApplyFileConfigs(ISpawnerConfigurationCollection spawnerConfigs)
     {
-        DestructibleSpawnerConfigApplier.ApplyBepInExConfigs(spawnerConfigs);
+        SpawnAreaSpawnerConfigApplier.ApplyBepInExConfigs(spawnerConfigs);
     }
 
     internal static void WriteConfigsToDisk()
     {
-        if (ConfigurationManager.GeneralConfig?.WriteDestructibleSpawnersToFile.Value == true)
+        if (ConfigurationManager.GeneralConfig?.WriteSpawnAreaSpawnersToFile.Value == true)
         {
             TemplateWriter.WriteToDiskAsToml();
         }
@@ -53,6 +53,6 @@ internal static class DestructibleSpawnerSetup
     {
         yield return new WaitForSeconds(8);
 
-        DestructibleSpawnerManager.DelaySpawners = false;
+        SpawnAreaSpawnerManager.DelaySpawners = false;
     }
 }

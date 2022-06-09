@@ -9,18 +9,18 @@ using SpawnThat.Spawners.WorldSpawner;
 using BepInEx;
 using System.IO;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Configuration.BepInEx;
 
-internal static class DestructibleSpawnerConfigApplier
+internal static class SpawnAreaSpawnerConfigApplier
 {
     public static void ApplyBepInExConfigs(ISpawnerConfigurationCollection configs)
     {
-        if (DestructibleSpawnerTomlCfgManager.Config is null)
+        if (SpawnAreaSpawnerTomlCfgManager.Config is null)
         {
             return;
         }
 
-        foreach (var spawnerConfig in DestructibleSpawnerTomlCfgManager.Config.Subsections)
+        foreach (var spawnerConfig in SpawnAreaSpawnerTomlCfgManager.Config.Subsections)
         {
             var config = spawnerConfig.Value;
             
@@ -30,7 +30,7 @@ internal static class DestructibleSpawnerConfigApplier
                 !config.IdentifyByLocation.IsSet &&
                 !config.IdentifyByRoom.IsSet)
             {
-                Log.LogWarning($"[Destructible Spawner] Ignoring config '{config.SectionPath}' due to having no identifiers listed. At least one identifier must be specified, for config to be valid.");
+                Log.LogWarning($"[SpawnArea Spawner] Ignoring config '{config.SectionPath}' due to having no identifiers listed. At least one identifier must be specified, for config to be valid.");
                 continue;
             }
             if ((config.IdentifyByName.Value?.Count ?? 0) == 0 &&
@@ -38,10 +38,10 @@ internal static class DestructibleSpawnerConfigApplier
                 (config.IdentifyByLocation.Value?.Count ?? 0) == 0 &&
                 (config.IdentifyByRoom.Value?.Count ?? 0) == 0)
             {
-                Log.LogWarning($"[Destructible Spawner] Ignoring config '{config.SectionPath}' due to all identifiers being empty. At least one identifier must have a value, for config to be valid.");
+                Log.LogWarning($"[SpawnArea Spawner] Ignoring config '{config.SectionPath}' due to all identifiers being empty. At least one identifier must have a value, for config to be valid.");
             }
 
-            var builder = configs.ConfigureDestructibleSpawner();
+            var builder = configs.ConfigureSpawnAreaSpawner();
 
             ConfigureSpawner(config, builder);
 
@@ -52,7 +52,7 @@ internal static class DestructibleSpawnerConfigApplier
         }
     }
 
-    private static void ConfigureSpawner(DestructibleSpawnerConfig config, IDestructibleSpawnerBuilder builder)
+    private static void ConfigureSpawner(SpawnAreaSpawnerConfig config, ISpawnAreaSpawnerBuilder builder)
     {
         builder.SetTemplateName(config.SectionPath);
 
@@ -79,7 +79,7 @@ internal static class DestructibleSpawnerConfigApplier
         config.RemoveNotConfiguredSpawns.SetValueOrDefaultIfLoaded(x => builder.SetRemoveNotConfiguredSpawns(x.Value));
     }
 
-    private static void ConfigureSpawn(DestructibleSpawnerConfig spawnerConfig, DestructibleSpawnConfig config, IDestructibleSpawnBuilder builder)
+    private static void ConfigureSpawn(SpawnAreaSpawnerConfig spawnerConfig, SpawnAreaSpawnConfig config, ISpawnAreaSpawnBuilder builder)
     {
         if (config.TemplateEnabled.Value == false)
         {
@@ -150,8 +150,8 @@ internal static class DestructibleSpawnerConfigApplier
         {
             if (IntegrationManager.InstalledCLLC)
             {
-                if (config.TryGet(DestructibleSpawnConfigCLLC.ModName, out cfg) &&
-                    cfg is DestructibleSpawnConfigCLLC cllcConfig)
+                if (config.TryGet(SpawnAreaSpawnConfigCLLC.ModName, out cfg) &&
+                    cfg is SpawnAreaSpawnConfigCLLC cllcConfig)
                 {
                     if (cllcConfig.ConditionWorldLevelMin.IsSet || 
                         cllcConfig.ConditionWorldLevelMax.IsSet)
@@ -165,8 +165,8 @@ internal static class DestructibleSpawnerConfigApplier
 
             if (IntegrationManager.InstalledEpicLoot)
             {
-                if (config.TryGet(DestructibleSpawnConfigEpicLoot.ModName, out cfg) &&
-                    cfg is DestructibleSpawnConfigEpicLoot elConfig)
+                if (config.TryGet(SpawnAreaSpawnConfigEpicLoot.ModName, out cfg) &&
+                    cfg is SpawnAreaSpawnConfigEpicLoot elConfig)
                 {
                     var dist = config.DistanceToTriggerPlayerConditions.IsSet
                         ? (int)config.DistanceToTriggerPlayerConditions.Value
@@ -192,8 +192,8 @@ internal static class DestructibleSpawnerConfigApplier
         {
             if (IntegrationManager.InstalledCLLC)
             {
-                if (config.TryGet(DestructibleSpawnConfigCLLC.ModName, out cfg) &&
-                    cfg is DestructibleSpawnConfigCLLC cllcConfig)
+                if (config.TryGet(SpawnAreaSpawnConfigCLLC.ModName, out cfg) &&
+                    cfg is SpawnAreaSpawnConfigCLLC cllcConfig)
                 {
                     cllcConfig.SetBossAffix.SetIfLoaded(builder.SetCllcModifierBossAffix);
                     cllcConfig.SetExtraEffect.SetIfLoaded(builder.SetCllcModifierExtraEffect);
@@ -223,8 +223,8 @@ internal static class DestructibleSpawnerConfigApplier
 
             if (IntegrationManager.InstalledMobAI)
             {
-                if (config.TryGet(DestructibleSpawnConfigMobAI.ModName, out cfg) &&
-                    cfg is DestructibleSpawnConfigMobAI mobAIConfig)
+                if (config.TryGet(SpawnAreaSpawnConfigMobAI.ModName, out cfg) &&
+                    cfg is SpawnAreaSpawnConfigMobAI mobAIConfig)
                 {
                     if (mobAIConfig.SetAI.IsSet)
                     {
@@ -260,7 +260,7 @@ internal static class DestructibleSpawnerConfigApplier
         }
     }
 
-    private static void SetIfLoaded<T>(this TomlConfigEntry<T> value, Func<T, IDestructibleSpawnBuilder> apply)
+    private static void SetIfLoaded<T>(this TomlConfigEntry<T> value, Func<T, ISpawnAreaSpawnBuilder> apply)
     {
         if (value is not null &&
             value.IsSet)
@@ -269,7 +269,7 @@ internal static class DestructibleSpawnerConfigApplier
         }
     }
 
-    private static void SetIfLoaded<T>(this TomlConfigEntry<T> value, Func<T, IDestructibleSpawnerBuilder> apply)
+    private static void SetIfLoaded<T>(this TomlConfigEntry<T> value, Func<T, ISpawnAreaSpawnerBuilder> apply)
     {
         if (value is not null &&
             value.IsSet)
@@ -278,7 +278,7 @@ internal static class DestructibleSpawnerConfigApplier
         }
     }
 
-    private static void SetValueOrDefaultIfLoaded<T>(this ITomlConfigEntry<T> value, Func<T, IDestructibleSpawnBuilder> apply)
+    private static void SetValueOrDefaultIfLoaded<T>(this ITomlConfigEntry<T> value, Func<T, ISpawnAreaSpawnBuilder> apply)
     {
         if (value is not null &&
             value.IsSet)
@@ -287,7 +287,7 @@ internal static class DestructibleSpawnerConfigApplier
         }
     }
 
-    private static void SetValueOrDefaultIfLoaded<T>(this ITomlConfigEntry<T> value, Func<T, IDestructibleSpawnerBuilder> apply)
+    private static void SetValueOrDefaultIfLoaded<T>(this ITomlConfigEntry<T> value, Func<T, ISpawnAreaSpawnerBuilder> apply)
     {
         if (value is not null &&
             value.IsSet)
@@ -296,7 +296,7 @@ internal static class DestructibleSpawnerConfigApplier
         }
     }
 
-    private static void SetIfHasValue<T>(this TomlConfigEntry<List<T>> value, Func<List<T>, IDestructibleSpawnerBuilder> apply)
+    private static void SetIfHasValue<T>(this TomlConfigEntry<List<T>> value, Func<List<T>, ISpawnAreaSpawnerBuilder> apply)
     {
         if (value is not null &&
             value.IsSet &&
@@ -306,7 +306,7 @@ internal static class DestructibleSpawnerConfigApplier
         }
     }
 
-    private static void SetIfHasValue<T>(this TomlConfigEntry<List<T>> value, Func<List<T>, IDestructibleSpawnBuilder> apply)
+    private static void SetIfHasValue<T>(this TomlConfigEntry<List<T>> value, Func<List<T>, ISpawnAreaSpawnBuilder> apply)
     {
         if (value is not null &&
             value.IsSet &&
@@ -316,7 +316,7 @@ internal static class DestructibleSpawnerConfigApplier
         }
     }
 
-    private static void SetIfHasValue(this TomlConfigEntry<string> value, Func<string, IDestructibleSpawnBuilder> apply)
+    private static void SetIfHasValue(this TomlConfigEntry<string> value, Func<string, ISpawnAreaSpawnBuilder> apply)
     {
         if (value is not null &&
             value.IsSet &&

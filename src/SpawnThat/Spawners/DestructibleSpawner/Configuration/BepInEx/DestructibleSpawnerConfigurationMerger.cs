@@ -1,10 +1,10 @@
 ﻿using SpawnThat.Core;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Configuration.BepInEx;
 
-internal static class DestructibleSpawnerConfigurationMerger
+internal static class SpawnAreaSpawnerConfigurationMerger
 {
-    public static void MergeInto(this DestructibleSpawnerConfigurationFile source, DestructibleSpawnerConfigurationFile target)
+    public static void MergeInto(this SpawnAreaSpawnerConfigurationFile source, SpawnAreaSpawnerConfigurationFile target)
     {
         if ((source?.Subsections?.Count ?? 0) == 0)
         {
@@ -15,7 +15,7 @@ internal static class DestructibleSpawnerConfigurationMerger
         {
             if (target.Subsections.ContainsKey(sourceSpawner.Key))
             {
-                Log.LogWarning($"Overlapping destructible spawner configs for {sourceSpawner.Value.SectionPath}, overriding existing.");
+                Log.LogWarning($"Overlapping SpawnArea spawner configs for {sourceSpawner.Value.SectionPath}, overriding existing.");
             }
 
             target.Subsections[sourceSpawner.Key] = sourceSpawner.Value;

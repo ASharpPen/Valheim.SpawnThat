@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Reflection.Emit;
 using HarmonyLib;
 using SpawnThat.Core;
-using SpawnThat.Spawners.DestructibleSpawner.Managers;
+using SpawnThat.Spawners.SpawnAreaSpawner.Managers;
 using SpawnThat.Utilities;
 using SpawnThat.Utilities.Extensions;
 using static SpawnArea;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Patches;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Patches;
 
 [HarmonyPatch(typeof(SpawnArea))]
-internal static class SpawnArea_DestructibleSpawner_Workflow_Patch
+internal static class SpawnArea_SpawnAreaSpawner_Workflow_Patch
 {
     [HarmonyPatch(nameof(SpawnArea.UpdateSpawn))]
     [HarmonyPrefix]
@@ -20,20 +20,20 @@ internal static class SpawnArea_DestructibleSpawner_Workflow_Patch
     {
         try
         {
-            DestructibleSpawnerManager.ConfigureSpawner(__instance);
+            SpawnAreaSpawnerManager.ConfigureSpawner(__instance);
         }
         catch(Exception e)
         {
-            Log.LogError($"Error while attempting to configure destructible spawner '{__instance.GetCleanedName()}'.", e);
+            Log.LogError($"Error while attempting to configure SpawnArea spawner '{__instance.GetCleanedName()}'.", e);
         }
 
         try
         {
-            DestructibleSpawnSessionManager.StartSession(__instance);
+            SpawnAreaSpawnSessionManager.StartSession(__instance);
         }
         catch (Exception e)
         {
-            Log.LogError($"Error while attempting to init spawn session for destructible spawner '{__instance.GetCleanedName()}'.", e);
+            Log.LogError($"Error while attempting to init spawn session for SpawnArea spawner '{__instance.GetCleanedName()}'.", e);
         }
     }
 
@@ -42,7 +42,7 @@ internal static class SpawnArea_DestructibleSpawner_Workflow_Patch
     [HarmonyPriority(Priority.LowerThanNormal)]  // Let other prefixes do what they want first.
     private static bool DelayUpdate()
     {
-        return !DestructibleSpawnerManager.DelaySpawners;
+        return !SpawnAreaSpawnerManager.DelaySpawners;
     }
 
     [HarmonyPatch(nameof(SpawnArea.SelectWeightedPrefab))]
@@ -51,11 +51,11 @@ internal static class SpawnArea_DestructibleSpawner_Workflow_Patch
     {
         try
         {
-            DestructibleSpawnSessionManager.FilterSpawnData(__instance);
+            SpawnAreaSpawnSessionManager.FilterSpawnData(__instance);
         }
         catch (Exception e)
         {
-            Log.LogError($"Error while selecting available spawns for destructibe spawner '{__instance.GetCleanedName()}'.", e);
+            Log.LogError($"Error while selecting available spawns for SpawnArea spawner '{__instance.GetCleanedName()}'.", e);
         }
     }
 
@@ -65,11 +65,11 @@ internal static class SpawnArea_DestructibleSpawner_Workflow_Patch
     {
         try
         {
-            DestructibleSpawnSessionManager.SetCurrentSpawn(__instance, __result);
+            SpawnAreaSpawnSessionManager.SetCurrentSpawn(__instance, __result);
         }
         catch (Exception e)
         {
-            Log.LogWarning($"Error while caching spawn '{__result?.m_prefab.name}' of destructible spawner '{__instance.GetCleanedName()}'.", e);
+            Log.LogWarning($"Error while caching spawn '{__result?.m_prefab.name}' of SpawnArea spawner '{__instance.GetCleanedName()}'.", e);
         }
     }
 
@@ -93,7 +93,7 @@ internal static class SpawnArea_DestructibleSpawner_Workflow_Patch
             // Insert custom positional condition checks
             .InsertAndAdvance(OpCodes.Ldarg_0)
             .InsertAndAdvance(spawnPoint.GetLdlocFromStLoc())
-            .InsertAndAdvance(Transpilers.EmitDelegate(DestructibleSpawnSessionManager.CheckValidPosition))
+            .InsertAndAdvance(Transpilers.EmitDelegate(SpawnAreaSpawnSessionManager.CheckValidPosition))
             .InsertAndAdvance(new CodeInstruction(OpCodes.Brfalse, falseTarget))
             .InstructionEnumeration();
     }
@@ -109,7 +109,7 @@ internal static class SpawnArea_DestructibleSpawner_Workflow_Patch
             // dup item on stack, and call modifier
             .InsertAndAdvance(OpCodes.Dup)
             .InsertAndAdvance(OpCodes.Ldarg_0)
-            .InsertAndAdvance(Transpilers.EmitDelegate(DestructibleSpawnSessionManager.ModifySpawn))
+            .InsertAndAdvance(Transpilers.EmitDelegate(SpawnAreaSpawnSessionManager.ModifySpawn))
             .InstructionEnumeration();
     }
 
@@ -119,11 +119,11 @@ internal static class SpawnArea_DestructibleSpawner_Workflow_Patch
     {
         try
         {
-            DestructibleSpawnSessionManager.EndSession(__instance);
+            SpawnAreaSpawnSessionManager.EndSession(__instance);
         }
         catch(Exception e)
         {
-            Log.LogError($"Error while attempting to end spawn session for destructible spawner '{__instance.GetCleanedName()}'.", e);
+            Log.LogError($"Error while attempting to end spawn session for SpawnArea spawner '{__instance.GetCleanedName()}'.", e);
         }
     }
 }

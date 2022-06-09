@@ -6,14 +6,14 @@ using SpawnThat.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Core.Toml;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Configuration.BepInEx;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Configuration.BepInEx;
 
-internal static class DestructibleSpawnerTomlCfgManager
+internal static class SpawnAreaSpawnerTomlCfgManager
 {
     private const string ConfigFile = "spawn_that.destructible_spawners.cfg";
     private const string ConfigFileSupplemental = "spawn_that.destructible_spawners.*.cfg";
 
-    internal static DestructibleSpawnerConfigurationFile Config { get; private set; }
+    internal static SpawnAreaSpawnerConfigurationFile Config { get; private set; }
 
     public static void Load()
     {
@@ -21,19 +21,19 @@ internal static class DestructibleSpawnerTomlCfgManager
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
 
-            Log.LogInfo($"Loading destructible spawner configurations.");
+            Log.LogInfo($"Loading SpawnArea spawner configurations.");
 
             string configPath = Path.Combine(Paths.ConfigPath, ConfigFile);
 
             if (!File.Exists(configPath))
             {
-                CreateDestructibleSpawnerFile(configPath);
+                CreateSpawnAreaSpawnerFile(configPath);
             }
 
-            DestructibleSpawnerConfigurationFile configs = new();
+            SpawnAreaSpawnerConfigurationFile configs = new();
 
             var supplementalFiles = Directory.GetFiles(Paths.ConfigPath, ConfigFileSupplemental, SearchOption.AllDirectories);
-            Log.LogDebug($"Found {supplementalFiles.Length} supplemental destructible spawner config files");
+            Log.LogDebug($"Found {supplementalFiles.Length} supplemental SpawnArea spawner config files");
 
             foreach (var file in supplementalFiles)
             {
@@ -54,29 +54,29 @@ internal static class DestructibleSpawnerTomlCfgManager
 
             stopwatch.Stop();
 
-            Log.LogInfo("Loading destructible spawner configs took: " + stopwatch.Elapsed);
+            Log.LogInfo("Loading SpawnArea spawner configs took: " + stopwatch.Elapsed);
 
             Config = configs;
         }
         catch (Exception e)
         {
-            Log.LogError("Error during loading of destructible spawner cfg files.", e);
+            Log.LogError("Error during loading of SpawnArea spawner cfg files.", e);
         }
 
-        static DestructibleSpawnerConfigurationFile LoadConfig(string configPath)
+        static SpawnAreaSpawnerConfigurationFile LoadConfig(string configPath)
         {
-            Log.LogDebug($"Loading destructible spawner configurations from {configPath}.");
+            Log.LogDebug($"Loading SpawnArea spawner configurations from {configPath}.");
 
-            return TomlLoader.LoadFile<DestructibleSpawnerConfigurationFile>(configPath);
+            return TomlLoader.LoadFile<SpawnAreaSpawnerConfigurationFile>(configPath);
         }
     }
 
-    private static void CreateDestructibleSpawnerFile(string configPath)
+    private static void CreateSpawnAreaSpawnerFile(string configPath)
     {
         using var file = File.Create(configPath);
         using var writer = new StreamWriter(file);
 
-        writer.WriteLine("# Auto-generated file for adding Destructible Spawner configurations.");
+        writer.WriteLine("# Auto-generated file for adding SpawnArea Spawner configurations.");
         writer.WriteLine("# This file is empty by default. It is intended to contains changes only, to avoid unintentional modifications as well as to reduce unnecessary performance cost.");
         writer.WriteLine("# Full documentation can be found at https://asharppen.github.io/Valheim.SpawnThat.");
         writer.WriteLine("# To get started: ");

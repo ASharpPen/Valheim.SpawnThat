@@ -2,7 +2,7 @@
 using SpawnThat.Spawners.Contexts;
 using static SpawnArea;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Models;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Models;
 
 internal class SpawnSession : SpawnSessionContext
 {
@@ -12,7 +12,7 @@ internal class SpawnSession : SpawnSessionContext
 
     public SpawnData CurrentSpawn { get; set; }
 
-    public DestructibleSpawnTemplate CurrentTemplate { get; set; }
+    public SpawnAreaSpawnTemplate CurrentTemplate { get; set; }
 
     public List<SpawnData> OriginalSpawnData { get; set; }
 }
