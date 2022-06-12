@@ -99,10 +99,10 @@ Just want to have more/less of a mob type? Simple modifiers exist!</p>
 <p>Valheim&#39;s main way of managing spawns work by having multiple types of spawners spread throughout the world.</p>
 <p>The world spawners, for which the world has them spread out in a grid fashion, each using the same list of templates to check if something should spawn. These are the general spawners and all currently use the same 44 templates.</p>
 <p>The local spawners, which are intended for fine-tuned spawning. Local spawners only spawn one specific mob type, and only has one alive at a time. These are bound to specific world locations, such as the surtling firehole.</p>
-<p>Destructible spawners, like greydwarf nests and draugr piles. These are generated based on locations, like local spawners, but do not keep track of their spawns, just a general idea of what is in the area. And they can be destroyed.</p>
+<p>SpawnArea spawners, like greydwarf nests and draugr piles. These are generated based on locations, like local spawners, but do not keep track of their spawns, just a general idea of what is in the area. And they can be destroyed.</p>
 <p>For world spawners, you can either replace existing templates based on their index, or add to the list of possible templates to spawn from.</p>
 <p>For local spawners, since these are more custom, you describe a location and the prefab name of the mob you what you want to override.</p>
-<p>For destructible spawners, the configuration settings are still in development.</p>
+<p>For SpawnArea spawners, the configuration settings are still in development.</p>
 <p>The mod modification happens at run-time, once for each spawner. Reloading the world resets all changes.
 As the player moves through the world, the game loads in the various spawners, and the mod applies its own settings.</p>
 <h2 id="intro-client-server">Client / Server</h2>

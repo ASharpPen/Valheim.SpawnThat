@@ -62,13 +62,13 @@ internal class GeneralConfiguration
 
     #endregion
 
-    #region DestructibleSpawner
+    #region SpawnAreaSpawner
 
-    public ConfigurationEntry<bool> WriteDestructibleSpawnersToFile = new(false, "Writes destructible spawners to a file before applying configuration changes.");
+    public ConfigurationEntry<bool> WriteSpawnAreaSpawnersToFile = new(false, "Writes SpawnArea spawners to a file before applying configuration changes.");
 
-    public ConfigurationEntry<bool> WriteDestructibleConfigsToFile = new(false, "Writes destructible spawner configs loaded in Spawn That to file, before applying to spawners in game.\nThese are the configs loaded from files and set by other mods, after being merged and prepared internally in Spawn That.");
+    public ConfigurationEntry<bool> WriteSpawnAreaConfigsToFile = new(false, "Writes SpawnArea spawner configs loaded in Spawn That to file, before applying to spawners in game.\nThese are the configs loaded from files and set by other mods, after being merged and prepared internally in Spawn That.");
 
-    public ConfigurationEntry<bool> DestructibleAddCommentsToFile = new(false, "Add comments to settings in debug files.");
+    public ConfigurationEntry<bool> SpawnAreaAddCommentsToFile = new(false, "Add comments to settings in debug files.");
 
     #endregion
 
@@ -101,9 +101,9 @@ internal class GeneralConfiguration
 
         InitializeWithCreatures.Bind(Config, "Simple", "InitializeWithCreatures");
 
-        WriteDestructibleSpawnersToFile.Bind(Config, "DestructibleSpawner", "WriteSpawnTablesToFileBeforeChanges");
-        WriteDestructibleConfigsToFile.Bind(Config, "DestructibleSpawner", "WriteConfigsToFile");
-        //DestructibleAddCommentsToFile.Bind(Config, "DestructibleSpawner", "AddCommentsToFile"); // TODO: Hm... Not sure about this one.
+        WriteSpawnAreaSpawnersToFile.Bind(Config, "SpawnAreaSpawner", "WriteSpawnTablesToFileBeforeChanges");
+        WriteSpawnAreaConfigsToFile.Bind(Config, "SpawnAreaSpawner", "WriteConfigsToFile");
+        //SpawnAreaAddCommentsToFile.Bind(Config, "SpawnAreaSpawner", "AddCommentsToFile"); // TODO: Hm... Not sure about this one.
 
         WriteLocationsToFile.Bind(Config, "Datamining", "WriteLocationsToFile");
     }

@@ -6,7 +6,7 @@ using SpawnThat.Integrations.EpicLoot.Models;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Spawners;
-using SpawnThat.Spawners.DestructibleSpawner;
+using SpawnThat.Spawners.SpawnAreaSpawner;
 using SpawnThat.Spawners.LocalSpawner;
 using SpawnThat.Spawners.WorldSpawner;
 using SpawnThat.Utilities.Enums;
@@ -45,8 +45,8 @@ namespace SpawnThatTestMod
                 ConfigureWorldSpawnerOverrideDefault(config);
                 ConfigureWorldSpawnerOverriddenByFile(config);
 
-                ConfigureDestructibleSpawner(config);
-                ConfigureDestructibleSpawnerBySettings(config);
+                ConfigureSpawnAreaSpawner(config);
+                ConfigureSpawnAreaSpawnerBySettings(config);
             }
             catch(Exception e)
             {
@@ -181,9 +181,9 @@ namespace SpawnThatTestMod
             }
         }
 
-        private static void ConfigureDestructibleSpawner(ISpawnerConfigurationCollection config)
+        private static void ConfigureSpawnAreaSpawner(ISpawnerConfigurationCollection config)
         {
-            var spawner = config.ConfigureDestructibleSpawner()
+            var spawner = config.ConfigureSpawnAreaSpawner()
                 .SetTemplateName("Meadow Spawners")
                 .SetIdentifierBiome(Heightmap.Biome.Meadows)
                 .SetSpawnInterval(TimeSpan.FromSeconds(5))
@@ -201,16 +201,16 @@ namespace SpawnThatTestMod
                 ;
         }
 
-        private static void ConfigureDestructibleSpawnerBySettings(ISpawnerConfigurationCollection config)
+        private static void ConfigureSpawnAreaSpawnerBySettings(ISpawnerConfigurationCollection config)
         {
-            var spawnerSettings = new DestructibleSpawnerSettings()
+            var spawnerSettings = new SpawnAreaSpawnerSettings()
             {
                 SpawnInterval = TimeSpan.FromSeconds(5),
                 SetPatrol = true,
                 
             };
 
-            var spawnSettings = new DestructibleSpawnSettings
+            var spawnSettings = new SpawnAreaSpawnSettings
             {
                 PrefabName = "Boar",
                 Modifiers = new[]
@@ -219,7 +219,7 @@ namespace SpawnThatTestMod
                 },
             };
 
-            var spawner = config.ConfigureDestructibleSpawner()
+            var spawner = config.ConfigureSpawnAreaSpawner()
                 .WithSettings(spawnerSettings)
                 .SetIdentifierName("Spawner_GreydwarfNest")
                 ;

@@ -3,15 +3,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Utilities.Enums;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Configuration;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Configuration;
 
 [TestClass]
-public class DestructibleSpawnerConfigurationTests
+public class SpawnAreaSpawnerConfigurationTests
 {
     [TestMethod]
     public void CanBuild()
     {
-        var config = new DestructibleSpawnerConfiguration();
+        var config = new SpawnAreaSpawnerConfiguration();
 
         var spawner = config.CreateBuilder();
 
@@ -31,14 +31,14 @@ public class DestructibleSpawnerConfigurationTests
             .SetSpawnWeight(1)
             ;
 
-        var spawnerSettings = new DestructibleSpawnerSettings()
+        var spawnerSettings = new SpawnAreaSpawnerSettings()
         {
             SpawnInterval = TimeSpan.FromSeconds(5),
             SetPatrol = true,
 
         };
 
-        var spawnSettings = new DestructibleSpawnSettings
+        var spawnSettings = new SpawnAreaSpawnSettings
         {
             PrefabName = "Boar",
             Modifiers = new[]

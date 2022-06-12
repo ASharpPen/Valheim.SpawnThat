@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SpawnThat.Options.Conditions;
-using SpawnThat.Spawners.DestructibleSpawner;
+using SpawnThat.Spawners.SpawnAreaSpawner;
 using SpawnThat.Utilities.Enums;
 using static Heightmap;
 
@@ -63,7 +63,7 @@ public static class IHaveSpawnConditionsExtensions
     ///     This allows for sitations where only some areas (eg., 10% of blackforests) will have a spawn show up.
     /// </para>
     /// </summary>
-    public static IDestructibleSpawnBuilder SetConditionAreaSpawnChance(this IDestructibleSpawnBuilder builder, float areaChance)
+    public static ISpawnAreaSpawnBuilder SetConditionAreaSpawnChance(this ISpawnAreaSpawnBuilder builder, float areaChance)
     {
         builder.SetCondition(new ConditionAreaSpawnChance(areaChance, (int)builder.Id));
         return builder;

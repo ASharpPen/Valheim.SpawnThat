@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpawnThat.Integrations.CLLC.Models;
-using SpawnThat.Spawners.DestructibleSpawner.Configuration;
+using SpawnThat.Spawners.SpawnAreaSpawner.Configuration;
 
-namespace SpawnThat.Spawners.DestructibleSpawner.Debug;
+namespace SpawnThat.Spawners.SpawnAreaSpawner.Debug;
 
 [TestClass]
 public class TemplateWriterTests
@@ -15,7 +15,7 @@ public class TemplateWriterTests
     [TestMethod]
     public void CanPrepareTomlFileWithIntegrations()
     {
-        var config = new DestructibleSpawnerConfiguration();
+        var config = new SpawnAreaSpawnerConfiguration();
 
         var spawner = config.CreateBuilder();
 
