@@ -10,8 +10,8 @@ namespace SpawnThat.Spawners.SpawnAreaSpawner.Configuration.BepInEx;
 
 internal static class SpawnAreaSpawnerTomlCfgManager
 {
-    private const string ConfigFile = "spawn_that.destructible_spawners.cfg";
-    private const string ConfigFileSupplemental = "spawn_that.destructible_spawners.*.cfg";
+    private const string ConfigFile = "spawn_that.spawnarea_spawners.cfg";
+    private const string ConfigFileSupplemental = "spawn_that.spawnarea_spawners.*.cfg";
 
     internal static SpawnAreaSpawnerConfigurationFile Config { get; private set; }
 
