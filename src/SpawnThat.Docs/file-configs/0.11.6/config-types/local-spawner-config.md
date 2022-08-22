@@ -62,21 +62,21 @@ RespawnTime = 60
 
 | Setting | Type | Default | Example | Description |
 | --- | --- | --- | --- | --- |
-| [PrefabName](#config-options-PrefabName) | string | | Troll | Name of prefab to spawn instead of existing |
-| [Enabled](#config-options-Enabled) | bool | true | false | Toggle this template on-off. This means the settings of this template will NOT be applied, it is not a way to disable existing mobs |
-| [SpawnAtDay](#config-options-SpawnAtDay) | bool | true | false | Enable spawning during day. |
-| [SpawnAtNight](#config-options-SpawnAtNight) | bool | true | false | Enable spawning during night. |
-| [LevelMin](#config-options-LevelMin) | int | 1 | 3 | Minimum level of spawn |
-| [LevelMax](#config-options-LevelMax) | int | 1 | 15 | Maximum level of spawn |
-| [LevelUpChance](#config-options-LevelUpChance) | float | 15 | 100 | Chance to level up, starting at LevelMin and rolling again for each level gained. Range is 0 to 100 |
-| [RespawnTime](#config-options-RespawnTime) | float | 20 | 0 | Minutes between checks for respawn. Only one mob can be spawned at time per spawner |
-| [TriggerDistance](#config-options-TriggerDistance) | float | 60 | 100 | Distance of spawner to player to trigger spawning |
-| [TriggerNoise](#config-options-TriggerNoise) | float | 0 | 50 | If not 0, adds a minimum noise required for spawning, on top of distance requirement |
-| [SpawnInPlayerBase](#config-options-SpawnInPlayerBase) | bool | false | true | Allow spawning inside player base boundaries |
-| [SetPatrolPoint](#config-options-SetPatrolPoint) | bool | false | true | Sets position of spawn as patrol point for spawned creature |
-| [SetFaction](#config-options-SetFaction) | string | | Undead | Assign a specific faction to spawn. If empty uses prefab default |
-| [SetTamed](#config-options-SetTamed) | bool | false | true | When true, mob will be set to tamed status on spawn |
-| [SetTamedCommandable](#config-options-SetTamedCommandable) | bool | false | true | Experimental. When true, will set mob as commandable when tamed. When false, whatever was default for the creature is used. Does not always seem to work for creatures not tameable in vanilla |
+| PrefabName | string | | Troll | Name of prefab to spawn instead of existing |
+| Enabled | bool | true | false | Toggle this template on-off. This means the settings of this template will NOT be applied, it is not a way to disable existing mobs |
+| SpawnAtDay | bool | true | false | Enable spawning during day. |
+| SpawnAtNight | bool | true | false | Enable spawning during night. |
+| LevelMin | int | 1 | 3 | Minimum level of spawn |
+| LevelMax | int | 1 | 15 | Maximum level of spawn |
+| LevelUpChance | float | 15 | 100 | Chance to level up, starting at LevelMin and rolling again for each level gained. Range is 0 to 100 |
+| RespawnTime | float | 20 | 0 | Minutes between checks for respawn. Only one mob can be spawned at time per spawner |
+| TriggerDistance | float | 60 | 100 | Distance of spawner to player to trigger spawning |
+| TriggerNoise | float | 0 | 50 | If not 0, adds a minimum noise required for spawning, on top of distance requirement |
+| SpawnInPlayerBase | bool | false | true | Allow spawning inside player base boundaries |
+| SetPatrolPoint | bool | false | true | Sets position of spawn as patrol point for spawned creature |
+| SetFaction | string | | Undead | Assign a specific faction to spawn. If empty uses prefab default |
+| SetTamed | bool | false | true | When true, mob will be set to tamed status on spawn |
+| SetTamedCommandable | bool | false | true | Experimental. When true, will set mob as commandable when tamed. When false, whatever was default for the creature is used. Does not always seem to work for creatures not tameable in vanilla |
 
 ## Supplemental Files
 

@@ -8,7 +8,7 @@ Want to have a world with ONLY trolls? Possible! (almost)
 Want to have a world where greydwarves only spawn at night? Possible!
 Just want to have more/less of a mob type? Simple modifiers exist!
 
-## <a id="intro-features"></a>Features
+## Features
 
 - Change spawning rates of specific mobs
 - Replace existing spawn configurations throughout the world
@@ -25,7 +25,7 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 	- [MobAILib](https://www.nexusmods.com/valheim/mods/1188)
 	- [Epic Loot](https://valheim.thunderstore.io/package/RandyKnapp/EpicLoot/)
 
-## <a id="intro-explanation"></a>How does it all work?
+## How does it all work?
 
 Valheim's main way of managing spawns work by having multiple types of spawners spread throughout the world.
 
@@ -44,7 +44,7 @@ For SpawnArea spawners, the configuration settings are still in development.
 The mod modification happens at run-time, once for each spawner. Reloading the world resets all changes.
 As the player moves through the world, the game loads in the various spawners, and the mod applies its own settings.
 
-## <a id="intro-client-server"></a>Client / Server
+## Client / Server
 
 Spawn That needs to be installed on all clients (and server) to work.
 
