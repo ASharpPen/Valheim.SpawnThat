@@ -15,7 +15,7 @@ namespace SpawnThat.Spawners.LocalSpawner.Debug;
 [HarmonyPatch(typeof(DungeonDB))]
 internal static class CreatureSpawnerDungeonFileGenerator
 {
-    private const string FileName = "local_spawners_dungeons_pre_changes.txt";
+    private const string FileName = "spawn_that.local_spawners_dungeons_pre_changes.txt";
 
     [HarmonyPatch("Start")]
     [HarmonyPostfix]

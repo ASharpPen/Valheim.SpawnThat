@@ -24,7 +24,7 @@ internal static class TemplateWriter
 
         TomlWriter.WriteToDisk(tomlFile, new()
         {
-            FileName = "spawnarea_spawners_loaded_configs.cfg",
+            FileName = "spawn_that.spawnarea_spawners_loaded_configs.cfg",
             FileDescription = "loaded SpawnArea spawner configs",
             AddComments = ConfigurationManager.GeneralConfig?.SpawnAreaAddCommentsToFile.Value ?? false,
             Header =

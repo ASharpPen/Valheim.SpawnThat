@@ -41,7 +41,7 @@ internal static class WorldSpawnerConfigurationService
             ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileBeforeChanges?.Value == true)
         {
             var preChangeSpawners = spawnLists.SelectMany(x => x.m_spawners).ToList();
-            SpawnDataFileGenerator.WriteToFile(preChangeSpawners, "world_spawners_pre_changes.txt");
+            SpawnDataFileGenerator.WriteToFile(preChangeSpawners, "spawn_that.world_spawners_pre_changes.txt");
         }
 
         if (ConfigurationManager.GeneralConfig?.ClearAllExisting?.Value == true)
@@ -57,7 +57,7 @@ internal static class WorldSpawnerConfigurationService
 
         if (ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileAfterChanges?.Value == true)
         {
-            SpawnDataFileGenerator.WriteToFile(spawnLists.SelectMany(x => x.m_spawners).ToList(), "world_spawners_post_changes.txt", true);
+            SpawnDataFileGenerator.WriteToFile(spawnLists.SelectMany(x => x.m_spawners).ToList(), "spawn_that.world_spawners_post_changes.txt", true);
         }
 
         IsConfigured = true;
