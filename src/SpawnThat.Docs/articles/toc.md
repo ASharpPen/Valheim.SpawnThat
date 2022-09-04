@@ -18,5 +18,6 @@
 ## [Local Spawners By Location](data/local-spawner-location-vanilla.md)
 ## [Local Spawners By Dungeon/Camp Rooms](data/local-spawner-room-vanilla.md)
 ## [World Spawner](data/world-spawner-vanilla.md)
+## [SpawnArea Spawners](data/spawnarea-spawner-vanilla.md)
 
 # [Change Log](change-log.md)
