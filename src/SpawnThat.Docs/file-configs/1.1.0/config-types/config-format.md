@@ -6,6 +6,7 @@ This results in some different behaviour than you would normally see in valheim 
 - Detection of when settings are missing and when settings are empty.
 - Warnings while parsing incorrect config files.
 - Faster load time.
+- No automatic comments for settings. Gotta go to this wiki now. Sorry.
 
 ## Sections
 - `[]` are sections, that will contain all the lines following them, until the next section is reached.
@@ -39,15 +40,23 @@ Whether or not a nested section can be used, and which names are valid, depends 
 
 Section lines always consist of a setting name, followed by a value. 
 Eg.,
-`Setting1 = SettingValue`
+
+```toml
+Setting1 = SettingValue`
+```
 
 If a setting is *not* added, Spawn That will select a value for that setting in the following order:
-    - Other configurations (eg. ones done by other mods), if any are present.
-    - The original value for the entity being modified, if any is being modified.
-    - The default value for that setting 
+
+- Other configurations (eg. ones done by other mods), if any are present.
+- The original value for the entity being modified, if any is being modified.
+- The default value for that setting 
 
 If a setting value is *not* specified, but the setting is:
-`Setting1 = `
+    
+```toml
+Setting1 = 
+```
+
 Spawn That will read that as a desire to revert existing configurations to the original.
 Eg., if a mod is configuring Spawn That to have increased spawn time, adding a corresponding line without setting the value, will make Spawn That remove that increased spawn time and use the original. 
 
@@ -55,3 +64,24 @@ Eg., if a mod is configuring Spawn That to have increased spawn time, adding a c
 
 Decimal numbers are always expected separated by `.`.
 That means 1/10 should be written as `0.1`.
+
+## Comments
+
+Comment lines can be added by starting with any of the following identifiers:
+- `//`
+- `#` 
+- `--` 
+
+Whitespace before it is ignored.
+
+Eg., 
+```toml
+    # Some Comment
+Setting=Value
+```
+
+Lines starting with any of these identifiers are skipped during parsing.
+Comments in same line as normal settings is not supported.
+
+Eg., ```Setting1=Value # Some Comment``` will attempt to read the setting as `Value # Some Comment`, and not just `Value`.
+

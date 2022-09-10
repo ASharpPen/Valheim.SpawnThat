@@ -94,3 +94,15 @@ Known causes of noise:
 - Breaking rocks: 100
 
 Apart from that, every attack will have a hit-noise and swing noise. By default this is 30 and 10, but this could be different for each attack type.
+
+# Daytime
+
+Valheim days work by counting time from 0 (at midnight) to 1. These are some custom periods to make specifying the intervals easier:
+
+- All (0 to 1)
+- Day (0.25 to 0.75)
+- Night (0.75 to 0.25)
+- Morning (0.25 to 0.50)
+- Afternoon (0.50 to 0.75)
+- Midnight (0.90 to 0.10)
+- Midday (0.40 to 0.60)

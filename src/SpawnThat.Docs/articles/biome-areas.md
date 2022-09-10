@@ -83,7 +83,7 @@ Since we have unique id's for each area, we can now look them up, and check if t
 
 Identifying the features can be done by using the console command `spawnthat area`, which will print the area id of the zone the player is currently in.
 
-A more advanced way of retrieving the id's can be done by looking at a full map of id's. The map will automatically be printed on entering the world, if the debug option `PrintAreaMap` is enabled in the [general config](General-Config).
+A more advanced way of retrieving the id's can be done by looking at a full map of id's. The map will automatically be printed on entering the world, if the debug option `PrintAreaMap` is enabled in the [general config](../file-configs/1.1.0/config-types/general-config.md).
 
 The map looks like this:
 

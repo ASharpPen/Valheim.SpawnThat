@@ -1,5 +1,4 @@
 - name: Config Types
-  href: config-types/overview.md
   items:
     - name: Overview
       href: config-types/overview.md
@@ -11,9 +10,14 @@
       href: config-types/world-spawner-config.md
     - name: World Spawner Simple Config
       href: config-types/world-spawner-simple-config.md
+    - name: SpawnArea Spawner Config
+      href: config-types/spawnarea-spawner-config.md
+    - name: Config Format
+      href: config-types/config-format.md
+    - name: Config Load Order
+      href: config-types/load-order.md
 
 - name: Integration Options
-  href: mod-specific/overview.md
   items:
     - name: Creature Level and Loot Control
       href: mod-specific/creature-level-and-loot-control.md
@@ -22,6 +26,8 @@
           href: mod-specific/creature-level-and-loot-control.md#world-spawner-options
         - name: Local Spawners
           href: mod-specific/creature-level-and-loot-control.md#local-spawner-options
+        - name: SpawnArea Spawners
+          href: mod-specific/creature-level-and-loot-control.md#spawnarea-options
         - name: Field Options
           href: mod-specific/creature-level-and-loot-control.md#field-options
     - name: Epic Loot
@@ -40,7 +46,6 @@
           href: mod-specific/mobailib.md#local-spawner-options
 
 - name: Fields
-  href: field-options/field-options.md
   items:
     - name: Biomes
       href: field-options/field-options.md#biomes
@@ -54,3 +59,19 @@
       href: field-options/field-options.md#status-effects
     - name: Noise
       href: field-options/field-options.md#noise
+    - name: Daytime
+      href: field-options/field-options.md#daytime
+
+- name: Tutorials
+  items:
+    - name: Finding Prefab Names
+      href: tutorials/finding-prefab-names.md
+    - name: Creating world spawners
+      href: tutorials/creating-world-spawner.md
+    - name: Modifying modded world spawners
+      href: tutorials/modifying-modded-world-spawner.md
+    - name: Modifying local spawners
+      href: tutorials/modifying-vanilla-local-spawner.md
+    - name: Modifying SpawnArea spawners
+      href: tutorials/modifying-vanilla-spawnarea-spawner.md
+

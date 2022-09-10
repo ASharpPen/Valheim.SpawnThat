@@ -7,7 +7,7 @@ Note, when CLLC is installed, it will generally take over management of difficul
 
 # World Spawner Options
 
-Mod-specific configs can be added to each world spawner as `[WorldSpawner.Index.CreatureLevelAndLootControl]`
+Mod-specific configs can be added to each world spawner as `[WorldSpawner.ID.CreatureLevelAndLootControl]`
 
 Example of a world spawner template, for a boar that will spawn with a fire infusion, when the CLLC world level is high enough.
 
@@ -42,6 +42,32 @@ PrefabName = Boar
 Enabled = true
 
 [Runestone_Boars.Boar.CreatureLevelAndLootControl]
+SetInfusion = Fire
+```
+
+| Setting | Type | Default | Example | Description |
+| --- | --- | --- | --- | --- |
+| ConditionWorldLevelMin | int | -1 | 3 | Minimum CLLC world level for spawn to activate. Negative value disables this condition |
+| ConditionWorldLevelMax | int | -1 | 4 | Maximum CLLC world level for spawn to active. Negative value disables this condition | 
+| SetInfusion | string | | Fire | Assigns the specified infusion to creature spawned. Ignored if empty |
+| SetExtraEffect | string | | Quick | Assigns the specified effect to creature spawned. Ignored if empty. |
+| SetBossAffix | string | | Shielded | Assigns the specified boss affix to creature spawned. May not work for anything but the default 5 bosses. Ignored if empty |
+| UseDefaultLevels | bool | false | true | Use the default LevelMin and LevelMax for level assignment, ignoring the usual CLLC level control |
+
+# SpawnArea Options
+
+Mod-specific configs can be added to each spawnarea spawner spawn as `[Name.ID.CreatureLevelAndLootControl]`.
+
+Example of a greydwarf spawner which will be changed to spawn with a fire infusion.
+
+``` INI
+[GreydwarvesOnFire]
+IdentifyByName = Greydwarf_Nest
+
+[GreydwarvesOnFire.0]
+PrefabName = Greydwarf
+
+[GreydwarvesOnFire.0.CreatureLevelAndLootControl]
 SetInfusion = Fire
 ```
 

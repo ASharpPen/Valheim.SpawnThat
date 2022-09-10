@@ -3,7 +3,14 @@
 General configuration options.
 Belongs to the file `spawn_that.cfg`
 
-```INI
+```toml
+[Datamining]
+
+## Writes all locations loaded to a file, sectioned by the biome in which they can appear.
+# Setting type: Boolean
+# Default value: false
+WriteLocationsToFile = false
+
 [Debug]
 
 ## Enable debug logging.
@@ -31,21 +38,17 @@ PrintBiomeMap = false
 # Default value: false
 PrintFantasticBeastsAndWhereToKillThem = false
 
-[General]
-
-## Disables automatic updating and saving of configurations.
-## This means no helpers will be added, but.. allows you to keep things compact.
-## Note: Can have massive impact on load times.
-# Setting type: Boolean
-# Default value: true
-StopTouchingMyConfigs = true
+## Folder path to write to. Root folder is BepInEx.
+# Setting type: String
+# Default value: Debug
+DebugFileFolder = Debug
 
 [LocalSpawner]
 
-## Dumps local spawners to a file before applying configuration changes.
+## Writes local spawners to a file before applying configuration changes.
 # Setting type: Boolean
 # Default value: false
-WriteSpawnTablesToFileBeforeChanges = true
+WriteSpawnTablesToFileBeforeChanges = false
 
 ## If true, locations with multiple spawners with duplicate creatures will be listed individually, instead of being only one of each creature.
 # Setting type: Boolean
@@ -64,6 +67,19 @@ Enable = true
 # Default value: true
 InitializeWithCreatures = true
 
+[SpawnAreaSpawner]
+
+## Writes SpawnArea spawners to a file before applying configuration changes.
+# Setting type: Boolean
+# Default value: false
+WriteSpawnTablesToFileBeforeChanges = false
+
+## Writes SpawnArea spawner configs loaded in Spawn That to file, before applying to spawners in game.
+## These are the configs loaded from files and set by other mods, after being merged and prepared internally in Spawn That.
+# Setting type: Boolean
+# Default value: false
+WriteConfigsToFile = false
+
 [WorldSpawner]
 
 ## If true, removes all existing world spawner templates.
@@ -76,13 +92,19 @@ ClearAllExisting = false
 # Default value: false
 AlwaysAppend = false
 
-## Dumps world spawner templates to a file, before applying custom changes.
+## Writes world spawner templates to a file, before applying custom changes.
 # Setting type: Boolean
 # Default value: false
-WriteSpawnTablesToFileBeforeChanges = true
+WriteSpawnTablesToFileBeforeChanges = false
 
-## Dumps world spawner templates to a file after applying configuration changes.
+## Writes world spawner templates to a file after applying configuration changes.
 # Setting type: Boolean
 # Default value: false
-WriteSpawnTablesToFileAfterChanges = true
+WriteSpawnTablesToFileAfterChanges = false
+
+## Writes world spawner configs loaded in Spawn That to file, before applying to spawners in game.
+## These are the configs loaded from files and set by other mods, after being merged and prepared internally in Spawn That.
+# Setting type: Boolean
+# Default value: false
+WriteConfigsToFile = false
 ```

@@ -6,7 +6,7 @@ Note, MobAI will most likely completely take over any AI related features, so do
 
 # World Spawner Options
 
-Mod-specific configs can be added to each world spawner as `[WorldSpawner.Index.MobAI]`
+Mod-specific configs can be added to each world spawner as `[WorldSpawner.ID.MobAI]`
 
 Example of a repair boar:
 
@@ -25,7 +25,7 @@ AIConfigFile=MyFixerConfig.json
 | SetAI | string | | Fixer | Name of MobAI to register for spawn. Eg. the defaults 'Fixer' and 'Worker' |
 | AIConfigFile | string | | MyFixerConfig.json | Configuration file to use for the SetAI. Eg. 'MyFixerConfig.json', can include path, but will always start searching from config folder. See MobAI documentation for file setup
 
-# Local Spawners Options
+# Local Spawner Options
 
 Mod-specific configs can be added to each local spawner as `[Location.PrefabName.MobAI]`
 
