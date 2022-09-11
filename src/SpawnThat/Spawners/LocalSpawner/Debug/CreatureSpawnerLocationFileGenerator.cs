@@ -15,7 +15,7 @@ namespace SpawnThat.Spawners.LocalSpawner.Debug;
 [HarmonyPatch(typeof(ZoneSystem))]
 internal static class CreatureSpawnerLocationFileGenerator
 {
-    private const string FileName = "local_spawners_pre_changes.txt";
+    private const string FileName = "spawn_that.local_spawners_pre_changes.txt";
 
     /// <summary>
     /// Patch for scanning all the possible CreatureSpawner's of ZoneSystem.ZoneLocations and dumping as a file that can be directly loaded into configuration.

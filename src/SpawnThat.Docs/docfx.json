@@ -3,7 +3,7 @@
     {
       "src": [
         {
-          "files": [ "**.csproj" ],
+          "files": [ "**Release/**/Valheim.SpawnThat.dll" ],
           "src": "../SpawnThat"
         }
       ],
@@ -16,7 +16,7 @@
       {
         "files": [ "**.yml" ],
         "src": "obj/api/reference",
-        "dest": "api/1.0.0/reference"
+        "dest": "api/reference"
       },
       {
         "files": [

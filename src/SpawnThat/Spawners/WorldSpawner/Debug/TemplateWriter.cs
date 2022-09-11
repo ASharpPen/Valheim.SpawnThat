@@ -12,6 +12,7 @@ using SpawnThat.Spawners.WorldSpawner.Managers;
 using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 using SpawnThat.Options.PositionConditions;
 using SpawnThat.Configuration;
+using static Heightmap;
 
 namespace SpawnThat.Spawners.WorldSpawner.Debug;
 internal static class TemplateWriter
@@ -22,7 +23,7 @@ internal static class TemplateWriter
 
         TomlWriter.WriteToDisk(tomlFile, new()
         {
-            FileName = "world_spawners_loaded_configs.cfg",
+            FileName = "spawn_that.world_spawners_loaded_configs.cfg",
             FileDescription = "loaded world spawner configs",
             AddComments = ConfigurationManager.GeneralConfig?.WorldSpawnerAddCommentsToFile.Value ?? false,
             Header =
@@ -59,6 +60,7 @@ internal static class TemplateWriter
 
             // Default Settings
             config.PrefabName.SetConditionally(template.PrefabName);
+            config.Biomes.SetConditionally(template.BiomeMask?.Split());
             config.HuntPlayer.SetConditionally(template.ModifierHuntPlayer);
             config.MaxSpawned.SetConditionally(template.MaxSpawned);
             config.SpawnInterval.SetConditionally((float?)template.SpawnInterval?.TotalSeconds);

@@ -63,7 +63,8 @@ RespawnTime = 60
 | Setting | Type | Default | Example | Description |
 | --- | --- | --- | --- | --- |
 | PrefabName | string | | Troll | Name of prefab to spawn instead of existing |
-| Enabled | bool | true | false | Toggle this template on-off. This means the settings of this template will NOT be applied, it is not a way to disable existing mobs |
+| Enabled | bool | true | false | Enable/disable this spawner |
+| TemplateEnabled | bool | true | false | Enable/disable this configuration. Does not disable the spawner itself |
 | SpawnAtDay | bool | true | false | Enable spawning during day. |
 | SpawnAtNight | bool | true | false | Enable spawning during night. |
 | LevelMin | int | 1 | 3 | Minimum level of spawn |
@@ -80,9 +81,13 @@ RespawnTime = 60
 
 ## Supplemental Files
 
-Spawn That will load additional configurations from configs with names prefixed with `spawn_that.local_spawners.`.
+Spawn That will load additional configurations from configs with names following the pattern `spawn_that.local_spawners.*.cfg`.
 
 This allows for adding your own custom templates to Spawn That, or simply separate your configs into more manageable pieces.
 Eg. `spawn_that.local_spawners.my_custom_configuration.cfg`
 
 The configurations loaded will be merged with the one loaded from the main files.
+
+Merging may override previously loaded spawner templates.
+
+The `spawn_that.world_spawners_advanced.cfg` is always loaded last, and will therefore override anything it overlaps with. This is to allow mods to use supplemental files for their configs, but let the user have a single spot to add their own overrides.

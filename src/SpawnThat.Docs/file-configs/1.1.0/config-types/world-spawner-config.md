@@ -5,6 +5,10 @@ There are currently 44 default templates, which can be overridden by setting a m
 
 The [general config](general-config.md) contains debugging options, which can be toggled to create a file containing all templates before the mod applies its changes, and after.
 
+The format for a spawner entry is `[WorldSpawner.ID]`. The **ID** being any number from 0 and up. 
+
+If the ID matches an existing entry, it will be modified. If unused, the config will be added as a new world spawner entry.
+
 ## Example
 
 ``` INI 
@@ -59,7 +63,8 @@ HuntPlayer = true
 | Name | string | My spawner | Murder Dwarf 9000 | Just a field for naming the configuration template |
 | TemplateId | string | | Murder_Dwarf_9000 | Technical setting intended for cross-mod identification of mobs spawned by this template. Sets a custom identifier which will be assigned to the spawned mobs ZDO as 'ZDO.Set(\"spawn_template_id\", TemplateIdentifier)'
 | PrefabName | string | Deer | Greydwarf | Prefab name of the entity to spawn |
-| Enabled | bool | true | false | Toggle this template on-off. This means the settings of this template will NOT be applied, it is not a way to disable existing mobs |
+| Enabled | bool | true | false | Enable/disable this spawner entry |
+| TemplateEnabled | bool | true | false | Enable/disable this configuration. This does not disable existing entries, just this configuration itself |
 | Biomes | string | | Meadows, BlackForest | Biomes in which entity can spawn. Leave empty to allow all |
 | HuntPlayer | bool | false | true | Sets AI to hunt a player target |
 | MaxSpawned | int | 1 | 100 | Maximum number of prefab spawned in local surroundings |
@@ -109,7 +114,7 @@ HuntPlayer = true
 
 ## Supplemental
 
-Spawn That will load additional configurations from configs with names prefixed with `spawn_that.world_spawners.`
+Spawn That will load additional configurations from configs with names following the pattern `spawn_that.world_spawners.*.cfg`
 
 This allows for adding your own custom templates to Spawn That, or simply separate your configs into more manageable pieces.
 Eg. `spawn_that.world_spawners.my_custom_configuration.cfg`
@@ -117,3 +122,5 @@ Eg. `spawn_that.world_spawners.my_custom_configuration.cfg`
 The configurations loaded will be merged with the one loaded from the main files.
 
 Merging may override previously loaded spawner templates.
+
+The `spawn_that.world_spawners_advanced.cfg` is always loaded last, and will therefore override anything it overlaps with. This is to allow mods to use supplemental files for their configs, but let the user have a single spot to add their own overrides.

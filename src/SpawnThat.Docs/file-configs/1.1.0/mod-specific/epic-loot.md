@@ -5,7 +5,7 @@ See the mod page for more in-depth documentation.
 
 # World Spawner Options
 
-Mod-specific configs can be added to each world spawner as `[WorldSpawner.Index.EpicLoot]`
+Mod-specific configs can be added to each world spawner as `[WorldSpawner.ID.EpicLoot]`
 
 | Setting | Type | Default | Example | Description |
 | --- | --- | --- | --- | --- |

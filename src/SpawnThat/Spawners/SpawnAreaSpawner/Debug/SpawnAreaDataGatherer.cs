@@ -31,7 +31,7 @@ internal static class SpawnAreaDataGatherer
 
             var serialized = strBuilder.ToString();
 
-            DebugFileWriter.WriteFile(serialized, "spawnarea_spawners_pre_changes.txt", "SpawnArea spawners and where they exist");
+            DebugFileWriter.WriteFile(serialized, "spawn_that.spawnarea_spawners_pre_changes.txt", "SpawnArea spawners and where they exist");
         }
     }
 

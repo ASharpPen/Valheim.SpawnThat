@@ -6,7 +6,7 @@ Note, MobAI will most likely completely take over any AI related features, so do
 
 # World Spawner Options
 
-Mod-specific configs can be added to each world spawner as `[WorldSpawner.Index.MobAI]`
+Mod-specific configs can be added to each world spawner as `[WorldSpawner.ID.MobAI]`
 
 Example of a repair boar:
 
