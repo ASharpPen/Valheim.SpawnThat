@@ -3,7 +3,7 @@
 World spawner templates are managed through the `spawn_that.world_spawners_advanced.cfg` file.
 There are currently 44 default templates, which can be overridden by setting a matching index (starting from 0).
 
-The [general config](general-config) contains debugging options, which can be toggled to create a file containing all templates before the mod applies its changes, and after.
+The [general config](general-config.md) contains debugging options, which can be toggled to create a file containing all templates before the mod applies its changes, and after.
 
 ## Example
 

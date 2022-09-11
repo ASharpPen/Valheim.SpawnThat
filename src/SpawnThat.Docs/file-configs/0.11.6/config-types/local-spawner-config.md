@@ -20,7 +20,7 @@ To override the boar spawners at their runestone, use
 
 Every combination of Location and PrefabName must be unique.
 
-The [general config](General-Config) contains debugging options, which can be toggled to create a file containing all default local spawner configs before the mod applies its changes.
+The [general config](general-config.md) contains debugging options, which can be toggled to create a file containing all default local spawner configs before the mod applies its changes.
 This can also help identify location names, as well as dungeon/dungeon-room names.
 
 Requirements:

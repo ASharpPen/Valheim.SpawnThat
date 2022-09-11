@@ -1,7 +1,32 @@
+- name: General
+  items:
+    - name: Intro
+      href: general/intro.md
+    - name: Config Type Overview
+      href: general/overview.md
+    - name: Config Load Order
+      href: general/load-order.md
+    - name: Config Format
+      href: general/config-format.md
+
+- name: Tutorials
+  items:
+    - name: Finding Prefab Names
+      href: tutorials/finding-prefab-names.md
+    - name: Creating world spawners
+      href: tutorials/creating-world-spawner.md
+    - name: Modifying modded world spawners
+      href: tutorials/modifying-modded-world-spawner.md
+    - name: Modifying local spawners
+      href: tutorials/modifying-vanilla-local-spawner.md
+    - name: Modifying SpawnArea spawners
+      href: tutorials/modifying-vanilla-spawnarea-spawner.md
+
+- name: Console Commands
+  href: console-commands.md
+
 - name: Config Types
   items:
-    - name: Overview
-      href: config-types/overview.md
     - name: General Config
       href: config-types/general-config.md
     - name: Local Spawner Config
@@ -12,10 +37,6 @@
       href: config-types/world-spawner-simple-config.md
     - name: SpawnArea Spawner Config
       href: config-types/spawnarea-spawner-config.md
-    - name: Config Format
-      href: config-types/config-format.md
-    - name: Config Load Order
-      href: config-types/load-order.md
 
 - name: Integration Options
   items:
@@ -62,16 +83,23 @@
     - name: Daytime
       href: field-options/field-options.md#daytime
 
-- name: Tutorials
+- name: Biome Areas
+  href: biome-areas.md
   items:
-    - name: Finding Prefab Names
-      href: tutorials/finding-prefab-names.md
-    - name: Creating world spawners
-      href: tutorials/creating-world-spawner.md
-    - name: Modifying modded world spawners
-      href: tutorials/modifying-modded-world-spawner.md
-    - name: Modifying local spawners
-      href: tutorials/modifying-vanilla-local-spawner.md
-    - name: Modifying SpawnArea spawners
-      href: tutorials/modifying-vanilla-spawnarea-spawner.md
+    - name: Spawn chance by area
+      href: biome-areas.md#spawn-chance-by-area
+    - name: Spawn area id's
+      href: biome-areas.md#spawn-area-ids
 
+- name: Data
+  items:
+    - name: Location Names
+      href: data/locations-by-biome.md
+    - name: Local Spawners By Location
+      href: data/local-spawner-location-vanilla.md
+    - name: Local Spawners By Dungeon/Camp Rooms
+      href: data/local-spawner-room-vanilla.md
+    - name: World Spawner
+      href: data/world-spawner-vanilla.md
+    - name: SpawnArea Spawners
+      href: data/spawnarea-spawner-vanilla.md

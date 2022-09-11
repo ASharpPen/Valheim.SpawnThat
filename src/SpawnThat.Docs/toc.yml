@@ -1,8 +1,4 @@
-
-- name: Articles
-  href: articles/
-
-- name: File Configs
+- name: The Docs
   dropdown: true
   items:
     - name: 1.1.0
@@ -14,6 +10,9 @@
 
 - name: API Documentation
   href: api/
+
+- name: Changelog
+  href: change-log.md
 
 - name: Github
   href: https://github.com/ASharpPen/Valheim.SpawnThat/

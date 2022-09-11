@@ -32,7 +32,7 @@ Lets get the deer spawns re-enabled, restrict the troll entry and disable the dr
 
 Open up the file `spawn_that.world_spawners_advanced.cfg`, in the BepInEx/config folder.
 
-Any configuration added to this file will be loaded last by Spawn That (see [config load order](../config-types/load-order.md)), and will therefore allow for overriding any configuration coming from other files or mods.
+Any configuration added to this file will be loaded last by Spawn That (see [config load order](../general/load-order.md)), and will therefore allow for overriding any configuration coming from other files or mods.
 
 To re-enable the deer, we add this to the file:
 

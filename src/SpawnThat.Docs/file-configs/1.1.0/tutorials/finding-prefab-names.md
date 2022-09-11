@@ -21,7 +21,7 @@ Find the creature using the excellent list from the [Jotunn documentation](https
   - Run the game, and enter a world.
   - There should now be a file called `spawn_that.world_spawners_pre_changes.txt` in your `BepInEx/Debug/` folder, which have extracted data from the game to get the existing world spawner settings, including their prefab name.
 
-Alternatively, a pre-extracted version exists [here](../../../articles/data/world-spawner-vanilla.md).
+Alternatively, a pre-extracted version exists [here](../data/world-spawner-vanilla.md).
 
 ### 3.2 Spawns in dungeons
   - Open `spawn_that.cfg` in your BepInEx/Configs folder.
@@ -31,7 +31,7 @@ Alternatively, a pre-extracted version exists [here](../../../articles/data/worl
   - Run the game, and enter a world.
   - There should now be a file called `spawn_that.local_spawners_dungeons_pre_changes.txt` in your `BepInEx/Debug/` folder, which have extracted data from the game to get the existing world spawner settings, including their prefab name.
 
-Alternatively, a pre-extracted version exists [here](../../../articles/data/local-spawner-room-vanilla.md).
+Alternatively, a pre-extracted version exists [here](../data/local-spawner-room-vanilla.md).
 
 ### 3.3 Spawns at points of interest
   - Open `spawn_that.cfg` in your BepInEx/Configs folder.
@@ -41,4 +41,4 @@ Alternatively, a pre-extracted version exists [here](../../../articles/data/loca
   - Run the game, and enter a world.
   - There should now be a file called `spawn_that.local_spawners_pre_changes.txt` in your `BepInEx/Debug/` folder, which have extracted data from the game to get the existing world spawner settings, including their prefab name.
 
-  Alternatively, a pre-extracted version exists [here](../../../articles/data/local-spawner-location-vanilla.md).
+  Alternatively, a pre-extracted version exists [here](../data/local-spawner-location-vanilla.md).

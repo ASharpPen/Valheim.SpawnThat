@@ -87,7 +87,7 @@ LevelMax = 3
 | ConditionNearbyPlayersNoiseThreshold | float | 0 | 13.5 | Checks if any nearby players have accumulated noise at or above the threshold |
 | ConditionNearbyPlayersStatus | string | | Wet, Burning | Checks if any nearbly players have any of the listed status effects |
 | ConditionAreaSpawnChance | float | 100 | 0.6 | Chance for spawn to spawn at all in the area. The chance will be rolled once for the area. Range is 0 to 100. Eg. if a whole area of BlackForest rolls higher than the indicated chance, this spawn template will never be active in that forest. Another BlackForest will have another roll however, that may activate this template there. Chance is rolled based on world seed, area id and template index |
-| ConditionLocation | string | | Runestone_Boars, FireHole | List of locations in which this spawn is enabled. If empty, allows all. See [Locations](../../../articles/data/locations-by-biome.md) |
+| ConditionLocation | string | | Runestone_Boars, FireHole | List of locations in which this spawn is enabled. If empty, allows all. See [Locations](../data/locations-by-biome.md) |
 | ConditionAreaIds | integer | | 1, 123, 543 | Advanced feature. List of area id's in which the template is valid. Note: If ConditionSpawnChanceInArea is not 100 or disabled, it will still roll area chance |
 | ConditionBiome | string | | Meadows, Mountain | Biomes in which entity can spawn. Leave empty for all. See [Biomes](../field-options/field-options.md#biomes)) |
 | ConditionAllOfGlobalKeys | string | | defeated_eikthyr, KilledTroll | Global keys required to allow spawning. All listed keys must be present. Ignored if empty. See [Global Keys](../field-options/field-options.md#global-keys) |
