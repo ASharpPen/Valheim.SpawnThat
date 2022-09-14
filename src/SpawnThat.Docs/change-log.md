@@ -1,7 +1,7 @@
-# Changelog: 
+# Changelog
 
 - v1.1.0:
-	- Added supprt for new SpawnArea spawner type (eg., greydwarf nests).
+	- Added support for new SpawnArea spawner type (eg., greydwarf nests).
 	- Added custom config file reader. This should hopefully make things more intuitive and less volatile. It does however mean that comments are longer added automatically.
 	- Swapped file load and merge order, to make default files override supplemental, as was originally intended (eg., `spawn_that.world_spawners_advanced.cfg` gets loaded after
 	- Added datamining for locations, as an option in general config.
@@ -9,6 +9,7 @@
 	- Fixed bug with attempting to load files as configs if they fit the expected name pattern, even though they didn't end with '.cfg'.
 	- Fixed bug where disabling world spawner with `Enabled` disabled the config instead.
 `spawn_that.world_spawners.something.cfg` now).
+	- Fixed potential error when adding a new world spawner without specifying a prefab name.
 	- A LOT of boring internal changes, logging and documentation that noone will probably ever see or care about.
 
 - v1.0.5:

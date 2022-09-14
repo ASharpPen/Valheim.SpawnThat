@@ -140,6 +140,10 @@ namespace SpawnThatTestMod
                 config.ConfigureWorldSpawner(0)
                     .SetEnabled(false)
                     .SetTemplateName("Disabled deer");
+
+                config.ConfigureWorldSpawner(0)
+                    .SetConditionBiomes(Heightmap.Biome.Mountain);
+
             }
             catch (Exception e)
             {

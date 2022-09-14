@@ -113,11 +113,14 @@ internal static class WorldSpawnerConfigurationService
                 id >= spawners.Count)
             {
                 entry = new SpawnSystem.SpawnData();
-                mainSpawnList.m_spawners.Add(entry);
 
                 Log.LogTrace($"Creating spawner entry for template [{id}:{template.PrefabName}]");
 
-                ConfigureNewEntry(entry, template);
+                // Add entry only if configuration succeeds
+                if (TryConfigureNewEntry(entry, template))
+                {
+                    mainSpawnList.m_spawners.Add(entry);
+                }
             }
             else
             {
@@ -163,12 +166,9 @@ internal static class WorldSpawnerConfigurationService
         }
     }
 
-    private static void ConfigureNewEntry(SpawnSystem.SpawnData entry, WorldSpawnTemplate template)
+    private static bool TryConfigureNewEntry(SpawnSystem.SpawnData entry, WorldSpawnTemplate template)
     {
-        if (!template.Enabled)
-        {
-            entry.m_enabled = template.Enabled;
-        }
+        Configure(ref entry.m_enabled, template.Enabled);
 
         GameObject prefab = entry.m_prefab;
 
@@ -180,13 +180,24 @@ internal static class WorldSpawnerConfigurationService
             {
                 Log.LogWarning($"Unable to find prefab '{template.PrefabName}' for {template.PrefabName}. Skipping world spawn template {template.TemplateName}");
                 DetectedUnableToFindPrefab = true;
-                return;
+                return false;
             }
+        }
+        else if (prefab.IsNull())
+        {
+            var warning = $"World spawn template with ID '{template.Index}' ";
+            if (!string.IsNullOrWhiteSpace(template.TemplateName))
+            {
+                warning += $"and name '{template.TemplateName}' ";
+            }
+            warning += $"is missing a PrefabName setting. Skipping creation of spawn entry for template";
+
+            Log.LogWarning(warning);
+            return false;
         }
 
         Configure(ref entry.m_prefab, prefab);
         Configure(ref entry.m_biome, template.BiomeMask, (Heightmap.Biome)int.MaxValue);
-        Configure(ref entry.m_enabled, template.Enabled);
         Configure(ref entry.m_groundOffset, template.SpawnAtDistanceToGround, 0.5f);
         Configure(ref entry.m_groupRadius, template.PackSpawnCircleRadius, 3f);
         Configure(ref entry.m_groupSizeMin, template.PackSizeMin, 1);
@@ -214,6 +225,8 @@ internal static class WorldSpawnerConfigurationService
         Configure(ref entry.m_spawnInterval, (float?)template.SpawnInterval?.TotalSeconds, 90f);
         Configure(ref entry.m_spawnRadiusMin, template.SpawnAtDistanceToPlayerMin, 0);
         Configure(ref entry.m_spawnRadiusMax, template.SpawnAtDistanceToPlayerMax, 0);
+
+        return true;
     }
 
     private static void ConfigureExistingEntry(SpawnSystem.SpawnData entry, WorldSpawnTemplate template)
