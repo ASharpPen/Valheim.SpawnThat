@@ -49,6 +49,7 @@ public abstract class CompressedPackage
 
         var serialized = serializerBuilder
             .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults | DefaultValuesHandling.OmitEmptyCollections)
+            .WithTypeConverter(new YamlEnumWriter())
             .Build()
             .Serialize(this);
 

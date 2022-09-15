@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if DEBUG && FALSE
+using System;
 using SpawnThat.Core;
 using SpawnThat.Utilities.Extensions;
 using UnityEngine;
@@ -102,3 +103,4 @@ internal abstract class Gizmo : MonoBehaviour
         return renderer;
     }
 }
+#endif

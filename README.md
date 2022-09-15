@@ -114,6 +114,9 @@ If you feel like it
 <a href="https://www.buymeacoffee.com/asharppen"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=asharppen&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 # Changelog: 
+- v1.0.6:
+	- Fixed config sync for expanded enums. This should resolves an issue when using biomes from Expand World on servers.
+	- Fixed level calculcation used when using the CLLC integration setting UseDefaultLevels. 
 - v1.0.5:
 	- Improved world spawner debug file output. Now tries to output not just the default settings, but the custom too. Including integrations.
 	- Fixed world spawner post change debug file not showing the configuration ID's, but instead the internal index they were added at.

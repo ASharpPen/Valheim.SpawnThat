@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if DEBUG && FALSE
+using System;
 using UnityEngine;
 
 namespace SpawnThat.Debugging.Gizmos;
@@ -80,3 +81,4 @@ internal class LineGizmo : Gizmo
         Renderer.SetPositions(segments);
     }
 }
+#endif
