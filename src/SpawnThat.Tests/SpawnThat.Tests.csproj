@@ -10,9 +10,6 @@
     <PackageReference Include="Pfhoenix.Valheim.ModProjectReferences" Version="1.0.11" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Core\Networking\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SpawnThat\SpawnThat.csproj" />
   </ItemGroup>
 </Project>
