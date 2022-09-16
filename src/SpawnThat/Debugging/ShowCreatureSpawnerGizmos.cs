@@ -1,4 +1,4 @@
-﻿#if DEBUG
+﻿#if DEBUG && FALSE
 using HarmonyLib;
 using SpawnThat.Debugging.Gizmos;
 using UnityEngine;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if DEBUG && FALSE
+using System;
 using UnityEngine;
 
 namespace SpawnThat.Debugging.Gizmos;
@@ -144,3 +145,4 @@ internal class SphereGizmo : Gizmo
         return circleSegments;
     }
 }
+#endif

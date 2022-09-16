@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using SpawnThat.Caches;
+using SpawnThat.Core;
 
 namespace SpawnThat.Options.Modifiers;
 
@@ -38,7 +39,7 @@ public class ModifierDefaultRollLevel : ISpawnModifier
 
     public void Modify(GameObject entity, ZDO entityZdo)
     {
-        if (MaxLevel <= 1)
+        if (MaxLevel < 1)
         {
             return;
         }
@@ -59,14 +60,12 @@ public class ModifierDefaultRollLevel : ISpawnModifier
             }
         }
 
-        if (minLevel > 1)
-        {
-            Character character = ComponentCache.Get<Character>(entity);
+        Character character = ComponentCache.Get<Character>(entity);
 
-            if (character != null && character)
-            {
-                character.SetLevel(minLevel);
-            }
+        if (character != null && character)
+        {
+            Log.LogTrace($"{nameof(ModifierDefaultRollLevel)}: Setting level to {level}");
+            character.SetLevel(level);
         }
     }
 }

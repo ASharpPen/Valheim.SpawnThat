@@ -9,9 +9,6 @@
     <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Core\Networking\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SpawnThat\SpawnThat.csproj" />
   </ItemGroup>
   <ItemGroup>
