@@ -1,4 +1,4 @@
-﻿
+
 # Spawn That! 
 
 This is an advanced tool for configuring all world spawners.
