@@ -8,7 +8,7 @@
     <title>Local Spawner Config </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Local Spawner Config ">
-    <meta name="generator" content="docfx 2.59.0.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
@@ -80,7 +80,7 @@ You can also use a room name, if more fine control is necessary for villages, du
 To override the boar spawners at their runestone, use 
 <code>[Runestone_Boars.Boar]</code></p>
 <p>Every combination of Location and PrefabName must be unique.</p>
-<p>The <a href="General-Config">general config</a> contains debugging options, which can be toggled to create a file containing all default local spawner configs before the mod applies its changes.
+<p>The <a href="general-config.html">general config</a> contains debugging options, which can be toggled to create a file containing all default local spawner configs before the mod applies its changes.
 This can also help identify location names, as well as dungeon/dungeon-room names.</p>
 <p>Requirements:</p>
 <ul>
@@ -125,112 +125,112 @@ RespawnTime = 60
 </thead>
 <tbody>
 <tr>
-<td><a href="#config-options-PrefabName">PrefabName</a></td>
+<td>PrefabName</td>
 <td>string</td>
 <td></td>
 <td>Troll</td>
 <td>Name of prefab to spawn instead of existing</td>
 </tr>
 <tr>
-<td><a href="#config-options-Enabled">Enabled</a></td>
+<td>Enabled</td>
 <td>bool</td>
 <td>true</td>
 <td>false</td>
 <td>Enable/disable this spawner</td>
 </tr>
 <tr>
-<td><a href="#config-options-TemplateEnabled">TemplateEnabled</a></td>
+<td>TemplateEnabled</td>
 <td>bool</td>
 <td>true</td>
 <td>false</td>
 <td>Enable/disable this configuration. Does not disable the spawner itself</td>
 </tr>
 <tr>
-<td><a href="#config-options-SpawnAtDay">SpawnAtDay</a></td>
+<td>SpawnAtDay</td>
 <td>bool</td>
 <td>true</td>
 <td>false</td>
 <td>Enable spawning during day.</td>
 </tr>
 <tr>
-<td><a href="#config-options-SpawnAtNight">SpawnAtNight</a></td>
+<td>SpawnAtNight</td>
 <td>bool</td>
 <td>true</td>
 <td>false</td>
 <td>Enable spawning during night.</td>
 </tr>
 <tr>
-<td><a href="#config-options-LevelMin">LevelMin</a></td>
+<td>LevelMin</td>
 <td>int</td>
 <td>1</td>
 <td>3</td>
 <td>Minimum level of spawn</td>
 </tr>
 <tr>
-<td><a href="#config-options-LevelMax">LevelMax</a></td>
+<td>LevelMax</td>
 <td>int</td>
 <td>1</td>
 <td>15</td>
 <td>Maximum level of spawn</td>
 </tr>
 <tr>
-<td><a href="#config-options-LevelUpChance">LevelUpChance</a></td>
+<td>LevelUpChance</td>
 <td>float</td>
 <td>15</td>
 <td>100</td>
 <td>Chance to level up, starting at LevelMin and rolling again for each level gained. Range is 0 to 100</td>
 </tr>
 <tr>
-<td><a href="#config-options-RespawnTime">RespawnTime</a></td>
+<td>RespawnTime</td>
 <td>float</td>
 <td>20</td>
 <td>0</td>
 <td>Minutes between checks for respawn. Only one mob can be spawned at time per spawner</td>
 </tr>
 <tr>
-<td><a href="#config-options-TriggerDistance">TriggerDistance</a></td>
+<td>TriggerDistance</td>
 <td>float</td>
 <td>60</td>
 <td>100</td>
 <td>Distance of spawner to player to trigger spawning</td>
 </tr>
 <tr>
-<td><a href="#config-options-TriggerNoise">TriggerNoise</a></td>
+<td>TriggerNoise</td>
 <td>float</td>
 <td>0</td>
 <td>50</td>
 <td>If not 0, adds a minimum noise required for spawning, on top of distance requirement</td>
 </tr>
 <tr>
-<td><a href="#config-options-SpawnInPlayerBase">SpawnInPlayerBase</a></td>
+<td>SpawnInPlayerBase</td>
 <td>bool</td>
 <td>false</td>
 <td>true</td>
 <td>Allow spawning inside player base boundaries</td>
 </tr>
 <tr>
-<td><a href="#config-options-SetPatrolPoint">SetPatrolPoint</a></td>
+<td>SetPatrolPoint</td>
 <td>bool</td>
 <td>false</td>
 <td>true</td>
 <td>Sets position of spawn as patrol point for spawned creature</td>
 </tr>
 <tr>
-<td><a href="#config-options-SetFaction">SetFaction</a></td>
+<td>SetFaction</td>
 <td>string</td>
 <td></td>
 <td>Undead</td>
 <td>Assign a specific faction to spawn. If empty uses prefab default</td>
 </tr>
 <tr>
-<td><a href="#config-options-SetTamed">SetTamed</a></td>
+<td>SetTamed</td>
 <td>bool</td>
 <td>false</td>
 <td>true</td>
 <td>When true, mob will be set to tamed status on spawn</td>
 </tr>
 <tr>
-<td><a href="#config-options-SetTamedCommandable">SetTamedCommandable</a></td>
+<td>SetTamedCommandable</td>
 <td>bool</td>
 <td>false</td>
 <td>true</td>
@@ -251,7 +251,7 @@ Eg. <code>spawn_that.local_spawners.my_custom_configuration.cfg</code></p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/hotfix/src/SpawnThat.Docs/file-configs/1.0.0/config-types/local-spawner-config.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/development/src/SpawnThat.Docs/file-configs/1.0.0/config-types/local-spawner-config.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

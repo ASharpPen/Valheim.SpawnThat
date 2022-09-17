@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Config Format </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Config Format ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="config-format">Config Format</h1>
+
+<p>All <code>.cfg</code> from Spawn That (apart from <code>spawn_that.cfg</code>) are loaded using a custom parser.</p>
+<p>This results in some different behaviour than you would normally see in valheim config files.</p>
+<ul>
+<li>Detection of when settings are missing and when settings are empty.</li>
+<li>Warnings while parsing incorrect config files.</li>
+<li>Faster load time.</li>
+<li>No automatic comments for settings. Gotta go to this wiki now. Sorry.</li>
+</ul>
+<h2 id="sections">Sections</h2>
+<ul>
+<li><p><code>[]</code> are sections, that will contain all the lines following them, until the next section is reached.</p>
+<ul>
+<li><p>Eg., The section <code>SomeSectionName</code> will get the settings <code>Line1</code> and <code>Line2</code> assigned to it. </p>
+<pre><code class="lang-INI">[SomeSectionName]
+Line1 = Value1
+Line2 = Value2
+
+[SomeOtherSectionName]
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h2 id="section-nesting">Section Nesting</h2>
+<p>Sections can be &quot;nested&quot;, by adding dots (<code>.</code>) to the section name. This will indicate the hierarchy they are in.
+This is also how Spawn That makes lists.</p>
+<p>Eg.,</p>
+<pre><code class="lang-INI">[TopLevel]
+Line1 = Value1
+
+[TopLevel.LowerLevel]
+Line1 = Value1
+</code></pre><p>Means that TopLevel will have a single line, but also an extra section associated, which has its own line.</p>
+<p>Whether or not a nested section can be used, and which names are valid, depends on the specic configuration file in question.</p>
+<h2 id="section-lines">Section lines</h2>
+<p>Section lines always consist of a setting name, followed by a value. 
+Eg.,</p>
+<pre><code class="lang-toml">Setting1 = SettingValue`
+</code></pre><p>If a setting is <em>not</em> added, Spawn That will select a value for that setting in the following order:</p>
+<ul>
+<li>Other configurations (eg. ones done by other mods), if any are present.</li>
+<li>The original value for the entity being modified, if any is being modified.</li>
+<li>The default value for that setting </li>
+</ul>
+<p>If a setting value is <em>not</em> specified, but the setting is:</p>
+<pre><code class="lang-toml">Setting1 = 
+</code></pre><p>Spawn That will read that as a desire to revert existing configurations to the original.
+Eg., if a mod is configuring Spawn That to have increased spawn time, adding a corresponding line without setting the value, will make Spawn That remove that increased spawn time and use the original. </p>
+<h2 id="decimal-numbers">Decimal Numbers</h2>
+<p>Decimal numbers are always expected separated by <code>.</code>.
+That means 1/10 should be written as <code>0.1</code>.</p>
+<h2 id="comments">Comments</h2>
+<p>Comment lines can be added by starting with any of the following identifiers:</p>
+<ul>
+<li><code>//</code></li>
+<li><code>#</code> </li>
+<li><code>--</code> </li>
+</ul>
+<p>Whitespace before it is ignored.</p>
+<p>Eg., </p>
+<pre><code class="lang-toml">    # Some Comment
+Setting=Value
+</code></pre><p>Lines starting with any of these identifiers are skipped during parsing.
+Comments in same line as normal settings is not supported.</p>
+<p>Eg., <code>Setting1=Value # Some Comment</code> will attempt to read the setting as <code>Value # Some Comment</code>, and not just <code>Value</code>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/development/src/SpawnThat.Docs/file-configs/1.1.0/general/config-format.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../../../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

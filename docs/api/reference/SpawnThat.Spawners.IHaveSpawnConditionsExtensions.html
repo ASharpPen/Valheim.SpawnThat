@@ -1,0 +1,3249 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class IHaveSpawnConditionsExtensions
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class IHaveSpawnConditionsExtensions
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions">
+  
+  
+  <h1 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions" class="text-break">Class IHaveSpawnConditionsExtensions
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">IHaveSpawnConditionsExtensions</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SpawnThat.Spawners.html">SpawnThat.Spawners</a></h6>
+  <h6><strong>Assembly</strong>: Valheim.SpawnThat.dll</h6>
+  <h5 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class IHaveSpawnConditionsExtensions</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAllOfGlobalKeys__1___0_SpawnThat_Utilities_Enums_GlobalKey___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAllOfGlobalKeys%60%601(%60%600%2CSpawnThat.Utilities.Enums.GlobalKey%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L286">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAllOfGlobalKeys_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAllOfGlobalKeys*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAllOfGlobalKeys__1___0_SpawnThat_Utilities_Enums_GlobalKey___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAllOfGlobalKeys``1(``0,SpawnThat.Utilities.Enums.GlobalKey[])">SetConditionAllOfGlobalKeys&lt;T&gt;(T, GlobalKey[])</h4>
+  <div class="markdown level1 summary"><p>Sets known vanilla global keys which must all be present for spawning to be active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionAllOfGlobalKeys&lt;T&gt;(this T builder, params GlobalKey[] globalKeys)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SpawnThat.Utilities.Enums.GlobalKey.html">GlobalKey</a>[]</td>
+        <td><span class="parametername">globalKeys</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAllOfGlobalKeys__1___0_System_Collections_Generic_IEnumerable_SpawnThat_Utilities_Enums_GlobalKey__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAllOfGlobalKeys%60%601(%60%600%2CSystem.Collections.Generic.IEnumerable%7BSpawnThat.Utilities.Enums.GlobalKey%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L296">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAllOfGlobalKeys_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAllOfGlobalKeys*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAllOfGlobalKeys__1___0_System_Collections_Generic_IEnumerable_SpawnThat_Utilities_Enums_GlobalKey__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAllOfGlobalKeys``1(``0,System.Collections.Generic.IEnumerable{SpawnThat.Utilities.Enums.GlobalKey})">SetConditionAllOfGlobalKeys&lt;T&gt;(T, IEnumerable&lt;GlobalKey&gt;)</h4>
+  <div class="markdown level1 summary"><p>Sets known vanilla global keys which must all be present for spawning to be active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionAllOfGlobalKeys&lt;T&gt;(this T builder, IEnumerable&lt;GlobalKey&gt; globalKeys)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="SpawnThat.Utilities.Enums.GlobalKey.html">GlobalKey</a>&gt;</td>
+        <td><span class="parametername">globalKeys</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAllOfGlobalKeys__1___0_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAllOfGlobalKeys%60%601(%60%600%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L276">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAllOfGlobalKeys_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAllOfGlobalKeys*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAllOfGlobalKeys__1___0_System_Collections_Generic_IEnumerable_System_String__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAllOfGlobalKeys``1(``0,System.Collections.Generic.IEnumerable{System.String})">SetConditionAllOfGlobalKeys&lt;T&gt;(T, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Sets global keys which must all be present for spawning to be active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionAllOfGlobalKeys&lt;T&gt;(this T builder, IEnumerable&lt;string&gt; globalKeys)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">globalKeys</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAllOfGlobalKeys__1___0_System_String___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAllOfGlobalKeys%60%601(%60%600%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L266">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAllOfGlobalKeys_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAllOfGlobalKeys*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAllOfGlobalKeys__1___0_System_String___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAllOfGlobalKeys``1(``0,System.String[])">SetConditionAllOfGlobalKeys&lt;T&gt;(T, String[])</h4>
+  <div class="markdown level1 summary"><p>Sets global keys which must all be present for spawning to be active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionAllOfGlobalKeys&lt;T&gt;(this T builder, params string[] globalKeys)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">globalKeys</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAltitude__1___0_System_Nullable_System_Single__System_Nullable_System_Single__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAltitude%60%601(%60%600%2CSystem.Nullable%7BSystem.Single%7D%2CSystem.Nullable%7BSystem.Single%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L25">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAltitude_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAltitude*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAltitude__1___0_System_Nullable_System_Single__System_Nullable_System_Single__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAltitude``1(``0,System.Nullable{System.Single},System.Nullable{System.Single})">SetConditionAltitude&lt;T&gt;(T, Nullable&lt;Single&gt;, Nullable&lt;Single&gt;)</h4>
+  <div class="markdown level1 summary"><p> Set allowed altitude range in which spawner is active. </p>
+<p> 
+    Altitude is calculated as the spawners vertical distance to water-level.
+    Meaning altitude 0 is at the water surface. 
+    If negative, it means below water, positive means above.
+</p>
+<p> 
+    Note: Depending on spawner type/settings, spawning can still be done at other altitudes. 
+    Use <see cref="!:PositionConditionAltitude"></see> to control the allowed spawn positions.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionAltitude&lt;T&gt;(this T builder, float? min = null, float? max = null)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td><span class="parametername">min</span></td>
+        <td><p>Sets minimum altitude for spawner to be active. Ignored if null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td><span class="parametername">max</span></td>
+        <td><p>Sets maximum altitude for spawner to be active. Ignored if null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAnyOfGlobalKeys__1___0_SpawnThat_Utilities_Enums_GlobalKey___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAnyOfGlobalKeys%60%601(%60%600%2CSpawnThat.Utilities.Enums.GlobalKey%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L246">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAnyOfGlobalKeys_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAnyOfGlobalKeys*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAnyOfGlobalKeys__1___0_SpawnThat_Utilities_Enums_GlobalKey___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAnyOfGlobalKeys``1(``0,SpawnThat.Utilities.Enums.GlobalKey[])">SetConditionAnyOfGlobalKeys&lt;T&gt;(T, GlobalKey[])</h4>
+  <div class="markdown level1 summary"><p>Set list of known vanilla global keys, where spawning is active if any are present.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionAnyOfGlobalKeys&lt;T&gt;(this T builder, params GlobalKey[] globalKeys)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SpawnThat.Utilities.Enums.GlobalKey.html">GlobalKey</a>[]</td>
+        <td><span class="parametername">globalKeys</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAnyOfGlobalKeys__1___0_System_Collections_Generic_IEnumerable_SpawnThat_Utilities_Enums_GlobalKey__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAnyOfGlobalKeys%60%601(%60%600%2CSystem.Collections.Generic.IEnumerable%7BSpawnThat.Utilities.Enums.GlobalKey%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L256">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAnyOfGlobalKeys_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAnyOfGlobalKeys*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAnyOfGlobalKeys__1___0_System_Collections_Generic_IEnumerable_SpawnThat_Utilities_Enums_GlobalKey__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAnyOfGlobalKeys``1(``0,System.Collections.Generic.IEnumerable{SpawnThat.Utilities.Enums.GlobalKey})">SetConditionAnyOfGlobalKeys&lt;T&gt;(T, IEnumerable&lt;GlobalKey&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set list of known vanilla global keys, where spawning is active if any are present.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionAnyOfGlobalKeys&lt;T&gt;(this T builder, IEnumerable&lt;GlobalKey&gt; globalKeys)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="SpawnThat.Utilities.Enums.GlobalKey.html">GlobalKey</a>&gt;</td>
+        <td><span class="parametername">globalKeys</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAnyOfGlobalKeys__1___0_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAnyOfGlobalKeys%60%601(%60%600%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L236">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAnyOfGlobalKeys_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAnyOfGlobalKeys*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAnyOfGlobalKeys__1___0_System_Collections_Generic_IEnumerable_System_String__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAnyOfGlobalKeys``1(``0,System.Collections.Generic.IEnumerable{System.String})">SetConditionAnyOfGlobalKeys&lt;T&gt;(T, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set list of global keys, where spawning is active if any are present.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionAnyOfGlobalKeys&lt;T&gt;(this T builder, IEnumerable&lt;string&gt; globalKeys)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">globalKeys</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAnyOfGlobalKeys__1___0_System_String___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAnyOfGlobalKeys%60%601(%60%600%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L226">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAnyOfGlobalKeys_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAnyOfGlobalKeys*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAnyOfGlobalKeys__1___0_System_String___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAnyOfGlobalKeys``1(``0,System.String[])">SetConditionAnyOfGlobalKeys&lt;T&gt;(T, String[])</h4>
+  <div class="markdown level1 summary"><p>Set list of global keys, where spawning is active if any are present.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionAnyOfGlobalKeys&lt;T&gt;(this T builder, params string[] globalKeys)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">globalKeys</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAreaIds__1___0_System_Collections_Generic_IEnumerable_System_Int32__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAreaIds%60%601(%60%600%2CSystem.Collections.Generic.IEnumerable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L36">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAreaIds_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAreaIds*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAreaIds__1___0_System_Collections_Generic_IEnumerable_System_Int32__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAreaIds``1(``0,System.Collections.Generic.IEnumerable{System.Int32})">SetConditionAreaIds&lt;T&gt;(T, IEnumerable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set area ids in which spawning is enabled.</p>
+<p>Should only be used when map is pre-determined.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionAreaIds&lt;T&gt;(this T builder, IEnumerable&lt;int&gt; areaIds)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">areaIds</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAreaIds__1___0_System_Int32___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAreaIds%60%601(%60%600%2CSystem.Int32%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L47">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAreaIds_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAreaIds*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAreaIds__1___0_System_Int32___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAreaIds``1(``0,System.Int32[])">SetConditionAreaIds&lt;T&gt;(T, Int32[])</h4>
+  <div class="markdown level1 summary"><p>Set area ids in which spawning is enabled.</p>
+<p>Should only be used when map is pre-determined.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionAreaIds&lt;T&gt;(this T builder, params int[] areaIds)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td><span class="parametername">areaIds</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAreaSpawnChance_SpawnThat_Spawners_SpawnAreaSpawner_ISpawnAreaSpawnBuilder_System_Single_.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAreaSpawnChance(SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilder%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L65">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAreaSpawnChance_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAreaSpawnChance*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAreaSpawnChance_SpawnThat_Spawners_SpawnAreaSpawner_ISpawnAreaSpawnBuilder_System_Single_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAreaSpawnChance(SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilder,System.Single)">SetConditionAreaSpawnChance(ISpawnAreaSpawnBuilder, Single)</h4>
+  <div class="markdown level1 summary"><p>Set spawn chance based on each area.</p>
+<p>
+    Each area rolls chance pr template id once pr seed.
+    If the chance roll is less than listed here,
+    this area will never activate this template, and vice versa.
+</p>
+<p>
+    This allows for sitations where only some areas (eg., 10% of blackforests) will have a spawn show up.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ISpawnAreaSpawnBuilder SetConditionAreaSpawnChance(this ISpawnAreaSpawnBuilder builder, float areaChance)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilder.html">ISpawnAreaSpawnBuilder</a></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">areaChance</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilder.html">ISpawnAreaSpawnBuilder</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAreaSpawnChance__1___0_System_Single_System_Int32_.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAreaSpawnChance%60%601(%60%600%2CSystem.Single%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L122">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAreaSpawnChance_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAreaSpawnChance*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionAreaSpawnChance__1___0_System_Single_System_Int32_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionAreaSpawnChance``1(``0,System.Single,System.Int32)">SetConditionAreaSpawnChance&lt;T&gt;(T, Single, Int32)</h4>
+  <div class="markdown level1 summary"><p>Set spawn chance based on each area.</p>
+<p>
+    Each area rolls chance pr template id once pr seed.
+    If the chance roll is less than listed here,
+    this area will never activate this template, and vice versa.
+</p>
+<p>
+    This allows for sitations where only some areas (eg., 10% of blackforests) will have a spawn show up.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionAreaSpawnChance&lt;T&gt;(this T builder, float areaChance, int templateId)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">areaChance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">templateId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionBiome__1___0_Heightmap_Biome___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionBiome%60%601(%60%600%2CHeightmap.Biome%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L74">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionBiome_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionBiome*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionBiome__1___0_Heightmap_Biome___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionBiome``1(``0,Heightmap.Biome[])">SetConditionBiome&lt;T&gt;(T, Heightmap.Biome[])</h4>
+  <div class="markdown level1 summary"><p>Set biomes in which spawning is enabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionBiome&lt;T&gt;(this T builder, params Heightmap.Biome[] biomes)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Heightmap.Biome</span>[]</td>
+        <td><span class="parametername">biomes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionBiome__1___0_System_Collections_Generic_IEnumerable_Heightmap_Biome__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionBiome%60%601(%60%600%2CSystem.Collections.Generic.IEnumerable%7BHeightmap.Biome%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L84">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionBiome_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionBiome*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionBiome__1___0_System_Collections_Generic_IEnumerable_Heightmap_Biome__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionBiome``1(``0,System.Collections.Generic.IEnumerable{Heightmap.Biome})">SetConditionBiome&lt;T&gt;(T, IEnumerable&lt;Heightmap.Biome&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set biomes in which spawning is enabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionBiome&lt;T&gt;(this T builder, IEnumerable&lt;Heightmap.Biome&gt; biomes)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">Heightmap.Biome</span>&gt;</td>
+        <td><span class="parametername">biomes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionBiome__1___0_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionBiome%60%601(%60%600%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L104">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionBiome_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionBiome*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionBiome__1___0_System_Collections_Generic_IEnumerable_System_String__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionBiome``1(``0,System.Collections.Generic.IEnumerable{System.String})">SetConditionBiome&lt;T&gt;(T, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set biomes in which spawning is enabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionBiome&lt;T&gt;(this T builder, IEnumerable&lt;string&gt; biomeNames)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">biomeNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionBiome__1___0_System_String___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionBiome%60%601(%60%600%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L94">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionBiome_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionBiome*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionBiome__1___0_System_String___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionBiome``1(``0,System.String[])">SetConditionBiome&lt;T&gt;(T, String[])</h4>
+  <div class="markdown level1 summary"><p>Set biomes in which spawning is enabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionBiome&lt;T&gt;(this T builder, params string[] biomeNames)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">biomeNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionCloseToPlayer__1___0_System_Single_.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionCloseToPlayer%60%601(%60%600%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L132">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionCloseToPlayer_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionCloseToPlayer*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionCloseToPlayer__1___0_System_Single_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionCloseToPlayer``1(``0,System.Single)">SetConditionCloseToPlayer&lt;T&gt;(T, Single)</h4>
+  <div class="markdown level1 summary"><p>Spawn template is only active when player is within <code>withinDistance</code> to Spawner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionCloseToPlayer&lt;T&gt;(this T builder, float withinDistance)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">withinDistance</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionDaytime__1___0_SpawnThat_Utilities_Enums_Daytime___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionDaytime%60%601(%60%600%2CSpawnThat.Utilities.Enums.Daytime%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L142">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionDaytime_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionDaytime*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionDaytime__1___0_SpawnThat_Utilities_Enums_Daytime___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionDaytime``1(``0,SpawnThat.Utilities.Enums.Daytime[])">SetConditionDaytime&lt;T&gt;(T, Daytime[])</h4>
+  <div class="markdown level1 summary"><p>Set time periods in which spawning is active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionDaytime&lt;T&gt;(this T builder, params Daytime[] daytimes)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SpawnThat.Utilities.Enums.Daytime.html">Daytime</a>[]</td>
+        <td><span class="parametername">daytimes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionDaytime__1___0_System_Collections_Generic_IEnumerable_SpawnThat_Utilities_Enums_Daytime__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionDaytime%60%601(%60%600%2CSystem.Collections.Generic.IEnumerable%7BSpawnThat.Utilities.Enums.Daytime%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L152">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionDaytime_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionDaytime*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionDaytime__1___0_System_Collections_Generic_IEnumerable_SpawnThat_Utilities_Enums_Daytime__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionDaytime``1(``0,System.Collections.Generic.IEnumerable{SpawnThat.Utilities.Enums.Daytime})">SetConditionDaytime&lt;T&gt;(T, IEnumerable&lt;Daytime&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set time periods in which spawning is active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionDaytime&lt;T&gt;(this T builder, IEnumerable&lt;Daytime&gt; daytimes)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="SpawnThat.Utilities.Enums.Daytime.html">Daytime</a>&gt;</td>
+        <td><span class="parametername">daytimes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionDistanceToCenter__1___0_System_Nullable_System_Double__System_Nullable_System_Double__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionDistanceToCenter%60%601(%60%600%2CSystem.Nullable%7BSystem.Double%7D%2CSystem.Nullable%7BSystem.Double%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L164">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionDistanceToCenter_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionDistanceToCenter*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionDistanceToCenter__1___0_System_Nullable_System_Double__System_Nullable_System_Double__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionDistanceToCenter``1(``0,System.Nullable{System.Double},System.Nullable{System.Double})">SetConditionDistanceToCenter&lt;T&gt;(T, Nullable&lt;Double&gt;, Nullable&lt;Double&gt;)</h4>
+  <div class="markdown level1 summary"><p>Sets range from center of world, in which spawning is allowed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionDistanceToCenter&lt;T&gt;(this T builder, double? minDistance = null, double? maxDistance = null)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
+        <td><span class="parametername">minDistance</span></td>
+        <td><p>Required distance from center.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
+        <td><span class="parametername">maxDistance</span></td>
+        <td><p>Maximum distance from center. If null, there will be no limit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionEnvironment__1___0_SpawnThat_Utilities_Enums_EnvironmentName___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionEnvironment%60%601(%60%600%2CSpawnThat.Utilities.Enums.EnvironmentName%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L195">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionEnvironment_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionEnvironment*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionEnvironment__1___0_SpawnThat_Utilities_Enums_EnvironmentName___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionEnvironment``1(``0,SpawnThat.Utilities.Enums.EnvironmentName[])">SetConditionEnvironment&lt;T&gt;(T, EnvironmentName[])</h4>
+  <div class="markdown level1 summary"><p>Set names of known vanilla environments in which spawning is active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionEnvironment&lt;T&gt;(this T builder, params EnvironmentName[] environmentNames)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SpawnThat.Utilities.Enums.EnvironmentName.html">EnvironmentName</a>[]</td>
+        <td><span class="parametername">environmentNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionEnvironment__1___0_System_Collections_Generic_IEnumerable_SpawnThat_Utilities_Enums_EnvironmentName__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionEnvironment%60%601(%60%600%2CSystem.Collections.Generic.IEnumerable%7BSpawnThat.Utilities.Enums.EnvironmentName%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L205">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionEnvironment_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionEnvironment*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionEnvironment__1___0_System_Collections_Generic_IEnumerable_SpawnThat_Utilities_Enums_EnvironmentName__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionEnvironment``1(``0,System.Collections.Generic.IEnumerable{SpawnThat.Utilities.Enums.EnvironmentName})">SetConditionEnvironment&lt;T&gt;(T, IEnumerable&lt;EnvironmentName&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set names of known vanilla environments in which spawning is active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionEnvironment&lt;T&gt;(this T builder, IEnumerable&lt;EnvironmentName&gt; environmentNames)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="SpawnThat.Utilities.Enums.EnvironmentName.html">EnvironmentName</a>&gt;</td>
+        <td><span class="parametername">environmentNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionEnvironment__1___0_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionEnvironment%60%601(%60%600%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L185">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionEnvironment_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionEnvironment*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionEnvironment__1___0_System_Collections_Generic_IEnumerable_System_String__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionEnvironment``1(``0,System.Collections.Generic.IEnumerable{System.String})">SetConditionEnvironment&lt;T&gt;(T, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set names of environments in which spawning is active.</p>
+<p>Eg. &quot;Clear&quot;, &quot;Misty&quot;, &quot;Heath clear&quot;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionEnvironment&lt;T&gt;(this T builder, IEnumerable&lt;string&gt; environmentNames)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">environmentNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionEnvironment__1___0_System_String___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionEnvironment%60%601(%60%600%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L174">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionEnvironment_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionEnvironment*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionEnvironment__1___0_System_String___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionEnvironment``1(``0,System.String[])">SetConditionEnvironment&lt;T&gt;(T, String[])</h4>
+  <div class="markdown level1 summary"><p>Set names of environments in which spawning is active.</p>
+<p>Eg. &quot;Clear&quot;, &quot;Misty&quot;, &quot;Heath clear&quot;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionEnvironment&lt;T&gt;(this T builder, params string[] environmentNames)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">environmentNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionForest__1___0_SpawnThat_Utilities_Enums_ForestState_.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionForest%60%601(%60%600%2CSpawnThat.Utilities.Enums.ForestState)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L216">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionForest_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionForest*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionForest__1___0_SpawnThat_Utilities_Enums_ForestState_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionForest``1(``0,SpawnThat.Utilities.Enums.ForestState)">SetConditionForest&lt;T&gt;(T, ForestState)</h4>
+  <div class="markdown level1 summary"><p>Set forestation state for which spawning is active.</p>
+<p>Note: This is based on worldgeneration, not on actual amount of vegetation present.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionForest&lt;T&gt;(this T builder, ForestState requiredState)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SpawnThat.Utilities.Enums.ForestState.html">ForestState</a></td>
+        <td><span class="parametername">requiredState</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionLocation__1___0_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionLocation%60%601(%60%600%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L362">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionLocation_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionLocation*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionLocation__1___0_System_Collections_Generic_IEnumerable_System_String__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionLocation``1(``0,System.Collections.Generic.IEnumerable{System.String})">SetConditionLocation&lt;T&gt;(T, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Sets locations in which spawning is allowed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionLocation&lt;T&gt;(this T builder, IEnumerable&lt;string&gt; locationNames)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">locationNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionLocation__1___0_System_String___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionLocation%60%601(%60%600%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L372">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionLocation_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionLocation*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionLocation__1___0_System_String___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionLocation``1(``0,System.String[])">SetConditionLocation&lt;T&gt;(T, String[])</h4>
+  <div class="markdown level1 summary"><p>Sets locations in which spawning is allowed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionLocation&lt;T&gt;(this T builder, params string[] locationNames)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">locationNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersCarryItem__1___0_System_Int32_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersCarryItem%60%601(%60%600%2CSystem.Int32%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L382">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersCarryItem_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersCarryItem*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersCarryItem__1___0_System_Int32_System_Collections_Generic_IEnumerable_System_String__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersCarryItem``1(``0,System.Int32,System.Collections.Generic.IEnumerable{System.String})">SetConditionNearbyPlayersCarryItem&lt;T&gt;(T, Int32, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Template only enabled when a player within <code>distance</code> of spawner has one of the listed items in inventory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionNearbyPlayersCarryItem&lt;T&gt;(this T builder, int distance, IEnumerable&lt;string&gt; itemPrefabNames)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">distance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">itemPrefabNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersCarryItem__1___0_System_Int32_System_String___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersCarryItem%60%601(%60%600%2CSystem.Int32%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L392">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersCarryItem_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersCarryItem*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersCarryItem__1___0_System_Int32_System_String___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersCarryItem``1(``0,System.Int32,System.String[])">SetConditionNearbyPlayersCarryItem&lt;T&gt;(T, Int32, String[])</h4>
+  <div class="markdown level1 summary"><p>Template only enabled when a player within <code>distance</code> of spawner has one of the listed items in inventory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionNearbyPlayersCarryItem&lt;T&gt;(this T builder, int distance, params string[] itemPrefabNames)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">distance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">itemPrefabNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersCarryValue__1___0_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersCarryValue%60%601(%60%600%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L402">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersCarryValue_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersCarryValue*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersCarryValue__1___0_System_Int32_System_Int32_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersCarryValue``1(``0,System.Int32,System.Int32)">SetConditionNearbyPlayersCarryValue&lt;T&gt;(T, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Template only enabled when players within <code>distance</code> of spawner has a combined inventory value greater than <code>combinedValueRequired</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionNearbyPlayersCarryValue&lt;T&gt;(this T builder, int distance, int combinedValueRequired)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">distance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">combinedValueRequired</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersNoise__1___0_System_Int32_System_Single_.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersNoise%60%601(%60%600%2CSystem.Int32%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L412">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersNoise_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersNoise*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersNoise__1___0_System_Int32_System_Single_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersNoise``1(``0,System.Int32,System.Single)">SetConditionNearbyPlayersNoise&lt;T&gt;(T, Int32, Single)</h4>
+  <div class="markdown level1 summary"><p>Template only enabled when a player within <code>distance</code> of spawner emits more noise than <code>noiseRequired</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionNearbyPlayersNoise&lt;T&gt;(this T builder, int distance, float noiseRequired)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">distance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">noiseRequired</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersStatus__1___0_System_Int32_StatusEffect___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersStatus%60%601(%60%600%2CSystem.Int32%2CStatusEffect%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L452">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersStatus_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersStatus*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersStatus__1___0_System_Int32_StatusEffect___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersStatus``1(``0,System.Int32,StatusEffect[])">SetConditionNearbyPlayersStatus&lt;T&gt;(T, Int32, StatusEffect[])</h4>
+  <div class="markdown level1 summary"><p>Template only enabled when a player within <code>distance</code> of spawner has a status in <code>statusEffects</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionNearbyPlayersStatus&lt;T&gt;(this T builder, int distance, params StatusEffect[] statusEffects)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">distance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">StatusEffect</span>[]</td>
+        <td><span class="parametername">statusEffects</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersStatus__1___0_System_Int32_System_Collections_Generic_IEnumerable_StatusEffect__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersStatus%60%601(%60%600%2CSystem.Int32%2CSystem.Collections.Generic.IEnumerable%7BStatusEffect%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L442">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersStatus_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersStatus*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersStatus__1___0_System_Int32_System_Collections_Generic_IEnumerable_StatusEffect__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersStatus``1(``0,System.Int32,System.Collections.Generic.IEnumerable{StatusEffect})">SetConditionNearbyPlayersStatus&lt;T&gt;(T, Int32, IEnumerable&lt;StatusEffect&gt;)</h4>
+  <div class="markdown level1 summary"><p>Template only enabled when a player within <code>distance</code> of spawner has a status in <code>statusEffects</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionNearbyPlayersStatus&lt;T&gt;(this T builder, int distance, IEnumerable&lt;StatusEffect&gt; statusEffects)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">distance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">StatusEffect</span>&gt;</td>
+        <td><span class="parametername">statusEffects</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersStatus__1___0_System_Int32_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersStatus%60%601(%60%600%2CSystem.Int32%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L422">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersStatus_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersStatus*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersStatus__1___0_System_Int32_System_Collections_Generic_IEnumerable_System_String__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersStatus``1(``0,System.Int32,System.Collections.Generic.IEnumerable{System.String})">SetConditionNearbyPlayersStatus&lt;T&gt;(T, Int32, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Template only enabled when a player within <code>distance</code> of spawner has a status in <code>statusEffectNames</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionNearbyPlayersStatus&lt;T&gt;(this T builder, int distance, IEnumerable&lt;string&gt; statusEffectNames)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">distance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">statusEffectNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersStatus__1___0_System_Int32_System_String___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersStatus%60%601(%60%600%2CSystem.Int32%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L432">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersStatus_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersStatus*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNearbyPlayersStatus__1___0_System_Int32_System_String___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNearbyPlayersStatus``1(``0,System.Int32,System.String[])">SetConditionNearbyPlayersStatus&lt;T&gt;(T, Int32, String[])</h4>
+  <div class="markdown level1 summary"><p>Template only enabled when a player within <code>distance</code> of spawner has a status in <code>statusEffectNames</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionNearbyPlayersStatus&lt;T&gt;(this T builder, int distance, params string[] statusEffectNames)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">distance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">statusEffectNames</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNoneOfGlobalkeys__1___0_SpawnThat_Utilities_Enums_GlobalKey___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNoneOfGlobalkeys%60%601(%60%600%2CSpawnThat.Utilities.Enums.GlobalKey%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L352">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNoneOfGlobalkeys_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNoneOfGlobalkeys*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNoneOfGlobalkeys__1___0_SpawnThat_Utilities_Enums_GlobalKey___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNoneOfGlobalkeys``1(``0,SpawnThat.Utilities.Enums.GlobalKey[])">SetConditionNoneOfGlobalkeys&lt;T&gt;(T, GlobalKey[])</h4>
+  <div class="markdown level1 summary"><p>Sets global keys which must not be present for spawning to be allowed.</p>
+<p>
+    Eg., if GlobalKey.Troll, GlobalKey.Eikthyr and world has global key &quot;defeated_eikthyr&quot;,
+    then this template will be disabled.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionNoneOfGlobalkeys&lt;T&gt;(this T builder, params GlobalKey[] globalKeys)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SpawnThat.Utilities.Enums.GlobalKey.html">GlobalKey</a>[]</td>
+        <td><span class="parametername">globalKeys</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNoneOfGlobalkeys__1___0_System_Collections_Generic_IEnumerable_SpawnThat_Utilities_Enums_GlobalKey__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNoneOfGlobalkeys%60%601(%60%600%2CSystem.Collections.Generic.IEnumerable%7BSpawnThat.Utilities.Enums.GlobalKey%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L338">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNoneOfGlobalkeys_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNoneOfGlobalkeys*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNoneOfGlobalkeys__1___0_System_Collections_Generic_IEnumerable_SpawnThat_Utilities_Enums_GlobalKey__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNoneOfGlobalkeys``1(``0,System.Collections.Generic.IEnumerable{SpawnThat.Utilities.Enums.GlobalKey})">SetConditionNoneOfGlobalkeys&lt;T&gt;(T, IEnumerable&lt;GlobalKey&gt;)</h4>
+  <div class="markdown level1 summary"><p>Sets global keys which must not be present for spawning to be allowed.</p>
+<p>
+    Eg., if GlobalKey.Troll, GlobalKey.Eikthyr and world has global key &quot;defeated_eikthyr&quot;,
+    then this template will be disabled.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionNoneOfGlobalkeys&lt;T&gt;(this T builder, IEnumerable&lt;GlobalKey&gt; globalKeys)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="SpawnThat.Utilities.Enums.GlobalKey.html">GlobalKey</a>&gt;</td>
+        <td><span class="parametername">globalKeys</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNoneOfGlobalkeys__1___0_System_Collections_Generic_IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNoneOfGlobalkeys%60%601(%60%600%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L310">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNoneOfGlobalkeys_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNoneOfGlobalkeys*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNoneOfGlobalkeys__1___0_System_Collections_Generic_IEnumerable_System_String__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNoneOfGlobalkeys``1(``0,System.Collections.Generic.IEnumerable{System.String})">SetConditionNoneOfGlobalkeys&lt;T&gt;(T, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Sets global keys which must not be present for spawning to be allowed.</p>
+<p>
+    Eg., if &quot;KilledTroll&quot;, &quot;defeated_eikthyr&quot; and world has global key &quot;defeated_eikthyr&quot;,
+    then this template will be disabled.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionNoneOfGlobalkeys&lt;T&gt;(this T builder, IEnumerable&lt;string&gt; globalKeys)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">globalKeys</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNoneOfGlobalkeys__1___0_System_String___.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNoneOfGlobalkeys%60%601(%60%600%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L324">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNoneOfGlobalkeys_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNoneOfGlobalkeys*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionNoneOfGlobalkeys__1___0_System_String___" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionNoneOfGlobalkeys``1(``0,System.String[])">SetConditionNoneOfGlobalkeys&lt;T&gt;(T, String[])</h4>
+  <div class="markdown level1 summary"><p>Sets global keys which must not be present for spawning to be allowed.</p>
+<p>
+    Eg., if &quot;KilledTroll&quot;, &quot;defeated_eikthyr&quot; and world has global key &quot;defeated_eikthyr&quot;,
+    then this template will be disabled.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionNoneOfGlobalkeys&lt;T&gt;(this T builder, params string[] globalKeys)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">globalKeys</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionOceanDepth__1___0_System_Nullable_System_Single__System_Nullable_System_Single__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionOceanDepth%60%601(%60%600%2CSystem.Nullable%7BSystem.Single%7D%2CSystem.Nullable%7BSystem.Single%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L470">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionOceanDepth_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionOceanDepth*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionOceanDepth__1___0_System_Nullable_System_Single__System_Nullable_System_Single__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionOceanDepth``1(``0,System.Nullable{System.Single},System.Nullable{System.Single})">SetConditionOceanDepth&lt;T&gt;(T, Nullable&lt;Single&gt;, Nullable&lt;Single&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set allowed ocean depth range in which spawning is active.</p>
+<p>Ocean depth is defined as distance to water surface. And is calculated as:</p>
+<p><code>Max(0, WaterLevel - Seafloor)</code></p>
+<p>
+    This means the water-surface and above will be ocean depth 0. 
+    An ocean floor at 10 units below the surface will be 10.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionOceanDepth&lt;T&gt;(this T builder, float? min = null, float? max = null)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td><span class="parametername">min</span></td>
+        <td><p>Minimum depth required. Ignored if null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td><span class="parametername">max</span></td>
+        <td><p>Maximum depth allowed. Ignored if null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionTilt__1___0_System_Nullable_System_Single__System_Nullable_System_Single__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionTilt%60%601(%60%600%2CSystem.Nullable%7BSystem.Single%7D%2CSystem.Nullable%7BSystem.Single%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L488">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionTilt_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionTilt*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionTilt__1___0_System_Nullable_System_Single__System_Nullable_System_Single__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionTilt``1(``0,System.Nullable{System.Single},System.Nullable{System.Single})">SetConditionTilt&lt;T&gt;(T, Nullable&lt;Single&gt;, Nullable&lt;Single&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set tilt range of terrain, for which spawning is active.</p>
+<p>Tilt is calculated as 0 when perfectly flat, and 90 when completely vertical.</p>
+<p>
+    Note: Valheim calculates tilt extremely inconsistently throughout the codebase.
+    Tilt above 45 needs to be tested before being relied upon, as there is at least one
+    buggy calculation in vanilla.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionTilt&lt;T&gt;(this T builder, float? min = null, float? max = null)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td><span class="parametername">min</span></td>
+        <td><p>Minimum degrees of tilt required. Ignored if null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td><span class="parametername">max</span></td>
+        <td><p>Maximum degrees of tilt allowed. Ignored if null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionWorldAge__1___0_System_Nullable_System_Int32__System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionWorldAge%60%601(%60%600%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L500">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionWorldAge_" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionWorldAge*"></a>
+  <h4 id="SpawnThat_Spawners_IHaveSpawnConditionsExtensions_SetConditionWorldAge__1___0_System_Nullable_System_Int32__System_Nullable_System_Int32__" data-uid="SpawnThat.Spawners.IHaveSpawnConditionsExtensions.SetConditionWorldAge``1(``0,System.Nullable{System.Int32},System.Nullable{System.Int32})">SetConditionWorldAge&lt;T&gt;(T, Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Template only enabled when the world day is within the indicated range.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T SetConditionWorldAge&lt;T&gt;(this T builder, int? minDays = null, int? maxDays = null)
+    where T : IHaveSpawnConditions</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">minDays</span></td>
+        <td><p>Minimum days required before template is activated.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">maxDays</span></td>
+        <td><p>Maximum days after which template is deactivated. If null, there is no limit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_IHaveSpawnConditionsExtensions.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.IHaveSpawnConditionsExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Options/Extensions/IHaveSpawnConditionsExtensions.cs/#L9" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

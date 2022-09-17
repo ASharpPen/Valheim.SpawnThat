@@ -1,0 +1,498 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SpawnAreaSpawnSettings
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SpawnAreaSpawnSettings
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings">
+  
+  
+  <h1 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings" class="text-break">Class SpawnAreaSpawnSettings
+  </h1>
+  <div class="markdown level0 summary"><p>
+    SpawnArea spawn builder settings.
+    Any property not set will be ignored.
+</p>
+<p>
+    Any setting not set for a builder will mean Spawn That will use the existing setting
+    when overriding a template, or set a default value if creating a new.
+</p>
+<p>
+    Intended as an optional way to configure ISpawnAreaSpawnBuilder.
+</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">SpawnAreaSpawnSettings</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SpawnThat.Spawners.SpawnAreaSpawner.html">SpawnThat.Spawners.SpawnAreaSpawner</a></h6>
+  <h6><strong>Assembly</strong>: Valheim.SpawnThat.dll</h6>
+  <h5 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SpawnAreaSpawnSettings</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_Conditions.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.Conditions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Spawners/SpawnAreaSpawner/SpawnAreaSpawnSettings.cs/#L104">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_Conditions_" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.Conditions*"></a>
+  <h4 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_Conditions" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.Conditions">Conditions</h4>
+  <div class="markdown level1 summary"><p>Spawn conditions to set.
+If a condition with the same type already exists, it will be replaced.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;ISpawnCondition&gt; Conditions { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="SpawnThat.Options.Conditions.ISpawnCondition.html">ISpawnCondition</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_Enabled.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.Enabled%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Spawners/SpawnAreaSpawner/SpawnAreaSpawnSettings.cs/#L37">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_Enabled_" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.Enabled*"></a>
+  <h4 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_Enabled" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.Enabled">Enabled</h4>
+  <div class="markdown level1 summary"><p>Toggles this template.
+If disabled, this spawn entry will never be selected for spawning.
+Can be used to disable existing spawn entries.
+<p>Default if new template: true</p></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? Enabled { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_LevelMax.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.LevelMax%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Spawners/SpawnAreaSpawner/SpawnAreaSpawnSettings.cs/#L98">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_LevelMax_" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.LevelMax*"></a>
+  <h4 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_LevelMax" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.LevelMax">LevelMax</h4>
+  <div class="markdown level1 summary"><p>Maximum level to spawn at.</p>
+<p>
+    Level is assigned by rolling levelup-chance for each
+    level from min, until max is reached.
+</p>
+<p>
+    This means if levelup chance is 10, there is 10% chance for
+    a MinLevel 1 to become level 2, and 1% chance to become level 3.
+</p>
+<p>If not set, uses existing when overriding.</p>
+<p>Default if new template: 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? LevelMax { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_LevelMax_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_maxLevel</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_LevelMin.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.LevelMin%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Spawners/SpawnAreaSpawner/SpawnAreaSpawnSettings.cs/#L82">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_LevelMin_" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.LevelMin*"></a>
+  <h4 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_LevelMin" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.LevelMin">LevelMin</h4>
+  <div class="markdown level1 summary"><p>Minimum level to spawn at.</p>
+<p>
+    Level is assigned by rolling levelup-chance for each
+    level from min, until max is reached.
+</p>
+<p>
+    This means if levelup chance is 10, there is 10% chance for
+    a MinLevel 1 to become level 2, and 1% chance to become level 3.
+</p>
+<p>If not set, uses existing.</p>
+<p>Default if new template: 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? LevelMin { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_LevelMin_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_minLevel</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_Modifiers.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.Modifiers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Spawners/SpawnAreaSpawner/SpawnAreaSpawnSettings.cs/#L116">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_Modifiers_" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.Modifiers*"></a>
+  <h4 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_Modifiers" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.Modifiers">Modifiers</h4>
+  <div class="markdown level1 summary"><p>Modifiers conditions to set.
+If a condition with the same type already exists, it will be replaced.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;ISpawnModifier&gt; Modifiers { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="SpawnThat.Options.Modifiers.ISpawnModifier.html">ISpawnModifier</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_PositionConditions.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.PositionConditions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Spawners/SpawnAreaSpawner/SpawnAreaSpawnSettings.cs/#L110">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_PositionConditions_" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.PositionConditions*"></a>
+  <h4 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_PositionConditions" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.PositionConditions">PositionConditions</h4>
+  <div class="markdown level1 summary"><p>Spawn position conditions to set.
+If a condition with the same type already exists, it will be replaced.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;ISpawnPositionCondition&gt; PositionConditions { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="SpawnThat.Options.PositionConditions.ISpawnPositionCondition.html">ISpawnPositionCondition</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_PrefabName.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.PrefabName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Spawners/SpawnAreaSpawner/SpawnAreaSpawnSettings.cs/#L53">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_PrefabName_" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.PrefabName*"></a>
+  <h4 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_PrefabName" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.PrefabName">PrefabName</h4>
+  <div class="markdown level1 summary"><p>Prefab name of entity to spawn.</p>
+<p>If null, uses existing when overriding.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PrefabName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_SpawnWeight.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.SpawnWeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Spawners/SpawnAreaSpawner/SpawnAreaSpawnSettings.cs/#L66">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_SpawnWeight_" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.SpawnWeight*"></a>
+  <h4 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_SpawnWeight" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.SpawnWeight">SpawnWeight</h4>
+  <div class="markdown level1 summary"><p>
+    Sets spawn weight. SpawnArea spawners choose their next
+    spawn by a weighted random of all their possible spawns.
+    Increasing weight, means an increased chance that this particular
+    spawn will be selected for spawning.
+</p>
+<p>If null, uses existing when overriding.</p>
+<p>Default if new template: 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? SpawnWeight { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_SpawnWeight_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_weight</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_TemplateEnabled.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.TemplateEnabled%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Spawners/SpawnAreaSpawner/SpawnAreaSpawnSettings.cs/#L47">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_TemplateEnabled_" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.TemplateEnabled*"></a>
+  <h4 id="SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings_TemplateEnabled" data-uid="SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.TemplateEnabled">TemplateEnabled</h4>
+  <div class="markdown level1 summary"><p>
+    Toggles this configuration on / off.
+    If disabled, template will be ignored.
+    Cannot be used to disable existing spawn templates.
+</p>
+<p>Default if new template: true</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? TemplateEnabled { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnSettings.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Spawners/SpawnAreaSpawner/SpawnAreaSpawnSettings.cs/#L21" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
