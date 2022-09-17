@@ -3,7 +3,6 @@ using System.Linq;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Spawners.SpawnAreaSpawner;
 using SpawnThat.Utilities.Enums;
-using static Heightmap;
 
 namespace SpawnThat.Spawners;
 

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using EpicLoot;
 using ExtendedItemDataFramework;
-using HarmonyLib;
 using SpawnThat.Core;
 using SpawnThat.Integrations.EpicLoot.Models;
 using SpawnThat.Options.Conditions;

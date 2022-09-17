@@ -2,9 +2,7 @@
 using System.Reflection.Emit;
 using System.Reflection;
 using HarmonyLib;
-using SpawnThat.Utilities.Extensions;
 using SpawnThat.Spawners.LocalSpawner.Managers;
-using System;
 
 namespace SpawnThat.Spawners.LocalSpawner.Patches;
 

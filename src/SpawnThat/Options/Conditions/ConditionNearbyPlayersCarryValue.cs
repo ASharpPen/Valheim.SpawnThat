@@ -5,8 +5,6 @@ using SpawnThat.Utilities;
 using SpawnThat.Spawners.Contexts;
 using SpawnThat.Utilities.Extensions;
 using System.Linq;
-using SpawnThat.Core;
-using HarmonyLib;
 
 namespace SpawnThat.Options.Conditions;
 

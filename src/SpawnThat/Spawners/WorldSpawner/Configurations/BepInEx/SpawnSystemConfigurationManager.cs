@@ -1,11 +1,9 @@
 ﻿using BepInEx;
-using BepInEx.Configuration;
 using System;
 using System.Diagnostics;
 using System.IO;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
-using SpawnThat.Core.Configuration;
 using SpawnThat.Core.Toml;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
@@ -38,12 +36,20 @@ internal static class SpawnSystemConfigurationManager
 
         string configPath = Path.Combine(Paths.ConfigPath, SimpleConfigFile);
 
-        if (!File.Exists(configPath) && ConfigurationManager.GeneralConfig?.InitializeWithCreatures?.Value == true)
+        var fileExists = File.Exists(configPath);
+
+        if (!fileExists && ConfigurationManager.GeneralConfig?.InitializeWithCreatures?.Value == true)
         {
             SimpleConfigPreconfiguration.Initialize();
+            fileExists = true;
         }
 
-        return TomlLoader.LoadFile<SimpleConfigurationFile>(configPath);
+        if (fileExists)
+        {
+            return TomlLoader.LoadFile<SimpleConfigurationFile>(configPath);
+        }
+
+        return new();
     }
 
     public static SpawnSystemConfigurationFile LoadSpawnSystemConfiguration()

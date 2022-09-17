@@ -136,31 +136,31 @@ internal static class WorldSpawnerConfigurationService
 
     private static void ApplySimpleTemplates(List<SpawnSystemList> spawnLists)
     {
-        var simpleConfigs = SpawnSystemConfigurationManager.SimpleConfig?.Subsections;
-
-        if (simpleConfigs is not null && simpleConfigs.Count > 0)
+        if(!WorldSpawnTemplateManager.SimpleTemplatesByPrefab.Any())
         {
-            foreach (var spawnList in spawnLists)
+            return;
+        }
+
+        foreach (var spawnList in spawnLists)
+        {
+            foreach (var spawner in spawnList.m_spawners)
             {
-                foreach (var spawner in spawnList.m_spawners)
+                if (spawner.m_prefab.IsNull() || string.IsNullOrWhiteSpace(spawner.m_prefab.GetName()))
                 {
-                    if (spawner.m_prefab.IsNull() || string.IsNullOrWhiteSpace(spawner.m_prefab.GetName()))
-                    {
-                        continue;
-                    }
+                    continue;
+                }
 
-                    var name = spawner.m_prefab.GetName();
-                    var cleanedName = name.Trim().ToUpper();
+                var name = spawner.m_prefab.GetName();
+                var cleanedName = name.Trim().ToUpper();
 
-                    if (simpleConfigs.TryGetValue(cleanedName, out SimpleConfig simpleConfig))
-                    {
-                        spawner.m_maxSpawned = (int)Math.Round(spawner.m_maxSpawned * simpleConfig.SpawnMaxMultiplier.Value);
-                        spawner.m_groupSizeMin = (int)Math.Round(spawner.m_groupSizeMin * simpleConfig.GroupSizeMinMultiplier.Value);
-                        spawner.m_groupSizeMax = (int)Math.Round(spawner.m_groupSizeMax * simpleConfig.GroupSizeMaxMultiplier.Value);
-                        spawner.m_spawnInterval = simpleConfig.SpawnFrequencyMultiplier.Value != 0
-                            ? spawner.m_spawnInterval / simpleConfig.SpawnFrequencyMultiplier.Value
-                            : 0;
-                    }
+                if (WorldSpawnTemplateManager.SimpleTemplatesByPrefab.TryGetValue(cleanedName, out var simpleConfig))
+                {
+                    spawner.m_maxSpawned = (int)Math.Round(spawner.m_maxSpawned * simpleConfig.SpawnMaxMultiplier.Value);
+                    spawner.m_groupSizeMin = (int)Math.Round(spawner.m_groupSizeMin * simpleConfig.GroupSizeMinMultiplier.Value);
+                    spawner.m_groupSizeMax = (int)Math.Round(spawner.m_groupSizeMax * simpleConfig.GroupSizeMaxMultiplier.Value);
+                    spawner.m_spawnInterval = simpleConfig.SpawnFrequencyMultiplier.Value != 0
+                        ? spawner.m_spawnInterval / simpleConfig.SpawnFrequencyMultiplier.Value
+                        : 0;
                 }
             }
         }

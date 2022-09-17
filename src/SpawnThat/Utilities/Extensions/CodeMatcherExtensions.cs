@@ -1,8 +1,8 @@
 ﻿using HarmonyLib;
-using System;
 using System.Reflection.Emit;
-using SpawnThat.Core;
 using System.Reflection;
+using SpawnThat.Core;
+using System;
 
 namespace SpawnThat.Utilities.Extensions;
 

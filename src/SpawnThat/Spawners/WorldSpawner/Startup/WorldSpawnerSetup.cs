@@ -33,6 +33,7 @@ internal static class WorldSpawnerSetup
     internal static void ApplyBepInExConfigs(ISpawnerConfigurationCollection spawnerConfigs)
     {
         SpawnSystemConfigApplier.ApplyBepInExConfigs(spawnerConfigs);
+        SimpleConfigApplier.ApplyBepInExConfigs();
     }
 
     internal static void WriteConfigsToDisk()

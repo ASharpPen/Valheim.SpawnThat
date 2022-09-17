@@ -1,6 +1,5 @@
 ﻿using EpicLoot;
 using ExtendedItemDataFramework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using SpawnThat.Spawners.Contexts;

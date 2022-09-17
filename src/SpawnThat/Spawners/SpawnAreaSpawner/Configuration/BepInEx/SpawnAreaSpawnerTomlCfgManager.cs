@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using BepInEx;
-using SpawnThat.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Core.Toml;
 

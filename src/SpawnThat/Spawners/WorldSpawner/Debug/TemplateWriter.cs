@@ -12,7 +12,6 @@ using SpawnThat.Spawners.WorldSpawner.Managers;
 using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 using SpawnThat.Options.PositionConditions;
 using SpawnThat.Configuration;
-using static Heightmap;
 
 namespace SpawnThat.Spawners.WorldSpawner.Debug;
 internal static class TemplateWriter

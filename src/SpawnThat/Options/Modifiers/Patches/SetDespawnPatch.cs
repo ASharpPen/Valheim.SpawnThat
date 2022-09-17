@@ -6,7 +6,6 @@ using HarmonyLib;
 using SpawnThat.Core.Cache;
 using SpawnThat.Caches;
 using SpawnThat.Core;
-using SpawnThat.Utilities.Extensions;
 using SpawnThat.Utilities;
 
 namespace SpawnThat.Options.Modifiers.Patches;

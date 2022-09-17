@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using SpawnThat.Spawners.Contexts;
 using SpawnThat.Utilities;
 using SpawnThat.World.Zone;

@@ -17,6 +17,7 @@ public class ConditionLocation : ISpawnCondition
     {
         Locations = requireOneOfLocations?
             .Select(x => x.Trim().ToUpperInvariant())
+            .Where(x => !string.IsNullOrWhiteSpace(x))
             .ToList();
     }
 

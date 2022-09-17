@@ -5,7 +5,6 @@ using System.IO;
 using SpawnThat.Core.Toml;
 using SpawnThat.Integrations;
 using SpawnThat.Options.Modifiers;
-using SpawnThat.Spawners.SpawnAreaSpawner;
 using SpawnThat.Utilities;
 
 namespace SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;

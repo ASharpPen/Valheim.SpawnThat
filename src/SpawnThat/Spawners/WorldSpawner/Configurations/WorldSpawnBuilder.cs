@@ -7,7 +7,6 @@ using SpawnThat.Options.Modifiers;
 using SpawnThat.Options.PositionConditions;
 using SpawnThat.Utilities.Enums;
 using SpawnThat.Utilities.Extensions;
-using static Heightmap;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations;
 

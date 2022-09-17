@@ -1,5 +1,4 @@
-﻿
-using SpawnThat.Core;
+﻿using SpawnThat.Core;
 
 namespace SpawnThat.Spawners.LocalSpawner.Models;
 

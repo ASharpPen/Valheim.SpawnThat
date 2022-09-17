@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using SpawnThat.World.Zone;
 using SpawnThat.Utilities.Extensions;

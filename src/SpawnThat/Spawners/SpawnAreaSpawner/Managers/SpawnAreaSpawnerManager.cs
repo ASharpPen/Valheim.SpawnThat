@@ -7,7 +7,6 @@ using SpawnThat.Options.Identifiers;
 using SpawnThat.Spawners.Contexts;
 using SpawnThat.Spawners.SpawnAreaSpawner.Services;
 using SpawnThat.Utilities.Extensions;
-using YamlDotNet.Serialization;
 
 namespace SpawnThat.Spawners.SpawnAreaSpawner.Managers;
 

@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
 using HarmonyLib;
-using SpawnThat.Debugging.Gizmos;
 using SpawnThat.Lifecycle;
 using SpawnThat.Utilities.Extensions;
+
+#if DEBUG
+using SpawnThat.Debugging.Gizmos;
 using UnityEngine;
+#endif
+
 
 namespace SpawnThat.World.Zone;
 

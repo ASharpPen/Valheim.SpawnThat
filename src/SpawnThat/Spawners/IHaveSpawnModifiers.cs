@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using SpawnThat.Options.Modifiers;
+﻿using SpawnThat.Options.Modifiers;
 
 namespace SpawnThat.Spawners;
 
