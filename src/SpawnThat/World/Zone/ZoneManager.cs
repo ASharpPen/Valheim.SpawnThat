@@ -3,7 +3,7 @@ using HarmonyLib;
 using SpawnThat.Lifecycle;
 using SpawnThat.Utilities.Extensions;
 
-#if DEBUG
+#if DEBUG && FALSE
 using SpawnThat.Debugging.Gizmos;
 using UnityEngine;
 #endif
@@ -58,7 +58,7 @@ public static class ZoneManager
             var zoneId = __instance.gameObject.transform.position.GetZoneId();
 
             HeightmapsLoaded[zoneId] = new ZoneHeightmap(__instance);
-#if DEBUG
+#if DEBUG && FALSE
             LineGizmo.Create(__instance.transform.position, Color.green);
 #endif
         }
