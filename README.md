@@ -114,6 +114,17 @@ If you feel like it
 <a href="https://www.buymeacoffee.com/asharppen"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=asharppen&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 # Changelog: 
+- v1.1.0:
+	- Added support for new SpawnArea spawner type (eg., greydwarf nests).
+	- Added custom config file reader. This should hopefully make things more intuitive and less volatile. It does however mean that comments are longer added automatically.
+	- Swapped file load and merge order, to make default files override supplemental, as was originally intended (eg., `spawn_that.world_spawners_advanced.cfg` gets loaded after
+	- Added datamining for locations, as an option in general config.
+	- Removed setting "StopTouchingMyConfigs" from general config, as it has become irrellevant.
+	- Fixed bug with attempting to load files as configs if they fit the expected name pattern, even though they didn't end with '.cfg'.
+	- Fixed bug where disabling world spawner with `Enabled` disabled the config instead.
+`spawn_that.world_spawners.something.cfg` now).
+	- Fixed potential error when adding a new world spawner without specifying a prefab name.
+	- A LOT of boring internal changes, logging and documentation that noone will probably ever see or care about.
 - v1.0.6:
 	- Fixed config sync for expanded enums. This should resolves an issue when using biomes from Expand World on servers.
 	- Fixed level calculcation used when using the CLLC integration setting UseDefaultLevels. 

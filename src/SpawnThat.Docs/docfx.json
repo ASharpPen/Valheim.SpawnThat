@@ -3,7 +3,7 @@
     {
       "src": [
         {
-          "files": [ "**Release/**/Valheim.SpawnThat.dll" ],
+          "files": [ "**.csproj" ],
           "src": "../SpawnThat"
         }
       ],

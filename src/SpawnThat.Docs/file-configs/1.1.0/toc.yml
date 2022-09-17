@@ -21,6 +21,8 @@
       href: tutorials/modifying-vanilla-local-spawner.md
     - name: Modifying SpawnArea spawners
       href: tutorials/modifying-vanilla-spawnarea-spawner.md
+    - name: Making a hierarchy of configs for a SpawnArea spawner
+      href: tutorials/multiple-configs-spawnarea-spawner.md
 
 - name: Console Commands
   href: console-commands.md
