@@ -10,14 +10,14 @@ namespace SpawnThat.Integrations.CLLC.Modifiers;
 
 public class ModifierCllcInfusion : ISpawnModifier
 {
-    public CreatureInfusion? Infusion { get; set; }
+    public CllcCreatureInfusion? Infusion { get; set; }
 
     public ModifierCllcInfusion()
     { }
 
     public ModifierCllcInfusion(string infusionName)
     {
-        if (Enum.TryParse(infusionName, true, out CreatureInfusion infusion))
+        if (Enum.TryParse(infusionName, true, out CllcCreatureInfusion infusion))
         {
             Infusion = infusion;
         }
@@ -27,9 +27,9 @@ public class ModifierCllcInfusion : ISpawnModifier
         }
     }
 
-    public ModifierCllcInfusion(CllcCreatureInfusion infusion)
+    public ModifierCllcInfusion(CllcCreatureInfusion? infusion)
     {
-        Infusion = infusion.Convert();
+        Infusion = infusion;
     }
 
     public void Modify(GameObject entity, ZDO entityZdo)
@@ -47,6 +47,6 @@ public class ModifierCllcInfusion : ISpawnModifier
         }
 
         Log.LogTrace($"Setting infusion '{Infusion}' for '{entity.name}'.");
-        API.SetInfusionCreature(character, Infusion.Value);
+        API.SetInfusionCreature(character, Infusion.Value.Convert());
     }
 }

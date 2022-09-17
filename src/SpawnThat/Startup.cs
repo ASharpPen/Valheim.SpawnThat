@@ -1,6 +1,7 @@
 ﻿using SpawnThat.Configuration;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners;
+using SpawnThat.Spawners.SpawnAreaSpawner.Startup;
 using SpawnThat.Spawners.LocalSpawner.Startup;
 using SpawnThat.Spawners.WorldSpawner.Startup;
 using SpawnThat.World.Locations;
@@ -14,6 +15,7 @@ internal static class Startup
         GeneralConfigurationSetup.SetupMainConfiguration();
         LocalSpawnerSetup.SetupLocalSpawners();
         WorldSpawnerSetup.SetupWorldSpawners();
+        SpawnAreaSpawnerSetup.SetupSpawnAreaSpawners();
 
         LifecycleManager.OnLateInit += InitConfiguration;
 

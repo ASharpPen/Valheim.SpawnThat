@@ -12,7 +12,9 @@ Mod-specific configs can be added to each world spawner as `[WorldSpawner.Index.
 | ConditionNearbyPlayerCarryLegendaryItem | string | | HeimdallLegs, RagnarLegs | Checks if any nearby player has one of the listed epic loot legendary id's in inventory |
 | ConditionNearbyPlayerCarryItemWithRarity | string | | Magic, Legendary | Checks if any nearby player has an item of the listed rarities |
 
-# Rarity Values
+# Field Options
+
+## Rarity Values
 - Magic
 - Rare
 - Epic

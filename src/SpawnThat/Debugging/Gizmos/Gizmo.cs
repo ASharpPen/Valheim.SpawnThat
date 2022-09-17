@@ -30,27 +30,27 @@ internal abstract class Gizmo : MonoBehaviour
     {
         try
         {
-            if (!gameObject)
+            if (gameObject.IsNull())
             {
                 return;
             }
 
             // Ignore while znet and player is not loaded.
-            if (ZNet.instance != null && ZNet.instance && Player.m_localPlayer)
+            if (ZNet.instance.IsNotNull() && Player.m_localPlayer.IsNotNull())
             {
-                if (Timestamp == null && ZNet.instance != null && ZNet.instance)
+                if (Timestamp == null && ZNet.instance.IsNotNull())
                 {
                     Timestamp = ZNet.instance.GetTimeSeconds();
                 };
 
-                if (LifeTime != null && ZNet.instance.m_netTime - Timestamp > LifeTime.Value.TotalSeconds && this.gameObject)
+                if (LifeTime is not null && ZNet.instance.m_netTime - Timestamp > LifeTime.Value.TotalSeconds && this.gameObject)
                 {
                     GameObject.Destroy(this.gameObject);
                     Log.LogTrace($"{GetType().Name} too old. Removing object.");
                     return;
                 }
 
-                if (!Player.m_localPlayer)
+                if (Player.m_localPlayer.IsNull())
                 {
                     GameObject.Destroy(this.gameObject);
                     Log.LogTrace($"No local player for {GetType().Name}. Removing object.");

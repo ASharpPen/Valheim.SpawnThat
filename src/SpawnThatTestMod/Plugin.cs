@@ -4,9 +4,12 @@ using BepInEx.Logging;
 using SpawnThat.Integrations.CLLC.Models;
 using SpawnThat.Integrations.EpicLoot.Models;
 using SpawnThat.Options.Conditions;
+using SpawnThat.Options.Modifiers;
 using SpawnThat.Spawners;
+using SpawnThat.Spawners.SpawnAreaSpawner;
 using SpawnThat.Spawners.LocalSpawner;
 using SpawnThat.Spawners.WorldSpawner;
+using SpawnThat.Utilities.Enums;
 
 namespace SpawnThatTestMod
 {
@@ -40,6 +43,10 @@ namespace SpawnThatTestMod
                 ConfigureWorldSpawner(config);
                 ConfigureWorldSpawnerBySettings(config);
                 ConfigureWorldSpawnerOverrideDefault(config);
+                ConfigureWorldSpawnerOverriddenByFile(config);
+
+                ConfigureSpawnAreaSpawner(config);
+                ConfigureSpawnAreaSpawnerBySettings(config);
             }
             catch(Exception e)
             {
@@ -133,6 +140,10 @@ namespace SpawnThatTestMod
                 config.ConfigureWorldSpawner(0)
                     .SetEnabled(false)
                     .SetTemplateName("Disabled deer");
+
+                config.ConfigureWorldSpawner(0)
+                    .SetConditionBiomes(Heightmap.Biome.Mountain);
+
             }
             catch (Exception e)
             {
@@ -158,6 +169,79 @@ namespace SpawnThatTestMod
             {
                 Log.LogError(e);
             }
+        }
+
+        private static void ConfigureWorldSpawnerOverriddenByFile(ISpawnerConfigurationCollection config)
+        {
+            try
+            {
+                config.ConfigureWorldSpawner(666)
+                    .SetTemplateName("Dropping Trolls")
+                    .SetPrefabName("Troll");
+            }
+            catch (Exception e)
+            {
+                Log.LogError(e);
+            }
+        }
+
+        private static void ConfigureSpawnAreaSpawner(ISpawnerConfigurationCollection config)
+        {
+            var spawner = config.ConfigureSpawnAreaSpawner()
+                .SetTemplateName("Meadow Spawners")
+                .SetIdentifierBiome(Heightmap.Biome.Meadows)
+                .SetSpawnInterval(TimeSpan.FromSeconds(5))
+                ;
+
+            spawner.GetSpawnBuilder(0)
+                .SetPrefabName("Troll")
+                .SetSpawnWeight(5)
+                .SetConditionAllOfGlobalKeys(GlobalKey.Bat, GlobalKey.Troll)
+                ;
+
+            spawner.GetSpawnBuilder(1)
+                .SetPrefabName("Wolf")
+                .SetSpawnWeight(1)
+                ;
+        }
+
+        private static void ConfigureSpawnAreaSpawnerBySettings(ISpawnerConfigurationCollection config)
+        {
+            var spawnerSettings = new SpawnAreaSpawnerSettings()
+            {
+                SpawnInterval = TimeSpan.FromSeconds(5),
+                SetPatrol = true,
+                
+            };
+
+            var spawnSettings = new SpawnAreaSpawnSettings
+            {
+                PrefabName = "Boar",
+                Modifiers = new[]
+                {
+                    new ModifierSetTamed(true)
+                },
+            };
+
+            var spawner = config.ConfigureSpawnAreaSpawner()
+                .WithSettings(spawnerSettings)
+                .SetIdentifierName("Spawner_GreydwarfNest")
+                ;
+
+            spawner.GetSpawnBuilder(0)
+                .WithSettings(spawnSettings)
+                .SetLevelMin(1)
+                .SetLevelMax(1)
+                .SetSpawnWeight(5)
+                ;
+
+            spawner.GetSpawnBuilder(1)
+                .WithSettings(spawnSettings)
+                .SetLevelMin(3)
+                .SetLevelMax(3)
+                .SetSpawnWeight(1)
+                .SetCllcModifierInfusion(CllcCreatureInfusion.Poison)
+                ;
         }
     }
 }

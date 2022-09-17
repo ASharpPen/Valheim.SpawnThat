@@ -41,7 +41,7 @@ internal static class WorldSpawnerConfigurationService
             ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileBeforeChanges?.Value == true)
         {
             var preChangeSpawners = spawnLists.SelectMany(x => x.m_spawners).ToList();
-            SpawnDataFileDumper.WriteToFile(preChangeSpawners, "world_spawners_pre_changes.txt");
+            SpawnDataFileGenerator.WriteToFile(preChangeSpawners, "spawn_that.world_spawners_pre_changes.txt");
         }
 
         if (ConfigurationManager.GeneralConfig?.ClearAllExisting?.Value == true)
@@ -57,7 +57,7 @@ internal static class WorldSpawnerConfigurationService
 
         if (ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileAfterChanges?.Value == true)
         {
-            SpawnDataFileDumper.WriteToFile(spawnLists.SelectMany(x => x.m_spawners).ToList(), "world_spawners_post_changes.txt", true);
+            SpawnDataFileGenerator.WriteToFile(spawnLists.SelectMany(x => x.m_spawners).ToList(), "spawn_that.world_spawners_post_changes.txt", true);
         }
 
         IsConfigured = true;
@@ -113,15 +113,18 @@ internal static class WorldSpawnerConfigurationService
                 id >= spawners.Count)
             {
                 entry = new SpawnSystem.SpawnData();
-                mainSpawnList.m_spawners.Add(entry);
 
                 Log.LogTrace($"Creating spawner entry for template [{id}:{template.PrefabName}]");
 
-                ConfigureNewEntry(entry, template);
+                // Add entry only if configuration succeeds
+                if (TryConfigureNewEntry(entry, template))
+                {
+                    mainSpawnList.m_spawners.Add(entry);
+                }
             }
             else
             {
-                Log.LogTrace($"Overriding spawner entry [{id}:{spawners[id].m_prefab.name}] with template '{template.TemplateName}'");
+                Log.LogTrace($"Overriding spawner entry [{id}:{spawners[id].m_prefab.GetName()}] with template '{template.TemplateName}'");
                 entry = spawners[id];
 
                 ConfigureExistingEntry(entry, template);
@@ -133,42 +136,39 @@ internal static class WorldSpawnerConfigurationService
 
     private static void ApplySimpleTemplates(List<SpawnSystemList> spawnLists)
     {
-        var simpleConfigs = SpawnSystemConfigurationManager.SimpleConfig?.Subsections;
-
-        if (simpleConfigs is not null && simpleConfigs.Count > 0)
+        if(!WorldSpawnTemplateManager.SimpleTemplatesByPrefab.Any())
         {
-            foreach (var spawnList in spawnLists)
+            return;
+        }
+
+        foreach (var spawnList in spawnLists)
+        {
+            foreach (var spawner in spawnList.m_spawners)
             {
-                foreach (var spawner in spawnList.m_spawners)
+                if (spawner.m_prefab.IsNull() || string.IsNullOrWhiteSpace(spawner.m_prefab.GetName()))
                 {
-                    if (spawner.m_prefab.IsNull() || string.IsNullOrWhiteSpace(spawner.m_prefab.name))
-                    {
-                        continue;
-                    }
+                    continue;
+                }
 
-                    var name = spawner.m_prefab.name;
-                    var cleanedName = name.Trim().ToUpper();
+                var name = spawner.m_prefab.GetName();
+                var cleanedName = name.Trim().ToUpper();
 
-                    if (simpleConfigs.TryGetValue(cleanedName, out SimpleConfig simpleConfig))
-                    {
-                        spawner.m_maxSpawned = (int)Math.Round(spawner.m_maxSpawned * simpleConfig.SpawnMaxMultiplier.Value);
-                        spawner.m_groupSizeMin = (int)Math.Round(spawner.m_groupSizeMin * simpleConfig.GroupSizeMinMultiplier.Value);
-                        spawner.m_groupSizeMax = (int)Math.Round(spawner.m_groupSizeMax * simpleConfig.GroupSizeMaxMultiplier.Value);
-                        spawner.m_spawnInterval = simpleConfig.SpawnFrequencyMultiplier.Value != 0
-                            ? spawner.m_spawnInterval / simpleConfig.SpawnFrequencyMultiplier.Value
-                            : 0;
-                    }
+                if (WorldSpawnTemplateManager.SimpleTemplatesByPrefab.TryGetValue(cleanedName, out var simpleConfig))
+                {
+                    spawner.m_maxSpawned = (int)Math.Round(spawner.m_maxSpawned * simpleConfig.SpawnMaxMultiplier.Value);
+                    spawner.m_groupSizeMin = (int)Math.Round(spawner.m_groupSizeMin * simpleConfig.GroupSizeMinMultiplier.Value);
+                    spawner.m_groupSizeMax = (int)Math.Round(spawner.m_groupSizeMax * simpleConfig.GroupSizeMaxMultiplier.Value);
+                    spawner.m_spawnInterval = simpleConfig.SpawnFrequencyMultiplier.Value != 0
+                        ? spawner.m_spawnInterval / simpleConfig.SpawnFrequencyMultiplier.Value
+                        : 0;
                 }
             }
         }
     }
 
-    private static void ConfigureNewEntry(SpawnSystem.SpawnData entry, WorldSpawnTemplate template)
+    private static bool TryConfigureNewEntry(SpawnSystem.SpawnData entry, WorldSpawnTemplate template)
     {
-        if (!template.Enabled)
-        {
-            entry.m_enabled = template.Enabled;
-        }
+        Configure(ref entry.m_enabled, template.Enabled);
 
         GameObject prefab = entry.m_prefab;
 
@@ -180,13 +180,24 @@ internal static class WorldSpawnerConfigurationService
             {
                 Log.LogWarning($"Unable to find prefab '{template.PrefabName}' for {template.PrefabName}. Skipping world spawn template {template.TemplateName}");
                 DetectedUnableToFindPrefab = true;
-                return;
+                return false;
             }
+        }
+        else if (prefab.IsNull())
+        {
+            var warning = $"World spawn template with ID '{template.Index}' ";
+            if (!string.IsNullOrWhiteSpace(template.TemplateName))
+            {
+                warning += $"and name '{template.TemplateName}' ";
+            }
+            warning += $"is missing a PrefabName setting. Skipping creation of spawn entry for template";
+
+            Log.LogWarning(warning);
+            return false;
         }
 
         Configure(ref entry.m_prefab, prefab);
         Configure(ref entry.m_biome, template.BiomeMask, (Heightmap.Biome)int.MaxValue);
-        Configure(ref entry.m_enabled, template.Enabled);
         Configure(ref entry.m_groundOffset, template.SpawnAtDistanceToGround, 0.5f);
         Configure(ref entry.m_groupRadius, template.PackSpawnCircleRadius, 3f);
         Configure(ref entry.m_groupSizeMin, template.PackSizeMin, 1);
@@ -214,6 +225,8 @@ internal static class WorldSpawnerConfigurationService
         Configure(ref entry.m_spawnInterval, (float?)template.SpawnInterval?.TotalSeconds, 90f);
         Configure(ref entry.m_spawnRadiusMin, template.SpawnAtDistanceToPlayerMin, 0);
         Configure(ref entry.m_spawnRadiusMax, template.SpawnAtDistanceToPlayerMax, 0);
+
+        return true;
     }
 
     private static void ConfigureExistingEntry(SpawnSystem.SpawnData entry, WorldSpawnTemplate template)

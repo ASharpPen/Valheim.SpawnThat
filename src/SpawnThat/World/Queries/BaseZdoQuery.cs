@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using SpawnThat.World.Zone;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.World.Queries;
 
@@ -96,6 +96,6 @@ public abstract class BaseZdoQuery
         }
 
         // Check if within circle distance
-        return Utils.DistanceXZ(zdo.m_position, Center) <= Range;
+        return zdo.m_position.WithinHorizontalDistance(Center, Range);
     }
 }

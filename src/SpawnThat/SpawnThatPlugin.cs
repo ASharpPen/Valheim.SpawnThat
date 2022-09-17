@@ -14,7 +14,7 @@ namespace SpawnThat
     {
         public const string ModId = "asharppen.valheim.spawn_that";
         public const string PluginName = "Spawn That!";
-        public const string Version = "1.0.6";
+        public const string Version = "1.1.0";
 
         // Awake is called once when both the game and the plug-in are loaded
         void Awake()

@@ -6,7 +6,6 @@ using HarmonyLib;
 using SpawnThat.Core.Cache;
 using SpawnThat.Caches;
 using SpawnThat.Core;
-using SpawnThat.Utilities.Extensions;
 using SpawnThat.Utilities;
 
 namespace SpawnThat.Options.Modifiers.Patches;
@@ -24,19 +23,19 @@ internal static class SetDespawnPatch
 
     [HarmonyPatch(typeof(MonsterAI), nameof(MonsterAI.UpdateAI))]
     [HarmonyTranspiler]
-    public static IEnumerable<CodeInstruction> AddDespawnSection(IEnumerable<CodeInstruction> instructions)
+    public static IEnumerable<CodeInstruction> AddDespawnSection(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
     {
         MethodInfo DespawnInDay = AccessTools.Method(typeof(MonsterAI), nameof(MonsterAI.DespawnInDay));
         MethodInfo MoveAwayAndDespawn = AccessTools.Method(typeof(BaseAI), nameof(BaseAI.MoveAwayAndDespawn));
 
-        return new CodeMatcher(instructions)
+        return new CodeMatcher(instructions, generator)
             // Move forward to inner scope of the if-statement starting the despawn.
             .MatchForward(false,
                 new CodeMatch(OpCodes.Ldarg_0),
                 new CodeMatch(OpCodes.Ldarg_1),
                 new CodeMatch(x => x.opcode == OpCodes.Ldc_I4_0 || x.opcode == OpCodes.Ldc_I4_1), // Don't want this to break every time someone changes their mind on making creatures run or walk.
                 new CodeMatch(OpCodes.Call, MoveAwayAndDespawn))
-            .AddLabel(out Label innerScopeLabel)
+            .CreateLabel(out Label innerScopeLabel)
             //Move back to before start of if-statement.
             .MatchBack(false,
                 new CodeMatch(OpCodes.Ldarg_0),

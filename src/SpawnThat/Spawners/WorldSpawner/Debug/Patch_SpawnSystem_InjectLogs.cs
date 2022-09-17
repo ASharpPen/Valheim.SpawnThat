@@ -7,12 +7,52 @@ using System.Linq;
 using System.Reflection.Emit;
 using UnityEngine;
 using SpawnThat.Core;
+using SpawnThat.Utilities.Extensions;
+using SpawnThat.Spawners.WorldSpawner;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 
 namespace SpawnThat.Spawners.SpawnerSpawnSystem.Debug
 {
     [HarmonyPatch(typeof(SpawnSystem))]
     internal static class Patch_SpawnSystem_InjectLogs
     {
+        [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
+        [HarmonyPrefix]
+        public static void ListSpawns(List<SpawnSystem.SpawnData> spawners)
+        {
+            try
+            {
+                for (int i = 0; i < spawners.Count; ++i)
+                {
+                    var spawn = spawners[i];
+
+                    if (spawn is null)
+                    {
+                        Log.LogWarning($"Spawner[{i}]: Is null");
+                    }
+                    else if (spawn.m_prefab.IsNull())
+                    {
+                        Log.LogWarning($"Spawner[{i}] {spawn.m_name}: Prefab is null or false.");
+
+                        var template = WorldSpawnerManager.GetTemplate(spawn);
+
+                        if (template is not null)
+                        {
+                            Log.LogWarning($"Spawner[{i}] {spawn.m_name}, TemplateName: '{template.TemplateName}', ID: '{template.Index}': Prefab is null or false.");
+                        }
+                    }
+                    else if (spawn.m_prefab.name is null)
+                    {
+                        Log.LogWarning($"Spawner[{i}] {spawn.m_name}: Prefab name is null");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Log.LogError($"Error while trying to debug {nameof(SpawnSystem.UpdateSpawnList)}", e);
+            }
+        }
+
         [HarmonyPatch(nameof(SpawnSystem.UpdateSpawnList))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> IsEnabledInject(IEnumerable<CodeInstruction> instructions)

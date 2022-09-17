@@ -9,11 +9,14 @@ internal static class WorldSpawnTemplateManager
 {
     public static Dictionary<int, WorldSpawnTemplate> TemplatesById { get; internal set; } = new();
 
+    public static Dictionary<string, SimpleSpawnTemplate> SimpleTemplatesByPrefab { get; internal set; } = new();
+
     static WorldSpawnTemplateManager()
     {
         LifecycleManager.SubscribeToWorldInit(() =>
         {
             TemplatesById = new();
+            SimpleTemplatesByPrefab = new();
         });
     }
 
@@ -25,6 +28,11 @@ internal static class WorldSpawnTemplateManager
 
             TemplatesById[id] = template;
         }
+    }
+
+    public static void SetTemplate(SimpleSpawnTemplate template)
+    {
+        SimpleTemplatesByPrefab[template.PrefabName.Trim().ToUpperInvariant()] = template;
     }
 
     public static List<(int id, WorldSpawnTemplate template)> GetTemplates()

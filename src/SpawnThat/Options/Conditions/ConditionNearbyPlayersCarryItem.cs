@@ -17,14 +17,14 @@ public class ConditionNearbyPlayersCarryItem : ISpawnCondition
     public ConditionNearbyPlayersCarryItem(int distanceToSearch, params string[] itemPrefabNames)
     {
         SearchDistance = distanceToSearch;
-        ItemsSearchedFor = itemPrefabNames
+        ItemsSearchedFor = itemPrefabNames?
             .Select(x => x.Trim().ToUpperInvariant())
             .ToHashSet();
     }
 
     public bool IsValid(SpawnSessionContext context)
     {
-        if (ItemsSearchedFor.Count == 0)
+        if ((ItemsSearchedFor?.Count ?? 0) == 0)
         {
             return true;
         }

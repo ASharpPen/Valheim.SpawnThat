@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace SpawnThat.Utilities.Extensions;
 
@@ -27,6 +26,15 @@ public static class UnityObjectExtensions
         return false;
     }
 
+    /// <summary>
+    /// Unity object null safe ".name".
+    /// </summary>
+    /// <returns><c>obj</c>.name or empty string if obj is null.</returns>
+    public static string GetName(this UnityEngine.Object obj)
+        => obj.IsNotNull()
+        ? obj.name
+        : string.Empty;
+
     public static string GetCleanedName(this UnityEngine.Object obj, bool toUpper = false)
     {
         if (obj.IsNull())
@@ -44,10 +52,25 @@ public static class UnityObjectExtensions
         string cleanedName = match
             .Value
             .Trim();
+        /*
+        if (obj.IsNull())
+        {
+            return null;
+        }
+
+        string cleanedName = obj.name
+            .Split(new char[] { '(' }, System.StringSplitOptions.RemoveEmptyEntries)
+            .FirstOrDefault()?
+            .Trim();
+
+        cleanedName = string.IsNullOrWhiteSpace(cleanedName)
+            ? obj.name
+            : cleanedName;
+        */
 
         if (toUpper)
         {
-            cleanedName = cleanedName.ToUpperInvariant();
+            cleanedName = cleanedName?.ToUpperInvariant();
         }
 
         return cleanedName;

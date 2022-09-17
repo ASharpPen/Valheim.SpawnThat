@@ -7,7 +7,7 @@ public static class ILocalSpawnBuilderSettingsExtensions
     public static ILocalSpawnBuilder WithSettings(this ILocalSpawnBuilder builder, LocalSpawnSettings settings)
     {
         settings.PrefabName.Set(builder.SetPrefabName);
-        settings.Enabled.Set(builder.SetEnabled);
+        settings.Enabled.Set(x => builder.SetEnabled(x.Value));
         settings.SpawnInterval.SetNullable(builder.SetSpawnInterval);
         settings.MinLevel.Set(builder.SetMinLevel);
         settings.MaxLevel.Set(builder.SetMaxLevel);
@@ -40,7 +40,7 @@ public static class ILocalSpawnBuilderSettingsExtensions
         }
     }
 
-    private static void Set(this bool? value, Func<bool, ILocalSpawnBuilder> apply)
+    private static void Set(this bool? value, Func<bool?, ILocalSpawnBuilder> apply)
     {
         if (value is not null)
         {
@@ -48,7 +48,7 @@ public static class ILocalSpawnBuilderSettingsExtensions
         }
     }
 
-    private static void Set(this int? value, Func<int, ILocalSpawnBuilder> apply)
+    private static void Set(this int? value, Func<int?, ILocalSpawnBuilder> apply)
     {
         if (value is not null)
         {
@@ -56,7 +56,7 @@ public static class ILocalSpawnBuilderSettingsExtensions
         }
     }
 
-    private static void Set(this float? value, Func<float, ILocalSpawnBuilder> apply)
+    private static void Set(this float? value, Func<float?, ILocalSpawnBuilder> apply)
     {
         if (value is not null)
         {

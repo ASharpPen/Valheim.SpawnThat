@@ -13,7 +13,7 @@ public static class IWorldSpawnBuilderConditionExtensions
     /// </summary>
     public static IWorldSpawnBuilder SetConditionAreaIds(this IWorldSpawnBuilder builder, IEnumerable<int> areaIds)
     {
-        builder.SetCondition(new ConditionAreaIds(areaIds.ToList()));
+        builder.SetCondition(new ConditionAreaIds(areaIds?.ToList()));
         return builder;
     }
 
@@ -23,7 +23,7 @@ public static class IWorldSpawnBuilderConditionExtensions
     /// </summary>
     public static IWorldSpawnBuilder SetConditionAreaIds(this IWorldSpawnBuilder builder, params int[] areaIds)
     {
-        builder.SetCondition(new ConditionAreaIds(areaIds.ToList()));
+        builder.SetCondition(new ConditionAreaIds(areaIds?.ToList()));
         return builder;
     }
 
@@ -73,7 +73,7 @@ public static class IWorldSpawnBuilderConditionExtensions
     /// </summary>
     public static IWorldSpawnBuilder SetGlobalKeysRequiredMissing(this IWorldSpawnBuilder builder, IEnumerable<string> globalKeys)
     {
-        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys.ToArray()));
+        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys?.ToArray()));
         return builder;
     }
 
@@ -99,7 +99,7 @@ public static class IWorldSpawnBuilderConditionExtensions
     /// </summary>
     public static IWorldSpawnBuilder SetGlobalKeysRequiredMissing(this IWorldSpawnBuilder builder, IEnumerable<GlobalKey> globalKeys)
     {
-        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys.Select(x => x.GetName()).ToArray()));
+        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys?.Select(x => x.GetName()).ToArray()));
         return builder;
     }
 
@@ -112,7 +112,7 @@ public static class IWorldSpawnBuilderConditionExtensions
     /// </summary>
     public static IWorldSpawnBuilder SetGlobalKeysRequiredMissing(this IWorldSpawnBuilder builder, params GlobalKey[] globalKeys)
     {
-        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys.Select(x => x.GetName()).ToArray()));
+        builder.SetCondition(new ConditionGlobalKeysRequiredMissing(globalKeys?.Select(x => x.GetName()).ToArray()));
         return builder;
     }
 
@@ -121,7 +121,7 @@ public static class IWorldSpawnBuilderConditionExtensions
     /// </summary>
     public static IWorldSpawnBuilder SetConditionLocation(this IWorldSpawnBuilder builder, IEnumerable<string> locationNames)
     {
-        builder.SetCondition(new ConditionLocation(locationNames.ToArray()));
+        builder.SetCondition(new ConditionLocation(locationNames?.ToArray()));
         return builder;
     }
 
@@ -139,7 +139,7 @@ public static class IWorldSpawnBuilderConditionExtensions
     /// </summary>
     public static IWorldSpawnBuilder SetConditionNearbyPlayersCarryItem(this IWorldSpawnBuilder builder, int distance, IEnumerable<string> itemPrefabNames)
     {
-        builder.SetCondition(new ConditionNearbyPlayersCarryItem(distance, itemPrefabNames.ToArray()));
+        builder.SetCondition(new ConditionNearbyPlayersCarryItem(distance, itemPrefabNames?.ToArray()));
         return builder;
     }
 
@@ -175,7 +175,7 @@ public static class IWorldSpawnBuilderConditionExtensions
     /// </summary>
     public static IWorldSpawnBuilder SetConditionNearbyPlayersStatus(this IWorldSpawnBuilder builder, int distance, IEnumerable<string> statusEffectNames)
     {
-        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffectNames.ToArray()));
+        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffectNames?.ToArray()));
         return builder;
     }
 
@@ -193,7 +193,7 @@ public static class IWorldSpawnBuilderConditionExtensions
     /// </summary>
     public static IWorldSpawnBuilder SetConditionNearbyPlayersStatus(this IWorldSpawnBuilder builder, int distance, IEnumerable<StatusEffect> statusEffects)
     {
-        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffects.Select(x => x.ToString()).ToArray()));
+        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffects?.Select(x => x.ToString()).ToArray()));
         return builder;
     }
 
@@ -202,7 +202,7 @@ public static class IWorldSpawnBuilderConditionExtensions
     /// </summary>
     public static IWorldSpawnBuilder SetConditionNearbyPlayersStatus(this IWorldSpawnBuilder builder, int distance, params StatusEffect[] statusEffects)
     {
-        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffects.Select(x => x.ToString()).ToArray()));
+        builder.SetCondition(new ConditionNearbyPlayersStatus(distance, statusEffects?.Select(x => x.ToString()).ToArray()));
         return builder;
     }
 

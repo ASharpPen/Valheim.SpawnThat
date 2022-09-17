@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using EpicLoot;
 using ExtendedItemDataFramework;
-using HarmonyLib;
 using SpawnThat.Core;
 using SpawnThat.Integrations.EpicLoot.Models;
 using SpawnThat.Options.Conditions;
@@ -26,7 +25,7 @@ public class ConditionNearbyPlayerCarryItemWithRarity : ISpawnCondition
     public ConditionNearbyPlayerCarryItemWithRarity(int distanceToSearch, IEnumerable<EpicLootRarity> rarities)
     {
         SearchDistance = distanceToSearch;
-        RaritiesRequired = rarities.ToList();
+        RaritiesRequired = rarities?.ToList();
     }
 
     public ConditionNearbyPlayerCarryItemWithRarity(int distanceToSearch, IEnumerable<string> rarities)
@@ -35,22 +34,25 @@ public class ConditionNearbyPlayerCarryItemWithRarity : ISpawnCondition
 
         RaritiesRequired = new();
 
-        foreach(var rarityName in rarities)
+        if (rarities is not null)
         {
-            if (Enum.TryParse(rarityName, true, out EpicLootRarity rarity))
+            foreach (var rarityName in rarities)
             {
-                RaritiesRequired.Add(rarity);
-            }
-            else
-            {
-                Log.LogWarning($"Unable to parse EpicLoot rarity '{rarity}'. Verify spelling.");
+                if (Enum.TryParse(rarityName, true, out EpicLootRarity rarity))
+                {
+                    RaritiesRequired.Add(rarity);
+                }
+                else
+                {
+                    Log.LogWarning($"Unable to parse EpicLoot rarity '{rarity}'. Verify spelling.");
+                }
             }
         }
     }
 
     public bool IsValid(SpawnSessionContext context)
     {
-        if (RaritiesRequired.Count == 0)
+        if ((RaritiesRequired?.Count ?? 0) == 0)
         {
             return true;
         }

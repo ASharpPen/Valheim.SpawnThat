@@ -39,10 +39,18 @@ public enum GlobalKey
     /// killed_surtling
     /// </summary>
     Surtling,
+
+    /// <summary>
+    /// KilledBat
+    /// </summary>
+    Bat,
 }
 
 public static class GlobalKeyExtensions
 { 
+    /// <summary>
+    /// Gets the vanilla global key string corresponding to <c>key</c>.
+    /// </summary>
     public static string GetName(this GlobalKey key)
     {
         return key switch
@@ -54,6 +62,7 @@ public static class GlobalKeyExtensions
             GlobalKey.Yagluth => "defeated_goblinking",
             GlobalKey.Troll => "KilledTroll",
             GlobalKey.Surtling => "killed_surtling",
+            GlobalKey.Bat => "KilledBat",
             _ => ""
         };
     }

@@ -2,10 +2,10 @@
 
 public class SpawnSessionContext
 {
-    public ZDO SpawnerZdo { get; }
-
     public SpawnSessionContext(ZDO spawnerZdo)
     {
         SpawnerZdo = spawnerZdo;
     }
+
+    public ZDO SpawnerZdo { get; }
 }

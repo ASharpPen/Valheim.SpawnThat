@@ -60,7 +60,7 @@ internal class Patch_Game_FindSpawnPoint_PrintMaps
 
             foreach (var config in spawnSystemConfigs.Subsections.Values)
             {
-                if (!config.Enabled.Value)
+                if (!(config.Enabled.Value ?? config.Enabled.DefaultValue.Value))
                 {
                     continue;
                 }

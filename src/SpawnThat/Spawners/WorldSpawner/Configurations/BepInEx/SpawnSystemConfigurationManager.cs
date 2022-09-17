@@ -1,11 +1,10 @@
 ﻿using BepInEx;
-using BepInEx.Configuration;
 using System;
 using System.Diagnostics;
 using System.IO;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
-using SpawnThat.Core.Configuration;
+using SpawnThat.Core.Toml;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
@@ -17,7 +16,7 @@ internal static class SpawnSystemConfigurationManager
     internal const string SimpleConfigFile = "spawn_that.simple.cfg";
     internal const string SpawnSystemConfigFile = "spawn_that.world_spawners_advanced.cfg";
 
-    internal const string SpawnSystemSupplemental = "spawn_that.world_spawners.*";
+    internal const string SpawnSystemSupplemental = "spawn_that.world_spawners.*.cfg";
 
     public static void LoadAllConfigurations()
     {
@@ -28,37 +27,29 @@ internal static class SpawnSystemConfigurationManager
 
         stopwatch.Stop();
 
-        Log.LogInfo("Config loading took: " + stopwatch.Elapsed);
-        if (stopwatch.Elapsed > TimeSpan.FromSeconds(5) &&
-            ConfigurationManager.GeneralConfig?.StopTouchingMyConfigs?.Value == false)
-        {
-            Log.LogInfo("Long loading time detected. Consider setting \"StopTouchingMyConfigs=true\" in spawn_that.cfg to improve loading speed.");
-        }
+        Log.LogInfo("Loading world spawner configs took: " + stopwatch.Elapsed);
     }
 
     public static SimpleConfigurationFile LoadSimpleConfig()
     {
-        Log.LogInfo("Loading simple configurations");
+        Log.LogInfo("Loading world spawner simple configurations");
 
         string configPath = Path.Combine(Paths.ConfigPath, SimpleConfigFile);
 
-        if (!File.Exists(configPath) && ConfigurationManager.GeneralConfig?.InitializeWithCreatures?.Value == true)
+        var fileExists = File.Exists(configPath);
+
+        if (!fileExists && ConfigurationManager.GeneralConfig?.InitializeWithCreatures?.Value == true)
         {
             SimpleConfigPreconfiguration.Initialize();
+            fileExists = true;
         }
 
-        ConfigurationLoader.SanitizeSectionHeaders(configPath);
-        ConfigFile configFile = new ConfigFile(configPath, true);
-
-        if (ConfigurationManager.GeneralConfig?.StopTouchingMyConfigs?.Value == true)
+        if (fileExists)
         {
-            configFile.SaveOnConfigSet = !ConfigurationManager.GeneralConfig.StopTouchingMyConfigs.Value;
+            return TomlLoader.LoadFile<SimpleConfigurationFile>(configPath);
         }
 
-        var config = ConfigurationLoader.LoadConfiguration<SimpleConfigurationFile>(configFile);
-        Log.LogDebug("Finished loading simple configurations");
-
-        return config;
+        return new();
     }
 
     public static SpawnSystemConfigurationFile LoadSpawnSystemConfiguration()
@@ -67,7 +58,12 @@ internal static class SpawnSystemConfigurationManager
 
         string configPath = Path.Combine(Paths.ConfigPath, SpawnSystemConfigFile);
 
-        var configs = LoadSpawnSystemConfig(configPath);
+        if (!File.Exists(configPath))
+        {
+            CreateDefaultWorldSpawnerFile(configPath);
+        }
+
+        SpawnSystemConfigurationFile configs = new();
 
         var supplementalFiles = Directory.GetFiles(Paths.ConfigPath, SpawnSystemSupplemental, SearchOption.AllDirectories);
         Log.LogDebug($"Found {supplementalFiles.Length} supplemental world spawner config files");
@@ -85,6 +81,9 @@ internal static class SpawnSystemConfigurationManager
                 Log.LogError($"Failed to load supplemental config '{file}'.", e);
             }
         }
+        
+        var mainConfig = LoadSpawnSystemConfig(configPath);
+        mainConfig.MergeInto(configs);
 
         Log.LogDebug("Finished loading world spawner configurations");
 
@@ -95,14 +94,23 @@ internal static class SpawnSystemConfigurationManager
     {
         Log.LogDebug($"Loading world spawner configurations from {configPath}.");
 
-        ConfigurationLoader.SanitizeSectionHeaders(configPath);
-        var configFile = new ConfigFile(configPath, true);
+        return TomlLoader.LoadFile<SpawnSystemConfigurationFile>(configPath);
+    }
 
-        if (ConfigurationManager.GeneralConfig?.StopTouchingMyConfigs?.Value == true)
-        {
-            configFile.SaveOnConfigSet = !ConfigurationManager.GeneralConfig.StopTouchingMyConfigs.Value;
-        }
+    private static void CreateDefaultWorldSpawnerFile(string configPath)
+    {
+        using var file = File.Create(configPath);
+        using var writer = new StreamWriter(file);
 
-        return ConfigurationLoader.LoadConfiguration<SpawnSystemConfigurationFile>(configFile);
+        writer.WriteLine("# Auto-generated file for adding World Spawner configurations.");
+        writer.WriteLine("# This file is empty by default. It is intended to contains changes only, to avoid unintentional modifications as well as to reduce unnecessary performance cost.");
+        writer.WriteLine("# Full documentation can be found at https://asharppen.github.io/Valheim.SpawnThat.");
+        writer.WriteLine("# To get started: ");
+        writer.WriteLine($"#     1. Generate default configs in BepInEx/Debug folder, by enabling {nameof(GeneralConfiguration.WriteSpawnTablesToFileBeforeChanges)} in 'spawn_that.cfg'.");
+        writer.WriteLine($"#     2. Start game and enter a world, and wait a short moment (ca. 10 seconds) for files to generate.");
+        writer.WriteLine("#     3. Go to generated file, and copy the creatures you want to modify into this file");
+        writer.WriteLine("#     4. Make your changes.");
+        writer.WriteLine($"# To find modded configs and change those, enable {nameof(GeneralConfiguration.WriteSpawnTablesToFileAfterChanges)} in 'spawn_that.cfg', and do as described above.");
+        writer.WriteLine();
     }
 }

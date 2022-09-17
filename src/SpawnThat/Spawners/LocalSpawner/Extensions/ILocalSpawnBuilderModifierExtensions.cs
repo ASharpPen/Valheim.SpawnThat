@@ -37,6 +37,12 @@ public static class ILocalSpawnBuilderModifierExtensions
         return builder;
     }
 
+    public static ILocalSpawnBuilder SetModifierFaction(this ILocalSpawnBuilder builder, Character.Faction? faction)
+    {
+        builder.SetModifier(new ModifierSetFaction(faction));
+        return builder;
+    }
+
     public static ILocalSpawnBuilder SetModifierTamed(this ILocalSpawnBuilder builder, bool tamed)
     {
         builder.SetModifier(new ModifierSetTamed(tamed));

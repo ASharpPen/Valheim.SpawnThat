@@ -10,17 +10,17 @@ public static class IWorldSpawnBuilderSettingsExtensions
         settings.PrefabName.Set(builder.SetPrefabName);
         settings.Enabled.Set(builder.SetEnabled);
         settings.Biomes.Set(builder.SetConditionBiomes);
-        settings.MaxSpawned.Set(builder.SetMaxSpawned);
+        settings.MaxSpawned.SetNullable(builder.SetMaxSpawned);
         settings.SpawnInterval.Set(builder.SetSpawnInterval);
         settings.SpawnChance.Set(builder.SetSpawnChance);
         settings.PackSpawnCircleRadius.Set(builder.SetPackSpawnCircleRadius);
-        settings.PackSizeMin.Set(builder.SetPackSizeMin);
-        settings.PackSizeMax.Set(builder.SetPackSizeMax);
-        settings.SpawnInForest.Set(builder.SetSpawnInForest);
-        settings.SpawnOutsideForest.Set(builder.SetSpawnOutsideForest);
+        settings.PackSizeMin.SetNullable(builder.SetPackSizeMin);
+        settings.PackSizeMax.SetNullable(builder.SetPackSizeMax);
+        settings.SpawnInForest.SetNullable(builder.SetSpawnInForest);
+        settings.SpawnOutsideForest.SetNullable(builder.SetSpawnOutsideForest);
         settings.DistanceToCenterForLevelUp.Set(builder.SetDistanceToCenterForLevelUp);
-        settings.MinLevel.Set(builder.SetMinLevel);
-        settings.MaxLevel.Set(builder.SetMaxLevel);
+        settings.MinLevel.SetNullable(builder.SetMinLevel);
+        settings.MaxLevel.SetNullable(builder.SetMaxLevel);
         settings.ConditionMinAltitude.SetNullable(builder.SetConditionAltitudeMin);
         settings.ConditionMaxAltitude.SetNullable(builder.SetConditionAltitudeMax);
         settings.ConditionMinOceanDepth.SetNullable(builder.SetConditionOceanDepthMin);
@@ -29,8 +29,8 @@ public static class IWorldSpawnBuilderSettingsExtensions
         settings.ConditionMaxTilt.SetNullable(builder.SetConditionTiltMax);
         settings.ConditionEnvironments.Set(builder.SetConditionEnvironments);
         settings.ConditionRequiredGlobalKey.Set(builder.SetConditionRequiredGlobalKey);
-        settings.SpawnDuringDay.Set(builder.SetSpawnDuringDay);
-        settings.SpawnDuringNight.Set(builder.SetSpawnDuringNight);
+        settings.SpawnDuringDay.SetNullable(builder.SetSpawnDuringDay);
+        settings.SpawnDuringNight.SetNullable(builder.SetSpawnDuringNight);
         settings.MinDistanceToOther.Set(builder.SetMinDistanceToOther);
         settings.SpawnAtDistanceToPlayerMin.SetNullable(builder.SetSpawnAtDistanceToPlayerMin);
         settings.SpawnAtDistanceToPlayerMax.SetNullable(builder.SetSpawnAtDistanceToPlayerMax);
@@ -48,7 +48,7 @@ public static class IWorldSpawnBuilderSettingsExtensions
 
         foreach (var modifier in settings.Modifiers)
         {
-            builder = builder.SetModifier(modifier);
+            builder.SetModifier(modifier);
         }
 
         return builder;
@@ -63,6 +63,14 @@ public static class IWorldSpawnBuilderSettingsExtensions
         }
     }
 
+    private static void SetNullable(this bool? value, Func<bool?, IWorldSpawnBuilder> apply)
+    {
+        if (value is not null)
+        {
+            apply(value.Value);
+        }
+    }
+
     private static void Set(this bool? value, Func<bool, IWorldSpawnBuilder> apply)
     {
         if (value is not null)
@@ -71,7 +79,7 @@ public static class IWorldSpawnBuilderSettingsExtensions
         }
     }
 
-    private static void Set(this int? value, Func<int, IWorldSpawnBuilder> apply)
+    private static void Set(this int? value, Func<int?, IWorldSpawnBuilder> apply)
     {
         if (value is not null)
         {
@@ -79,7 +87,7 @@ public static class IWorldSpawnBuilderSettingsExtensions
         }
     }
 
-    private static void Set(this float? value, Func<float, IWorldSpawnBuilder> apply)
+    private static void Set(this float? value, Func<float?, IWorldSpawnBuilder> apply)
     {
         if (value is not null)
         {
@@ -110,7 +118,22 @@ public static class IWorldSpawnBuilderSettingsExtensions
         }
     }
 
-    private static void Set(this TimeSpan? value, Func<TimeSpan, IWorldSpawnBuilder> apply)
+    private static void SetNullable(this int? value, Func<uint?, IWorldSpawnBuilder> apply)
+    {
+        if (value is not null)
+        {
+            if (value >= 0)
+            {
+                apply((uint)value.Value);
+            }
+            else
+            {
+                apply(0);
+            }
+        }
+    }
+
+    private static void Set(this TimeSpan? value, Func<TimeSpan?, IWorldSpawnBuilder> apply)
     {
         if (value is not null)
         {

@@ -18,6 +18,7 @@
 - defeated_goblinking
 - KilledTroll
 - killed_surtling
+- KilledBat
 
 Additional keys can be created manually through console commands, or by a mod like [Enhanced Progress Tracker](https://valheim.thunderstore.io/package/ASharpPen/Enhanced_Progress_Tracker/).
 
