@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 using SpawnThat.Debugging;
 using SpawnThat.Utilities;
@@ -32,7 +33,20 @@ internal static class TomlWriter
             WriteSubsectionsRecursively(stringBuilder, configWithSubsections, settings);
         }
 
-        DebugFileWriter.WriteFile(stringBuilder.ToString(), settings.FileName, settings.FileDescription);
+        if (settings.FilePath is null)
+        {
+            DebugFileWriter.WriteFile(stringBuilder.ToString(), settings.FileName, settings.FileDescription);
+        }
+        else
+        {
+            string fullPath = Path.Combine(settings.FilePath, settings.FileName);
+
+            FileUtils.EnsureDirectoryExistsForFile(fullPath);
+
+            Log.LogInfo($"Writing {settings.FileDescription} to file {fullPath}.");
+
+            File.WriteAllText(fullPath, stringBuilder.ToString());
+        }
     }
 
     private static void WriteSubsectionsRecursively(StringBuilder builder, IHaveSubsections config, TomlWriterSettings settings)

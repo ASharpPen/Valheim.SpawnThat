@@ -10,7 +10,7 @@ internal class TomlConfigEntry<T> : ITomlConfigEntry<T>
     public TomlConfigEntry(string name, T defaultValue, string description = null)
     {
         Name = name;
-        DefaultValue = defaultValue;
+        Value = DefaultValue = defaultValue;
         Description = description;
     }
 

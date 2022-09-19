@@ -1,5 +1,6 @@
 # Changelog
-
+- v1.1.1:
+	- Fixed `spawn_that.simple.cfg` not being populated on file creation, when `InitializeWithCreatures=true` was set in `spawn_that.cfg`.
 - v1.1.0:
 	- Added support for new SpawnArea spawner type (eg., greydwarf nests).
 	- Added custom config file reader. This should hopefully make things more intuitive and less volatile. It does however mean that comments are longer added automatically.
