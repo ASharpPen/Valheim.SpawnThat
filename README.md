@@ -1,4 +1,4 @@
-﻿
+
 # Spawn That! 
 
 This is an advanced tool for configuring all world spawners.
@@ -115,7 +115,8 @@ If you feel like it
 
 # Changelog: 
 - v1.1.1:
-	- Fixed `spawn_that.simple.cfg` not being populated on file creation, when `InitializeWithCreatures=true` was set in `spawn_that.cfg`.
+	- Fixed `spawn_that.simple.cfg` not being populated on file creation, when `InitializeWithCreatures=true` was set in `spawn_that.cfg`. Introduced in v1.1.0.
+	- Fixed `GroundOffset` for world spawner file configs not being used. Introduced in v1.1.0.
 - v1.1.0:
 	- Added support for new SpawnArea spawner type (eg., greydwarf nests).
 	- Added custom config file reader. This should hopefully make things more intuitive and less volatile. It does however mean that comments are longer added automatically.
