@@ -19,4 +19,10 @@ internal class TomlWriterSettings
     /// Eg., 'Writing {FileDescription} to file'
     /// </summary>
     public string FileDescription { get; set; }
+
+    /// <summary>
+    /// Path to write file to. Excluding filename.
+    /// If not set, assumes debug file.
+    /// </summary>
+    public string FilePath { get; set; }
 }
