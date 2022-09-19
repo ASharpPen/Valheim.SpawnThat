@@ -62,15 +62,19 @@
 <h1 id="changelog">Changelog</h1>
 
 <ul>
+<li>v1.1.1:<ul>
+<li>Fixed <code>spawn_that.simple.cfg</code> not being populated on file creation, when <code>InitializeWithCreatures=true</code> was set in <code>spawn_that.cfg</code>. Introduced in v1.1.0.</li>
+<li>Fixed <code>GroundOffset</code> for world spawner file configs not being used. Introduced in v1.1.0.</li>
+</ul>
+</li>
 <li>v1.1.0:<ul>
 <li>Added support for new SpawnArea spawner type (eg., greydwarf nests).</li>
 <li>Added custom config file reader. This should hopefully make things more intuitive and less volatile. It does however mean that comments are longer added automatically.</li>
-<li>Swapped file load and merge order, to make default files override supplemental, as was originally intended (eg., <code>spawn_that.world_spawners_advanced.cfg</code> gets loaded after</li>
+<li>Swapped file load and merge order, to make default files override supplemental, as was originally intended (eg., <code>spawn_that.world_spawners_advanced.cfg</code> gets loaded after <code>spawn_that.world_spawners.something.cfg</code> now).</li>
 <li>Added datamining for locations, as an option in general config.</li>
 <li>Removed setting &quot;StopTouchingMyConfigs&quot; from general config, as it has become irrellevant.</li>
 <li>Fixed bug with attempting to load files as configs if they fit the expected name pattern, even though they didn&#39;t end with &#39;.cfg&#39;.</li>
-<li>Fixed bug where disabling world spawner with <code>Enabled</code> disabled the config instead.
-<code>spawn_that.world_spawners.something.cfg</code> now).</li>
+<li>Fixed bug where disabling world spawner with <code>Enabled</code> disabled the config instead.</li>
 <li>Fixed potential error when adding a new world spawner without specifying a prefab name.</li>
 <li>A LOT of boring internal changes, logging and documentation that noone will probably ever see or care about.</li>
 </ul>
@@ -254,7 +258,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/development/src/SpawnThat.Docs/change-log.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat.Docs/change-log.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
