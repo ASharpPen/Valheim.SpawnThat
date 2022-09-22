@@ -114,6 +114,8 @@ If you feel like it
 <a href="https://www.buymeacoffee.com/asharppen"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=asharppen&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 # Changelog: 
+- v1.1.2:
+	- Fixed default values getting assigned to empty settings (eg., `SetFaction = `). Caused by last patch. Note to self, dont be lazy.
 - v1.1.1:
 	- Fixed `spawn_that.simple.cfg` not being populated on file creation, when `InitializeWithCreatures=true` was set in `spawn_that.cfg`. Introduced in v1.1.0.
 	- Fixed `GroundOffset` for world spawner file configs not being used. Introduced in v1.1.0.
