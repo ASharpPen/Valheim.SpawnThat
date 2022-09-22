@@ -1,7 +1,5 @@
 ﻿using BepInEx;
-using BepInEx.Configuration;
 using System.IO;
-using System.Linq;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Core.Toml;
@@ -86,6 +84,12 @@ internal static class SimpleConfigPreconfiguration
         SimpleConfig config = file.GetGenericSubsection(prefabName);
 
         config.PrefabName.Value = prefabName;
+
+        config.Enable.Value = config.Enable.DefaultValue;
+        config.SpawnMaxMultiplier.Value = config.SpawnMaxMultiplier.DefaultValue;
+        config.SpawnFrequencyMultiplier.Value = config.SpawnFrequencyMultiplier.DefaultValue;
+        config.GroupSizeMinMultiplier.Value = config.GroupSizeMaxMultiplier.DefaultValue;
+        config.GroupSizeMaxMultiplier.Value = config.GroupSizeMaxMultiplier.DefaultValue;
 
         foreach (var pair in config.GetEntries())
         {

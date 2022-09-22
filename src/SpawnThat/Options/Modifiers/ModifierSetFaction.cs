@@ -54,9 +54,8 @@ public class ModifierSetFaction : ISpawnModifier
             return;
         }
 
-#if DEBUG
-        Log.LogDebug($"Setting faction {Faction}");
-#endif
+        Log.LogTrace($"{nameof(ModifierSetFaction)}: Setting faction to {Faction}");
+
         character.m_faction = Faction.Value;
         entityZdo?.SetFaction(Faction.Value);
     }

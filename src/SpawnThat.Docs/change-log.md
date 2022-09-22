@@ -1,4 +1,6 @@
 # Changelog
+- v1.1.2:
+	- Fixed default values getting assigned to empty settings (eg., `SetFaction = `). Caused by last patch. Note to self, dont be lazy.
 - v1.1.1:
 	- Fixed `spawn_that.simple.cfg` not being populated on file creation, when `InitializeWithCreatures=true` was set in `spawn_that.cfg`. Introduced in v1.1.0.
 	- Fixed `GroundOffset` for world spawner file configs not being used. Introduced in v1.1.0.
