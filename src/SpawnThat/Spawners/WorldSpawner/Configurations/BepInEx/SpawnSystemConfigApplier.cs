@@ -103,8 +103,14 @@ internal static class SpawnSystemConfigApplier
         config.ConditionNearbyPlayersCarryValue.SetValueOrDefaultIfLoaded(x => builder.SetConditionNearbyPlayersCarryValue(playerConditionsDistance, x));
         config.ConditionNearbyPlayersNoiseThreshold.SetValueOrDefaultIfLoaded(x => builder.SetConditionNearbyPlayersNoise(playerConditionsDistance, x));
         config.ConditionAreaSpawnChance.SetValueOrDefaultIfLoaded(builder.SetConditionAreaSpawnChance);
-        config.ConditionDistanceToCenterMin.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMin(x));
-        config.ConditionDistanceToCenterMax.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMax(x));
+
+        float? distanceToCenterMin = config.ConditionDistanceToCenterMin.IsSet ? config.ConditionDistanceToCenterMin.Value : null;
+        float? distanceToCenterMax = config.ConditionDistanceToCenterMax.IsSet ? config.ConditionDistanceToCenterMax.Value : null;
+
+        if (config.ConditionDistanceToCenterMin.IsSet || config.ConditionDistanceToCenterMax.IsSet)
+        {
+            builder.SetConditionDistanceToCenter(distanceToCenterMin, distanceToCenterMax);
+        }
 
         int? worldAgeMin = config.ConditionWorldAgeDaysMin.IsSet ? (int)config.ConditionWorldAgeDaysMin.Value : null;
         int? worldAgeMax = config.ConditionWorldAgeDaysMax.IsSet ? (int)config.ConditionWorldAgeDaysMax.Value : null;
