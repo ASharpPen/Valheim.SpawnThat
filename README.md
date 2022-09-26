@@ -114,6 +114,13 @@ If you feel like it
 <a href="https://www.buymeacoffee.com/asharppen"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=asharppen&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 # Changelog: 
+- v1.1.3:
+	- Fixed world spawner `ConditionWorldAgeDaysMax` being set to `ConditionWorldAgeDaysMin`.
+	- Fixed world spawner `ConditionDistanceToCenterMin` and `Max` settings being set incorrectly.
+	- Fixed MobAILib settings spitting out errors when `SetAI` was set, but not `AIConfigFile`.
+	- Disabled world spawner configs being applied server-side on dedicated servers. This should avoid a potential harmless but confusing warning.
+	- Added `SetTryDespawnOnConditionsInvalid` to world spawner loaded configs debug file.
+	- Added internal tests for mapping of all types of spawner configs.
 - v1.1.2:
 	- Fixed default values getting assigned to empty settings (eg., `SetFaction = `). Caused by last patch. Note to self, dont be lazy.
 - v1.1.1:

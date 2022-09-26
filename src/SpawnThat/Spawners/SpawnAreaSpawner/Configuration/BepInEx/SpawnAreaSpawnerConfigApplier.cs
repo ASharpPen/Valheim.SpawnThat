@@ -8,6 +8,7 @@ using SpawnThat.Core.Toml;
 using SpawnThat.Spawners.WorldSpawner;
 using BepInEx;
 using System.IO;
+using SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
 
 namespace SpawnThat.Spawners.SpawnAreaSpawner.Configuration.BepInEx;
 
@@ -223,8 +224,13 @@ internal static class SpawnAreaSpawnerConfigApplier
 
             if (IntegrationManager.InstalledMobAI)
             {
-                if (config.TryGet(SpawnAreaSpawnConfigMobAI.ModName, out cfg) &&
-                    cfg is SpawnAreaSpawnConfigMobAI mobAIConfig)
+                if (config.TryGet(CreatureSpawnerConfigMobAI.ModName, out cfg) &&
+                    cfg is CreatureSpawnerConfigMobAI mobAIConfig)
+                {
+                    ApplyMobAI();
+                }
+
+                void ApplyMobAI()
                 {
                     if (mobAIConfig.SetAI.IsSet)
                     {
@@ -237,17 +243,30 @@ internal static class SpawnAreaSpawnerConfigApplier
 
                         try
                         {
-                            string filePath = Path.Combine(Paths.ConfigPath, mobAIConfig.AIConfigFile.Value);
-
-                            if (File.Exists(filePath))
+                            if (!mobAIConfig.AIConfigFile.IsSet ||
+                                string.IsNullOrWhiteSpace(mobAIConfig.AIConfigFile.Value))
                             {
-                                string content = File.ReadAllText(filePath);
-
-                                builder.SetMobAiModifier(ai, content);
+                                builder.SetMobAiModifier(ai, "{}");
                             }
-                            else
+                            else if (mobAIConfig.AIConfigFile.IsSet && !string.IsNullOrWhiteSpace(mobAIConfig.AIConfigFile.Value))
                             {
-                                Log.LogWarning($"Unable to find MobAI json config file at '{filePath}'");
+                                if (Paths.ConfigPath is null) // This generally means we are in a test environment.
+                                {
+                                    return;
+                                }
+
+                                string filePath = Path.Combine(Paths.ConfigPath ?? @".\", mobAIConfig.AIConfigFile.Value);
+
+                                if (File.Exists(filePath))
+                                {
+                                    string content = File.ReadAllText(filePath);
+
+                                    builder.SetMobAiModifier(ai, content);
+                                }
+                                else
+                                {
+                                    Log.LogWarning($"Unable to find MobAI json config file at '{filePath}'");
+                                }
                             }
                         }
                         catch (Exception e)

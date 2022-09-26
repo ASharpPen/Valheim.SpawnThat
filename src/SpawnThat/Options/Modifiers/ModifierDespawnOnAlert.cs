@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SpawnThat.Utilities.Extensions;
+using UnityEngine;
 
 namespace SpawnThat.Options.Modifiers;
 
@@ -10,7 +11,7 @@ namespace SpawnThat.Options.Modifiers;
 public class ModifierDespawnOnAlert : ISpawnModifier
 {
     public const string ZdoFeature = "spawnthat_despawn_on_alert";
-    public static int ZdoFeatureHash { get; } = ZdoFeature.GetStableHashCode();
+    public static int ZdoFeatureHash { get; } = ZdoFeature.HashInteger();
 
     public bool DespawnOnAlert { get; set; }
 
