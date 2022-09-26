@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "wdPoG3qzdfFnz7JEmKzN/oi7R6WmTKXVzizE9+wT5Vg="
+          "hash": "157UdncNRYfsaJrP4Ma8+GAlMgO5ypH/iSz9T8hE2Uw="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "change-log.html",
-          "hash": "7vswphiV2gKTjunQ5PPBEUVB7TKfGaXLaIi16g74bj4="
+          "hash": "vDf9p+Kj7fb5ZfccJ1Ej8DqDeYX1miUhqa7gM+bt4+Q="
         }
       },
       "is_incremental": false,
@@ -1257,10 +1257,10 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnAlert.html",
-          "hash": "tqzoOg+lylDmvSyF+WYhzX+ieXezfP1Ks9t2MWvmK18="
+          "hash": "gVn4fFomttSW7IBePdeY1mUDu5ygiGFrzq/Avotn43w="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1269,10 +1269,10 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid.html",
-          "hash": "Mw3rkTUoSUhZ64xsSUvf1WzXS+WQe7N9BWIpbSBIsxQ="
+          "hash": "iYvXnOsgh6CH6X/ZGKXTd/oqaNfOcrsn0A1CdaN7O/Q="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1305,10 +1305,10 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetRelentless.html",
-          "hash": "hlu+Z+zYis8Q8A1DWx+kIdtvacGDFW3sXkWQ9gkscCs="
+          "hash": "Fyu4UW1xJSfHG2VUExxQ7sCsuRV/IMbUeG7OcflT3uw="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1329,10 +1329,10 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetTamedCommandable.html",
-          "hash": "42c6cpbsQ2FGWxv4aMm0FNVOhzukHnrMk4bqEXPcaZg="
+          "hash": "nZVhF5mel61WSHCP2ISjPbivY0iJuLRj/R6FXbHPeKA="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1341,10 +1341,10 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetTemplateId.html",
-          "hash": "Xmmx6pz9dwdqfOW8SA8GNu0sjARbx9/G3UnZ6iy2uZk="
+          "hash": "YoOqLhEtSJJFz5yyk0t1fIdY7DkZ8zmX5xhWlhs4EYA="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1356,7 +1356,7 @@
           "hash": "4kHAnp3BIcCHH/JNKKr0BeCwbeibt68Ao8tyWSs18do="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1441,6 +1441,18 @@
         }
       },
       "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/reference/SpawnThat.SpawnThatPlugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/reference/SpawnThat.SpawnThatPlugin.html",
+          "hash": "MTL9EuCzvhe/LVFLW/6FmgXCYzUTrZpEj7d8v2Y5gRw="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2124,7 +2136,7 @@
           "hash": "aUwCZnsYvoXMT9O4LoEP7E6fpIIAmHBIw5Kdv0K9VfU="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2133,10 +2145,10 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Utilities.Extensions.StringHashExtensions.html",
-          "hash": "kP/KiAmg+VZ0ayn2L7RFbDSilZdJfmVdxx35vy6/3os="
+          "hash": "mh/AcrQBOTN89Qa9hZ0rpMdAcnOhmq882DZDG8+cOow="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2148,7 +2160,7 @@
           "hash": "xrYfj8eHTAsdFIKrJ8pm90prmEmTdOTybdEQPVejyJ8="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2160,7 +2172,7 @@
           "hash": "lz7r6c64qLvNpPjLp3dxbOjQ7ZI9INCIf460fHmElDA="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2172,7 +2184,7 @@
           "hash": "aiRUq9dZi0wuYPNJQSiOa/ixwrl7Y0s6QWcqyoJAtOE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2184,7 +2196,7 @@
           "hash": "lJDOfKTR9O2k2SPN15MOw6g800+8/qtbPaUsG2DIXAo="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2428,6 +2440,18 @@
       "version": ""
     },
     {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/reference/SpawnThat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/reference/SpawnThat.html",
+          "hash": "H+gC4toJbrhAR8aRAHzQVMPUNESmpxEBJN5rvpiazPw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
@@ -2458,8 +2482,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 149,
-          "skipped_file_count": 149
+          "total_file_count": 151,
+          "skipped_file_count": 142
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

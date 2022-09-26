@@ -1,6 +1,12 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
+- uid: SpawnThat
+  name: SpawnThat
+  href: api/reference/SpawnThat.html
+  commentId: N:SpawnThat
+  fullName: SpawnThat
+  nameWithType: SpawnThat
 - uid: SpawnThat.Integrations.CLLC.Conditions
   name: SpawnThat.Integrations.CLLC.Conditions
   href: api/reference/SpawnThat.Integrations.CLLC.Conditions.html
@@ -8504,6 +8510,30 @@ references:
   isSpec: "True"
   fullName: SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.SpawnOutsideForest
   nameWithType: WorldSpawnSettings.SpawnOutsideForest
+- uid: SpawnThat.SpawnThatPlugin
+  name: SpawnThatPlugin
+  href: api/reference/SpawnThat.SpawnThatPlugin.html
+  commentId: T:SpawnThat.SpawnThatPlugin
+  fullName: SpawnThat.SpawnThatPlugin
+  nameWithType: SpawnThatPlugin
+- uid: SpawnThat.SpawnThatPlugin.ModId
+  name: ModId
+  href: api/reference/SpawnThat.SpawnThatPlugin.html#SpawnThat_SpawnThatPlugin_ModId
+  commentId: F:SpawnThat.SpawnThatPlugin.ModId
+  fullName: SpawnThat.SpawnThatPlugin.ModId
+  nameWithType: SpawnThatPlugin.ModId
+- uid: SpawnThat.SpawnThatPlugin.PluginName
+  name: PluginName
+  href: api/reference/SpawnThat.SpawnThatPlugin.html#SpawnThat_SpawnThatPlugin_PluginName
+  commentId: F:SpawnThat.SpawnThatPlugin.PluginName
+  fullName: SpawnThat.SpawnThatPlugin.PluginName
+  nameWithType: SpawnThatPlugin.PluginName
+- uid: SpawnThat.SpawnThatPlugin.Version
+  name: Version
+  href: api/reference/SpawnThat.SpawnThatPlugin.html#SpawnThat_SpawnThatPlugin_Version
+  commentId: F:SpawnThat.SpawnThatPlugin.Version
+  fullName: SpawnThat.SpawnThatPlugin.Version
+  nameWithType: SpawnThatPlugin.Version
 - uid: SpawnThat.Utilities
   name: SpawnThat.Utilities
   href: api/reference/SpawnThat.Utilities.html
