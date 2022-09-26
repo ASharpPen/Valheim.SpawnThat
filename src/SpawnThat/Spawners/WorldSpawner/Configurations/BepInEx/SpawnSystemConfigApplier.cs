@@ -107,7 +107,7 @@ internal static class SpawnSystemConfigApplier
         config.ConditionDistanceToCenterMax.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMax(x));
 
         int? worldAgeMin = config.ConditionWorldAgeDaysMin.IsSet ? (int)config.ConditionWorldAgeDaysMin.Value : null;
-        int? worldAgeMax = config.ConditionWorldAgeDaysMax.IsSet ? (int)config.ConditionWorldAgeDaysMin.Value : null;
+        int? worldAgeMax = config.ConditionWorldAgeDaysMax.IsSet ? (int)config.ConditionWorldAgeDaysMax.Value : null;
 
         if (config.ConditionWorldAgeDaysMin.IsSet || config.ConditionWorldAgeDaysMax.IsSet)
         {
