@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using SpawnThat.Core;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Options.Modifiers;
 
 public class ModifierSetTemplateId : ISpawnModifier
 {
     public const string ZdoFeature = "spawn_template_id";
-    public static int ZdoFeatureHash { get; } = ZdoFeature.GetStableHashCode();
+    public static int ZdoFeatureHash { get; } = ZdoFeature.HashInteger();
 
     public string TemplateId { get; set; }
 

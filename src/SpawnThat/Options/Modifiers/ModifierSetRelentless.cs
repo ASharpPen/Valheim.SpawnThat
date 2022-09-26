@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using SpawnThat.Core;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Options.Modifiers;
 
@@ -9,7 +10,7 @@ namespace SpawnThat.Options.Modifiers;
 public class ModifierSetRelentless : ISpawnModifier
 {
     public const string ZdoFeature = "spawnthat_relentless";
-    public static int ZdoFeatureHash { get; } = ZdoFeature.GetStableHashCode();
+    public static int ZdoFeatureHash { get; } = ZdoFeature.HashInteger();
 
     public bool Relentless { get; set; }
 

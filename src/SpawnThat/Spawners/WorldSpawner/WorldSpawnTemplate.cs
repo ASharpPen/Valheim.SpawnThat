@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Options.PositionConditions;
+using SpawnThat.Utilities.Extensions;
 using YamlDotNet.Serialization;
 using static Heightmap;
 
@@ -51,7 +52,7 @@ internal class WorldSpawnTemplate
         {
             if (_prefabHash is null && PrefabName is not null)
             {
-                int hash = PrefabName.GetStableHashCode();
+                int hash = PrefabName.HashInteger();
                 _prefabHash = hash;
                 return hash;
             }

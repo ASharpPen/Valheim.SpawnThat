@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using SpawnThat.Caches;
 using SpawnThat.Core;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Options.Modifiers;
 
 public class ModifierSetTamedCommandable : ISpawnModifier
 {
     public const string ZdoFeature = "spawnthat_tamed_commandable";
-    public static int ZdoFeatureHash { get; } = ZdoFeature.GetStableHashCode();
+    public static int ZdoFeatureHash { get; } = ZdoFeature.HashInteger();
 
     public bool Commandable { get; set; }
 
