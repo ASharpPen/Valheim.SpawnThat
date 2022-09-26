@@ -7,6 +7,7 @@ using SpawnThat.Integrations;
 using SpawnThat.Core.Toml;
 using BepInEx;
 using System.IO;
+using SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
 
 namespace SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 
@@ -103,11 +104,17 @@ internal static class SpawnSystemConfigApplier
         config.ConditionNearbyPlayersCarryValue.SetValueOrDefaultIfLoaded(x => builder.SetConditionNearbyPlayersCarryValue(playerConditionsDistance, x));
         config.ConditionNearbyPlayersNoiseThreshold.SetValueOrDefaultIfLoaded(x => builder.SetConditionNearbyPlayersNoise(playerConditionsDistance, x));
         config.ConditionAreaSpawnChance.SetValueOrDefaultIfLoaded(builder.SetConditionAreaSpawnChance);
-        config.ConditionDistanceToCenterMin.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMin(x));
-        config.ConditionDistanceToCenterMax.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMax(x));
+
+        float? distanceToCenterMin = config.ConditionDistanceToCenterMin.IsSet ? config.ConditionDistanceToCenterMin.Value : null;
+        float? distanceToCenterMax = config.ConditionDistanceToCenterMax.IsSet ? config.ConditionDistanceToCenterMax.Value : null;
+
+        if (config.ConditionDistanceToCenterMin.IsSet || config.ConditionDistanceToCenterMax.IsSet)
+        {
+            builder.SetConditionDistanceToCenter(distanceToCenterMin, distanceToCenterMax);
+        }
 
         int? worldAgeMin = config.ConditionWorldAgeDaysMin.IsSet ? (int)config.ConditionWorldAgeDaysMin.Value : null;
-        int? worldAgeMax = config.ConditionWorldAgeDaysMax.IsSet ? (int)config.ConditionWorldAgeDaysMin.Value : null;
+        int? worldAgeMax = config.ConditionWorldAgeDaysMax.IsSet ? (int)config.ConditionWorldAgeDaysMax.Value : null;
 
         if (config.ConditionWorldAgeDaysMin.IsSet || config.ConditionWorldAgeDaysMax.IsSet)
         {
@@ -202,8 +209,13 @@ internal static class SpawnSystemConfigApplier
 
             if (IntegrationManager.InstalledMobAI)
             {
-                if (config.TryGet(SpawnSystemConfigMobAI.ModName, out cfg) &&
-                    cfg is SpawnSystemConfigMobAI mobAIConfig)
+                if (config.TryGet(CreatureSpawnerConfigMobAI.ModName, out cfg) &&
+                    cfg is CreatureSpawnerConfigMobAI mobAIConfig)
+                {
+                    ApplyMobAI();
+                }
+
+                void ApplyMobAI()
                 {
                     if (mobAIConfig.SetAI.IsSet)
                     {
@@ -216,17 +228,30 @@ internal static class SpawnSystemConfigApplier
 
                         try
                         {
-                            string filePath = Path.Combine(Paths.ConfigPath, mobAIConfig.AIConfigFile.Value);
-
-                            if (File.Exists(filePath))
+                            if (!mobAIConfig.AIConfigFile.IsSet ||
+                                string.IsNullOrWhiteSpace(mobAIConfig.AIConfigFile.Value))
                             {
-                                string content = File.ReadAllText(filePath);
-
-                                builder.SetMobAiModifier(ai, content);
+                                builder.SetMobAiModifier(ai, "{}");
                             }
-                            else
+                            else if (mobAIConfig.AIConfigFile.IsSet && !string.IsNullOrWhiteSpace(mobAIConfig.AIConfigFile.Value))
                             {
-                                Log.LogWarning($"Unable to find MobAI json config file at '{filePath}'");
+                                if (Paths.ConfigPath is null) // This generally means we are in a test environment.
+                                {
+                                    return;
+                                }
+
+                                string filePath = Path.Combine(Paths.ConfigPath ?? @".\", mobAIConfig.AIConfigFile.Value);
+
+                                if (File.Exists(filePath))
+                                {
+                                    string content = File.ReadAllText(filePath);
+
+                                    builder.SetMobAiModifier(ai, content);
+                                }
+                                else
+                                {
+                                    Log.LogWarning($"Unable to find MobAI json config file at '{filePath}'");
+                                }
                             }
                         }
                         catch (Exception e)

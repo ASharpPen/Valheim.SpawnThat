@@ -172,6 +172,18 @@ internal static class TemplateWriter
                     case ModifierDespawnOnAlert despawnOnAlert:
                         config.SetTryDespawnOnAlert.Set(despawnOnAlert.DespawnOnAlert);
                         break;
+                    case ModifierDespawnOnConditionsInvalid despawnOnConditionsInvalid:
+                        if (despawnOnConditionsInvalid.ConditionAllowDuringDay is not null ||
+                            despawnOnConditionsInvalid.ConditionAllowDuringNight is not null ||
+                            despawnOnConditionsInvalid.ConditionAllowDuringEnvironments is not null) // Empty is specifically allowed here, to enable all environments.
+                        {
+                            config.SetTryDespawnOnConditionsInvalid.Set(true);
+                        }
+                        else
+                        {
+                            config.SetTryDespawnOnConditionsInvalid.Set(false);
+                        }
+                        break;
                     case ModifierSetTamed setTamed:
                         config.SetTamed.Set(setTamed.Tamed);
                         break;

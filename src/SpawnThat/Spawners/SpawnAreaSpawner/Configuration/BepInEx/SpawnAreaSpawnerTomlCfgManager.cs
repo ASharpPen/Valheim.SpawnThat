@@ -12,7 +12,7 @@ internal static class SpawnAreaSpawnerTomlCfgManager
     private const string ConfigFile = "spawn_that.spawnarea_spawners.cfg";
     private const string ConfigFileSupplemental = "spawn_that.spawnarea_spawners.*.cfg";
 
-    internal static SpawnAreaSpawnerConfigurationFile Config { get; private set; }
+    internal static SpawnAreaSpawnerConfigurationFile Config { get; set; }
 
     public static void Load()
     {
