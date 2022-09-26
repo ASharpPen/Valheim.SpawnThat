@@ -5,7 +5,6 @@ using UnityEngine;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Lifecycle;
-using SpawnThat.Spawners.WorldSpawner.Configurations.BepInEx;
 using SpawnThat.Spawners.WorldSpawner.Managers;
 using SpawnThat.Utilities.Extensions;
 using SpawnThat.Spawners.WorldSpawner.Debug;
@@ -50,10 +49,13 @@ internal static class WorldSpawnerConfigurationService
             spawnLists.ForEach(x => x.m_spawners.Clear());
         }
 
-        ApplyWorldSpawnerTemplates(spawnLists);
+        if (LifecycleManager.GameState != GameState.DedicatedServer)
+        {
+            ApplyWorldSpawnerTemplates(spawnLists);
 
-        // TODO: Depends on whether simple templates are merged into world spawn templates or not.
-        ApplySimpleTemplates(spawnLists);
+            // TODO: Depends on whether simple templates are merged into world spawn templates or not.
+            ApplySimpleTemplates(spawnLists);
+        }
 
         if (ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileAfterChanges?.Value == true)
         {
