@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using HarmonyLib;
+using SpawnThat.Utilities.Extensions;
 using UnityEngine;
 
 namespace SpawnThat.Options.Modifiers;
@@ -17,10 +18,10 @@ public class ModifierDespawnOnConditionsInvalid : ISpawnModifier
     public const string ZdoConditionEnvironment = "spawnthat_condition_environments";
     public const string ZdoFeature = "spawnthat_despawn_on_invalid";
 
-    public static int ZdoConditionDayHash { get; } = ZdoConditionDay.GetStableHashCode();
-    public static int ZdoConditionNightHash { get; } = ZdoConditionNight.GetStableHashCode();
-    public static int ZdoConditionEnvironmentHash { get; } = ZdoConditionEnvironment.GetStableHashCode();
-    public static int ZdoFeatureHash { get; } = ZdoFeature.GetStableHashCode();
+    public static int ZdoConditionDayHash { get; } = ZdoConditionDay.HashInteger();
+    public static int ZdoConditionNightHash { get; } = ZdoConditionNight.HashInteger();
+    public static int ZdoConditionEnvironmentHash { get; } = ZdoConditionEnvironment.HashInteger();
+    public static int ZdoFeatureHash { get; } = ZdoFeature.HashInteger();
 
     public bool? ConditionAllowDuringDay { get; set; }
     public bool? ConditionAllowDuringNight { get; set; }

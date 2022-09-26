@@ -2,13 +2,13 @@
 
 public static class ZdoExtensions
 {
-    private static int NoiseHash = "noise".GetStableHashCode();
-    private static int TamedHash = "tamed".GetStableHashCode();
-    private static int EventCreatureHash = "EventCreature".GetStableHashCode();
-    private static int HuntPlayerHash = "huntplayer".GetStableHashCode();
+    private static int NoiseHash = "noise".HashInteger();
+    private static int TamedHash = "tamed".HashInteger();
+    private static int EventCreatureHash = "EventCreature".HashInteger();
+    private static int HuntPlayerHash = "huntplayer".HashInteger();
 
     // Custom ZDO entries
-    private static int FactionHash = "faction".GetStableHashCode();
+    private static int FactionHash = "faction".HashInteger();
 
     public static float GetNoise(this ZDO zdo)
     {
