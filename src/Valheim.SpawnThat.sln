@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpawnThat.Tests", "SpawnTha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpawnThatTestMod", "SpawnThatTestMod\SpawnThatTestMod.csproj", "{9C148332-8D19-4692-AA8D-CC9ACDDE3863}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpawnThat.Docs", "SpawnThat.Docs\SpawnThat.Docs.csproj", "{0C1204B8-E428-400F-99B9-D33F8AF6BC50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpawnThat.Docs", "SpawnThat.Docs\SpawnThat.Docs.csproj", "{0C1204B8-E428-400F-99B9-D33F8AF6BC50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
