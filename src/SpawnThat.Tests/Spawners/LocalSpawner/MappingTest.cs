@@ -71,4 +71,31 @@ public class MappingTest
 
         Assert.AreEqual(originalMobAI.SetAI.Value, template.Modifiers.OfType<ModifierSetAI>().First().AiName);
     }
+
+    [TestMethod]
+    public void CanMapEmpty()
+    {
+        // Prepare configs and data
+
+        // Reset
+        CreatureSpawnerConfigurationManager.CreatureSpawnerConfig = null;
+
+        // Load config
+        var configFile = TomlLoader.LoadFile<CreatureSpawnerConfigurationFile>(@".\Resources\spawn_that.local_spawners.test_empty.cfg");
+
+        var configCollection = new SpawnerConfigurationCollection();
+
+        CreatureSpawnerConfigurationManager.CreatureSpawnerConfig = configFile;
+
+        // Run config building
+
+        CreatureSpawnerConfigApplier.ApplyBepInExConfigs(configCollection);
+
+        configCollection.SpawnerConfigurations.ForEach(x => x.Build());
+
+        // Verify matches
+
+        var template = LocalSpawnTemplateManager.GetTemplate(new LocationIdentifier("Runestone_Boars", "Boar"));
+        var original = configFile.GetGenericSubsection("Runestone_Boars").GetGenericSubsection("Boar");
+    }
 }

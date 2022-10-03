@@ -109,4 +109,33 @@ public class MappingTest
             }
         }
     }
+
+    [TestMethod]
+    public void CanMapEmpty()
+    {
+        // Prepare configs and data
+
+        // Reset
+        SpawnAreaSpawnerTomlCfgManager.Config = null;
+
+        // Load config
+        var configFile = TomlLoader.LoadFile<SpawnAreaSpawnerConfigurationFile>(@".\Resources\spawn_that.spawnarea_spawners.test_empty.cfg");
+
+        var configCollection = new SpawnerConfigurationCollection();
+
+        SpawnAreaSpawnerTomlCfgManager.Config = configFile;
+
+        // Run config building
+
+        SpawnAreaSpawnerConfigApplier.ApplyBepInExConfigs(configCollection);
+
+        configCollection.SpawnerConfigurations.ForEach(x => x.Build());
+
+        // Verify match after converting back to config format.
+
+        var preparedConfig = TemplateWriter.PrepareTomlFile();
+
+        var originalConfig = configFile.GetGenericSubsection(configFile.Subsections.First().Key);
+        var comparedConfig = preparedConfig.GetGenericSubsection(configFile.Subsections.First().Key);
+    }
 }
