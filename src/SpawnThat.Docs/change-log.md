@@ -1,4 +1,6 @@
 # Changelog
+- v1.1.4:
+	- Fixed mapping of settings, where SpawnThat would throw an error when processing certain settings defined as empty in cfg file. Primarily affected WorldSpawner configs.
 - v1.1.3:
 	- Fixed world spawner `ConditionWorldAgeDaysMax` being set to `ConditionWorldAgeDaysMin`.
 	- Fixed world spawner `ConditionDistanceToCenterMin` and `Max` settings being set incorrectly.

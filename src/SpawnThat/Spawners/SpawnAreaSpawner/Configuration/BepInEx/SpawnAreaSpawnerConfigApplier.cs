@@ -40,6 +40,7 @@ internal static class SpawnAreaSpawnerConfigApplier
                 (config.IdentifyByRoom.Value?.Count ?? 0) == 0)
             {
                 Log.LogWarning($"[SpawnArea Spawner] Ignoring config '{config.SectionPath}' due to all identifiers being empty. At least one identifier must have a value, for config to be valid.");
+                continue;
             }
 
             var builder = configs.ConfigureSpawnAreaSpawner();
@@ -110,7 +111,7 @@ internal static class SpawnAreaSpawnerConfigApplier
                 config.ConditionWorldAgeDaysMax.IsSet ? config.ConditionWorldAgeDaysMax.Value : null);
         }
 
-        int playerConditionsDistance = config.DistanceToTriggerPlayerConditions.IsSet
+        int playerConditionsDistance = config.DistanceToTriggerPlayerConditions.IsSet && config.DistanceToTriggerPlayerConditions.Value is not null
             ? (int)config.DistanceToTriggerPlayerConditions.Value
             : (int)config.DistanceToTriggerPlayerConditions.DefaultValue;
 
@@ -169,7 +170,7 @@ internal static class SpawnAreaSpawnerConfigApplier
                 if (config.TryGet(SpawnAreaSpawnConfigEpicLoot.ModName, out cfg) &&
                     cfg is SpawnAreaSpawnConfigEpicLoot elConfig)
                 {
-                    var dist = config.DistanceToTriggerPlayerConditions.IsSet
+                    var dist = config.DistanceToTriggerPlayerConditions.IsSet && config.DistanceToTriggerPlayerConditions.Value is not null
                         ? (int)config.DistanceToTriggerPlayerConditions.Value
                         : (int)config.DistanceToTriggerPlayerConditions.DefaultValue;
 
@@ -319,7 +320,7 @@ internal static class SpawnAreaSpawnerConfigApplier
     {
         if (value is not null &&
             value.IsSet &&
-            value.Value.Count > 0)
+            value.Value?.Count > 0)
         {
             apply(value.Value);
         }
@@ -329,7 +330,7 @@ internal static class SpawnAreaSpawnerConfigApplier
     {
         if (value is not null &&
             value.IsSet &&
-            value.Value.Count > 0)
+            value.Value?.Count > 0)
         {
             apply(value.Value);
         }

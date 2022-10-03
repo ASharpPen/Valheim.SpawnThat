@@ -431,7 +431,7 @@ internal class WorldSpawnBuilder : IWorldSpawnBuilder
 
     public IWorldSpawnBuilder SetMinLevel(uint? minLevel)
     {
-        Template.MinLevel = (int)minLevel;
+        Template.MinLevel = (int?)minLevel;
         return this;
     }
 
@@ -455,19 +455,19 @@ internal class WorldSpawnBuilder : IWorldSpawnBuilder
 
     public IWorldSpawnBuilder SetPackSizeMax(uint? packSizeMax)
     {
-        Template.PackSizeMax = (int)packSizeMax;
+        Template.PackSizeMax = (int?)packSizeMax;
         return this;
     }
 
     public IWorldSpawnBuilder SetPackSizeMin(uint packSizeMin)
     {
-        Template.PackSizeMin = (int)packSizeMin;
+        Template.PackSizeMin = (int?)packSizeMin;
         return this;
     }
 
     public IWorldSpawnBuilder SetPackSizeMin(uint? packSizeMin)
     {
-        Template.PackSizeMin = (int)packSizeMin;
+        Template.PackSizeMin = (int?)packSizeMin;
         return this;
     }
 
