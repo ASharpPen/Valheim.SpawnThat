@@ -68,18 +68,18 @@ internal static class SpawnSystemConfigApplier
         config.TemplateEnabled.SetValueOrDefaultIfLoaded(builder.SetTemplateEnabled);
         config.Biomes.SetIfLoaded(builder.SetConditionBiomes);
         config.HuntPlayer.SetIfLoaded(builder.SetModifierHuntPlayer);
-        config.MaxSpawned.SetIfLoaded(x => builder.SetMaxSpawned((uint)x));
+        config.MaxSpawned.SetIfLoaded(x => builder.SetMaxSpawned((uint?)x));
         config.SpawnInterval.SetIfLoaded(x => x is null
             ? builder.SetSpawnInterval(null)
             : builder.SetSpawnInterval(TimeSpan.FromSeconds(x.Value)));
         config.SpawnChance.SetIfLoaded(builder.SetSpawnChance);
-        config.LevelMin.SetIfLoaded(x => builder.SetMinLevel((uint)x));
-        config.LevelMax.SetIfLoaded(x => builder.SetMaxLevel((uint)x));
+        config.LevelMin.SetIfLoaded(x => builder.SetMinLevel((uint?)x));
+        config.LevelMax.SetIfLoaded(x => builder.SetMaxLevel((uint?)x));
         config.SpawnDistance.SetIfLoaded(builder.SetMinDistanceToOther);
         config.SpawnRadiusMin.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMin(x));
         config.SpawnRadiusMax.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMax(x));
-        config.GroupSizeMin.SetIfLoaded(x => builder.SetPackSizeMin((uint)x));
-        config.GroupSizeMax.SetIfLoaded(x => builder.SetPackSizeMax((uint)x));
+        config.GroupSizeMin.SetIfLoaded(x => builder.SetPackSizeMin((uint?)x));
+        config.GroupSizeMax.SetIfLoaded(x => builder.SetPackSizeMax((uint?)x));
         config.GroupRadius.SetIfLoaded(builder.SetPackSpawnCircleRadius);
         config.SpawnDuringDay.SetIfLoaded(builder.SetSpawnDuringDay);
         config.SpawnDuringNight.SetIfLoaded(builder.SetSpawnDuringNight);
@@ -95,7 +95,7 @@ internal static class SpawnSystemConfigApplier
         config.GroundOffset.SetIfLoaded(builder.SetSpawnAtDistanceToGround);
 
         // Conditions
-        var playerConditionsDistance = config.DistanceToTriggerPlayerConditions.IsSet 
+        var playerConditionsDistance = config.DistanceToTriggerPlayerConditions.IsSet && config.DistanceToTriggerPlayerConditions.Value is not null
             ? (int)config.DistanceToTriggerPlayerConditions.Value 
             : (int)config.DistanceToTriggerPlayerConditions.DefaultValue;
 
@@ -113,8 +113,8 @@ internal static class SpawnSystemConfigApplier
             builder.SetConditionDistanceToCenter(distanceToCenterMin, distanceToCenterMax);
         }
 
-        int? worldAgeMin = config.ConditionWorldAgeDaysMin.IsSet ? (int)config.ConditionWorldAgeDaysMin.Value : null;
-        int? worldAgeMax = config.ConditionWorldAgeDaysMax.IsSet ? (int)config.ConditionWorldAgeDaysMax.Value : null;
+        int? worldAgeMin = config.ConditionWorldAgeDaysMin.IsSet ? (int?)config.ConditionWorldAgeDaysMin.Value : null;
+        int? worldAgeMax = config.ConditionWorldAgeDaysMax.IsSet ? (int?)config.ConditionWorldAgeDaysMax.Value : null;
 
         if (config.ConditionWorldAgeDaysMin.IsSet || config.ConditionWorldAgeDaysMax.IsSet)
         {
@@ -149,7 +149,7 @@ internal static class SpawnSystemConfigApplier
                 if (config.TryGet(SpawnSystemConfigEpicLoot.ModName, out cfg) &&
                     cfg is SpawnSystemConfigEpicLoot elConfig)
                 {
-                    int distance = config.DistanceToTriggerPlayerConditions.IsSet
+                    int distance = config.DistanceToTriggerPlayerConditions.IsSet && config.DistanceToTriggerPlayerConditions.Value is not null
                         ? (int)config.DistanceToTriggerPlayerConditions.Value
                         : (int)config.DistanceToTriggerPlayerConditions.DefaultValue;
 
