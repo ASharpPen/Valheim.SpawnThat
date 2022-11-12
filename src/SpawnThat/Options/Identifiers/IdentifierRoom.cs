@@ -26,7 +26,7 @@ public class IdentifierRoom : ISpawnerIdentifier
         }
     }
 
-    internal IdentifierRoom()
+    public IdentifierRoom()
     {
     }
 

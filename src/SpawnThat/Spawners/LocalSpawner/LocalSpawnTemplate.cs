@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Utilities.Extensions;
@@ -15,11 +16,13 @@ internal class LocalSpawnTemplate
     /// <summary>
     /// Toggles the spawner on/off.
     /// </summary>
+    [DefaultValue(true)]
     public bool Enabled { get; set; } = true;
 
     /// <summary>
     /// Toggles this template on / off. Does not disable the spawner itself.
     /// </summary>
+    [DefaultValue(true)]
     public bool TemplateEnabled { get; set; } = true;
 
     /// <summary>
@@ -77,14 +80,14 @@ internal class LocalSpawnTemplate
     /// <para>Vanilla condition.</para>
     /// <para>If null, uses existing.</para>
     /// </summary>
-    public bool? SpawnAtDay { get; set; } = true;
+    public bool? SpawnAtDay { get; set; }
 
     /// <summary>
     /// <para>Allows spawning during night.</para>
     /// <para>Vanilla condition.</para>
     /// <para>If null, uses existing.</para>
     /// </summary>
-    public bool? SpawnAtNight { get; set; } = true;
+    public bool? SpawnAtNight { get; set; }
 
     /// <summary>
     /// <para>Allows spawning if within usual player base protected areas, such as workbench.</para>
