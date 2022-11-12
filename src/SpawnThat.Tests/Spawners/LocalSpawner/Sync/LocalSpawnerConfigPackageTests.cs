@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SpawnThat.Core.Network;
 using SpawnThat.Spawners.LocalSpawner;
 using SpawnThat.Spawners.LocalSpawner.Configuration;
 using SpawnThat.Spawners.LocalSpawner.Managers;
@@ -13,11 +13,24 @@ namespace SpawnThat.Tests.Spawners.LocalSpawner.Sync;
 [TestClass]
 public class LocalSpawnerConfigPackageTests
 {
+    [TestInitialize]
+    public void Init() => Cleanup();
+
+    [TestCleanup]
+    public void Cleanup()
+    {
+        LocalSpawnTemplateManager.TemplatesByLocation.Clear();
+        LocalSpawnTemplateManager.TemplatesByRoom.Clear();
+        LocalSpawnTemplateManager.TemplatesBySpawnerName.Clear();
+    }
+
     [TestMethod]
     public void CanSync()
     {
         try
         {
+            // Setup
+
             LocalSpawnerConfiguration configuration = new();
             configuration.GetBuilder(new LocationIdentifier("Runestone_Boars", "Boar"))
                 .SetPrefabName("Boar")
@@ -54,20 +67,58 @@ public class LocalSpawnerConfigPackageTests
 
             configuration.Build();
 
-            LocalSpawnerConfigPackage package = new();
+            // Sync
 
-            var zpack = package.Pack();
+            var package = new FakeLocalSpawnerConfigPackage();
 
-            zpack.m_stream.Position = 0L;
-            LocalSpawnTemplateManager.TemplatesByLocation.Clear();
+            var serialized = package.FakePack();
 
-            CompressedPackage.Unpack<LocalSpawnerConfigPackage>(zpack);
+            Cleanup();
 
-            Assert.IsTrue(LocalSpawnTemplateManager.TemplatesByLocation.Count > 0);
+            package.FakeUnpack(serialized);
+
+            // Verify
+
+            var template1 = LocalSpawnTemplateManager.GetTemplate(new LocationIdentifier("Runestone_Boars", "Boar"));
+            Assert.IsNotNull(template1);
+
+            var template2 = LocalSpawnTemplateManager.GetTemplate(new RoomIdentifier("Runestone_Boars", "Boar"));
+            Assert.IsNotNull(template2);
         }
         finally
         {
             LocalSpawnTemplateManager.TemplatesByLocation.Clear();
         }
+    }
+
+    [DataTestMethod]
+    [DataRow(true)]
+    [DataRow(false)]
+    public void CanSyncEnabled(bool enabled)
+    {
+        // Setup
+        var identifier = new LocationIdentifier("Runestone_Boars", "Boar");
+
+        LocalSpawnerConfiguration configuration = new();
+        configuration
+            .GetBuilder(identifier)
+            .SetEnabled(enabled);
+
+        configuration.Build();
+
+        // Sync
+        FakeLocalSpawnerConfigPackage package = new();
+
+        var serialized = package.FakePack();
+
+        Cleanup();
+
+        package.FakeUnpack(serialized);
+
+        // Verify
+        var template = LocalSpawnTemplateManager.GetTemplate(identifier);
+
+        Assert.IsNotNull(template);
+        Assert.AreEqual(enabled, template.Enabled);
     }
 }

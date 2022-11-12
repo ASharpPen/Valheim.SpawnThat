@@ -10,7 +10,7 @@ public class IdentifierBiome : ISpawnerIdentifier
 {
     public Heightmap.Biome BitmaskedBiome { get; set; }
 
-    internal IdentifierBiome()
+    public IdentifierBiome()
     {
     }
 

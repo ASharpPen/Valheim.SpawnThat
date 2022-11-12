@@ -25,7 +25,7 @@ public class IdentifierName : ISpawnerIdentifier
         }
     }
 
-    internal IdentifierName()
+    public IdentifierName()
     {
     }
 

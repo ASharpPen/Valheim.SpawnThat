@@ -71,9 +71,7 @@ internal class SimpleLocationPackage : CompressedPackage
 
             LocationManager.SetLocations(simpleLocations);
 
-            Log.LogDebug($"Unpacked locations: {simpleLocations?.Count ?? 0}");
-
-            Log.LogInfo("Successfully unpacked locations.");
+            Log.LogInfo($"Successfully unpacked locations: {simpleLocations?.Count ?? 0}");
         }
         else
         {
