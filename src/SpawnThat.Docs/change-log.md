@@ -1,4 +1,9 @@
 # Changelog
+- v1.1.5:
+	- For all spawners: Fixed config sync for fields Enabled, TemplateEnabled being ignored when false.
+	- Local Spawner: Fixed potential config sync issue for fields SpawnAtDay and SpawnAtNight defaulting to true when not set.
+	- SpawnArea Spawner: Fixed potential error when syncing custom identifiers.
+	- Streamlined logs of successful config sync a bit.
 - v1.1.4:
 	- Fixed mapping of settings, where SpawnThat would throw an error when processing certain settings defined as empty in cfg file. Primarily affected WorldSpawner configs.
 - v1.1.3:

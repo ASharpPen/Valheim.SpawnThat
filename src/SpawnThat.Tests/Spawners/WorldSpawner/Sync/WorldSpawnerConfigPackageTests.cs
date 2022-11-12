@@ -10,43 +10,71 @@ using static Heightmap;
 namespace SpawnThat.Tests.Spawners.WorldSpawner.Sync;
 
 [TestClass]
-public class LocalSpawnerConfigPackageTests
+public class WorldSpawnerConfigPackageTests
 {
+    [TestInitialize]
+    public void Init() => Cleanup();
+
+    [TestCleanup]
+    public void Cleanup()
+    {
+        WorldSpawnTemplateManager.TemplatesById.Clear();
+    }
+
     [TestMethod]
     public void CanSync()
     {
-        try
-        {
-            WorldSpawnerConfiguration configuration = new();
-            configuration.GetBuilder(1)
-                .SetSpawnDuringDay(true)
-                .SetSpawnDuringNight(false)
-                .SetMaxLevel(3);
-            configuration.GetBuilder(2)
-                .SetConditionAreaIds(123)
-                .SetPrefabName("Boar")
-                .SetTemplateEnabled(true);
-            configuration.GetBuilder(3)
-                .SetConditionAreaIds(125)
-                .SetConditionBiomes(Biome.Meadows, Biome.Ocean);
+        WorldSpawnerConfiguration configuration = new();
+        configuration.GetBuilder(1)
+            .SetSpawnDuringDay(true)
+            .SetSpawnDuringNight(false)
+            .SetMaxLevel(3);
+        configuration.GetBuilder(2)
+            .SetConditionAreaIds(123)
+            .SetPrefabName("Boar")
+            .SetTemplateEnabled(true);
+        configuration.GetBuilder(3)
+            .SetConditionAreaIds(125)
+            .SetConditionBiomes(Biome.Meadows, Biome.Ocean);
 
-            configuration.Build();
+        configuration.Build();
 
-            WorldSpawnerConfigPackage package = new();
+        FakeWorldSpawnerConfigPackage package = new();
 
-            var zpack = package.Pack();
+        var serialized = package.FakePack();
 
-            zpack.m_stream.Position = 0L;
-            WorldSpawnTemplateManager.TemplatesById.Clear();
+        Cleanup();
 
-            WorldSpawnerConfigPackage.Unpack<WorldSpawnerConfigPackage>(zpack);
+        package.FakeUnpack(serialized);
 
-            Assert.IsTrue(WorldSpawnTemplateManager.TemplatesById.Count > 0);
-        }
-        finally
-        {
-            WorldSpawnTemplateManager.TemplatesById.Clear();
-        }
+        Assert.IsTrue(WorldSpawnTemplateManager.TemplatesById.Count > 0);
+    }
+
+    [DataTestMethod]
+    [DataRow(true)]
+    [DataRow(false)]
+    public void CanSyncEnabled(bool enabled)
+    {
+        // Setup
+        WorldSpawnerConfiguration configuration = new();
+        configuration.GetBuilder(1)
+            .SetEnabled(enabled);
+
+        configuration.Build();
+
+        // Sync
+        FakeWorldSpawnerConfigPackage package = new();
+
+        var serialized = package.FakePack();
+
+        Cleanup();
+
+        package.FakeUnpack(serialized);
+
+        // Verify
+        var template = WorldSpawnTemplateManager.TemplatesById[1];
+
+        Assert.AreEqual(template.Enabled, enabled);
     }
 
     [TestMethod]
@@ -85,14 +113,13 @@ public class LocalSpawnerConfigPackageTests
 
         configuration.Build();
 
-        WorldSpawnerConfigPackage package = new();
+        var package = new FakeWorldSpawnerConfigPackage();
 
-        var zpack = package.Pack();
+        var serialized = package.FakePack();
 
-        zpack.m_stream.Position = 0L;
-        WorldSpawnTemplateManager.TemplatesById.Clear();
+        Cleanup();
 
-        WorldSpawnerConfigPackage.Unpack<WorldSpawnerConfigPackage>(zpack);
+        package.FakeUnpack(serialized);
 
         var template = WorldSpawnTemplateManager.TemplatesById[1];
 

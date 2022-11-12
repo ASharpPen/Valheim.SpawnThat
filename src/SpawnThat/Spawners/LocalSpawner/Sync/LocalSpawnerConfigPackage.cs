@@ -48,9 +48,7 @@ internal class LocalSpawnerConfigPackage : CompressedPackage
                 (LocalSpawnTemplateManager.TemplatesByLocation.Count) +
                 (LocalSpawnTemplateManager.TemplatesByRoom.Count);
 
-            Log.LogDebug($"Unpacked local spawner configurations: {count}");
-
-            Log.LogInfo("Successfully unpacked local spawner configs.");
+            Log.LogInfo($"Successfully unpacked local spawner configurations: {count}");
         }
         else
         {

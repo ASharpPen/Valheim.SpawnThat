@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Options.PositionConditions;
@@ -18,8 +19,10 @@ internal class SpawnAreaSpawnTemplate
     /// </summary>
     public uint Id { get; set; }
 
+    [DefaultValue(true)]
     public bool Enabled { get; set; } = true;
 
+    [DefaultValue(true)]
     public bool TemplateEnabled { get; set; } = true;
 
     public string PrefabName { get; set; }

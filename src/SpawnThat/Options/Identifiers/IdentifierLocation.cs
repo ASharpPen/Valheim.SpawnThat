@@ -26,7 +26,7 @@ public class IdentifierLocation : ISpawnerIdentifier
         }
     }
 
-    internal IdentifierLocation()
+    public IdentifierLocation()
     {
     }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Modifiers;
 using SpawnThat.Options.PositionConditions;
@@ -18,7 +19,7 @@ internal class WorldSpawnTemplate
     {
     }
 
-    public WorldSpawnTemplate(int index)
+    public WorldSpawnTemplate(int index) : this()
     {
         Index = index;
     }
@@ -66,6 +67,7 @@ internal class WorldSpawnTemplate
     /// If disabled, this spawn entry will not run.
     /// Can be used to disable existing spawn templates.
     /// </summary>
+    [DefaultValue(true)]
     public bool Enabled { get; set; } = true;
 
     /// <summary>
@@ -73,6 +75,7 @@ internal class WorldSpawnTemplate
     /// If disabled, template will be ignored.
     /// Cannot be used to disable existing spawn templates.
     /// </summary>
+    [DefaultValue(true)]
     public bool TemplateEnabled { get; set; } = true;
 
     /// <summary>
