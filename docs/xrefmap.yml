@@ -2078,6 +2078,12 @@ references:
   commentId: T:SpawnThat.Options.Identifiers.IdentifierBiome
   fullName: SpawnThat.Options.Identifiers.IdentifierBiome
   nameWithType: IdentifierBiome
+- uid: SpawnThat.Options.Identifiers.IdentifierBiome.#ctor
+  name: IdentifierBiome()
+  href: api/reference/SpawnThat.Options.Identifiers.IdentifierBiome.html#SpawnThat_Options_Identifiers_IdentifierBiome__ctor
+  commentId: M:SpawnThat.Options.Identifiers.IdentifierBiome.#ctor
+  fullName: SpawnThat.Options.Identifiers.IdentifierBiome.IdentifierBiome()
+  nameWithType: IdentifierBiome.IdentifierBiome()
 - uid: SpawnThat.Options.Identifiers.IdentifierBiome.#ctor(System.Collections.Generic.IEnumerable{Heightmap.Biome})
   name: IdentifierBiome(IEnumerable<Heightmap.Biome>)
   href: api/reference/SpawnThat.Options.Identifiers.IdentifierBiome.html#SpawnThat_Options_Identifiers_IdentifierBiome__ctor_System_Collections_Generic_IEnumerable_Heightmap_Biome__
@@ -2165,6 +2171,12 @@ references:
   commentId: T:SpawnThat.Options.Identifiers.IdentifierLocation
   fullName: SpawnThat.Options.Identifiers.IdentifierLocation
   nameWithType: IdentifierLocation
+- uid: SpawnThat.Options.Identifiers.IdentifierLocation.#ctor
+  name: IdentifierLocation()
+  href: api/reference/SpawnThat.Options.Identifiers.IdentifierLocation.html#SpawnThat_Options_Identifiers_IdentifierLocation__ctor
+  commentId: M:SpawnThat.Options.Identifiers.IdentifierLocation.#ctor
+  fullName: SpawnThat.Options.Identifiers.IdentifierLocation.IdentifierLocation()
+  nameWithType: IdentifierLocation.IdentifierLocation()
 - uid: SpawnThat.Options.Identifiers.IdentifierLocation.#ctor(System.Collections.Generic.IEnumerable{System.String})
   name: IdentifierLocation(IEnumerable<String>)
   href: api/reference/SpawnThat.Options.Identifiers.IdentifierLocation.html#SpawnThat_Options_Identifiers_IdentifierLocation__ctor_System_Collections_Generic_IEnumerable_System_String__
@@ -2252,6 +2264,12 @@ references:
   commentId: T:SpawnThat.Options.Identifiers.IdentifierName
   fullName: SpawnThat.Options.Identifiers.IdentifierName
   nameWithType: IdentifierName
+- uid: SpawnThat.Options.Identifiers.IdentifierName.#ctor
+  name: IdentifierName()
+  href: api/reference/SpawnThat.Options.Identifiers.IdentifierName.html#SpawnThat_Options_Identifiers_IdentifierName__ctor
+  commentId: M:SpawnThat.Options.Identifiers.IdentifierName.#ctor
+  fullName: SpawnThat.Options.Identifiers.IdentifierName.IdentifierName()
+  nameWithType: IdentifierName.IdentifierName()
 - uid: SpawnThat.Options.Identifiers.IdentifierName.#ctor(System.Collections.Generic.ICollection{System.String})
   name: IdentifierName(ICollection<String>)
   href: api/reference/SpawnThat.Options.Identifiers.IdentifierName.html#SpawnThat_Options_Identifiers_IdentifierName__ctor_System_Collections_Generic_ICollection_System_String__
@@ -2348,6 +2366,12 @@ references:
   commentId: T:SpawnThat.Options.Identifiers.IdentifierRoom
   fullName: SpawnThat.Options.Identifiers.IdentifierRoom
   nameWithType: IdentifierRoom
+- uid: SpawnThat.Options.Identifiers.IdentifierRoom.#ctor
+  name: IdentifierRoom()
+  href: api/reference/SpawnThat.Options.Identifiers.IdentifierRoom.html#SpawnThat_Options_Identifiers_IdentifierRoom__ctor
+  commentId: M:SpawnThat.Options.Identifiers.IdentifierRoom.#ctor
+  fullName: SpawnThat.Options.Identifiers.IdentifierRoom.IdentifierRoom()
+  nameWithType: IdentifierRoom.IdentifierRoom()
 - uid: SpawnThat.Options.Identifiers.IdentifierRoom.#ctor(System.Collections.Generic.IEnumerable{System.String})
   name: IdentifierRoom(IEnumerable<String>)
   href: api/reference/SpawnThat.Options.Identifiers.IdentifierRoom.html#SpawnThat_Options_Identifiers_IdentifierRoom__ctor_System_Collections_Generic_IEnumerable_System_String__
