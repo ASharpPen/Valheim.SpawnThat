@@ -55,5 +55,6 @@ internal static class LocalSpawnerConfigurationService
         spawner.m_triggerDistance = template.ConditionPlayerDistance ?? spawner.m_triggerDistance;
         spawner.m_triggerNoise = template.ConditionPlayerNoise ?? spawner.m_triggerNoise;
         spawner.m_spawnInPlayerBase = template.AllowSpawnInPlayerBase ?? spawner.m_spawnInPlayerBase;
+        spawner.m_levelupChance = template.LevelUpChance ?? spawner.m_levelupChance;
     }
 }
