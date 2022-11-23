@@ -33,10 +33,8 @@ internal class WorldSpawnerConfigPackage : CompressedPackage
             WorldSpawnTemplateManager.TemplatesById = configPackage.TemplatesById ?? new();
             WorldSpawnTemplateManager.SimpleTemplatesByPrefab = configPackage.SimpleConfigsByPrefab ?? new();
 
-            Log.LogDebug($"Unpacked world spawner configurations: {WorldSpawnTemplateManager.TemplatesById?.Count ?? 0}");
-            Log.LogDebug($"Unpacked simple world spawner configurations: {WorldSpawnTemplateManager.SimpleTemplatesByPrefab?.Count ?? 0}");
-
-            Log.LogInfo("Successfully unpacked world spawner configs.");
+            Log.LogInfo($"Successfully unpacked world spawner configurations: {WorldSpawnTemplateManager.TemplatesById?.Count ?? 0}");
+            Log.LogInfo($"Successfully unpacked simple world spawner configurations: {WorldSpawnTemplateManager.SimpleTemplatesByPrefab?.Count ?? 0}");
         }
         else
         {

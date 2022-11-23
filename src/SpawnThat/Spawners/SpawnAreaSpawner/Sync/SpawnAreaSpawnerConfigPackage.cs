@@ -14,7 +14,9 @@ internal class SpawnAreaSpawnerConfigPackage : CompressedPackage
     {
         Templates = SpawnAreaSpawnerManager.GetTemplates();
 
-        Log.LogDebug($"Packaged world spawner configurations: {Templates?.Count ?? 0}");
+        Log.LogDebug($"Packaged SpawnArea spawner configurations: {Templates?.Count ?? 0}");
+
+        RegisterType(Templates.SelectMany(x => x.Identifiers));
 
         var spawns = Templates.SelectMany(x => x.Spawns.Values);
 
