@@ -21,6 +21,7 @@ public static class IWorldSpawnBuilderSettingsExtensions
         settings.DistanceToCenterForLevelUp.Set(builder.SetDistanceToCenterForLevelUp);
         settings.MinLevel.SetNullable(builder.SetMinLevel);
         settings.MaxLevel.SetNullable(builder.SetMaxLevel);
+        settings.LevelUpChance.SetNullable(builder.SetLevelUpChance);
         settings.ConditionMinAltitude.SetNullable(builder.SetConditionAltitudeMin);
         settings.ConditionMaxAltitude.SetNullable(builder.SetConditionAltitudeMax);
         settings.ConditionMinOceanDepth.SetNullable(builder.SetConditionOceanDepthMin);

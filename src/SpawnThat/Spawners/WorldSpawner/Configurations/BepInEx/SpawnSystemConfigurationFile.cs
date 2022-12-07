@@ -144,6 +144,8 @@ internal class SpawnConfiguration : TomlConfigWithSubsections<TomlConfig>
 
     public TomlConfigEntry<int?> LevelMax = new("LevelMax", 1, "Maximum level to spawn.");
 
+    public TomlConfigEntry<float?> LevelUpChance = new("LevelUpChance", 10, "Chance to level up, starting at LevelMin and rolling again for each level gained. Range is 0 to 100");
+
     public TomlConfigEntry<float?> LevelUpMinCenterDistance = new("LevelUpMinCenterDistance", 0, "Minimum distance from world center, to allow higher than min level.");
 
     public TomlConfigEntry<float?> SpawnDistance = new("SpawnDistance", 0, "Minimum distance to another entity.");

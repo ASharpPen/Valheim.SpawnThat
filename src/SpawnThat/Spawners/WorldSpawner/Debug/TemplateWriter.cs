@@ -66,6 +66,7 @@ internal static class TemplateWriter
             config.SpawnChance.SetConditionally(template.SpawnChance);
             config.LevelMin.SetConditionally(template.MinLevel);
             config.LevelMax.SetConditionally(template.MaxLevel);
+            config.LevelUpChance.SetConditionally(template.LevelUpChance);
             config.LevelUpMinCenterDistance.SetConditionally(template.DistanceToCenterForLevelUp);
             config.SpawnDistance.SetConditionally(template.MinDistanceToOther);
             config.SpawnRadiusMin.SetConditionally(template.SpawnAtDistanceToPlayerMin);

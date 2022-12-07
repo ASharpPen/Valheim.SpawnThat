@@ -162,6 +162,22 @@ public class WorldSpawnSettings
     public int? MaxLevel { get; set; }
 
     /// <summary>
+    /// <para>Chance to level up.</para>
+    /// <para>Valheim treats 0 or less as 10.</para>
+    /// <para>
+    ///     Level is assigned by rolling levelup-chance for each
+    ///     level from min, until max is reached.
+    /// </para>
+    /// <para>
+    ///     This means if levelup chance is 10 (default), there is 10% chance for
+    ///     a MinLevel 1 to become level 2, and 1% chance to become level 3.
+    /// </para>
+    /// <para>Default if new template: -1</para>
+    /// </summary>
+    /// <remarks>Vanilla name: m_overrideLevelupChance</remarks>
+    public float? LevelUpChance { get; set; }
+
+    /// <summary>
     /// <para>Minimum altitude (distance to water surface) to spawn at.</para>
     /// <para>Default if new template: -1000</para>
     /// </summary>

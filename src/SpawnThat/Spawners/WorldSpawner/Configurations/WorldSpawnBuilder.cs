@@ -399,6 +399,12 @@ internal class WorldSpawnBuilder : IWorldSpawnBuilder
         return this;
     }
 
+    public IWorldSpawnBuilder SetLevelUpChance(float? chance)
+    {
+        Template.LevelUpChance = chance;
+        return this;
+    }
+
     public IWorldSpawnBuilder SetMaxSpawned(uint maxSpawned)
     {
         Template.MaxSpawned = (int?)maxSpawned;
