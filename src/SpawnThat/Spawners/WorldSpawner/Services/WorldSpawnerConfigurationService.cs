@@ -8,6 +8,7 @@ using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Managers;
 using SpawnThat.Utilities.Extensions;
 using SpawnThat.Spawners.WorldSpawner.Debug;
+using System.Runtime.CompilerServices;
 
 namespace SpawnThat.Spawners.WorldSpawner.Services;
 
@@ -17,6 +18,13 @@ internal static class WorldSpawnerConfigurationService
     private static bool FirstRun = true;
     private static bool DetectedUnableToFindPrefab;
 
+    private static ConditionalWeakTable<SpawnSystem.SpawnData, SpawnDataInfo> SpawnDataTable { get; set; } = new();
+
+    private class SpawnDataInfo
+    {
+        public int Id { get; set; }
+    }
+
     static WorldSpawnerConfigurationService()
     {
         LifecycleManager.SubscribeToWorldInit(() =>
@@ -24,6 +32,7 @@ internal static class WorldSpawnerConfigurationService
             IsConfigured = false;
             FirstRun = true;
             DetectedUnableToFindPrefab = false;
+            SpawnDataTable = new();
         });
     }
 
@@ -49,6 +58,16 @@ internal static class WorldSpawnerConfigurationService
             spawnLists.ForEach(x => x.m_spawners.Clear());
         }
 
+        // Assign ID's to spawner entries.
+        var spawnEntries = spawnLists.SelectMany(x => x.m_spawners).ToList();
+        for (int i = 0; i < spawnEntries.Count; ++i)
+        {
+            if (!SpawnDataTable.TryGetValue(spawnEntries[i], out _))
+            {
+                SpawnDataTable.Add(spawnEntries[i], new() { Id = i });
+            }
+        }
+
         if (LifecycleManager.GameState != GameState.DedicatedServer)
         {
             ApplyWorldSpawnerTemplates(spawnLists);
@@ -59,7 +78,12 @@ internal static class WorldSpawnerConfigurationService
 
         if (ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileAfterChanges?.Value == true)
         {
-            SpawnDataFileGenerator.WriteToFile(spawnLists.SelectMany(x => x.m_spawners).ToList(), "spawn_that.world_spawners_post_changes.txt", true);
+            var spawns = spawnLists
+                .SelectMany(x => x.m_spawners)
+                .OrderBy(x => SpawnDataTable.TryGetValue(x, out var info) ? info.Id : int.MaxValue)
+                .ToList();
+
+            SpawnDataFileGenerator.WriteToFile(spawns.ToList(), "spawn_that.world_spawners_post_changes.txt", true);
         }
 
         IsConfigured = true;
@@ -121,6 +145,7 @@ internal static class WorldSpawnerConfigurationService
                 // Add entry only if configuration succeeds
                 if (TryConfigureNewEntry(entry, template))
                 {
+                    SpawnDataTable.Add(entry, new() { Id = template.Index });
                     mainSpawnList.m_spawners.Add(entry);
                 }
             }
@@ -212,6 +237,7 @@ internal static class WorldSpawnerConfigurationService
         Configure(ref entry.m_maxAltitude, template.ConditionMaxAltitude, 1000);
         Configure(ref entry.m_minLevel, template.MinLevel, 1);
         Configure(ref entry.m_maxLevel, template.MaxLevel, 1);
+        Configure(ref entry.m_overrideLevelupChance, template.LevelUpChance, -1);
         Configure(ref entry.m_minTilt, template.ConditionMinTilt, 0);
         Configure(ref entry.m_maxTilt, template.ConditionMaxTilt, 35);
         Configure(ref entry.m_minOceanDepth, template.ConditionMinOceanDepth, 0);

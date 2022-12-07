@@ -122,6 +122,7 @@ internal static class SpawnDataFileGenerator
         lines.Add($"{nameof(SpawnConfiguration.SpawnChance)}={spawner.m_spawnChance.ToString(CultureInfo.InvariantCulture)}");
         lines.Add($"{nameof(SpawnConfiguration.LevelMin)}={spawner.m_minLevel}");
         lines.Add($"{nameof(SpawnConfiguration.LevelMax)}={spawner.m_maxLevel}");
+        lines.Add($"{nameof(SpawnConfiguration.LevelUpChance)}={spawner.m_overrideLevelupChance.ToString(CultureInfo.InvariantCulture)}");
         lines.Add($"{nameof(SpawnConfiguration.LevelUpMinCenterDistance)}={spawner.m_levelUpMinCenterDistance.ToString(CultureInfo.InvariantCulture)}");
         lines.Add($"{nameof(SpawnConfiguration.SpawnDistance)}={spawner.m_spawnDistance.ToString(CultureInfo.InvariantCulture)}");
         lines.Add($"{nameof(SpawnConfiguration.SpawnRadiusMin)}={spawner.m_spawnRadiusMin.ToString(CultureInfo.InvariantCulture)}");

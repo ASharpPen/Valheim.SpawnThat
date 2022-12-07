@@ -132,7 +132,7 @@ internal class WorldSpawnTemplate
 
     public int? MaxLevel { get; set; }
 
-    //public float? LevelUpChance { get; set; }
+    public float? LevelUpChance { get; set; }
 
     public float? ConditionMinAltitude { get; set; }
 

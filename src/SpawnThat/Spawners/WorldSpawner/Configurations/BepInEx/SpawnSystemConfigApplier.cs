@@ -75,6 +75,7 @@ internal static class SpawnSystemConfigApplier
         config.SpawnChance.SetIfLoaded(builder.SetSpawnChance);
         config.LevelMin.SetIfLoaded(x => builder.SetMinLevel((uint?)x));
         config.LevelMax.SetIfLoaded(x => builder.SetMaxLevel((uint?)x));
+        config.LevelUpChance.SetIfLoaded(builder.SetLevelUpChance);
         config.SpawnDistance.SetIfLoaded(builder.SetMinDistanceToOther);
         config.SpawnRadiusMin.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMin(x));
         config.SpawnRadiusMax.SetIfLoaded(x => builder.SetSpawnAtDistanceToPlayerMax(x));
