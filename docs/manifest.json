@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "change-log.html",
-          "hash": "sMz/RBr0PTr1p0rWer41FvwhNfSbhyypDrX/cERNPXo="
+          "hash": "w0vDeNWtaLPK/eT8ueBjyd9V2/M8xN0TaQRNqwEjnMU="
         }
       },
       "is_incremental": false,
@@ -357,10 +357,10 @@
       "output": {
         ".html": {
           "relative_path": "file-configs/1.1.0/config-types/world-spawner-config.html",
-          "hash": "0Ool/oH+b4bPC7+aCZUt5rk0ScaTNh/tvc6ET1tWHf0="
+          "hash": "/wjnIi6ggm3BFg/Z3OJPLRgYSwBfWZntIhg8pfgTolw="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -564,7 +564,7 @@
           "hash": "3zJL6+hxa32UEc6JWdtn5kwkqLcSHh6U/gPkCz6dzK0="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1164,7 +1164,7 @@
           "hash": "IsoFEvXB7WOGE0/MzqXUAmDefevmD+kYboUiQAFYLp4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1176,7 +1176,7 @@
           "hash": "BtovBK4Xp/N4GPZWE/Zxqf0akljAxIigHYvnnCB7/8s="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1188,7 +1188,7 @@
           "hash": "Ms6DKDVAWNHG4x4npg9HcG/piq5FSouwr6m0sknbqFY="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1200,7 +1200,7 @@
           "hash": "caRg3nLYRj1Elg4iWxuZP64O2aOEyHr6Nto35JzKq3E="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1224,7 +1224,7 @@
           "hash": "GixqhxnQmO3g00Y5A7PNzn6cn9QxQUflDDliVaG4/zY="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1449,7 +1449,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.SpawnThatPlugin.html",
-          "hash": "AsW/HMslVAJh1Sy4I6Xo5MBDYTA6v7siE6G2BF2T58s="
+          "hash": "yeK2ehoSQ7+rTtrffzj16v0EIUtSh38R9Rbiln5D5Q0="
         }
       },
       "is_incremental": false,
@@ -1656,7 +1656,7 @@
           "hash": "cOsMrVTY7I8hZRC75+MwY+XsgqNMuSrwk6EQBKcMpAQ="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1881,10 +1881,10 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.html",
-          "hash": "UCPsaYT0lsf/YqxGM1RmRcGVjfOcZs9oJLy7cCgZdhg="
+          "hash": "ePGb8MdhgluhN6tYus9v4bP3P86sEE25Lt3qfMIRmWw="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1896,7 +1896,7 @@
           "hash": "NrgPRvREAnh0T0EzqsWqguueGvtQDmx6LgTak7pF3eg="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1908,7 +1908,7 @@
           "hash": "h+47XqFxPqojFVjRwd3QgPsn30YoLz/YkR0/u8sWoDU="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1920,7 +1920,7 @@
           "hash": "HhLBV6cA6Pg9RAY+MIP3DtbiVnHq8Kk9+cc7bStEzhU="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1932,7 +1932,7 @@
           "hash": "y//XinZUSFUtEir9AQk2ahhUuHObBMvE0Kj/BfNxhtc="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1944,7 +1944,7 @@
           "hash": "irJk5ZjQTG8GlIT+zdqa41WX15PA8l2CtYTZnfINf5E="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1956,7 +1956,7 @@
           "hash": "sO4vBtM1eo1oqq9QqPEXeDSsrNT4dRB+BCzLE2GSu0w="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1968,7 +1968,7 @@
           "hash": "IYdd+tV0jPNniihLdronGMn7pyGXNEFuc8zlgUlxr+0="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1980,7 +1980,7 @@
           "hash": "znvki8GxnWMfzoVnYUFMsPp429/HvuZJJhkcKh7Ginc="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1989,10 +1989,10 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.html",
-          "hash": "Y1jjHgPuZOaCfrklHYOMIsq7JRiNR6G2T2xz/vDffoo="
+          "hash": "pkwWDSy3dTNkquY4dEUEv4HOVxCB1I+0SikaidNVxoU="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2004,7 +2004,7 @@
           "hash": "Y8pMcuKapZrStZ/Lu10eP5a/Pqrd0aVcHm+QO12Kh2Y="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2016,7 +2016,7 @@
           "hash": "KZrRQINf/lQwroScahIKTVD57rWt1g9/fG7mGPutELc="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2316,7 +2316,7 @@
           "hash": "CJpIEIHCIxX/5P/9qzYT4GkWUII4e9cxwc4/K7m4Dek="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2328,7 +2328,7 @@
           "hash": "gD8pgR3pZOB+Jw8YgEPjyq3+zKkrZCMiLluYFVclLZM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2477,13 +2477,13 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 49,
-          "skipped_file_count": 48
+          "skipped_file_count": 47
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 151,
-          "skipped_file_count": 145
+          "skipped_file_count": 148
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

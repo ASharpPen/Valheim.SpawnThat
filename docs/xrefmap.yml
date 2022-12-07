@@ -7039,6 +7039,22 @@ references:
   isSpec: "True"
   fullName: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetEnabled
   nameWithType: IWorldSpawnBuilder.SetEnabled
+- uid: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetLevelUpChance(System.Nullable{System.Single})
+  name: SetLevelUpChance(Nullable<Single>)
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_SetLevelUpChance_System_Nullable_System_Single__
+  commentId: M:SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetLevelUpChance(System.Nullable{System.Single})
+  name.vb: SetLevelUpChance(Nullable(Of Single))
+  fullName: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetLevelUpChance(System.Nullable<System.Single>)
+  fullName.vb: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetLevelUpChance(System.Nullable(Of System.Single))
+  nameWithType: IWorldSpawnBuilder.SetLevelUpChance(Nullable<Single>)
+  nameWithType.vb: IWorldSpawnBuilder.SetLevelUpChance(Nullable(Of Single))
+- uid: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetLevelUpChance*
+  name: SetLevelUpChance
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_SetLevelUpChance_
+  commentId: Overload:SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetLevelUpChance
+  isSpec: "True"
+  fullName: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetLevelUpChance
+  nameWithType: IWorldSpawnBuilder.SetLevelUpChance
 - uid: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetMaxLevel(System.Nullable{System.UInt32})
   name: SetMaxLevel(Nullable<UInt32>)
   href: api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_SetMaxLevel_System_Nullable_System_UInt32__
@@ -8287,6 +8303,19 @@ references:
   isSpec: "True"
   fullName: SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.HuntPlayer
   nameWithType: WorldSpawnSettings.HuntPlayer
+- uid: SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.LevelUpChance
+  name: LevelUpChance
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.html#SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_LevelUpChance
+  commentId: P:SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.LevelUpChance
+  fullName: SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.LevelUpChance
+  nameWithType: WorldSpawnSettings.LevelUpChance
+- uid: SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.LevelUpChance*
+  name: LevelUpChance
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.html#SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_LevelUpChance_
+  commentId: Overload:SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.LevelUpChance
+  isSpec: "True"
+  fullName: SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.LevelUpChance
+  nameWithType: WorldSpawnSettings.LevelUpChance
 - uid: SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.MaxLevel
   name: MaxLevel
   href: api/reference/SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.html#SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_MaxLevel
