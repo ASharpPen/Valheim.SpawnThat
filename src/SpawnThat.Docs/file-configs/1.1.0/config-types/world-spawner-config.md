@@ -72,7 +72,8 @@ HuntPlayer = true
 | SpawnChance | int | 100 | 0 | Chance to spawn pr spawn check. Range 0 to 100 |
 | LevelMin | int | 1 | 35 | Minimum level to spawn |
 | LevelMax | int | 1 | 3 | Maximum level to spawn |
-| LevleUpMinCenterDistance | float | 0 | 2000 | Minimum distance from world center, to allow higher than min level
+| LevelUpChance | float | 10 | 45 | Chance to level up, starting at LevelMin and rolling again for each level gained. Range is 0 to 100 |
+| LevelUpMinCenterDistance | float | 0 | 2000 | Minimum distance from world center, to allow higher than min level
 | SpawnRadiusMin | float | 0 | 40 | Minimum spawn distance from player. 0 defaults to 40 | 
 | SpawnRadiusMax | float | 0 | 80 | Maximum spawn distance from player. 0 defaults to 80 |
 | SpawnDistance | float | 0 | 10 | Must not have another spawn of same prefab within this distance for this template to spawn |
