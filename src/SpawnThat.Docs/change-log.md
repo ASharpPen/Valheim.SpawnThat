@@ -1,4 +1,9 @@
 # Changelog
+- v1.1.7:
+	- World Spawner: Added support for new LevelUpChance field.
+	- Fixes for v0.212.6
+- v1.1.6:
+	- Fixed patch compatibility with v0.212.6
 - v1.1.5:
 	- For all spawners: Fixed config sync for fields Enabled, TemplateEnabled being ignored when false.
 	- Local Spawner: Fixed potential config sync issue for fields SpawnAtDay and SpawnAtNight defaulting to true when not set.
