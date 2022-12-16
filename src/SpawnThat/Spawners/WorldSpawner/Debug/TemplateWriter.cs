@@ -87,6 +87,7 @@ internal static class TemplateWriter
             config.SpawnOutsideForest.SetConditionally(template.ConditionAllowOutsideForest);
             config.OceanDepthMin.SetConditionally(template.ConditionMinOceanDepth);
             config.OceanDepthMax.SetConditionally(template.ConditionMaxOceanDepth);
+            config.BiomeArea.SetConditionally(template.BiomeArea);
 
             // Conditions
             foreach (var condition in template.SpawnConditions)

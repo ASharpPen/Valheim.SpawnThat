@@ -143,6 +143,7 @@ internal static class SpawnDataFileGenerator
         lines.Add($"{nameof(SpawnConfiguration.SpawnOutsideForest)}={spawner.m_outsideForest}");
         lines.Add($"{nameof(SpawnConfiguration.OceanDepthMin)}={spawner.m_minOceanDepth.ToString(CultureInfo.InvariantCulture)}");
         lines.Add($"{nameof(SpawnConfiguration.OceanDepthMax)}={spawner.m_maxOceanDepth.ToString(CultureInfo.InvariantCulture)}");
+        lines.Add($"{nameof(SpawnConfiguration.BiomeArea)}={spawner.m_biomeArea}");
 
         try
         {

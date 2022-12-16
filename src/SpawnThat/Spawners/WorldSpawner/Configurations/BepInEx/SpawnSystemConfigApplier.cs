@@ -94,6 +94,7 @@ internal static class SpawnSystemConfigApplier
         config.OceanDepthMax.SetIfLoaded(x => builder.SetConditionOceanDepthMax(x));
         config.LevelUpMinCenterDistance.SetIfLoaded(builder.SetDistanceToCenterForLevelUp);
         config.GroundOffset.SetIfLoaded(builder.SetSpawnAtDistanceToGround);
+        config.BiomeArea.SetIfLoaded(builder.SetBiomeArea);
 
         // Conditions
         var playerConditionsDistance = config.DistanceToTriggerPlayerConditions.IsSet && config.DistanceToTriggerPlayerConditions.Value is not null

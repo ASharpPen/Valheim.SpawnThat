@@ -36,6 +36,7 @@ public static class IWorldSpawnBuilderSettingsExtensions
         settings.SpawnAtDistanceToPlayerMin.SetNullable(builder.SetSpawnAtDistanceToPlayerMin);
         settings.SpawnAtDistanceToPlayerMax.SetNullable(builder.SetSpawnAtDistanceToPlayerMax);
         settings.SpawnAtDistanceToGround.SetNullable(builder.SetSpawnAtDistanceToGround);
+        settings.BiomeArea.SetNullable(builder.SetBiomeArea);
 
         foreach (var condition in settings.Conditions)
         {
@@ -101,6 +102,14 @@ public static class IWorldSpawnBuilderSettingsExtensions
         if (value is not null)
         {
             apply(value.Value);
+        }
+    }
+
+    private static void SetNullable<T>(this T value, Func<T, IWorldSpawnBuilder> apply)
+    {
+        if (value is not null)
+        {
+            apply(value);
         }
     }
 

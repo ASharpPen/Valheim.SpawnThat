@@ -163,4 +163,6 @@ internal class WorldSpawnTemplate
     public float? SpawnAtDistanceToPlayerMax { get; set; }
 
     public float? SpawnAtDistanceToGround { get; set; }
+
+    public Heightmap.BiomeArea? BiomeArea { get; set; }
 }

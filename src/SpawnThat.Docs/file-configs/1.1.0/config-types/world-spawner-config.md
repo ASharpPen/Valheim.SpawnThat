@@ -90,6 +90,7 @@ HuntPlayer = true
 | SpawnOutsideForest | bool | true | false | Toggles spawning outside forests |
 | OceanDepthMin | float | 0 | 0 | Minimum ocean depth to spawn in. Ignored if min == max |
 | OceanDepthMax | float | 0 | 0 | Maximum ocean depth to spawn in. Ignored if min == max |
+| BiomeArea | string | Everything | Edge | Toggles spawning in biome border zones (Edge), non-border zones (Median) or both (Everything). A border zone is a zone where two or more biomes are next to each other |
 | ConditionAltitudeMin | float | -1000 | 123 | Minimum altitude (distance to water surface) to spawn at |
 | ConditionAltitudeMax | float | -1000 | 123 | Maximum altitude (distance to water surface) to spawn at |
 | ConditionTiltMin | float | 0 | 120 | Minimum tilt of terrain surface to spawn at |
