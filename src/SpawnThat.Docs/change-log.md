@@ -1,4 +1,7 @@
 # Changelog
+- v1.2.0:
+	- World Spawner: Fixed LevelUpChance only being properly applied to new entries.
+	- World Spawner: Added support for vanilla field BiomeArea.
 - v1.1.7:
 	- World Spawner: Added support for new LevelUpChance field.
 	- Fixes for v0.212.6
