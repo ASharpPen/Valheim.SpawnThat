@@ -236,6 +236,23 @@ public interface IWorldSpawnBuilder
     IWorldSpawnBuilder SetMaxLevel(uint? maxLevel);
 
     /// <summary>
+    /// <para>Chance to level up.</para>
+    /// <para>Valheim treats 0 or less as 10.</para>
+    /// <para>
+    ///     Level is assigned by rolling levelup-chance for each
+    ///     level from min, until max is reached.
+    /// </para>
+    /// <para>
+    ///     This means if levelup chance is 10 (default), there is 10% chance for
+    ///     a MinLevel 1 to become level 2, and 1% chance to become level 3.
+    /// </para>
+    /// <para>If not set, uses existing when overriding.</para>
+    /// <para>Default if new template: -1</para>
+    /// </summary>
+    /// <remarks>Vanilla name: m_overrideLevelupChance</remarks>
+    IWorldSpawnBuilder SetLevelUpChance(float? chance);
+
+    /// <summary>
     /// <para>Minimum distance for creature to increase level beyond MinLevel.</para>
     /// <para>If not set, uses existing when overriding.</para>
     /// <para>Default if new template: 0</para>
