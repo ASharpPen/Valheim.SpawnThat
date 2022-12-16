@@ -291,6 +291,7 @@ internal static class WorldSpawnerConfigurationService
         Configure(ref entry.m_minLevel, template.MinLevel);
         Configure(ref entry.m_maxLevel, template.MaxLevel);
         Configure(ref entry.m_levelUpMinCenterDistance, template.DistanceToCenterForLevelUp);
+        Configure(ref entry.m_overrideLevelupChance, template.LevelUpChance);
         Configure(ref entry.m_spawnDistance, template.MinDistanceToOther);
         Configure(ref entry.m_spawnRadiusMin, template.SpawnAtDistanceToPlayerMin);
         Configure(ref entry.m_spawnRadiusMax, template.SpawnAtDistanceToPlayerMax);
