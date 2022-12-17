@@ -87,6 +87,7 @@ internal static class TemplateWriter
             config.SpawnOutsideForest.SetConditionally(template.ConditionAllowOutsideForest);
             config.OceanDepthMin.SetConditionally(template.ConditionMinOceanDepth);
             config.OceanDepthMax.SetConditionally(template.ConditionMaxOceanDepth);
+            config.BiomeArea.SetConditionally(template.BiomeArea);
 
             // Conditions
             foreach (var condition in template.SpawnConditions)
@@ -155,6 +156,18 @@ internal static class TemplateWriter
                 {
                     case PositionConditionLocation location:
                         config.ConditionLocation.Set(location.LocationNames?.ToList());
+                        break;
+                    case PositionConditionMustBeNearAllPrefabs cond:
+                        config.ConditionPositionMustBeNearAllPrefabs.Set(cond.Prefabs.ToList());
+                        config.ConditionPositionMustBeNearAllPrefabsDistance.Set(cond.Distance);
+                        break;
+                    case PositionConditionMustBeNearPrefabs cond:
+                        config.ConditionPositionMustBeNearPrefabs.Set(cond.Prefabs.ToList());
+                        config.ConditionPositionMustBeNearPrefabsDistance.Set(cond.Distance);
+                        break;
+                    case PositionConditionMustNotBeNearPrefabs cond:
+                        config.ConditionPositionMustNotBeNearPrefabs.Set(cond.Prefabs.ToList());
+                        config.ConditionPositionMustNotBeNearPrefabsDistance.Set(cond.Distance);
                         break;
                 }
             }

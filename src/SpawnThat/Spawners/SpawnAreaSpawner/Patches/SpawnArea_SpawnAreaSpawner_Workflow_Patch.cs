@@ -98,20 +98,23 @@ internal static class SpawnArea_SpawnAreaSpawner_Workflow_Patch
             .InstructionEnumeration();
     }
 
-    [HarmonyPatch(nameof(SpawnArea.Awake))]
+    [HarmonyPatch(nameof(SpawnArea.SpawnOne))]
     [HarmonyTranspiler]
-    private static IEnumerable<CodeInstruction> ModifySpawn(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> GetSpawnReference(IEnumerable<CodeInstruction> instructions)
     {
         return new CodeMatcher(instructions)
             // Move to right after instantiation
             .MatchForward(false, new CodeMatch(OpCodes.Call, ReflectionUtils.InstantiateGameObjectMethod))
             .Advance(1)
-            // dup item on stack, and call modifier
+            // dup item on stack, and call method
             .InsertAndAdvance(OpCodes.Dup)
-            .InsertAndAdvance(OpCodes.Ldarg_0)
-            .InsertAndAdvance(Transpilers.EmitDelegate(SpawnAreaSpawnSessionManager.ModifySpawn))
+            .InsertAndAdvance(Transpilers.EmitDelegate(SpawnAreaSpawnSessionManager.GetSpawnReference))
             .InstructionEnumeration();
     }
+
+    [HarmonyPatch(nameof(SpawnArea.SpawnOne))]
+    [HarmonyPostfix]
+    private static void ModifySpawn(SpawnArea __instance) => SpawnAreaSpawnSessionManager.ModifySpawn(__instance);
 
     [HarmonyPatch(nameof(SpawnArea.UpdateSpawn))]
     [HarmonyFinalizer]

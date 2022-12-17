@@ -10,6 +10,7 @@ using SpawnThat.Integrations.MobAi.Modifiers;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Options.Identifiers;
 using SpawnThat.Options.Modifiers;
+using SpawnThat.Options.PositionConditions;
 using SpawnThat.Spawners.SpawnAreaSpawner.Configuration.BepInEx;
 using SpawnThat.Spawners.SpawnAreaSpawner.Managers;
 using SpawnThat.Utilities.Extensions;
@@ -201,6 +202,30 @@ internal static class TemplateWriter
                         config.EpicLootConfig?.ConditionNearbyPlayerCarryLegendaryItem.Set(nearbyPlayerCarryLegendaryItem.LegendaryIds?.ToList());
                         break;
                     default:
+                        break;
+                }
+            }
+
+            // Position Conditions
+
+            foreach (var positionCondition in template.PositionConditions)
+            {
+                switch (positionCondition)
+                {
+                    case PositionConditionLocation location:
+                        config.ConditionLocation.Set(location.LocationNames?.ToList());
+                        break;
+                    case PositionConditionMustBeNearAllPrefabs cond:
+                        config.ConditionPositionMustBeNearAllPrefabs.Set(cond.Prefabs.ToList());
+                        config.ConditionPositionMustBeNearAllPrefabsDistance.Set(cond.Distance);
+                        break;
+                    case PositionConditionMustBeNearPrefabs cond:
+                        config.ConditionPositionMustBeNearPrefabs.Set(cond.Prefabs.ToList());
+                        config.ConditionPositionMustBeNearPrefabsDistance.Set(cond.Distance);
+                        break;
+                    case PositionConditionMustNotBeNearPrefabs cond:
+                        config.ConditionPositionMustNotBeNearPrefabs.Set(cond.Prefabs.ToList());
+                        config.ConditionPositionMustNotBeNearPrefabsDistance.Set(cond.Distance);
                         break;
                 }
             }

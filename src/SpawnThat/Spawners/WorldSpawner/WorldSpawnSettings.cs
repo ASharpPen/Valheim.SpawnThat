@@ -292,4 +292,11 @@ public class WorldSpawnSettings
     /// </summary>
     /// <remarks>Vanilla name: m_groundOffset</remarks>
     public float? SpawnAtDistanceToGround { get; set; }
+
+    /// <summary>
+    /// <para>Set if allowed to spawn in zone that are edge biomes, in non-edge or both.</para>
+    /// <para>Default if new template: Heightmap.BiomeArea.Everything</para>
+    /// </summary>
+    /// <remarks>Vanilla name: m_biomeArea</remarks>
+    public Heightmap.BiomeArea? BiomeArea { get; set; }
 }

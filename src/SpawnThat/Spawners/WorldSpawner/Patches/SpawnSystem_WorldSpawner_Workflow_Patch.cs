@@ -134,14 +134,18 @@ internal static class SpawnSystem_WorldSpawner_Workflow_Patch
 
     [HarmonyPatch(nameof(SpawnSystem.Spawn))]
     [HarmonyTranspiler]
-    private static IEnumerable<CodeInstruction> ModifySpawn(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> GetSpawnReference(IEnumerable<CodeInstruction> instructions)
     {
         return new CodeMatcher(instructions)
             .MatchForward(false, new CodeMatch(OpCodes.Stloc_0))
             .Advance(1)
             .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_0))
             .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_3))
-            .InsertAndAdvance(Transpilers.EmitDelegate(WorldSpawnSessionManager.ModifySpawn))
+            .InsertAndAdvance(Transpilers.EmitDelegate(WorldSpawnSessionManager.GetSpawnReference))
             .InstructionEnumeration();
     }
+
+    [HarmonyPatch(nameof(SpawnSystem.Spawn))]
+    [HarmonyPostfix]
+    private static void ModifySpawn() => WorldSpawnSessionManager.ModifySpawn();
 }

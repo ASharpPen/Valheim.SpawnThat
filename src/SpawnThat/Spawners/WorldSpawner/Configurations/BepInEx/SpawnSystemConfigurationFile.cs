@@ -87,9 +87,6 @@ internal class SpawnConfiguration : TomlConfigWithSubsections<TomlConfig>
 
     //public ConfigurationEntry<bool> DriveInward = new ConfigurationEntry<bool>(false, "Mobs always spawn towards the world edge from player.");
 
-    //Bound to the spawner itself. Need to transpile in a change for this to work.
-    //public ConfigurationEntry<float> LevelUpChance = new ConfigurationEntry<float>(10, "Chance to increase level above min. This is run multiple times. 100 is 100%.\nEg. if Chance is 10, LevelMin is 1 and LevelMax is 3, the game will have a 10% to become level 2. The game will then run an additional 10% check for increasing to level 3.");
-
     public TomlConfigEntry<float?> ConditionDistanceToCenterMin = new("ConditionDistanceToCenterMin", 0, "Minimum distance to center for configuration to apply.");
 
     public TomlConfigEntry<float?> ConditionDistanceToCenterMax = new("ConditionDistanceToCenterMax", 0, "Maximum distance to center for configuration to apply. 0 means limitless.");
@@ -128,6 +125,15 @@ internal class SpawnConfiguration : TomlConfigWithSubsections<TomlConfig>
 
     public TomlConfigEntry<List<int>> ConditionAreaIds = new("ConditionAreaIds", new(), "Advanced feature. List of area id's in which the template is valid. Note: If ConditionSpawnChanceInArea is not 100 or disabled, it will still roll area chance.\nEg. 1, 123, 543");
 
+    public TomlConfigEntry<List<string>> ConditionPositionMustBeNearAllPrefabs = new("ConditionPositionMustBeNearAllPrefabs", new(), "List of prefab names which must all be present with distance of spawn position to allow spawning. Leave empty to always allow.");
+    public TomlConfigEntry<int?> ConditionPositionMustBeNearAllPrefabsDistance = new("ConditionPositionMustBeNearAllPrefabsDistance", 32, "Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustBeNearAllPrefabs.");
+
+    public TomlConfigEntry<List<string>> ConditionPositionMustBeNearPrefabs = new("ConditionPositionMustBeNearPrefabs", new(), "List of prefab names for which one or more must be present with distance of spawn position to allow spawning. Leave empty to always allow.");
+    public TomlConfigEntry<int?> ConditionPositionMustBeNearPrefabsDistance = new("ConditionPositionMustBeNearPrefabsDistance", 32, "Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustBeNearPrefabs.");
+
+    public TomlConfigEntry<List<string>> ConditionPositionMustNotBeNearPrefabs = new("ConditionPositionMustNotBeNearPrefabs", new(), "List of prefab names for which none must be present with distance of spawn position to allow spawning. Leave empty to always allow.");
+    public TomlConfigEntry<int?> ConditionPositionMustNotBeNearPrefabsDistance = new("ConditionPositionMustNotBeNearPrefabsDistance", 32, "Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustNotBeNearPrefabs.");
+
     #region Default Configuration Options
 
     public TomlConfigEntry<string> PrefabName = new("PrefabName", "Deer", "Prefab name of the entity to spawn.");
@@ -156,7 +162,7 @@ internal class SpawnConfiguration : TomlConfigWithSubsections<TomlConfig>
 
     public TomlConfigEntry<string> RequiredGlobalKey = new("RequiredGlobalKey", "", "Required global key to spawn.\nEg. defeated_bonemass");
 
-    public TomlConfigEntry<List<string>> RequiredEnvironments = new("RequiredEnvironments", new(), "Array (separate by comma) of environments required to spawn in.\tEg. Misty, Thunderstorm. Leave empty to allow all.");
+    public TomlConfigEntry<List<string>> RequiredEnvironments = new("RequiredEnvironments", new(), "Environments (such as weather) to spawn in.\tEg. Misty, Thunderstorm. Leave empty to allow all.");
 
     public TomlConfigEntry<int?> GroupSizeMin = new("GroupSizeMin", 1, "Minimum count to spawn at per check.");
 
@@ -185,6 +191,8 @@ internal class SpawnConfiguration : TomlConfigWithSubsections<TomlConfig>
     public TomlConfigEntry<float?> OceanDepthMin = new("OceanDepthMin", 0, "Minimum ocean depth to spawn in. Ignored if min == max.");
 
     public TomlConfigEntry<float?> OceanDepthMax = new("OceanDepthMax", 0, "Maximum ocean depth to spawn in. Ignored if min == max.");
+
+    public TomlConfigEntry<Heightmap.BiomeArea?> BiomeArea = new("BiomeArea", Heightmap.BiomeArea.Everything, "Toggles spawning in biome border zones (Edge), non-border zones (Median) or both (Everything).\nA border zone is a zone where two or more biomes are next to each other.");
 
     #endregion
 }

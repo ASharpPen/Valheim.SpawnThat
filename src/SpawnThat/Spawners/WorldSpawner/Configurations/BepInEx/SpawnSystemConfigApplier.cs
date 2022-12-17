@@ -94,6 +94,7 @@ internal static class SpawnSystemConfigApplier
         config.OceanDepthMax.SetIfLoaded(x => builder.SetConditionOceanDepthMax(x));
         config.LevelUpMinCenterDistance.SetIfLoaded(builder.SetDistanceToCenterForLevelUp);
         config.GroundOffset.SetIfLoaded(builder.SetSpawnAtDistanceToGround);
+        config.BiomeArea.SetIfLoaded(builder.SetBiomeArea);
 
         // Conditions
         var playerConditionsDistance = config.DistanceToTriggerPlayerConditions.IsSet && config.DistanceToTriggerPlayerConditions.Value is not null
@@ -162,6 +163,42 @@ internal static class SpawnSystemConfigApplier
 
         // Position conditions
         config.ConditionLocation.SetIfLoaded(builder.SetPositionConditionLocation);
+
+        if (config.ConditionPositionMustBeNearAllPrefabs.IsSet || config.ConditionPositionMustBeNearAllPrefabsDistance.IsSet)
+        {
+            builder.ConditionPositionMustBeNearAllPrefabs(
+                config.ConditionPositionMustBeNearAllPrefabs.IsSet
+                    ? config.ConditionPositionMustBeNearAllPrefabs.Value
+                    : config.ConditionPositionMustBeNearAllPrefabs.DefaultValue,
+                config.ConditionPositionMustBeNearAllPrefabsDistance.IsSet
+                    ? config.ConditionPositionMustBeNearAllPrefabsDistance.Value
+                    : config.ConditionPositionMustBeNearAllPrefabsDistance.DefaultValue
+                );
+        }
+
+        if (config.ConditionPositionMustBeNearPrefabs.IsSet || config.ConditionPositionMustBeNearPrefabsDistance.IsSet)
+        {
+            builder.ConditionPositionMustBeNearPrefab(
+                config.ConditionPositionMustBeNearPrefabs.IsSet
+                    ? config.ConditionPositionMustBeNearPrefabs.Value
+                    : config.ConditionPositionMustBeNearPrefabs.DefaultValue,
+                config.ConditionPositionMustBeNearPrefabsDistance.IsSet
+                    ? config.ConditionPositionMustBeNearPrefabsDistance.Value
+                    : config.ConditionPositionMustBeNearPrefabsDistance.DefaultValue
+                );
+        }
+
+        if (config.ConditionPositionMustNotBeNearPrefabs.IsSet || config.ConditionPositionMustNotBeNearPrefabsDistance.IsSet)
+        {
+            builder.ConditionPositionMustNotBeNearPrefab(
+                config.ConditionPositionMustNotBeNearPrefabs.IsSet
+                    ? config.ConditionPositionMustNotBeNearPrefabs.Value
+                    : config.ConditionPositionMustNotBeNearPrefabs.DefaultValue,
+                config.ConditionPositionMustNotBeNearPrefabsDistance.IsSet
+                    ? config.ConditionPositionMustNotBeNearPrefabsDistance.Value
+                    : config.ConditionPositionMustNotBeNearPrefabsDistance.DefaultValue
+                );
+        }
 
         // Modifiers
         config.SetFaction.SetIfLoaded(builder.SetModifierFaction);

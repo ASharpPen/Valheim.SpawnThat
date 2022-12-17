@@ -88,7 +88,9 @@ internal static class CreatureSpawnerConfigApplier
                                     ? config.LevelMax.Value ?? config.LevelMax.DefaultValue.Value
                                     : config.LevelMax.DefaultValue.Value,
                                 0,
-                                10f
+                                config.LevelUpChance.IsSet
+                                    ? config.LevelUpChance.Value ?? config.LevelUpChance.DefaultValue.Value
+                                    : config.LevelUpChance.DefaultValue.Value
                             ))
                         : builder.SetModifier(new ModifierDefaultRollLevel(-1, -1, 0, -1))
                         );

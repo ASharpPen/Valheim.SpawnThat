@@ -5,6 +5,7 @@ using UnityEngine;
 using SpawnThat.Caches;
 using SpawnThat.Core;
 using SpawnThat.Spawners.Contexts;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Spawners.LocalSpawner.Managers;
 
@@ -63,21 +64,33 @@ internal static class LocalSpawnSessionManager
         return true;
     }
 
-    internal static void ModifySpawn(CreatureSpawner spawner, GameObject spawn)
+    private static GameObject _spawn;
+
+    public static void GetSpawnReference(GameObject spawn)
     {
+        _spawn = spawn;
+    }
+
+    internal static void ModifySpawn(CreatureSpawner spawner)
+    {
+        if (_spawn.IsNull())
+        {
+            return;
+        }
+
         var template = LocalSpawnerManager.GetTemplate(spawner);
 
         if (template is null)
         {
 #if DEBUG
-            Log.LogTrace($"Found no config for {spawn}.");
+            Log.LogTrace($"Found no config for {_spawn}.");
 #endif
             return;
         }
 
-        Log.LogTrace($"Applying modifiers to spawn {spawn.name}");
+        Log.LogTrace($"Applying modifiers to spawn {_spawn.name}");
 
-        var spawnZdo = ComponentCache.GetZdo(spawn);
+        var spawnZdo = ComponentCache.GetZdo(_spawn);
 
         if (template.Modifiers is not null)
         {
@@ -85,7 +98,7 @@ internal static class LocalSpawnSessionManager
             {
                 try
                 {
-                    modifier?.Modify(spawn, spawnZdo);
+                    modifier?.Modify(_spawn, spawnZdo);
                 }
                 catch (Exception e)
                 {

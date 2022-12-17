@@ -2,6 +2,8 @@
 using System.Reflection.Emit;
 using HarmonyLib;
 using SpawnThat.Spawners.LocalSpawner.Managers;
+using SpawnThat.Utilities;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Spawners.LocalSpawner.Patches;
 
@@ -35,28 +37,31 @@ internal static class CreatureSpawner_LocalSpawner_Workflow_Patch
             // Add label so we can continue flow.
             .CreateLabel(out var callSpawnLabel)
             // Insert check for valid template conditions, and return if not valid.
-            .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
+            .InsertAndAdvance(OpCodes.Ldarg_0)
             .InsertAndAdvance(Transpilers.EmitDelegate(LocalSpawnSessionManager.CheckConditionsValid))
             // Continue original flow if conditions valid
             .InsertAndAdvance(new CodeInstruction(OpCodes.Brtrue, callSpawnLabel))
             // Clean up parameters on stack and return, if not valid.
-            .InsertAndAdvance(new CodeInstruction(OpCodes.Pop))
-            .InsertAndAdvance(new CodeInstruction(OpCodes.Ret))
+            .InsertAndAdvance(OpCodes.Pop)
+            .InsertAndAdvance(OpCodes.Ret)
             .InstructionEnumeration();
     }
 
-    // TODO: Find more stable anchor. Eg., use the gameobject instantiation call.
-    // TODO: Actually, Spawn return the object. Maybe just grab it with a postfix?!
     [HarmonyPatch(nameof(CreatureSpawner.Spawn))]
     [HarmonyTranspiler]
-    private static IEnumerable<CodeInstruction> ModifySpawn(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> GetSpawnReference(IEnumerable<CodeInstruction> instructions)
     {
         return new CodeMatcher(instructions)
-            .MatchForward(false, new CodeMatch(OpCodes.Stloc_3))
+            // Move to right after instantiation
+            .MatchForward(false, new CodeMatch(OpCodes.Call, ReflectionUtils.InstantiateGameObjectMethod))
             .Advance(1)
-            .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0))
-            .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_3))
-            .InsertAndAdvance(Transpilers.EmitDelegate(LocalSpawnSessionManager.ModifySpawn))
+            // dup gameobject on stack, and call method
+            .InsertAndAdvance(OpCodes.Dup)
+            .InsertAndAdvance(Transpilers.EmitDelegate(LocalSpawnSessionManager.GetSpawnReference))
             .InstructionEnumeration();
     }
+
+    [HarmonyPatch(nameof(CreatureSpawner.Spawn))]
+    [HarmonyPostfix]
+    private static void ModifySpawn(CreatureSpawner __instance) => LocalSpawnSessionManager.ModifySpawn(__instance);
 }
