@@ -13,6 +13,7 @@ using SpawnThat.Integrations.CLLC.Conditions;
 using SpawnThat.Integrations.CLLC.Modifiers;
 using SpawnThat.Integrations.EpicLoot.Conditions;
 using SpawnThat.Integrations.MobAi.Modifiers;
+using SpawnThat.Options.PositionConditions;
 
 namespace SpawnThat.Spawners.WorldSpawner.Debug;
 
@@ -326,6 +327,43 @@ internal static class SpawnDataFileGenerator
                         }
                         break;
                     default:
+                        break;
+                }
+            }
+
+            foreach (var positionCondition in template.SpawnPositionConditions)
+            {
+                switch (positionCondition)
+                {
+                    case PositionConditionMustBeNearAllPrefabs cond:
+                        if (AddedOptions.Add(cond.GetType()))
+                        {
+                            if (cond.Prefabs.Count > 0)
+                            {
+                                lines.Add($"{nameof(SpawnConfiguration.ConditionPositionMustBeNearAllPrefabs)}={cond.Prefabs.Join()}");
+                                lines.Add($"{nameof(SpawnConfiguration.ConditionPositionMustBeNearAllPrefabsDistance)}={cond.Distance}");
+                            }
+                        }
+                        break;
+                    case PositionConditionMustBeNearPrefabs cond:
+                        if (AddedOptions.Add(cond.GetType()))
+                        {
+                            if (cond.Prefabs.Count > 0)
+                            {
+                                lines.Add($"{nameof(SpawnConfiguration.ConditionPositionMustBeNearPrefabs)}={cond.Prefabs.Join()}");
+                                lines.Add($"{nameof(SpawnConfiguration.ConditionPositionMustBeNearPrefabsDistance)}={cond.Distance}");
+                            }
+                        }
+                        break;
+                    case PositionConditionMustNotBeNearPrefabs cond:
+                        if (AddedOptions.Add(cond.GetType()))
+                        {
+                            if (cond.Prefabs.Count > 0)
+                            {
+                                lines.Add($"{nameof(SpawnConfiguration.ConditionPositionMustNotBeNearPrefabs)}={cond.Prefabs.Join()}");
+                                lines.Add($"{nameof(SpawnConfiguration.ConditionPositionMustNotBeNearPrefabsDistance)}={cond.Distance}");
+                            }
+                        }
                         break;
                 }
             }

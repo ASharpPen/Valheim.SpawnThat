@@ -106,6 +106,12 @@ LevelMax = 3
 | SetTamed | bool | false | true | When true, mob will be set to tamed status on spawn |
 | SetTamedCommandable | bool | false | true | Experimental. When true, will set mob as commandable when tamed. When false, whatever was default for the creature is used. Does not always seem to work for creatures not tameable in vanilla |
 | SetHuntPlayer | bool | false | true | Sets AI to hunt a player target |
+| ConditionPositionMustBeNearAllPrefabs | string | | FineWood, Blueberries | List of prefab names which must all be present with distance of spawn position to allow spawning. Leave empty to always allow |
+| ConditionPositionMustBeNearAllPrefabsDistance | int | 32 | 123 | Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustBeNearAllPrefabs |
+| ConditionPositionMustBeNearPrefabs | string | | FineWood, Blueberries | List of prefab names for which one or more must be present with distance of spawn position to allow spawning. Leave empty to always allow |
+| ConditionPositionMustBeNearPrefabsDistance | int | 32 | 123 | Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustBeNearPrefabs |
+| ConditionPositionMustNotBeNearPrefabs | string | | FineWood, Blueberries | List of prefab names for which none must be present with distance of spawn position to allow spawning. Leave empty to always allow |
+| ConditionPositionMustNotBeNearPrefabsDistance | int | 32 | 123 | Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustNotBeNearPrefabs |
 
 ## Supplemental
 

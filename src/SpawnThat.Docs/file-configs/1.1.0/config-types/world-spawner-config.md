@@ -113,6 +113,12 @@ HuntPlayer = true
 | ConditionLocation | string | | Runestone_Boars, FireHole | Locations in which this template is enabled. Leave empty for all |
 | ConditionAreaSpawnChance | float | 100 | 1.5 | Chance for spawn to spawn at all in the area. The chance will be rolled once for the area. Range is 0 to 100. Eg. if a whole area of BlackForest rolls higher than the indicated chance, this spawn template will never be active in that forest. Another BlackForest will have another roll however, that may activate this template there. Chance is rolled based on world seed, area id and template index |
 | ConditionAreaIds | string | | 1, 123, 543 | Advanced feature. List of area id's in which the template is valid. Note: If ConditionAreaSpawnChance is not 100 or disabled, it will still roll area chance |
+| ConditionPositionMustBeNearAllPrefabs | string | | FineWood, Blueberries | List of prefab names which must all be present with distance of spawn position to allow spawning. Leave empty to always allow |
+| ConditionPositionMustBeNearAllPrefabsDistance | int | 32 | 123 | Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustBeNearAllPrefabs |
+| ConditionPositionMustBeNearPrefabs | string | | FineWood, Blueberries | List of prefab names for which one or more must be present with distance of spawn position to allow spawning. Leave empty to always allow |
+| ConditionPositionMustBeNearPrefabsDistance | int | 32 | 123 | Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustBeNearPrefabs |
+| ConditionPositionMustNotBeNearPrefabs | string | | FineWood, Blueberries | List of prefab names for which none must be present with distance of spawn position to allow spawning. Leave empty to always allow |
+| ConditionPositionMustNotBeNearPrefabsDistance | int | 32 | 123 | Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustNotBeNearPrefabs |
 
 ## Supplemental
 

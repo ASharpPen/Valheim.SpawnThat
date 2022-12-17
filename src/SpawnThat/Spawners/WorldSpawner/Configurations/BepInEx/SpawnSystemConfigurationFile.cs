@@ -125,6 +125,15 @@ internal class SpawnConfiguration : TomlConfigWithSubsections<TomlConfig>
 
     public TomlConfigEntry<List<int>> ConditionAreaIds = new("ConditionAreaIds", new(), "Advanced feature. List of area id's in which the template is valid. Note: If ConditionSpawnChanceInArea is not 100 or disabled, it will still roll area chance.\nEg. 1, 123, 543");
 
+    public TomlConfigEntry<List<string>> ConditionPositionMustBeNearAllPrefabs = new("ConditionPositionMustBeNearAllPrefabs", new(), "List of prefab names which must all be present with distance of spawn position to allow spawning. Leave empty to always allow.");
+    public TomlConfigEntry<int?> ConditionPositionMustBeNearAllPrefabsDistance = new("ConditionPositionMustBeNearAllPrefabsDistance", 32, "Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustBeNearAllPrefabs.");
+
+    public TomlConfigEntry<List<string>> ConditionPositionMustBeNearPrefabs = new("ConditionPositionMustBeNearPrefabs", new(), "List of prefab names for which one or more must be present with distance of spawn position to allow spawning. Leave empty to always allow.");
+    public TomlConfigEntry<int?> ConditionPositionMustBeNearPrefabsDistance = new("ConditionPositionMustBeNearPrefabsDistance", 32, "Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustBeNearPrefabs.");
+
+    public TomlConfigEntry<List<string>> ConditionPositionMustNotBeNearPrefabs = new("ConditionPositionMustNotBeNearPrefabs", new(), "List of prefab names for which none must be present with distance of spawn position to allow spawning. Leave empty to always allow.");
+    public TomlConfigEntry<int?> ConditionPositionMustNotBeNearPrefabsDistance = new("ConditionPositionMustNotBeNearPrefabsDistance", 32, "Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustNotBeNearPrefabs.");
+
     #region Default Configuration Options
 
     public TomlConfigEntry<string> PrefabName = new("PrefabName", "Deer", "Prefab name of the entity to spawn.");

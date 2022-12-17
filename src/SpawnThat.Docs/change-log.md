@@ -2,6 +2,9 @@
 - v1.2.0:
 	- World Spawner: Fixed LevelUpChance only being properly applied to new entries.
 	- World Spawner: Added support for vanilla field BiomeArea.
+	- World Spawner & SpawnArea: Added ConditionPositionMustBeNearAllPrefabs 
+	- World Spawner & SpawnArea: Added ConditionPositionMustBeNearPrefabs 
+	- World Spawner & SpawnArea: Added ConditionPositionMustNotBeNearPrefabs 
 - v1.1.7:
 	- World Spawner: Added support for new LevelUpChance field.
 	- Fixes for v0.212.6
