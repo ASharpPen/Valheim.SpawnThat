@@ -178,42 +178,56 @@ internal static class WorldSpawnSessionManager
         });
     }
 
-    public static void ModifySpawn(GameObject spawn, bool isEventCreature)
+    private static GameObject _spawn;
+    private static bool _isEventCreature;
+
+    public static void GetSpawnReference(GameObject spawn, bool isEventCreature)
     {
+        _spawn = spawn;
+        _isEventCreature = isEventCreature;
+    }
+
+    public static void ModifySpawn()
+    {
+        if (_spawn.IsNotNull())
+        {
 #if DEBUG && VERBOSE
         Log.LogDebug("WorldSpawnSessionManager.ModifySpawn");
 #endif
-        if (isEventCreature)
-        {
-            return;
-        }
-
-        if (SpawnTemplate?.SpawnModifiers is null)
-        {
-            return;
-        }
-
-        var zdo = ComponentCache.GetZdo(spawn);
-
-        if (zdo is null)
-        {
-            return;
-        }
-
-        foreach (var modifier in SpawnTemplate.SpawnModifiers)
-        {
-            try
+            if (_isEventCreature)
             {
-                modifier?.Modify(spawn, zdo);
+                return;
             }
-            catch (Exception e)
-            {
-                string spawnName = spawn.IsNotNull()
-                    ? spawn.name
-                    : "";
 
-                Log.LogError($"Error while attempting to apply modifier {modifier.GetType().Name} to entity '{spawnName}' from world spawn template {SpawnTemplate.TemplateName}", e);
+            if (SpawnTemplate?.SpawnModifiers is null)
+            {
+                return;
+            }
+
+            var zdo = ComponentCache.GetZdo(_spawn);
+
+            if (zdo is null)
+            {
+                return;
+            }
+
+            foreach (var modifier in SpawnTemplate.SpawnModifiers)
+            {
+                try
+                {
+                    modifier?.Modify(_spawn, zdo);
+                }
+                catch (Exception e)
+                {
+                    string spawnName = _spawn.IsNotNull()
+                        ? _spawn.name
+                        : "";
+
+                    Log.LogError($"Error while attempting to apply modifier {modifier.GetType().Name} to entity '{spawnName}' from world spawn template {SpawnTemplate.TemplateName}", e);
+                }
             }
         }
+
+        _spawn = null;
     }
 }

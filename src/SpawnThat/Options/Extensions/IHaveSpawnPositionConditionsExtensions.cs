@@ -1,6 +1,7 @@
 ﻿using SpawnThat.Options.PositionConditions;
 using SpawnThat.Utilities.Enums;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SpawnThat.Spawners;
 
@@ -87,6 +88,43 @@ public static class IHaveSpawnPositionConditionsExtensions
         where T : IHaveSpawnPositionConditions
     {
         builder.SetPositionCondition(new PositionConditionTilt(min, max));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set prefabs which are all required to be within distance of position to spawn at.</para>
+    /// </summary>
+    /// <param name="prefabNames">Names of prefabs that must be present within distance.</param>
+    /// <param name="distance">Distance from spawn position to search for prefabs.</param>
+    public static T ConditionPositionMustBeNearAllPrefabs<T>(this T builder, IEnumerable<string> prefabNames, int? distance)
+        where T : IHaveSpawnPositionConditions
+    {
+        builder.SetPositionCondition(new PositionConditionMustBeNearAllPrefabs(prefabNames.ToList(), distance));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set prefabs for which at least one is required to be within distance of position to spawn at.</para>
+    /// </summary>
+    /// <param name="prefabNames">Names of prefabs that will be searched for within distance.</param>
+    /// <param name="distance">Distance from spawn position to search for prefabs.</param>
+    public static T ConditionPositionMustBeNearPrefab<T>(this T builder, IEnumerable<string> prefabNames, int? distance)
+        where T : IHaveSpawnPositionConditions
+    {
+        builder.SetPositionCondition(new PositionConditionMustBeNearPrefabs(prefabNames.ToList(), distance));
+        return builder;
+    }
+
+    /// <summary>
+    /// <para>Set prefabs for which none must be within distance of position to spawn at.</para>
+    /// <para>If any of the listed prefabs are present, spawning is disabled.</para>
+    /// </summary>
+    /// <param name="prefabNames">Names of prefabs that will be searched for within distance.</param>
+    /// <param name="distance">Distance from spawn position to search for prefabs.</param>
+    public static T ConditionPositionMustNotBeNearPrefab<T>(this T builder, IEnumerable<string> prefabNames, int? distance)
+        where T : IHaveSpawnPositionConditions
+    {
+        builder.SetPositionCondition(new PositionConditionMustNotBeNearPrefabs(prefabNames.ToList(), distance));
         return builder;
     }
 }

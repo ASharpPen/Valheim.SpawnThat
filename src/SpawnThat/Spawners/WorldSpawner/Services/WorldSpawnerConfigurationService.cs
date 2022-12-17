@@ -225,6 +225,7 @@ internal static class WorldSpawnerConfigurationService
 
         Configure(ref entry.m_prefab, prefab);
         Configure(ref entry.m_biome, template.BiomeMask, (Heightmap.Biome)int.MaxValue);
+        Configure(ref entry.m_biomeArea, template.BiomeArea, Heightmap.BiomeArea.Everything);
         Configure(ref entry.m_groundOffset, template.SpawnAtDistanceToGround, 0.5f);
         Configure(ref entry.m_groupRadius, template.PackSpawnCircleRadius, 3f);
         Configure(ref entry.m_groupSizeMin, template.PackSizeMin, 1);
@@ -281,6 +282,7 @@ internal static class WorldSpawnerConfigurationService
         Configure(ref entry.m_name, template.TemplateName);
         Configure(ref entry.m_enabled, template.Enabled);
         Configure(ref entry.m_biome, template.BiomeMask);
+        Configure(ref entry.m_biomeArea, template.BiomeArea);
         Configure(ref entry.m_prefab, prefab);
         Configure(ref entry.m_huntPlayer, template.ModifierHuntPlayer);
         Configure(ref entry.m_maxSpawned, template.MaxSpawned);
@@ -289,6 +291,7 @@ internal static class WorldSpawnerConfigurationService
         Configure(ref entry.m_minLevel, template.MinLevel);
         Configure(ref entry.m_maxLevel, template.MaxLevel);
         Configure(ref entry.m_levelUpMinCenterDistance, template.DistanceToCenterForLevelUp);
+        Configure(ref entry.m_overrideLevelupChance, template.LevelUpChance);
         Configure(ref entry.m_spawnDistance, template.MinDistanceToOther);
         Configure(ref entry.m_spawnRadiusMin, template.SpawnAtDistanceToPlayerMin);
         Configure(ref entry.m_spawnRadiusMax, template.SpawnAtDistanceToPlayerMax);

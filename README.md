@@ -114,6 +114,15 @@ If you feel like it
 <a href="https://www.buymeacoffee.com/asharppen"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=asharppen&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 # Changelog: 
+- v1.2.0:
+	- World Spawner: Fixed LevelUpChance only being properly applied to new entries.
+	- SpawnArea: Fixed modifiers not being applied properly.
+	- Local Spawner & SpawnArea: Fixed LevelUpChance not being properly applied when using setting UseDefaultLevel.
+	- World Spawner: Added support for vanilla field BiomeArea.
+	- World Spawner & SpawnArea: Added ConditionPositionMustBeNearAllPrefabs 
+	- World Spawner & SpawnArea: Added ConditionPositionMustBeNearPrefabs 
+	- World Spawner & SpawnArea: Added ConditionPositionMustNotBeNearPrefabs 
+	- Compatibility: Moved all applications of spawn modifier settings to happen slightly later. This should solve issues with settings like CLLC UseDefaultLevels.
 - v1.1.7:
 	- World Spawner: Added support for new LevelUpChance field.
 	- Fixes for v0.212.6

@@ -482,4 +482,12 @@ public interface IWorldSpawnBuilder
     IWorldSpawnBuilder SetSpawnAtDistanceToGround(float offset);
 
     IWorldSpawnBuilder SetSpawnAtDistanceToGround(float? offset);
+
+    /// <summary>
+    /// <para>Set if allowed to spawn in zone that are edge biomes, in non-edge or both.</para>
+    /// <para>If not set, uses existing when overriding.</para>
+    /// <para>Default if new template: Heightmap.BiomeArea.Everything</para>
+    /// </summary>
+    /// <remarks>Vanilla name: m_biomeArea</remarks>
+    IWorldSpawnBuilder SetBiomeArea(Heightmap.BiomeArea? biomeArea);
 }

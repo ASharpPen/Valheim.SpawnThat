@@ -16,6 +16,7 @@
 - defeated_bonemass
 - defeated_dragon
 - defeated_goblinking
+- defeated_queen
 - KilledTroll
 - killed_surtling
 - KilledBat
@@ -57,6 +58,8 @@ Additional keys can be created manually through console commands, or by a mod li
 - SeaMonsters
 - PlainsMonsters
 - Boss
+- MistlandsMonsters
+- Dverger
 
 # Status Effects
 Valheim status effect options are not easily identified. But this is a list of at least some of the possibilities.

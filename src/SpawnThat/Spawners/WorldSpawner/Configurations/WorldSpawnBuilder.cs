@@ -560,4 +560,10 @@ internal class WorldSpawnBuilder : IWorldSpawnBuilder
         Template.TemplateName = templateName;
         return this;
     }
+
+    public IWorldSpawnBuilder SetBiomeArea(Heightmap.BiomeArea? biomeArea)
+    {
+        Template.BiomeArea = biomeArea;
+        return this;
+    }
 }
