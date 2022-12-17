@@ -154,10 +154,22 @@ internal class SpawnAreaSpawnSessionManager
         }
     }
 
-    public static void ModifySpawn(GameObject spawn, SpawnArea spawner)
+    private static GameObject _spawn;
+
+    public static void GetSpawnReference(GameObject spawn)
+    {
+        _spawn = spawn;
+    }
+
+    public static void ModifySpawn(SpawnArea spawner)
     {
         try
         {
+            if (_spawn.IsNull())
+            {
+                return;
+            }
+
             SpawnSession context;
             if (!SpawnSessions.TryGet(spawner, out context) || context is null)
             {
@@ -169,13 +181,13 @@ internal class SpawnAreaSpawnSessionManager
                 return;
             }
 
-            var zdo = ComponentCache.GetZdo(spawn);
+            var zdo = ComponentCache.GetZdo(_spawn);
 
             foreach (var modifier in context.CurrentTemplate.Modifiers)
             {
                 try
                 {
-                    modifier?.Modify(spawn, zdo);
+                    modifier?.Modify(_spawn, zdo);
                 }
                 catch (Exception e)
                 {
@@ -185,7 +197,9 @@ internal class SpawnAreaSpawnSessionManager
         }
         catch (Exception e)
         {
-            Log.LogError($"Error while modifying spawn '{spawn.GetCleanedName()}' of SpawnArea spawner '{spawner.GetCleanedName()}'.", e);
+            Log.LogError($"Error while modifying spawn '{_spawn.GetCleanedName()}' of SpawnArea spawner '{spawner.GetCleanedName()}'.", e);
         }
+
+        _spawn = null;
     }
 }

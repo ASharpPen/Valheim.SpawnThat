@@ -85,7 +85,6 @@ internal static class CreatureSpawnerLocationFileGenerator
                         //Log.LogDebug($"No rooms for {locPrefab.name}:{dungeon.name}");
                     }
 
-
                     var roomSpawners = rooms
                         .SelectMany(x => x.m_room.GetComponentsInChildren<CreatureSpawner>())
                         .Where(x => x.IsNotNull())

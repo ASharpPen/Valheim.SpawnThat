@@ -249,7 +249,9 @@ internal static class SpawnAreaSpawnerConfigApplier
                                     ? config.LevelMax.Value ?? config.LevelMax.DefaultValue.Value
                                     : config.LevelMax.DefaultValue.Value,
                                 0,
-                                10f
+                                (double)(spawnerConfig.LevelUpChance.IsSet
+                                    ? spawnerConfig.LevelUpChance.Value ?? spawnerConfig.LevelUpChance.DefaultValue
+                                    : spawnerConfig.LevelUpChance.DefaultValue)
                                 ));
                     }
                     else if (cllcConfig.UseDefaultLevels.IsSet)
