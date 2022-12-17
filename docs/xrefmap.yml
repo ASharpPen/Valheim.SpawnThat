@@ -3447,6 +3447,207 @@ references:
   isSpec: "True"
   fullName: SpawnThat.Options.PositionConditions.PositionConditionLocation.LocationNames
   nameWithType: PositionConditionLocation.LocationNames
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs
+  name: PositionConditionMustBeNearAllPrefabs
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.html
+  commentId: T:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs
+  nameWithType: PositionConditionMustBeNearAllPrefabs
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.#ctor
+  name: PositionConditionMustBeNearAllPrefabs()
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearAllPrefabs__ctor
+  commentId: M:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.#ctor
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.PositionConditionMustBeNearAllPrefabs()
+  nameWithType: PositionConditionMustBeNearAllPrefabs.PositionConditionMustBeNearAllPrefabs()
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.#ctor(System.Collections.Generic.List{System.String},System.Nullable{System.Int32})
+  name: PositionConditionMustBeNearAllPrefabs(List<String>, Nullable<Int32>)
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearAllPrefabs__ctor_System_Collections_Generic_List_System_String__System_Nullable_System_Int32__
+  commentId: M:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.#ctor(System.Collections.Generic.List{System.String},System.Nullable{System.Int32})
+  name.vb: PositionConditionMustBeNearAllPrefabs(List(Of String), Nullable(Of Int32))
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.PositionConditionMustBeNearAllPrefabs(System.Collections.Generic.List<System.String>, System.Nullable<System.Int32>)
+  fullName.vb: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.PositionConditionMustBeNearAllPrefabs(System.Collections.Generic.List(Of System.String), System.Nullable(Of System.Int32))
+  nameWithType: PositionConditionMustBeNearAllPrefabs.PositionConditionMustBeNearAllPrefabs(List<String>, Nullable<Int32>)
+  nameWithType.vb: PositionConditionMustBeNearAllPrefabs.PositionConditionMustBeNearAllPrefabs(List(Of String), Nullable(Of Int32))
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.#ctor*
+  name: PositionConditionMustBeNearAllPrefabs
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearAllPrefabs__ctor_
+  commentId: Overload:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.#ctor
+  isSpec: "True"
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.PositionConditionMustBeNearAllPrefabs
+  nameWithType: PositionConditionMustBeNearAllPrefabs.PositionConditionMustBeNearAllPrefabs
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.Distance
+  name: Distance
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearAllPrefabs_Distance
+  commentId: P:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.Distance
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.Distance
+  nameWithType: PositionConditionMustBeNearAllPrefabs.Distance
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.Distance*
+  name: Distance
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearAllPrefabs_Distance_
+  commentId: Overload:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.Distance
+  isSpec: "True"
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.Distance
+  nameWithType: PositionConditionMustBeNearAllPrefabs.Distance
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.IsValid(SpawnThat.Spawners.Contexts.SpawnSessionContext,UnityEngine.Vector3)
+  name: IsValid(SpawnSessionContext, Vector3)
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearAllPrefabs_IsValid_SpawnThat_Spawners_Contexts_SpawnSessionContext_UnityEngine_Vector3_
+  commentId: M:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.IsValid(SpawnThat.Spawners.Contexts.SpawnSessionContext,UnityEngine.Vector3)
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.IsValid(SpawnThat.Spawners.Contexts.SpawnSessionContext, UnityEngine.Vector3)
+  nameWithType: PositionConditionMustBeNearAllPrefabs.IsValid(SpawnSessionContext, Vector3)
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.IsValid*
+  name: IsValid
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearAllPrefabs_IsValid_
+  commentId: Overload:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.IsValid
+  isSpec: "True"
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.IsValid
+  nameWithType: PositionConditionMustBeNearAllPrefabs.IsValid
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.Prefabs
+  name: Prefabs
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearAllPrefabs_Prefabs
+  commentId: P:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.Prefabs
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.Prefabs
+  nameWithType: PositionConditionMustBeNearAllPrefabs.Prefabs
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.Prefabs*
+  name: Prefabs
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearAllPrefabs_Prefabs_
+  commentId: Overload:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.Prefabs
+  isSpec: "True"
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.Prefabs
+  nameWithType: PositionConditionMustBeNearAllPrefabs.Prefabs
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs
+  name: PositionConditionMustBeNearPrefabs
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.html
+  commentId: T:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs
+  nameWithType: PositionConditionMustBeNearPrefabs
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.#ctor
+  name: PositionConditionMustBeNearPrefabs()
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearPrefabs__ctor
+  commentId: M:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.#ctor
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.PositionConditionMustBeNearPrefabs()
+  nameWithType: PositionConditionMustBeNearPrefabs.PositionConditionMustBeNearPrefabs()
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.#ctor(System.Collections.Generic.List{System.String},System.Nullable{System.Int32})
+  name: PositionConditionMustBeNearPrefabs(List<String>, Nullable<Int32>)
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearPrefabs__ctor_System_Collections_Generic_List_System_String__System_Nullable_System_Int32__
+  commentId: M:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.#ctor(System.Collections.Generic.List{System.String},System.Nullable{System.Int32})
+  name.vb: PositionConditionMustBeNearPrefabs(List(Of String), Nullable(Of Int32))
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.PositionConditionMustBeNearPrefabs(System.Collections.Generic.List<System.String>, System.Nullable<System.Int32>)
+  fullName.vb: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.PositionConditionMustBeNearPrefabs(System.Collections.Generic.List(Of System.String), System.Nullable(Of System.Int32))
+  nameWithType: PositionConditionMustBeNearPrefabs.PositionConditionMustBeNearPrefabs(List<String>, Nullable<Int32>)
+  nameWithType.vb: PositionConditionMustBeNearPrefabs.PositionConditionMustBeNearPrefabs(List(Of String), Nullable(Of Int32))
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.#ctor*
+  name: PositionConditionMustBeNearPrefabs
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearPrefabs__ctor_
+  commentId: Overload:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.#ctor
+  isSpec: "True"
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.PositionConditionMustBeNearPrefabs
+  nameWithType: PositionConditionMustBeNearPrefabs.PositionConditionMustBeNearPrefabs
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.Distance
+  name: Distance
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearPrefabs_Distance
+  commentId: P:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.Distance
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.Distance
+  nameWithType: PositionConditionMustBeNearPrefabs.Distance
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.Distance*
+  name: Distance
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearPrefabs_Distance_
+  commentId: Overload:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.Distance
+  isSpec: "True"
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.Distance
+  nameWithType: PositionConditionMustBeNearPrefabs.Distance
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.IsValid(SpawnThat.Spawners.Contexts.SpawnSessionContext,UnityEngine.Vector3)
+  name: IsValid(SpawnSessionContext, Vector3)
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearPrefabs_IsValid_SpawnThat_Spawners_Contexts_SpawnSessionContext_UnityEngine_Vector3_
+  commentId: M:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.IsValid(SpawnThat.Spawners.Contexts.SpawnSessionContext,UnityEngine.Vector3)
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.IsValid(SpawnThat.Spawners.Contexts.SpawnSessionContext, UnityEngine.Vector3)
+  nameWithType: PositionConditionMustBeNearPrefabs.IsValid(SpawnSessionContext, Vector3)
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.IsValid*
+  name: IsValid
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearPrefabs_IsValid_
+  commentId: Overload:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.IsValid
+  isSpec: "True"
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.IsValid
+  nameWithType: PositionConditionMustBeNearPrefabs.IsValid
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.Prefabs
+  name: Prefabs
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearPrefabs_Prefabs
+  commentId: P:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.Prefabs
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.Prefabs
+  nameWithType: PositionConditionMustBeNearPrefabs.Prefabs
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.Prefabs*
+  name: Prefabs
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustBeNearPrefabs_Prefabs_
+  commentId: Overload:SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.Prefabs
+  isSpec: "True"
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.Prefabs
+  nameWithType: PositionConditionMustBeNearPrefabs.Prefabs
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs
+  name: PositionConditionMustNotBeNearPrefabs
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.html
+  commentId: T:SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs
+  nameWithType: PositionConditionMustNotBeNearPrefabs
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.#ctor
+  name: PositionConditionMustNotBeNearPrefabs()
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustNotBeNearPrefabs__ctor
+  commentId: M:SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.#ctor
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.PositionConditionMustNotBeNearPrefabs()
+  nameWithType: PositionConditionMustNotBeNearPrefabs.PositionConditionMustNotBeNearPrefabs()
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.#ctor(System.Collections.Generic.List{System.String},System.Nullable{System.Int32})
+  name: PositionConditionMustNotBeNearPrefabs(List<String>, Nullable<Int32>)
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustNotBeNearPrefabs__ctor_System_Collections_Generic_List_System_String__System_Nullable_System_Int32__
+  commentId: M:SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.#ctor(System.Collections.Generic.List{System.String},System.Nullable{System.Int32})
+  name.vb: PositionConditionMustNotBeNearPrefabs(List(Of String), Nullable(Of Int32))
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.PositionConditionMustNotBeNearPrefabs(System.Collections.Generic.List<System.String>, System.Nullable<System.Int32>)
+  fullName.vb: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.PositionConditionMustNotBeNearPrefabs(System.Collections.Generic.List(Of System.String), System.Nullable(Of System.Int32))
+  nameWithType: PositionConditionMustNotBeNearPrefabs.PositionConditionMustNotBeNearPrefabs(List<String>, Nullable<Int32>)
+  nameWithType.vb: PositionConditionMustNotBeNearPrefabs.PositionConditionMustNotBeNearPrefabs(List(Of String), Nullable(Of Int32))
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.#ctor*
+  name: PositionConditionMustNotBeNearPrefabs
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustNotBeNearPrefabs__ctor_
+  commentId: Overload:SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.#ctor
+  isSpec: "True"
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.PositionConditionMustNotBeNearPrefabs
+  nameWithType: PositionConditionMustNotBeNearPrefabs.PositionConditionMustNotBeNearPrefabs
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.Distance
+  name: Distance
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustNotBeNearPrefabs_Distance
+  commentId: P:SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.Distance
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.Distance
+  nameWithType: PositionConditionMustNotBeNearPrefabs.Distance
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.Distance*
+  name: Distance
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustNotBeNearPrefabs_Distance_
+  commentId: Overload:SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.Distance
+  isSpec: "True"
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.Distance
+  nameWithType: PositionConditionMustNotBeNearPrefabs.Distance
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.IsValid(SpawnThat.Spawners.Contexts.SpawnSessionContext,UnityEngine.Vector3)
+  name: IsValid(SpawnSessionContext, Vector3)
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustNotBeNearPrefabs_IsValid_SpawnThat_Spawners_Contexts_SpawnSessionContext_UnityEngine_Vector3_
+  commentId: M:SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.IsValid(SpawnThat.Spawners.Contexts.SpawnSessionContext,UnityEngine.Vector3)
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.IsValid(SpawnThat.Spawners.Contexts.SpawnSessionContext, UnityEngine.Vector3)
+  nameWithType: PositionConditionMustNotBeNearPrefabs.IsValid(SpawnSessionContext, Vector3)
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.IsValid*
+  name: IsValid
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustNotBeNearPrefabs_IsValid_
+  commentId: Overload:SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.IsValid
+  isSpec: "True"
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.IsValid
+  nameWithType: PositionConditionMustNotBeNearPrefabs.IsValid
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.Prefabs
+  name: Prefabs
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustNotBeNearPrefabs_Prefabs
+  commentId: P:SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.Prefabs
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.Prefabs
+  nameWithType: PositionConditionMustNotBeNearPrefabs.Prefabs
+- uid: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.Prefabs*
+  name: Prefabs
+  href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.html#SpawnThat_Options_PositionConditions_PositionConditionMustNotBeNearPrefabs_Prefabs_
+  commentId: Overload:SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.Prefabs
+  isSpec: "True"
+  fullName: SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.Prefabs
+  nameWithType: PositionConditionMustNotBeNearPrefabs.Prefabs
 - uid: SpawnThat.Options.PositionConditions.PositionConditionOceanDepth
   name: PositionConditionOceanDepth
   href: api/reference/SpawnThat.Options.PositionConditions.PositionConditionOceanDepth.html
@@ -4711,6 +4912,54 @@ references:
   commentId: T:SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions
   fullName: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions
   nameWithType: IHaveSpawnPositionConditionsExtensions
+- uid: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearAllPrefabs*
+  name: ConditionPositionMustBeNearAllPrefabs
+  href: api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.html#SpawnThat_Spawners_IHaveSpawnPositionConditionsExtensions_ConditionPositionMustBeNearAllPrefabs_
+  commentId: Overload:SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearAllPrefabs
+  isSpec: "True"
+  fullName: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearAllPrefabs
+  nameWithType: IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearAllPrefabs
+- uid: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearAllPrefabs``1(``0,System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32})
+  name: ConditionPositionMustBeNearAllPrefabs<T>(T, IEnumerable<String>, Nullable<Int32>)
+  href: api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.html#SpawnThat_Spawners_IHaveSpawnPositionConditionsExtensions_ConditionPositionMustBeNearAllPrefabs__1___0_System_Collections_Generic_IEnumerable_System_String__System_Nullable_System_Int32__
+  commentId: M:SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearAllPrefabs``1(``0,System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32})
+  name.vb: ConditionPositionMustBeNearAllPrefabs(Of T)(T, IEnumerable(Of String), Nullable(Of Int32))
+  fullName: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearAllPrefabs<T>(T, System.Collections.Generic.IEnumerable<System.String>, System.Nullable<System.Int32>)
+  fullName.vb: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearAllPrefabs(Of T)(T, System.Collections.Generic.IEnumerable(Of System.String), System.Nullable(Of System.Int32))
+  nameWithType: IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearAllPrefabs<T>(T, IEnumerable<String>, Nullable<Int32>)
+  nameWithType.vb: IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearAllPrefabs(Of T)(T, IEnumerable(Of String), Nullable(Of Int32))
+- uid: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearPrefab*
+  name: ConditionPositionMustBeNearPrefab
+  href: api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.html#SpawnThat_Spawners_IHaveSpawnPositionConditionsExtensions_ConditionPositionMustBeNearPrefab_
+  commentId: Overload:SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearPrefab
+  isSpec: "True"
+  fullName: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearPrefab
+  nameWithType: IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearPrefab
+- uid: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearPrefab``1(``0,System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32})
+  name: ConditionPositionMustBeNearPrefab<T>(T, IEnumerable<String>, Nullable<Int32>)
+  href: api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.html#SpawnThat_Spawners_IHaveSpawnPositionConditionsExtensions_ConditionPositionMustBeNearPrefab__1___0_System_Collections_Generic_IEnumerable_System_String__System_Nullable_System_Int32__
+  commentId: M:SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearPrefab``1(``0,System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32})
+  name.vb: ConditionPositionMustBeNearPrefab(Of T)(T, IEnumerable(Of String), Nullable(Of Int32))
+  fullName: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearPrefab<T>(T, System.Collections.Generic.IEnumerable<System.String>, System.Nullable<System.Int32>)
+  fullName.vb: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearPrefab(Of T)(T, System.Collections.Generic.IEnumerable(Of System.String), System.Nullable(Of System.Int32))
+  nameWithType: IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearPrefab<T>(T, IEnumerable<String>, Nullable<Int32>)
+  nameWithType.vb: IHaveSpawnPositionConditionsExtensions.ConditionPositionMustBeNearPrefab(Of T)(T, IEnumerable(Of String), Nullable(Of Int32))
+- uid: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustNotBeNearPrefab*
+  name: ConditionPositionMustNotBeNearPrefab
+  href: api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.html#SpawnThat_Spawners_IHaveSpawnPositionConditionsExtensions_ConditionPositionMustNotBeNearPrefab_
+  commentId: Overload:SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustNotBeNearPrefab
+  isSpec: "True"
+  fullName: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustNotBeNearPrefab
+  nameWithType: IHaveSpawnPositionConditionsExtensions.ConditionPositionMustNotBeNearPrefab
+- uid: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustNotBeNearPrefab``1(``0,System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32})
+  name: ConditionPositionMustNotBeNearPrefab<T>(T, IEnumerable<String>, Nullable<Int32>)
+  href: api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.html#SpawnThat_Spawners_IHaveSpawnPositionConditionsExtensions_ConditionPositionMustNotBeNearPrefab__1___0_System_Collections_Generic_IEnumerable_System_String__System_Nullable_System_Int32__
+  commentId: M:SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustNotBeNearPrefab``1(``0,System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32})
+  name.vb: ConditionPositionMustNotBeNearPrefab(Of T)(T, IEnumerable(Of String), Nullable(Of Int32))
+  fullName: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustNotBeNearPrefab<T>(T, System.Collections.Generic.IEnumerable<System.String>, System.Nullable<System.Int32>)
+  fullName.vb: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.ConditionPositionMustNotBeNearPrefab(Of T)(T, System.Collections.Generic.IEnumerable(Of System.String), System.Nullable(Of System.Int32))
+  nameWithType: IHaveSpawnPositionConditionsExtensions.ConditionPositionMustNotBeNearPrefab<T>(T, IEnumerable<String>, Nullable<Int32>)
+  nameWithType.vb: IHaveSpawnPositionConditionsExtensions.ConditionPositionMustNotBeNearPrefab(Of T)(T, IEnumerable(Of String), Nullable(Of Int32))
 - uid: SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.SetPositionConditionAltitude*
   name: SetPositionConditionAltitude
   href: api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.html#SpawnThat_Spawners_IHaveSpawnPositionConditionsExtensions_SetPositionConditionAltitude_
@@ -6690,6 +6939,22 @@ references:
   isSpec: "True"
   fullName: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.Id
   nameWithType: IWorldSpawnBuilder.Id
+- uid: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetBiomeArea(System.Nullable{Heightmap.BiomeArea})
+  name: SetBiomeArea(Nullable<Heightmap.BiomeArea>)
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_SetBiomeArea_System_Nullable_Heightmap_BiomeArea__
+  commentId: M:SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetBiomeArea(System.Nullable{Heightmap.BiomeArea})
+  name.vb: SetBiomeArea(Nullable(Of Heightmap.BiomeArea))
+  fullName: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetBiomeArea(System.Nullable<Heightmap.BiomeArea>)
+  fullName.vb: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetBiomeArea(System.Nullable(Of Heightmap.BiomeArea))
+  nameWithType: IWorldSpawnBuilder.SetBiomeArea(Nullable<Heightmap.BiomeArea>)
+  nameWithType.vb: IWorldSpawnBuilder.SetBiomeArea(Nullable(Of Heightmap.BiomeArea))
+- uid: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetBiomeArea*
+  name: SetBiomeArea
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_SetBiomeArea_
+  commentId: Overload:SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetBiomeArea
+  isSpec: "True"
+  fullName: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetBiomeArea
+  nameWithType: IWorldSpawnBuilder.SetBiomeArea
 - uid: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetCondition*
   name: SetCondition
   href: api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_SetCondition_
@@ -8084,6 +8349,54 @@ references:
   commentId: T:SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions
   fullName: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions
   nameWithType: IWorldSpawnBuilderPositionConditionExtensions
+- uid: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearAllPrefabs(SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder,System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32})
+  name: ConditionPositionMustBeNearAllPrefabs(IWorldSpawnBuilder, IEnumerable<String>, Nullable<Int32>)
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilderPositionConditionExtensions_ConditionPositionMustBeNearAllPrefabs_SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_System_Collections_Generic_IEnumerable_System_String__System_Nullable_System_Int32__
+  commentId: M:SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearAllPrefabs(SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder,System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32})
+  name.vb: ConditionPositionMustBeNearAllPrefabs(IWorldSpawnBuilder, IEnumerable(Of String), Nullable(Of Int32))
+  fullName: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearAllPrefabs(SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder, System.Collections.Generic.IEnumerable<System.String>, System.Nullable<System.Int32>)
+  fullName.vb: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearAllPrefabs(SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder, System.Collections.Generic.IEnumerable(Of System.String), System.Nullable(Of System.Int32))
+  nameWithType: IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearAllPrefabs(IWorldSpawnBuilder, IEnumerable<String>, Nullable<Int32>)
+  nameWithType.vb: IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearAllPrefabs(IWorldSpawnBuilder, IEnumerable(Of String), Nullable(Of Int32))
+- uid: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearAllPrefabs*
+  name: ConditionPositionMustBeNearAllPrefabs
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilderPositionConditionExtensions_ConditionPositionMustBeNearAllPrefabs_
+  commentId: Overload:SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearAllPrefabs
+  isSpec: "True"
+  fullName: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearAllPrefabs
+  nameWithType: IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearAllPrefabs
+- uid: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearPrefab(SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder,System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32})
+  name: ConditionPositionMustBeNearPrefab(IWorldSpawnBuilder, IEnumerable<String>, Nullable<Int32>)
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilderPositionConditionExtensions_ConditionPositionMustBeNearPrefab_SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_System_Collections_Generic_IEnumerable_System_String__System_Nullable_System_Int32__
+  commentId: M:SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearPrefab(SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder,System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32})
+  name.vb: ConditionPositionMustBeNearPrefab(IWorldSpawnBuilder, IEnumerable(Of String), Nullable(Of Int32))
+  fullName: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearPrefab(SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder, System.Collections.Generic.IEnumerable<System.String>, System.Nullable<System.Int32>)
+  fullName.vb: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearPrefab(SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder, System.Collections.Generic.IEnumerable(Of System.String), System.Nullable(Of System.Int32))
+  nameWithType: IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearPrefab(IWorldSpawnBuilder, IEnumerable<String>, Nullable<Int32>)
+  nameWithType.vb: IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearPrefab(IWorldSpawnBuilder, IEnumerable(Of String), Nullable(Of Int32))
+- uid: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearPrefab*
+  name: ConditionPositionMustBeNearPrefab
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilderPositionConditionExtensions_ConditionPositionMustBeNearPrefab_
+  commentId: Overload:SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearPrefab
+  isSpec: "True"
+  fullName: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearPrefab
+  nameWithType: IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearPrefab
+- uid: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustNotBeNearPrefab(SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder,System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32})
+  name: ConditionPositionMustNotBeNearPrefab(IWorldSpawnBuilder, IEnumerable<String>, Nullable<Int32>)
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilderPositionConditionExtensions_ConditionPositionMustNotBeNearPrefab_SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_System_Collections_Generic_IEnumerable_System_String__System_Nullable_System_Int32__
+  commentId: M:SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustNotBeNearPrefab(SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder,System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32})
+  name.vb: ConditionPositionMustNotBeNearPrefab(IWorldSpawnBuilder, IEnumerable(Of String), Nullable(Of Int32))
+  fullName: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustNotBeNearPrefab(SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder, System.Collections.Generic.IEnumerable<System.String>, System.Nullable<System.Int32>)
+  fullName.vb: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustNotBeNearPrefab(SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder, System.Collections.Generic.IEnumerable(Of System.String), System.Nullable(Of System.Int32))
+  nameWithType: IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustNotBeNearPrefab(IWorldSpawnBuilder, IEnumerable<String>, Nullable<Int32>)
+  nameWithType.vb: IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustNotBeNearPrefab(IWorldSpawnBuilder, IEnumerable(Of String), Nullable(Of Int32))
+- uid: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustNotBeNearPrefab*
+  name: ConditionPositionMustNotBeNearPrefab
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilderPositionConditionExtensions_ConditionPositionMustNotBeNearPrefab_
+  commentId: Overload:SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustNotBeNearPrefab
+  isSpec: "True"
+  fullName: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustNotBeNearPrefab
+  nameWithType: IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustNotBeNearPrefab
 - uid: SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.SetPositionConditionLocation(SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder,System.Collections.Generic.IEnumerable{System.String})
   name: SetPositionConditionLocation(IWorldSpawnBuilder, IEnumerable<String>)
   href: api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilderPositionConditionExtensions_SetPositionConditionLocation_SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_System_Collections_Generic_IEnumerable_System_String__
@@ -8134,6 +8447,19 @@ references:
   commentId: T:SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings
   fullName: SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings
   nameWithType: WorldSpawnSettings
+- uid: SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.BiomeArea
+  name: BiomeArea
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.html#SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_BiomeArea
+  commentId: P:SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.BiomeArea
+  fullName: SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.BiomeArea
+  nameWithType: WorldSpawnSettings.BiomeArea
+- uid: SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.BiomeArea*
+  name: BiomeArea
+  href: api/reference/SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.html#SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_BiomeArea_
+  commentId: Overload:SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.BiomeArea
+  isSpec: "True"
+  fullName: SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.BiomeArea
+  nameWithType: WorldSpawnSettings.BiomeArea
 - uid: SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.Biomes
   name: Biomes
   href: api/reference/SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.html#SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_Biomes

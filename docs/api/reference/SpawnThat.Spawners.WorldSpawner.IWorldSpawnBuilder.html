@@ -122,6 +122,59 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_SetBiomeArea_System_Nullable_Heightmap_BiomeArea__.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetBiomeArea(System.Nullable%7BHeightmap.BiomeArea%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat/Spawners/WorldSpawner/IWorldSpawnBuilder.cs/#L492">View Source</a>
+  </span>
+  <a id="SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_SetBiomeArea_" data-uid="SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetBiomeArea*"></a>
+  <h4 id="SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_SetBiomeArea_System_Nullable_Heightmap_BiomeArea__" data-uid="SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetBiomeArea(System.Nullable{Heightmap.BiomeArea})">SetBiomeArea(Nullable&lt;Heightmap.BiomeArea&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set if allowed to spawn in zone that are edge biomes, in non-edge or both.</p>
+<p>If not set, uses existing when overriding.</p>
+<p>Default if new template: Heightmap.BiomeArea.Everything</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IWorldSpawnBuilder SetBiomeArea(Heightmap.BiomeArea? biomeArea)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Heightmap.BiomeArea</span>&gt;</td>
+        <td><span class="parametername">biomeArea</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.html">IWorldSpawnBuilder</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_SetBiomeArea_System_Nullable_Heightmap_BiomeArea___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Vanilla name: m_biomeArea</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/ASharpPen/Valheim.SpawnThat/new/gh-pages/apiSpec/new?filename=SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_SetCondition__1___0_.md&amp;value=---%0Auid%3A%20SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.SetCondition%60%601(%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -136,7 +189,6 @@ If a condition with the same type already exists, it will be replaced by this on
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IWorldSpawnBuilder SetCondition&lt;TCondition&gt;(TCondition condition)
-
     where TCondition : class, ISpawnCondition</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -2179,7 +2231,6 @@ If a modifier with the same type already exists, it will be replaced by this one
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IWorldSpawnBuilder SetModifier&lt;TModifier&gt;(TModifier modifier)
-
     where TModifier : class, ISpawnModifier</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -2646,7 +2697,6 @@ If a condition with the same type already exists, it will be replaced by this on
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IWorldSpawnBuilder SetPositionCondition&lt;TCondition&gt;(TCondition condition)
-
     where TCondition : class, ISpawnPositionCondition</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -3900,6 +3950,15 @@ Cannot be used to disable existing spawn templates.
   </div>
   <div>
       <a class="xref" href="SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilderPositionConditionExtensions_SetPositionConditionLocation_SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_System_String___">IWorldSpawnBuilderPositionConditionExtensions.SetPositionConditionLocation(IWorldSpawnBuilder, String[])</a>
+  </div>
+  <div>
+      <a class="xref" href="SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilderPositionConditionExtensions_ConditionPositionMustBeNearAllPrefabs_SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_System_Collections_Generic_IEnumerable_System_String__System_Nullable_System_Int32__">IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearAllPrefabs(IWorldSpawnBuilder, IEnumerable&lt;String&gt;, Nullable&lt;Int32&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilderPositionConditionExtensions_ConditionPositionMustBeNearPrefab_SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_System_Collections_Generic_IEnumerable_System_String__System_Nullable_System_Int32__">IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustBeNearPrefab(IWorldSpawnBuilder, IEnumerable&lt;String&gt;, Nullable&lt;Int32&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilderPositionConditionExtensions_ConditionPositionMustNotBeNearPrefab_SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_System_Collections_Generic_IEnumerable_System_String__System_Nullable_System_Int32__">IWorldSpawnBuilderPositionConditionExtensions.ConditionPositionMustNotBeNearPrefab(IWorldSpawnBuilder, IEnumerable&lt;String&gt;, Nullable&lt;Int32&gt;)</a>
   </div>
   <div>
       <a class="xref" href="SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderSettingsExtensions.html#SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilderSettingsExtensions_WithSettings_SpawnThat_Spawners_WorldSpawner_IWorldSpawnBuilder_SpawnThat_Spawners_WorldSpawner_WorldSpawnSettings_">IWorldSpawnBuilderSettingsExtensions.WithSettings(IWorldSpawnBuilder, WorldSpawnSettings)</a>

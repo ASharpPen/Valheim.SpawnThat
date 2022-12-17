@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "157UdncNRYfsaJrP4Ma8+GAlMgO5ypH/iSz9T8hE2Uw="
+          "hash": "MVTkHMymCP5zGQbMrnuNpSu4NkdXcvprGjLsfPAuZQc="
         }
       },
       "is_incremental": false,
@@ -33,10 +33,10 @@
       "output": {
         ".html": {
           "relative_path": "change-log.html",
-          "hash": "w0vDeNWtaLPK/eT8ueBjyd9V2/M8xN0TaQRNqwEjnMU="
+          "hash": "3TdEECJfp8g2lomGEd8xh6mJl3kgvZdAsTDbWkAFP44="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -345,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "file-configs/1.1.0/config-types/spawnarea-spawner-config.html",
-          "hash": "TbgPh36+v5tmRrzvNEa07yWwuN/eL1ALkydXGHgYioo="
+          "hash": "1DzA3TWEdAHXSf0a70XG8bSEzbDihmvWRFalI78rflQ="
         }
       },
       "is_incremental": false,
@@ -357,10 +357,10 @@
       "output": {
         ".html": {
           "relative_path": "file-configs/1.1.0/config-types/world-spawner-config.html",
-          "hash": "/wjnIi6ggm3BFg/Z3OJPLRgYSwBfWZntIhg8pfgTolw="
+          "hash": "cqCdXsflRcDYG8S3T2iMPTiwBkjyNqQ9M0xPCX3j20s="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -396,7 +396,7 @@
           "hash": "GXiLrwPn+zZauvNuRFF2MoewifOdvqt8XVf5U+H0/as="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -408,7 +408,7 @@
           "hash": "iq+1aHZjNrcP//clkg0T2Ex8jPHHWTPf6JIMlbQwM2Q="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -420,7 +420,7 @@
           "hash": "dcnL1Bj8/La4ww19TSQJ0ItoITA69KGUz35yCeZ/F5I="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -432,7 +432,7 @@
           "hash": "H4nyxZ5/t0xJ4vCZ12bNXjpOSsqfcXkuf+qjvDBvtUM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -444,7 +444,7 @@
           "hash": "ZJ9HqiutndPD0wYKnBKbhJKGPYOznylY0Gizud60n84="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -456,7 +456,7 @@
           "hash": "eSty1mhs8JYwUSN3gwIhSdPcqNHTUKHnrAzPlLio2Us="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -564,7 +564,7 @@
           "hash": "3zJL6+hxa32UEc6JWdtn5kwkqLcSHh6U/gPkCz6dzK0="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -576,7 +576,7 @@
           "hash": "jTXcJyo3VJK3KyzmvxUQIh5Hojt8Teamua0Q1981GfQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1368,7 +1368,7 @@
           "hash": "f57wozydWXNQtBQ6QRGOjblSVs6RtkntrSKZKyGr2NU="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1409,6 +1409,42 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.html",
+          "hash": "Ww/PNEvm/SrTuc0zh8qJ2m3k3XQcl/RYkInSNtDUGP4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.html",
+          "hash": "/zaySVBzSTfLVAyzw+q83bvBDzBnsS8rgNufrbgnfMg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.html",
+          "hash": "jVvTdx6duGN6hutJof5a/BJ/nle8MmHEusN23GRwDbM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.PositionConditionOceanDepth.yml",
       "output": {
         ".html": {
@@ -1437,7 +1473,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Options.PositionConditions.html",
-          "hash": "3WAyDxHxsRh6422pTTMKvzAgDknhyl2CBfvY0jWkmPM="
+          "hash": "Etx9COcm7pULjFwclosB+NNBYBcgjcD++v1WeYbAd5Q="
         }
       },
       "is_incremental": false,
@@ -1449,7 +1485,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.SpawnThatPlugin.html",
-          "hash": "yeK2ehoSQ7+rTtrffzj16v0EIUtSh38R9Rbiln5D5Q0="
+          "hash": "k7d6kvRd6JiY8vUHH+EbirEyR4w2lngu1l+vdN+VZnk="
         }
       },
       "is_incremental": false,
@@ -1461,7 +1497,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnConditions.html",
-          "hash": "cdKdEbZtqkXR+CttAbC3D+SxU3Vrb6mH2JcrBp/7hNs="
+          "hash": "P7eS/afQz1cjQzxVt676Wm9qdGgAP5fxh/UJvNM70aY="
         }
       },
       "is_incremental": false,
@@ -1473,7 +1509,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnConditionsCllcConditionExtensions.html",
-          "hash": "oAgBoPtL+JP8JDUjqB7gFbzsI8FlO/k2kEGPROzQcZ4="
+          "hash": "kbYkcFcf58cV8ehH5LB2JyUHgvI4+DzERdgC2Xuc7tc="
         }
       },
       "is_incremental": false,
@@ -1485,7 +1521,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnConditionsELConditionsExtensions.html",
-          "hash": "FMgsiMwFxkl1/QHBc4sFqyazH+VHREQg45kyl68sQB8="
+          "hash": "pc1wFjqkEUwy7jVXPIaGC3NLpgQzzNyoQKap/Ay/vvE="
         }
       },
       "is_incremental": false,
@@ -1497,7 +1533,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnConditionsExtensions.html",
-          "hash": "BbkYI1zfMs2NH/vV+NWmtBDFYXRnO5nFEsr55D6dlPw="
+          "hash": "d4Mwbfk4o/dHSV6BnPVMxJFzcTELNE4EyDBFOE1EQYU="
         }
       },
       "is_incremental": false,
@@ -1509,7 +1545,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnModifiers.html",
-          "hash": "4ROOfoDqlFpnD6RLtdalma2vhv9vVPklHAi4dlZrDX4="
+          "hash": "KP2EdR5EgEFwhDtPoq9iUE7J13DQdYqVSzSQ7H8WEFE="
         }
       },
       "is_incremental": false,
@@ -1521,7 +1557,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnModifiersCllcModifierExtensions.html",
-          "hash": "IBDVyEpvHFlCT99q/mMRVK5qDNWFZDv1U5+POkA/ihY="
+          "hash": "CS7lUVue5w9/cYQuFvvzqfbMP+IJvPOHE1UsZTW6lGw="
         }
       },
       "is_incremental": false,
@@ -1533,7 +1569,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnModifiersExtensions.html",
-          "hash": "jKVk0JoubOvkb7ZnbYdMV0RUpX7bmry9fQSB2WnJu/c="
+          "hash": "gRvdsxIT+A7AXJUSMqqdMaRgFX/kVOeHlBNfnKC/OUc="
         }
       },
       "is_incremental": false,
@@ -1545,7 +1581,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnModifiersMobAiExtensions.html",
-          "hash": "BHkYgbfsYhrcd8uNNiFkU2VR+ucQmXjsZ71qEXpa+PE="
+          "hash": "jCqgcS8fmoJpbgcSJMab+OPpzyzrybnWnpFZygGDRMc="
         }
       },
       "is_incremental": false,
@@ -1557,7 +1593,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditions.html",
-          "hash": "XdNbN7VUFdOCpuk6DOVLavaOrthM2b5nkkz8iEeuI0w="
+          "hash": "/Wulx2JU+G8inJ42h8xcAK3D2N21He/ciS+8NSMgq5E="
         }
       },
       "is_incremental": false,
@@ -1569,7 +1605,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.html",
-          "hash": "Wtq5Tu8FnTrgiP15QgXv9BC9zD+7PiIjTnIsSmSdfsQ="
+          "hash": "bcW9swTydIaqlR5HELJE7tk9uQheulDPfzBLIg1J8Ic="
         }
       },
       "is_incremental": false,
@@ -1581,7 +1617,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnerIdentifiers.html",
-          "hash": "nQk3B8o4tX+sKUfTh9XtI9I9VyDlu6Xn5RGykNd0B1U="
+          "hash": "cKhWOYK5g1axicdrrPEtn7klM5a3ji33Z7MbRuCq/SU="
         }
       },
       "is_incremental": false,
@@ -1593,7 +1629,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnerIdentifiersExtensions.html",
-          "hash": "9jMo/JsOT/gmlaD2w+N/64j2j7UK/TRFzBx517ks3Ls="
+          "hash": "+Tf0YJ83W2QXwiXn1VnqEAbFpSEUdMOnCX1LbOoTqIo="
         }
       },
       "is_incremental": false,
@@ -1617,7 +1653,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.ISpawnerConfigurationCollection.html",
-          "hash": "q2e+aZrOcSIWAmb4Zct35MzRAvEE7JSJbozod7D0Txg="
+          "hash": "7y5z657C68YB6wz1SPJzEoFhq05GzrsaeAJ6n7uNZkY="
         }
       },
       "is_incremental": false,
@@ -1665,7 +1701,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilder.html",
-          "hash": "B44O5Y3zX94YOhgRNCqKpKrpFv1UgBsNDZxEtgLUyZ8="
+          "hash": "B08xalYGRm9Hd5WiJda4RU/PAK5keeMoaS/aWXA/2lY="
         }
       },
       "is_incremental": false,
@@ -1785,7 +1821,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilder.html",
-          "hash": "Z4mBJCEAagh1vxHZIRgEnt0pxUtRrbObG7lUkZhrvDQ="
+          "hash": "GCyWoQEKFdFtLryElV9g4AvbjtBjn6Sih+vq2mQvBMk="
         }
       },
       "is_incremental": false,
@@ -1881,7 +1917,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.html",
-          "hash": "QeZ9uUzM0ubdd1qkAdGepcpTaWdBvyOcLLqqg3fz/Cw="
+          "hash": "FwlPizNg97WbwxWNz8UeIyKTjY5KRX2MepiVMKDQgNc="
         }
       },
       "is_incremental": false,
@@ -1965,7 +2001,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html",
-          "hash": "IYdd+tV0jPNniihLdronGMn7pyGXNEFuc8zlgUlxr+0="
+          "hash": "XrfEoKjIV37KlRT746tEO6wyicUKjsr8guYrggTpTm8="
         }
       },
       "is_incremental": false,
@@ -1989,10 +2025,10 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.html",
-          "hash": "pkwWDSy3dTNkquY4dEUEv4HOVxCB1I+0SikaidNVxoU="
+          "hash": "fUoAq0MkYRLuYFzfXmy68+fq3PAGnagimkqXwcR2gp4="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2477,13 +2513,13 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 49,
-          "skipped_file_count": 43
+          "skipped_file_count": 46
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 151,
-          "skipped_file_count": 86
+          "total_file_count": 154,
+          "skipped_file_count": 83
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

@@ -338,6 +338,13 @@ HuntPlayer = true
 <td>Maximum ocean depth to spawn in. Ignored if min == max</td>
 </tr>
 <tr>
+<td>BiomeArea</td>
+<td>string</td>
+<td>Everything</td>
+<td>Edge</td>
+<td>Toggles spawning in biome border zones (Edge), non-border zones (Median) or both (Everything). A border zone is a zone where two or more biomes are next to each other</td>
+</tr>
+<tr>
 <td>ConditionAltitudeMin</td>
 <td>float</td>
 <td>-1000</td>
@@ -490,6 +497,48 @@ HuntPlayer = true
 <td></td>
 <td>1, 123, 543</td>
 <td>Advanced feature. List of area id&#39;s in which the template is valid. Note: If ConditionAreaSpawnChance is not 100 or disabled, it will still roll area chance</td>
+</tr>
+<tr>
+<td>ConditionPositionMustBeNearAllPrefabs</td>
+<td>string</td>
+<td></td>
+<td>FineWood, Blueberries</td>
+<td>List of prefab names which must all be present with distance of spawn position to allow spawning. Leave empty to always allow</td>
+</tr>
+<tr>
+<td>ConditionPositionMustBeNearAllPrefabsDistance</td>
+<td>int</td>
+<td>32</td>
+<td>123</td>
+<td>Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustBeNearAllPrefabs</td>
+</tr>
+<tr>
+<td>ConditionPositionMustBeNearPrefabs</td>
+<td>string</td>
+<td></td>
+<td>FineWood, Blueberries</td>
+<td>List of prefab names for which one or more must be present with distance of spawn position to allow spawning. Leave empty to always allow</td>
+</tr>
+<tr>
+<td>ConditionPositionMustBeNearPrefabsDistance</td>
+<td>int</td>
+<td>32</td>
+<td>123</td>
+<td>Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustBeNearPrefabs</td>
+</tr>
+<tr>
+<td>ConditionPositionMustNotBeNearPrefabs</td>
+<td>string</td>
+<td></td>
+<td>FineWood, Blueberries</td>
+<td>List of prefab names for which none must be present with distance of spawn position to allow spawning. Leave empty to always allow</td>
+</tr>
+<tr>
+<td>ConditionPositionMustNotBeNearPrefabsDistance</td>
+<td>int</td>
+<td>32</td>
+<td>123</td>
+<td>Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustNotBeNearPrefabs</td>
 </tr>
 </tbody>
 </table>
