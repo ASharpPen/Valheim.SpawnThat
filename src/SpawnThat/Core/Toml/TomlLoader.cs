@@ -9,7 +9,7 @@ namespace SpawnThat.Core.Toml;
 internal static class TomlLoader
 {
     private static readonly Regex SectionHeader = new Regex(@"^\s*[[](.+)[]]", RegexOptions.Compiled);
-    private static readonly Regex SectionSanitizer = new Regex(@"[^\p{L}\d.\[\]_]|\s");
+    private static readonly Regex SectionSanitizer = new Regex(@"[^\p{L}\d.\[\]_:]|\s");
 
     private static readonly Regex SettingIdentifier = new Regex(@"^\s*(\p{L}+)\s*=(.*)");
     private static readonly Regex CommentIdentifier = new Regex(@"^\s*(//|#|--)", RegexOptions.Compiled);

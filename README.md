@@ -114,6 +114,8 @@ If you feel like it
 <a href="https://www.buymeacoffee.com/asharppen"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=asharppen&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 # Changelog: 
+- v1.2.1:
+	- Compatibility: Allowing `:`  in section headers for compatibility with Expand World.
 - v1.2.0:
 	- World Spawner: Fixed LevelUpChance only being properly applied to new entries.
 	- SpawnArea: Fixed modifiers not being applied properly.
