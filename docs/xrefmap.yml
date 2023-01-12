@@ -582,6 +582,18 @@ references:
   commentId: F:SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.Magic
   fullName: SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.Magic
   nameWithType: EpicLootRarity.Magic
+- uid: SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.Mythic
+  name: Mythic
+  href: api/reference/SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.html#SpawnThat_Integrations_EpicLoot_Models_EpicLootRarity_Mythic
+  commentId: F:SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.Mythic
+  fullName: SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.Mythic
+  nameWithType: EpicLootRarity.Mythic
+- uid: SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.None
+  name: None
+  href: api/reference/SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.html#SpawnThat_Integrations_EpicLoot_Models_EpicLootRarity_None
+  commentId: F:SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.None
+  fullName: SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.None
+  nameWithType: EpicLootRarity.None
 - uid: SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.Rare
   name: Rare
   href: api/reference/SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.html#SpawnThat_Integrations_EpicLoot_Models_EpicLootRarity_Rare
