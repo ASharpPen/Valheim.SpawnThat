@@ -5,15 +5,6 @@ namespace SpawnThat.Integrations.EpicLoot;
 
 internal static class EpicLootRarityExtensions
 {
-    public static ItemRarity ToRarity(this EpicLootRarity rarity)
-        => rarity switch
-        {
-            EpicLootRarity.Magic => ItemRarity.Magic,
-            EpicLootRarity.Rare => ItemRarity.Rare,
-            EpicLootRarity.Epic => ItemRarity.Epic,
-            EpicLootRarity.Legendary => ItemRarity.Legendary,
-        };
-
     public static EpicLootRarity ToRarity(this ItemRarity rarity)
         => rarity switch
         {
@@ -21,5 +12,7 @@ internal static class EpicLootRarityExtensions
             ItemRarity.Rare => EpicLootRarity.Rare,
             ItemRarity.Epic => EpicLootRarity.Epic,
             ItemRarity.Legendary => EpicLootRarity.Legendary,
+            ItemRarity.Mythic => EpicLootRarity.Mythic,
+            _ => EpicLootRarity.None
         };
 }
