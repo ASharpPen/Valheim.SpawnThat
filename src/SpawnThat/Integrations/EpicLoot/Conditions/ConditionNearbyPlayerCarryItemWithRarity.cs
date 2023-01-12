@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using EpicLoot;
-using ExtendedItemDataFramework;
 using SpawnThat.Core;
 using SpawnThat.Integrations.EpicLoot.Models;
 using SpawnThat.Options.Conditions;
@@ -74,23 +73,13 @@ public class ConditionNearbyPlayerCarryItemWithRarity : ISpawnCondition
             var items = player.GetInventory()?.GetAllItems() ?? new(0);
 
 #if DEBUG && VERBOSE
-            Log.LogTrace($"Player '{player.m_name}': {items.Join(x => x.m_shared.m_name + ":" + x?.Extended()?.GetComponent<MagicItemComponent>()?.MagicItem?.Rarity.ToRarity().ToString() ?? "")}");
+            Log.LogTrace($"Player '{player.m_name}': {items.Join(x => x.m_shared.m_name + ":" + x?.GetMagicItem()?.Rarity.ToRarity().ToString() ?? "")}");
 #endif
 
-            if (items.Any(x =>
-                {
-                    var magicComponent = x?.Extended()?.GetComponent<MagicItemComponent>();
-
-                    if (magicComponent is null)
-                    {
-                        return false;
-                    }
-
-                    return RaritiesRequired.Contains(magicComponent.MagicItem.Rarity.ToRarity());
-                }))
-            {
-                return true;
-            }
+            return items.Any(x => 
+                x.IsMagic(out var magicItem) &&
+                RaritiesRequired.Contains(magicItem.Rarity.ToRarity())
+                );
         }
 
         return false;

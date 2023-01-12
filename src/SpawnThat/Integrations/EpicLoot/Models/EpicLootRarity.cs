@@ -2,8 +2,10 @@
 
 public enum EpicLootRarity
 {
+    None,
     Magic,
     Rare,
     Epic,
     Legendary,
+    Mythic,
 }
