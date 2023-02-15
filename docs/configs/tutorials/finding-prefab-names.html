@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Finding Prefab Names </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Finding Prefab Names ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="finding-prefab-names">Finding Prefab Names</h1>
+
+<p>Prefab&#39;s are the &quot;blueprints&quot; of objects in the game, used to create basically anything. To get the name, we have a few options.</p>
+<h2 id="creatures">Creatures</h2>
+<h3 id="1-wiki">1. Wiki</h3>
+<p>Find the creature on the <a href="https://valheim.fandom.com/wiki/Creatures">wiki</a>, and find its &quot;Internal Id&quot;.</p>
+<h3 id="2-jötunn-documentation">2. Jötunn documentation</h3>
+<p>Find the creature using the excellent list from the <a href="https://valheim-modding.github.io/Jotunn/data/prefabs/character-list.html">Jotunn documentation</a>.</p>
+<h3 id="3-datamine-using-spawn-that">3. Datamine using Spawn That.</h3>
+<h3 id="31-world-spawns">3.1 World Spawns</h3>
+<ul>
+<li>Open <code>spawn_that.cfg</code> in your BepInEx/Configs folder.</li>
+<li>Find the section <code>[WorldSpawner]</code> and the setting <code>WriteSpawnTablesToFileBeforeChanges</code> under it.</li>
+<li>Set it to <code>WriteSpawnTablesToFileBeforeChanges=true</code>.</li>
+<li>Save the file</li>
+<li>Run the game, and enter a world.</li>
+<li>There should now be a file called <code>spawn_that.world_spawners_pre_changes.txt</code> in your <code>BepInEx/Debug/</code> folder, which have extracted data from the game to get the existing world spawner settings, including their prefab name.</li>
+</ul>
+<p>Alternatively, a pre-extracted version exists <a href="../data/world-spawner-vanilla.html">here</a>.</p>
+<h3 id="32-spawns-in-dungeons">3.2 Spawns in dungeons</h3>
+<ul>
+<li>Open <code>spawn_that.cfg</code> in your BepInEx/Configs folder.</li>
+<li>Find the section <code>[LocalSpawner]</code> and the setting <code>WriteSpawnTablesToFileBeforeChanges</code> under it.</li>
+<li>Set it to <code>WriteSpawnTablesToFileBeforeChanges=true</code>.</li>
+<li>Save the file</li>
+<li>Run the game, and enter a world.</li>
+<li>There should now be a file called <code>spawn_that.local_spawners_dungeons_pre_changes.txt</code> in your <code>BepInEx/Debug/</code> folder, which have extracted data from the game to get the existing world spawner settings, including their prefab name.</li>
+</ul>
+<p>Alternatively, a pre-extracted version exists <a href="../data/local-spawner-room-vanilla.html">here</a>.</p>
+<h3 id="33-spawns-at-points-of-interest">3.3 Spawns at points of interest</h3>
+<ul>
+<li>Open <code>spawn_that.cfg</code> in your BepInEx/Configs folder.</li>
+<li>Find the section <code>[LocalSpawner]</code> and the setting <code>WriteSpawnTablesToFileBeforeChanges</code> under it.</li>
+<li>Set it to <code>WriteSpawnTablesToFileBeforeChanges=true</code>.</li>
+<li>Save the file</li>
+<li>Run the game, and enter a world.</li>
+<li><p>There should now be a file called <code>spawn_that.local_spawners_pre_changes.txt</code> in your <code>BepInEx/Debug/</code> folder, which have extracted data from the game to get the existing world spawner settings, including their prefab name.</p>
+<p>Alternatively, a pre-extracted version exists <a href="../data/local-spawner-location-vanilla.html">here</a>.</p>
+</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/development/src/SpawnThat.Docs/configs/tutorials/finding-prefab-names.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

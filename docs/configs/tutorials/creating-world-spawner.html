@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tutorial - Creating a new world spawn </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Tutorial - Creating a new world spawn ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="tutorial---creating-a-new-world-spawn">Tutorial - Creating a new world spawn</h1>
+
+<p>This tutorial will show how to make a new creature naturally spawn in the world.</p>
+<h2 id="creating-a-spawn-entry">Creating a spawn entry</h2>
+<ul>
+<li>Go to your <code>BepInEx/Configs</code> folder.</li>
+<li>Open the <code>spawn_that.world_spawners_advanced.cfg</code>.</li>
+<li>Add the following to the end of it.</li>
+</ul>
+<pre><code class="lang-toml">[WorldSpawner.666]
+PrefabName = Skeleton
+</code></pre><ul>
+<li>Save the file.</li>
+</ul>
+<p>Done!</p>
+<p>What have we done though? Well, by adding a section called <code>WorldSpawner</code>, with an ID (666) that isn&#39;t used by anything in the game (or by another mod), we have told Spawn That that instead of changing existing settings, it should be adding a completely new configuration entry.</p>
+<p>The PrefabName specified is valheims internal name of the object. See <a href="finding-prefab-names.html">Finding Prefab Names</a> for further details on how to find these.</p>
+<h2 id="adding-conditions">Adding conditions</h2>
+<p>When running the game, skeletons will now be spawning naturally in all areas of the world.
+This is probably not ideal, and what we have in mind, as it will be using default spawn settings, and we don&#39;t really want skeletons everywhere (including the ocean).</p>
+<p>So lets add some restrictions to where it spawns. Grab some options from <a href="../config-types/world-spawner-config.html#config-options">World Spawner Config Options</a>.</p>
+<pre><code class="lang-toml">[WorldSpawner.666]
+PrefabName = Skeleton
+ConditionAltitudeMin = 0
+Biomes = Meadows
+SpawnOutsideForest = false
+SpawnDuringDay = false
+</code></pre><p>Thats a bit better. Now, the skeleton will only spawn above at the waterline or above (ConditionAltitudeMin), in the meadows biome, only in forests and will only be around during night.</p>
+<h2 id="changing-spawn-settings">Changing spawn settings</h2>
+<p>But, they are kinda rare, and it would be cool if there were more of them around.
+So lets change some of the spawn settings, so that they aren&#39;t just the defaults.</p>
+<pre><code class="lang-toml">[WorldSpawner.666]
+PrefabName = Skeleton
+ConditionAltitudeMin = 0
+Biomes = Meadows
+SpawnOutsideForest = false
+SpawnDuringDay = false
+MaxSpawned = 10
+GroupSizeMin = 3
+GroupSizeMax = 5
+SpawnInterval = 100
+SpawnChance = 50
+</code></pre><p>There, now they should be a lot more common. We should now be seeing them spawn in in groups of 3-5, with a reasonably high saturation due to the MaxSpawned. Using the SpawnInterval and SpawnChance that matches deer, so we can sorta expect the same frequency.</p>
+<h2 id="adding-integration-options">Adding integration options</h2>
+<p>Lets be fair, most of you probably have the mod Creature Level and Loot Control installed, and it would be cool if could get that skeleton to be on fire, or use some of that mods other features.</p>
+<p>So lets see what we can do here. Check the options we have in the <a href="../mod-specific/creature-level-and-loot-control.html#world-spawner-options">Creature Level and Loot Control Integration</a> (CLLC) docs.</p>
+<p>Add a section to our spawn, where we can use some settings.</p>
+<pre><code class="lang-toml">[WorldSpawner.666]
+PrefabName = Skeleton
+ConditionAltitudeMin = 0
+Biomes = Meadows
+SpawnOutsideForest = false
+SpawnDuringDay = false
+MaxSpawned = 10
+GroupSizeMin = 3
+GroupSizeMax = 5
+SpawnInterval = 100
+SpawnChance = 50
+
+[WorldSpawner.666.CreatureLevelAndLootControl]
+SetInfusion = Fire
+</code></pre><p>Thats better, when CLLC is installed, our skeletons will now be on fire when spawning in. If the mod is not installed, the new part we added will simply get ignored.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Sometimes it can be hard to see if the changes are working as expected.</p>
+<p>For this, an easy way out is to increase the spawns to the point where they should become immediately obvious.</p>
+<h3 id="1-up-the-spawn-rate">1. Up the spawn rate</h3>
+<p>Change the settings of your world spawn config:</p>
+<pre><code class="lang-toml">SpawnInterval = 0.01
+SpawnChance = 100
+MaxSpawned = 100
+</code></pre><h3 id="2-huntplayer">2. HuntPlayer</h3>
+<p>If an aggressive feature, setting <code>HuntPlayer</code> can make the spawned creatures come running on heir own, making it easier to see that they spawned:</p>
+<pre><code class="lang-toml">HuntPlayer = true
+SpawnInterval = 0.01
+SpawnChance = 100
+MaxSpawned = 100
+</code></pre><h3 id="3-debug-loaded-configs">3. Debug loaded configs</h3>
+<p>Print the loaded configs, to verify they were read in the expected way</p>
+<ul>
+<li>Go to <code>spawn_that.cfg</code></li>
+<li>Find the section <code>[WorldSpawner]</code> and the setting <code>[WriteConfigsToFile]</code> under it.</li>
+<li>Set <code>WriteConfigsToFile=true</code></li>
+<li>Save file</li>
+<li>Load the game, enter a world, and wait for a moment (you can watch the logs to see the message of files being printed and where to).</li>
+<li>Go to folder <code>BepInEx/Debug</code> (or if you changed the debug folder, then go to that), find the file <code>world_spawners_loaded_configs.cfg</code></li>
+<li>Check the file for configs matching the expected ones from your config folder.</li>
+</ul>
+<p>Alternatively, to check changes after applying configurations (loaded configs are not yet applied):</p>
+<ul>
+<li>Go to <code>spawn_that.cfg</code></li>
+<li>Find the section <code>[WorldSpawner]</code> and the setting <code>[WriteSpawnTablesToFileAfterChanges]</code> under it.</li>
+<li>Set <code>WriteSpawnTablesToFileAfterChanges=true</code></li>
+<li>Save file</li>
+<li>Load the game, enter a world, and wait for a moment (you can watch the logs to see the message of files being printed and where to).</li>
+<li>Go to folder <code>BepInEx/Debug</code> (or if you changed the debug folder, then go to that), find the file <code>world_spawners_post_changes.txt</code></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/development/src/SpawnThat.Docs/configs/tutorials/creating-world-spawner.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

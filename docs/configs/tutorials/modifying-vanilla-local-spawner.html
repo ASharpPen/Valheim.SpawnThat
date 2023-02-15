@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tutorial - Modifying a local spawner </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Tutorial - Modifying a local spawner ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="tutorial---modifying-a-local-spawner">Tutorial - Modifying a local spawner</h1>
+
+<p>This tutorial will describe how to modify a local spawner.</p>
+<p>Local spawners are very different from world spawners, in that they don&#39;t have a simple ID to identify them by.
+There can be a variable amount of them pr zone, each being a separate invisible manager, spawned based on pre-defined points of interest (locations). Each local spawner managing a single spawn.</p>
+<p>For instance, boar runestones will have a semi-random number of local spawners surrounding them, in specific positions in relation to the runestone itself. Each of them ensuring a single boar spawns.</p>
+<p>To &quot;target&quot; which spawner to modify, Spawn That uses the name of the location (or in case of dungeons/camps, rooms) and the prefab name that it is set to spawn.</p>
+<p>This may result in each configuration affecting multiple spawners. Taking the example of the boar runestones, when we modify the spawner <code>[Runestone_Boars.Boar]</code>, the configuration affects all the boar spawners, and not just one of them.</p>
+<h2 id="identify-what-to-modify">Identify what to modify</h2>
+<p>To start with, we need to figure out which spawners exist, so we can select which to modify.</p>
+<ol>
+<li><p>To start with, find the <code>spawn_that.cfg</code> file in the BepInEx/config folder. If it doesn&#39;t exist yet, run the game to have it generate.</p>
+</li>
+<li><p>Set <code>WriteSpawnTablesToFileBeforeChanges</code> under <code>LocalSpawners</code> to <code>true</code>, to tell Spawn That to create a file extracting local spawners after entering a game.</p>
+<p> <img src="https://user-images.githubusercontent.com/16554392/189235054-05e53a0c-930f-41d7-842f-35b74bc42c47.png" alt="image"></p>
+</li>
+<li><p>Run the game, and enter a world.</p>
+</li>
+<li><p>Check the BepInEx/Debug folder, for a file called either <code>spawn_that.local_spawners_dungeons_pre_changes.txt</code> or <code>spawn_that.local_spawners_pre_changes.txt</code>. If you can&#39;t find it, check your logs. There should be a line describing what files are being created and where.</p>
+</li>
+<li><p>Open it up, and find the local spawner entry that you want to change.</p>
+<p> <img src="https://user-images.githubusercontent.com/16554392/189235500-bcd16ad7-3a63-48be-9866-6ae2ec691c0e.png" alt="image">
+ <img src="https://user-images.githubusercontent.com/16554392/189235586-cad6b268-cf77-4355-aabe-b8b97ea68bfd.png" alt="image"></p>
+</li>
+</ol>
+<h2 id="modifying-the-spawner">Modifying the spawner</h2>
+<p>Lets pick the <code>[Runestone_Boars.Boar]</code> to modify.</p>
+<ol>
+<li>Go to your <code>BepInEx/Configs</code> folder.</li>
+<li>Open the <code>spawn_that.local_spawners_advanced.cfg</code>.</li>
+<li>Add the following to the end of it.</li>
+</ol>
+<pre><code class="lang-toml">[Runestone_Boars.Boar]
+PrefabName = Troll
+</code></pre><p>This will make all boar runestones spawn trolls instead of boars. But only if they haven&#39;t already spawned a creature once (Valheim treats the <code>RespawnTime=0</code> as the spawner should only spawn the prefab a single time).</p>
+<p>Lets make things a bit more dangerous. Lets add in respawning to every 10 minutes, change the faction so that the trolls will fight creatures in meadows, and increase the level up chance.</p>
+<pre><code class="lang-toml">[Runestone_Boars.Boar]
+PrefabName = Troll
+RespawnTime = 10
+SetFaction = Undead
+LevelUpChance = 30
+</code></pre><p>The final file should now look like this:</p>
+<p><img src="https://user-images.githubusercontent.com/16554392/189237850-31c1897f-5126-4d02-86b8-3cc93e3301a0.png" alt="image"></p>
+<p>(If you don&#39;t have the green text above, don&#39;t worry. Its just auto-generated comments that gets added when the file is first generated in newer versions of Spawn That, it does nothing)</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If we want to verify that our modifications worked, an easy way is to increase the respawn time.
+Setting it to a very low number, combined with a devcommand for killing all nearby creatures, usually help with identifying if the config is taking effect.</p>
+<p>Eg.</p>
+<pre><code class="lang-toml">RespawnTime = 0.001
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/development/src/SpawnThat.Docs/configs/tutorials/modifying-vanilla-local-spawner.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <h5>In This Article</h5>
+              <div></div>
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <div class="pull-left">
+              
+              <span>Generated by <strong>DocFX</strong></span>
+            </div>
+            <div class="toggle-mode pull-right visible-sm visible-xs">
+              <div class="icon">
+                <i aria-hidden="true">☀</i>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="switch-style-m">
+                <span class="slider round"></span>
+              </label>
+              <div class="icon">
+                <i aria-hidden="true">☾</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="../../styles/toggle-theme.js"></script>
+      </footer>    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
