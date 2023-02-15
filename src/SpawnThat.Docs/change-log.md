@@ -1,4 +1,8 @@
 # Changelog
+- v1.2.2:
+	- Compatibility: Epic Loot v0.9.5.
+- v1.2.1:
+	- Compatibility: Allowing `:`  in section headers for compatibility with Expand World.
 - v1.2.0:
 	- World Spawner: Fixed LevelUpChance only being properly applied to new entries.
 	- SpawnArea: Fixed modifiers not being applied properly.

@@ -1,5 +1,4 @@
 ﻿using EpicLoot;
-using ExtendedItemDataFramework;
 using System.Collections.Generic;
 using System.Linq;
 using SpawnThat.Spawners.Contexts;
@@ -58,21 +57,10 @@ public class ConditionNearbyPlayerCarryLegendaryItem : ISpawnCondition
 
             var items = player.GetInventory()?.GetAllItems() ?? new(0);
 
-            if (items.Any(
-                x =>
-                {
-                    var magicComponent = x?.Extended()?.GetComponent<MagicItemComponent>();
-
-                    if (magicComponent is null)
-                    {
-                        return false;
-                    }
-
-                    return LegendaryIds.Contains(magicComponent.MagicItem.LegendaryID?.Trim()?.ToUpperInvariant());
-                }))
-            {
-                return true;
-            }
+            return items.Any(x =>
+                x.IsMagic(out var magicItem) &&
+                !string.IsNullOrWhiteSpace(magicItem.LegendaryID) &&
+                LegendaryIds.Contains(magicItem.LegendaryID.Trim().ToUpperInvariant()));
         }
 
         return false;
