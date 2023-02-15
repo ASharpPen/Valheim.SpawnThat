@@ -1,12 +1,5 @@
 - name: The Docs
-  dropdown: true
-  items:
-    - name: 1.1.0
-      href: file-configs/1.1.0/
-    - name: 1.0.0
-      href: file-configs/1.0.0/
-    - name: 0.11.6
-      href: file-configs/0.11.6/
+  href: configs/
 
 - name: API Documentation
   href: api/

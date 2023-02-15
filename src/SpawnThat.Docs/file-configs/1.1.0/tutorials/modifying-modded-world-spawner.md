@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # Tutorial - Modifying a modded world spawn
 
 This tutorial will show how to modify an existing world spawner entry, added by another mod.

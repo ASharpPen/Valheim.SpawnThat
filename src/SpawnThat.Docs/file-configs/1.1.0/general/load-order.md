@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # Config Load Order
 
 Configurations for Spawn That is loaded every time a game is started, in the order

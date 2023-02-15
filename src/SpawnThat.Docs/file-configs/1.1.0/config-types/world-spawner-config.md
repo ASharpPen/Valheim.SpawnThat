@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # World Spawner Config
 
 World spawner templates are managed through the `spawn_that.world_spawners_advanced.cfg` file.

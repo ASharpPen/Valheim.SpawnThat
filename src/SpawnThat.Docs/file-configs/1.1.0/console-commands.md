@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 Additional console commands are added for debugging purposes.
 
 - `spawnthat room` prints if in a dungeon room and which one
