@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # Tutorial - Making a hierarchy of configs for a SpawnArea spawner
 
 This tutorial will describe how to have multiple configs for SpawnArea spawners, to handle general changes, as well as specific ones at the same time.

@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # Overview
 
 Spawn That works off 5 different types of configuration files.

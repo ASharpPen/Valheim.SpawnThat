@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # World Spawner - Simple Config
 
 All of this might be more complicated than what you need or want. Therefore, `spawn_that.simple.cfg` exists to provide simpler modifiers to world spawner mobs.

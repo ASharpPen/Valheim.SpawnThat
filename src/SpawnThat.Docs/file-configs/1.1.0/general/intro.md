@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # Spawn That! 
 
 This is an advanced tool for configuring all world spawners.
