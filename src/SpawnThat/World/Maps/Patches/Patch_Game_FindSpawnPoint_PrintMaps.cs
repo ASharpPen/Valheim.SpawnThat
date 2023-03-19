@@ -7,6 +7,7 @@ using SpawnThat.Spawners.WorldSpawner.Services;
 using SpawnThat.World.Maps.Area;
 using System;
 using SpawnThat.Core;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 
 namespace SpawnThat.World.Maps.Patches;
 
@@ -53,28 +54,14 @@ internal class Patch_Game_FindSpawnPoint_PrintMaps
 
             if (ConfigurationManager.GeneralConfig?.PrintFantasticBeastsAndWhereToKillThem?.Value == true)
             {
-                // TODO: Base on WorldSpawnerConfigurationCollection instead.
-
-                //SpawnSystem config is only expected to have a single first layer, namely "WorldSpawner", so we just grab the first entry.
-                var spawnSystemConfigs = SpawnSystemConfigurationManager
-                    .SpawnSystemConfig?
-                    .Subsections? //[*]
-                    .Values?
-                    .FirstOrDefault();
-
-                if (spawnSystemConfigs?.Subsections is null)
+                foreach (var config in WorldSpawnTemplateManager.GetTemplates())
                 {
-                    return;
-                }
-
-                foreach (var config in spawnSystemConfigs.Subsections.Values)
-                {
-                    if (!(config.Enabled.Value ?? config.Enabled.DefaultValue.Value))
+                    if (!(config.template.Enabled))
                     {
                         continue;
                     }
 
-                    var spawnMap = WorldSpawnerSpawnMapService.GetMapOfTemplatesActiveAreas(config.Index);
+                    var spawnMap = WorldSpawnerSpawnMapService.GetMapOfTemplatesActiveAreas(config.id);
 
                     if (spawnMap is null)
                     {
@@ -84,7 +71,7 @@ internal class Patch_Game_FindSpawnPoint_PrintMaps
                     ImageBuilder
                         .SetGrayscaleBiomes(MapManager.AreaMap)
                         .AddHeatZones(spawnMap)
-                        .Print($"spawn_map_{config.Index}_{config.PrefabName.Value}");
+                        .Print($"spawn_map_{config.id}_{config.template.PrefabName ?? config.template.TemplateName ?? string.Empty}");
                 }
             }
         }
