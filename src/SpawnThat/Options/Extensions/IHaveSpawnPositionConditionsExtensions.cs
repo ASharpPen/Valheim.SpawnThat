@@ -99,7 +99,7 @@ public static class IHaveSpawnPositionConditionsExtensions
     public static T ConditionPositionMustBeNearAllPrefabs<T>(this T builder, IEnumerable<string> prefabNames, int? distance)
         where T : IHaveSpawnPositionConditions
     {
-        builder.SetPositionCondition(new PositionConditionMustBeNearAllPrefabs(prefabNames.ToList(), distance));
+        builder.SetPositionCondition(new PositionConditionMustBeNearAllPrefabs(prefabNames?.ToList() ?? new(), distance));
         return builder;
     }
 
@@ -111,7 +111,7 @@ public static class IHaveSpawnPositionConditionsExtensions
     public static T ConditionPositionMustBeNearPrefab<T>(this T builder, IEnumerable<string> prefabNames, int? distance)
         where T : IHaveSpawnPositionConditions
     {
-        builder.SetPositionCondition(new PositionConditionMustBeNearPrefabs(prefabNames.ToList(), distance));
+        builder.SetPositionCondition(new PositionConditionMustBeNearPrefabs(prefabNames?.ToList() ?? new(), distance));
         return builder;
     }
 
@@ -124,7 +124,7 @@ public static class IHaveSpawnPositionConditionsExtensions
     public static T ConditionPositionMustNotBeNearPrefab<T>(this T builder, IEnumerable<string> prefabNames, int? distance)
         where T : IHaveSpawnPositionConditions
     {
-        builder.SetPositionCondition(new PositionConditionMustNotBeNearPrefabs(prefabNames.ToList(), distance));
+        builder.SetPositionCondition(new PositionConditionMustNotBeNearPrefabs(prefabNames?.ToList() ?? new(), distance));
         return builder;
     }
 }
