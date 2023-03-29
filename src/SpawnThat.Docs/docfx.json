@@ -23,6 +23,8 @@
           "api/**.md",
           "api/**.yml",
           "articles/**.md",
+          "configs/**.md",
+          "configs/**.yml",
           "file-configs/**/*.md",
           "file-configs/**/*.yml",
           "toc.yml",
@@ -60,6 +62,7 @@
     "dest": "../../docs",
     "template": [
       "default",
+      "templates/custom",
       "templates/darkfx"
     ]
   }

@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # Tutorial - Modifying a local spawner
 
 This tutorial will describe how to modify a local spawner.

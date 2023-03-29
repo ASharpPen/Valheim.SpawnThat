@@ -31,7 +31,7 @@ public static class IWorldSpawnBuilderPositionConditionExtensions
     /// <param name="distance">Distance from spawn position to search for prefabs.</param>
     public static IWorldSpawnBuilder ConditionPositionMustBeNearAllPrefabs(this IWorldSpawnBuilder builder, IEnumerable<string> prefabNames, int? distance)
     {
-        builder.SetPositionCondition(new PositionConditionMustBeNearAllPrefabs(prefabNames.ToList(), distance));
+        builder.SetPositionCondition(new PositionConditionMustBeNearAllPrefabs(prefabNames?.ToList() ?? new(), distance));
         return builder;
     }
 
@@ -42,7 +42,7 @@ public static class IWorldSpawnBuilderPositionConditionExtensions
     /// <param name="distance">Distance from spawn position to search for prefabs.</param>
     public static IWorldSpawnBuilder ConditionPositionMustBeNearPrefab(this IWorldSpawnBuilder builder, IEnumerable<string> prefabNames, int? distance)
     {
-        builder.SetPositionCondition(new PositionConditionMustBeNearPrefabs(prefabNames.ToList(), distance));
+        builder.SetPositionCondition(new PositionConditionMustBeNearPrefabs(prefabNames?.ToList() ?? new(), distance));
         return builder;
     }
 
@@ -54,7 +54,7 @@ public static class IWorldSpawnBuilderPositionConditionExtensions
     /// <param name="distance">Distance from spawn position to search for prefabs.</param>
     public static IWorldSpawnBuilder ConditionPositionMustNotBeNearPrefab(this IWorldSpawnBuilder builder, IEnumerable<string> prefabNames, int? distance)
     {
-        builder.SetPositionCondition(new PositionConditionMustNotBeNearPrefabs(prefabNames.ToList(), distance));
+        builder.SetPositionCondition(new PositionConditionMustNotBeNearPrefabs(prefabNames?.ToList() ?? new(), distance));
         return builder;
     }
 }

@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # Local Spawner Config
 
 Local spawner templates are managed through the `spawn_that.local_spawners_advanced.cfg` file.

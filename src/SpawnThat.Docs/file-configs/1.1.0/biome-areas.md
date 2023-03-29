@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # Biome Areas
 
 Introduced in v0.11.0, the world map is now scanned on world start and connected biomes grouped up.

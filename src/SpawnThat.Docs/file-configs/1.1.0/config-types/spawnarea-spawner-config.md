@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # SpawnArea Spawner Config
 
 SpawnArea spawner templates are managed through the `spawn_that.spawnarea_spawners.cfg` file.

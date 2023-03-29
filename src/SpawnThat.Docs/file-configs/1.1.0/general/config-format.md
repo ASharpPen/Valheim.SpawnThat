@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # Config Format
 
 All `.cfg` from Spawn That (apart from `spawn_that.cfg`) are loaded using a custom parser.

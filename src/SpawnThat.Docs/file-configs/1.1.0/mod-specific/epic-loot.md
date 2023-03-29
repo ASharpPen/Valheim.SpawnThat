@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # Epic Loot Integration
 
 Additional options for [Epic Loot](https://valheim.thunderstore.io/package/RandyKnapp/EpicLoot/).

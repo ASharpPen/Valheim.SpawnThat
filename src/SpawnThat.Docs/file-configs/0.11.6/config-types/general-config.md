@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.md) ⚠️
+
+----
+
 # General Config
 
 General configuration options.

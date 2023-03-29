@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # MobAILib Integration
 
 Options for setting [MobAILib](https://www.nexusmods.com/valheim/mods/1188) ai's and configuration. See the mod page for more in-depth documentation of the options. By default, only the built-in AI's will be available, but should support any customly registered by other mods.

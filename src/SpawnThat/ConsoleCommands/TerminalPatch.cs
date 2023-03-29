@@ -190,7 +190,7 @@ internal static class TerminalPatch
         ImageBuilder
            .SetGrayscaleBiomes(MapManager.AreaMap)
            .AddHeatZones(spawnMap)
-           .Print($"spawn_map_{templateIndex}_{template.PrefabName}");
+           .Print($"spawn_map_{templateIndex}_{template.PrefabName ?? template.TemplateName ?? string.Empty}");
 
         var debugFolder = Path.Combine(Paths.BepInExRootPath, ConfigurationManager.GeneralConfig?.DebugFileFolder?.Value ?? "Debug");
 

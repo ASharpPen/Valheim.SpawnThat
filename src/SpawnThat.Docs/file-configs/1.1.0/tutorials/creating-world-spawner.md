@@ -1,3 +1,9 @@
+----
+
+⚠️ This is an archived version of the documentation. Find the latest version [here](/configs/general/intro.html) ⚠️
+
+----
+
 # Tutorial - Creating a new world spawn
 
 This tutorial will show how to make a new creature naturally spawn in the world.
