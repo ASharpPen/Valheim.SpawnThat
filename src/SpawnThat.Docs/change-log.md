@@ -1,4 +1,8 @@
 # Changelog
+- v1.2.3:
+	- Fixed error for prefab nearness position conditions (eg., MustBeNearAllPrefabs) when condition was empty in config file.
+	- Fixed PrintFantasticBeastsAndWhereToKillThem only printing maps for spawns in file configs. Should now correctly pick up spawns added by API.
+	- Fixed null-reference error while generating spawn biome maps.
 - v1.2.2:
 	- Compatibility: Epic Loot v0.9.5.
 - v1.2.1:
