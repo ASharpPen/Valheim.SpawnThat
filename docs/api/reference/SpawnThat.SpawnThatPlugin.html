@@ -195,7 +195,13 @@
       <span class="xref">UnityEngine.Component.GetComponentsInChildren&lt;T&gt;(System.Collections.Generic.List&lt;T&gt;)</span>
     </div>
     <div>
+      <span class="xref">UnityEngine.Component.GetComponentInParent(System.Type, System.Boolean)</span>
+    </div>
+    <div>
       <span class="xref">UnityEngine.Component.GetComponentInParent(System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">UnityEngine.Component.GetComponentInParent&lt;T&gt;(System.Boolean)</span>
     </div>
     <div>
       <span class="xref">UnityEngine.Component.GetComponentInParent&lt;T&gt;()</span>
@@ -333,6 +339,12 @@
       <span class="xref">UnityEngine.Object.FindObjectsOfType(System.Type, System.Boolean)</span>
     </div>
     <div>
+      <span class="xref">UnityEngine.Object.FindObjectsByType(System.Type, UnityEngine.FindObjectsSortMode)</span>
+    </div>
+    <div>
+      <span class="xref">UnityEngine.Object.FindObjectsByType(System.Type, UnityEngine.FindObjectsInactive, UnityEngine.FindObjectsSortMode)</span>
+    </div>
+    <div>
       <span class="xref">UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)</span>
     </div>
     <div>
@@ -351,7 +363,13 @@
       <span class="xref">UnityEngine.Object.FindObjectsOfType&lt;T&gt;()</span>
     </div>
     <div>
+      <span class="xref">UnityEngine.Object.FindObjectsByType&lt;T&gt;(UnityEngine.FindObjectsSortMode)</span>
+    </div>
+    <div>
       <span class="xref">UnityEngine.Object.FindObjectsOfType&lt;T&gt;(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">UnityEngine.Object.FindObjectsByType&lt;T&gt;(UnityEngine.FindObjectsInactive, UnityEngine.FindObjectsSortMode)</span>
     </div>
     <div>
       <span class="xref">UnityEngine.Object.FindObjectOfType&lt;T&gt;()</span>
@@ -360,13 +378,37 @@
       <span class="xref">UnityEngine.Object.FindObjectOfType&lt;T&gt;(System.Boolean)</span>
     </div>
     <div>
+      <span class="xref">UnityEngine.Object.FindFirstObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">UnityEngine.Object.FindAnyObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">UnityEngine.Object.FindFirstObjectByType&lt;T&gt;(UnityEngine.FindObjectsInactive)</span>
+    </div>
+    <div>
+      <span class="xref">UnityEngine.Object.FindAnyObjectByType&lt;T&gt;(UnityEngine.FindObjectsInactive)</span>
+    </div>
+    <div>
       <span class="xref">UnityEngine.Object.FindObjectsOfTypeAll(System.Type)</span>
     </div>
     <div>
       <span class="xref">UnityEngine.Object.FindObjectOfType(System.Type)</span>
     </div>
     <div>
+      <span class="xref">UnityEngine.Object.FindFirstObjectByType(System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">UnityEngine.Object.FindAnyObjectByType(System.Type)</span>
+    </div>
+    <div>
       <span class="xref">UnityEngine.Object.FindObjectOfType(System.Type, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">UnityEngine.Object.FindFirstObjectByType(System.Type, UnityEngine.FindObjectsInactive)</span>
+    </div>
+    <div>
+      <span class="xref">UnityEngine.Object.FindAnyObjectByType(System.Type, UnityEngine.FindObjectsInactive)</span>
     </div>
     <div>
       <span class="xref">UnityEngine.Object.ToString()</span>
@@ -385,7 +427,7 @@
     <pre><code class="lang-csharp hljs">[BepInDependency(&quot;RagnarsRokare.MobAILib&quot;, BepInDependency.DependencyFlags.SoftDependency)]
 [BepInDependency(&quot;org.bepinex.plugins.creaturelevelcontrol&quot;, BepInDependency.DependencyFlags.SoftDependency)]
 [BepInDependency(&quot;randyknapp.mods.epicloot&quot;, BepInDependency.DependencyFlags.SoftDependency)]
-[BepInPlugin(&quot;asharppen.valheim.spawn_that&quot;, &quot;Spawn That!&quot;, &quot;1.2.3&quot;)]
+[BepInPlugin(&quot;asharppen.valheim.spawn_that&quot;, &quot;Spawn That!&quot;, &quot;1.2.4&quot;)]
 public class SpawnThatPlugin : BaseUnityPlugin</code></pre>
   </div>
   <h3 id="fields">Fields
@@ -460,7 +502,7 @@ public class SpawnThatPlugin : BaseUnityPlugin</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string Version = &quot;1.2.3&quot;</code></pre>
+    <pre><code class="lang-csharp hljs">public const string Version = &quot;1.2.4&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
