@@ -114,6 +114,8 @@ If you feel like it
 <a href="https://www.buymeacoffee.com/asharppen"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=asharppen&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 # Changelog: 
+- v1.2.4:
+	- Fixed: Compatibility with Valheim v0.215.2.
 - v1.2.3:
 	- Fixed error for prefab nearness position conditions (eg., MustBeNearAllPrefabs) when condition was empty in config file.
 	- Fixed PrintFantasticBeastsAndWhereToKillThem only printing maps for spawns in file configs. Should now correctly pick up spawns added by API.
