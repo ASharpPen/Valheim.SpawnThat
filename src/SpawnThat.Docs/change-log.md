@@ -1,4 +1,6 @@
 # Changelog
+- v1.2.4:
+	- Fixed: Compatibility with Valheim v0.215.2.
 - v1.2.3:
 	- Fixed error for prefab nearness position conditions (eg., MustBeNearAllPrefabs) when condition was empty in config file.
 	- Fixed PrintFantasticBeastsAndWhereToKillThem only printing maps for spawns in file configs. Should now correctly pick up spawns added by API.
