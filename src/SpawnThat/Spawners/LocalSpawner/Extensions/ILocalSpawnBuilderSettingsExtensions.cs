@@ -11,7 +11,7 @@ public static class ILocalSpawnBuilderSettingsExtensions
         settings.SpawnInterval.SetNullable(builder.SetSpawnInterval);
         settings.MinLevel.Set(builder.SetMinLevel);
         settings.MaxLevel.Set(builder.SetMaxLevel);
-        settings.SpawnDuringNight.Set(builder.SetSpawnDuringDay);
+        settings.SpawnDuringDay.Set(builder.SetSpawnDuringDay);
         settings.SpawnDuringNight.Set(builder.SetSpawnDuringNight);
         settings.SpawnInPlayerBase.Set(builder.SetSpawnInPlayerBase);
         settings.SetPatrolSpawn.Set(builder.SetPatrolSpawn);
