@@ -29,21 +29,10 @@ internal static class EnumExtensions
 
     public static List<Heightmap.Biome> Split(this Heightmap.Biome biomeMask)
     {
-        // Handle edge case of BiomesMax.
-        if (biomeMask == Heightmap.Biome.BiomesMax)
-        {
-            return new() { Heightmap.Biome.Meadows, Heightmap.Biome.Mistlands };
-        }
-
         List<Heightmap.Biome> result = new List<Heightmap.Biome>();
 
         foreach (Heightmap.Biome value in Enum.GetValues(typeof(Heightmap.Biome)))
         {
-            if (value == Heightmap.Biome.BiomesMax)
-            {
-                continue;
-            }
-
             if ((biomeMask & value) > 0)
             {
                 result.Add(value);

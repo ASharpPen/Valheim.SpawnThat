@@ -1,4 +1,6 @@
 # Changelog: 
+- v1.2.6:
+	- Fixed: Compatibility for Valheim v0.216.9
 - v1.2.5:
 	- Local Spawner: Fixed day-night conditions being swapped.
 - v1.2.4:
