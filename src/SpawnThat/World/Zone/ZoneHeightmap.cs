@@ -2,6 +2,7 @@
 using SpawnThat.Utilities.Extensions;
 using static Heightmap;
 using SpawnThat.World.Zone;
+using System.Linq;
 
 namespace SpawnThat.World;
 
@@ -23,7 +24,7 @@ internal class ZoneHeightmap : IZone
 
         Width = heightmap.m_width;
         Biome = heightmap.GetBiome(ZonePos);
-        BiomeCorners = heightmap.GetBiomes().ToArray();
+        BiomeCorners = heightmap.m_cornerBiomes.ToArray();
         BiomeArea = heightmap.GetBiomeArea();
     }
 
