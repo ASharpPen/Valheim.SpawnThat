@@ -108,8 +108,8 @@ HuntPlayer = true
 | ConditionAltitudeMax | float | -1000 | 123 | Maximum altitude (distance to water surface) to spawn at |
 | ConditionTiltMin | float | 0 | 120 | Minimum tilt of terrain surface to spawn at |
 | ConditionTiltMax | float | 35 | 45 | Maximum tilt of terrain surface to spawn at |
-| ConditionDistanceToCenterMin | float | 0 | 1000 | Minimum distance to center to spawn |
-| ConditionDistanceToCenterMax | float | 0 | 5000 | Maximum distance to center to spawn. 0 means limitless |
+| ConditionDistanceToCenterMin | float | 0 | 1000 | Minimum distance to world center to spawn |
+| ConditionDistanceToCenterMax | float | 0 | 5000 | Maximum distance to world center to spawn. 0 means limitless |
 | ConditionWorldAgeDaysMin | float | 0 | 12 | Minimum world age in in-game days to spawn |
 | ConditionWorldAgeDaysMax | float | 0 | 35 | Maximum world age in in-game days. 0 means no max |
 | DistanceToTriggerPlayerConditions | float | 100 | 55 | Distance of player to spawner, for player to be included in player based checks such as ConditionNearbyPlayersCarryValue |
