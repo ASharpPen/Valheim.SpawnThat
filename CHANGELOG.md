@@ -1,4 +1,7 @@
 # Changelog: 
+- v1.2.7:
+	- Fixed: SetFaction was only applying the faction on creature spawn, it now correctly re-applies on creature load.
+	- API: Updated GlobalKey enum with new known keys.
 - v1.2.6:
 	- Fixed: Compatibility for Valheim v0.216.9
 - v1.2.5:

@@ -17,9 +17,16 @@
 - defeated_dragon
 - defeated_goblinking
 - defeated_queen
+- defeated_hive
 - KilledTroll
 - killed_surtling
 - KilledBat
+- hildir1
+- hildir2
+- hildir3
+- BossHildir1
+- BossHildir2
+- BossHildir3
 
 Additional keys can be created manually through console commands or by other mods.
 
