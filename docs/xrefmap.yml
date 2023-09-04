@@ -9218,6 +9218,24 @@ references:
   commentId: F:SpawnThat.Utilities.Enums.GlobalKey.Bonemass
   fullName: SpawnThat.Utilities.Enums.GlobalKey.Bonemass
   nameWithType: GlobalKey.Bonemass
+- uid: SpawnThat.Utilities.Enums.GlobalKey.BossHildir1
+  name: BossHildir1
+  href: api/reference/SpawnThat.Utilities.Enums.GlobalKey.html#SpawnThat_Utilities_Enums_GlobalKey_BossHildir1
+  commentId: F:SpawnThat.Utilities.Enums.GlobalKey.BossHildir1
+  fullName: SpawnThat.Utilities.Enums.GlobalKey.BossHildir1
+  nameWithType: GlobalKey.BossHildir1
+- uid: SpawnThat.Utilities.Enums.GlobalKey.BossHildir2
+  name: BossHildir2
+  href: api/reference/SpawnThat.Utilities.Enums.GlobalKey.html#SpawnThat_Utilities_Enums_GlobalKey_BossHildir2
+  commentId: F:SpawnThat.Utilities.Enums.GlobalKey.BossHildir2
+  fullName: SpawnThat.Utilities.Enums.GlobalKey.BossHildir2
+  nameWithType: GlobalKey.BossHildir2
+- uid: SpawnThat.Utilities.Enums.GlobalKey.BossHildir3
+  name: BossHildir3
+  href: api/reference/SpawnThat.Utilities.Enums.GlobalKey.html#SpawnThat_Utilities_Enums_GlobalKey_BossHildir3
+  commentId: F:SpawnThat.Utilities.Enums.GlobalKey.BossHildir3
+  fullName: SpawnThat.Utilities.Enums.GlobalKey.BossHildir3
+  nameWithType: GlobalKey.BossHildir3
 - uid: SpawnThat.Utilities.Enums.GlobalKey.Eikthyr
   name: Eikthyr
   href: api/reference/SpawnThat.Utilities.Enums.GlobalKey.html#SpawnThat_Utilities_Enums_GlobalKey_Eikthyr
@@ -9230,12 +9248,42 @@ references:
   commentId: F:SpawnThat.Utilities.Enums.GlobalKey.Elder
   fullName: SpawnThat.Utilities.Enums.GlobalKey.Elder
   nameWithType: GlobalKey.Elder
+- uid: SpawnThat.Utilities.Enums.GlobalKey.Hildir1
+  name: Hildir1
+  href: api/reference/SpawnThat.Utilities.Enums.GlobalKey.html#SpawnThat_Utilities_Enums_GlobalKey_Hildir1
+  commentId: F:SpawnThat.Utilities.Enums.GlobalKey.Hildir1
+  fullName: SpawnThat.Utilities.Enums.GlobalKey.Hildir1
+  nameWithType: GlobalKey.Hildir1
+- uid: SpawnThat.Utilities.Enums.GlobalKey.Hildir2
+  name: Hildir2
+  href: api/reference/SpawnThat.Utilities.Enums.GlobalKey.html#SpawnThat_Utilities_Enums_GlobalKey_Hildir2
+  commentId: F:SpawnThat.Utilities.Enums.GlobalKey.Hildir2
+  fullName: SpawnThat.Utilities.Enums.GlobalKey.Hildir2
+  nameWithType: GlobalKey.Hildir2
+- uid: SpawnThat.Utilities.Enums.GlobalKey.Hildir3
+  name: Hildir3
+  href: api/reference/SpawnThat.Utilities.Enums.GlobalKey.html#SpawnThat_Utilities_Enums_GlobalKey_Hildir3
+  commentId: F:SpawnThat.Utilities.Enums.GlobalKey.Hildir3
+  fullName: SpawnThat.Utilities.Enums.GlobalKey.Hildir3
+  nameWithType: GlobalKey.Hildir3
+- uid: SpawnThat.Utilities.Enums.GlobalKey.Hive
+  name: Hive
+  href: api/reference/SpawnThat.Utilities.Enums.GlobalKey.html#SpawnThat_Utilities_Enums_GlobalKey_Hive
+  commentId: F:SpawnThat.Utilities.Enums.GlobalKey.Hive
+  fullName: SpawnThat.Utilities.Enums.GlobalKey.Hive
+  nameWithType: GlobalKey.Hive
 - uid: SpawnThat.Utilities.Enums.GlobalKey.Moder
   name: Moder
   href: api/reference/SpawnThat.Utilities.Enums.GlobalKey.html#SpawnThat_Utilities_Enums_GlobalKey_Moder
   commentId: F:SpawnThat.Utilities.Enums.GlobalKey.Moder
   fullName: SpawnThat.Utilities.Enums.GlobalKey.Moder
   nameWithType: GlobalKey.Moder
+- uid: SpawnThat.Utilities.Enums.GlobalKey.Queen
+  name: Queen
+  href: api/reference/SpawnThat.Utilities.Enums.GlobalKey.html#SpawnThat_Utilities_Enums_GlobalKey_Queen
+  commentId: F:SpawnThat.Utilities.Enums.GlobalKey.Queen
+  fullName: SpawnThat.Utilities.Enums.GlobalKey.Queen
+  nameWithType: GlobalKey.Queen
 - uid: SpawnThat.Utilities.Enums.GlobalKey.Surtling
   name: Surtling
   href: api/reference/SpawnThat.Utilities.Enums.GlobalKey.html#SpawnThat_Utilities_Enums_GlobalKey_Surtling

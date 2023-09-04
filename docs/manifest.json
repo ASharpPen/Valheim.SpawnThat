@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "change-log.html",
-          "hash": "/QYvBgpek5VPN2wQUFvGLCcSFMaKXHjesbW2rJ8EI8I="
+          "hash": "v81bwpmzhnOMRcEmdWEWjAUs9siInEVpdYgKPGrgU38="
         }
       },
       "is_incremental": false,
@@ -84,7 +84,7 @@
           "hash": "n7NfieGVg6XrAJhp5pZo2bO5DfiMBJJo4sy78bMwl1w="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -93,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "configs/config-types/world-spawner-config.html",
-          "hash": "BLwuqoNCf2QkQfefHu5AqsMwgwxmqXK0nNqiHP/rJgA="
+          "hash": "O1HU/x98qnjpVvTMvU4FjT9VFVnMo1CUFTKycNmpwqM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -129,10 +129,10 @@
       "output": {
         ".html": {
           "relative_path": "configs/data/local-spawner-location-vanilla.html",
-          "hash": "0/Gxds+QICiG2EG7g2uFJ9l96yxzLnJYHNRMi27NLJE="
+          "hash": "xEThMLMQ3dYR5q/FtfwyNOTOKFbIwm5lW9MxmCmXUeA="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -141,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "configs/data/local-spawner-room-vanilla.html",
-          "hash": "vm29Z0/ZD52w7JGxC2D3HOscQumjSm/86BKq+5S+sw8="
+          "hash": "/+gS/kIx4aGVwOw3ays4mGyuiC0h+2V1tHogKEpgsU0="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -153,10 +153,10 @@
       "output": {
         ".html": {
           "relative_path": "configs/data/locations-by-biome.html",
-          "hash": "3Dfy2NtV55c2vnZ6gpxifjjtrWOrlGm1cPI8RIs3E6g="
+          "hash": "ZK+3u4tHYwfudLbvDxKIMzWKHaYkKR/6B4Gk0W9foXY="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -165,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "configs/data/spawnarea-spawner-vanilla.html",
-          "hash": "VZHf7d5tRHTvGna++u7s4sdpxjpAUJDbmitjJRsTd8o="
+          "hash": "FSaaJzH1tLF3Hm7RuSTObVHm2gkIdzeGzexdc896Pto="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -177,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "configs/data/world-spawner-vanilla.html",
-          "hash": "zZ++Cuf818jSVBGIBwHFk0lNXYbT7S5Z6WcqgdhFNtA="
+          "hash": "cLjJp8yD7A49LZq45dSQvJScYfpFSQ9VLQu+yWzP7qM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -189,10 +189,10 @@
       "output": {
         ".html": {
           "relative_path": "configs/field-options/field-options.html",
-          "hash": "Xc8SJeQoUOgS1A7f19NkXrHG1qae3CqeKb7xga8eO2Q="
+          "hash": "9t2AfnjlOKtdfqPhkaCt0uetugNlShS5knMgShb/4Zw="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -300,7 +300,7 @@
           "hash": "OsSa7VadWNIFWNeK60NPUHiT+r90LvnQB2IYgql5OjI="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -312,7 +312,7 @@
           "hash": "as9hgRYyguP2r46g+hkC6UbvQLH4qJEs2RMVQlxnjAA="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1809,7 +1809,7 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.SpawnThatPlugin.html",
-          "hash": "9trrnWBR1R+A549vbw9/kKz7Wr34596yEY8PT0nof0A="
+          "hash": "aTH/24ULE1WI1HvLJSD+banlBy3LlE1Dw+4sfZAWmK4="
         }
       },
       "is_incremental": false,
@@ -2244,7 +2244,7 @@
           "hash": "FwlPizNg97WbwxWNz8UeIyKTjY5KRX2MepiVMKDQgNc="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2364,7 +2364,7 @@
           "hash": "Y8pMcuKapZrStZ/Lu10eP5a/Pqrd0aVcHm+QO12Kh2Y="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2445,10 +2445,10 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Utilities.Enums.GlobalKey.html",
-          "hash": "LF0FY+i06Dns/r+3/ybPSr8rjrsbeNO5oxJEvYwuD68="
+          "hash": "rncWZY5QucS0/1qdEL0kHsHiShvPFKNn7MvvLyMX6I8="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2457,10 +2457,10 @@
       "output": {
         ".html": {
           "relative_path": "api/reference/SpawnThat.Utilities.Enums.GlobalKeyExtensions.html",
-          "hash": "89U8D0uBahTP4mWbpeKgdeaUwpMffCdFjBS3M/L2Syo="
+          "hash": "9vWkcPsd2P7q9gxf8E7utjz95HxfvhtfErTm2Rxyof0="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2484,7 +2484,7 @@
           "hash": "ZOaOuF4bscgQjhQPelCJ2l2waFH1BDhgXCOsFPxgbtI="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2837,13 +2837,13 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 75,
-          "skipped_file_count": 74
+          "skipped_file_count": 67
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 154,
-          "skipped_file_count": 153
+          "skipped_file_count": 151
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
