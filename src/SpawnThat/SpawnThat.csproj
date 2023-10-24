@@ -62,7 +62,7 @@
     </Reference>
   </ItemGroup>
 
-	<Target Name="PropagateVersionNumber" BeforeTargets="Build" Condition="'$(Configuration)'=='Release'">
+	<Target Name="PropagateVersionNumber" BeforeTargets="Build">
 
 		<PropertyGroup>
 			<RepoDir>$([System.IO.Path]::GetFullPath($([System.IO.Path]::Combine($(MSBuildProjectDirectory),'..','..'))))</RepoDir>
