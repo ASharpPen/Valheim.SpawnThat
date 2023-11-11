@@ -111,6 +111,17 @@ internal static class WorldSpawnSessionManager
 #if DEBUG && VERBOSE
         Log.LogDebug("WorldSpawnSessionManager.AnyInRange");
 #endif
+        if (prefab.IsNull())
+        {
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(prefab.name))
+        {
+            Log.LogDebug($"Unable to count '{prefab}' during world spawner checks, due to object.name being empty.");
+            return false;
+        }
+
         try
         {
             var query = new ZdoPrefabQuery(center, radius);
@@ -130,6 +141,17 @@ internal static class WorldSpawnSessionManager
 #if DEBUG && VERBOSE
         Log.LogDebug("WorldSpawnSessionManager.CountEntitiesInArea");
 #endif
+        if (entityPrefab.IsNull())
+        {
+            return 0;
+        }
+
+        if (string.IsNullOrWhiteSpace(entityPrefab.name))
+        {
+            Log.LogDebug($"Unable to count '{entityPrefab}' during world spawner checks, due to object.name being empty.");
+            return 0;
+        }
+
         try
         {
             ZdoPrefabQuery query;

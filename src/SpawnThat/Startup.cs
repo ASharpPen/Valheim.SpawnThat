@@ -5,6 +5,7 @@ using SpawnThat.Spawners.SpawnAreaSpawner.Startup;
 using SpawnThat.Spawners.LocalSpawner.Startup;
 using SpawnThat.Spawners.WorldSpawner.Startup;
 using SpawnThat.World.Locations;
+using SpawnThat.ConsoleCommands;
 
 namespace SpawnThat;
 
@@ -20,6 +21,8 @@ internal static class Startup
         LifecycleManager.OnLateInit += InitConfiguration;
 
         ZoneSystemSyncSetup.Configure();
+
+        RegisterCommands();
     }
 
     private static void InitConfiguration()
@@ -29,5 +32,14 @@ internal static class Startup
         {
             SpawnerConfigurationManager.BuildConfigurations();
         }
+    }
+
+    private static void RegisterCommands()
+    {
+        AreaCommand.Register();
+        AreaRollCommand.Register();
+        AreaRollHeatmapCommand.Register();
+        RoomCommand.Register();
+        WhereDoesItSpawnCommand.Register();
     }
 }
