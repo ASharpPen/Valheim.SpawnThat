@@ -1,4 +1,6 @@
 # Changelog: 
+- v1.2.9:
+	- SpawnArea: Fixed SpawnInterval not being set correctly, sometimes causing intervals to be too quick.
 - v1.2.8:
 	- Changed console commands into proper terminal commands with autocompletion.
 	- Added soft-dependency for LocalizationCache, to help it get loaded earlier.

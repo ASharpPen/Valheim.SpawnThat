@@ -10,8 +10,10 @@ internal static class ConfigApplicationService
 {
     public static void ConfigureSpawner(SpawnArea spawner, SpawnAreaSpawnerTemplate spawnerTemplate)
     {
+        double spawnInterval = spawnerTemplate.SpawnInterval?.TotalSeconds ?? spawner.m_spawnIntervalSec;
+
         spawner.m_levelupChance = spawnerTemplate.LevelUpChance ?? spawner.m_levelupChance;
-        spawner.m_spawnIntervalSec = spawnerTemplate.SpawnInterval?.Seconds ?? spawner.m_spawnIntervalSec;
+        spawner.m_spawnIntervalSec = (float)spawnInterval;
         spawner.m_triggerDistance = spawnerTemplate.ConditionPlayerWithinDistance ?? spawner.m_triggerDistance;
         spawner.m_setPatrolSpawnPoint = spawnerTemplate.SetPatrol ?? spawner.m_setPatrolSpawnPoint;
         spawner.m_spawnRadius = spawnerTemplate.ConditionPlayerWithinDistance ?? spawner.m_spawnRadius;
