@@ -9,6 +9,7 @@ using SpawnThat.Core;
 using SpawnThat.Debugging;
 using SpawnThat.Spawners.LocalSpawner.Configuration.BepInEx;
 using SpawnThat.Utilities.Extensions;
+using UnityEngine;
 
 namespace SpawnThat.Spawners.LocalSpawner.Debug;
 
@@ -55,14 +56,19 @@ internal static class CreatureSpawnerLocationFileGenerator
         spawnersSerialized.Add($"");
 
         var orderedLocations = zoneLocations
+            .Where(x => x.m_enable)
             .OrderBy(x => x.m_biome)
             .ThenBy(x => x.m_prefabName);
 
-        foreach (var location in orderedLocations)
+        foreach (ZoneSystem.ZoneLocation location in orderedLocations)
         {
-            var locPrefab = location.m_prefab;
+            // Need to ensure the asset is actually loaded for us to read the m_prefab.
+            location.m_prefab.Load();
 
-            if (locPrefab is null)
+            GameObject locPrefab = location.m_prefab.Asset;
+
+
+            if (locPrefab.IsNull())
             {
                 continue;
             }
@@ -78,15 +84,20 @@ internal static class CreatureSpawnerLocationFileGenerator
                 foreach (var dungeon in dungeons)
                 {
                     //Find rooms and extract spawners
-                    var rooms = DungeonDB.GetRooms().Where(x => (x.m_room.m_theme & dungeon.m_themes) == x.m_room.m_theme).ToList();
-
-                    if (rooms.Count == 0)
-                    {
-                        //Log.LogDebug($"No rooms for {locPrefab.name}:{dungeon.name}");
-                    }
+                    var rooms = DungeonDB.GetRooms()
+                        .Select(x =>
+                        {
+                            // Need to ensure the asset is actually loaded for us to read the room.
+                            x.m_prefab.Load();
+                            return x.RoomInPrefab;
+                        })
+                        .Where(x => 
+                            x.IsNotNull() &&
+                            (x.m_theme & dungeon.m_themes) == x.m_theme)
+                        .ToList();
 
                     var roomSpawners = rooms
-                        .SelectMany(x => x.m_room.GetComponentsInChildren<CreatureSpawner>())
+                        .SelectMany(x => x.GetComponentsInChildren<CreatureSpawner>())
                         .Where(x => x.IsNotNull())
                         .ToList();
 
@@ -100,10 +111,6 @@ internal static class CreatureSpawnerLocationFileGenerator
                         {
                             spawners.AddRange(roomSpawners);
                         }
-                    }
-                    else
-                    {
-                        //Log.LogDebug($"No room spawners for {locPrefab.name}:{dungeon.name}");
                     }
                 }
             }

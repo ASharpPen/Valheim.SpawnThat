@@ -4,7 +4,7 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <AssemblyVersion></AssemblyVersion>
     <FileVersion></FileVersion>
-    <Version>1.2.8</Version>
+    <Version>1.2.10</Version>
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
     <AssemblyName>Valheim.SpawnThat</AssemblyName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -44,6 +44,9 @@
     </Reference>
     <Reference Include="MobAILib">
       <HintPath>..\Libs\RagnarsRokare-MobAILib\MobAILib.dll</HintPath>
+    </Reference>
+    <Reference Include="SoftReferenceableAssets">
+      <HintPath>..\Libs\Valheim\SoftReferenceableAssets.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\Libs\Unity\UnityEngine.dll</HintPath>
