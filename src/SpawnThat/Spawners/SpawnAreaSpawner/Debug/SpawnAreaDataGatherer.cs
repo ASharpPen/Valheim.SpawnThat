@@ -65,17 +65,21 @@ internal static class SpawnAreaDataGatherer
 
         // Gather locations and biomes
         var orderedLocations = ZoneSystem.instance.m_locations
+            .Where(x => x.m_enable)
             .OrderBy(x => x.m_biome)
             .ThenBy(x => x.m_prefabName);
 
         foreach (var location in orderedLocations)
         {
-            if (location.m_prefab.IsNull())
+            // Need to ensure the asset is actually loaded for us to read the m_prefab.
+            location.m_prefab.Load();
+
+            if (location.m_prefab.Asset.IsNull())
             {
                 continue;
             }
 
-            var spawners = location.m_prefab.GetComponentsInChildren<SpawnArea>();
+            var spawners = location.m_prefab.Asset.GetComponentsInChildren<SpawnArea>();
 
             foreach (var spawner in spawners)
             {
@@ -101,12 +105,15 @@ internal static class SpawnAreaDataGatherer
 
         foreach (var location in orderedLocations)
         {
-            if (location.m_prefab.IsNull())
+            // Need to ensure the asset is actually loaded for us to read the m_prefab.
+            location.m_prefab.Load();
+
+            if (location.m_prefab.Asset.IsNull())
             {
                 continue;
             }
 
-            var dungeons = location.m_prefab.GetComponentsInChildren<DungeonGenerator>();
+            var dungeons = location.m_prefab.Asset.GetComponentsInChildren<DungeonGenerator>();
 
             foreach (var dungeon in dungeons)
             {
@@ -143,12 +150,13 @@ internal static class SpawnAreaDataGatherer
         {
             var rooms = DungeonDB
                 .GetRooms()
-                .Where(x => x.m_room.m_theme == theme)
+                .Select(x => x.RoomInPrefab)
+                .Where(x => x.IsNotNull() && x.m_theme == theme)
                 .ToList();
 
             foreach (var room in rooms)
             {
-                var roomSpawners = room.m_room.GetComponentsInChildren<SpawnArea>();
+                var roomSpawners = room.GetComponentsInChildren<SpawnArea>();
 
                 foreach (var spawner in roomSpawners)
                 {
@@ -156,7 +164,7 @@ internal static class SpawnAreaDataGatherer
 
                     if (spawnAreaSpawners.TryGetValue(key, out var data))
                     {
-                        data.Rooms.Add(room.m_room.name);
+                        data.Rooms.Add(room.name);
 
                         if (biomesByTheme.TryGetValue(theme, out var biomes))
                         {

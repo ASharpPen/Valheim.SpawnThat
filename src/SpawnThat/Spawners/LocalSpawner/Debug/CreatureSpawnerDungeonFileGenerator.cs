@@ -74,7 +74,7 @@ internal static class CreatureSpawnerDungeonFileGenerator
         try
         {
             foreach (var room in rooms
-                .Select(x => x.m_room)
+                .Select(x => x.RoomInPrefab)
                 .OrderBy(x => x.m_theme)
                 .ThenBy(x => x.name))
             {
@@ -91,7 +91,8 @@ internal static class CreatureSpawnerDungeonFileGenerator
 #endif
 
         var orderedRooms = rooms
-            .Select(x => x.m_room)
+            .Select(x => x.RoomInPrefab)
+            .Where(x => x.IsNotNull())
             .OrderBy(x => x.m_theme)
             .ThenBy(x => x.name);
 
