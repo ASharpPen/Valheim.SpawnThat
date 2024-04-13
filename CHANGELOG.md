@@ -1,4 +1,6 @@
 # Changelog: 
+- v1.2.10:
+	- Compatibility: Valheim v0.217.46.
 - v1.2.9:
 	- SpawnArea: Fixed SpawnInterval not being set correctly, sometimes causing intervals to be too quick.
 - v1.2.8:
