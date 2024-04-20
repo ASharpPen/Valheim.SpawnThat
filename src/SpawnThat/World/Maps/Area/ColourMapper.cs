@@ -126,7 +126,6 @@ internal static class ColourMapper
             Heightmap.Biome.DeepNorth => (0, 255, 255),
             Heightmap.Biome.Ocean => (0, 0, 255),
             Heightmap.Biome.Mistlands => (128, 128, 128),
-            Heightmap.Biome.BiomesMax => (0, 0, 0),
             _ => (0, 0, 0)
         };
     }
@@ -145,7 +144,6 @@ internal static class ColourMapper
             Heightmap.Biome.DeepNorth => (0, 1, 1),
             Heightmap.Biome.Ocean => (0, 0, 1),
             Heightmap.Biome.Mistlands => (0.5f, 0.5f, 0.5f),
-            Heightmap.Biome.BiomesMax => (0, 0, 0),
             _ => (0, 0, 0)
         };
     }
@@ -164,7 +162,6 @@ internal static class ColourMapper
             Heightmap.Biome.DeepNorth => (240, 240, 240),
             Heightmap.Biome.Mistlands => (130, 130, 130),
             Heightmap.Biome.Ocean => (255, 255, 255),
-            Heightmap.Biome.BiomesMax => (255, 255, 255),
             _ => (255, 255, 255)
         };
     }

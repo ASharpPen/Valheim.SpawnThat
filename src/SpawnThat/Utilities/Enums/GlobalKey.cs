@@ -44,6 +44,46 @@ public enum GlobalKey
     /// KilledBat
     /// </summary>
     Bat,
+
+    /// <summary>
+    /// defeated_hive
+    /// </summary>
+    Hive,
+
+    /// <summary>
+    /// defeated_queen
+    /// </summary>
+    Queen,
+
+    /// <summary>
+    /// hildir1
+    /// </summary>
+    Hildir1,
+
+    /// <summary>
+    /// hildir2
+    /// </summary>
+    Hildir2,
+
+    /// <summary>
+    /// hildir3
+    /// </summary>
+    Hildir3,
+
+    /// <summary>
+    /// BossHildir1
+    /// </summary>
+    BossHildir1,
+
+    /// <summary>
+    /// BossHildir2
+    /// </summary>
+    BossHildir2,
+
+    /// <summary>
+    /// BossHildir3
+    /// </summary>
+    BossHildir3,
 }
 
 public static class GlobalKeyExtensions
@@ -63,6 +103,14 @@ public static class GlobalKeyExtensions
             GlobalKey.Troll => "KilledTroll",
             GlobalKey.Surtling => "killed_surtling",
             GlobalKey.Bat => "KilledBat",
+            GlobalKey.Hive => "defeated_hive",
+            GlobalKey.Queen => "defeated_queen",
+            GlobalKey.Hildir1 => "hildir1",
+            GlobalKey.Hildir2 => "hildir2",
+            GlobalKey.Hildir3 => "hildir3",
+            GlobalKey.BossHildir1 => "BossHildir1",
+            GlobalKey.BossHildir2 => "BossHildir2",
+            GlobalKey.BossHildir3 => "BossHildir3",
             _ => ""
         };
     }

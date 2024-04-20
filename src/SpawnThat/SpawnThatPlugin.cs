@@ -6,6 +6,8 @@ using SpawnThat.Core;
 
 namespace SpawnThat;
 
+// The LocalizationCache is only here to help ordering mods for slightly improved load performance.
+[BepInDependency("com.maxsch.valheim.LocalizationCache", BepInDependency.DependencyFlags.SoftDependency)]
 [BepInDependency("RagnarsRokare.MobAILib", BepInDependency.DependencyFlags.SoftDependency)]
 [BepInDependency("org.bepinex.plugins.creaturelevelcontrol", BepInDependency.DependencyFlags.SoftDependency)]
 [BepInDependency("randyknapp.mods.epicloot", BepInDependency.DependencyFlags.SoftDependency)]
@@ -14,7 +16,7 @@ public class SpawnThatPlugin : BaseUnityPlugin
 {
     public const string ModId = "asharppen.valheim.spawn_that";
     public const string PluginName = "Spawn That!";
-    public const string Version = "1.2.5";
+    public const string Version = "1.2.10";
 
     // Awake is called once when both the game and the plug-in are loaded
     void Awake()

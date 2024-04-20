@@ -1,4 +1,17 @@
 # Changelog: 
+- v1.2.10:
+	- Compatibility: Valheim v0.217.46.
+- v1.2.9:
+	- SpawnArea: Fixed SpawnInterval not being set correctly, sometimes causing intervals to be too quick.
+- v1.2.8:
+	- Changed console commands into proper terminal commands with autocompletion.
+	- Added soft-dependency for LocalizationCache, to help it get loaded earlier.
+	- World Spawner: Additional checks for nulls while counting non-creature entities.
+- v1.2.7:
+	- Fixed: SetFaction was only applying the faction on creature spawn, it now correctly re-applies on creature load.
+	- API: Updated GlobalKey enum with new known keys.
+- v1.2.6:
+	- Fixed: Compatibility for Valheim v0.216.9
 - v1.2.5:
 	- Local Spawner: Fixed day-night conditions being swapped.
 - v1.2.4:

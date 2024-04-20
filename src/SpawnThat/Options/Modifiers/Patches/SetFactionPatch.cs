@@ -7,7 +7,8 @@ namespace SpawnThat.Options.Modifiers.Patches;
 [HarmonyPatch]
 internal static class SetFactionPatch
 {
-    [HarmonyPatch(typeof(Character), nameof(Character.Start))]
+    [HarmonyPatch(typeof(Character), nameof(Character.Awake))]
+    [HarmonyPriority(Priority.Last)]
     [HarmonyPostfix]
     private static void AssignFaction(Character __instance)
     {
