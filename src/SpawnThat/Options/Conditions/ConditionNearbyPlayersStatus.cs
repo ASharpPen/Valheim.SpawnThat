@@ -38,11 +38,15 @@ public class ConditionNearbyPlayersStatus : ISpawnCondition
 
         List<Player> players = PlayerUtils.GetPlayersInRadius(context.SpawnerZdo.GetPosition(), SearchDistance);
 
+        var statusEffectsHashes = RequiredStatusEffects
+            .Select(x => x.GetStableHashCode())
+            .ToArray();
+
         foreach (var player in players)
         {
             SEMan statusEffectManager = player.GetSEMan();
 
-            if (RequiredStatusEffects.Any(x => statusEffectManager.HaveStatusEffect(x)))
+            if (statusEffectsHashes.Any(statusEffectManager.HaveStatusEffect))
             {
                 return true;
             }

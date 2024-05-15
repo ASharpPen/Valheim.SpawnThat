@@ -33,7 +33,14 @@ internal static class EnumExtensions
 
         foreach (Heightmap.Biome value in Enum.GetValues(typeof(Heightmap.Biome)))
         {
-            if ((biomeMask & value) > 0)
+            if (value == Heightmap.Biome.All)
+            {
+                if (biomeMask == Heightmap.Biome.All)
+                {
+                    result.Add(value);
+                }
+            }
+            else if ((biomeMask & value) > 0)
             {
                 result.Add(value);
             }
