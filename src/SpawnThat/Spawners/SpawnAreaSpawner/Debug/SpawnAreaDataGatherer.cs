@@ -150,7 +150,11 @@ internal static class SpawnAreaDataGatherer
         {
             var rooms = DungeonDB
                 .GetRooms()
-                .Select(x => x.RoomInPrefab)
+                .Select(x => 
+                {
+                    x.m_prefab.Load();
+                    return x.RoomInPrefab;
+                })
                 .Where(x => x.IsNotNull() && x.m_theme == theme)
                 .ToList();
 

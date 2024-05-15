@@ -542,23 +542,6 @@ internal static class SpawnDataFileGenerator
         }
     }
 
-    private static string BiomeArray(Heightmap.Biome spawnerBiome)
-    {
-        string biomeArray = "";
-
-        foreach (var b in Enum.GetValues(typeof(Heightmap.Biome)))
-        {
-            if (b is Heightmap.Biome biome)
-            {
-                biome = biome & spawnerBiome;
-
-                if (biome > Heightmap.Biome.None)
-                {
-                    biomeArray += biome + ",";
-                }
-            }
-        }
-
-        return biomeArray;
-    }
+    private static string BiomeArray(Heightmap.Biome spawnerBiome) =>
+        spawnerBiome.Split().Join();
 }
