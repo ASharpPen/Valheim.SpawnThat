@@ -43,7 +43,11 @@ internal static class WorldSpawnerConfigurationService
         if (FirstRun && 
             ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileBeforeChanges?.Value == true)
         {
-            var preChangeSpawners = spawnLists.SelectMany(x => x.m_spawners).ToList();
+            var preChangeSpawners = spawnLists
+                .SelectMany(x => x.m_spawners)
+                .OrderBy(x => WorldSpawnerManager.TryGetSpawnerId(x, out var id) ? id : int.MaxValue)
+                .ToList();
+
             SpawnDataFileGenerator.WriteToFile(preChangeSpawners, "spawn_that.world_spawners_pre_changes.txt");
         }
 
