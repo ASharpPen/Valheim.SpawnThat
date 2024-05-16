@@ -1,4 +1,6 @@
 # Changelog: 
+- v1.2.12:
+	- World Spawner: Assigning ID's to vanilla spawners earlier in startup, to help avoid modded creatures being given ID's that would otherwise belong to said vanilla spawners.
 - v1.2.11:
 	- Compatibility: Valheim v0.218.15.
 - v1.2.10:

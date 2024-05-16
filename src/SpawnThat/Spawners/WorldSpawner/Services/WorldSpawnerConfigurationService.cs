@@ -18,13 +18,6 @@ internal static class WorldSpawnerConfigurationService
     private static bool FirstRun = true;
     private static bool DetectedUnableToFindPrefab;
 
-    private static ConditionalWeakTable<SpawnSystem.SpawnData, SpawnDataInfo> SpawnDataTable { get; set; } = new();
-
-    private class SpawnDataInfo
-    {
-        public int Id { get; set; }
-    }
-
     static WorldSpawnerConfigurationService()
     {
         LifecycleManager.SubscribeToWorldInit(() =>
@@ -32,7 +25,6 @@ internal static class WorldSpawnerConfigurationService
             IsConfigured = false;
             FirstRun = true;
             DetectedUnableToFindPrefab = false;
-            SpawnDataTable = new();
         });
     }
 
@@ -44,6 +36,9 @@ internal static class WorldSpawnerConfigurationService
         }
 
         Log.LogTrace($"Configuring world spawner entries");
+
+        // Assign ID's to spawner entries.
+        WorldSpawnerManager.SetSpawnerIds(spawnLists);
 
         if (FirstRun && 
             ConfigurationManager.GeneralConfig?.WriteSpawnTablesToFileBeforeChanges?.Value == true)
@@ -58,16 +53,6 @@ internal static class WorldSpawnerConfigurationService
             spawnLists.ForEach(x => x.m_spawners.Clear());
         }
 
-        // Assign ID's to spawner entries.
-        var spawnEntries = spawnLists.SelectMany(x => x.m_spawners).ToList();
-        for (int i = 0; i < spawnEntries.Count; ++i)
-        {
-            if (!SpawnDataTable.TryGetValue(spawnEntries[i], out _))
-            {
-                SpawnDataTable.Add(spawnEntries[i], new() { Id = i });
-            }
-        }
-
         if (LifecycleManager.GameState != GameState.DedicatedServer)
         {
             ApplyWorldSpawnerTemplates(spawnLists);
@@ -80,7 +65,7 @@ internal static class WorldSpawnerConfigurationService
         {
             var spawns = spawnLists
                 .SelectMany(x => x.m_spawners)
-                .OrderBy(x => SpawnDataTable.TryGetValue(x, out var info) ? info.Id : int.MaxValue)
+                .OrderBy(x => WorldSpawnerManager.TryGetSpawnerId(x, out var id) ? id : int.MaxValue)
                 .ToList();
 
             SpawnDataFileGenerator.WriteToFile(spawns.ToList(), "spawn_that.world_spawners_post_changes.txt", true);
@@ -145,7 +130,7 @@ internal static class WorldSpawnerConfigurationService
                 // Add entry only if configuration succeeds
                 if (TryConfigureNewEntry(entry, template))
                 {
-                    SpawnDataTable.Add(entry, new() { Id = template.Index });
+                    WorldSpawnerManager.SetSpawnerId(entry, template.Index);
                     mainSpawnList.m_spawners.Add(entry);
                 }
             }
