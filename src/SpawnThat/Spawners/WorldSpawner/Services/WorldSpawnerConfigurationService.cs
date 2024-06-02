@@ -8,7 +8,7 @@ using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Managers;
 using SpawnThat.Utilities.Extensions;
 using SpawnThat.Spawners.WorldSpawner.Debug;
-using System.Runtime.CompilerServices;
+using static SpawnSystem;
 
 namespace SpawnThat.Spawners.WorldSpawner.Services;
 
@@ -72,7 +72,7 @@ internal static class WorldSpawnerConfigurationService
                 .OrderBy(x => WorldSpawnerManager.TryGetSpawnerId(x, out var id) ? id : int.MaxValue)
                 .ToList();
 
-            SpawnDataFileGenerator.WriteToFile(spawns.ToList(), "spawn_that.world_spawners_post_changes.txt", true);
+            SpawnDataFileGenerator.WriteToFile(spawns, "spawn_that.world_spawners_post_changes.txt", true);
         }
 
         IsConfigured = true;
@@ -114,7 +114,19 @@ internal static class WorldSpawnerConfigurationService
             return;
         }
 
-        foreach((int id, WorldSpawnTemplate template) in templates)
+        Dictionary<int, SpawnData> spawnersById = new(spawners.Count);
+
+        foreach (var spawner in spawners)
+        {
+            if (!WorldSpawnerManager.TryGetSpawnerId(spawner, out int spawnerId))
+            {
+                spawnerId = WorldSpawnerManager.AssignSpawnerId(spawner);
+            }
+
+            spawnersById[spawnerId] = spawner;
+        }
+
+        foreach ((int id, WorldSpawnTemplate template) in templates)
         {
             // Validate
             if (!template.TemplateEnabled)
@@ -124,12 +136,18 @@ internal static class WorldSpawnerConfigurationService
 
             SpawnSystem.SpawnData entry;
 
-            if (ConfigurationManager.GeneralConfig?.AlwaysAppend?.Value == true ||
-                id >= spawners.Count)
+            if (ConfigurationManager.GeneralConfig?.AlwaysAppend?.Value == false &&
+                spawnersById.TryGetValue(id, out entry))
             {
-                entry = new SpawnSystem.SpawnData();
+                // Update existing
+                Log.LogTrace($"Overriding spawner entry [{id}:{entry.m_prefab.GetName()}] with template '{template.TemplateName}'");
 
+                ConfigureExistingEntry(entry, template);
+            }
+            else
+            {
                 Log.LogTrace($"Creating spawner entry for template [{id}:{template.PrefabName}]");
+                entry = new SpawnSystem.SpawnData();
 
                 // Add entry only if configuration succeeds
                 if (TryConfigureNewEntry(entry, template))
@@ -137,13 +155,6 @@ internal static class WorldSpawnerConfigurationService
                     WorldSpawnerManager.SetSpawnerId(entry, template.Index);
                     mainSpawnList.m_spawners.Add(entry);
                 }
-            }
-            else
-            {
-                Log.LogTrace($"Overriding spawner entry [{id}:{spawners[id].m_prefab.GetName()}] with template '{template.TemplateName}'");
-                entry = spawners[id];
-
-                ConfigureExistingEntry(entry, template);
             }
 
             WorldSpawnerManager.SetTemplate(entry, template);

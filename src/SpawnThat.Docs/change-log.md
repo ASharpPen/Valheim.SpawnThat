@@ -1,4 +1,7 @@
 # Changelog: 
+- v1.2.14:
+	- Updates for room identification, old code did not properly take into account dungeons with multiple layers, as well as the room rotation itself.
+	- World Spawner: Fixed templates for vanilla creatures sometimes getting assigned to modded creatures, caused by the changes to ID assignment in v1.2.12.
 - v1.2.13:
 	- Fixed: Room detection for dungeons. This affected spawner configs using specific rooms as their requirement.
 - v1.2.12:

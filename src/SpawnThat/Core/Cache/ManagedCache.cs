@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Core.Cache;
 
@@ -45,6 +46,11 @@ public class ManagedCache<TValue> : IDisposable, IManagedCache
         var newValue = Activator.CreateInstance<TValue>();
         Set(key, newValue);
 
+        if (newValue is IManagedValue managed)
+        {
+            managed.OnCreate();
+        }
+
         return newValue;
     }
 
@@ -55,12 +61,17 @@ public class ManagedCache<TValue> : IDisposable, IManagedCache
             int cleaned = 0;
             int total = Storage.Count;
 
-            foreach (var key in Storage.Keys.ToList())
+            foreach (var pair in Storage.ToArray())
             {
-                if (!key || key == null)
+                if (pair.Key.IsNull())
                 {
-                    Storage.Remove(key);
+                    Storage.Remove(pair.Key);
                     cleaned++;
+
+                    if (pair.Value is IManagedValue managed)
+                    {
+                        managed.OnDestroy();
+                    }
                 }
             }
 

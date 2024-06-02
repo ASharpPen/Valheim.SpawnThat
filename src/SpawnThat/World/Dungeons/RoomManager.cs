@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using SpawnThat.Core.Cache;
 using HarmonyLib;
-using System.Reflection.Emit;
 using SpawnThat.Lifecycle;
 using SpawnThat.Utilities.Spatial;
 using SpawnThat.Utilities.Extensions;
@@ -29,25 +28,16 @@ public static class RoomManager
 
     public static RoomData GetContainingRoom(Vector3 pos)
     {
-        var closestRoom = RoomList.FindClosest(pos);
+        var closestRoom = FindClosestRoom(pos);
 
-        if (closestRoom is null)
+#if DEBUG && FALSE
+        if (closestRoom is not null)
         {
-            return null;
+            Log.LogTrace($"Testing bounds: {new Bounds(closestRoom.Pos, closestRoom.Size)} for room {closestRoom.Name} at {pos}");
         }
-
-        var roomBounds = new Bounds(closestRoom.Pos, closestRoom.Size);
-
-#if DEBUG
-        Log.LogTrace($"Testing bounds: {roomBounds} for room {closestRoom.Name} at {pos}");
 #endif
 
-        if (roomBounds.Contains(pos))
-        {
-            return closestRoom;
-        }
-
-        return null;
+        return closestRoom;
     }
 
     private static RoomData FindClosestRoom(Vector3 pos)
@@ -76,10 +66,16 @@ public static class RoomManager
                 continue;
             }
 
+            if (!room.Contains(pos))
+            {
+                continue;
+            }
+
             var distX = pos.x - room.Pos.x;
             var distZ = pos.z - room.Pos.z;
+            var distY = pos.y - room.Pos.y;
 
-            var distance = Math.Abs(distX) + Math.Abs(distZ);
+            var distance = Math.Abs(distX) + Math.Abs(distZ) + Math.Abs(distY);
 
             if (distance < closestDistance)
             {
@@ -102,7 +98,7 @@ public static class RoomManager
             data.Name = room.GetCleanedName();
             data.Pos = roomPos;
 
-            //Jesus, fix your shit IronGate!
+            // Fallbacks in case no sizes are registered.
             int sizeX = room.m_size.x == 0
                 ? 10
                 : room.m_size.x;
@@ -114,9 +110,16 @@ public static class RoomManager
                 : room.m_size.z;
 
             data.Size = new Vector3Int(sizeX * 2, sizeY * 2, sizeZ * 2);
+            data.Rotation = room.transform.rotation;
 
             RoomList.Insert(data);
         }
+    }
+
+    internal static void RemoveRoom(RoomData room)
+    {
+        RoomList.Remove(room);
+        HasAdded.Remove(room.Pos);
     }
 
     [HarmonyPatch(typeof(DungeonGenerator))]
@@ -132,7 +135,7 @@ public static class RoomManager
         private static void CacheRoom(Room component)
         {
 #if DEBUG
-            Log.LogDebug($"Registering room at {component.transform.position} with name {component.GetCleanedName()}");
+            Log.LogDebug($"Registering room at {component.transform.position} with name {component.GetCleanedName()} - {new Bounds(component.transform.position, component.m_size)} - {component.transform.rotation}");
 #endif
 
             RoomManager.AddRoom(component);
