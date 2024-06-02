@@ -1,4 +1,6 @@
 # Changelog: 
+- v1.2.14:
+	- Updates for room identification, old code did not properly take into account dungeons with multiple layers, as well as the room rotation itself.
 - v1.2.13:
 	- Fixed: Room detection for dungeons. This affected spawner configs using specific rooms as their requirement.
 - v1.2.12:

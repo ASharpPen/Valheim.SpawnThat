@@ -18,6 +18,9 @@
     <Reference Include="assembly_valheim">
       <HintPath>..\Libs\Valheim\assembly_valheim.dll</HintPath>
     </Reference>
+    <Reference Include="SoftReferenceableAssets">
+      <HintPath>..\Libs\Valheim\SoftReferenceableAssets.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\Libs\Unity\UnityEngine.dll</HintPath>
     </Reference>
