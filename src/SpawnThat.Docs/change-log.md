@@ -1,4 +1,6 @@
 # Changelog: 
+- v1.2.13:
+	- Fixed: Room detection for dungeons. This affected spawner configs using specific rooms as their requirement.
 - v1.2.12:
 	- World Spawner: Assigning ID's to vanilla spawners earlier in startup, to help avoid modded creatures being given ID's that would otherwise belong to said vanilla spawners.
 - v1.2.11:
