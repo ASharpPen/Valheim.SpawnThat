@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using SpawnThat.Core;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Services;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Spawners.WorldSpawner.Managers;
 
@@ -157,6 +158,10 @@ internal static class WorldSpawnerManager
         {
             if (!SpawnDataTable.TryGetValue(spawner, out _))
             {
+#if DEBUG
+                Log.LogTrace($"Setting id '{SpawnerIdSequence}' for SpawnData '{spawner.m_name}:{spawner.m_prefab.GetCleanedName()}'");
+#endif
+
                 SpawnDataTable.Add(spawner, new() { Id = SpawnerIdSequence });
                 SpawnerIdSequence++;
             }
@@ -165,6 +170,10 @@ internal static class WorldSpawnerManager
 
     public static void SetSpawnerId(SpawnSystem.SpawnData spawner, int id)
     {
+#if DEBUG
+        Log.LogTrace($"Setting id '{SpawnerIdSequence}' for SpawnData '{spawner.m_name}:{spawner.m_prefab.GetCleanedName()}'");
+#endif
+
         if (SpawnDataTable.TryGetValue(spawner, out var info))
         {
             info.Id = id;
@@ -174,6 +183,25 @@ internal static class WorldSpawnerManager
             SpawnDataTable.Add(spawner, new SpawnDataInfo { Id = id });
         }
     }
+
+    public static int AssignSpawnerId(SpawnSystem.SpawnData spawner)
+    {
+        int id;
+
+        if (!TryGetSpawnerId(spawner, out id))
+        {
+            id = SpawnerIdSequence;
+#if DEBUG
+            Log.LogTrace($"Setting id '{id}' for SpawnData '{spawner.m_name}:{spawner.m_prefab.GetCleanedName()}'");
+#endif
+
+            SpawnDataTable.Add(spawner, new() { Id = id });
+            SpawnerIdSequence++;
+        }
+
+        return id;
+    }
+
 
     public static bool TryGetSpawnerId(SpawnSystem.SpawnData spawner, out int id)
     {
