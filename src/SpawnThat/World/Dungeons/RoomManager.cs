@@ -123,17 +123,10 @@ public static class RoomManager
     private static class DungeonGeneratorPatch
     {
         [HarmonyPatch(nameof(DungeonGenerator.PlaceRoom), new[] { typeof(DungeonDB.RoomData), typeof(Vector3), typeof(Quaternion), typeof(RoomConnection), typeof(ZoneSystem.SpawnMode) })]
-        [HarmonyTranspiler]
-        private static IEnumerable<CodeInstruction> GetRoomObject(IEnumerable<CodeInstruction> instructions)
+        [HarmonyPostfix]
+        private static void GetRoomObject(Room __result)
         {
-            return new CodeMatcher(instructions)
-                .MatchForward(true, new CodeMatch(OpCodes.Callvirt, AccessTools.Method(typeof(GameObject), nameof(GameObject.GetComponent), generics: new[] { typeof(Room) })))
-                .Advance(1)
-                .GetInstruction(out var storeInstruction)
-                .Advance(1)
-                .InsertAndAdvance(storeInstruction.GetLdlocFromStLoc())
-                .InsertAndAdvance(Transpilers.EmitDelegate(CacheRoom))
-                .InstructionEnumeration();
+            CacheRoom(__result);
         }
 
         private static void CacheRoom(Room component)
