@@ -51,17 +51,22 @@ internal static class SpawnSystem_WorldSpawner_Workflow_Patch
         FieldInfo m_enabled = AccessTools.Field(typeof(SpawnSystem.SpawnData), nameof(SpawnSystem.SpawnData.m_enabled));
 
         return new CodeMatcher(instructions)
-            // Move to right before m_enabled is checked.
+            // Move to right before m_enabled is loaded and checked.
             .MatchForward(
-                true,
+                false,
+                new CodeMatch(OpCodes.Ldloc_S),
                 new CodeMatch(OpCodes.Ldfld, m_enabled),
                 new CodeMatch(OpCodes.Brfalse))
+            // Grab the instruction loading SpawnData onto the stack.
+            .GetInstruction(out CodeInstruction loadSpawnData)
+            // Move to right before m_enabled is checked.
+            .Advance(2)
             // Get the label to where the code goes if m_enabled == false.
             .GetOperand(out object escapeLoopLabel)
             // Step forward, so we are just past the check.
             .Advance(1)
             // Run spawn session init
-            .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_3))
+            .InsertAndAdvance(loadSpawnData.Clone())
             .InsertAndAdvance(Transpilers.EmitDelegate(WorldSpawnSessionManager.StartSpawnSession))
             // Run custom conditions for spawn.
             .InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_3))

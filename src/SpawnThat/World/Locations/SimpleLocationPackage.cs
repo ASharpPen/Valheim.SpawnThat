@@ -64,7 +64,7 @@ internal class SimpleLocationPackage : CompressedPackage
                 simpleLocations.Add(new SimpleLocation
                 {
                     LocationName = package.LocationNames[location.L],
-                    Position = ZoneSystem.instance.GetZonePos(position),
+                    Position = ZoneSystem.GetZonePos(position),
                     ZonePosition = position
                 });
             }

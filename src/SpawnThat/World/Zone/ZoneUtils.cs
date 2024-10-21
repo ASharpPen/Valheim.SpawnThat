@@ -26,7 +26,7 @@ public static class ZoneUtils
         return sectors;
     }
 
-    public static Vector2i GetZone(Vector3 pos) => ZoneSystem.instance.GetZone(pos);
+    public static Vector2i GetZone(Vector3 pos) => ZoneSystem.GetZone(pos);
 
     public static Vector2i GetZone(int x, int z)
     {

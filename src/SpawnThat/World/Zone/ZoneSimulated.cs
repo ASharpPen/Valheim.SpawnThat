@@ -33,7 +33,7 @@ internal class ZoneSimulated : IZone
 
         if (ZoneSystem.instance.IsNotNull())
         {
-            ZonePos = ZoneSystem.instance.GetZonePos(ZoneId);
+            ZonePos = ZoneSystem.GetZonePos(ZoneId);
         }
         else
         {
