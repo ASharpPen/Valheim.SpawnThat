@@ -16,7 +16,7 @@ public class SpawnThatPlugin : BaseUnityPlugin
 {
     public const string ModId = "asharppen.valheim.spawn_that";
     public const string PluginName = "Spawn That!";
-    public const string Version = "1.2.14";
+    public const string Version = "1.2.15";
 
     // Awake is called once when both the game and the plug-in are loaded
     void Awake()
