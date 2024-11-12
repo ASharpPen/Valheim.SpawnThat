@@ -14,6 +14,7 @@ internal class SpawnAreaSpawnerBuilder : ISpawnAreaSpawnerBuilder
     internal Dictionary<Type, ISpawnerIdentifier> Identifiers { get; } = new();
 
     private BuilderOption<string> TemplateName;
+    private BuilderOption<float?> SpawnRadius;
     private BuilderOption<int?> ConditionMaxCloseCreatures;
     private BuilderOption<int?> ConditionMaxCreatures;
     private BuilderOption<float?> ConditionPlayerWithinDistance;
@@ -38,6 +39,7 @@ internal class SpawnAreaSpawnerBuilder : ISpawnAreaSpawnerBuilder
     internal SpawnAreaSpawnerTemplate Build()
     {
         TemplateName.DoIfSet(x => Template.TemplateName = x);
+        SpawnRadius.DoIfSet(x => Template.SpawnRadius = x);
         ConditionMaxCloseCreatures.DoIfSet(x => Template.ConditionMaxCloseCreatures = x);
         ConditionMaxCreatures.DoIfSet(x => Template.ConditionMaxCreatures = x);
         ConditionPlayerWithinDistance.DoIfSet(x => Template.ConditionPlayerWithinDistance = x);
@@ -63,6 +65,7 @@ internal class SpawnAreaSpawnerBuilder : ISpawnAreaSpawnerBuilder
     {
         builder.TemplateName.AssignIfSet(ref TemplateName);
         builder.ConditionMaxCloseCreatures.AssignIfSet(ref ConditionMaxCloseCreatures);
+        builder.SpawnRadius.AssignIfSet(ref SpawnRadius);
         builder.ConditionMaxCreatures.AssignIfSet(ref ConditionMaxCreatures);
         builder.ConditionPlayerWithinDistance.AssignIfSet(ref ConditionPlayerWithinDistance);
         builder.DistanceConsideredClose.AssignIfSet(ref DistanceConsideredClose);
@@ -107,6 +110,12 @@ internal class SpawnAreaSpawnerBuilder : ISpawnAreaSpawnerBuilder
     public ISpawnAreaSpawnerBuilder SetConditionPlayerWithinDistance(float? withinDistance)
     {
         ConditionPlayerWithinDistance = new(withinDistance);
+        return this;
+    }
+
+    public ISpawnAreaSpawnerBuilder SetSpawnRadius(float? spawnRadius)
+    {
+        SpawnRadius = new(spawnRadius);
         return this;
     }
 
