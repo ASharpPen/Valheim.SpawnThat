@@ -9886,12 +9886,51 @@ references:
   commentId: T:SpawnThat.World.Dungeons.RoomData
   fullName: SpawnThat.World.Dungeons.RoomData
   nameWithType: RoomData
+- uid: SpawnThat.World.Dungeons.RoomData.Contains(UnityEngine.Vector3)
+  name: Contains(Vector3)
+  href: api/reference/SpawnThat.World.Dungeons.RoomData.html#SpawnThat_World_Dungeons_RoomData_Contains_UnityEngine_Vector3_
+  commentId: M:SpawnThat.World.Dungeons.RoomData.Contains(UnityEngine.Vector3)
+  fullName: SpawnThat.World.Dungeons.RoomData.Contains(UnityEngine.Vector3)
+  nameWithType: RoomData.Contains(Vector3)
+- uid: SpawnThat.World.Dungeons.RoomData.Contains*
+  name: Contains
+  href: api/reference/SpawnThat.World.Dungeons.RoomData.html#SpawnThat_World_Dungeons_RoomData_Contains_
+  commentId: Overload:SpawnThat.World.Dungeons.RoomData.Contains
+  isSpec: "True"
+  fullName: SpawnThat.World.Dungeons.RoomData.Contains
+  nameWithType: RoomData.Contains
 - uid: SpawnThat.World.Dungeons.RoomData.Name
   name: Name
   href: api/reference/SpawnThat.World.Dungeons.RoomData.html#SpawnThat_World_Dungeons_RoomData_Name
   commentId: F:SpawnThat.World.Dungeons.RoomData.Name
   fullName: SpawnThat.World.Dungeons.RoomData.Name
   nameWithType: RoomData.Name
+- uid: SpawnThat.World.Dungeons.RoomData.OnCreate
+  name: OnCreate()
+  href: api/reference/SpawnThat.World.Dungeons.RoomData.html#SpawnThat_World_Dungeons_RoomData_OnCreate
+  commentId: M:SpawnThat.World.Dungeons.RoomData.OnCreate
+  fullName: SpawnThat.World.Dungeons.RoomData.OnCreate()
+  nameWithType: RoomData.OnCreate()
+- uid: SpawnThat.World.Dungeons.RoomData.OnCreate*
+  name: OnCreate
+  href: api/reference/SpawnThat.World.Dungeons.RoomData.html#SpawnThat_World_Dungeons_RoomData_OnCreate_
+  commentId: Overload:SpawnThat.World.Dungeons.RoomData.OnCreate
+  isSpec: "True"
+  fullName: SpawnThat.World.Dungeons.RoomData.OnCreate
+  nameWithType: RoomData.OnCreate
+- uid: SpawnThat.World.Dungeons.RoomData.OnDestroy
+  name: OnDestroy()
+  href: api/reference/SpawnThat.World.Dungeons.RoomData.html#SpawnThat_World_Dungeons_RoomData_OnDestroy
+  commentId: M:SpawnThat.World.Dungeons.RoomData.OnDestroy
+  fullName: SpawnThat.World.Dungeons.RoomData.OnDestroy()
+  nameWithType: RoomData.OnDestroy()
+- uid: SpawnThat.World.Dungeons.RoomData.OnDestroy*
+  name: OnDestroy
+  href: api/reference/SpawnThat.World.Dungeons.RoomData.html#SpawnThat_World_Dungeons_RoomData_OnDestroy_
+  commentId: Overload:SpawnThat.World.Dungeons.RoomData.OnDestroy
+  isSpec: "True"
+  fullName: SpawnThat.World.Dungeons.RoomData.OnDestroy
+  nameWithType: RoomData.OnDestroy
 - uid: SpawnThat.World.Dungeons.RoomData.Pos
   name: Pos
   href: api/reference/SpawnThat.World.Dungeons.RoomData.html#SpawnThat_World_Dungeons_RoomData_Pos
@@ -9905,10 +9944,30 @@ references:
   isSpec: "True"
   fullName: SpawnThat.World.Dungeons.RoomData.Pos
   nameWithType: RoomData.Pos
+- uid: SpawnThat.World.Dungeons.RoomData.Rotation
+  name: Rotation
+  href: api/reference/SpawnThat.World.Dungeons.RoomData.html#SpawnThat_World_Dungeons_RoomData_Rotation
+  commentId: P:SpawnThat.World.Dungeons.RoomData.Rotation
+  fullName: SpawnThat.World.Dungeons.RoomData.Rotation
+  nameWithType: RoomData.Rotation
+- uid: SpawnThat.World.Dungeons.RoomData.Rotation*
+  name: Rotation
+  href: api/reference/SpawnThat.World.Dungeons.RoomData.html#SpawnThat_World_Dungeons_RoomData_Rotation_
+  commentId: Overload:SpawnThat.World.Dungeons.RoomData.Rotation
+  isSpec: "True"
+  fullName: SpawnThat.World.Dungeons.RoomData.Rotation
+  nameWithType: RoomData.Rotation
 - uid: SpawnThat.World.Dungeons.RoomData.Size
   name: Size
   href: api/reference/SpawnThat.World.Dungeons.RoomData.html#SpawnThat_World_Dungeons_RoomData_Size
-  commentId: F:SpawnThat.World.Dungeons.RoomData.Size
+  commentId: P:SpawnThat.World.Dungeons.RoomData.Size
+  fullName: SpawnThat.World.Dungeons.RoomData.Size
+  nameWithType: RoomData.Size
+- uid: SpawnThat.World.Dungeons.RoomData.Size*
+  name: Size
+  href: api/reference/SpawnThat.World.Dungeons.RoomData.html#SpawnThat_World_Dungeons_RoomData_Size_
+  commentId: Overload:SpawnThat.World.Dungeons.RoomData.Size
+  isSpec: "True"
   fullName: SpawnThat.World.Dungeons.RoomData.Size
   nameWithType: RoomData.Size
 - uid: SpawnThat.World.Dungeons.RoomData.X
