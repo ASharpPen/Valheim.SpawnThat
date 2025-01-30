@@ -1,4 +1,15 @@
 # Changelog: 
+- v1.2.15:
+	- Compatibility: Valheim v0.219.13.
+- v1.2.14:
+	- Updates for room identification, old code did not properly take into account dungeons with multiple layers, as well as the room rotation itself.
+	- World Spawner: Fixed templates for vanilla creatures sometimes getting assigned to modded creatures, caused by the changes to ID assignment in v1.2.12.
+- v1.2.13:
+	- Fixed: Room detection for dungeons. This affected spawner configs using specific rooms as their requirement.
+- v1.2.12:
+	- World Spawner: Assigning ID's to vanilla spawners earlier in startup, to help avoid modded creatures being given ID's that would otherwise belong to said vanilla spawners.
+- v1.2.11:
+	- Compatibility: Valheim v0.218.15.
 - v1.2.10:
 	- Compatibility: Valheim v0.217.46.
 - v1.2.9:

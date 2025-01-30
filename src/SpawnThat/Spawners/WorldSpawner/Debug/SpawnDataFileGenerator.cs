@@ -36,14 +36,18 @@ internal static class SpawnDataFileGenerator
             {
                 var spawner = spawners[i];
 
+                string id = WorldSpawnerManager.TryGetSpawnerId(spawner, out var spawnerId)
+                    ? spawnerId.ToString()
+                    : "?";
+
                 if (spawner is not null)
                 {
-                    lines.AddRange(WriteSpawner(spawner, i, postChange));
+                    lines.AddRange(WriteSpawner(spawner, id, postChange));
                 }
                 else
                 {
                     //Empty spawner. Just add the index and continue.
-                    lines.Add($"[WorldSpawner.{i}]");
+                    lines.Add($"[WorldSpawner.{id}]");
                     lines.Add($"## Spawner is empty for unknown reasons.");
                     lines.Add($"");
                 }
@@ -66,7 +70,7 @@ internal static class SpawnDataFileGenerator
         lines.Add($"");
     }
 
-    internal static List<string> WriteSpawner(SpawnSystem.SpawnData spawner, int index, bool postChange)
+    internal static List<string> WriteSpawner(SpawnSystem.SpawnData spawner, string id, bool postChange)
     {
         List<string> lines = new List<string>();
 
@@ -80,7 +84,7 @@ internal static class SpawnDataFileGenerator
         }
         else
         {
-            lines.Add($"[WorldSpawner.{index}]");
+            lines.Add($"[WorldSpawner.{id}]");
         }
 
         string environmentArray = "";
@@ -542,23 +546,6 @@ internal static class SpawnDataFileGenerator
         }
     }
 
-    private static string BiomeArray(Heightmap.Biome spawnerBiome)
-    {
-        string biomeArray = "";
-
-        foreach (var b in Enum.GetValues(typeof(Heightmap.Biome)))
-        {
-            if (b is Heightmap.Biome biome)
-            {
-                biome = biome & spawnerBiome;
-
-                if (biome > Heightmap.Biome.None)
-                {
-                    biomeArray += biome + ",";
-                }
-            }
-        }
-
-        return biomeArray;
-    }
+    private static string BiomeArray(Heightmap.Biome spawnerBiome) =>
+        spawnerBiome.Split().Join();
 }

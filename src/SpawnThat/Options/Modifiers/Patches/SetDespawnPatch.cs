@@ -148,14 +148,12 @@ internal static class SetDespawnPatch
 
     public static bool IsValidDaytime(bool spawnDuringDay, bool spawnDuringNight)
     {
-        var envMan = EnvMan.instance;
-
-        if (!spawnDuringDay && envMan.IsDay())
+        if (!spawnDuringDay && EnvMan.IsDay())
         {
             return false;
         }
 
-        if (!spawnDuringNight && envMan.IsNight())
+        if (!spawnDuringNight && EnvMan.IsNight())
         {
             return false;
         }

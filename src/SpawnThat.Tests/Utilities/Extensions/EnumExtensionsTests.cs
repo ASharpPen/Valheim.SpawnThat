@@ -9,7 +9,7 @@ public class EnumExtensionsTests
     public void SplitBiomeShouldNotIncludeMax()
     {
         // Arrange
-        var biome = Heightmap.Biome.BiomesMax;
+        var biome = Heightmap.Biome.All;
 
         // Act
         var split = EnumExtensions.Split(biome);

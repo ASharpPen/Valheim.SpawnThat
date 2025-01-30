@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using SpawnThat.Core;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Services;
+using SpawnThat.Utilities.Extensions;
 
 namespace SpawnThat.Spawners.WorldSpawner.Managers;
 
@@ -14,6 +16,15 @@ internal static class WorldSpawnerManager
     private static Dictionary<SpawnSystem.SpawnData, WorldSpawnTemplate> TemplatesBySpawnEntry { get; set; } = new();
 
     private static List<SpawnSystemList> PrefabSpawnSystemLists { get; set; } = new(0);
+
+    private static ConditionalWeakTable<SpawnSystem.SpawnData, SpawnDataInfo> SpawnDataTable { get; set; } = new();
+
+    private static int SpawnerIdSequence = 0;
+
+    private class SpawnDataInfo
+    {
+        public int Id { get; set; }
+    }
 
     /// <summary>
     /// Disables world spawner updates while true.
@@ -29,8 +40,11 @@ internal static class WorldSpawnerManager
 
             HasInstantiatedSpawnLists = false;
             SpawnLists.Clear();
-
+           
             TemplatesBySpawnEntry = new();
+
+            SpawnDataTable = new();
+            SpawnerIdSequence = 0;
         });
     }
 
@@ -67,8 +81,12 @@ internal static class WorldSpawnerManager
                 {
                     // spawnlist is a prefab
                     Log.LogTrace($"Instantiating spawn list: '{spawnList.name}'");
-                    var instantiatedSpawnList = UnityEngine.Object.Instantiate(spawnList.gameObject);
-                    SpawnLists.Add(instantiatedSpawnList.GetComponent<SpawnSystemList>());
+                    var instantiatedSpawnListGameObject = UnityEngine.Object.Instantiate(spawnList.gameObject);
+                    var instantiatedSpawnList = instantiatedSpawnListGameObject.GetComponent<SpawnSystemList>();
+
+                    SpawnLists.Add(instantiatedSpawnList);
+
+                    SetSpawnerIds(instantiatedSpawnList);
                 }
                 else
                 {
@@ -123,5 +141,77 @@ internal static class WorldSpawnerManager
         }
 
         return null;
+    }
+
+    public static void SetSpawnerIds(ICollection<SpawnSystemList> spawnSystemLists)
+    {
+        // Assign ID's to spawner entries.
+        foreach (var list in spawnSystemLists)
+        {
+            SetSpawnerIds(list);
+        }
+    }
+
+    public static void SetSpawnerIds(SpawnSystemList list)
+    {
+        foreach (var spawner in list.m_spawners)
+        {
+            if (!SpawnDataTable.TryGetValue(spawner, out _))
+            {
+#if DEBUG
+                Log.LogTrace($"Setting id '{SpawnerIdSequence}' for SpawnData '{spawner.m_name}:{spawner.m_prefab.GetCleanedName()}'");
+#endif
+
+                SpawnDataTable.Add(spawner, new() { Id = SpawnerIdSequence });
+                SpawnerIdSequence++;
+            }
+        }
+    }
+
+    public static void SetSpawnerId(SpawnSystem.SpawnData spawner, int id)
+    {
+#if DEBUG
+        Log.LogTrace($"Setting id '{SpawnerIdSequence}' for SpawnData '{spawner.m_name}:{spawner.m_prefab.GetCleanedName()}'");
+#endif
+
+        if (SpawnDataTable.TryGetValue(spawner, out var info))
+        {
+            info.Id = id;
+        }
+        else
+        {
+            SpawnDataTable.Add(spawner, new SpawnDataInfo { Id = id });
+        }
+    }
+
+    public static int AssignSpawnerId(SpawnSystem.SpawnData spawner)
+    {
+        int id;
+
+        if (!TryGetSpawnerId(spawner, out id))
+        {
+            id = SpawnerIdSequence;
+#if DEBUG
+            Log.LogTrace($"Setting id '{id}' for SpawnData '{spawner.m_name}:{spawner.m_prefab.GetCleanedName()}'");
+#endif
+
+            SpawnDataTable.Add(spawner, new() { Id = id });
+            SpawnerIdSequence++;
+        }
+
+        return id;
+    }
+
+
+    public static bool TryGetSpawnerId(SpawnSystem.SpawnData spawner, out int id)
+    {
+        if (SpawnDataTable.TryGetValue(spawner, out var info))
+        {
+            id = info.Id;
+            return true;
+        }
+
+        id = default;
+        return false;
     }
 }

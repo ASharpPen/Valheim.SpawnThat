@@ -46,7 +46,9 @@ public static class StringExtensions
             return Enumerable.Empty<string>();
         }
 
-        var split = value.Split(chars, StringSplitOptions.RemoveEmptyEntries);
+        var split = value
+            .Trim()
+            .Split(chars, StringSplitOptions.RemoveEmptyEntries);
 
         if ((split?.Length ?? 0) == 0)
         {

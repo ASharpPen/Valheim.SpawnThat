@@ -70,28 +70,13 @@ internal static class CreatureSpawnerDungeonFileGenerator
         spawnersSerialized.Add($"# The comment above each section can be ignored. It is simply some additional info about the spawner. Such as the dungeon type, room name and its index.");
         spawnersSerialized.Add($"");
 
-#if DEBUG
-        try
-        {
-            foreach (var room in rooms
-                .Select(x => x.RoomInPrefab)
-                .OrderBy(x => x.m_theme)
-                .ThenBy(x => x.name))
-            {
-                if (room.IsNull())
-                {
-                    Log.LogTrace($"Room {room.name} gameobject is null");
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            Log.LogError("Wtf?", e);
-        }
-#endif
-
         var orderedRooms = rooms
-            .Select(x => x.RoomInPrefab)
+            .Select(x =>
+            {
+                // Need to ensure the asset is actually loaded for us to read the room.
+                x.m_prefab.Load();
+                return x.RoomInPrefab;
+            })
             .Where(x => x.IsNotNull())
             .OrderBy(x => x.m_theme)
             .ThenBy(x => x.name);
