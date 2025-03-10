@@ -6581,6 +6581,22 @@ references:
   isSpec: "True"
   fullName: SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.SetSpawnInterval
   nameWithType: ISpawnAreaSpawnerBuilder.SetSpawnInterval
+- uid: SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.SetSpawnRadius(System.Nullable{System.Single})
+  name: SetSpawnRadius(Nullable<Single>)
+  href: api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.html#SpawnThat_Spawners_SpawnAreaSpawner_ISpawnAreaSpawnerBuilder_SetSpawnRadius_System_Nullable_System_Single__
+  commentId: M:SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.SetSpawnRadius(System.Nullable{System.Single})
+  name.vb: SetSpawnRadius(Nullable(Of Single))
+  fullName: SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.SetSpawnRadius(System.Nullable<System.Single>)
+  fullName.vb: SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.SetSpawnRadius(System.Nullable(Of System.Single))
+  nameWithType: ISpawnAreaSpawnerBuilder.SetSpawnRadius(Nullable<Single>)
+  nameWithType.vb: ISpawnAreaSpawnerBuilder.SetSpawnRadius(Nullable(Of Single))
+- uid: SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.SetSpawnRadius*
+  name: SetSpawnRadius
+  href: api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.html#SpawnThat_Spawners_SpawnAreaSpawner_ISpawnAreaSpawnerBuilder_SetSpawnRadius_
+  commentId: Overload:SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.SetSpawnRadius
+  isSpec: "True"
+  fullName: SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.SetSpawnRadius
+  nameWithType: ISpawnAreaSpawnerBuilder.SetSpawnRadius
 - uid: SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.SetTemplateName(System.String)
   name: SetTemplateName(String)
   href: api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.html#SpawnThat_Spawners_SpawnAreaSpawner_ISpawnAreaSpawnerBuilder_SetTemplateName_System_String_
@@ -6762,6 +6778,19 @@ references:
   isSpec: "True"
   fullName: SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.SpawnInterval
   nameWithType: SpawnAreaSpawnerSettings.SpawnInterval
+- uid: SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.SpawnRadius
+  name: SpawnRadius
+  href: api/reference/SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.html#SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnerSettings_SpawnRadius
+  commentId: P:SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.SpawnRadius
+  fullName: SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.SpawnRadius
+  nameWithType: SpawnAreaSpawnerSettings.SpawnRadius
+- uid: SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.SpawnRadius*
+  name: SpawnRadius
+  href: api/reference/SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.html#SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnerSettings_SpawnRadius_
+  commentId: Overload:SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.SpawnRadius
+  isSpec: "True"
+  fullName: SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.SpawnRadius
+  nameWithType: SpawnAreaSpawnerSettings.SpawnRadius
 - uid: SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.Spawns
   name: Spawns
   href: api/reference/SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.html#SpawnThat_Spawners_SpawnAreaSpawner_SpawnAreaSpawnerSettings_Spawns
