@@ -88,6 +88,7 @@ LevelMax = 3
 | TemplateEnabled | bool | true | false | Toggles this configuration on / off. If disabled, template will be ignored. Cannot be used to disable existing spawn entries |
 | PrefabName | string | | Bat | Prefab name of entity to spawn |
 | SpawnWeight | float | 1 | 1.5 | Sets spawn weight. SpawnArea spawners choose their next spawn by a weighted random of all their possible spawns. Increasing weight means an increased chance that this particular spawn will be selected for spawning |
+| SpawnRadius | float | 2 | 35.3 | Sets spawner spawn radius. When spawning, a random position within this radius of spawner is selected |
 | LevelMin | integer | 1 | 3 | Minimum level to spawn at |
 | LevelMax | integer | 1 | 5 | Maximum level to spawn at |
 | ConditionDistanceToCenterMin | float | 0 | 555.5 | Minimum distance to center for configuration to apply |

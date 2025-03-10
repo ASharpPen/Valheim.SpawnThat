@@ -1,4 +1,7 @@
 # Changelog: 
+- v1.2.16:
+	- Compatibility: Packing YamlDotNet dependency into main dll, to avoid conflicts with other mods.
+	- SpawnArea: Added missing setting for SpawnRadius. This is the radius to the spawner, within which spawns will appear.
 - v1.2.15:
 	- Compatibility: Valheim v0.219.13.
 - v1.2.14:

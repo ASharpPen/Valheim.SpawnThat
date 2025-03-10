@@ -39,6 +39,13 @@ internal class SpawnAreaSpawnerTemplate
     public float? ConditionPlayerWithinDistance { get; set; }
 
     /// <summary>
+    /// <para>Spawn radius of spawner.</para>
+    /// <para>Default if new template: 2</para>
+    /// </summary>
+    /// <remarks>Vanilla name: m_spawnRadius</remarks>
+    public float? SpawnRadius { get; set; }
+
+    /// <summary>
     /// Sets maximum number of creatures within <c>DistanceIsClose</c>,
     /// for spawner to be active.
     /// </summary>
