@@ -16,7 +16,7 @@ public class SpawnThatPlugin : BaseUnityPlugin
 {
     public const string ModId = "asharppen.valheim.spawn_that";
     public const string PluginName = "Spawn That!";
-    public const string Version = "1.2.15";
+    public const string Version = "1.2.16";
 
     // Awake is called once when both the game and the plug-in are loaded
     void Awake()
@@ -26,13 +26,6 @@ public class SpawnThatPlugin : BaseUnityPlugin
         ConfigurationManager.GeneralConfig = ConfigurationManager.LoadGeneral();
 
         Startup.SetupServices();
-
-        Type testType = Type.GetType("YamlDotNet.Serialization.SerializerBuilder, YamlDotNet");
-
-        if (testType is null)
-        {
-            Log.LogWarning("Unable to detect required YamlDotNet type. Verify that YamlDotNet.dll is installed.");
-        }
 
         new Harmony(ModId).PatchAll();
     }

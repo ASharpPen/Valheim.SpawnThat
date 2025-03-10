@@ -13,7 +13,7 @@ public abstract class CompressedPackage
     /// </summary>
     protected void RegisterType<T>(IEnumerable<T> objs)
     {
-        foreach(var obj in objs)
+        foreach (var obj in objs)
         {
             RegisteredTypes.Add(obj.GetType());
         }

@@ -1,4 +1,6 @@
 # Changelog: 
+- v1.2.16:
+	- Compatibility: Packing YamlDotNet dependency into main dll, to avoid conflicts with other mods.
 - v1.2.15:
 	- Compatibility: Valheim v0.219.13.
 - v1.2.14:

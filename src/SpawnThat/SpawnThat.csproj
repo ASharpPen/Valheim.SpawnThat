@@ -4,7 +4,7 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <AssemblyVersion></AssemblyVersion>
     <FileVersion></FileVersion>
-    <Version>1.2.15</Version>
+    <Version>1.2.16</Version>
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
     <AssemblyName>Valheim.SpawnThat</AssemblyName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -17,11 +17,15 @@
     <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
   </PropertyGroup>
   <ItemGroup>
+	<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.40">
+	  <PrivateAssets>all</PrivateAssets>
+	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
 	<PackageReference Include="Microsoft.Unity.Analyzers" Version="1.12.0">
 	  <PrivateAssets>all</PrivateAssets>
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
-    <PackageReference Include="YamlDotNet" Version="11.2.1" />
+    <PackageReference Include="YamlDotNet" Version="16.3.0" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -96,8 +100,6 @@
 			
 			<SpawnThatDll>$(OutputPath)$(AssemblyName).dll</SpawnThatDll>
 			<NugetPkg>$([System.IO.Path]::Combine($(BaseOutputPath),$(Configuration),$(Assemblyname).$(Version).nupkg))</NugetPkg>
-			<YamlDotNetDll>$(OutputPath)YamlDotNet.dll</YamlDotNetDll>
-			<YamlDotNetLicense>$([System.IO.Path]::Combine($(ThunderStoreDir),'YamlDotNet.LICENSE.txt'))</YamlDotNetLicense>
 			<Readme>$([System.IO.Path]::Combine($(RepoDir),'README.md'))</Readme>
 			<Icon>$([System.IO.Path]::Combine($(ThunderStoreDir),'icon.png'))</Icon>
 			<Manifest>$([System.IO.Path]::Combine($(ThunderStoreDir),'manifest.json'))</Manifest>
@@ -109,7 +111,7 @@
 		<RemoveDir Directories="$(ReleaseDir)" />
 		<MakeDir Directories="$(ReleaseDir)" />
 
-		<Copy SourceFiles="$(SpawnThatDll);$(YamlDotNetDll);$(YamlDotnetLicense);$(Readme);$(Icon);$(Manifest);$(Changelog)" DestinationFolder="$(ReleaseDir)" />
+		<Copy SourceFiles="$(SpawnThatDll);$(Readme);$(Icon);$(Manifest);$(Changelog)" DestinationFolder="$(ReleaseDir)" />
 
 		<ZipDirectory SourceDirectory="$(ReleaseDir)" Overwrite="true" DestinationFile="$([System.IO.Path]::Combine($(ThunderStoreDir),'SpawnThat_v$(Version).zip'))" />
 
