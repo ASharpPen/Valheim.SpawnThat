@@ -16,7 +16,7 @@ internal static class ConfigApplicationService
         spawner.m_spawnIntervalSec = (float)spawnInterval;
         spawner.m_triggerDistance = spawnerTemplate.ConditionPlayerWithinDistance ?? spawner.m_triggerDistance;
         spawner.m_setPatrolSpawnPoint = spawnerTemplate.SetPatrol ?? spawner.m_setPatrolSpawnPoint;
-        spawner.m_spawnRadius = spawnerTemplate.ConditionPlayerWithinDistance ?? spawner.m_spawnRadius;
+        spawner.m_spawnRadius = spawnerTemplate.SpawnRadius ?? spawner.m_spawnRadius;
         spawner.m_maxNear = spawnerTemplate.ConditionMaxCloseCreatures ?? spawner.m_maxNear;
         spawner.m_maxTotal = spawnerTemplate.ConditionMaxCreatures ?? spawner.m_maxTotal;
         spawner.m_nearRadius = spawnerTemplate.DistanceConsideredClose ?? spawner.m_nearRadius;

@@ -105,6 +105,7 @@ internal static class TemplateWriter
             config.SpawnInterval.SetConditionally((float?)template.SpawnInterval?.TotalSeconds);
             config.SetPatrol.SetConditionally(template.SetPatrol);
             config.ConditionPlayerWithinDistance.SetConditionally(template.ConditionPlayerWithinDistance);
+            config.SpawnRadius.SetConditionally(template.SpawnRadius);
             config.ConditionMaxCloseCreatures.SetConditionally(template.ConditionMaxCloseCreatures);
             config.ConditionMaxCreatures.SetConditionally(template.ConditionMaxCreatures);
             config.DistanceConsideredClose.SetConditionally(template.DistanceConsideredClose);
