@@ -71,6 +71,7 @@ internal static class SpawnAreaSpawnerConfigApplier
             : builder.SetSpawnInterval(TimeSpan.FromSeconds(x.Value)));
         config.SetPatrol.SetIfLoaded(x => builder.SetPatrol(x));
         config.ConditionPlayerWithinDistance.SetIfLoaded(x => builder.SetConditionPlayerWithinDistance(x));
+        config.SpawnRadius.SetIfLoaded(x => builder.SetSpawnRadius(x));
         config.ConditionMaxCloseCreatures.SetIfLoaded(x => builder.SetConditionMaxCloseCreatures(x));
         config.ConditionMaxCreatures.SetIfLoaded(x => builder.SetConditionMaxCreatures(x));
         config.DistanceConsideredClose.SetIfLoaded(x => builder.SetDistanceConsideredClose(x));

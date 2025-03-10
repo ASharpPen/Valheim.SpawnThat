@@ -11,6 +11,7 @@ public static class ISpawnAreaSpawnerBuilderSettingsExtensions
         settings.SpawnInterval.Set(builder.SetSpawnInterval);
         settings.SetPatrol.Set(builder.SetPatrol);
         settings.ConditionPlayerWithinDistance.Set(builder.SetConditionPlayerWithinDistance);
+        settings.SpawnRadius.Set(builder.SetSpawnRadius);
         settings.ConditionMaxCloseCreatures.Set(builder.SetConditionMaxCloseCreatures);
         settings.ConditionMaxCreatures.Set(builder.SetConditionMaxCreatures);
         settings.DistanceConsideredClose.Set(builder.SetDistanceConsideredClose);

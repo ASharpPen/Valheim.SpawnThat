@@ -11,11 +11,43 @@ using SpawnThat.Options.Modifiers;
 using SpawnThat.Options.PositionConditions;
 using YamlDotNet.Core.Events;
 using SpawnThat.Options.Identifiers;
+using YamlDotNet.Serialization.ObjectGraphTraversalStrategies;
+using YamlDotNet.Serialization.NamingConventions;
+using YamlDotNet.Serialization.ObjectFactories;
 
 namespace SpawnThat.Core.Network;
 
 internal static class Serializer
 {
+    // Something inside the default object factory is trying to scan the type system.
+    // This is a big no-no for SpawnThat when soft-dependencies are not available,
+    // as the non-present dll's will be attempted loaded and therefore throw exceptions.
+    // These "ExecuteOn" are intended to scan for methods tagged with specific attributes,
+    // to be executed at the appropriate time. This is not a feature that SpawnThat is
+    // using at all though, so they can be safely overridden.
+    //
+    // Future solution is to isolate extensions like the soft-dependencies as their
+    // own mods, hooking into SpawnThat and registering their types on their own.
+    // This is awaiting integration with ThatCore.
+    private class YamlObjectFactory : DefaultObjectFactory
+    {
+        public override void ExecuteOnSerialized(object value)
+        {
+        }
+
+        public override void ExecuteOnDeserialized(object value)
+        {
+        }
+
+        public override void ExecuteOnDeserializing(object value)
+        {
+        }
+
+        public override void ExecuteOnSerializing(object value)
+        {
+        }
+    }
+
     public static ISerializer ConfigureSerializer(HashSet<Type> registeredTypes = null)
     {
         var builder = new SerializerBuilder();
@@ -31,6 +63,8 @@ internal static class Serializer
         return builder
             .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults | DefaultValuesHandling.OmitEmptyCollections)
             .WithTypeConverter(new YamlEnumWriter())
+            .WithObjectGraphTraversalStrategyFactory((typeInspector, typeResolver, typeConverters, maximumRecursion) =>
+                new FullObjectGraphTraversalStrategy(typeInspector, typeResolver, maximumRecursion, NullNamingConvention.Instance, new YamlObjectFactory()))
             .Build();
     }
 
@@ -38,6 +72,7 @@ internal static class Serializer
     {
         var deserializer = new DeserializerBuilder()
             .WithNodeTypeResolver(new TypeResolver())
+            .WithObjectFactory(new YamlObjectFactory())
             .Build();
 
         return deserializer;

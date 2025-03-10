@@ -62,6 +62,14 @@ public interface ISpawnAreaSpawnerBuilder
     /// <remarks>Vanilla name: m_triggerDistance</remarks>
     ISpawnAreaSpawnerBuilder SetConditionPlayerWithinDistance(float? withinDistance);
 
+
+    /// <summary>
+    /// <para">Spawn Radius of spawner</para>
+    /// </summary>
+    /// 
+    /// <remarks>Vanilla name: m_spawnRadius</remarks>
+    ISpawnAreaSpawnerBuilder SetSpawnRadius(float? spawnRadius);
+
     /// <summary>
     /// Sets maximum number of creatures within <c>DistanceIsClose</c>,
     /// for spawner to be active.

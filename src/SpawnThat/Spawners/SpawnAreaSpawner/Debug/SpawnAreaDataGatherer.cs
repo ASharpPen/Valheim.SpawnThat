@@ -221,6 +221,7 @@ internal static class SpawnAreaDataGatherer
             str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.SpawnInterval)}={Spawner.m_spawnIntervalSec.ToString(CultureInfo.InvariantCulture)}");
             str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.SetPatrol)}={Spawner.m_setPatrolSpawnPoint}");
             str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.ConditionPlayerWithinDistance)}={Spawner.m_triggerDistance.ToString(CultureInfo.InvariantCulture)}");
+            str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.SpawnRadius)}={Spawner.m_spawnRadius.ToString(CultureInfo.InvariantCulture)}");
             str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.ConditionMaxCloseCreatures)}={Spawner.m_maxNear.ToString(CultureInfo.InvariantCulture)}");
             str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.ConditionMaxCreatures)}={Spawner.m_maxTotal.ToString(CultureInfo.InvariantCulture)}");
             str.AppendLine($"{nameof(SpawnAreaSpawnerConfig.DistanceConsideredClose)}={Spawner.m_nearRadius.ToString(CultureInfo.InvariantCulture)}");

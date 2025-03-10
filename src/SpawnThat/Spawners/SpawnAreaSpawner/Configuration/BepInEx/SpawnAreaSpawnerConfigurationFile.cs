@@ -43,6 +43,8 @@ internal class SpawnAreaSpawnerConfig
 
     public TomlConfigEntry<float?> ConditionPlayerWithinDistance = new("ConditionPlayerWithinDistance", 60, "Minimum distance to player for enabling spawn.");
 
+    public TomlConfigEntry<float?> SpawnRadius = new("SpawnRadius", 2, "range of spawn radius");
+
     public TomlConfigEntry<int?> ConditionMaxCloseCreatures = new("ConditionMaxCloseCreatures", 3, "Sets maximum number of creatures within DistanceConsideredClose, for spawner to be active.");
 
     public TomlConfigEntry<int?> ConditionMaxCreatures = new("ConditionMaxCreatures", 100, "Sets maximum number of creatures currently loaded, for spawner to be active.");
