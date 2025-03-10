@@ -64,9 +64,8 @@ public interface ISpawnAreaSpawnerBuilder
 
 
     /// <summary>
-    /// <para">Spawn Radius of spawner</para>
+    /// <para>Spawn radius of spawner.</para>
     /// </summary>
-    /// 
     /// <remarks>Vanilla name: m_spawnRadius</remarks>
     ISpawnAreaSpawnerBuilder SetSpawnRadius(float? spawnRadius);
 
