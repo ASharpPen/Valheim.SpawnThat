@@ -1,4 +1,6 @@
 # Changelog: 
+- v1.2.17:
+	- SpawnArea: Fixed 'Enabled' not correctly applying when modifying existing spawns.
 - v1.2.16:
 	- Compatibility: Packing YamlDotNet dependency into main dll, to avoid conflicts with other mods.
 	- SpawnArea: Added missing setting for SpawnRadius. This is the radius to the spawner, within which spawns will appear.
