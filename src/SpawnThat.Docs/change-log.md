@@ -1,4 +1,6 @@
 # Changelog: 
+- v1.2.18:
+	- SpawnArea: Fixed config sync error when `ConditionBiome` was used for spawner spawns.
 - v1.2.17:
 	- SpawnArea: Fixed 'Enabled' not correctly applying when modifying existing spawns.
 - v1.2.16:
