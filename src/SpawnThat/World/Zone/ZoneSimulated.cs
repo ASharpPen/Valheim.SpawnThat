@@ -17,7 +17,7 @@ internal class ZoneSimulated : IZone
 
     public Biome Biome { get; }
 
-    public Vector2i ZoneId { get; }
+    public Vector2s ZoneId { get; }
 
     public Vector3 ZonePos { get; }
 
@@ -27,7 +27,7 @@ internal class ZoneSimulated : IZone
 
     private float[] OceanDepthCorners => _oceanDepthCorners ??= CalculateOceanDepths();
 
-    public ZoneSimulated(Vector2i zoneId)
+    public ZoneSimulated(Vector2s zoneId)
     {
         ZoneId = zoneId;
 
@@ -65,13 +65,13 @@ internal class ZoneSimulated : IZone
     /// </summary>
     /// <param name="worldCoordinate"></param>
     /// <returns></returns>
-    public Vector2i WorldToZoneCoordinate(Vector3 worldCoordinate)
+    public Vector2s WorldToZoneCoordinate(Vector3 worldCoordinate)
     {
         Vector3 vector = worldCoordinate - ZonePos;
         var x = Mathf.FloorToInt(vector.x + 0.5f) + Width / 2;
         var y = Mathf.FloorToInt(vector.z + 0.5f) + Width / 2;
 
-        return new Vector2i(x, y);
+        return new Vector2s(x, y);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ internal class ZoneSimulated : IZone
     /// a full grid of 65*65 heights, only the requested position is calculated.
     /// </para>
     /// </summary>
-    public float Height(Vector2i zoneLocalCoordinate)
+    public float Height(Vector2s zoneLocalCoordinate)
     {
         int y = zoneLocalCoordinate.y;
         int x = zoneLocalCoordinate.x;
@@ -143,7 +143,7 @@ internal class ZoneSimulated : IZone
     /// <inheritdoc/>
     /// <para>Based on <c>Heightmap.GetOceanDepth</c>.</para>
     /// </summary>
-    public float OceanDepth(Vector2i zoneLocalCoordinate)
+    public float OceanDepth(Vector2s zoneLocalCoordinate)
     {
         float t = zoneLocalCoordinate.x / (float)Width;
         float t2 = zoneLocalCoordinate.y / (float)Width;
@@ -178,18 +178,18 @@ internal class ZoneSimulated : IZone
 
         float waterLevel = ZoneSystem.instance ? ZoneSystem.instance.m_waterLevel : 30f;
 
-        oceanDepth[0] = Mathf.Max(0, waterLevel - Height(new Vector2i(0, Width)));
-        oceanDepth[1] = Mathf.Max(0, waterLevel - Height(new Vector2i(Width, Width)));
-        oceanDepth[2] = Mathf.Max(0, waterLevel - Height(new Vector2i(Width, 0)));
-        oceanDepth[3] = Mathf.Max(0, waterLevel - Height(new Vector2i(0, 0)));
+        oceanDepth[0] = Mathf.Max(0, waterLevel - Height(new Vector2s(0, Width)));
+        oceanDepth[1] = Mathf.Max(0, waterLevel - Height(new Vector2s(Width, Width)));
+        oceanDepth[2] = Mathf.Max(0, waterLevel - Height(new Vector2s(Width, 0)));
+        oceanDepth[3] = Mathf.Max(0, waterLevel - Height(new Vector2s(0, 0)));
 
         return oceanDepth;
     }
 
-    private static Vector2i North { get; } = new Vector2i(0, 1);
-    private static Vector2i South { get; } = new Vector2i(0, -1);
-    private static Vector2i West { get; } = new Vector2i(-1, 0);
-    private static Vector2i East { get; } = new Vector2i(1, 0);
+    private static Vector2s North { get; } = new Vector2s(0, 1);
+    private static Vector2s South { get; } = new Vector2s(0, -1);
+    private static Vector2s West { get; } = new Vector2s(-1, 0);
+    private static Vector2s East { get; } = new Vector2s(1, 0);
 
     /// <summary>
     /// <inheritdoc/>

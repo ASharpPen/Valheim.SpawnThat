@@ -59,7 +59,7 @@ internal class SimpleLocationPackage : CompressedPackage
 
             foreach (var location in package.Locations)
             {
-                var position = new Vector2i(location.X, location.Y);
+                var position = new Vector2s(location.X, location.Y);
 
                 simpleLocations.Add(new SimpleLocation
                 {
@@ -83,12 +83,12 @@ internal class SimpleLocationPackage : CompressedPackage
 [Serializable]
 public struct SimpleLocationDTO
 {
-    public int X;
-    public int Y;
+    public short X;
+    public short Y;
 
     public ushort L;
 
-    public SimpleLocationDTO(Vector2i pos, ushort location)
+    public SimpleLocationDTO(Vector2s pos, ushort location)
     {
         X = pos.x;
         Y = pos.y;

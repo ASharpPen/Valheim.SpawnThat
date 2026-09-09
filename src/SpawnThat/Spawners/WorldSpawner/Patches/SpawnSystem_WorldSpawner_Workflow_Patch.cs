@@ -54,9 +54,9 @@ internal static class SpawnSystem_WorldSpawner_Workflow_Patch
             // Move to right before m_enabled is loaded and checked.
             .MatchForward(
                 false,
-                new CodeMatch(OpCodes.Ldloc_S),
                 new CodeMatch(OpCodes.Ldfld, m_enabled),
                 new CodeMatch(OpCodes.Brfalse))
+            .Advance(-1)
             // Grab the instruction loading SpawnData onto the stack.
             .GetInstruction(out CodeInstruction loadSpawnData)
             // Move to right before m_enabled is checked.

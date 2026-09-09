@@ -24,13 +24,13 @@ internal class ZoneHeightmap : IZone
 
         Width = heightmap.m_width;
         Biome = heightmap.GetBiome(ZonePos);
-        BiomeCorners = heightmap.m_cornerBiomes.ToArray();
+        BiomeCorners = heightmap.m_cornerBiomes.Select(x => x.Biome).ToArray();
         BiomeArea = heightmap.GetBiomeArea();
     }
 
     public int Width { get; }
     public Biome Biome { get; }
-    public Vector2i ZoneId { get; }
+    public Vector2s ZoneId { get; }
     public Vector3 ZonePos { get; }
     public Biome[] BiomeCorners { get; }
     public BiomeArea BiomeArea { get; }
@@ -48,11 +48,11 @@ internal class ZoneHeightmap : IZone
         return height;
     }
 
-    public float Height(Vector2i zoneLocalCoordinate) => Heightmap.GetHeight(zoneLocalCoordinate.x, zoneLocalCoordinate.y);
+    public float Height(Vector2s zoneLocalCoordinate) => Heightmap.GetHeight(zoneLocalCoordinate.x, zoneLocalCoordinate.y);
 
     public float OceanDepth(Vector3 worldCoordinate) => Heightmap.GetOceanDepth(worldCoordinate);
 
-    public float OceanDepth(Vector2i zoneLocalCoordinate)
+    public float OceanDepth(Vector2s zoneLocalCoordinate)
     {
         var worldCoordinate = Heightmap.CalcVertex(zoneLocalCoordinate.x, zoneLocalCoordinate.y);
         return OceanDepth(worldCoordinate);
@@ -77,9 +77,9 @@ internal class ZoneHeightmap : IZone
         return 0;
     }
 
-    public Vector2i WorldToZoneCoordinate(Vector3 worldCoordinate)
+    public Vector2s WorldToZoneCoordinate(Vector3 worldCoordinate)
     {
         Heightmap.WorldToVertex(worldCoordinate, out var x, out var y);
-        return new Vector2i(x, y);
+        return new Vector2s(x, y);
     }
 }

@@ -1,4 +1,6 @@
 # Changelog: 
+- v1.2.19:
+	- Compatibility: Valheim v1.0.7.
 - v1.2.18:
 	- SpawnArea: Fixed config sync error when `ConditionBiome` was used for spawner spawns.
 - v1.2.17:
