@@ -13,7 +13,7 @@ public abstract class BaseZdoQuery
     protected Vector3 Center { get; }
     protected int Range { get; }
 
-    protected List<Vector2i> ZoneIds { get; private set; }
+    protected List<Vector2s> ZoneIds { get; private set; }
     protected List<ZDO> Zdos { get; private set; }
 
     protected int MinX { get; private set; }
@@ -55,7 +55,7 @@ public abstract class BaseZdoQuery
 
         foreach (var zone in ZoneIds)
         {
-            ZDOMan.instance.FindObjects(zone, Zdos);
+            ZDOMan.instance.FindObjects(zone, Zdos, []);
         }
 
         initialized = true;

@@ -55,14 +55,6 @@ SetInfusion=Fire
 ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
 ```
 
-# v1.0.0 Details
-
-## Config changes
-
-`Enabled` now toggles the actual spawner on/off. This can be used to both disable local spawners and world spawner entries.
-
-`TemplateEnabled` added, which behaves like the old `Enabled` by disabling the configuration entry itself.
-
 ## API support
 
 Spawn That now supports configurations by code. Configurations are merged with configs from file. File configurations will be applied last, ensuring that users can still override the settings made by mods.
@@ -108,6 +100,10 @@ public class Plugin : BaseUnityPlugin
 ```
 
 # Support
+
+If you are already getting a server from Survival Servers, going through the link below sends a bit my way. No extra cost for you, but a beer for me!
+
+<a href="https://www.survivalservers.com/?ref=asharppen"><img src="https://github.com/ASharpPen/Assets/blob/e65c0aa47aadfefe39873619d5c13182d899aab4/Banners/banner-survival-servers-valheim-1280x100.png?raw=true" width="1280" height="100"></a>
 
 If you feel like it
 
