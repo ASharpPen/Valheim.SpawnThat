@@ -2,9 +2,9 @@
 using System.Linq;
 using UnityEngine;
 using SpawnThat.Core;
-using SpawnThat.World.Maps;
 using SpawnThat.Options.Conditions;
 using SpawnThat.Spawners.WorldSpawner.Managers;
+using SpawnThat.World.Maps.Zones;
 
 namespace SpawnThat.Spawners.WorldSpawner.Services;
 
@@ -12,7 +12,7 @@ internal static class WorldSpawnerSpawnMapService
 {
     public static int[][] GetMapOfTemplatesActiveAreas(int templateIndex)
     {
-        float[][] chanceMap = MapManager.GetTemplateAreaChanceMap(templateIndex, scaling: 100);
+        float[][] chanceMap = ZoneMapManager.GetTemplateAreaChanceMap(templateIndex, scaling: 100);
         int[][] spawnMap = new int[chanceMap.Length][];
 
         var template = WorldSpawnTemplateManager.GetTemplate(templateIndex);
@@ -23,7 +23,7 @@ internal static class WorldSpawnerSpawnMapService
             return null;
         }
 
-        var allowedBiomes = template.BiomeMask ?? (Heightmap.Biome)1023;
+        var allowedBiomes = template.BiomeMask ?? (Heightmap.Biome)int.MaxValue;
 
         var locationCondition = template.SpawnConditions.FirstOrDefault(x => x is ConditionLocation) as ConditionLocation;
         var distanceToCenterCondition = template.SpawnConditions.FirstOrDefault(x => x is ConditionDistanceToCenter) as ConditionDistanceToCenter;
@@ -41,8 +41,8 @@ internal static class WorldSpawnerSpawnMapService
                     continue;
                 }
 
-                var coordX = MapManager.AreaMap.IndexToCoordinate(x);
-                var coordY = MapManager.AreaMap.IndexToCoordinate(y);
+                var coordX = AltBiomeWorldData.MapSpaceToWorldSpace(x);
+                var coordY = AltBiomeWorldData.MapSpaceToWorldSpace(y);
 
                 var position = new Vector3(coordX, 0, coordY);
 
@@ -56,7 +56,7 @@ internal static class WorldSpawnerSpawnMapService
                     continue;
                 }
 
-                if (areaIdsCondition?.IsValid(MapManager.AreaMap.AreaIds[x][y]) == false)
+                if (areaIdsCondition?.IsValid(ZoneMapManager.IdMap.AreaIds[x][y]) == false)
                 {
                     continue;
                 }
@@ -75,16 +75,16 @@ internal static class WorldSpawnerSpawnMapService
     {
         Dictionary<int, int> biomes = new();
 
-        if (y + 1 < MapManager.AreaMap.Biomes.Length)
+        if (y + 1 < ZoneMapManager.BiomeMap.Biomes.Length)
         {
-            int biome = MapManager.AreaMap.Biomes[x][y + 1];
+            int biome = ZoneMapManager.BiomeMap.Biomes[x][y + 1];
             biomes.TryGetValue(biome, out var counter);
             biomes[biome] = counter + 1;
         }
 
-        if (x + 1 < MapManager.AreaMap.Biomes.Length)
+        if (x + 1 < ZoneMapManager.BiomeMap.Biomes.Length)
         {
-            int biome = MapManager.AreaMap.Biomes[x + 1][y];
+            int biome = ZoneMapManager.BiomeMap.Biomes[x + 1][y];
             biomes.TryGetValue(biome, out var counter);
             biomes[biome] = counter + 1;
 
@@ -92,14 +92,14 @@ internal static class WorldSpawnerSpawnMapService
 
         if (y - 1 >= 0)
         {
-            int biome = MapManager.AreaMap.Biomes[x][y - 1];
+            int biome = ZoneMapManager.BiomeMap.Biomes[x][y - 1];
             biomes.TryGetValue(biome, out var counter);
             biomes[biome] = counter + 1;
         }
 
         if (x - 1 >= 0)
         {
-            int biome = MapManager.AreaMap.Biomes[x - 1][y];
+            int biome = ZoneMapManager.BiomeMap.Biomes[x - 1][y];
             biomes.TryGetValue(biome, out var counter);
             biomes[biome] = counter + 1;
 

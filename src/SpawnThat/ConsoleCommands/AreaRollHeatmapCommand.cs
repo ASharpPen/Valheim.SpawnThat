@@ -5,9 +5,11 @@ using System.Linq;
 using BepInEx;
 using SpawnThat.Configuration;
 using SpawnThat.Spawners.WorldSpawner.Managers;
-using SpawnThat.World.Maps.Area;
 using SpawnThat.World.Maps;
 using SpawnThat.Core;
+using SpawnThat.World.Maps.Images;
+using SpawnThat.World.Maps.Images.Colors;
+using SpawnThat.World.Maps.Zones;
 
 namespace SpawnThat.ConsoleCommands;
 
@@ -44,22 +46,23 @@ internal sealed class AreaRollHeatmapCommand
                 return;
             }
 
-            float[][] chanceMap = MapManager.GetTemplateAreaChanceMap(templateIndex);
-            int[][] heatmap = new int[chanceMap.Length][];
+            float[][] chanceMap = ZoneMapManager.GetTemplateAreaChanceMap(templateIndex);
+            IntMap heatmap = new IntMap(chanceMap.Length);
 
-            for (int x = 0; x < heatmap.Length; ++x)
+            for (int x = 0; x < heatmap.GridWidth; ++x)
             {
-                heatmap[x] = new int[heatmap.Length];
+                var heatX = heatmap.Grid[x];
+                var chanceX = chanceMap[x];
 
-                for (int y = 0; y < heatmap.Length; ++y)
+                for (int y = 0; y < heatmap.GridWidth; ++y)
                 {
-                    heatmap[x][y] = (int)(chanceMap[x][y] * 255);
+                    heatX[y] = (int)(chanceX[y] * 255);
                 }
             }
 
             ImageBuilder
-                .Init(MapManager.AreaMap)
-                .AddHeatZones(heatmap, false)
+                .Init(ZoneMapManager.GridSize)
+                .Apply(heatmap, HeatColorMapper.FromIntMap())
                 .Print($"area_roll_{templateIndex}");
 
             var debugFolder = Path.Combine(Paths.BepInExRootPath, ConfigurationManager.GeneralConfig?.DebugFileFolder?.Value ?? "Debug");

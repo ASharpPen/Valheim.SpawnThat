@@ -4,7 +4,7 @@ using System.Linq;
 using SpawnThat.Core;
 using SpawnThat.Spawners.WorldSpawner.Managers;
 using SpawnThat.Utilities.Extensions;
-using SpawnThat.World.Maps;
+using SpawnThat.World.Maps.Zones;
 using UnityEngine;
 
 namespace SpawnThat.ConsoleCommands;
@@ -83,8 +83,8 @@ internal sealed class AreaRollCommand
             position = Player.m_localPlayer.transform.position;
         }
 
-        var areaId = MapManager.GetAreaId(position.Value);
-        var chance = MapManager.GetAreaChance(position.Value, templateIndex);
+        var areaId = ZoneMapManager.GetAreaId(position.Value);
+        var chance = ZoneMapManager.GetAreaChance(position.Value, templateIndex);
 
         return $"World spawn '{templateIndex}', in area '{areaId}', rolled chance '{chance * 100}'.";
     }

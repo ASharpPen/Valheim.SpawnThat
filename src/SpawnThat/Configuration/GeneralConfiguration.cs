@@ -76,6 +76,8 @@ internal class GeneralConfiguration
 
     public ConfigurationEntry<bool> WriteLocationsToFile = new(false, "Writes all locations loaded to a file, sectioned by the biome in which they can appear.");
 
+    public ConfigurationEntry<bool> WriteAltBiomesToFile = new(false, "Writes all alt biomes loaded to a file.");
+
     #endregion
 
     public void Load(ConfigFile configFile)
@@ -106,5 +108,6 @@ internal class GeneralConfiguration
         //SpawnAreaAddCommentsToFile.Bind(Config, "SpawnAreaSpawner", "AddCommentsToFile"); // TODO: Hm... Not sure about this one.
 
         WriteLocationsToFile.Bind(Config, "Datamining", "WriteLocationsToFile");
+        WriteAltBiomesToFile.Bind(Config, "Datamining", "WriteAltBiomesToFile");
     }
 }

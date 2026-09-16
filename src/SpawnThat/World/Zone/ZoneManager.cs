@@ -13,8 +13,8 @@ namespace SpawnThat.World.Zone;
 
 public static class ZoneManager
 {
-    private static Dictionary<Vector2s, ZoneHeightmap> HeightmapsLoaded = new();
-    private static Dictionary<Vector2s, ZoneSimulated> SimulatedCache = new();
+    internal static Dictionary<Vector2s, ZoneHeightmap> HeightmapsLoaded = new();
+    internal static Dictionary<Vector2s, ZoneSimulated> SimulatedCache = new();
 
     static ZoneManager()
     {
@@ -38,37 +38,5 @@ public static class ZoneManager
         }
 
         return SimulatedCache[zoneId] = new ZoneSimulated(zoneId);
-    }
-
-    [HarmonyPatch]
-    private static class PatchHeightmap
-    {
-        [HarmonyPatch(typeof(Heightmap), nameof(Heightmap.Regenerate))]
-        [HarmonyPostfix]
-        private static void Record(Heightmap __instance)
-        {
-            // Sometimes distant heightmaps are generated, we need to skip those.
-            // Not sure whats going on here, but they get generated in inconsistent positions
-            // that do not fit on the zone grid.
-            if (!__instance.m_isDistantLod)
-            {
-                return;
-            }
-
-            var zoneId = __instance.gameObject.transform.position.GetZoneId();
-
-            HeightmapsLoaded[zoneId] = new ZoneHeightmap(__instance);
-#if DEBUG && FALSE
-            LineGizmo.Create(__instance.transform.position, Color.green);
-#endif
-        }
-
-        [HarmonyPatch(typeof(Heightmap), nameof(Heightmap.OnDestroy))]
-        [HarmonyPostfix]
-        private static void RemoveRecord(Heightmap __instance)
-        {
-            var zoneId = __instance.gameObject.transform.position.GetZoneId();
-            HeightmapsLoaded.Remove(zoneId);
-        }
     }
 }

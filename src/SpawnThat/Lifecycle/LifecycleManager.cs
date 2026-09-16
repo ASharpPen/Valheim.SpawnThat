@@ -36,6 +36,11 @@ public static class LifecycleManager
 
     public static event Action OnFindSpawnPointFirstTime;
 
+    /// <summary>
+    /// Runs after AltBiomes and BiomeSectors have been loaded.
+    /// </summary>
+    public static event Action OnBiomesLoaded;
+
     public static GameState GameState { get; private set; }
 
     public static void SubscribeToWorldInit(Action onInit)
@@ -90,5 +95,10 @@ public static class LifecycleManager
     internal static void InitFindSpawnPointFirstTime()
     {
         OnFindSpawnPointFirstTime.RaiseSafely("Error during OnFindSpawnPointFirstTime event");
+    }
+
+    internal static void InitBiomesLoaded()
+    {
+        OnBiomesLoaded.RaiseSafely("Error during OnBiomesLoaded event");
     }
 }

@@ -1,11 +1,18 @@
-﻿using SpawnThat.Configuration;
+﻿using System.Threading.Tasks;
+using SpawnThat.Configuration;
+using SpawnThat.ConsoleCommands;
+using SpawnThat.Debugging;
+using SpawnThat.Debugging.Datamining;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners;
-using SpawnThat.Spawners.SpawnAreaSpawner.Startup;
 using SpawnThat.Spawners.LocalSpawner.Startup;
+using SpawnThat.Spawners.SpawnAreaSpawner.Startup;
+using SpawnThat.Spawners.WorldSpawner.Debug;
+using SpawnThat.Spawners.WorldSpawner.Managers;
 using SpawnThat.Spawners.WorldSpawner.Startup;
 using SpawnThat.World.Locations;
-using SpawnThat.ConsoleCommands;
+using SpawnThat.World.Maps.Sectors;
+using SpawnThat.World.Maps.Zones;
 
 namespace SpawnThat;
 
@@ -23,6 +30,7 @@ internal static class Startup
         ZoneSystemSyncSetup.Configure();
 
         RegisterCommands();
+        SetupMaps();
     }
 
     private static void InitConfiguration()
@@ -41,5 +49,24 @@ internal static class Startup
         AreaRollHeatmapCommand.Register();
         RoomCommand.Register();
         WhereDoesItSpawnCommand.Register();
+    }
+
+    private static void SetupMaps()
+    {
+        LifecycleManager.OnBiomesLoaded += () =>
+        {
+            AltBiomesFileGenerator.WriteToDiskAsToml();
+
+            SectorManager.AssignIds();
+            SectorManager.InitMap();
+            ZoneMapManager.InitializeSectorMap(SectorManager.IdMap);
+
+            SectorManager.PrintMaps();
+            ZoneMapManager.PrintMaps();
+
+            WorldSpawnerSpawnMapImageGenerator.OnBiomesLoaded();
+        };
+
+        WorldSpawnerManager.OnConfigsApplied += WorldSpawnerSpawnMapImageGenerator.OnConfigsReady;
     }
 }

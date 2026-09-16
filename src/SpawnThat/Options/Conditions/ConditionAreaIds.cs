@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using SpawnThat.Spawners.Contexts;
-using SpawnThat.World.Maps;
+using SpawnThat.World.Maps.Zones;
 
 namespace SpawnThat.Options.Conditions;
 
@@ -25,7 +25,7 @@ public class ConditionAreaIds : ISpawnCondition
             return true;
         }
 
-        var areaId = MapManager.GetAreaId(context.SpawnerZdo.GetPosition());
+        var areaId = ZoneMapManager.GetAreaId(context.SpawnerZdo.GetPosition());
 
         if (RequiredAreaIds.Any(x => x == areaId))
         {
@@ -42,7 +42,7 @@ public class ConditionAreaIds : ISpawnCondition
             return true;
         }
 
-        var areaId = MapManager.GetAreaId(position);
+        var areaId = ZoneMapManager.GetAreaId(position);
 
         if (RequiredAreaIds.Any(x => x == areaId))
         {

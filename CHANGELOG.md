@@ -1,4 +1,9 @@
 # Changelog: 
+- v1.3.0:
+	- World Spawner: Debug output for `RequiredPersistentEvent`. Currently just to make it visible. Will be adding support for usage as a setting later.
+	- Datamining: Debug file for AltBiomes. Need to see what is in them to have a chance of using them.
+	- Datamining: Additional maps for viewing the new `BiomeSectors` and a feature for assigning them id's. This may be used to replace the "Biome Areas" behaviour that is specific to Spawn That.
+	- Fixed: Calculating zone of location based on current coordinate was sometimes off by one.
 - v1.2.19:
 	- Compatibility: Valheim v1.0.7.
 - v1.2.18:

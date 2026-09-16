@@ -1,7 +1,7 @@
 ﻿using System;
 using SpawnThat.Core;
 using SpawnThat.Utilities.Extensions;
-using SpawnThat.World.Maps;
+using SpawnThat.World.Maps.Zones;
 
 namespace SpawnThat.ConsoleCommands;
 
@@ -27,7 +27,7 @@ internal sealed class AreaCommand
                 return;
             }
 
-            var areaId = MapManager.GetAreaId(Player.m_localPlayer.transform.position);
+            var areaId = ZoneMapManager.GetAreaId(Player.m_localPlayer.transform.position);
 
             terminal.Print(CommandName, areaId.ToString());
         }

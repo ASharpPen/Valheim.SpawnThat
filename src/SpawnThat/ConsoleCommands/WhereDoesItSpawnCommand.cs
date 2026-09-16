@@ -7,8 +7,10 @@ using SpawnThat.Configuration;
 using SpawnThat.Core;
 using SpawnThat.Spawners.WorldSpawner.Managers;
 using SpawnThat.Spawners.WorldSpawner.Services;
-using SpawnThat.World.Maps.Area;
 using SpawnThat.World.Maps;
+using SpawnThat.World.Maps.Images;
+using SpawnThat.World.Maps.Images.Colors;
+using SpawnThat.World.Maps.Zones;
 
 namespace SpawnThat.ConsoleCommands;
 
@@ -58,9 +60,13 @@ internal sealed class WhereDoesItSpawnCommand
             }
 
             ImageBuilder
-               .SetGrayscaleBiomes(MapManager.AreaMap)
-               .AddHeatZones(spawnMap)
-               .Print($"spawn_map_{templateIndex}_{template.PrefabName ?? template.TemplateName ?? string.Empty}");
+                .Init(ZoneMapManager.GridSize)
+                .Apply(ZoneMapManager.BiomeMap, BiomeGrayscaleColorMapper.FromIntMap())
+                .Apply(
+                    IntMap.FromGrid(spawnMap), 
+                    x => x != 0, 
+                    HeatColorMapper.FromIntMap())
+                .Print($"spawn_map_{templateIndex}_{template.PrefabName ?? template.TemplateName ?? string.Empty}");
 
             var debugFolder = Path.Combine(Paths.BepInExRootPath, ConfigurationManager.GeneralConfig?.DebugFileFolder?.Value ?? "Debug");
 

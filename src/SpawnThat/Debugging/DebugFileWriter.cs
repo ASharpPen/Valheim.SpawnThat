@@ -30,7 +30,7 @@ internal static class DebugFileWriter
         File.WriteAllBytes(filePath, content);
     }
 
-    private static string Prepare(string filename, string fileDescription)
+    internal static string Prepare(string filename, string fileDescription)
     {
         string debugDir = "Debug";
 
@@ -46,5 +46,23 @@ internal static class DebugFileWriter
         Log.LogInfo($"Writing {fileDescription} to file {filePath}.");
 
         return filePath;
+    }
+
+    internal static StreamWriter PrepareFile(string filename, string fileDescription)
+    {
+        string debugDir = "Debug";
+
+        if (ConfigurationManager.GeneralConfig?.DebugFileFolder is not null)
+        {
+            debugDir = Path.Combine(ConfigurationManager.GeneralConfig.DebugFileFolder.Value.SplitBySlash());
+        }
+
+        string filePath = Path.Combine(Paths.BepInExRootPath, debugDir, filename);
+
+        FileUtils.EnsureDirectoryExistsForFile(filePath);
+
+        Log.LogInfo($"Writing {fileDescription} to file {filePath}.");
+
+        return File.CreateText(filePath);
     }
 }

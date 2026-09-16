@@ -28,11 +28,11 @@ internal static class WorldSpawnerConfigurationService
         });
     }
 
-    public static void ConfigureSpawnLists(List<SpawnSystemList> spawnLists)
+    public static bool ConfigureSpawnLists(List<SpawnSystemList> spawnLists)
     {
         if (IsConfigured)
         {
-            return;
+            return false;
         }
 
         Log.LogTrace($"Configuring world spawner entries");
@@ -85,6 +85,8 @@ internal static class WorldSpawnerConfigurationService
                 "However, the listed prefab was not registered in the game, and Spawn That is therefore unable to use it.\n" +
                 "Verify spelling of prefab name in Spawn That configurations, or that the creature/item is correctly loaded.");
         }
+
+        return true;
     }
 
     private static void ApplyWorldSpawnerTemplates(List<SpawnSystemList> spawnLists)

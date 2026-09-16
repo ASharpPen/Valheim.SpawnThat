@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using static Version;
 
-namespace SpawnThat.World.Maps.Area;
+namespace SpawnThat.World.Maps.Zones;
 
-internal class AreaMapBuilder
+internal class ZoneAreaMapBuilder
 {
     private class Label
     {
@@ -10,18 +11,18 @@ internal class AreaMapBuilder
         public int Area { get; set; }
     }
 
-    private IAreaProvider AreaProvider { get; set; }
-    private AreaMap AreaMap { get; }
+    private AreaIdMap AreaIdMap { get; }
+    private AreaBiomeMap AreaBiomeMap { get; }
     private Label[][] LabelGrid { get; }
 
     private Dictionary<int, int> MergeTable { get; } = new();
 
-    private int Size => AreaMap.MapWidth;
+    private int Size => AreaIdMap.MapWidth;
 
-    private AreaMapBuilder(IAreaProvider areaProvider, int mapRadius)
+    public ZoneAreaMapBuilder(int mapRadius)
     {
-        AreaProvider = areaProvider;
-        AreaMap = new AreaMap(mapRadius);
+        AreaIdMap = new AreaIdMap(mapRadius);
+        AreaBiomeMap = new AreaBiomeMap(mapRadius);
 
         LabelGrid = new Label[Size][];
 
@@ -31,32 +32,20 @@ internal class AreaMapBuilder
         }
     }
 
-    public static AreaMapBuilder BiomeMap(int mapRadius)
-    {
-        var builder = new AreaMapBuilder(new WorldGeneratorAreaProvider(), mapRadius);
-        return builder;
-    }
-
-    public AreaMapBuilder UseAreaProvider(IAreaProvider areaProvider)
-    {
-        AreaProvider = areaProvider;
-        return this;
-    }
-
-    public AreaMap CompileMap()
+    public (AreaIdMap, AreaBiomeMap) CompileMap()
     {
         ScanAreas();
         MergeLabels();
         Build();
 
-        return AreaMap;
+        return (AreaIdMap, AreaBiomeMap);
     }
 
     private void ScanAreas()
     {
         int rollingCount = 0;
 
-        for (int x = 0; x < AreaMap.Biomes.Length; ++x)
+        for (int x = 0; x < AreaIdMap.AreaIds.Length; ++x)
         {
             Label[] lastLabelColumn = x == 0
                 ? null
@@ -68,16 +57,16 @@ internal class AreaMapBuilder
 
             int[] lastAreaColumn = x == 0
                 ? null
-                : AreaMap.Biomes[x - 1];
+                : AreaBiomeMap.Biomes[x - 1];
 
             int lastArea = x == 0
                 ? -1
                 : lastAreaColumn[0];
 
-            for (int y = 0; y < AreaMap.Biomes.Length; ++y)
+            for (int y = 0; y < AreaBiomeMap.Biomes.Length; ++y)
             {
-                var area = GetArea(x, y);
-                AreaMap.Biomes[x][y] = area;
+                var area = GetBiome(x, y);
+                AreaBiomeMap.Biomes[x][y] = area;
 
                 // Check up
                 if (lastArea == area)
@@ -101,10 +90,10 @@ internal class AreaMapBuilder
         }
     }
 
-    private int GetArea(int x, int y)
-    {
-        return AreaProvider.GetArea(AreaMap.IndexToCoordinate(x), AreaMap.IndexToCoordinate(y));
-    }
+    private int GetBiome(int x, int y) =>
+        (int)WorldGenerator.instance.GetBiome(
+            AreaIdMap.IndexToCoordinate(x), 
+            AreaIdMap.IndexToCoordinate(y));
 
     private void MergeLabels()
     {
@@ -203,7 +192,6 @@ internal class AreaMapBuilder
         }
     }
 
-
     private void Build()
     {
         for (int x = 0; x < LabelGrid.Length; ++x)
@@ -219,7 +207,7 @@ internal class AreaMapBuilder
                     MergeTable[areaId] = id;
                 }
 
-                AreaMap.AreaIds[x][y] = id;
+                AreaIdMap.AreaIds[x][y] = id;
             }
         }
     }

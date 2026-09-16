@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using SpawnThat.Core;
+using SpawnThat.Debugging.Datamining;
 using SpawnThat.Lifecycle;
 using SpawnThat.Spawners.WorldSpawner.Services;
 using SpawnThat.Utilities.Extensions;
@@ -28,9 +29,11 @@ internal static class WorldSpawnerManager
 
     /// <summary>
     /// Disables world spawner updates while true.
-    /// Indended to delay updates until configs have been loaded.
+    /// Intended to delay updates until configs have been loaded.
     /// </summary>
     public static bool WaitingForConfigs { get; set; } = true;
+
+    public static event Action OnConfigsApplied;
 
     static WorldSpawnerManager()
     {
@@ -125,7 +128,10 @@ internal static class WorldSpawnerManager
             return;
         }
 
-        WorldSpawnerConfigurationService.ConfigureSpawnLists(spawner.m_spawnLists);
+        if (WorldSpawnerConfigurationService.ConfigureSpawnLists(spawner.m_spawnLists))
+        {
+            OnConfigsApplied.RaiseSafely("Error during 'world spawner configs applied' event");
+        }
     }
 
     public static void SetTemplate(SpawnSystem.SpawnData spawnEntry, WorldSpawnTemplate template)

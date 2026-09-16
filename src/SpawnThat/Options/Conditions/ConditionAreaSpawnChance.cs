@@ -1,5 +1,5 @@
 ﻿using SpawnThat.Spawners.Contexts;
-using SpawnThat.World.Maps;
+using SpawnThat.World.Maps.Zones;
 
 namespace SpawnThat.Options.Conditions;
 
@@ -28,7 +28,7 @@ public class ConditionAreaSpawnChance : ISpawnCondition
             return true;
         }
 
-        var areaChance = MapManager.GetAreaChance(context.SpawnerZdo.GetPosition(), EntityId);
+        var areaChance = ZoneMapManager.GetAreaChance(context.SpawnerZdo.GetPosition(), EntityId);
 
         return areaChance * 100 > 100 - AreaChance;
     }
