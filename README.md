@@ -23,7 +23,6 @@ Just want to have more/less of a mob type? Simple modifiers exist!
 - Modify the spawners in camps, villages and dungeons
 - Conditions and settings specific to integrated mods:
 	- [Creature Level and Loot Control](https://valheim.thunderstore.io/package/Smoothbrain/CreatureLevelAndLootControl/)
-	- [MobAILib](https://www.nexusmods.com/valheim/mods/1188)
 	- [Epic Loot](https://valheim.thunderstore.io/package/RandyKnapp/EpicLoot/)
 
 # Documentation

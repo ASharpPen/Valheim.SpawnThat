@@ -46,9 +46,6 @@
     <Reference Include="EpicLoot">
       <HintPath>..\Libs\RandyKnapp-EpicLoot\EpicLoot.dll</HintPath>
     </Reference>
-    <Reference Include="MobAILib">
-      <HintPath>..\Libs\RagnarsRokare-MobAILib\MobAILib.dll</HintPath>
-    </Reference>
     <Reference Include="SoftReferenceableAssets">
       <HintPath>..\Libs\Valheim\SoftReferenceableAssets.dll</HintPath>
     </Reference>

@@ -29,10 +29,6 @@ internal class CreatureSpawnerConfig : TomlConfigWithSubsections<TomlConfig>
         {
             newModConfig = new CreatureSpawnerConfigCLLC();
         }
-        else if (subsectionName == CreatureSpawnerConfigMobAI.ModName.Trim().ToUpperInvariant())
-        {
-            newModConfig = new CreatureSpawnerConfigMobAI();
-        }
 
         return newModConfig;
     }
@@ -89,13 +85,4 @@ internal class CreatureSpawnerConfigCLLC : TomlConfig
     public TomlConfigEntry<CllcBossAffix?> SetBossAffix = new("SetBossAffix", CllcBossAffix.None, "Assigns the specified boss affix to creature spawned. Only works for the default 5 bosses. Ignored if empty.");
 
     public TomlConfigEntry<bool?> UseDefaultLevels = new("UseDefaultLevels", false, "Use the default LevelMin and LevelMax for level assignment, ignoring the usual CLLC level control.");
-}
-
-internal class CreatureSpawnerConfigMobAI : TomlConfig
-{
-    public const string ModName = "MobAI";
-
-    public TomlConfigEntry<string> SetAI = new("SetAI", "", "Name of MobAI to register for spawn. Eg. the defaults 'Fixer' and 'Worker'.");
-
-    public TomlConfigEntry<string> AIConfigFile = new("AIConfigFile", "", "Configuration file to use for the SetAI. Eg. 'MyFixerConfig.json', can include path, but will always start searching from config folder. See MobAI documentation for file setup.");
 }

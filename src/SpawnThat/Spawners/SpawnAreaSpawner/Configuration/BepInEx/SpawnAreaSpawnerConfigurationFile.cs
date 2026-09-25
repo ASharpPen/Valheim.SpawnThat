@@ -68,15 +68,12 @@ internal class SpawnAreaSpawnerConfig
 
 internal class SpawnAreaSpawnConfig : TomlConfigWithSubsections<TomlConfig>
 {
-    private SpawnAreaSpawnConfigMobAI _mobAIConfig = null;
     private SpawnAreaSpawnConfigCLLC _cllcConfig = null;
     private SpawnAreaSpawnConfigEpicLoot _epicLootConfig = null;
 
     public SpawnAreaSpawnConfigEpicLoot EpicLootConfig => _epicLootConfig ??= GetSubsection(SpawnAreaSpawnConfigEpicLoot.ModName) as SpawnAreaSpawnConfigEpicLoot;
 
     public SpawnAreaSpawnConfigCLLC CllcConfig => _cllcConfig ??= GetSubsection(SpawnAreaSpawnConfigCLLC.ModName) as SpawnAreaSpawnConfigCLLC;
-
-    public SpawnAreaSpawnConfigMobAI MobAIConfig => _mobAIConfig ??= GetSubsection(SpawnAreaSpawnConfigMobAI.ModName) as SpawnAreaSpawnConfigMobAI;
 
     protected override TomlConfig InstantiateSubsection(string subsectionName)
     {
@@ -85,10 +82,6 @@ internal class SpawnAreaSpawnConfig : TomlConfigWithSubsections<TomlConfig>
         if (subsectionName == SpawnAreaSpawnConfigCLLC.ModName.Trim().ToUpperInvariant())
         {
             newModConfig = _cllcConfig = new();
-        }
-        else if (subsectionName == SpawnAreaSpawnConfigMobAI.ModName.Trim().ToUpperInvariant())
-        {
-            newModConfig = _mobAIConfig = new();
         }
         else if (subsectionName == SpawnAreaSpawnConfigEpicLoot.ModName.Trim().ToUpperInvariant())
         {
@@ -230,15 +223,6 @@ internal class SpawnAreaSpawnConfigCLLC : TomlConfig
     public TomlConfigEntry<CllcBossAffix?> SetBossAffix = new("SetBossAffix", CllcBossAffix.None, "Assigns the specified boss affix to creature spawned. Only works for the default 5 bosses. Ignored if empty.");
 
     public TomlConfigEntry<bool?> UseDefaultLevels = new("UseDefaultLevels", false, "Use the default LevelMin and LevelMax for level assignment, ignoring the usual CLLC level control.");
-}
-
-internal class SpawnAreaSpawnConfigMobAI : TomlConfig
-{
-    public const string ModName = "MobAI";
-
-    public TomlConfigEntry<string> SetAI = new("SetAI", "", "Name of MobAI to register for spawn. Eg. the defaults 'Fixer' and 'Worker'.");
-
-    public TomlConfigEntry<string> AIConfigFile = new("AIConfigFile", "", "Configuration file to use for the SetAI. Eg. 'MyFixerConfig.json', can include path, but will always start searching from config folder. See MobAI documentation for file setup.");
 }
 
 internal class SpawnAreaSpawnConfigEpicLoot : TomlConfig
