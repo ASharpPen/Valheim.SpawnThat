@@ -42,11 +42,15 @@ internal static class TemplateWriter
 
         foreach (var spawnerTemplate in spawnerTemplates)
         {
-            var config = tomlFile
-                .GetGenericSubsection("WorldSpawner")
+            var worldSpawnerSection = tomlFile
+                .GetGenericSubsection("WorldSpawner");
+
+            worldSpawnerSection.DisableSpawnLimiter.Set(WorldSpawnerManager.DisableSpawnLimiter);
+
+            var spawnSection = worldSpawnerSection
                 .GetGenericSubsection(spawnerTemplate.id.ToString());
 
-            ConfigureSpawnerConfig(config, spawnerTemplate.template);
+            ConfigureSpawnerConfig(spawnSection, spawnerTemplate.template);
         }
 
         return tomlFile;
