@@ -12,7 +12,7 @@ public interface IZone
     /// Note that this means that edge zones may display other biomes.
     /// </summary>
     Biome Biome { get; }
-    Vector2i ZoneId { get; }
+    Vector2s ZoneId { get; }
     Vector3 ZonePos { get; }
     Biome[] BiomeCorners { get; }
     BiomeArea BiomeArea { get; }
@@ -32,7 +32,7 @@ public interface IZone
     /// <summary>
     /// <para>Transform world coordinate to coordinate relative to the zone.</para>
     /// </summary>
-    Vector2i WorldToZoneCoordinate(Vector3 worldCoordinate);
+    Vector2s WorldToZoneCoordinate(Vector3 worldCoordinate);
 
     /// <summary>
     /// World height at the given point.
@@ -42,7 +42,7 @@ public interface IZone
     /// <summary>
     /// World height at the local zone coordinates.
     /// </summary>
-    float Height(Vector2i zoneLocalCoordinate);
+    float Height(Vector2s zoneLocalCoordinate);
 
     /// <summary>
     /// <para>Ocean depth at the coordinate.</para>
@@ -52,7 +52,7 @@ public interface IZone
     /// <summary>
     /// <para>Ocean depth at the local zone coordinate.</para>
     /// </summary>
-    float OceanDepth(Vector2i zoneLocalCoordinate);
+    float OceanDepth(Vector2s zoneLocalCoordinate);
 
     /// <summary>
     /// Surface tilt in degrees at point.

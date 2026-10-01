@@ -23,7 +23,7 @@ public static class Vector3Extensions
         return true;
     }
 
-    public static Vector2i GetZoneId(this Vector3 position)
+    public static Vector2s GetZoneId(this Vector3 position)
     {
         return ZoneUtils.GetZone((int)position.x, (int)position.z);
     }

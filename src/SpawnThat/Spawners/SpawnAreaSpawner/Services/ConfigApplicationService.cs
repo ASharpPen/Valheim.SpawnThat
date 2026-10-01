@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using SpawnThat.Core;
 using SpawnThat.Spawners.SpawnAreaSpawner.Managers;
@@ -33,14 +34,11 @@ internal static class ConfigApplicationService
 
         var spawns = spawner.m_prefabs?.ToList() ?? new();
 
+        List<int> indexesToRemove = [];
+
         foreach (var spawn in spawnerTemplate.Spawns.OrderBy(x => x.Key))
         {
             var spawnTemplate = spawn.Value;
-
-            if (!spawnTemplate.Enabled)
-            {
-                continue;
-            }
 
             if (spawn.Key < existingSpawns)
             {
@@ -51,6 +49,11 @@ internal static class ConfigApplicationService
                 {
                     Log.LogTrace($"[SpawnArea Spawner] Modifying spawn '{spawnTemplate.Id}' of '{spawner.GetCleanedName()}:{pos}'");
 
+                    if (!spawnTemplate.Enabled)
+                    {
+                        indexesToRemove.Add((int)spawn.Key);
+                    }
+
                     Modify(existingSpawn, spawnTemplate);
                     SpawnAreaSpawnTemplateManager.SetTemplate(existingSpawn, spawnTemplate);
 
@@ -60,7 +63,7 @@ internal static class ConfigApplicationService
                     }
                 }
             }
-            else if (spawnTemplate.TemplateEnabled)
+            else if (spawnTemplate.TemplateEnabled && spawnTemplate.Enabled)
             {
                 // Create new
                 var newSpawn = Create(spawnTemplate);
@@ -80,15 +83,21 @@ internal static class ConfigApplicationService
 
         if (spawnerTemplate.RemoveNotConfiguredSpawns ?? false)
         {
-            unmodifiedIndexes.Reverse();
 #if DEBUG
             Log.LogTrace("Remove not configured from spawns: " + spawns.Join(x => x.m_prefab.name));
             Log.LogTrace("Removing unmodified indexes: " + unmodifiedIndexes?.Join() ?? "");
 #endif
             foreach (var index in unmodifiedIndexes)
             {
-                    spawns.RemoveAt(index);
+                indexesToRemove.Add(index);
             }
+        }
+
+        foreach (var index in indexesToRemove
+            .Distinct()
+            .OrderByDescending(x => x))
+        {
+            spawns.RemoveAt(index);
         }
 
         spawner.m_prefabs = spawns;

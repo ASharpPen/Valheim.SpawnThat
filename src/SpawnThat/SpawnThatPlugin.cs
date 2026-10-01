@@ -1,8 +1,8 @@
-﻿using System;
-using BepInEx;
+﻿using BepInEx;
 using HarmonyLib;
 using SpawnThat.Configuration;
 using SpawnThat.Core;
+using SpawnThat.Spawners.WorldSpawner.Patches;
 
 namespace SpawnThat;
 
@@ -16,7 +16,7 @@ public class SpawnThatPlugin : BaseUnityPlugin
 {
     public const string ModId = "asharppen.valheim.spawn_that";
     public const string PluginName = "Spawn That!";
-    public const string Version = "1.2.16";
+    public const string Version = "1.2.20";
 
     // Awake is called once when both the game and the plug-in are loaded
     void Awake()
@@ -27,6 +27,8 @@ public class SpawnThatPlugin : BaseUnityPlugin
 
         Startup.SetupServices();
 
-        new Harmony(ModId).PatchAll();
+        var harmony = new Harmony(ModId);
+        harmony.PatchAll();
+        SpawnSystem_DisableSpawnLimiter_Patch.Patch(harmony);
     }
 }

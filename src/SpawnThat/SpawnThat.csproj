@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net481</TargetFramework>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <AssemblyVersion></AssemblyVersion>
     <FileVersion></FileVersion>
-    <Version>1.2.16</Version>
+    <Version>1.2.20</Version>
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
     <AssemblyName>Valheim.SpawnThat</AssemblyName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>

@@ -9,6 +9,8 @@ public class ConditionBiome : ISpawnCondition
 {
     public Heightmap.Biome BiomeMask { get; set; }
 
+    public ConditionBiome() { }
+
     public ConditionBiome(params Heightmap.Biome[] biomes)
     {
         BiomeMask = Heightmap.Biome.None;

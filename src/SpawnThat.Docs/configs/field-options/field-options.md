@@ -67,6 +67,9 @@ Additional keys can be created manually through console commands or by other mod
 - Boss
 - MistlandsMonsters
 - Dverger
+- PlayerSpawned
+- TrainingDummy
+- DeepNorth
 
 # Status Effects
 Valheim status effect options are not easily identified. But this is a list of at least some of the possibilities.

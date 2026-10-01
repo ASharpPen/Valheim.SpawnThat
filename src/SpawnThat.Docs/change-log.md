@@ -1,4 +1,12 @@
 # Changelog: 
+- v1.2.20:
+	- World Spawner: Added new setting `DisableSpawnLimiter` under `[WorldSpawner]` directly. This overrides the world spawning behaviour introduced in Valheim v1.0.16, which can heavily reduce the amount of spawns happening in the world.
+- v1.2.19:
+	- Compatibility: Valheim v1.0.7.
+- v1.2.18:
+	- SpawnArea: Fixed config sync error when `ConditionBiome` was used for spawner spawns.
+- v1.2.17:
+	- SpawnArea: Fixed 'Enabled' not correctly applying when modifying existing spawns.
 - v1.2.16:
 	- Compatibility: Packing YamlDotNet dependency into main dll, to avoid conflicts with other mods.
 	- SpawnArea: Added missing setting for SpawnRadius. This is the radius to the spawner, within which spawns will appear.

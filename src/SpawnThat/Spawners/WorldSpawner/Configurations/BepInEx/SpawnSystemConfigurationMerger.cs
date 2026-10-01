@@ -22,6 +22,11 @@ internal static class SpawnSystemConfigurationMerger
             return;
         }
 
+        if (sourceTemplates.DisableSpawnLimiter.IsSet)
+        {
+            targetTemplates.DisableSpawnLimiter = sourceTemplates.DisableSpawnLimiter;
+        }
+
         foreach (var sourceTemplate in sourceTemplates.Subsections)
         {
             if (sourceTemplate.Value.TemplateEnabled.IsSet &&

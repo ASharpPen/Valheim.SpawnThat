@@ -132,3 +132,24 @@ HuntPlayer = true
 | ConditionPositionMustBeNearPrefabsDistance | int | 32 | 123 | Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustBeNearPrefabs |
 | ConditionPositionMustNotBeNearPrefabs | string | | FineWood, Blueberries | List of prefab names for which none must be present with distance of spawn position to allow spawning. Leave empty to always allow |
 | ConditionPositionMustNotBeNearPrefabsDistance | int | 32 | 123 | Distance within attempted spawn position to check for prefabs listed in ConditionPositionMustNotBeNearPrefabs |
+
+## General Options
+
+This is for settings that affect spawning in general, and not a particular spawn entry.
+These are placed directly under `[WorldSpawner]`. This section should only be used at most once pr file.
+
+Eg., 
+```INI
+[WorldSpawner]
+DisableSpawnLimiter = true
+
+[WorldSpawner.0]
+...
+
+[WorldSpawner.1]
+...
+```
+
+| Setting | Type | Default | Example | Description |
+| --- | --- | --- | --- | --- |
+| DisableSpawnLimiter | bool | false | true | Disables the vanilla spawn limitations introduced in Valheim v1.0.16. May be a temporary feature. |
