@@ -10,11 +10,13 @@ internal class WorldSpawnerConfigPackage : CompressedPackage
 {
     public Dictionary<int, WorldSpawnTemplate> TemplatesById;
     public Dictionary<string, SimpleSpawnTemplate> SimpleConfigsByPrefab;
+    public bool DisableSpawnLimiter;
 
     protected override void BeforePack()
     {
         TemplatesById = new(WorldSpawnTemplateManager.TemplatesById);
         SimpleConfigsByPrefab = new(WorldSpawnTemplateManager.SimpleTemplatesByPrefab);
+        DisableSpawnLimiter = WorldSpawnerManager.DisableSpawnLimiter;
 
         Log.LogDebug($"Packaged world spawner configurations: {TemplatesById?.Count ?? 0}");
         Log.LogDebug($"Packaged simple world spawner configurations: {SimpleConfigsByPrefab?.Count ?? 0}");
@@ -32,6 +34,7 @@ internal class WorldSpawnerConfigPackage : CompressedPackage
 
             WorldSpawnTemplateManager.TemplatesById = configPackage.TemplatesById ?? new();
             WorldSpawnTemplateManager.SimpleTemplatesByPrefab = configPackage.SimpleConfigsByPrefab ?? new();
+            WorldSpawnerManager.DisableSpawnLimiter = configPackage.DisableSpawnLimiter;
 
             Log.LogInfo($"Successfully unpacked world spawner configurations: {WorldSpawnTemplateManager.TemplatesById?.Count ?? 0}");
             Log.LogInfo($"Successfully unpacked simple world spawner configurations: {WorldSpawnTemplateManager.SimpleTemplatesByPrefab?.Count ?? 0}");

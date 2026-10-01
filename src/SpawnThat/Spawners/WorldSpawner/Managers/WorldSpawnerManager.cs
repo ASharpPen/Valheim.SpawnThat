@@ -32,11 +32,14 @@ internal static class WorldSpawnerManager
     /// </summary>
     public static bool WaitingForConfigs { get; set; } = true;
 
+    internal static bool DisableSpawnLimiter { get; set; }
+
     static WorldSpawnerManager()
     {
         LifecycleManager.SubscribeToWorldInit(() =>
         {
             WaitingForConfigs = true;
+            DisableSpawnLimiter = false;
 
             HasInstantiatedSpawnLists = false;
             SpawnLists.Clear();
@@ -126,6 +129,16 @@ internal static class WorldSpawnerManager
         }
 
         WorldSpawnerConfigurationService.ConfigureSpawnLists(spawner.m_spawnLists);
+    }
+
+    public static int OverrideSpawnLimiter(int currentCounter)
+    {
+        if (DisableSpawnLimiter)
+        {
+            return 0;
+        }
+
+        return currentCounter;
     }
 
     public static void SetTemplate(SpawnSystem.SpawnData spawnEntry, WorldSpawnTemplate template)

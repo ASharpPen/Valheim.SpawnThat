@@ -52,8 +52,21 @@ internal static class SpawnSystemConfigApplier
 
             var builder = spawnerConfigs.ConfigureWorldSpawner((uint)spawnConfig.Index);
 
-
             ApplyConfigToBuilder(spawnConfig, builder);
+
+            ////////////////////////////////
+            // Apply toggle for disabling spawn system spawn limiter.
+            ////////////////////////////////
+
+            var worldSpawner = spawnerConfigs
+                .GetOrAddSpawnerConfiguration(new WorldSpawnerConfiguration());
+
+            worldSpawner.DisableSpawnLimiter = SpawnSystemConfigurationManager
+                .SpawnSystemConfig
+                .Subsections?
+                .Values?
+                .FirstOrDefault()? // [WorldSpawner]
+                .DisableSpawnLimiter;
         }
     }
 

@@ -55,6 +55,13 @@ SetInfusion=Fire
 ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
 ```
 
+# Server/Client
+
+Install on both.
+
+Spawning is generally handled client-side in Valheim. 
+Clients connecting to a server will not be using their local configs. Instead, client will get in-memory configs sent from the server.
+
 ## API support
 
 Spawn That now supports configurations by code. Configurations are merged with configs from file. File configurations will be applied last, ensuring that users can still override the settings made by mods.
@@ -107,4 +114,4 @@ If you are already getting a server from Survival Servers, going through the lin
 
 If you feel like it
 
-<a href="https://www.buymeacoffee.com/asharppen"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=asharppen&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
+<a href="https://www.buymeacoffee.com/asharppen"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" /></a>

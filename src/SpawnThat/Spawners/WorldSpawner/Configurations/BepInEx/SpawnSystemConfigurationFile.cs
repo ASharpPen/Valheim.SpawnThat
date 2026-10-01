@@ -19,6 +19,8 @@ internal class SpawnSystemConfiguration : TomlConfigWithSubsections<SpawnConfigu
     {
         return new SpawnConfiguration();
     }
+
+    public TomlConfigEntry<bool?> DisableSpawnLimiter = new("DisableSpawnLimiter", false, "Disables the vanilla spawn limitations introduced in Valheim v1.0.16. May be a temporary feature.");
 }
 
 internal class SpawnConfiguration : TomlConfigWithSubsections<TomlConfig>

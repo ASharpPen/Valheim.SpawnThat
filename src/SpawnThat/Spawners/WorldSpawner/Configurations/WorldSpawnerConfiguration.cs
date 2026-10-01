@@ -11,6 +11,8 @@ internal class WorldSpawnerConfiguration : ISpawnerConfiguration
 
     private bool finalized = false;
 
+    public bool? DisableSpawnLimiter { get; set; }
+
     public IWorldSpawnBuilder GetBuilder(uint id)
     {
         if (finalized)
@@ -38,6 +40,11 @@ internal class WorldSpawnerConfiguration : ISpawnerConfiguration
         }
 
         finalized = true;
+
+        if (DisableSpawnLimiter is not null)
+        {
+            WorldSpawnerManager.DisableSpawnLimiter = DisableSpawnLimiter.Value;
+        }
 
         foreach (var builder in builders)
         {
