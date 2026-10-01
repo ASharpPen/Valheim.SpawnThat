@@ -1,28 +1,28 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Changelog: </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Changelog: ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
     <link rel="stylesheet" href="styles/docfx.css">
     <link rel="stylesheet" href="styles/main.css">
     <meta property="docfx:navrel" content="toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+  
+  
+  
   </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -32,7 +32,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="index.html">
                 <img id="logo" class="svg" src="logo.svg" alt="">
               </a>
@@ -46,7 +46,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -62,109 +62,151 @@
 <h1 id="changelog">Changelog:</h1>
 
 <ul>
-<li>v1.2.16:<ul>
+<li>v1.2.20:
+<ul>
+<li>World Spawner: Added new setting <code>DisableSpawnLimiter</code> under <code>[WorldSpawner]</code> directly. This overrides the world spawning behaviour introduced in Valheim v1.0.16, which can heavily reduce the amount of spawns happening in the world.</li>
+</ul>
+</li>
+<li>v1.2.19:
+<ul>
+<li>Compatibility: Valheim v1.0.7.</li>
+</ul>
+</li>
+<li>v1.2.18:
+<ul>
+<li>SpawnArea: Fixed config sync error when <code>ConditionBiome</code> was used for spawner spawns.</li>
+</ul>
+</li>
+<li>v1.2.17:
+<ul>
+<li>SpawnArea: Fixed 'Enabled' not correctly applying when modifying existing spawns.</li>
+</ul>
+</li>
+<li>v1.2.16:
+<ul>
 <li>Compatibility: Packing YamlDotNet dependency into main dll, to avoid conflicts with other mods.</li>
 <li>SpawnArea: Added missing setting for SpawnRadius. This is the radius to the spawner, within which spawns will appear.</li>
 </ul>
 </li>
-<li>v1.2.15:<ul>
+<li>v1.2.15:
+<ul>
 <li>Compatibility: Valheim v0.219.13.</li>
 </ul>
 </li>
-<li>v1.2.14:<ul>
+<li>v1.2.14:
+<ul>
 <li>Updates for room identification, old code did not properly take into account dungeons with multiple layers, as well as the room rotation itself.</li>
 <li>World Spawner: Fixed templates for vanilla creatures sometimes getting assigned to modded creatures, caused by the changes to ID assignment in v1.2.12.</li>
 </ul>
 </li>
-<li>v1.2.13:<ul>
+<li>v1.2.13:
+<ul>
 <li>Fixed: Room detection for dungeons. This affected spawner configs using specific rooms as their requirement.</li>
 </ul>
 </li>
-<li>v1.2.12:<ul>
-<li>World Spawner: Assigning ID&#39;s to vanilla spawners earlier in startup, to help avoid modded creatures being given ID&#39;s that would otherwise belong to said vanilla spawners.</li>
+<li>v1.2.12:
+<ul>
+<li>World Spawner: Assigning ID's to vanilla spawners earlier in startup, to help avoid modded creatures being given ID's that would otherwise belong to said vanilla spawners.</li>
 </ul>
 </li>
-<li>v1.2.11:<ul>
+<li>v1.2.11:
+<ul>
 <li>Compatibility: Valheim v0.218.15.</li>
 </ul>
 </li>
-<li>v1.2.10:<ul>
+<li>v1.2.10:
+<ul>
 <li>Compatibility: Valheim v0.217.46.</li>
 </ul>
 </li>
-<li>v1.2.9:<ul>
+<li>v1.2.9:
+<ul>
 <li>SpawnArea: Fixed SpawnInterval not being set correctly, sometimes causing intervals to be too quick.</li>
 </ul>
 </li>
-<li>v1.2.8:<ul>
+<li>v1.2.8:
+<ul>
 <li>Changed console commands into proper terminal commands with autocompletion.</li>
 <li>Added soft-dependency for LocalizationCache, to help it get loaded earlier.</li>
 <li>World Spawner: Additional checks for nulls while counting non-creature entities.</li>
 </ul>
 </li>
-<li>v1.2.7:<ul>
+<li>v1.2.7:
+<ul>
 <li>Fixed: SetFaction was only applying the faction on creature spawn, it now correctly re-applies on creature load.</li>
 <li>API: Updated GlobalKey enum with new known keys.</li>
 </ul>
 </li>
-<li>v1.2.6:<ul>
+<li>v1.2.6:
+<ul>
 <li>Fixed: Compatibility for Valheim v0.216.9</li>
 </ul>
 </li>
-<li>v1.2.5:<ul>
+<li>v1.2.5:
+<ul>
 <li>Local Spawner: Fixed day-night conditions being swapped.</li>
 </ul>
 </li>
-<li>v1.2.4:<ul>
+<li>v1.2.4:
+<ul>
 <li>Fixed: Compatibility with Valheim v0.215.2.</li>
 </ul>
 </li>
-<li>v1.2.3:<ul>
+<li>v1.2.3:
+<ul>
 <li>Fixed error for prefab nearness position conditions (eg., MustBeNearAllPrefabs) when condition was empty in config file.</li>
 <li>Fixed PrintFantasticBeastsAndWhereToKillThem only printing maps for spawns in file configs. Should now correctly pick up spawns added by API.</li>
 <li>Fixed null-reference error while generating spawn biome maps.</li>
 </ul>
 </li>
-<li>v1.2.2:<ul>
+<li>v1.2.2:
+<ul>
 <li>Compatibility: Epic Loot v0.9.5.</li>
 </ul>
 </li>
-<li>v1.2.1:<ul>
+<li>v1.2.1:
+<ul>
 <li>Compatibility: Allowing <code>:</code>  in section headers for compatibility with Expand World.</li>
 </ul>
 </li>
-<li>v1.2.0:<ul>
+<li>v1.2.0:
+<ul>
 <li>World Spawner: Fixed LevelUpChance only being properly applied to new entries.</li>
 <li>SpawnArea: Fixed modifiers not being applied properly.</li>
 <li>Local Spawner &amp; SpawnArea: Fixed LevelUpChance not being properly applied when using setting UseDefaultLevel.</li>
 <li>World Spawner: Added support for vanilla field BiomeArea.</li>
-<li>World Spawner &amp; SpawnArea: Added ConditionPositionMustBeNearAllPrefabs </li>
-<li>World Spawner &amp; SpawnArea: Added ConditionPositionMustBeNearPrefabs </li>
-<li>World Spawner &amp; SpawnArea: Added ConditionPositionMustNotBeNearPrefabs </li>
+<li>World Spawner &amp; SpawnArea: Added ConditionPositionMustBeNearAllPrefabs</li>
+<li>World Spawner &amp; SpawnArea: Added ConditionPositionMustBeNearPrefabs</li>
+<li>World Spawner &amp; SpawnArea: Added ConditionPositionMustNotBeNearPrefabs</li>
 <li>Compatibility: Moved all applications of spawn modifier settings to happen slightly later. This should solve issues with settings like CLLC UseDefaultLevels.</li>
 </ul>
 </li>
-<li>v1.1.7:<ul>
+<li>v1.1.7:
+<ul>
 <li>World Spawner: Added support for new LevelUpChance field.</li>
 <li>Fixes for v0.212.6</li>
 </ul>
 </li>
-<li>v1.1.6:<ul>
+<li>v1.1.6:
+<ul>
 <li>Fixed patch compatibility with v0.212.6</li>
 </ul>
 </li>
-<li>v1.1.5:<ul>
+<li>v1.1.5:
+<ul>
 <li>For all spawners: Fixed config sync for fields Enabled, TemplateEnabled being ignored when false.</li>
 <li>Local Spawner: Fixed potential config sync issue for fields SpawnAtDay and SpawnAtNight defaulting to true when not set.</li>
 <li>SpawnArea Spawner: Fixed potential error when syncing custom identifiers.</li>
 <li>Streamlined logs of successful config sync a bit.</li>
 </ul>
 </li>
-<li>v1.1.4:<ul>
+<li>v1.1.4:
+<ul>
 <li>Fixed mapping of settings, where SpawnThat would throw an error when processing certain settings defined as empty in cfg file. Primarily affected WorldSpawner configs.</li>
 </ul>
 </li>
-<li>v1.1.3:<ul>
+<li>v1.1.3:
+<ul>
 <li>Fixed world spawner <code>ConditionWorldAgeDaysMax</code> being set to <code>ConditionWorldAgeDaysMin</code>.</li>
 <li>Fixed world spawner <code>ConditionDistanceToCenterMin</code> and <code>Max</code> settings being set incorrectly.</li>
 <li>Fixed MobAILib settings spitting out errors when <code>SetAI</code> was set, but not <code>AIConfigFile</code>.</li>
@@ -173,45 +215,52 @@
 <li>Added internal tests for mapping of all types of spawner configs.</li>
 </ul>
 </li>
-<li>v1.1.2:<ul>
-<li>Fixed default values getting assigned to empty settings (eg., <code>SetFaction =</code>). Caused by last patch. Note to self, dont be lazy.</li>
+<li>v1.1.2:
+<ul>
+<li>Fixed default values getting assigned to empty settings (eg., <code>SetFaction = </code>). Caused by last patch. Note to self, dont be lazy.</li>
 </ul>
 </li>
-<li>v1.1.1:<ul>
+<li>v1.1.1:
+<ul>
 <li>Fixed <code>spawn_that.simple.cfg</code> not being populated on file creation, when <code>InitializeWithCreatures=true</code> was set in <code>spawn_that.cfg</code>. Introduced in v1.1.0.</li>
 <li>Fixed <code>GroundOffset</code> for world spawner file configs not being used. Introduced in v1.1.0.</li>
 </ul>
 </li>
-<li>v1.1.0:<ul>
+<li>v1.1.0:
+<ul>
 <li>Added support for new SpawnArea spawner type (eg., greydwarf nests).</li>
 <li>Added custom config file reader. This should hopefully make things more intuitive and less volatile. It does however mean that comments are longer added automatically.</li>
 <li>Swapped file load and merge order, to make default files override supplemental, as was originally intended (eg., <code>spawn_that.world_spawners_advanced.cfg</code> gets loaded after <code>spawn_that.world_spawners.something.cfg</code> now).</li>
 <li>Added datamining for locations, as an option in general config.</li>
 <li>Removed setting &quot;StopTouchingMyConfigs&quot; from general config, as it has become irrellevant.</li>
-<li>Fixed bug with attempting to load files as configs if they fit the expected name pattern, even though they didn&#39;t end with &#39;.cfg&#39;.</li>
+<li>Fixed bug with attempting to load files as configs if they fit the expected name pattern, even though they didn't end with '.cfg'.</li>
 <li>Fixed bug where disabling world spawner with <code>Enabled</code> disabled the config instead.</li>
 <li>Fixed potential error when adding a new world spawner without specifying a prefab name.</li>
 <li>A LOT of boring internal changes, logging and documentation that noone will probably ever see or care about.</li>
 </ul>
 </li>
-<li>v1.0.6:<ul>
+<li>v1.0.6:
+<ul>
 <li>Fixed config sync for expanded enums. This should resolves an issue when using biomes from Expand World on servers.</li>
-<li>Fixed level calculcation used when using the CLLC integration setting UseDefaultLevels. </li>
+<li>Fixed level calculcation used when using the CLLC integration setting UseDefaultLevels.</li>
 </ul>
 </li>
-<li>v1.0.5:<ul>
+<li>v1.0.5:
+<ul>
 <li>Improved world spawner debug file output. Now tries to output not just the default settings, but the custom too. Including integrations.</li>
-<li>Fixed world spawner post change debug file not showing the configuration ID&#39;s, but instead the internal index they were added at.</li>
+<li>Fixed world spawner post change debug file not showing the configuration ID's, but instead the internal index they were added at.</li>
 <li>Fixed world spawner cfg load adding unnecessary option.</li>
 <li>Fixed faction, biome and cllc setting parsing being case-sensitive. Eg., setting biome as Blackforest would fail to parse as biome BlackForest.</li>
 <li>Added installation check for YamlDotNet dll, to ensure it is present.</li>
 </ul>
 </li>
-<li>v1.0.4:<ul>
+<li>v1.0.4:
+<ul>
 <li>Fixed dungeon room names not being cleaned before registration, causing issues with local spawners matching.</li>
 </ul>
 </li>
-<li>v1.0.3:<ul>
+<li>v1.0.3:
+<ul>
 <li>Fixed local spawner file-configs not being properly matched with spawners.</li>
 <li>Fixed error when printing world spawners with missing prefab to debug file.</li>
 <li>Fixed error when having file-configurations with integrations not installed.</li>
@@ -219,15 +268,18 @@
 <li>Added robustness for v0.207.15</li>
 </ul>
 </li>
-<li>v1.0.2:<ul>
+<li>v1.0.2:
+<ul>
 <li>Fixed error spawn from world spawners, when joining a server with no world spawner configurations.</li>
 </ul>
 </li>
-<li>v1.0.1:<ul>
+<li>v1.0.1:
+<ul>
 <li>Fixed broken config sync.</li>
 </ul>
 </li>
-<li>v1.0.0:<ul>
+<li>v1.0.0:
+<ul>
 <li>WorldSpawner config <code>Enabled</code> now toggles the actual spawn entry on/off.</li>
 <li>Added WorldSpawner option <code>TemplateEnabled</code> to replace <code>Enabled</code>.</li>
 <li>LocalSpawner config <code>Enabled</code> now toggles the spawner itself on/off.</li>
@@ -238,34 +290,41 @@
 <li>Moved documentation to <a href="https://asharppen.github.io/Valheim.SpawnThat/">https://asharppen.github.io/Valheim.SpawnThat/</a>. Documentation will be updated here from now on.</li>
 </ul>
 </li>
-<li>v0.11.6:<ul>
-<li>It&#39;s the season of bugs! World spawner templates are now instantiated on entering world, meaning changes applied are no longer carried between worlds / re-entering. This is hopefully getting changed by IG in the future.</li>
+<li>v0.11.6:
+<ul>
+<li>It's the season of bugs! World spawner templates are now instantiated on entering world, meaning changes applied are no longer carried between worlds / re-entering. This is hopefully getting changed by IG in the future.</li>
 <li>Fixed local spawners not honouring &quot;Enabled=false&quot;. Configs were still attempted applied.</li>
 <li>Fixed leftover optimizations causing spawners to get disabled in biomes outside the one player logged into.</li>
 </ul>
 </li>
-<li>v0.11.5:<ul>
+<li>v0.11.5:
+<ul>
 <li>More v0.205.5 fixes. World spawners were changed from no longer being per zone, but properly global, meaning Spawn That was reapplying its changes more than once.</li>
 </ul>
 </li>
-<li>v0.11.4:<ul>
+<li>v0.11.4:
+<ul>
 <li>Fixes for Valheim v0.205.5</li>
 </ul>
 </li>
-<li>v0.11.3:<ul>
+<li>v0.11.3:
+<ul>
 <li>Fixes for Valheim v0.202.14</li>
 </ul>
 </li>
-<li>v0.11.2: <ul>
+<li>v0.11.2:
+<ul>
 <li>Fixed the setting SpawnInPlayerBase not being assigned to local spawners.</li>
 </ul>
 </li>
-<li>v0.11.1: <ul>
+<li>v0.11.1:
+<ul>
 <li>Fixed issue with local spawners being disabled due to missing location info.</li>
 <li>Made local spawners less demanding of config application. Should revert to default spawn if Spawn That fails to apply its changes.</li>
 </ul>
 </li>
-<li>v0.11.0: <ul>
+<li>v0.11.0:
+<ul>
 <li>Added region labelling for map biomes. Will now scan for connected biome zones, and assign an id for that whole area.</li>
 <li>Added condition for spawning only in specified areas. Intended as a world specific setting. For those who have been waiting, this is the option to use for designated monster islands.</li>
 <li>Added condition for spawning in an area, chance is pr area and only rolled once, to allow for variety in spawning across the world.</li>
@@ -275,11 +334,13 @@
 <li>Documentation moved to mod wiki.</li>
 </ul>
 </li>
-<li>v0.10.1: <ul>
+<li>v0.10.1:
+<ul>
 <li>Fixed issue with world-spawner mobs not spawning in mountains.</li>
 </ul>
 </li>
-<li>v0.10.0: <ul>
+<li>v0.10.0:
+<ul>
 <li>Optimized network package sizes.</li>
 <li>Added initial support for <a href="https://www.nexusmods.com/valheim/mods/1188">MobAILib</a>.</li>
 <li>Added setting &quot;SetTamed&quot; for local- and world spawners.</li>
@@ -287,11 +348,13 @@
 <li>Added world spawner condition &quot;&quot; for nearby players having status effect.</li>
 </ul>
 </li>
-<li>v0.9.1: <ul>
+<li>v0.9.1:
+<ul>
 <li>Fixed issue with too early access of location info. Should resolve issue with local spawners not spawning creatures.</li>
 </ul>
 </li>
-<li>v0.9.0: <ul>
+<li>v0.9.0:
+<ul>
 <li>Added setting &quot;UseDefaultLevels&quot; to CLLC integraiton, to let Spawn That set levels.</li>
 <li>Added setting &quot;SetRelentless&quot;.</li>
 <li>Added setting &quot;SetTryDespawnOnConditionsInvalid&quot;.</li>
@@ -300,16 +363,19 @@
 <li>Added condition &quot;ConditionNearbyPlayersNoiseThreshold&quot;.</li>
 </ul>
 </li>
-<li>v0.8.2: <ul>
+<li>v0.8.2:
+<ul>
 <li>Added more helpful warning- and error messages for when configurations are incorrectly set up.</li>
 <li>Changed StopTouchingMyConfigs to be set to true by default when spawn_that.cfg is created. Due to the massive loading time impact of large config files.</li>
 </ul>
 </li>
-<li>v0.8.1: <ul>
+<li>v0.8.1:
+<ul>
 <li>Additional error handling for conditions. Should help fix potential errors coming out of the newly added player conditions.</li>
 </ul>
 </li>
-<li>v0.8.0: <ul>
+<li>v0.8.0:
+<ul>
 <li>Added world spawner condition for nearby players carried items.</li>
 <li>Added world spawner condition for nearby players carried valuables.</li>
 <li>Added option for assigning faction for world- and local spawner entries.</li>
@@ -318,31 +384,36 @@
 <li>Additional error checks.</li>
 </ul>
 </li>
-<li>v0.7.1: <ul>
+<li>v0.7.1:
+<ul>
 <li>Fixed simple config being generated with wrong prefab-names.</li>
 <li>Additional error handling.</li>
 <li>Changed location info from server to client slightly, to hopefully stop issues with local spawners.</li>
 </ul>
 </li>
-<li>v0.7.0: <ul>
+<li>v0.7.0:
+<ul>
 <li>Added support for Creature Level and Loot Control (CLLC)</li>
 <li>Added CLLC creature effect options for world- and local spawners.</li>
 <li>Added CLLC world level condition to world spawners.</li>
 </ul>
 </li>
-<li>v0.6.0: <ul>
+<li>v0.6.0:
+<ul>
 <li>Added world spawner condition - RequiredNotGlobalKey</li>
 <li>Added support for supplemental world- and local spawner config files.</li>
 <li>Local spawner configs now work in multiplayer.</li>
 </ul>
 </li>
-<li>v0.5.1: <ul>
+<li>v0.5.1:
+<ul>
 <li>Added a (probably temporary) config to not run local spawner configs, due to issues with multiplayer.</li>
 <li>Fixed error message from local spawners.</li>
 <li>Removed a couple of pointless warnings.</li>
 </ul>
 </li>
-<li>v0.5.0: <ul>
+<li>v0.5.0:
+<ul>
 <li>Added new local spawner defaults to file dumps.</li>
 <li>Added condition for world spawners. World age in days.</li>
 <li>Added console command for getting current room in which player is standing.</li>
@@ -350,30 +421,34 @@
 <li>Lots of bug fixes. Spawners should have an easier time having configuration &quot;stick&quot; now.</li>
 </ul>
 </li>
-<li>v0.4.0: <ul>
+<li>v0.4.0:
+<ul>
 <li>New condition for world spawners. Distance to center min/max.</li>
 <li>Simple config initialized with creatures on file creation by default.</li>
 <li>Various attempts at stabilizing and guarding code.</li>
 </ul>
 </li>
-<li>v0.3.0: <ul>
+<li>v0.3.0:
+<ul>
 <li>Server-to-client config sync added</li>
 </ul>
 </li>
-<li>v0.2.0: <ul>
+<li>v0.2.0:
+<ul>
 <li>Initial release</li>
 </ul>
 </li>
 </ul>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat.Docs/change-log.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat.Docs/change-log.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
@@ -389,9 +464,9 @@
                   <i aria-hidden="true">☾</i>
                 </div>
               </div>
-          
+
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <h5>In This Article</h5>
+              <h5>In this article</h5>
               <div></div>
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>
@@ -399,7 +474,7 @@
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -408,8 +483,8 @@
               <a href="#top">Back to top</a>
             </span>
             <div class="pull-left">
-              
-              <span>Generated by <strong>DocFX</strong></span>
+        
+        <span>Generated by <strong>DocFX</strong></span>
             </div>
             <div class="toggle-mode pull-right visible-sm visible-xs">
               <div class="icon">
@@ -427,8 +502,8 @@
         </div>
         <script type="text/javascript" src="styles/toggle-theme.js"></script>
       </footer>    </div>
-    
-    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="styles/docfx.js"></script>
     <script type="text/javascript" src="styles/main.js"></script>
   </body>

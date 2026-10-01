@@ -1,6 +1,6 @@
 {
-  "homepages": [],
-  "source_base_path": "D:/Code/Valheim.SpawnThat/src/SpawnThat.Docs",
+  "docfx_version": "2.81.0+ba844df625370a6bd7c1ecab0d0ec4d1d9128ac4",
+  "source_base_path": "C:/Code/Valheim.SpawnThat-Hotfix/src/SpawnThat.Docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -8,11 +8,9 @@
       "source_relative_path": "api/concept/api-intro.md",
       "output": {
         ".html": {
-          "relative_path": "api/concept/api-intro.html",
-          "hash": "io6X2gexySgdOZr5WtrgEmkAYpOQ060qFB3row0cJPY="
+          "relative_path": "api/concept/api-intro.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -20,11 +18,12 @@
       "source_relative_path": "api/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "api/toc.html",
-          "hash": "pOxLlXRGzaSMZUKX2De2iAQnykFiaqajiOSkBExN6lQ="
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -32,11 +31,9 @@
       "source_relative_path": "change-log.md",
       "output": {
         ".html": {
-          "relative_path": "change-log.html",
-          "hash": "kMUp+3SVTUz1xiIa5Fkpn6llPKnpjC6fB5dr/UIfNl0="
+          "relative_path": "change-log.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -44,11 +41,9 @@
       "source_relative_path": "configs/biome-areas.md",
       "output": {
         ".html": {
-          "relative_path": "configs/biome-areas.html",
-          "hash": "koTHiRv4WYsHfKUJWtvLjh266ZX7Em4lT7Ce29jghwQ="
+          "relative_path": "configs/biome-areas.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -56,11 +51,9 @@
       "source_relative_path": "configs/config-types/general-config.md",
       "output": {
         ".html": {
-          "relative_path": "configs/config-types/general-config.html",
-          "hash": "I9VjgeF/3tOnuik5dJ4smkaRr5pR5PWjZWwPIGE/LR4="
+          "relative_path": "configs/config-types/general-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -68,11 +61,9 @@
       "source_relative_path": "configs/config-types/local-spawner-config.md",
       "output": {
         ".html": {
-          "relative_path": "configs/config-types/local-spawner-config.html",
-          "hash": "SvwPemqOSAvbCVvtsWqgBYOkTXE3IqmUyBo8uxdHFhs="
+          "relative_path": "configs/config-types/local-spawner-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -80,11 +71,9 @@
       "source_relative_path": "configs/config-types/spawnarea-spawner-config.md",
       "output": {
         ".html": {
-          "relative_path": "configs/config-types/spawnarea-spawner-config.html",
-          "hash": "Rqtsa0atuX/Y9ap59RotfOyHD+rZy7i90midZjwiNjA="
+          "relative_path": "configs/config-types/spawnarea-spawner-config.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -92,11 +81,9 @@
       "source_relative_path": "configs/config-types/world-spawner-config.md",
       "output": {
         ".html": {
-          "relative_path": "configs/config-types/world-spawner-config.html",
-          "hash": "O1HU/x98qnjpVvTMvU4FjT9VFVnMo1CUFTKycNmpwqM="
+          "relative_path": "configs/config-types/world-spawner-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -104,11 +91,9 @@
       "source_relative_path": "configs/config-types/world-spawner-simple-config.md",
       "output": {
         ".html": {
-          "relative_path": "configs/config-types/world-spawner-simple-config.html",
-          "hash": "zgZg+q4fhV2woxzsKdBSVPRaVypDFm9KkM+uJy8vv7o="
+          "relative_path": "configs/config-types/world-spawner-simple-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -116,11 +101,9 @@
       "source_relative_path": "configs/console-commands.md",
       "output": {
         ".html": {
-          "relative_path": "configs/console-commands.html",
-          "hash": "C9A1hnHgniJTbekJJQINzvXmNu2UiT2HIQxss/06EPI="
+          "relative_path": "configs/console-commands.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -128,11 +111,9 @@
       "source_relative_path": "configs/data/local-spawner-location-vanilla.md",
       "output": {
         ".html": {
-          "relative_path": "configs/data/local-spawner-location-vanilla.html",
-          "hash": "Jxb975sODezV6PmpI+70OwZWVZ5eiYbmmiOJUQES8OQ="
+          "relative_path": "configs/data/local-spawner-location-vanilla.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -140,11 +121,9 @@
       "source_relative_path": "configs/data/local-spawner-room-vanilla.md",
       "output": {
         ".html": {
-          "relative_path": "configs/data/local-spawner-room-vanilla.html",
-          "hash": "V2v47+33L7max4j4tdGfcc3MPqgNEw/bHwWJpgQH4Sg="
+          "relative_path": "configs/data/local-spawner-room-vanilla.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -152,11 +131,9 @@
       "source_relative_path": "configs/data/locations-by-biome.md",
       "output": {
         ".html": {
-          "relative_path": "configs/data/locations-by-biome.html",
-          "hash": "Iyiyhff0ts1X1cs4y5d+gYQrgMDVgp0EllWyac1jplU="
+          "relative_path": "configs/data/locations-by-biome.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -164,11 +141,9 @@
       "source_relative_path": "configs/data/spawnarea-spawner-vanilla.md",
       "output": {
         ".html": {
-          "relative_path": "configs/data/spawnarea-spawner-vanilla.html",
-          "hash": "pBv6YfYXMDP5UyicDPLJKUWBW50zKLD8nAbRCTE0bPs="
+          "relative_path": "configs/data/spawnarea-spawner-vanilla.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -176,11 +151,9 @@
       "source_relative_path": "configs/data/world-spawner-vanilla.md",
       "output": {
         ".html": {
-          "relative_path": "configs/data/world-spawner-vanilla.html",
-          "hash": "YbYOdDmcuZNVGEm8PxdRqzUH5G7XbJGeNkwuZ6627v4="
+          "relative_path": "configs/data/world-spawner-vanilla.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -188,11 +161,9 @@
       "source_relative_path": "configs/field-options/field-options.md",
       "output": {
         ".html": {
-          "relative_path": "configs/field-options/field-options.html",
-          "hash": "9t2AfnjlOKtdfqPhkaCt0uetugNlShS5knMgShb/4Zw="
+          "relative_path": "configs/field-options/field-options.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -200,11 +171,9 @@
       "source_relative_path": "configs/general/config-format.md",
       "output": {
         ".html": {
-          "relative_path": "configs/general/config-format.html",
-          "hash": "CaQ3+zIqyVWjNEiMHRQ1KJJ0LVLYQxfyLN7Q2+qH5iE="
+          "relative_path": "configs/general/config-format.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -212,11 +181,9 @@
       "source_relative_path": "configs/general/intro.md",
       "output": {
         ".html": {
-          "relative_path": "configs/general/intro.html",
-          "hash": "jNqKl7IKwusFvqfNpzEQhNkSue9WGrYIvP1QaIN3Dhs="
+          "relative_path": "configs/general/intro.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -224,11 +191,9 @@
       "source_relative_path": "configs/general/load-order.md",
       "output": {
         ".html": {
-          "relative_path": "configs/general/load-order.html",
-          "hash": "HZUDC4nljxJaiYX2dHX39LWYzxALqzCNcxsQwwaZj4Y="
+          "relative_path": "configs/general/load-order.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -236,11 +201,9 @@
       "source_relative_path": "configs/general/overview.md",
       "output": {
         ".html": {
-          "relative_path": "configs/general/overview.html",
-          "hash": "DD9hUL48+qCictpHUz4Jndeon2Bn//ACJNXsdGjYPNs="
+          "relative_path": "configs/general/overview.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -248,11 +211,9 @@
       "source_relative_path": "configs/mod-specific/creature-level-and-loot-control.md",
       "output": {
         ".html": {
-          "relative_path": "configs/mod-specific/creature-level-and-loot-control.html",
-          "hash": "kRA6wI7FKRQz1SUDkEiVGVqXKkL6/bg7ZItDymQjroQ="
+          "relative_path": "configs/mod-specific/creature-level-and-loot-control.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -260,11 +221,9 @@
       "source_relative_path": "configs/mod-specific/epic-loot.md",
       "output": {
         ".html": {
-          "relative_path": "configs/mod-specific/epic-loot.html",
-          "hash": "4Dmq2XcHBs+/X6CJSF06rbLv0SP5j52TUIQfG51MZM0="
+          "relative_path": "configs/mod-specific/epic-loot.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -272,11 +231,9 @@
       "source_relative_path": "configs/mod-specific/mobailib.md",
       "output": {
         ".html": {
-          "relative_path": "configs/mod-specific/mobailib.html",
-          "hash": "VMkYQfLP+dz2RueO5Ya9hFwiJbqk6ZktyFefFagofFY="
+          "relative_path": "configs/mod-specific/mobailib.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -284,11 +241,12 @@
       "source_relative_path": "configs/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "configs/toc.html",
-          "hash": "cwCa1KEtPMDwAwmdezgmkfFZl00BoMucPczTSwlxQtw="
+          "relative_path": "configs/toc.html"
+        },
+        ".json": {
+          "relative_path": "configs/toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -296,11 +254,9 @@
       "source_relative_path": "configs/tutorials/creating-world-spawner.md",
       "output": {
         ".html": {
-          "relative_path": "configs/tutorials/creating-world-spawner.html",
-          "hash": "OsSa7VadWNIFWNeK60NPUHiT+r90LvnQB2IYgql5OjI="
+          "relative_path": "configs/tutorials/creating-world-spawner.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -308,11 +264,9 @@
       "source_relative_path": "configs/tutorials/finding-prefab-names.md",
       "output": {
         ".html": {
-          "relative_path": "configs/tutorials/finding-prefab-names.html",
-          "hash": "as9hgRYyguP2r46g+hkC6UbvQLH4qJEs2RMVQlxnjAA="
+          "relative_path": "configs/tutorials/finding-prefab-names.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -320,11 +274,9 @@
       "source_relative_path": "configs/tutorials/modifying-modded-world-spawner.md",
       "output": {
         ".html": {
-          "relative_path": "configs/tutorials/modifying-modded-world-spawner.html",
-          "hash": "VrDf2AD7003db6BgT9/4wBiOuzAQ0g2jhmjumHUIIVk="
+          "relative_path": "configs/tutorials/modifying-modded-world-spawner.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -332,11 +284,9 @@
       "source_relative_path": "configs/tutorials/modifying-vanilla-local-spawner.md",
       "output": {
         ".html": {
-          "relative_path": "configs/tutorials/modifying-vanilla-local-spawner.html",
-          "hash": "Q5ltVh/inbyR37Rn+ws3BdxKVw7vnQpR1vQGyGDauxY="
+          "relative_path": "configs/tutorials/modifying-vanilla-local-spawner.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -344,11 +294,9 @@
       "source_relative_path": "configs/tutorials/modifying-vanilla-spawnarea-spawner.md",
       "output": {
         ".html": {
-          "relative_path": "configs/tutorials/modifying-vanilla-spawnarea-spawner.html",
-          "hash": "yVArShj7BgMx2vkGbth+5Rhh7oLE+/bifOMPGuyS/Hc="
+          "relative_path": "configs/tutorials/modifying-vanilla-spawnarea-spawner.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -356,11 +304,9 @@
       "source_relative_path": "configs/tutorials/multiple-configs-spawnarea-spawner.md",
       "output": {
         ".html": {
-          "relative_path": "configs/tutorials/multiple-configs-spawnarea-spawner.html",
-          "hash": "E9PypgXuGYzmeHCpcDsFxZqReKuFihlwHVidzFRYwPQ="
+          "relative_path": "configs/tutorials/multiple-configs-spawnarea-spawner.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -368,11 +314,9 @@
       "source_relative_path": "file-configs/0.11.6/config-types/general-config.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/0.11.6/config-types/general-config.html",
-          "hash": "vRgvklVH9mp749tE4KI0ypuHIJ9JnVBwViKOrL+JQSM="
+          "relative_path": "file-configs/0.11.6/config-types/general-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -380,11 +324,9 @@
       "source_relative_path": "file-configs/0.11.6/config-types/local-spawner-config.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/0.11.6/config-types/local-spawner-config.html",
-          "hash": "ZSWVp730eLLY9iFnqDfCwePQfw/BRDHHNRLKg/KupZ0="
+          "relative_path": "file-configs/0.11.6/config-types/local-spawner-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -392,11 +334,9 @@
       "source_relative_path": "file-configs/0.11.6/config-types/overview.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/0.11.6/config-types/overview.html",
-          "hash": "pu+pmeiCQgDqm8e5FIRsiks4H6OUbsKyf4Y/OEB/4Ms="
+          "relative_path": "file-configs/0.11.6/config-types/overview.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -404,11 +344,9 @@
       "source_relative_path": "file-configs/0.11.6/config-types/world-spawner-config.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/0.11.6/config-types/world-spawner-config.html",
-          "hash": "txDcXtC5qwFqD3PfqPI2aVbUqM2WHbyDIzravveLPWE="
+          "relative_path": "file-configs/0.11.6/config-types/world-spawner-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -416,11 +354,9 @@
       "source_relative_path": "file-configs/0.11.6/config-types/world-spawner-simple-config.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/0.11.6/config-types/world-spawner-simple-config.html",
-          "hash": "rMSJ5z1/zWMlIqOz5wSjm0g06AeFNXUEYktMGhOjVR0="
+          "relative_path": "file-configs/0.11.6/config-types/world-spawner-simple-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -428,11 +364,9 @@
       "source_relative_path": "file-configs/0.11.6/field-options/field-options.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/0.11.6/field-options/field-options.html",
-          "hash": "V4EYJpdtaYRCSpTQcyZY2MlV9O4qFOjiv7OxwdIbsio="
+          "relative_path": "file-configs/0.11.6/field-options/field-options.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -440,11 +374,9 @@
       "source_relative_path": "file-configs/0.11.6/mod-specific/creature-level-and-loot-control.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/0.11.6/mod-specific/creature-level-and-loot-control.html",
-          "hash": "uwNOYk6OyPVI32QoDbjXQ8G+KWo4VniA0ZIuUgLRe6I="
+          "relative_path": "file-configs/0.11.6/mod-specific/creature-level-and-loot-control.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -452,11 +384,9 @@
       "source_relative_path": "file-configs/0.11.6/mod-specific/epic-loot.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/0.11.6/mod-specific/epic-loot.html",
-          "hash": "v/k3QOMfJVy4GWXQ8G1HHLaNbY5Me0FL1qm3/nf6BWw="
+          "relative_path": "file-configs/0.11.6/mod-specific/epic-loot.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -464,11 +394,9 @@
       "source_relative_path": "file-configs/0.11.6/mod-specific/mobailib.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/0.11.6/mod-specific/mobailib.html",
-          "hash": "u2j5hiJzlrbwir+1ez+7C9O1WaOP8j3W4fEnqxF3Wb8="
+          "relative_path": "file-configs/0.11.6/mod-specific/mobailib.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -476,11 +404,9 @@
       "source_relative_path": "file-configs/0.11.6/mod-specific/overview.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/0.11.6/mod-specific/overview.html",
-          "hash": "feS2n3dF1s4Qf2+lPMqwMHwnh/miA26htU4aMznDjr4="
+          "relative_path": "file-configs/0.11.6/mod-specific/overview.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -488,11 +414,12 @@
       "source_relative_path": "file-configs/0.11.6/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "file-configs/0.11.6/toc.html",
-          "hash": "ImEFCh9HlEs6yhICfNJ3VKXIGAC7FNHzX8TC5swOEAM="
+          "relative_path": "file-configs/0.11.6/toc.html"
+        },
+        ".json": {
+          "relative_path": "file-configs/0.11.6/toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -500,11 +427,9 @@
       "source_relative_path": "file-configs/1.0.0/config-types/general-config.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.0.0/config-types/general-config.html",
-          "hash": "HSjrzwaKrsCNpKXZFrqPDWNCtDMDFZlmeA7KqFtd0E0="
+          "relative_path": "file-configs/1.0.0/config-types/general-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -512,11 +437,9 @@
       "source_relative_path": "file-configs/1.0.0/config-types/local-spawner-config.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.0.0/config-types/local-spawner-config.html",
-          "hash": "2la6RTnWhZ3qh3DLwP0tWyffExO1pRvAPnPqGYHTwLk="
+          "relative_path": "file-configs/1.0.0/config-types/local-spawner-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -524,11 +447,9 @@
       "source_relative_path": "file-configs/1.0.0/config-types/overview.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.0.0/config-types/overview.html",
-          "hash": "D8UhHkZM8MhJwkr/kPgbQ0HnVCAgGXtPokzvnS4rAFg="
+          "relative_path": "file-configs/1.0.0/config-types/overview.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -536,11 +457,9 @@
       "source_relative_path": "file-configs/1.0.0/config-types/world-spawner-config.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.0.0/config-types/world-spawner-config.html",
-          "hash": "rV1+lRvFNFlxTHk24su46Tqwnm33tGAv35rgqFv4RR4="
+          "relative_path": "file-configs/1.0.0/config-types/world-spawner-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -548,11 +467,9 @@
       "source_relative_path": "file-configs/1.0.0/config-types/world-spawner-simple-config.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.0.0/config-types/world-spawner-simple-config.html",
-          "hash": "YDYywvFII78bOYhU2FSAbygwvhGwrk0TGC98Q4qUyEM="
+          "relative_path": "file-configs/1.0.0/config-types/world-spawner-simple-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -560,11 +477,9 @@
       "source_relative_path": "file-configs/1.0.0/field-options/field-options.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.0.0/field-options/field-options.html",
-          "hash": "+pp5R+qokQ8B76u4KJLLtBzeWKtX/xAeZUu/D2gVHxg="
+          "relative_path": "file-configs/1.0.0/field-options/field-options.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -572,11 +487,9 @@
       "source_relative_path": "file-configs/1.0.0/mod-specific/creature-level-and-loot-control.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.0.0/mod-specific/creature-level-and-loot-control.html",
-          "hash": "sIswSZq42AN7dj6PdRTEP+tdzal6Ll58owMJShQnsw0="
+          "relative_path": "file-configs/1.0.0/mod-specific/creature-level-and-loot-control.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -584,11 +497,9 @@
       "source_relative_path": "file-configs/1.0.0/mod-specific/epic-loot.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.0.0/mod-specific/epic-loot.html",
-          "hash": "smBLEB5HPp/NpKPjKYAw2MRVIkqQb3B9V//v62xY4kY="
+          "relative_path": "file-configs/1.0.0/mod-specific/epic-loot.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -596,11 +507,9 @@
       "source_relative_path": "file-configs/1.0.0/mod-specific/mobailib.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.0.0/mod-specific/mobailib.html",
-          "hash": "VKDjUV5Rj0hHZrMGD9sZ+WK1lVImXNcAm3n7i+ohhUs="
+          "relative_path": "file-configs/1.0.0/mod-specific/mobailib.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -608,11 +517,9 @@
       "source_relative_path": "file-configs/1.0.0/mod-specific/overview.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.0.0/mod-specific/overview.html",
-          "hash": "adt5NJs80Wg6pr0J1vvdPsFPpYfJ15SRXVDqg2tW+2s="
+          "relative_path": "file-configs/1.0.0/mod-specific/overview.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -620,11 +527,12 @@
       "source_relative_path": "file-configs/1.0.0/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.0.0/toc.html",
-          "hash": "ImEFCh9HlEs6yhICfNJ3VKXIGAC7FNHzX8TC5swOEAM="
+          "relative_path": "file-configs/1.0.0/toc.html"
+        },
+        ".json": {
+          "relative_path": "file-configs/1.0.0/toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -632,11 +540,9 @@
       "source_relative_path": "file-configs/1.1.0/biome-areas.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/biome-areas.html",
-          "hash": "nywt9gvugThQ9EPb0qD0e0eKLDstc7+S1WCB+iU3R44="
+          "relative_path": "file-configs/1.1.0/biome-areas.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -644,11 +550,9 @@
       "source_relative_path": "file-configs/1.1.0/config-types/general-config.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/config-types/general-config.html",
-          "hash": "2mbaWzOp5eWevpsgyzj4TTmFTmZNqVz60AtkCOthVZ8="
+          "relative_path": "file-configs/1.1.0/config-types/general-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -656,11 +560,9 @@
       "source_relative_path": "file-configs/1.1.0/config-types/local-spawner-config.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/config-types/local-spawner-config.html",
-          "hash": "KJ7mpoE2fxnBqu1db3dHx9zhiPOw7zypFKgMlaaEXqM="
+          "relative_path": "file-configs/1.1.0/config-types/local-spawner-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -668,11 +570,9 @@
       "source_relative_path": "file-configs/1.1.0/config-types/spawnarea-spawner-config.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/config-types/spawnarea-spawner-config.html",
-          "hash": "PFOyua0xM+FLwHHC4Tt1O/L2ZqIVkidmC/813gHAL6k="
+          "relative_path": "file-configs/1.1.0/config-types/spawnarea-spawner-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -680,11 +580,9 @@
       "source_relative_path": "file-configs/1.1.0/config-types/world-spawner-config.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/config-types/world-spawner-config.html",
-          "hash": "4WGou6D8+XycSMoBOZvhLq3MOuwPObFkYZU/YJaPmKA="
+          "relative_path": "file-configs/1.1.0/config-types/world-spawner-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -692,11 +590,9 @@
       "source_relative_path": "file-configs/1.1.0/config-types/world-spawner-simple-config.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/config-types/world-spawner-simple-config.html",
-          "hash": "EpyAeKuWx9IjVUChbFkrnwU5awtfi567RlSDGOMlQcE="
+          "relative_path": "file-configs/1.1.0/config-types/world-spawner-simple-config.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -704,11 +600,9 @@
       "source_relative_path": "file-configs/1.1.0/console-commands.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/console-commands.html",
-          "hash": "MmTqa961y8/4E/HX5kVFciTPQ305+uixmHGHRYt2lcc="
+          "relative_path": "file-configs/1.1.0/console-commands.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -716,11 +610,9 @@
       "source_relative_path": "file-configs/1.1.0/data/local-spawner-location-vanilla.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/data/local-spawner-location-vanilla.html",
-          "hash": "kjbLY8zS8/pliz8qFT3xB9Bpt1w+U3CZc3+s6VF9+2c="
+          "relative_path": "file-configs/1.1.0/data/local-spawner-location-vanilla.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -728,11 +620,9 @@
       "source_relative_path": "file-configs/1.1.0/data/local-spawner-room-vanilla.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/data/local-spawner-room-vanilla.html",
-          "hash": "DU4oJDAsHEK6vZquWOT43QvdGMlGw1KN91ZEeWS+jlA="
+          "relative_path": "file-configs/1.1.0/data/local-spawner-room-vanilla.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -740,11 +630,9 @@
       "source_relative_path": "file-configs/1.1.0/data/locations-by-biome.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/data/locations-by-biome.html",
-          "hash": "dgd9U0FMvkNbElYIjkPgJWfau6wFV8Cbqh9YFM9WqTQ="
+          "relative_path": "file-configs/1.1.0/data/locations-by-biome.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -752,11 +640,9 @@
       "source_relative_path": "file-configs/1.1.0/data/spawnarea-spawner-vanilla.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/data/spawnarea-spawner-vanilla.html",
-          "hash": "HKfV1f8axd/bPXOfRq77AORzArRkrCj2Eq7jGOEel+4="
+          "relative_path": "file-configs/1.1.0/data/spawnarea-spawner-vanilla.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -764,11 +650,9 @@
       "source_relative_path": "file-configs/1.1.0/data/world-spawner-vanilla.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/data/world-spawner-vanilla.html",
-          "hash": "Y6SOwWxyFNkDBywpP9IwtiWu8kPupCK9UaTgARvVlds="
+          "relative_path": "file-configs/1.1.0/data/world-spawner-vanilla.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -776,11 +660,9 @@
       "source_relative_path": "file-configs/1.1.0/field-options/field-options.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/field-options/field-options.html",
-          "hash": "e4Fjc7eWIVelgQ0uRNks4qw71UDq8nfcBu/4qC52HGg="
+          "relative_path": "file-configs/1.1.0/field-options/field-options.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -788,11 +670,9 @@
       "source_relative_path": "file-configs/1.1.0/general/config-format.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/general/config-format.html",
-          "hash": "l9gHOkrqLgh7Y/Wqi8EIKduDBm8mV5tzSSFxLAGqGIs="
+          "relative_path": "file-configs/1.1.0/general/config-format.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -800,11 +680,9 @@
       "source_relative_path": "file-configs/1.1.0/general/intro.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/general/intro.html",
-          "hash": "mNbFBe9Kirg2BeFevyRuGgJIRZM1QGHHuldx9rh1tsY="
+          "relative_path": "file-configs/1.1.0/general/intro.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -812,11 +690,9 @@
       "source_relative_path": "file-configs/1.1.0/general/load-order.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/general/load-order.html",
-          "hash": "5Ae2+vlnU/w0KlMACtRpACBXIvON4iXKdgMhJN/vxz8="
+          "relative_path": "file-configs/1.1.0/general/load-order.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -824,11 +700,9 @@
       "source_relative_path": "file-configs/1.1.0/general/overview.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/general/overview.html",
-          "hash": "i2pCirPcV1GzoWlUhcsoVKRKvSFqJ1sHR03YlD+yLF0="
+          "relative_path": "file-configs/1.1.0/general/overview.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -836,11 +710,9 @@
       "source_relative_path": "file-configs/1.1.0/mod-specific/creature-level-and-loot-control.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/mod-specific/creature-level-and-loot-control.html",
-          "hash": "/rgm2EjT+UPdvlcYC9iO/WCQn5KJkfcz1K9nJYrJrW8="
+          "relative_path": "file-configs/1.1.0/mod-specific/creature-level-and-loot-control.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -848,11 +720,9 @@
       "source_relative_path": "file-configs/1.1.0/mod-specific/epic-loot.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/mod-specific/epic-loot.html",
-          "hash": "dGt55ooaL/E6P9kW/QbIO9fXmnzxPQv+GTxtcTYEPWw="
+          "relative_path": "file-configs/1.1.0/mod-specific/epic-loot.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -860,11 +730,9 @@
       "source_relative_path": "file-configs/1.1.0/mod-specific/mobailib.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/mod-specific/mobailib.html",
-          "hash": "aq8jYJn8I4qhYlqIM69LDMuQ6SAAXhUmefJGX0h+ZJ8="
+          "relative_path": "file-configs/1.1.0/mod-specific/mobailib.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -872,11 +740,12 @@
       "source_relative_path": "file-configs/1.1.0/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/toc.html",
-          "hash": "StAmebfK1EWVT3HptuQdKl9hcLN+1y8Rfi9RIURSrJg="
+          "relative_path": "file-configs/1.1.0/toc.html"
+        },
+        ".json": {
+          "relative_path": "file-configs/1.1.0/toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -884,11 +753,9 @@
       "source_relative_path": "file-configs/1.1.0/tutorials/creating-world-spawner.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/tutorials/creating-world-spawner.html",
-          "hash": "XMH8Yem+jJ4qzI1olPOfHHKlX/Q/OIEBbNCXYcNTO0Q="
+          "relative_path": "file-configs/1.1.0/tutorials/creating-world-spawner.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -896,11 +763,9 @@
       "source_relative_path": "file-configs/1.1.0/tutorials/finding-prefab-names.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/tutorials/finding-prefab-names.html",
-          "hash": "jTXcJyo3VJK3KyzmvxUQIh5Hojt8Teamua0Q1981GfQ="
+          "relative_path": "file-configs/1.1.0/tutorials/finding-prefab-names.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -908,11 +773,9 @@
       "source_relative_path": "file-configs/1.1.0/tutorials/modifying-modded-world-spawner.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/tutorials/modifying-modded-world-spawner.html",
-          "hash": "2uPQ0LRW/5K4RGkWOG+sIcISVcSCvzO936H3Al4Hw34="
+          "relative_path": "file-configs/1.1.0/tutorials/modifying-modded-world-spawner.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -920,11 +783,9 @@
       "source_relative_path": "file-configs/1.1.0/tutorials/modifying-vanilla-local-spawner.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/tutorials/modifying-vanilla-local-spawner.html",
-          "hash": "O2cCEecO93TzXbcP7MK9/fR77yY2b6MwyEoHldnUJZM="
+          "relative_path": "file-configs/1.1.0/tutorials/modifying-vanilla-local-spawner.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -932,11 +793,9 @@
       "source_relative_path": "file-configs/1.1.0/tutorials/modifying-vanilla-spawnarea-spawner.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/tutorials/modifying-vanilla-spawnarea-spawner.html",
-          "hash": "c/re1oylr0MwKdgRva19dgCTYl+IerbwvglNILZjZ6c="
+          "relative_path": "file-configs/1.1.0/tutorials/modifying-vanilla-spawnarea-spawner.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -944,11 +803,9 @@
       "source_relative_path": "file-configs/1.1.0/tutorials/multiple-configs-spawnarea-spawner.md",
       "output": {
         ".html": {
-          "relative_path": "file-configs/1.1.0/tutorials/multiple-configs-spawnarea-spawner.html",
-          "hash": "PsumXOmHagNMw/wmZrwqxWIxG39gtPZd0gnqdaDDdb0="
+          "relative_path": "file-configs/1.1.0/tutorials/multiple-configs-spawnarea-spawner.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -956,11 +813,9 @@
       "source_relative_path": "index.md",
       "output": {
         ".html": {
-          "relative_path": "index.html",
-          "hash": "FPhpA9PoO7vWv9+kVO+/tt+V/N2Wtd1ePeZkxbC5QAU="
+          "relative_path": "index.html"
         }
       },
-      "is_incremental": true,
       "version": ""
     },
     {
@@ -968,1847 +823,2168 @@
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel.html",
-          "hash": "aGdns35rYLs7cg9n5aU2j2OKb0EUd3UYjL12eX0RRdw="
+          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.CLLC.Conditions.ConditionWorldLevel",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.CLLC.Conditions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Conditions.html",
-          "hash": "Aqqg51CfWztM5lf2Q+Zh4X7pg0XyyGtJV8hVMJ88Cww="
+          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Conditions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.CLLC.Conditions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.CLLC.Models.CllcBossAffix.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Models.CllcBossAffix.html",
-          "hash": "2SRNkNEWyOafgtW3vy0JV0gb+xAq/sjZpmsE6rng92o="
+          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Models.CllcBossAffix.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.CLLC.Models.CllcBossAffix",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.CLLC.Models.CllcCreatureExtraEffect.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Models.CllcCreatureExtraEffect.html",
-          "hash": "cazrDmYQhsBjwIXL5/B8UBO95XEa2YHfRSQFK8zPBIk="
+          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Models.CllcCreatureExtraEffect.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.CLLC.Models.CllcCreatureExtraEffect",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.CLLC.Models.CllcCreatureInfusion.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Models.CllcCreatureInfusion.html",
-          "hash": "oCDP7oou9DTprmmsGop1ezfUds2bWV8EE5VpPLlrQuM="
+          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Models.CllcCreatureInfusion.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.CLLC.Models.CllcCreatureInfusion",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.CLLC.Models.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Models.html",
-          "hash": "NZK8OAhX5bjZK3EZ5dL4COEiB/jb858ur9IsUTBZMFc="
+          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Models.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.CLLC.Models",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix.html",
-          "hash": "AJJDCTiARrfIV82kePX/Unq6Gy2iqQPNUGO0FrU5EvA="
+          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcBossAffix",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion.html",
-          "hash": "hHVnq6Gmmp2HkYi2ExSfbG7ArKqquvrKqmJIXcvONuk="
+          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcInfusion",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.html",
-          "hash": "g0yOhs2EC6Ax9GxmLV70rs6LjjE86ztF+0Z/gJdLFW0="
+          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.CLLC.Modifiers.ModifierCllcRandomLevel",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.CLLC.Modifiers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Modifiers.html",
-          "hash": "mY0sY7LrKKeynzFVs/8dCA0cu7zcuKPKAQij2b1Oa7E="
+          "relative_path": "api/reference/SpawnThat.Integrations.CLLC.Modifiers.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.CLLC.Modifiers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity.html",
-          "hash": "y5s7PNaLzY3pdDMrJCVbKLCCy8EP5YYh1pw43IECiXk="
+          "relative_path": "api/reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryItemWithRarity",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem.html",
-          "hash": "FsBqgl9wkPR5WJbABOuk2aPSwEri4r/3l81NTqwrkB4="
+          "relative_path": "api/reference/SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.EpicLoot.Conditions.ConditionNearbyPlayerCarryLegendaryItem",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.EpicLoot.Conditions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.EpicLoot.Conditions.html",
-          "hash": "56F3m/u6f/x3VZ+9LfbtP66Cx/5mIMHIJ0R7cDzsWjs="
+          "relative_path": "api/reference/SpawnThat.Integrations.EpicLoot.Conditions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.EpicLoot.Conditions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.html",
-          "hash": "/BkSH5F+ANB0EH1w9vBez+mOj0KKtif7kHBftBHXHKs="
+          "relative_path": "api/reference/SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.EpicLoot.Models.EpicLootRarity",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.EpicLoot.Models.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.EpicLoot.Models.html",
-          "hash": "JbH4YvdPRP5hua/uJylpqJKD8PSQroRvwlTL+lYDaw0="
+          "relative_path": "api/reference/SpawnThat.Integrations.EpicLoot.Models.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.EpicLoot.Models",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI.html",
-          "hash": "zUAEGmSgotN2+a+mKgXBb7uUSmdPeKGwLv+mAGmVcKU="
+          "relative_path": "api/reference/SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.MobAi.Modifiers.ModifierSetAI",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Integrations.MobAi.Modifiers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Integrations.MobAi.Modifiers.html",
-          "hash": "YSw6rpzo13tCxv5WZnh/kzwL1xqsei4GyshkMLrY36E="
+          "relative_path": "api/reference/SpawnThat.Integrations.MobAi.Modifiers.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Integrations.MobAi.Modifiers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Lifecycle.GameState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Lifecycle.GameState.html",
-          "hash": "MN+f+XIDNlJya70yc5Suzm1or6IF97Of+X1IId5GrUQ="
+          "relative_path": "api/reference/SpawnThat.Lifecycle.GameState.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Lifecycle.GameState",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Lifecycle.LifecycleManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Lifecycle.LifecycleManager.html",
-          "hash": "iiwveVO/YtYbSrJegM7IOV4IjeVPf85TDOnpnkIHT9Q="
+          "relative_path": "api/reference/SpawnThat.Lifecycle.LifecycleManager.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Lifecycle.LifecycleManager",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Lifecycle.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Lifecycle.html",
-          "hash": "EprJarvx22vjdNAL6sD9Fui8eLY1ccxec85/Uv8WFoU="
+          "relative_path": "api/reference/SpawnThat.Lifecycle.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Lifecycle",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionAltitude.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionAltitude.html",
-          "hash": "kjE7Nn3LNykUj9i+/FvCD8oP/iTy/bTzIuC3gFg14Ro="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionAltitude.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionAltitude",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Options.Conditions.ConditionAltitude.yml\" sourcestartlinenumber=\"1\">Required altitude range, based on terrain at spawner position.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionAreaIds.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionAreaIds.html",
-          "hash": "4V694o9dI0hfc2Dp/N6amFQs7bjDSDtTvqhbiKVpu/c="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionAreaIds.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionAreaIds",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionAreaSpawnChance.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionAreaSpawnChance.html",
-          "hash": "L4EtwdnRpML/EwrLw94gGo5B1kGfXz/CaMdT8K6Y56M="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionAreaSpawnChance.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionAreaSpawnChance",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionBiome.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionBiome.html",
-          "hash": "Hq+ZzROSsdAdKGJQz0ZEMQJirvNjNoFm2DYMQBns0CY="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionBiome.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionBiome",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionCloseToPlayer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionCloseToPlayer.html",
-          "hash": "4vwjePAhG5ndOPfUwkyFhSnX9i7l6PomZojp8mWc6p4="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionCloseToPlayer.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionCloseToPlayer",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionDaytime.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionDaytime.html",
-          "hash": "HJnjiDxDJb49VUM/eJ9w4jMfkkVndaZYvNo6/BlH0JM="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionDaytime.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionDaytime",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionDistanceToCenter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionDistanceToCenter.html",
-          "hash": "hEUj5Rh3egYSn/zMCyz3dBLN/73oj5qtkcJDR9N5I5A="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionDistanceToCenter.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionDistanceToCenter",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionEnvironment.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionEnvironment.html",
-          "hash": "NyKR3nk2eh9ioKjHL95y8udGBIp74XJ1dQrjxP2PkFY="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionEnvironment.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionEnvironment",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionForest.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionForest.html",
-          "hash": "el+g4zD/2TK9RcavzUPkQwiyLdrGwK8Jtud10FPeti0="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionForest.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionForest",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionGlobalKeysAny.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionGlobalKeysAny.html",
-          "hash": "YMCCmDxNDMseh/kDtfrUVcPQzsdry0aO9B5Tbpe17Ko="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionGlobalKeysAny.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionGlobalKeysAny",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionGlobalKeysRequired.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionGlobalKeysRequired.html",
-          "hash": "5cWDkHrMolag5jvyPrrmNokp8QtNckyx4RMRzP0fBZI="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionGlobalKeysRequired.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionGlobalKeysRequired",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Options.Conditions.ConditionGlobalKeysRequired.yml\" sourcestartlinenumber=\"1\">Global keys required to allow spawning.\nAll listed keys must be present.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing.html",
-          "hash": "W5Gb0JRDYHymmDw6yJtXPoOABHObAuhlz9YEwOxwPtQ="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Options.Conditions.ConditionGlobalKeysRequiredMissing.yml\" sourcestartlinenumber=\"1\">TODO: Integrate with Enhanced Progress Tracker when server-side.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionLocation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionLocation.html",
-          "hash": "UbXqzkA7RHcoY0uOEmiEo5U+knyIN5Ui59fVAaTZ6lg="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionLocation.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionLocation",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem.html",
-          "hash": "XWeS7nJ1PYMnyYqLivkNmDJSdQ/a6hIzX/tdwNAEQR8="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryItem",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue.html",
-          "hash": "qBJ5mIA6R8/Ipe+9FgCTtrPV5vsgtsgHR4dINGCiR84="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionNearbyPlayersCarryValue",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise.html",
-          "hash": "r+h75vgKHthjklcan8p48+IctTx7u/4Q0Sxiwa77U4A="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionNearbyPlayersNoise",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus.html",
-          "hash": "7rzgXy6vBho9nuyygnt6CRfjIW+kYYswkbcrH9HQnj4="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Options.Conditions.ConditionNearbyPlayersStatus.yml\" sourcestartlinenumber=\"1\">Require player within distance to have one of the listed status effects.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionOceanDepth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionOceanDepth.html",
-          "hash": "7nn5kP/qxRIpbxv7DQWk5TgULmwYL6UxhRzK7SPbKl4="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionOceanDepth.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionOceanDepth",
+      "Summary": "<p>\n    Required distance to water surface.\n</p>\n<p>\n    Ocean depth is calculated as <code>Max(0, WaterLevel - Seafloor)</code>.\n</p>\n<p>\n    This means the water-surface and above will be ocean depth 0. \n    An ocean floor at 10 meter below the surface will be 10.\n</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionTilt.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionTilt.html",
-          "hash": "/IUIuKB0whF8HjGGdG+D0tH07wnJcVNwnVs4Oj0VeuM="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionTilt.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionTilt",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ConditionWorldAge.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionWorldAge.html",
-          "hash": "Dy6pQ9ArNhRXGBqNkrKjrymyC39RS6BQmC6aKplt104="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ConditionWorldAge.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ConditionWorldAge",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.ISpawnCondition.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.ISpawnCondition.html",
-          "hash": "EogRaQUDtG9jY6NoXpJsB+g37un2dF1Bp1hlFmGZB0Y="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.ISpawnCondition.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions.ISpawnCondition",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Options.Conditions.ISpawnCondition.yml\" sourcestartlinenumber=\"1\">Conditions are requirements that must all be met, for a template to be allowed to spawn.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Conditions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Conditions.html",
-          "hash": "w2DfKNts5lPf3Fk9c24nMXCTNU1V4TQyLlmXCpewId0="
+          "relative_path": "api/reference/SpawnThat.Options.Conditions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Conditions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Identifiers.ISpawnerIdentifier.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Identifiers.ISpawnerIdentifier.html",
-          "hash": "Q+yKTQpR3fLjaiXMhxHl8mcVaHrhcxamBgNNixWv82o="
+          "relative_path": "api/reference/SpawnThat.Options.Identifiers.ISpawnerIdentifier.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Identifiers.ISpawnerIdentifier",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Identifiers.IdentifierBiome.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Identifiers.IdentifierBiome.html",
-          "hash": "IsoFEvXB7WOGE0/MzqXUAmDefevmD+kYboUiQAFYLp4="
+          "relative_path": "api/reference/SpawnThat.Options.Identifiers.IdentifierBiome.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Identifiers.IdentifierBiome",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Identifiers.IdentifierLocation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Identifiers.IdentifierLocation.html",
-          "hash": "BtovBK4Xp/N4GPZWE/Zxqf0akljAxIigHYvnnCB7/8s="
+          "relative_path": "api/reference/SpawnThat.Options.Identifiers.IdentifierLocation.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Identifiers.IdentifierLocation",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Identifiers.IdentifierName.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Identifiers.IdentifierName.html",
-          "hash": "Ms6DKDVAWNHG4x4npg9HcG/piq5FSouwr6m0sknbqFY="
+          "relative_path": "api/reference/SpawnThat.Options.Identifiers.IdentifierName.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Identifiers.IdentifierName",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Identifiers.IdentifierRoom.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Identifiers.IdentifierRoom.html",
-          "hash": "caRg3nLYRj1Elg4iWxuZP64O2aOEyHr6Nto35JzKq3E="
+          "relative_path": "api/reference/SpawnThat.Options.Identifiers.IdentifierRoom.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Identifiers.IdentifierRoom",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Identifiers.MatchWeight.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Identifiers.MatchWeight.html",
-          "hash": "ZV//6lXoWfDp+WH1axe8z3d7iaNyjjnAAjmH05ILm2I="
+          "relative_path": "api/reference/SpawnThat.Options.Identifiers.MatchWeight.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Identifiers.MatchWeight",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Identifiers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Identifiers.html",
-          "hash": "GixqhxnQmO3g00Y5A7PNzn6cn9QxQUflDDliVaG4/zY="
+          "relative_path": "api/reference/SpawnThat.Options.Identifiers.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Identifiers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Modifiers.ISpawnModifier.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ISpawnModifier.html",
-          "hash": "s5tH1WAv5QP2Gayvif6XRGaQLOGyJGlttK7t88XK8zM="
+          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ISpawnModifier.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Modifiers.ISpawnModifier",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Options.Modifiers.ISpawnModifier.yml\" sourcestartlinenumber=\"1\">Modifiers are run after an entity is spawned.</p>\n<p sourcefile=\"obj/api/reference/SpawnThat.Options.Modifiers.ISpawnModifier.yml\" sourcestartlinenumber=\"3\">Intended to allow for post-spawn changes.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Modifiers.ModifierDefaultRollLevel.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierDefaultRollLevel.html",
-          "hash": "8SMOGuxZjI40cQ1AC06qCieAXLrfOvArqvaswMjCG2g="
+          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierDefaultRollLevel.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Modifiers.ModifierDefaultRollLevel",
+      "Summary": "<p>\n Simulates the vanilla level assignment logic.\n</p>\n <p>\n Level is assigned by setting level to Min(1, <code>minLevel</code>).\n </p>\n <p>\n If <code>minDistanceForLevelups</code> is greater than distance to center,\n and <code>maxLevel</code> is greater than level, the <code>levelupChance</code> is rolled.\n This is repeated until either <code>maxLevel</code> is reached, or a levelup roll fails.\n </p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnAlert.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnAlert.html",
-          "hash": "gVn4fFomttSW7IBePdeY1mUDu5ygiGFrzq/Avotn43w="
+          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnAlert.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Modifiers.ModifierDespawnOnAlert",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnAlert.yml\" sourcestartlinenumber=\"1\">When creature is alerted, it will trigger default AI\nfor attempting to run away and depsawn.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid.html",
-          "hash": "iYvXnOsgh6CH6X/ZGKXTd/oqaNfOcrsn0A1CdaN7O/Q="
+          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Options.Modifiers.ModifierDespawnOnConditionsInvalid.yml\" sourcestartlinenumber=\"1\">Attempt to trigger vanilla run away and despawn, when no longer\nfulfilling conditions for ConditionAllowDuringDay, ConditionAllowDuringNight and\nConditionAllowDuringEnvironments.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Modifiers.ModifierSetFaction.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetFaction.html",
-          "hash": "xyUqi6hq5VwUXstkOzAmST5WyrHvxdC0qVqQfx8+83E="
+          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetFaction.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Modifiers.ModifierSetFaction",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Modifiers.ModifierSetHuntPlayer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetHuntPlayer.html",
-          "hash": "NfHZpC7Ld1dWEBMPxYE0NBcVBBCADLSY+d4O5GvljK8="
+          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetHuntPlayer.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Modifiers.ModifierSetHuntPlayer",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Modifiers.ModifierSetRelentless.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetRelentless.html",
-          "hash": "Fyu4UW1xJSfHG2VUExxQ7sCsuRV/IMbUeG7OcflT3uw="
+          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetRelentless.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Modifiers.ModifierSetRelentless",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Options.Modifiers.ModifierSetRelentless.yml\" sourcestartlinenumber=\"1\">Forces eternally alerted.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Modifiers.ModifierSetTamed.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetTamed.html",
-          "hash": "LwYOgIIfsbGcHHZCEHSvSOyqyTS32bKU1z2grShNsYE="
+          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetTamed.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Modifiers.ModifierSetTamed",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Modifiers.ModifierSetTamedCommandable.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetTamedCommandable.html",
-          "hash": "nZVhF5mel61WSHCP2ISjPbivY0iJuLRj/R6FXbHPeKA="
+          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetTamedCommandable.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Modifiers.ModifierSetTamedCommandable",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Modifiers.ModifierSetTemplateId.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetTemplateId.html",
-          "hash": "YoOqLhEtSJJFz5yyk0t1fIdY7DkZ8zmX5xhWlhs4EYA="
+          "relative_path": "api/reference/SpawnThat.Options.Modifiers.ModifierSetTemplateId.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Modifiers.ModifierSetTemplateId",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.Modifiers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.Modifiers.html",
-          "hash": "4kHAnp3BIcCHH/JNKKr0BeCwbeibt68Ao8tyWSs18do="
+          "relative_path": "api/reference/SpawnThat.Options.Modifiers.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.Modifiers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.ISpawnPositionCondition.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.ISpawnPositionCondition.html",
-          "hash": "f57wozydWXNQtBQ6QRGOjblSVs6RtkntrSKZKyGr2NU="
+          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.ISpawnPositionCondition.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.PositionConditions.ISpawnPositionCondition",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Options.PositionConditions.ISpawnPositionCondition.yml\" sourcestartlinenumber=\"1\">Spawn position conditions are specialized conditions that must all be met, for a template to be allowed to spawn.</p>\n<p sourcefile=\"obj/api/reference/SpawnThat.Options.PositionConditions.ISpawnPositionCondition.yml\" sourcestartlinenumber=\"3\">Typically these are checked multiple times, while the game samples multiple spots in the world for a valid position.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.PositionConditionAltitude.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionAltitude.html",
-          "hash": "Dq8JwP5GkF7U4SywrKuqQe3ymRD0+LX4/3ZdtvzFo9E="
+          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionAltitude.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.PositionConditions.PositionConditionAltitude",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Options.PositionConditions.PositionConditionAltitude.yml\" sourcestartlinenumber=\"1\">Required altitude range, based on terrain at spawner position.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.PositionConditionForest.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionForest.html",
-          "hash": "vOeao9s/RPg4V8DtC3VkYOuTwpe/kjjdYlKbFIEA5eU="
+          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionForest.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.PositionConditions.PositionConditionForest",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.PositionConditionLocation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionLocation.html",
-          "hash": "SBmoB8EJ4xVq1QBHp4Di4bIxk93y89u1ChGx1Ii8yLs="
+          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionLocation.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.PositionConditions.PositionConditionLocation",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.html",
-          "hash": "Ww/PNEvm/SrTuc0zh8qJ2m3k3XQcl/RYkInSNtDUGP4="
+          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.PositionConditions.PositionConditionMustBeNearAllPrefabs",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.html",
-          "hash": "/zaySVBzSTfLVAyzw+q83bvBDzBnsS8rgNufrbgnfMg="
+          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.PositionConditions.PositionConditionMustBeNearPrefabs",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.html",
-          "hash": "jVvTdx6duGN6hutJof5a/BJ/nle8MmHEusN23GRwDbM="
+          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.PositionConditions.PositionConditionMustNotBeNearPrefabs",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.PositionConditionOceanDepth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionOceanDepth.html",
-          "hash": "2btlBBKr7/h8iK05ZYjLrQteaIT+cwmViY5J8dvpN0k="
+          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionOceanDepth.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.PositionConditions.PositionConditionOceanDepth",
+      "Summary": "<p>\n    Required distance to water surface.\n</p>\n<p>\n    Ocean depth is calculated as <code>Max(0, WaterLevel - Seafloor)</code>.\n</p>\n<p>\n    This means the water-surface and above will be ocean depth 0. \n    An ocean floor at 10 meter below the surface will be 10.\n</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.PositionConditionTilt.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionTilt.html",
-          "hash": "F0ymIKi8lf+MoVFx97D9JU2eJoAjSN4bUs8azuCAQS4="
+          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.PositionConditionTilt.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.PositionConditions.PositionConditionTilt",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Options.PositionConditions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.html",
-          "hash": "Etx9COcm7pULjFwclosB+NNBYBcgjcD++v1WeYbAd5Q="
+          "relative_path": "api/reference/SpawnThat.Options.PositionConditions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Options.PositionConditions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.SpawnThatPlugin.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.SpawnThatPlugin.html",
-          "hash": "GWtGip2aVgMGDn2nRZzQ/GoVlp9tZg5Bvt8eD4tbASo="
+          "relative_path": "api/reference/SpawnThat.SpawnThatPlugin.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.SpawnThatPlugin",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.IHaveSpawnConditions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnConditions.html",
-          "hash": "P7eS/afQz1cjQzxVt676Wm9qdGgAP5fxh/UJvNM70aY="
+          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnConditions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.IHaveSpawnConditions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.IHaveSpawnConditionsCllcConditionExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnConditionsCllcConditionExtensions.html",
-          "hash": "kbYkcFcf58cV8ehH5LB2JyUHgvI4+DzERdgC2Xuc7tc="
+          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnConditionsCllcConditionExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.IHaveSpawnConditionsCllcConditionExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.IHaveSpawnConditionsELConditionsExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnConditionsELConditionsExtensions.html",
-          "hash": "pc1wFjqkEUwy7jVXPIaGC3NLpgQzzNyoQKap/Ay/vvE="
+          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnConditionsELConditionsExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.IHaveSpawnConditionsELConditionsExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.IHaveSpawnConditionsExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnConditionsExtensions.html",
-          "hash": "d4Mwbfk4o/dHSV6BnPVMxJFzcTELNE4EyDBFOE1EQYU="
+          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnConditionsExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.IHaveSpawnConditionsExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.IHaveSpawnModifiers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnModifiers.html",
-          "hash": "KP2EdR5EgEFwhDtPoq9iUE7J13DQdYqVSzSQ7H8WEFE="
+          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnModifiers.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.IHaveSpawnModifiers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.IHaveSpawnModifiersCllcModifierExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnModifiersCllcModifierExtensions.html",
-          "hash": "CS7lUVue5w9/cYQuFvvzqfbMP+IJvPOHE1UsZTW6lGw="
+          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnModifiersCllcModifierExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.IHaveSpawnModifiersCllcModifierExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.IHaveSpawnModifiersExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnModifiersExtensions.html",
-          "hash": "gRvdsxIT+A7AXJUSMqqdMaRgFX/kVOeHlBNfnKC/OUc="
+          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnModifiersExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.IHaveSpawnModifiersExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.IHaveSpawnModifiersMobAiExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnModifiersMobAiExtensions.html",
-          "hash": "jCqgcS8fmoJpbgcSJMab+OPpzyzrybnWnpFZygGDRMc="
+          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnModifiersMobAiExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.IHaveSpawnModifiersMobAiExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditions.html",
-          "hash": "/Wulx2JU+G8inJ42h8xcAK3D2N21He/ciS+8NSMgq5E="
+          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.IHaveSpawnPositionConditions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.html",
-          "hash": "bcW9swTydIaqlR5HELJE7tk9uQheulDPfzBLIg1J8Ic="
+          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.IHaveSpawnPositionConditionsExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.IHaveSpawnerIdentifiers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnerIdentifiers.html",
-          "hash": "cKhWOYK5g1axicdrrPEtn7klM5a3ji33Z7MbRuCq/SU="
+          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnerIdentifiers.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.IHaveSpawnerIdentifiers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.IHaveSpawnerIdentifiersExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnerIdentifiersExtensions.html",
-          "hash": "+Tf0YJ83W2QXwiXn1VnqEAbFpSEUdMOnCX1LbOoTqIo="
+          "relative_path": "api/reference/SpawnThat.Spawners.IHaveSpawnerIdentifiersExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.IHaveSpawnerIdentifiersExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.ISpawnerConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.ISpawnerConfiguration.html",
-          "hash": "oEmdFLcs5PqBwmxBze4rW2Kk96AFhxxRaQQBDxF3OCk="
+          "relative_path": "api/reference/SpawnThat.Spawners.ISpawnerConfiguration.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.ISpawnerConfiguration",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.ISpawnerConfigurationCollection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.ISpawnerConfigurationCollection.html",
-          "hash": "7y5z657C68YB6wz1SPJzEoFhq05GzrsaeAJ6n7uNZkY="
+          "relative_path": "api/reference/SpawnThat.Spawners.ISpawnerConfigurationCollection.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.ISpawnerConfigurationCollection",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.ISpawnerConfigurationCollectionLocalSpawnExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.ISpawnerConfigurationCollectionLocalSpawnExtensions.html",
-          "hash": "ddTuMYkeCqNfJDmX9Pxkdp9V3Se/EK2qTKOKvzpisGk="
+          "relative_path": "api/reference/SpawnThat.Spawners.ISpawnerConfigurationCollectionLocalSpawnExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.ISpawnerConfigurationCollectionLocalSpawnExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.ISpawnerConfigurationCollectionSpawnAreaSpawnerExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.ISpawnerConfigurationCollectionSpawnAreaSpawnerExtensions.html",
-          "hash": "DdNsSFq916EPL7liiZVMQ62zCa5gQ1xqdZJfwTSeVgQ="
+          "relative_path": "api/reference/SpawnThat.Spawners.ISpawnerConfigurationCollectionSpawnAreaSpawnerExtensions.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.ISpawnerConfigurationCollectionSpawnAreaSpawnerExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.ISpawnerConfigurationCollectionWorldSpawnerExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.ISpawnerConfigurationCollectionWorldSpawnerExtensions.html",
-          "hash": "cOsMrVTY7I8hZRC75+MwY+XsgqNMuSrwk6EQBKcMpAQ="
+          "relative_path": "api/reference/SpawnThat.Spawners.ISpawnerConfigurationCollectionWorldSpawnerExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.ISpawnerConfigurationCollectionWorldSpawnerExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilder.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilder.html",
-          "hash": "B08xalYGRm9Hd5WiJda4RU/PAK5keeMoaS/aWXA/2lY="
+          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilder.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilder",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilder.yml\" sourcestartlinenumber=\"1\">Configuration for a local spawner.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderCllcConditionExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderCllcConditionExtensions.html",
-          "hash": "Yr1HL/1gaIRU1ZP3mmHgKubPtHLNGT4iown+TnSHDqs="
+          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderCllcConditionExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderCllcConditionExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderCllcModifierExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderCllcModifierExtensions.html",
-          "hash": "UXeBmcAv3tTe9DcEk2SDOWuCwmVmJ9K4tUqpy0RdK4U="
+          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderCllcModifierExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderCllcModifierExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderConditionExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderConditionExtensions.html",
-          "hash": "U3JRXTjx48ztKZMSbQJOHV62ZySqDdK20BCAuBEsc5A="
+          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderConditionExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderConditionExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderELConditionsExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderELConditionsExtensions.html",
-          "hash": "ecln15KnlOJfChWBTzz7Gcjk36CbWY3T9IWUBvTQ7j0="
+          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderELConditionsExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderELConditionsExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderMobAiExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderMobAiExtensions.html",
-          "hash": "POuo/q+ocOpboQJFTlFoWWy3xosBRKUwGCHY21XUgHo="
+          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderMobAiExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderMobAiExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderModifierExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderModifierExtensions.html",
-          "hash": "+SdNFA6iue7PONkcIIwb0uR5yhwkS3Z4fAEDBgQWGTM="
+          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderModifierExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderModifierExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderSettingsExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderSettingsExtensions.html",
-          "hash": "n6xcp/K2BCtukEbj0tXIE1LWlRpbuNFR78ljn7iGb6Y="
+          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderSettingsExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.LocalSpawner.ILocalSpawnBuilderSettingsExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.LocalSpawner.LocalSpawnSettings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.LocalSpawnSettings.html",
-          "hash": "7gliJrs83SOXEiyYjOKXPQjJY5PiF+fJpAfHTjRWceg="
+          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.LocalSpawnSettings.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.LocalSpawner.LocalSpawnSettings",
+      "Summary": "<p>\n    Local spawn builder settings.\n    Any property not set will be ignored.\n</p>\n<p>\n    Any setting not set for a builder will mean Spawn That will use the existing setting\n    when overriding a template, or set a default value if creating a new.\n</p>\n<p>\n    Intended as an optional way to configure ILocalSpawnBuilder.\n</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.LocalSpawner.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.html",
-          "hash": "Td0qiETlkN0iEuUoh1hf5xUBiz2N6HZEbPtYMAzQQnY="
+          "relative_path": "api/reference/SpawnThat.Spawners.LocalSpawner.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.LocalSpawner",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilder.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilder.html",
-          "hash": "GCyWoQEKFdFtLryElV9g4AvbjtBjn6Sih+vq2mQvBMk="
+          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilder.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilder",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilder.yml\" sourcestartlinenumber=\"1\">Builder for the individual spawn entries of a SpawnArea spawner.</p>\n<p sourcefile=\"obj/api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilder.yml\" sourcestartlinenumber=\"3\">Multiple entries can exist pr spawner, and will be selected based on weight,\nafter filtering for conditions.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilderSettingsExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilderSettingsExtensions.html",
-          "hash": "5Au8g1IHwZsRd99rVCCrbQ+yU1sr1EhqhT98VPOsY28="
+          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilderSettingsExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnBuilderSettingsExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.html",
-          "hash": "uubqOlAaN+dDML8SjjKI5gpYN+vbD64bNG0HQGQpH3A="
+          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.yml\" sourcestartlinenumber=\"1\">Configuration for a SpawnArea spawner (eg. a greydwarf nest).</p>\n<p sourcefile=\"obj/api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.yml\" sourcestartlinenumber=\"3\">To identify which spawner to modify, set <code>ISpawnerIdentifier</code>'s\non the builder.\nWhen multiple configurations exist for the same spawner, the identifiers\nand their weights will be used to select the most specific configuration.</p>\n<p sourcefile=\"obj/api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilder.yml\" sourcestartlinenumber=\"8\">Spawner controls the general settings for when things should spawn.\nIt selects what to spawn from a list of spawns, which can be modified\nor added to by using <code>ISpawnAreaSpawnBuilder</code>.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilderSettingsExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilderSettingsExtensions.html",
-          "hash": "ggTmW/ShBn89cHnTysIhXQZKAC/6yppACWoP3uEav60="
+          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilderSettingsExtensions.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.SpawnAreaSpawner.ISpawnAreaSpawnerBuilderSettingsExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.html",
-          "hash": "JTr/gpJGhuIP9N7sMGXW/xMkeBseosNodVKUjEP8P+o="
+          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnSettings",
+      "Summary": "<p>\n    SpawnArea spawn builder settings.\n    Any property not set will be ignored.\n</p>\n<p>\n    Any setting not set for a builder will mean Spawn That will use the existing setting\n    when overriding a template, or set a default value if creating a new.\n</p>\n<p>\n    Intended as an optional way to configure ISpawnAreaSpawnBuilder.\n</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.html",
-          "hash": "i/K2ArmpCVZvS/LxUBgoXrdG8xUq4U/7AUFs9zqJWlE="
+          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.SpawnAreaSpawner.SpawnAreaSpawnerSettings",
+      "Summary": "<p>\n    SpawnArea spawner builder settings.\n    Any property not set will be ignored.\n</p>\n<p>\n    Any setting not set for a builder will mean Spawn That will use the existing setting\n    when overriding a template, or set a default value if creating a new.\n</p>\n<p>\n    Intended as an optional way to configure ISpawnAreaSpawnerBuilder.\n</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.SpawnAreaSpawner.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.html",
-          "hash": "5qt+kB+4meEg8yCLaNv4JxRIDtmnnnn6P0HvVcpkA3E="
+          "relative_path": "api/reference/SpawnThat.Spawners.SpawnAreaSpawner.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.SpawnAreaSpawner",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.SpawnerConfigurationManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.SpawnerConfigurationManager.html",
-          "hash": "v98YZgcfl9mzXxLPpRK7LpTOya5T1jrMak+jzQWFeJk="
+          "relative_path": "api/reference/SpawnThat.Spawners.SpawnerConfigurationManager.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.SpawnerConfigurationManager",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Spawners.SpawnerConfigurationManager.yml\" sourcestartlinenumber=\"1\">Handles configuration creation workflow.</p>\n<p sourcefile=\"obj/api/reference/SpawnThat.Spawners.SpawnerConfigurationManager.yml\" sourcestartlinenumber=\"3\">When <code>Lifecycle.OnLateInit</code> and GameState is SinglePlayer or Dedicated,\nthe manager initalizes a new <code>ISpawnerConfigurationCollection</code>, and runs\nsubscribed configuration actions in the order:</p>\n<ol sourcefile=\"obj/api/reference/SpawnThat.Spawners.SpawnerConfigurationManager.yml\" sourcestartlinenumber=\"6\">\n<li sourcefile=\"obj/api/reference/SpawnThat.Spawners.SpawnerConfigurationManager.yml\" sourcestartlinenumber=\"6\">Actions for OnConfigure</li>\n<li sourcefile=\"obj/api/reference/SpawnThat.Spawners.SpawnerConfigurationManager.yml\" sourcestartlinenumber=\"7\">Actions for SubscribeConfiguration</li>\n<li sourcefile=\"obj/api/reference/SpawnThat.Spawners.SpawnerConfigurationManager.yml\" sourcestartlinenumber=\"8\">Configurations loaded from files</li>\n</ol>\n<p sourcefile=\"obj/api/reference/SpawnThat.Spawners.SpawnerConfigurationManager.yml\" sourcestartlinenumber=\"10\">The collection is then finalized, and results are stored.\nIf in Dedicated, and a player joins, the finalized templates are synced to player,\nto later be applied to the various spawners.</p>\n<p sourcefile=\"obj/api/reference/SpawnThat.Spawners.SpawnerConfigurationManager.yml\" sourcestartlinenumber=\"14\">The way the configurations are applied to spawners depends on the spawner type.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.html",
-          "hash": "FwlPizNg97WbwxWNz8UeIyKTjY5KRX2MepiVMKDQgNc="
+          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilder.yml\" sourcestartlinenumber=\"1\">Configuration for a world spawner entry.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderCllcConditionExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderCllcConditionExtensions.html",
-          "hash": "NrgPRvREAnh0T0EzqsWqguueGvtQDmx6LgTak7pF3eg="
+          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderCllcConditionExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderCllcConditionExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderCllcModifierExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderCllcModifierExtensions.html",
-          "hash": "h+47XqFxPqojFVjRwd3QgPsn30YoLz/YkR0/u8sWoDU="
+          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderCllcModifierExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderCllcModifierExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderConditionExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderConditionExtensions.html",
-          "hash": "HhLBV6cA6Pg9RAY+MIP3DtbiVnHq8Kk9+cc7bStEzhU="
+          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderConditionExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderConditionExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderELConditionsExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderELConditionsExtensions.html",
-          "hash": "y//XinZUSFUtEir9AQk2ahhUuHObBMvE0Kj/BfNxhtc="
+          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderELConditionsExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderELConditionsExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderMobAiExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderMobAiExtensions.html",
-          "hash": "irJk5ZjQTG8GlIT+zdqa41WX15PA8l2CtYTZnfINf5E="
+          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderMobAiExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderMobAiExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderModifierExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderModifierExtensions.html",
-          "hash": "sO4vBtM1eo1oqq9QqPEXeDSsrNT4dRB+BCzLE2GSu0w="
+          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderModifierExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderModifierExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html",
-          "hash": "XrfEoKjIV37KlRT746tEO6wyicUKjsr8guYrggTpTm8="
+          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderPositionConditionExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderSettingsExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderSettingsExtensions.html",
-          "hash": "znvki8GxnWMfzoVnYUFMsPp429/HvuZJJhkcKh7Ginc="
+          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderSettingsExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.WorldSpawner.IWorldSpawnBuilderSettingsExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.html",
-          "hash": "fUoAq0MkYRLuYFzfXmy68+fq3PAGnagimkqXwcR2gp4="
+          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.WorldSpawner.WorldSpawnSettings",
+      "Summary": "<p>\n    World spawn builder settings.\n    Any property not set will be ignored.\n</p>\n<p>\n    Any setting not set for a builder will mean Spawn That will use the existing setting\n    when overriding a template, or set a default value if creating a new.\n</p>\n<p>\n    Intended as an optional way to configure IWorldSpawnBuilder.\n</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.WorldSpawner.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.html",
-          "hash": "Y8pMcuKapZrStZ/Lu10eP5a/Pqrd0aVcHm+QO12Kh2Y="
+          "relative_path": "api/reference/SpawnThat.Spawners.WorldSpawner.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners.WorldSpawner",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Spawners.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Spawners.html",
-          "hash": "KZrRQINf/lQwroScahIKTVD57rWt1g9/fG7mGPutELc="
+          "relative_path": "api/reference/SpawnThat.Spawners.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Spawners",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Enums.Daytime.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Enums.Daytime.html",
-          "hash": "LnLICl2W07qRDp2ClW6zRq8wBsxdxcsosMbXqx8QWmQ="
+          "relative_path": "api/reference/SpawnThat.Utilities.Enums.Daytime.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Enums.Daytime",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Enums.DaytimeExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Enums.DaytimeExtensions.html",
-          "hash": "bOX6tJupbfWGTvey8kEvGseaOMWf+c2uiRaosxI92zA="
+          "relative_path": "api/reference/SpawnThat.Utilities.Enums.DaytimeExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Enums.DaytimeExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Enums.EnvironmentName.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Enums.EnvironmentName.html",
-          "hash": "WXgxWFJ6veg+Ll3pVQ6ESP6BQSnSuCbvT0lOwqMuxE0="
+          "relative_path": "api/reference/SpawnThat.Utilities.Enums.EnvironmentName.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Enums.EnvironmentName",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Utilities.Enums.EnvironmentName.yml\" sourcestartlinenumber=\"1\">Known vanilla environments.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Enums.EnvironmentNameExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Enums.EnvironmentNameExtensions.html",
-          "hash": "d9UPIgVS+FPx9ZXfyem9/PFJVWXlQAOlPgP038+Yf20="
+          "relative_path": "api/reference/SpawnThat.Utilities.Enums.EnvironmentNameExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Enums.EnvironmentNameExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Enums.ForestState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Enums.ForestState.html",
-          "hash": "e3p7U5IkaDrIxaj4nVj7+W1xCq++n77dSL21tt37Cs0="
+          "relative_path": "api/reference/SpawnThat.Utilities.Enums.ForestState.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Enums.ForestState",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Enums.GlobalKey.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Enums.GlobalKey.html",
-          "hash": "rncWZY5QucS0/1qdEL0kHsHiShvPFKNn7MvvLyMX6I8="
+          "relative_path": "api/reference/SpawnThat.Utilities.Enums.GlobalKey.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Enums.GlobalKey",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Utilities.Enums.GlobalKey.yml\" sourcestartlinenumber=\"1\">Default vanilla global keys.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Enums.GlobalKeyExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Enums.GlobalKeyExtensions.html",
-          "hash": "9vWkcPsd2P7q9gxf8E7utjz95HxfvhtfErTm2Rxyof0="
+          "relative_path": "api/reference/SpawnThat.Utilities.Enums.GlobalKeyExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Enums.GlobalKeyExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Enums.StatusEffect.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Enums.StatusEffect.html",
-          "hash": "ICYLusVeqeXAVDTxuZSBklKWCKdHU+c2T0uOdvSmR38="
+          "relative_path": "api/reference/SpawnThat.Utilities.Enums.StatusEffect.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Enums.StatusEffect",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.Utilities.Enums.StatusEffect.yml\" sourcestartlinenumber=\"1\">Known default vanilla status effects.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Enums.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Enums.html",
-          "hash": "ZOaOuF4bscgQjhQPelCJ2l2waFH1BDhgXCOsFPxgbtI="
+          "relative_path": "api/reference/SpawnThat.Utilities.Enums.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Enums",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Extensions.CodeMatcherExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Extensions.CodeMatcherExtensions.html",
-          "hash": "aUwCZnsYvoXMT9O4LoEP7E6fpIIAmHBIw5Kdv0K9VfU="
+          "relative_path": "api/reference/SpawnThat.Utilities.Extensions.CodeMatcherExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Extensions.CodeMatcherExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Extensions.StringHashExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Extensions.StringHashExtensions.html",
-          "hash": "mh/AcrQBOTN89Qa9hZ0rpMdAcnOhmq882DZDG8+cOow="
+          "relative_path": "api/reference/SpawnThat.Utilities.Extensions.StringHashExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Extensions.StringHashExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Extensions.UnityObjectExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Extensions.UnityObjectExtensions.html",
-          "hash": "xrYfj8eHTAsdFIKrJ8pm90prmEmTdOTybdEQPVejyJ8="
+          "relative_path": "api/reference/SpawnThat.Utilities.Extensions.UnityObjectExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Extensions.UnityObjectExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Extensions.Vector3Extensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Extensions.Vector3Extensions.html",
-          "hash": "lz7r6c64qLvNpPjLp3dxbOjQ7ZI9INCIf460fHmElDA="
+          "relative_path": "api/reference/SpawnThat.Utilities.Extensions.Vector3Extensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Extensions.Vector3Extensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Extensions.ZdoExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Extensions.ZdoExtensions.html",
-          "hash": "aiRUq9dZi0wuYPNJQSiOa/ixwrl7Y0s6QWcqyoJAtOE="
+          "relative_path": "api/reference/SpawnThat.Utilities.Extensions.ZdoExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Extensions.ZdoExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.Extensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.Extensions.html",
-          "hash": "lJDOfKTR9O2k2SPN15MOw6g800+8/qtbPaUsG2DIXAo="
+          "relative_path": "api/reference/SpawnThat.Utilities.Extensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.Extensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.FileUtils.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.FileUtils.html",
-          "hash": "RFznfAbvA3cwmds8iHdV2mTcOr6dGHKzWAq0rofNpT8="
+          "relative_path": "api/reference/SpawnThat.Utilities.FileUtils.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.FileUtils",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.PlayerUtils.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.PlayerUtils.html",
-          "hash": "XENwReeCs/46ofhzcBT5vL2vs+ToNVJNAeGmKn4u1D0="
+          "relative_path": "api/reference/SpawnThat.Utilities.PlayerUtils.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.PlayerUtils",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.StringExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.StringExtensions.html",
-          "hash": "VZDefaux3S79Hv2dSvO6GNoRWgQEy0A+z++E5fsJHz0="
+          "relative_path": "api/reference/SpawnThat.Utilities.StringExtensions.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities.StringExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.Utilities.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.Utilities.html",
-          "hash": "c2E3KSePOV74aiHIiXl6j9rcZf+h1tWA9lZapxx3APc="
+          "relative_path": "api/reference/SpawnThat.Utilities.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.Utilities",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Dungeons.RoomData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Dungeons.RoomData.html",
-          "hash": "o0FS4rohXYYOwXCShWu/Cc8VOfCR6svW4w6/saPGmPk="
+          "relative_path": "api/reference/SpawnThat.World.Dungeons.RoomData.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Dungeons.RoomData",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Dungeons.RoomManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Dungeons.RoomManager.html",
-          "hash": "lT2y6ybPmKT3zU4JOczCEmOdH1gmB8RmaWp4R5Jq7xA="
+          "relative_path": "api/reference/SpawnThat.World.Dungeons.RoomManager.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Dungeons.RoomManager",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Dungeons.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Dungeons.html",
-          "hash": "f9DQiQ0H8PVxBqvi4jCNuFxevGtQzE5+RwIAxnrqwgc="
+          "relative_path": "api/reference/SpawnThat.World.Dungeons.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Dungeons",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Locations.LocationManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Locations.LocationManager.html",
-          "hash": "shJQuS07ttxps4YeoNjj+dTYkwhGcfwhaXpJai3Xmwk="
+          "relative_path": "api/reference/SpawnThat.World.Locations.LocationManager.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Locations.LocationManager",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Locations.SimpleLocation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Locations.SimpleLocation.html",
-          "hash": "uDxPPJCXRyn9BIBPYAGswWfiVfDAySdM6izz5dQQHKs="
+          "relative_path": "api/reference/SpawnThat.World.Locations.SimpleLocation.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Locations.SimpleLocation",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Locations.SimpleLocationDTO.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Locations.SimpleLocationDTO.html",
-          "hash": "CJpIEIHCIxX/5P/9qzYT4GkWUII4e9cxwc4/K7m4Dek="
+          "relative_path": "api/reference/SpawnThat.World.Locations.SimpleLocationDTO.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Locations.SimpleLocationDTO",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Locations.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Locations.html",
-          "hash": "gD8pgR3pZOB+Jw8YgEPjyq3+zKkrZCMiLluYFVclLZM="
+          "relative_path": "api/reference/SpawnThat.World.Locations.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Locations",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Maps.MapManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Maps.MapManager.html",
-          "hash": "GcSwjoVMjVCKN69VS7nvi5V57cA74M2Lszz0nhJE9dY="
+          "relative_path": "api/reference/SpawnThat.World.Maps.MapManager.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Maps.MapManager",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Maps.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Maps.html",
-          "hash": "HIJu1tasXg+H7alK9jMIzT5G6ITmDz4e+XYARZXeD4U="
+          "relative_path": "api/reference/SpawnThat.World.Maps.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Maps",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Queries.BaseZdoQuery.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Queries.BaseZdoQuery.html",
-          "hash": "gCIWhcYZGbRCrtY2G/8qmcfpkIZLigwKDuT0UvL++iw="
+          "relative_path": "api/reference/SpawnThat.World.Queries.BaseZdoQuery.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Queries.BaseZdoQuery",
+      "Summary": "<p sourcefile=\"obj/api/reference/SpawnThat.World.Queries.BaseZdoQuery.yml\" sourcestartlinenumber=\"1\">Base class for making ZDO based queries within an area of the world.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Queries.ZdoPrefabQuery.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Queries.ZdoPrefabQuery.html",
-          "hash": "xPh6rGclV2tHWbWcMxGsgVYpTfKrmeTgbpyXL7yl9ns="
+          "relative_path": "api/reference/SpawnThat.World.Queries.ZdoPrefabQuery.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Queries.ZdoPrefabQuery",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Queries.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Queries.html",
-          "hash": "3LkZD8FQMYNKgl278y3+nO9Knk2qwop2xLGTxKESQB4="
+          "relative_path": "api/reference/SpawnThat.World.Queries.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Queries",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Zone.IZone.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Zone.IZone.html",
-          "hash": "0jhd5VXHABC/MlfpJzKjFkTGyShp5p/1i0K2rZul4Ic="
+          "relative_path": "api/reference/SpawnThat.World.Zone.IZone.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Zone.IZone",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Zone.ZoneManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Zone.ZoneManager.html",
-          "hash": "SXAV8PaFNf1TZkWGWtqh+zvIWQ1kGyQ9q2X+5lJMmBE="
+          "relative_path": "api/reference/SpawnThat.World.Zone.ZoneManager.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Zone.ZoneManager",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Zone.ZoneUtils.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Zone.ZoneUtils.html",
-          "hash": "ItNMG1CzmLtSOmQ2atzWGd6O5s/qUFywKjnxh2qdCrU="
+          "relative_path": "api/reference/SpawnThat.World.Zone.ZoneUtils.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Zone.ZoneUtils",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.World.Zone.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.World.Zone.html",
-          "hash": "7vT4uYrZu9Uo/wY/fWQOOTx1kXi1yaOtqMe+yd1VwVw="
+          "relative_path": "api/reference/SpawnThat.World.Zone.html"
         }
       },
-      "is_incremental": true,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat.World.Zone",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/reference/SpawnThat.yml",
       "output": {
         ".html": {
-          "relative_path": "api/reference/SpawnThat.html",
-          "hash": "H+gC4toJbrhAR8aRAHzQVMPUNESmpxEBJN5rvpiazPw="
+          "relative_path": "api/reference/SpawnThat.html"
         }
       },
-      "is_incremental": false,
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "SpawnThat",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/reference/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/reference/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/reference/toc.json"
+        }
+      },
       "version": ""
     },
     {
@@ -2816,56 +2992,15 @@
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
-          "relative_path": "toc.html",
-          "hash": "/h+CyOUTKiwS5DJcOv7q/gktFjvXmThIKTe+46UFhss="
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     }
   ],
-  "incremental_info": [
-    {
-      "status": {
-        "can_incremental": true,
-        "incrementalPhase": "build",
-        "total_file_count": 0,
-        "skipped_file_count": 0
-      },
-      "processors": {
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 75,
-          "skipped_file_count": 73
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 154,
-          "skipped_file_count": 151
-        },
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
-        }
-      }
-    },
-    {
-      "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
-        "incrementalPhase": "postProcessing",
-        "total_file_count": 0,
-        "skipped_file_count": 0
-      },
-      "processors": {}
-    }
-  ],
-  "version_info": {},
   "groups": [
     {
       "xrefmap": "xrefmap.yml"

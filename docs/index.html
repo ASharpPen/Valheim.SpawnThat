@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Spawn That! </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Spawn That! ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
+    <meta name="generator" content="docfx ">
+  
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
     <link rel="stylesheet" href="styles/docfx.css">
@@ -36,7 +36,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="index.html">
                 <img id="logo" class="svg" src="logo.svg" alt="">
               </a>
@@ -50,7 +50,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -78,14 +78,16 @@ Just want to have more/less of a mob type? Simple modifiers exist!</p>
 <li>Set almost any of the default parameters the game uses</li>
 <li>Add your own spawn configuration to the world</li>
 <li>Modify the localized spawners by mob type and location</li>
-<li>Dump existing game templates as files using the same format as the mod configs. <ul>
+<li>Dump existing game templates as files using the same format as the mod configs.
+<ul>
 <li>Easy to copy-paste and change the parts you want.</li>
 <li>Investigate what the world throws at you.</li>
 </ul>
 </li>
 <li>Server-side configs</li>
 <li>Modify the spawners in camps, villages and dungeons</li>
-<li>Conditions and settings specific to integrated mods:<ul>
+<li>Conditions and settings specific to integrated mods:
+<ul>
 <li><a href="https://valheim.thunderstore.io/package/Smoothbrain/CreatureLevelAndLootControl/">Creature Level and Loot Control</a></li>
 <li><a href="https://www.nexusmods.com/valheim/mods/1188">MobAILib</a></li>
 <li><a href="https://valheim.thunderstore.io/package/RandyKnapp/EpicLoot/">Epic Loot</a></li>
@@ -113,7 +115,8 @@ SetInfusion=Fire
 
 [WorldSpawner.321.EpicLoot]
 ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
-</code></pre><h1 id="v100-details">v1.0.0 Details</h1>
+</code></pre>
+<h1 id="v100-details">v1.0.0 Details</h1>
 <h2 id="config-changes">Config changes</h2>
 <p><code>Enabled</code> now toggles the actual spawner on/off. This can be used to both disable local spawners and world spawner entries.</p>
 <p><code>TemplateEnabled</code> added, which behaves like the old <code>Enabled</code> by disabling the configuration entry itself.</p>
@@ -125,45 +128,48 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
 <p>Example:</p>
 <pre><code class="lang-cs">public class Plugin : BaseUnityPlugin
 {
-    public void Awake()
-    {
-        // Register for configuration event.
-        SpawnerConfigurationManager.OnConfigure += MySpawnerConfigurations;
-    }
+	public void Awake()
+	{
+		// Register for configuration event.
+		SpawnerConfigurationManager.OnConfigure += MySpawnerConfigurations;
+	}
 
-    public void MySpawnerConfigurations(ISpawnerConfigurationCollection spawnerConfig)
-    {
-        // Add a new world spawner
-        spawnerConfig
-            .ConfigureWorldSpawner(123)
-            .SetPrefabName(&quot;Skeleton&quot;)
-            .SetMinLevel(2)
-            .SetMaxLevel(3);
+	public void MySpawnerConfigurations(ISpawnerConfigurationCollection spawnerConfig)
+	{
+		// Add a new world spawner
+		spawnerConfig
+			.ConfigureWorldSpawner(123)
+			.SetPrefabName(&quot;Skeleton&quot;)
+			.SetMinLevel(2)
+			.SetMaxLevel(3);
 
-        // Modify an existing vanilla spawner
-        spawnerConfig
-            .ConfigureWorldSpawner(1)
-            .SetSpawnInterval(TimeSpan.FromSeconds(30))
-            .SetPackSizeMin(3)
-            .SetPackSizeMax(10);
+		// Modify an existing vanilla spawner
+		spawnerConfig
+			.ConfigureWorldSpawner(1)
+			.SetSpawnInterval(TimeSpan.FromSeconds(30))
+			.SetPackSizeMin(3)
+			.SetPackSizeMax(10);
 
-        // Modify a local spawner
-        spawnerConfig
-            .ConfigureLocalSpawnerByLocationAndCreature(&quot;Runestone_Boars&quot;, &quot;Boar&quot;)
-            .SetPrefabName(&quot;Skeleton&quot;);
-    }
+		// Modify a local spawner
+		spawnerConfig
+			.ConfigureLocalSpawnerByLocationAndCreature(&quot;Runestone_Boars&quot;, &quot;Boar&quot;)
+			.SetPrefabName(&quot;Skeleton&quot;);
+	}
 }
-</code></pre><h1 id="support">Support</h1>
+</code></pre>
+<h1 id="support">Support</h1>
 <p>If you feel like it</p>
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="asharppen" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script></article>
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="asharppen" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
+
+</article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/development/src/SpawnThat.Docs/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/ASharpPen/Valheim.SpawnThat/blob/gh-pages/src/SpawnThat.Docs/index.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
@@ -179,9 +185,9 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
                   <i aria-hidden="true">☾</i>
                 </div>
               </div>
-          
+
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <h5>In This Article</h5>
+              <h5>In this article</h5>
               <div></div>
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>
@@ -189,7 +195,7 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -198,8 +204,8 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
               <a href="#top">Back to top</a>
             </span>
             <div class="pull-left">
-              
-              <span>Generated by <strong>DocFX</strong></span>
+        
+        <span>Generated by <strong>DocFX</strong></span>
             </div>
             <div class="toggle-mode pull-right visible-sm visible-xs">
               <div class="icon">
@@ -217,8 +223,8 @@ ConditionNearbyPlayerCarryLegendaryItem = HeimdallLegs
         </div>
         <script type="text/javascript" src="styles/toggle-theme.js"></script>
       </footer>    </div>
-    
-    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="styles/docfx.js"></script>
     <script type="text/javascript" src="styles/main.js"></script>
   </body>
